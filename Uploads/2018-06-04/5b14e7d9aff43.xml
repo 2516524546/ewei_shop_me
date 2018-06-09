@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<BookList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <bookNum>3</bookNum><!-- 里面的文件数量 -->
+  <exportName>log1</exportName><!-- 这个xml的文件名 -->
+  <bookItem>
+    <BookInfo>
+      <itemId>10</itemId>
+      <name_ZH>log1</name_ZH>
+      <name_EN>log1.txt</name_EN>
+      <brief />
+      <size>2</size>
+      <sn>1-1</sn>
+      <type>txt</type>
+      <atuthor>马老师</atuthor>
+      <translator>王晓丽</translator>
+      <appeartime>2000</appeartime>
+      <lang>汉语</lang>
+      <createtime>2018-05-27 23:13:20</createtime>
+      <updatetime>2018-05-27 23:13:20</updatetime>
+      <local>true</local>
+      <cloud>false</cloud>
+      <share>false</share>
+      <copyright>false</copyright>
+      <cooperation>false</cooperation>
+      <source>本地</source>
+      <status>0</status>
+      <url>伦理文库\1-未命名1\log1.txt</url>
+      <other1>111</other1>
+      <other2>222</other2>
+      <other3>333</other3>
+      <other4>444</other4>
+      <file_type>未发表文章</file_type>
+      <key_words>test</key_words>
+      <index_integral>1</index_integral>
+      <atuthor_year>1967</atuthor_year>
+      <atuthor_en>MaSir</atuthor_en>
+    </BookInfo>
+  </bookItem>
+  <bookItem>
+    <BookInfo>
+      <itemId>10</itemId>
+      <name_ZH>log1</name_ZH>
+      <name_EN>log1.txt</name_EN>
+      <brief />
+      <size>2</size>
+      <sn>1-1</sn>
+      <type>txt</type>
+      <atuthor>马老师</atuthor>
+      <translator>王晓丽</translator>
+      <appeartime>2000</appeartime>
+      <lang>汉语</lang>
+      <createtime>2018-05-27 23:13:20</createtime>
+      <updatetime>2018-05-27 23:13:20</updatetime>
+      <local>true</local>
+      <cloud>false</cloud>
+      <share>false</share>
+      <copyright>false</copyright>
+      <cooperation>false</cooperation>
+      <source>本地</source>
+      <status>0</status>
+      <url>伦理文库\1-未命名1\log1.txt</url>
+      <other1>111</other1>
+      <other2>222</other2>
+      <other3>333</other3>
+      <other4>444</other4>
+      <file_type>未发表文章</file_type>
+      <key_words>test</key_words>
+      <index_integral>1</index_integral>
+      <atuthor_year>1967</atuthor_year>
+      <atuthor_en>MaSir</atuthor_en>
+    </BookInfo>
+  </bookItem>
+</BookList>

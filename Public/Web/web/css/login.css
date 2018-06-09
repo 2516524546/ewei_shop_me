@@ -1,0 +1,144 @@
+@charset "utf-8";
+.body {
+  background-color: #c4e6e5;
+}
+header .Return-icon {
+  margin: 24px 0 0 0;
+  display: inline-block;
+  color: #6fd1c8;
+  font-size: 30px;
+}
+.LoginContainer {
+  -webkit-box-shadow: 8px 10px 10px #c0c0c0;
+  -moz-box-shadow: 8px 10px 10px #c0c0c0;
+  -o-box-shadow: 8px 10px 10px #c0c0c0;
+  box-shadow: 8px 10px 10px #c0c0c0;
+  margin: 42px auto;
+  padding: 48px 20px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-right: 5px;
+  width: 306px;
+  background-color: #ffffff;
+}
+.LoginContainer .mailbox-icon1 {
+  background: url(../img/01_shouye/home_register_icon_01.png) no-repeat 0 0;
+  width: 22px;
+  height: 18px;
+  position: absolute;
+  top: 10px;
+  left: 22px;
+}
+.LoginContainer .mailbox-icon2 {
+  background: url(../img/01_shouye/home_register_icon_03.png) no-repeat 0 0;
+  width: 19px;
+  height: 22px;
+  position: absolute;
+  top: 10px;
+  left: 22px;
+}
+.LoginContainer .FormContainer {
+  clear: both;
+}
+.LoginContainer .FormContainer .layui-form-label {
+  width: 66px;
+}
+.LoginContainer .FormContainer .input-spacing {
+  margin-left: 66px;
+}
+.LoginContainer .from-but {
+  margin: 38px auto;
+  width: 66%;
+}
+.LoginContainer .from-but button {
+  width: 176px;
+  height: 34px;
+  line-height: 32px;
+  font-family: "Microsoft Yahei", "微软雅黑";
+  font-size: 14px;
+  margin: 16px 0 5px;
+  background-color: #fff;
+  color: #666666;
+  border: solid 1px #1E9FFF;
+}
+.LoginContainer .LinkContainer p {
+  color: #bcbcbc;
+  margin: 20px 0;
+}
+.LoginContainer .LinkContainer p a {
+  color: #bcbcbc;
+}
+.LoginContainer .LinkContainer p a:hover {
+  color: #1E9FFF;
+}
+.LoginContainer .LinkContainer p span {
+  color: #bcbcbc;
+}
+.LoginContainer .margin {
+  margin: 42px auto;
+  padding: 48px 20px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-right: 5px;
+}
+@media (min-width: 768px) {
+  .LoginContainer {
+    margin: 42px auto;
+    padding: 48px 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-right: 5px;
+    width: 306px;
+    background-color: #ffffff;
+  }
+}
+@media (min-width: 768px) and (min-resolution: 192dpi) {
+  .LoginContainer {
+    margin: 42px auto;
+    padding: 48px 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-right: 5px;
+    width: 600px;
+    background-color: #ffffff;
+  }
+  .LoginContainer .from-but {
+    margin: 38px auto;
+    width: 32%;
+  }
+}
+@media (min-width: 1200px) {
+  .LoginContainer {
+    margin: 42px auto;
+    padding: 48px 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-right: 5px;
+    width: 580px;
+    background-color: #ffffff;
+  }
+  .LoginContainer .from-but {
+    margin: 38px auto;
+    width: 32%;
+  }
+  .LoginContainer .from-but button {
+    width: 176px;
+    height: 34px;
+    line-height: 32px;
+    padding: 0 25px;
+    font-family: "Microsoft Yahei", "微软雅黑";
+    font-size: 14px;
+    background-color: #fff;
+    color: #666666;
+    border: solid 1px #1E9FFF;
+  }
+  .LoginContainer .from-but button:hover {
+    background-color: #1e9fff;
+    color: #fff;
+  }
+}

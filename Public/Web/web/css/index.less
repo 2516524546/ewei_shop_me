@@ -1,0 +1,254 @@
+@import "BotOfpublicHea";
+
+.Banner {
+    margin: 18px 0;
+    border-top: solid #dedede 1px;
+    border-bottom: solid #dedede 1px;
+    .layui-carousel-ind li.layui-this {
+        background-color: #46c4b8;
+    }
+}
+
+// Public style icons stater  --公共样式图标
+@TitleIconsWidth: 50px;
+@TitleIconsHeight: 50px;
+#PublicStyleIcons {
+    .Icons {
+        width: @TitleIconsWidth;
+        height: @TitleIconsHeight;
+        margin-bottom: 10px;
+    }
+    .Line {
+        position: relative;
+    }
+    .Title {
+        position: relative;
+        bottom: 20px;
+        color: #0f4e3e;
+        font-weight: bold;
+        font-size: 1.6em;
+        font-family: 'Arial Regular', Times, TimesNR,'New Century Schoolbook',Georgia,'New York', serif;
+    }
+    .Container {
+        border-radius: 4px;
+        box-shadow: 2px 2px 14px #cecece;
+    }
+    .SpilloverConcealment {
+        overflow: hidden;
+        /*自动隐藏文字*/
+        text-overflow: ellipsis;
+        /*文字隐藏后添加省略号*/
+        white-space: nowrap;
+        /*强制不换行*/
+        width: 20em;
+    }
+    .FontColor {
+        color: #45c5b8;
+        font-size: 1.2em;
+        font-weight: bold;
+        font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+    }
+    .More1 {
+        position: absolute;
+        right: 14px;
+        top: 18px;
+    }
+    .More2 {
+        position: absolute;
+        right: 14px;
+        top: 10px;
+    }
+    .More3 {
+        position: absolute;
+        right: 14px;
+        top: 2px;
+    }
+    .Edit{
+    	position: absolute;
+    	left: 14px;
+    	top: 2px;
+    }
+}
+
+// Public style icons end  --公共样式图标
+.PublicStyleIcons {
+    margin-top: 24px;
+    .TitleIcon {
+        #PublicStyleIcons>.Icons;
+    }
+}
+
+.PublicStyleTitle {
+    margin-bottom: 6px;
+    .Titleline {
+        #PublicStyleIcons>.Line;
+    }
+    .Title {
+        #PublicStyleIcons>.Title;
+    }
+}
+
+#ListContainer {
+    #PublicStyleIcons>.Container;
+    .layui-tab-title {
+        li {
+            color: #b3b3b3;
+            padding: 0 42px;
+        }
+        .More{
+        	#PublicStyleIcons>.More1;
+        }
+        .layui-this {
+            color: @LogSigFontColor;
+        }
+    }
+}
+
+.layui-tab-content {
+    .layui-table td {
+        border-top: none;
+        border-right: none;
+        border-bottom: solid 1px #efefef;
+        border-left: none;
+    }
+}
+
+// Trigger picture stater --触发图片
+.tile {
+    width: 582px;
+    height: 380px;
+    margin: 10px 0 0;
+    display: inline-block;
+    background-size: cover;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s ease-out;
+    box-shadow: 0px 35px 77px -17px rgba(0, 0, 0, 0.44);
+    overflow: hidden;
+    img {
+        height: auto;
+        width: 100%;
+    }
+    .text {
+        z-index: 99;
+        position: absolute;
+        height: calc(100% - 60px);
+    }
+    &:hover {
+        box-shadow: 0px 35px 77px -17px rgba(0, 0, 0, 0.64);
+        transform: scale(1.05);
+    }
+}
+
+// Trigger picture end --触发图片
+.ListContainer {
+    #PublicStyleIcons>.Container;
+}
+
+.layui-table {
+    .FontColor {
+        #PublicStyleIcons>.FontColor;
+    }
+    .More{
+    	#PublicStyleIcons>.More2;
+    }
+    .TimeColor {
+        color: #c5c5c5;
+        text-align: right;
+    }
+    .FontOverflow {
+        #PublicStyleIcons>.SpilloverConcealment;
+    }
+}
+
+.DonateContainer {
+    #PublicStyleIcons>.Container;
+    margin-top: 10px;
+    padding-bottom: 98px;
+    .FontColor {
+        #PublicStyleIcons>.FontColor;
+        padding-top: 10px;
+    }
+    .Prompt {
+        color: red;
+        padding: 25px;
+    }
+    .DonateBut {
+        text-align: center;
+        display: block;
+        text-decoration: none;
+        margin: 8px 20px;
+    }
+}
+
+
+.BannerContainer {
+    margin-top: 10px;
+    width: 174px;
+    #PublicStyleIcons>.Container;
+    .FontColor {
+        #PublicStyleIcons>.FontColor;
+        padding: 4px 6px;
+    }
+    .Container1 {
+        .Font {
+            padding: 4px 6px;
+        }
+        .img{
+			width: 174px;
+			height: auto;
+        }
+    }
+    .Container2 {
+        .Font {
+            padding: 4px 6px;
+        }
+    }
+}
+
+
+.ProposalImg{
+	width: 630px;
+	height: auto;
+	margin: 0 28px 0 16px;
+}
+.ProposalContainer{
+	#PublicStyleIcons>.Container;
+	padding: 2px 10px;
+	.TitleContainer{
+		position: relative;
+		.FontColor{
+			margin-top: 10px;
+			#PublicStyleIcons>.FontColor;
+		}
+		.More{
+			#PublicStyleIcons>.More3;
+		}
+		.Edit{
+			#PublicStyleIcons>.Edit;
+		}
+	}
+	.ProposaText{
+		width: 378px;
+		margin: 78px 0;
+		padding: 0 30px;
+	}
+}
+
+#exampleModal{
+    .ModalTitle{
+        color: #45c5b8;
+        font-size: 20px;
+        display: block;
+    }
+    .ModalTextColor{
+        color: red;
+    }
+    .ModalFormHints{
+        color: #ccc;
+    }
+}
+
+#NavSelected{
+    color: #80fff3;
+}

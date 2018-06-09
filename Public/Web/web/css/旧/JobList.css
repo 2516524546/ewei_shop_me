@@ -1,0 +1,183 @@
+#public .FontIcon {
+  text-decoration: none;
+  display: inline-block;
+}
+.headerBox {
+  margin: 12px 0 0;
+}
+.logo {
+  width: 260px;
+  height: 60px;
+  border: none;
+  display: inline-block;
+  background: url(../img/common_logo.png) 0 0 no-repeat;
+  background-size: 260px;
+  margin-top: 20px;
+}
+.logreg {
+  float: right;
+}
+.logreg .Login {
+  color: #56c9be;
+  margin: 0 28px;
+  text-decoration: none;
+  display: inline-block;
+}
+.logreg .Login .LoginIcon {
+  background: url(../img/common_nav_dz_login.png) 0 0 no-repeat;
+  height: 20px;
+  width: 20px;
+  display: block;
+  margin: 0 6px;
+}
+.logreg .SignUp {
+  color: #56c9be;
+  text-decoration: none;
+  display: inline-block;
+}
+.logreg .SignUp .SignUpIcon {
+  background: url(../img/common_nav_dz_signup.png) 0 0 no-repeat;
+  height: 20px;
+  width: 20px;
+  display: block;
+  margin: 0 14px;
+}
+.nav {
+  clear: both;
+  position: absolute;
+  right: 10px;
+  top: 48px;
+}
+.nav .NavBg {
+  background-color: #46c4b8;
+  border-radius: 28px;
+  padding: 14px;
+}
+.nav .NavBg .ListInline > li {
+  display: inline;
+  margin: 0 14px;
+}
+.nav .NavBg .ListInline > li > a {
+  color: #fff;
+  text-decoration: none;
+}
+.nav .NavBg .ListInline > li > a:hover {
+  color: #80fff3;
+}
+.FooterBg {
+  background-color: #0e4d3d;
+  padding-top: 18px;
+  margin-top: 58px;
+}
+.FooterBg .FooterContainer {
+  width: 88%;
+  margin: auto;
+}
+.FooterBg .FooterContainer dt {
+  color: #56c9be;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.FooterBg .FooterContainer dd {
+  color: #7f8986;
+}
+.FooterBg .copyright {
+  background-color: #000000;
+  opacity: 0.2;
+  padding: 6px;
+  margin-top: 14px;
+}
+.FooterBg .copyright p {
+  color: #ababab;
+}
+#PublicUserStyle .spacing {
+  margin-top: 10px;
+  margin-left: 60px;
+}
+#PublicUserStyle .SpilloverConcealment {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+#PublicUserStyle .Container {
+  border-radius: 4px;
+  box-shadow: 2px 2px 14px #cecece;
+}
+#PublicUserStyle .FontColor {
+  color: #45c5b8;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+}
+.ContributionContainer {
+  clear: both;
+}
+.ContributionContainer .UserBox {
+  margin-top: 25px;
+  box-shadow: 2px 2px 14px #cecece;
+  padding: 25px;
+}
+.ContributionContainer .UserBox .lintpheight {
+  line-height: 30px;
+}
+.ContributionContainer .UserBox .lintpheight .picon {
+  position: absolute;
+  right: 32px;
+}
+.ContributionContainer .UserBox .UserLink {
+  text-decoration: none;
+}
+.ContributionContainer .UserBox .userimg {
+  width: 50px;
+  height: auto;
+  float: left;
+  margin-top: 10px;
+}
+.ContributionContainer .UserBox .UserTitle {
+  margin-top: 10px;
+  margin-left: 60px;
+}
+.ContributionContainer .UserBox .UserFollow {
+  margin-top: 10px;
+  margin-left: 60px;
+  color: #cccccc;
+}
+.ContributionContainer .UserBox .UserName {
+  margin-top: 10px;
+  margin-left: 60px;
+  color: #cccccc;
+}
+.ContributionContainer .UserBox .UserName .UserTime {
+  margin-left: 32px;
+}
+.ContributionContainer .UserBox .UserContent {
+  margin-top: 10px;
+  margin-left: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.butbox {
+  margin: 18px 44px 10px;
+}
+.butbox .fontcss {
+  text-decoration: none;
+}
+.frombox {
+  margin: 20px 8px;
+}
+.frombox .SelectionTypeContainer {
+  float: left;
+  width: 258px;
+}
+.frombox .SelectionTypeContainer .fromboxxiala {
+  padding-top: 10px;
+}
+#NumberOfPagesContainer {
+  width: 60%;
+  margin-top: 20px;
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"  />
+		<title>活动分享</title>
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/admin/css/mui.min.css" />
+          <script type="text/javascript" src="__PUBLIC__/Admin/admin/js/TouchSlide.1.1.js"></script>
+        <style type="text/css">
+			body, p, input, h1, h2, h3, h4, h5, h6, ul, li, dl, dt, dd, form { margin: 0; padding: 0; list-style: none; vertical-align: middle; font-weight:normal; }
+			img { border:0; margin: 0; padding: 0;   }
+			body { color: #000; -webkit-user-select: none; -webkit-text-size-adjust: none; font:normal 16px/200% "微软雅黑", helvetica, arial; text-align:left;   }
+			header, section, footer { display: block; margin: 0; padding: 0 }
+			a{text-decoration:none;color:#000;}
+		
+			html,body{ width:100%; max-width:640px; height:100%; margin:0 auto; font-size:18px; word-wrap: break-word; background:#fff;}
+			.bg{ width:100%; height:auto; background:#fff;}
+			
+			.focus{ width:96%; height:auto;  margin:0 auto; position:relative; overflow:hidden;   }
+			.focus .hd{ width:100%; height:10px;  position:absolute; left:50%; z-index:1; bottom:15px; text-align:center;  }
+			.focus .hd ul{ overflow:hidden; display:-moz-box; display:-webkit-box; display:box; width:auto; height:6px;   }
+			.focus .hd ul li{ /* -moz-box-flex:1; -webkit-box-flex:1; box-flex:1; */ width:6px; height:6px; border-radius:3rem; background:#fff; margin:0 2px;}
+			.focus .hd ul .on{ background:#FF4000;  }
+			.focus .bd{ position:relative; z-index:0; width:100%; height:13rem;}
+			.focus .bd li{ width:100%; height:13rem; position:relative; background:#eee;}
+			.focus .bd li img{ width:auto;  height:13rem; margin:0 auto; position:absolute; left:50%; top:0;transform: translate(-50%,0);}
+			.focus .bd li a{ -webkit-tap-highlight-color:rgba(0, 0, 0, 0); /* 取消链接高亮 */ }
+			
+			.biaoti{ width:96%; height:2.5rem; line-height:2.5rem; padding:0 2%; position:absolute; left:0; top:0; color:#fff; font-size:1.7rem;}
+			
+			.jiehsao{ width:96%; height:auto; padding:0 2%;}
+			.jiehsao li{ width:100%; height:auto; position:relative;}
+			.jiehsao li span{ height:auto; line-height:1.5rem; display:block;}
+			.jiehsao li span.yi{ width:5rem; position:absolute; left:0; top:0;}
+			.jiehsao li span.er{ width:98%; padding-left:5rem; box-sizing:border-box;}
+			
+			.mingdan{ width:96%; height:auto; padding:1rem 2% 0;}
+			.mingdan li{ width:100%; height:auto; line-height:1.5rem;}
+			
+	.mui-preview-image.mui-fullscreen { position: fixed; z-index: 20;/*  background-color: #000; */ width:100%; max-width:640px; margin:0 auto; }
+	.mui-preview-header,.mui-preview-footer { position: absolute; width: 100%; left: 0; z-index: 10; }
+	.mui-preview-header { height: 44px; top: 0; }
+	.mui-preview-footer { height: 50px; bottom: 0px; }
+	.mui-preview-header .mui-preview-indicator { display: block; line-height: 25px; color: #fff; text-align: center; margin: 15px auto 4px; width: 70px; background-color: rgba(0, 0, 0, 0.4); border-radius: 12px; font-size: 16px; }
+	.mui-preview-image { display: none; -webkit-animation-duration: 0.5s; animation-duration: 0.5s; -webkit-animation-fill-mode: both; animation-fill-mode: both; }
+	.mui-preview-image.mui-preview-in { -webkit-animation-name: fadeIn; animation-name: fadeIn; }
+	.mui-preview-image.mui-preview-out { background: none; -webkit-animation-name: fadeOut; animation-name: fadeOut; }
+	.mui-preview-image.mui-preview-out .mui-preview-header,.mui-preview-image.mui-preview-out .mui-preview-footer { display: none; }
+	.mui-zoom-scroller { position: absolute; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-align: center; -webkit-align-items: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; justify-content: center; left: 0; right: 0; bottom: 0; top: 0; width: 100%; height: 100%; margin: 0; -webkit-backface-visibility: hidden; background:rgba(0,0,0,1);}
+	.mui-zoom { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; }
+	.mui-slider .mui-slider-group .mui-slider-item img { width:100%; height:auto;}
+	.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img { width: 100%; }
+	.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item { display: inline-table; }
+	.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img { display: table-cell; vertical-align: middle; }
+	.mui-preview-loading { position: absolute; width: 100%; height: 100%; top: 0; left: 0; display: none; }
+	.mui-preview-loading.mui-active {
+		display: block;
+	}
+	.mui-preview-loading .mui-spinner-white { position: absolute; top: 50%; left: 50%; margin-left: -25px; margin-top: -25px; height: 50px; width: 50px; }
+	.mui-preview-image img.mui-transitioning { -webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease; transition: transform 0.5s ease, opacity 0.5s ease; }
+	@-webkit-keyframes fadeIn {
+		0% { opacity: 0; }
+		100% { opacity: 1; }
+	}
+	@keyframes fadeIn {
+		0% { opacity: 0; }
+		100% { opacity: 1; }
+	}
+	@-webkit-keyframes fadeOut {
+		0% { opacity: 1; }
+		100% { opacity: 0; }
+	}
+	@keyframes fadeOut {
+		0% { opacity: 1; }
+		100% { opacity: 0; }
+	}
+	img { width:100%; max-width:100%; height: auto; }
+        </style>
+	</head>
+	<body> 
+    <div class="bg">
+        <div id="focus" class="focus">
+            <div class="hd">
+                <ul></ul>
+            </div>
+            <div class="bd">
+                <ul>
+                    <?php foreach($a['l_img'] as $k => $v){?>		
+                	<li>
+					<a href="#" >
+					<img src="<?php echo $v?>" data-preview-src="" data-preview-group="1"/>
+					</a>
+					</li>
+            		<?php }?> 
+                </ul>
+            </div>
+            <div class="biaoti"><?php echo $a['l_title']?></div>
+        </div>
+        <script type="text/javascript">
+            TouchSlide({ 
+                slideCell:"#focus",
+                titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+                mainCell:".bd ul", 
+                effect:"left", 
+                autoPlay:true,//自动播放
+                autoPage:true, //自动分页
+                switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+            });
+        </script>
+        <ul class="jiehsao">
+            <li>
+                <span class="yi">发布时间：</span>
+                <span class="er"><?php echo $a['l_addtime']?></span>
+            </li>
+            <li>
+                <span class="yi">活动地点：</span>
+                <span class="er"><?php echo $a['l_wadr']?></span>
+            </li>
+            <li>
+                <span class="yi">活动时间：</span>
+                <span class="er"><?php echo $a['l_wtime']?></span>
+            </li>
+            <li>
+                <span class="yi">活动内容：</span>
+                <span class="er"><?php echo $a['l_content']?></span>
+            </li>
+        </ul>
+        <?php foreach ($list as $k => $v){ ?>
+        	
+        <ul class="mingdan">
+            <li class="liyi">报名名单及报名时间:</li>
+            <li class="lier"><?php echo $v['nickname'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$v['bm_time']?></li>
+          <!--   <li class="lier">我是昵称&nbsp;2017-4-7&nbsp;13:2:2</li> -->
+        </ul>
+        <?php }?>
+    </div>
+	</body>
+</html>
+	<script src="__PUBLIC__/Admin/admin/js/mui.min.js"></script>
+	<script src="__PUBLIC__/Admin/admin/js/mui.zoom.js"></script>
+	<script src="__PUBLIC__/Admin/admin/js/mui.previewimage.js"></script>
+	<script>
+		mui.previewImage();
+	</script>
+
+<script type="text/javascript">
+	$(function(){
+		var shulaing=($('.bd li').length)*10
+		$('.hd').css({'width':shulaing+'px','margin-left':-shulaing/2+'px'})
+	})
+</script>

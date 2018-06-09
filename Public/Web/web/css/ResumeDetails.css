@@ -1,0 +1,177 @@
+.Resumetails_content{
+    padding: 23px 153px;
+}
+
+.Resumetails_content .Resumetails_title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 19px;
+}
+
+.Resumetails_content .Resumetails_title .title_item{
+    border: 1px solid #54c8bd;
+    width: 25%;
+    border-radius: 24px;
+    text-align: center;
+    padding: 12px 31px;
+    margin-right: 22px;
+}
+.Resumetails_content .Resumetails_title .title_item:hover{
+    background: #54c8bd;
+}
+.Resumetails_content .Resumetails_title .title_item:hover a{
+    color: #fff;
+
+}
+.Resumetails_content .Resumetails_title .title_item a{
+    text-decoration: none;
+}
+
+.Resumetails_content .Resume_details{
+    box-shadow: 0 2px 18px 2px #c0c0c0;
+    padding: 32px 100px;
+}
+.Resumetails_content .Resume_details .form_box .form_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+.Resumetails_content .Resume_details .form_box .form_title .form_title_img{
+    width: 33px;
+    height: 33px;
+    margin-right: 10px;
+}
+.Resumetails_content .Resume_details .form_box .form_title .form_title_img img{
+    width: 100%;
+}
+.Resumetails_content .Resume_details .form_box .form_title h3{
+    font-size: 15px;
+    font-weight: bold;
+}
+.Resumetails_content .Resume_details .form_box .form_details .form_details_item{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.Resumetails_content .Resume_details .form_box .form_details .form_details_item .form_details_left{
+    width: 20%;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Resumetails_content .Resume_details .form_box .form_details .form_details_item .form_details_middle{
+    width: 210px;
+}
+.Resumetails_content .Resume_details .form_box .form_details .form_details_item .form_details_left .form_details_item_img{
+    width: 22px;
+    height: 22px;
+    overflow: hidden;
+}
+.Resumetails_content .Resume_details .form_box .form_details .form_details_item .form_details_left .form_details_item_img img{
+    width: 100%;
+    height: 100%;
+}
+.Resumetails_content .Resume_details .form_box .form_details .form_details_item .form_details_item_border{
+    border: 1px solid #e6e6e6;
+    background: #fbfbfb;
+}
+.Resumetails_content .Resume_details .form_box .form_details .item_btn{
+    width: 28%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #46c4b8;
+    margin: 0 auto;
+    border-radius: 23px;
+    padding: 7px 0;
+}
+.Resumetails_content .Resume_details .form_box .form_details .item_btn button{
+    border: none;
+    background: transparent;
+}
+.Resumetails_content .Resume_details .form_box .form_details .item_btn button:focus{
+    border: none;
+    outline:none;
+}
+
+
+
+.layui-form-pane .layui-input-block{
+    margin: 0;
+    width: 100%;
+}
+.layui-anim.layui-icon{
+    font-size: 16px;
+}
+.layui-form-pane .layui-input-block{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 70%;
+}
+.layui-form-pane .layui-input-block p{
+    color: #a0ddd6;
+} 
+.layui-form-mid{
+    margin: 0 10px;
+}
+.addImages{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+.addImages .files_name {
+    width: 40%;
+    height: 38px;
+    line-height: 38px;
+    border: 1px solid #cecece;
+    padding-left: 12px;
+    font-size: 12px;
+    color: #808080;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 224px;
+}
+.addImages .files_name .files_span{
+    display: inline-block;
+    width: 100%;
+}
+.ResumeDetails_shadow{
+    position: fixed;
+   top: 0px;
+   left: 0px;
+   right:0px;
+   bottom:0px;
+   z-index: 9999;
+    background: rgba(0, 0, 0, .6);
+    display: none;
+}
+.ResumeDetails_shadow .shadow_box{
+    width: 50%;
+    height: 50%;
+    background: #fff;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    font-size: 36px;
+    text-align: center;
+    padding: 15px;
+    border-radius: 27px;
+    cursor: pointer;
+
+}
+.ResumeDetails_shadow .shadow_box .shadow_quit{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+.ResumeDetails_shadow .shadow_box span{
+    line-height: 310px;
+}

@@ -1,0 +1,176 @@
+#PublicUserStyle .spacing {
+  margin-top: 10px;
+  margin-left: 60px;
+}
+#PublicUserStyle .SpilloverConcealment {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+#PublicUserStyle .Container {
+  border-radius: 4px;
+  box-shadow: 2px 2px 14px #cecece;
+}
+#PublicUserStyle .FontColor {
+  color: #45c5b8;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+}
+.Banner {
+  margin: 18px 0;
+  border-top: solid #dedede 1px;
+  border-bottom: solid #dedede 1px;
+}
+.Banner .layui-carousel-ind li.layui-this {
+  background-color: #46c4b8;
+}
+.LatestContentContainer {
+  box-shadow: 2px 2px 14px #cecece;
+  padding: 20px;
+}
+.LatestContentContainer .layui-tab .btnlist{
+	height: auto;
+	display: block;
+	overflow: hidden;
+}
+.LatestContentContainer .layui-tab .btnlist li{
+	line-height: normal;
+	display:block;
+}
+.layui-tab-title .layui-this{
+	border: none;
+}
+.LatestContentContainer .TitleSearch .h4 {
+  float: left;
+  font-size: 20px;
+  color: #46c4b8;
+  margin-top: 10px;
+}
+.LatestContentContainer .SelectionContainer {
+  clear: right;
+}
+.LatestContentContainer .SelectionContainer #Selectionform {
+  width: 46%;
+  margin-left: 372px;
+  border-radius: 20px;
+  padding: 0 42px 0 18px;
+  border: none;
+  box-shadow: 2px 2px 14px #cecece;
+}
+.LatestContentContainer .SelectionContainer #SelectionIcon {
+  position: absolute;
+  top: 30px;
+  right: 56px;
+}
+.LatestContentContainer .LatestContainer {
+  clear: both;
+  margin-top: 44px;
+}
+.LatestContentContainer .LatestContainer .More {
+  position: absolute;
+  right: 40px;
+  top: 94px;
+  width: 136px;
+  height: auto;
+  z-index: 1;
+}
+.LatestContentContainer .LatestContainer .More select {
+  color: #ccc;
+}
+.LatestContentContainer .LatestContainer .PostTable {
+  border: none;
+}
+.LatestContentContainer .LatestContainer .PostTable .WithNumber {
+  position: absolute;
+}
+.LatestContentContainer .LatestContainer .PostTable .WithNumber .WithNumbers {
+  position: absolute;
+  left: -18px;
+  top: 14px;
+}
+.LatestContentContainer .LatestContainer .PostTable .WithNumber .WithNumberImg {
+  position: absolute;
+  left: -16px;
+  top: 0;
+}
+.LatestContentContainer .LatestContainer .PostTable .NameBox {
+  width: 32%;
+}
+.LatestContentContainer .LatestContainer .PostTable .TopicNames {
+  color: #46c4b8;
+}
+.LatestContentContainer .LatestContainer .PostTable .NameIcom {
+  width: 20%;
+}
+.ReleaseButContainer {
+  float: right;
+  width: 66%;
+  margin-bottom: 10px;
+}
+.ReleaseButContainer #GroupBtn {
+  text-decoration: none;
+  width: 100%;
+  box-shadow: 2px 2px 14px #cecece;
+ 
+}
+.GroupDetailsContainer {
+  clear: both;
+  box-shadow: 2px 2px 14px #cecece;
+  margin-top: 60px;
+  padding: 20px;
+}
+.GroupDetailsContainer .p {
+  line-height: 46px;
+}
+.GroupDetailsContainer .textp {
+  margin: -10px 0 10px;
+}
+.GroupDetailsContainer .Followtbut {
+  width: 86%;
+  margin: 10px auto 0;
+}
+.GroupDetailsContainer .Followtbut #GroupBtn {
+  width: 100%;
+  text-decoration: none;
+}
+.GroupDetailsContainer .userimgs {
+  margin: 5px 10px;
+}
+.GroupDetailsContainer .FontColor {
+  color: #45c5b8;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+  padding: 4px 6px;
+  margin-bottom: 16px;
+}
+.GroupDetailsContainer .MoreMembersbox {
+  position: relative;
+}
+.GroupDetailsContainer .MoreMembersbox .MoreMembersA {
+  position: absolute;
+  right: 0;
+}
+.BannerContainer {
+  margin-top: 50px;
+  width: 354px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 14px #cecece;
+}
+.BannerContainer .FontColor {
+  color: #45c5b8;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+  padding: 4px 6px;
+}
+.BannerContainer .Container1 .Font {
+  padding: 4px 6px;
+}
+.BannerContainer .Container1 .img {
+  width: 354px;
+  height: auto;
+}

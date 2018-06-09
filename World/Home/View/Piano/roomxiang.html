@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>乐乐GO</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/app.css">
+<script src="https://static.mlinks.cc/scripts/dist/mlink.min.js"></script>
+</head>
+
+<body>
+<div class="logo"><img src="./Piano/Home/View/Piano/img/QQ20170707174821.png" ></div>
+<div class="info">
+	<h1>钢琴教学  就上乐乐GO</h1>
+    <p></p>
+</div>
+<div class="neirong">
+	<div class="down-item">
+    	<strong>安卓</strong>
+             <!--  <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.zngqphone"> -->
+        <span><a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.zngqphone" class="btn-app btn-iphone">手机端</a></span>
+    </div>
+    <div class="down-item"> 
+        <strong>安卓</strong>
+              <!-- <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.zhinenggangqin"> -->
+        <span><a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.zhinenggangqin" class="btn-app btn-iphone">平板端</a></span>
+    </div>
+    <div class="down-item">
+    	<strong>苹果</strong>
+        <span><a href="https://itunes.apple.com/cn/app/%E4%B9%90%E4%B9%90go/id1189014819?mt=8" class="btn-app btn-android">用户端</a></span>
+    </div>
+</div>
+<div class="phone"><img src="./Piano/Home/View/Piano/img/phone-show.png"></div>
+<a id="chufa" style="color:white">打开app查看详情</a>
+<p class="tips">App Store搜索 “乐乐GO”  马上下载，即刻出发！</p>
+
+  <input type='hidden' id='param_data' value='<?php echo $room_url;?>'/>  
+
+</body>
+</html>
+
+<script type="text/javascript"> 
+/*
+    var link="http://www.baidu.com"
+	var chu=document.getElementById('chufa')
+	chu.onclick=function(){
+	
+		<!-- function openAPP(){ -->
+			var loadDateTime =new Date();
+			window.setTimeout(function(){
+				var timeOutDateTime =new Date();
+				if(timeOutDateTime - loadDateTime < 3000){
+					window.location = link;
+				}else{
+					window.close();	
+				}
+			},2000);
+			window.location = 'chongai:chongai.cn';
+			
+		<!-- } -->
+	}
+*/
+
+function GetRequest() {   
+    var url = location.search; 
+    var theRequest = new Object();   
+    if (url.indexOf("?") != -1) {   
+        var str = url.substr(1);  
+        strs = str.split("&");   
+        for(var i = 0; i < strs.length; i ++) {   
+            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);   
+        }   
+    } 
+    return theRequest;   
+} 
+
+var obj = GetRequest();
+
+var p_json = document.getElementById('param_data').value
+
+var param = p_json ? p_json : obj['params'];
+
+  if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
+    new Mlink ({		    
+			mlink  : "AbNW", // 在魔窗后台配置好的短链
+			autoLaunchApp : false,   // 尝试自动打开在魔窗后台配置的mlink的app
+			button : document.querySelector("a#chufa"),
+			params:{"params":param},  // 传递参数
+		});
+  }
+
+
+
+   if (navigator.userAgent.match(/android/i)) {
+          new Mlink ({        
+              mlink  : "https://a.mlinks.cc/AbNW", // 在魔窗后台配置好的短链
+              autoLaunchApp : false,   // 尝试自动打开在魔窗后台配置的mlink的app
+              button : document.querySelector("a#chufa"),
+              params:{"params":param},  // 传递参数
+          });
+             // function android(){
+             //     window.location = "https://a.mlinks.cc/A0AT?params="+param;
+             //     setTimeout(function(){
+             //        if(!document.webkitHidden){
+             //            window.location = "https://a.mlinks.cc/A0AT"; 
+             //        }
+             //     },8000);
+             // };
+             // android();
+            // window.location.href = "chongai://chongai.cn";
+   }
+</script>

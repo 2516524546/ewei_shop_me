@@ -1,0 +1,100 @@
+@import "BotOfpublicHea";
+
+
+
+// PublicUserStyle stater  --公共样式图标
+#PublicUserStyle {
+	.spacing{
+		margin-top: 10px;
+		margin-left: 60px;
+	}
+	.SpilloverConcealment {
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    -webkit-line-clamp:3;
+	    -webkit-box-orient:vertical;
+	}
+	.Container {
+	    border-radius: 4px;
+	    box-shadow: 2px 2px 14px #cecece;
+	}
+	.FontColor {
+	    color: #45c5b8;
+	    font-size: 1.2em;
+	    font-weight: bold;
+	    font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+	}
+}
+// PublicUserStyle end  --公共样式图标
+
+
+
+
+.ContributionContainer{
+	@color: #ccc;
+	clear: both;
+	.UserBox{
+		margin-top: 25px;
+		box-shadow: 2px 2px 14px #cecece;
+		padding: 25px;
+		.lintpheight{
+			line-height: 30px;
+			.picon{
+				position: absolute;
+				right: 32px;
+			}
+		}
+		.UserLink{
+			text-decoration: none;
+		}
+		.userimg{
+			width: 50px;
+			height: auto;
+			float: left;
+			margin-top: 10px;
+		}
+		.UserTitle{
+			#PublicUserStyle > .spacing;
+		}
+		.UserFollow{
+			#PublicUserStyle > .spacing;
+			color: @color;
+		}
+		.UserName{
+			#PublicUserStyle > .spacing;
+			color: @color;
+			.UserTime{
+				margin-left: 32px;
+			}
+		}
+		.UserContent{
+			#PublicUserStyle > .spacing;
+			#PublicUserStyle > .SpilloverConcealment;
+		}
+	}
+}
+
+.butbox{
+	margin: 18px 44px 10px;
+	.fontcss{
+		text-decoration: none;
+	}
+}
+
+.frombox{
+	margin: 20px 8px;
+	.SelectionTypeContainer{
+		float: left;
+		width: 258px;
+		.fromboxxiala{
+			padding-top: 10px;
+		}
+	}
+}
+
+#NumberOfPagesContainer{
+	width: 60%;
+	margin-top: 20px;
+}
+

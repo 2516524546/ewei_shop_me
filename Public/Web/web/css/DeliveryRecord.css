@@ -1,0 +1,28 @@
+.layui-table td{
+    border: none;
+    text-align: center;
+    padding: 17px 15px;
+}
+.layui-table thead tr td{
+    font-size: 14px;
+    font-weight: bold;
+    color: #46c4b8;
+}
+.layui-table .tr_item td{
+    border-bottom: 1px solid #ededed;
+}
+.layui-table tbody tr:hover{
+    background-color: transparent;
+}
+.layui-table thead tr{
+    background: #fff;
+}
+.DeliveryRecord_box{
+    box-shadow: 0 2px 18px 2px #c0c0c0;
+    padding: 0 70px;
+    min-height: 655px;
+    margin: 47px 0;
+}
+#NumberOfPagesContainer{
+    text-align: center;
+}

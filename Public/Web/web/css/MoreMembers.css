@@ -1,0 +1,144 @@
+.NumberOfPagesContainer {
+  margin: 30px 0 0;
+}
+.NumberOfPagesContainer #NumberOfPages {
+  margin: 0 auto;
+}
+.PasswordContainer .box1 .Membertitle {
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: -22px;
+}
+.PasswordContainer .box1 .MemberContainer {
+  clear: both;
+  padding: 10px 32px;
+  height: 68px;
+  border-bottom: solid 1px #ccc;
+}
+.PasswordContainer .box1 .MemberContainer .MemberImgName {
+  float: left;
+}
+.PasswordContainer .box1 .MemberContainer .MemberImgName .Memberimg {
+  width: 50px;
+  height: auto;
+  margin: 0 10px;
+}
+.PasswordContainer .box1 .MemberContainer .MemberBut {
+  float: right;
+  margin-top: 6px;
+}
+.PasswordContainer .box2 {
+  clear: both;
+  margin-top: 48px;
+}
+.PasswordContainer .box2 .Membertitle {
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: -22px;
+}
+.PasswordContainer .box2 .MemberContainer {
+  clear: both;
+  padding: 10px 32px;
+  height: 68px;
+  border-bottom: solid 1px #ccc;
+}
+.PasswordContainer .box2 .MemberContainer .MemberImgName {
+  float: left;
+}
+.PasswordContainer .box2 .MemberContainer .MemberImgName .Memberimg {
+  width: 50px;
+  height: auto;
+  margin: 0 10px;
+}
+.PasswordContainer .box2 .MemberContainer .MemberBut {
+  float: right;
+  margin-top: 6px;
+}
+.layui-btn{
+  width: 130px;
+}
+
+.PasswordContainer_shadow{
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .6);
+  z-index: 999999;
+  display: none;
+}
+
+.PasswordContainer_shadow .PasswordContainer_shadow_box{
+  width: 50%;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  background:#fff;
+}
+
+.PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  border-bottom: 1px solid #ccc;
+  
+}
+.PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_title .shadow_box_close{
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_details{
+  padding: 15px 30px;
+}
+
+.PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_details .details_item{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  line-height: 35px;
+}
+.PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_details .details_item .item_name{
+  width: 15%;
+  text-align: right;
+  margin-right: 15px;
+}
+
+.PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_details .details_item .item_con{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 77%;
+}
+.PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_details .details_item .item_img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_details .details_item .item_img img{
+  width: 100%;
+}
+
+.PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_details .details_button{
+  width: 40%;
+  background: #46c4b8;
+  border-radius: 23px;
+  padding: 15px 30px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_details .details_button a{
+  text-decoration: none;
+}
+.PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_details .details_button a:hover{
+  color: #fff;
+}
+
+#NumberOfPagesContainer{
+  margin: 0 auto;
+}

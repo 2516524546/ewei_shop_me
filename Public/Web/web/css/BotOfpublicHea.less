@@ -1,0 +1,106 @@
+
+// The common style of the icon on the right side of the head--头部右侧图标公共样式 start
+@LogSigFontColor: #56c9be;
+@LogSigIconWidth: 20px;
+@LogSigIconHeight: 20px;
+#public {
+    .FontIcon {
+        text-decoration: none;
+        display: inline-block;
+    }
+}
+// The common style of the icon on the right side of the head--头部右侧图标公共样式 end
+
+
+
+
+.headerBox {
+    margin: 12px 0 0;
+}
+
+.logo {
+    width: 260px;
+    height: 60px;
+    border: none;
+    display: inline-block;
+    background: url(../img/common_logo.png) 0 0 no-repeat;
+    background-size: 260px;
+    margin-top: 20px;
+}
+
+.logreg {
+    float: right;
+    .Login {
+        color: @LogSigFontColor;
+        margin: 0 28px;
+        #public>.FontIcon;
+        .LoginIcon {
+            background: url(../img/common_nav_dz_login.png) 0 0 no-repeat;
+            height: @LogSigIconHeight;
+            width: @LogSigIconWidth;
+            display: block;
+            margin: 0 6px;
+        }
+    }
+    .SignUp {
+        color: @LogSigFontColor;
+        #public>.FontIcon;
+        .SignUpIcon {
+            background: url(../img/common_nav_dz_signup.png) 0 0 no-repeat;
+            height: @LogSigIconHeight;
+            width: @LogSigIconWidth;
+            display: block;
+            margin: 0 14px;
+        }
+    }
+}
+
+.nav {
+    clear: both;
+    position: absolute;
+    right: 10px;
+    top: 48px;
+    .NavBg {
+        background-color: #46c4b8;
+        border-radius: 28px;
+        padding: 14px;
+        .ListInline>li {
+            display: inline;
+            margin: 0 14px;
+        }
+        .ListInline>li>a {
+            color: #fff;
+            text-decoration: none;
+            &:hover {
+                color: #80fff3;
+            }
+        }
+    }
+}
+
+.FooterBg{
+    background-color: #0e4d3d;
+    padding-top: 18px;
+    margin-top: 58px;
+    .FooterContainer{
+        width: 88%;
+        margin: auto;
+        dt{
+            color: @LogSigFontColor;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        dd{
+            color: #7f8986;
+        }
+    }
+    .copyright{
+        background-color:#000000;
+        opacity: 0.2;
+        padding: 6px;
+        margin-top: 14px;
+        p{
+            color: #ababab;
+        }
+    }
+}

@@ -1,0 +1,104 @@
+.crumbs{
+    margin: auto 0;
+}
+.layui-tab-title{
+    border: none;
+    margin-bottom: 30px;
+}
+
+.layui-tab-title li{
+    border: none;
+    width: 16%;
+    border: 1px solid #46c4b8;
+    border-radius: 23px;
+    margin-right: 18px;
+}
+.layui-tab-title .layui-this{
+    background: #46c4b8;
+    color: #fff;
+    box-shadow: 2px 2px 14px #46c4b8;
+}
+.layui-tab-title .layui-this:after{
+    border: none;
+}
+
+.MyGroup_list .MyGroup_item{
+    box-shadow: 2px 2px 14px #cecece;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 33px 15px;
+    margin-bottom: 25px;
+    
+}
+.MyGroup_list .MyGroup_item:hover{
+    border: 2px solid #46c4b8;
+    box-shadow: 2px 2px 14px #46c4b8;
+    
+}
+
+.MyGroup_list .MyGroup_item .MyGroup_left{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.MyGroup_list .MyGroup_item .MyGroup_left .myGroup_left_img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #46c4b8;
+    margin-right: 10px;
+}
+.MyGroup_list .MyGroup_item .MyGroup_left .myGroup_left_img img{
+    width: 100%;
+}
+.MyGroup_list .MyGroup_item .MyGroup_left .MyGroup_left_details .MyGroup_left_details_person{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 14px;
+}
+.MyGroup_list .MyGroup_item .MyGroup_left .MyGroup_left_details .MyGroup_left_details_person .person_img{
+    width: 19px;
+    height: 20px;
+    overflow: hidden;
+    margin-right: 5px;
+}
+.MyGroup_list .MyGroup_item .MyGroup_left .MyGroup_left_details .MyGroup_left_details_person .person_img img{
+    width: 100%;
+}
+
+.MyGroup_list .MyGroup_item .MyGroup_left .MyGroup_left_details .MyGroup_left_details_name{
+    width: 180px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.MyGroup_list .MyGroup_item .MyGroup_right{
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.MyGroup_list .MyGroup_item .MyGroup_right .right_btn{
+    width: 40%;
+    text-align: center;
+    border: 1px solid #46c4b8;
+    border-radius: 23px;
+    padding: 13px 0;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.MyGroup_list .MyGroup_item .MyGroup_right .right_btn:hover{
+    background: #46c4b8;
+    color: #fff;
+    box-shadow: 2px 2px 14px #46c4b8;
+}
+
+#NumberOfPagesContainer{
+    text-align: center;
+    margin-top: 50px;
+}

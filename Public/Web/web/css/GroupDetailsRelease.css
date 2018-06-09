@@ -1,0 +1,163 @@
+#PublicIcons .Icon {
+  position: absolute;
+  top: 8px;
+  left: 22px;
+}
+.Crumbs .CrumbsSpan .CrumbsIcon {
+  margin-left: 14px;
+}
+.Crumbs .CrumbsSpan .CrumbsTitle {
+  margin-left: 2px;
+}
+.Crumbs .CrumbsSpan .CrumbsTitle .CrumbsA {
+  background: none;
+  margin-top: 0;
+  margin-left: 10px;
+}
+.Crumbs .CrumbsSpan .CrumbsIcons {
+  margin-left: 90px;
+}
+.Crumbs .CrumbsSpan .CrumbsTitles {
+  /* margin-left: 144px; */
+}
+.FormContainer .TitlesIcon {
+  background: url(../img/02_interest/interest_qxx_fb_icon_01.png) no-repeat 0 0;
+  width: 23px;
+  height: 21px;
+  position: absolute;
+  top: 8px;
+  left: 22px;
+}
+.FormContainer{
+  margin-top: 10px;
+}
+.FormContainer .PersonIcon {
+  background: url(../img/03_academic/academic_fabu_icon_01.png) no-repeat 0 0;
+  width: 23px;
+  height: 21px;
+  position: absolute;
+  top: 8px;
+  left: 22px;
+}
+.FormContainer .MoneyIcon {
+  background: url(../img/03_academic/academic_fabu_icon_05.png) no-repeat 0 0;
+  width: 23px;
+  height: 21px;
+  position: absolute;
+  top: 8px;
+  left: 22px;
+}
+.FormContainer .TimesIcon {
+  background: url(../img/03_academic/academic_fabu_icon_06.png) no-repeat 0 0;
+  width: 23px;
+  height: 21px;
+  position: absolute;
+  top: 8px;
+  left: 22px;
+}
+
+.FormContainer .talkIcon {
+  background: url(../img/03_academic/academic_fabu_icon_02.png) no-repeat 0 0;
+  width: 23px;
+  height: 21px;
+  position: absolute;
+  top: 8px;
+  left: 22px;
+}
+.FormContainer .MoneyIcon {
+  background: url(../img/02_interest/interest_qxx_icon_xs.png) no-repeat 0 0;
+  width: 23px;
+  height: 21px;
+  position: absolute;
+  top: 8px;
+  left: 22px;
+}
+.FormContainer .TypesIcon {
+  background: url(../img/02_interest/interest_qxx_fb_icon_02.png) no-repeat 0 0;
+  width: 23px;
+  height: 21px;
+  position: absolute;
+  top: 8px;
+  left: 22px;
+}
+.FormContainer .NumberIcon{
+  background: url(../img/06_gerenzhongxin/grzx_icon_con.png) no-repeat 0 0;
+  width: 23px;
+  height: 21px;
+  position: absolute;
+  top: 8px;
+  left: 22px;
+}
+.FormContainer .ContentsIcon {
+  background: url(../img/02_interest/interest_qxx_fb_icon_03.png) no-repeat 0 0;
+  width: 23px;
+  height: 21px;
+  position: absolute;
+  top: 8px;
+  left: 22px;
+}
+.picDiv {
+  margin-left: 64px;
+}
+.picDiv .imageDiv {
+  display: inline-block;
+  width: 100px;
+  height: 90px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px dashed #d0d0d0;
+  background: #f8f8f8;
+  position: relative;
+  overflow: hidden;
+  margin: 6px;
+}
+.picDiv .cover {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 90px;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none;
+  line-height: 94px;
+  text-align: center;
+  cursor: pointer;
+}
+.picDiv .cover .delbtn {
+  color: red;
+  font-size: 18px;
+}
+.picDiv .imageDiv:hover .cover {
+  display: block;
+}
+.picDiv .addImages {
+  display: inline-block;
+  width: 100px;
+  height: 90px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px dashed #d0d0d0;
+  background: #f8f8f8;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+}
+.picDiv .text-detail {
+  margin-top: 28px;
+  text-align: center;
+}
+.picDiv .text-detail span {
+  font-size: 28px;
+  color: #d0d0d0;
+}
+.picDiv .file {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 900px;
+  opacity: 0;
+}

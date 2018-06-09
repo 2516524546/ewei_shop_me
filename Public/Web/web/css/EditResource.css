@@ -1,0 +1,32 @@
+.FormContainer-one{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    clear: both;
+}
+
+.FormContainer-one .HeadPortraitbox-one .filesIcon{
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 12px;
+}
+.FormContainer-one .picDiv-one{
+    width: 70%;
+}
+.FormContainer-one .picDiv-one .addImages{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.FormContainer-one .picDiv-one .addImages .files_name{
+    width: 70%;
+    height: 38px;
+    line-height: 38px;
+    border: 1px solid #cecece;
+    padding-left: 12px;
+    font-size: 12px;
+    color: #808080;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

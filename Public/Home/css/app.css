@@ -1,0 +1,40 @@
+/* CSS Document */
+@charset 'utf-8';
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+:after,:before{-webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box;}
+html,body{min-height:480px; font-size:14px; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;}
+body{margin:0; padding:0; background-color:#fff; background:url(bg.jpg) repeat; font-family:"Source Han Sans", Helvetica,Tahoma, Arial,"Hiragino Sans GB", "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB W3", Arial, sans-serif; color:#fff;}
+.box_inner{width:1000px; margin-left:auto; margin-right:auto;}
+.clearfix{clear:both;}
+.clearfix:after{content:''; display:table; clear:both;}
+
+.logo{display:block; height:120px; height:25vw; margin-top:36px; margin-top:6vh;}
+.logo img{display:block; height:100%; margin:0 auto;}
+.info{margin-top:22px; margin-top:4vh; padding:0 30px; padding:0 8vw; text-align:center;}
+.info h1{margin:0; padding:0; font-size:18px; font-weight:500;margin:10px 0;}
+.info p{margin:0; padding:0; font-size:13px; font-weight:500; line-height:2.5;}
+.download{width:64%; margin:0 auto; margin-top:20px; margin-top:3vh;}
+.down-item{position:relative; margin-bottom:10px; margin-bottom:2vh; font-size:14px;}
+.down-item strong{display:block; position:absolute; top:50%; left:0; width:42px; margin-top:-10px;}
+.down-item span{display:block; margin-left:42px;}
+.btn-app{display:block; height:30px; height:5vh; min-height:25px; min-height:5vh;}
+.btn-app img{display:block; float:right; max-width:100%; height:100%;}
+.phone{width:64%; margin:0 auto; margin-top:22px; margin-top:5vh;}
+.phone img{display:block; margin:0 auto; height:220px; max-height:38vh;}
+.tips{margin:12px 0; padding:0; text-align:center; font-size:9px; -webkit-transform:scale(0.8);}
+/* -------------------以上为基础样式------------------ */
+
+
+/*
+ * 城市服务站平台
+ */
+body{max-width:640px; margin:0 auto; background:url(../images/bg.jpg) repeat;}
+.download{margin-top:50px;}
+.down-item{width:120px; margin:0 auto;}
+.down-item span{margin-bottom:10px; text-align:center;}
+.btn-app{display:inline-block; padding:0 18px; border-radius:5px; line-height:30px; line-height:5vh; text-decoration:none; color:#fff; font-size:12px; text-align:center;}
+.btn-iphone{background-color:#52617c;}
+.btn-android{background-color:#6ea87d;}
+
+
+#chufa{ width:auto; height:30px; padding:0 10px; position:absolute; right:10px; top:10px; border-radius:5px; border:1px solid #fff; line-height:30px; text-align:center;}

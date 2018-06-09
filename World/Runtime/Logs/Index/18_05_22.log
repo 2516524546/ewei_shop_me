@@ -1,0 +1,181 @@
+[ 2018-05-22T11:41:23+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\project\web_new_world_php\World\Index\Controller\CommonController.class.php 第 10 行.
+SQL: SHOW COLUMNS FROM `u_user` [ RunTime:0.0160s ]
+SQL: SHOW COLUMNS FROM `u_donation` [ RunTime:0.0160s ]
+SQL: SHOW COLUMNS FROM `s_proposal_type` [ RunTime:0.0150s ]
+SQL: SELECT `user_havecoin`,`user_outcoin`,`user_outmoney`,`user_name`,`user_icon` FROM `u_user` ORDER BY user_havecoin desc LIMIT 0,6   [ RunTime:0.0000s ]
+SQL: SELECT `user_havecoin`,`user_outcoin`,`user_outmoney`,`user_name`,`user_icon` FROM `u_user` ORDER BY user_outcoin desc LIMIT 0,6   [ RunTime:0.0000s ]
+SQL: SELECT `user_havecoin`,`user_outcoin`,`user_outmoney`,`user_name`,`user_icon` FROM `u_user` ORDER BY user_outmoney desc LIMIT 0,6   [ RunTime:0.0010s ]
+SQL: SELECT `donation_money`,`donation_coin`,`donation_paytime`,`user_name` FROM `u_donation` INNER  JOIN u_user u on u_donation.donation_uid = u.user_id  WHERE ( donation_ispay = 1 ) ORDER BY donation_paytime desc LIMIT 0,7   [ RunTime:0.0210s ]
+SQL: SELECT * FROM `s_proposal_type`  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.131007s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.131007s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.108006s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.108006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.008001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.008001s ]
+
+[ 2018-05-22T11:41:25+08:00 ] 127.0.0.1 /index.php?m=Index&c=Rnterst&a=interest
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\project\web_new_world_php\World\Index\Controller\CommonController.class.php 第 10 行.
+SQL: SHOW COLUMNS FROM `s_first_mark` [ RunTime:0.0090s ]
+SQL: SHOW COLUMNS FROM `s_second_mark` [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `u_crowd` [ RunTime:0.0160s ]
+SQL: SELECT * FROM `s_first_mark` WHERE ( first_mark_mid = 2 ) ORDER BY firsth_mark_sort  [ RunTime:0.0290s ]
+SQL: SELECT * FROM `s_second_mark` WHERE ( second_mark_fid = 1 ) ORDER BY second_mark_sort  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `s_second_mark` WHERE ( second_mark_fid = 2 ) ORDER BY second_mark_sort  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `s_second_mark` WHERE ( second_mark_fid = 3 ) ORDER BY second_mark_sort  [ RunTime:0.0000s ]
+SQL: SELECT u.user_name,u_crowd.* FROM `u_crowd` INNER JOIN u_user u on u_crowd.crowd_uid = u.user_id  WHERE ( crowd_mid = 2 ) ORDER BY crowd_creattime desc LIMIT 0,10   [ RunTime:0.0550s ]
+SQL: SELECT count(*) num FROM `u_crowd` WHERE ( crowd_mid = 2 ) LIMIT 1   [ RunTime:0.0230s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.119007s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.119007s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-05-22T11:41:25+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-05-22T11:41:26+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-05-22T11:41:29+08:00 ] 127.0.0.1 /index.php?m=Index&c=Rnterst&a=groupDetails&cid=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\project\web_new_world_php\World\Index\Controller\CommonController.class.php 第 10 行.
+SQL: SHOW COLUMNS FROM `u_crowd` [ RunTime:0.0150s ]
+SQL: SELECT u_crowd.*,u.user_name FROM `u_crowd` INNER JOIN u_user u on u_crowd.crowd_uid = u.user_id  WHERE ( crowd_id = 7 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `u_crowd_member` [ RunTime:0.0160s ]
+SQL: SELECT u_crowd_member.*,u.user_icon FROM `u_crowd_member` INNER JOIN u_user u on u_crowd_member.crowd_member_uid = u.user_id  WHERE ( crowd_member_cid = 7 ) ORDER BY crowd_member_status desc  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.062003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.062003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-05-22T11:41:35+08:00 ] 127.0.0.1 /index.php?m=Index&c=Login&a=login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\project\web_new_world_php\World\Index\Controller\CommonController.class.php 第 10 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-05-22T11:41:43+08:00 ] 127.0.0.1 /index.php?m=Index&c=Ajax&a=ajax_login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\project\web_new_world_php\World\Index\Controller\CommonController.class.php 第 10 行.
+SQL: SHOW COLUMNS FROM `u_user` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `u_user` WHERE `user_mail` = '1577762705@qq.com' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-05-22T11:41:44+08:00 ] 127.0.0.1 /index.php?m=Index&c=Rnterst&a=groupDetails&cid=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\project\web_new_world_php\World\Index\Controller\CommonController.class.php 第 10 行.
+SQL: SHOW COLUMNS FROM `u_crowd` [ RunTime:0.0130s ]
+SQL: SELECT u_crowd.*,u.user_name FROM `u_crowd` INNER JOIN u_user u on u_crowd.crowd_uid = u.user_id  WHERE ( crowd_id = 7 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `u_crowd_member` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `u_crowd_member` WHERE ( crowd_member_cid = 7 and crowd_member_uid = 7 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT u_crowd_member.*,u.user_icon FROM `u_crowd_member` INNER JOIN u_user u on u_crowd_member.crowd_member_uid = u.user_id  WHERE ( crowd_member_cid = 7 ) ORDER BY crowd_member_status desc  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2018-05-22T11:41:47+08:00 ] 127.0.0.1 /index.php?m=Index&c=Rnterst&a=groupDetailsRelease&cid=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\project\web_new_world_php\World\Index\Controller\CommonController.class.php 第 10 行.
+SQL: SHOW COLUMNS FROM `u_crowd` [ RunTime:0.0150s ]
+NOTIC: [2] Missing argument 2 for Index\Model\CrowdModel::findone(), called in D:\project\web_new_world_php\World\Index\Controller\RnterstController.class.php on line 181 and defined D:\project\web_new_world_php\World\Index\Model\CrowdModel.class.php 第 12 行.
+NOTIC: [8] Undefined variable: join D:\project\web_new_world_php\World\Index\Model\CrowdModel.class.php 第 14 行.
+SQL: SELECT * FROM `u_crowd` WHERE ( crowd_id = 7 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `u_crowd_member` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `u_crowd_member` WHERE ( crowd_member_cid = 7 and crowd_member_uid = 7 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `u_crowd_tab` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `u_crowd_tab` ORDER BY crowd_tab_sort  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

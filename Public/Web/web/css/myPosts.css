@@ -1,0 +1,120 @@
+.MyPosts_content{
+    padding: 0 120px;
+    margin-top: 57px;
+}
+.type_select{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; 
+    margin-bottom: 17px;
+}
+.type_select .select_title{
+    width: 27px;
+    height: 27px;
+    overflow: hidden;
+    margin-right: 14px;
+}
+.type_select .select_title img{
+    width: 100%;
+}
+
+.type_select .select_use{
+    width: 19%;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.MyPosts_content .box_item{
+    box-shadow: 0 2px 18px 2px #c0c0c0;
+    padding: 32px 15px;
+    margin-bottom: 30px;
+}
+.MyPosts_content .box_item .box_top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.MyPosts_content .box_item .box_top .box_left{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.MyPosts_content .box_item .box_top .box_left .box_left_img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.MyPosts_content .box_item .box_top .box_left .box_left_img img{
+    width: 100%;
+}
+
+.MyPosts_content .box_item .box_top .box_left .box_left_details .left_details_title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 12px;
+}
+.MyPosts_content .box_item .box_top .box_left .box_left_details .left_details_title .title_name{
+    margin-right: 20px;
+}
+.MyPosts_content .box_item .box_top .box_left .box_left_details .left_details_title .title_name .HL_title{
+    color: #46c4b8;
+}
+.MyPosts_content .box_item .box_top .box_left .box_left_details .left_details_title .details_title_state{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.MyPosts_content .box_item .box_top .box_left .box_left_details .left_details_title .details_title_state .Stick{
+    margin-right: 7px;
+}
+.MyPosts_content .box_item .box_top .box_right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 26%;
+}
+
+.MyPosts_content .box_item .box_top .box_right .right_btn{
+    width: 45%;
+    text-align: center;
+    padding: 10px 0;
+    border: 1px solid #46c4b8;
+    border-radius: 23px;
+    margin-right: 10px;
+}
+.MyPosts_content .box_item .box_top .box_right .right_btn:last-child{
+    margin-right: 0;
+} 
+.MyPosts_content .box_item .box_top .box_right .right_btn a{
+    text-decoration: none;
+}
+.MyPosts_content .box_item .box_bottom{
+    text-align: right;
+    font-size: 8px;
+    color: #999999;
+}
+
+.MyPosts_content .box_item:hover{
+    box-shadow: 0 2px 18px 2px #46c4b8;
+    border: 2px solid #46c4b8;
+}
+.MyPosts_content .box_item .box_top .box_right .right_btn:hover{
+    background: #46c4b8;
+}
+.MyPosts_content .box_item .box_top .box_right .right_btn:hover a{
+    color: #fff;
+
+}
+
+.MyPosts_content .QaA_box,.MyPosts_content .resource_boxs{
+    display: none;
+}
+.QaA_box,.resource_box{
+    display: none;
+}
+#NumberOfPages{
+    text-align: center;
+}

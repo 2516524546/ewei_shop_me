@@ -1,0 +1,83 @@
+.btn_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 37px;
+}
+.btn_box .btn_box_item{
+    width: 27%;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    border: 1px solid #1E9FFF;
+    border-radius: 100px;
+    margin-right: 50px;
+}
+.btn_box .btn_box_item:hover{
+    background-color: #1e9fff;
+}
+.btn_box .btn_box_item:hover a{
+    color: #fff;
+}
+.btn_box .btn_box_item:hover button{
+    color: #fff;
+    
+}
+.btn_box .btn_box_item a{
+    text-decoration: none;
+    border: none;
+    width: 100%;
+    display: block;
+}
+.btn_box .btn_box_item button{
+    border: 0;
+    border: none;
+    background: transparent;
+    width: 100%;
+    border-radius: 100px;
+}
+.btn_box .btn_box_item button:focus{
+    outline:none;
+}
+
+.Group_list{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: wrap;
+    margin-top: 46px;
+}
+
+.Group_list .Group_item{
+    width: 18%;
+    box-shadow: 0 2px 18px 2px #c0c0c0;
+    text-align: center;
+    font-size: 14px;
+    padding: 13px 0 19px 0;
+    margin-right: 17px;
+    margin-bottom: 41px;     
+}
+.Group_list .Group_item:hover{
+    box-shadow: 0 2px 18px 2px #46c4b8;
+    border: 1px solid #46c4b8;
+}
+.Group_list .active{
+    box-shadow: 0 2px 18px 2px #46c4b8;
+    border: 1px solid #46c4b8;
+}
+.Group_list .Group_item .item_circle{
+    width: 114px;
+    height: 114px;
+    line-height: 114px;
+    border-radius: 50%;
+    background: #edf6ff;
+    margin: 0 auto;
+}
+.Group_list .Group_item .item_circle .item_pic{
+    width: 64px;
+    height: 50px;
+    margin: 0 auto;
+}
+.Group_list .Group_item .item_circle .item_pic img{
+    width: 100%;
+}

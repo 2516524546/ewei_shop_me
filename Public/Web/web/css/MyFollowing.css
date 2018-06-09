@@ -1,0 +1,90 @@
+.MyFollowing_box{
+    box-shadow: 2px 2px 14px #cecece;
+    padding: 23px 63px;
+    margin-top: 48px;
+    min-height: 655px;
+}
+
+.MyFollowing_box .MyFollowing_title{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    margin-top: 48px;
+}
+.MyFollowing_box .MyFollowing_title:first-child{
+    margin-top: 0;
+}
+.MyFollowing_box .MyFollowing_list{
+    padding: 0 45px;
+}
+.MyFollowing_box .MyFollowing_list .MyFollowing_item{
+    border-bottom: 1px solid #cecece;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+.MyFollowing_box .MyFollowing_list .MyFollowing_item a{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+}
+.MyFollowing_box .MyFollowing_list .MyFollowing_item .Group_btn{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 28%;
+    padding: 23px 0;
+}
+
+.MyFollowing_box .MyFollowing_list .MyFollowing_item .Group_btn .GroupBtn{
+    width: 50%;
+    border: 1px solid #4ac5ba;
+    border-radius: 23px;
+    padding: 10px 0;
+    font-size: 12px;
+    text-align: center;
+    cursor:pointer;
+    margin-left: 10px;
+}
+.MyFollowing_box .MyFollowing_list .MyFollowing_item .Group_btn .GroupBtn:hover{
+    background: #4ac5ba;
+    color: #fff;
+}
+
+.MyFollowing_box .MyFollowing_list .MyFollowing_content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.MyFollowing_box .MyFollowing_list .MyFollowing_content .MyFollowing_img{
+    width: 52px;
+    height: 52px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 30px;
+}
+.MyFollowing_box .MyFollowing_list .MyFollowing_content .MyFollowing_img img{
+    width: 100%;
+}
+.MyFollowing_box .MyFollowing_list .MyFollowing_content .MyFollowing_details .content_name{
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+.btn-change-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn-change-primary:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+#NumberOfPagesContainer{
+    text-align: center;
+    margin-top: 83px;
+}

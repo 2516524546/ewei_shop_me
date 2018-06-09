@@ -1,0 +1,131 @@
+#public .FontIcon {
+  text-decoration: none;
+  display: inline-block;
+}
+.headerBox {
+  margin: 12px 0 0;
+}
+.logo {
+  width: 180px;
+  height: 60px;
+  border: none;
+  display: inline-block;
+  background: url(../img/common_logo.png) 0 0 no-repeat;
+  background-size: 180px;
+  margin-top: 20px;
+}
+.logreg {
+  float: right;
+}
+.logreg .Login {
+  color: #56c9be;
+  margin: 0 28px;
+  text-decoration: none;
+  display: inline-block;
+}
+.logreg .Login .LoginIcon {
+  background: url(../img/common_nav_dz_login.png) 0 0 no-repeat;
+  height: 20px;
+  width: 20px;
+  display: block;
+  margin: 0 6px;
+}
+.logreg .SignUp {
+  color: #56c9be;
+  text-decoration: none;
+  display: inline-block;
+}
+.logreg .SignUp .SignUpIcon {
+  background: url(../img/common_nav_dz_signup.png) 0 0 no-repeat;
+  height: 20px;
+  width: 20px;
+  display: block;
+  margin: 0 14px;
+}
+.nav {
+  clear: both;
+  position: absolute;
+  right: 10px;
+  top: 48px;
+}
+.nav .NavBg {
+  background-color: #46c4b8;
+  border-radius: 28px;
+  padding: 14px;
+}
+.nav .NavBg .ListInline > li {
+  display: inline;
+  margin: 0 14px;
+}
+.nav .NavBg .ListInline > li > a {
+  color: #fff;
+  text-decoration: none;
+}
+.nav .NavBg .ListInline > li > a:hover {
+  color: #80fff3;
+}
+.FooterBg {
+  background-color: #0e4d3d;
+  padding-top: 18px;
+  margin-top: 58px;
+}
+.FooterBg .FooterContainer {
+  width: 88%;
+  margin: auto;
+}
+.FooterBg .FooterContainer dt {
+  color: #56c9be;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.FooterBg .FooterContainer dd {
+  color: #7f8986;
+}
+.FooterBg .copyright {
+  background-color: #000000;
+  opacity: 0.2;
+  padding: 6px;
+  margin-top: 14px;
+}
+.FooterBg .copyright p {
+  color: #ababab;
+}
+#PublicIcons .Icon {
+  position: absolute;
+  top: 8px;
+  left: 22px;
+}
+.PasswordContainer .DonatedAmountIcon {
+  background: url(../img/01_shouye/home_donate_icon_01.png) no-repeat 0 0;
+  width: 20px;
+  height: 22px;
+  position: absolute;
+  top: 8px;
+  left: 22px;
+}
+.PasswordContainer .PaymentMethodIcon {
+  background: url(../img/01_shouye/home_donate_icon_02.png) no-repeat 0 0;
+  width: 24px;
+  height: 18px;
+  position: absolute;
+  top: 8px;
+  left: 22px;
+}
+.PasswordContainer .VerificationCodeIcon {
+  background: url(../img/01_shouye/home_donate_icon_03.png) no-repeat 0 0;
+  width: 21px;
+  height: 22px;
+  position: absolute;
+  top: 8px;
+  left: 22px;
+}
+.PasswordContainer #layui-input-block {
+  margin-left: 65px;
+}
+.PasswordContainer #layui-form-label {
+  width: 66px;
+}
+.PasswordContainer .RefreshCode {
+  text-decoration: none;
+  color: #53c8bd;
+}

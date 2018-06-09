@@ -1,0 +1,23 @@
+{
+  "name": "newworld",
+  "description": "",
+  "main": "Gruntfile.js",
+  "license": "ISC",
+  "keywords": [
+    "newworld"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "bootstrap": "https://github.com/twbs/bootstrap.git#^4.0.0",
+    "layui": "https://gitee.com/sentsin/layui.git#^2.2.45"
+  }
+}

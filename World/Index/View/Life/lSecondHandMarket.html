@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Second-Hand Market</title>
+        <meta name="viewport" content="width=device-width, initial-scale=0 user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/register.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Donation.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Life.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/LSecondHandMarket.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
+    </head>
+
+    <body>
+        <!-- logo -->
+		<header class="container">
+            <include file = "./World/Index/View/Public/head.html"/>
+			</header>
+			<hr>
+
+        <!-- Crumbs nav -->
+    <div class="container crumbs">
+        <a href="{:U('Index/Life/life')}" class="crumbsa">Life</a>
+        <cite class="Icon"></cite>
+        <span class="crumbsTitle">Second-Hand Market</span>
+    </div>
+
+
+        <!-- search -->
+        <div class="container Second_Market_detail">
+            <div class="row justify-content-between">
+                <div class="col-md-6">
+                    <form class="Produce_attribute">
+                        <div class="attribute_content" >
+                            <div class="content_img">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png">
+                            </div>
+                            <ul class="content_details" id="static">
+                                <li class="active">All</li>
+                                <foreach name="static" item = "s" key="key">
+                                    <li value="{$s['second_mark_id']}">{$s['second_mark_name']}</li>
+                                </foreach>
+                            </ul>
+                        </div>
+                        
+                        <div class="attribute_content" >
+                                <div class="content_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_money.png">
+                                </div>
+                                <ul class="content_details" id="price">
+                                    <li class="active">All</li>
+                                    <foreach name="money" item = "m" key="key">
+                                        <li value="{$m['second_mark_id']}">{$m['second_mark_name']}</li>
+                                    </foreach>
+                                </ul>
+                                <div class="content_input">
+                                    <div class="layui-input-inline" style="width: 100px;">
+                                        <input type="text" name="price_min" id="minmonry" placeholder="$" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-form-mid">~</div>
+                                        <div class="layui-input-inline" style="width: 100px;">
+                                        <input type="text" name="price_max" id="maxmonry" placeholder="$" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="attribute_content" >
+                                    <div class="content_img">
+                                        <img src="__PUBLIC__/Web/web/img/05_life/life_create_icon_zhou.png">
+                                    </div>
+                                    <ul class="content_details" id="state">
+                                        <li class="active">All</li>
+                                        <foreach name="state" item = "s" key="key">
+                                            <li value="{$s['second_mark_id']}">{$s['second_mark_name']}</li>
+                                        </foreach>
+                                    </ul>
+                            </div>
+
+                            <div class="attribute_content" >
+                                    <div class="content_img">
+                                        <img src="__PUBLIC__/Web/web/img/05_life/life_sy_icon_02.png">
+                                    </div>
+                                    <ul class="content_details" id="city">
+                                        <li class="active">All</li>
+                                        <foreach name="city" item = "c" key="key">
+                                            <li value="{$c['second_mark_id']}">{$c['second_mark_name']}</li>
+                                        </foreach>
+                                    </ul>
+                            </div>
+
+                            <div class="attribute_content" >
+                                    <div class="content_img">
+                                        <img src="__PUBLIC__/Web/web/img/05_life/life_sy_icon_03.png">
+                                    </div>
+                                    <ul class="content_details" id="university">
+                                        <li class="active">All</li>
+                                        <foreach name="university" item = "u" key="key">
+                                            <li value="{$u['second_mark_id']}">{$u['second_mark_name']}</li>
+                                        </foreach>
+                                    </ul>
+                            </div>
+
+                            <div class="attribute_content" >
+                                    <div class="content_img">
+                                        <img src="__PUBLIC__/Web/web/img/05_life/life_secondhandmarket_icon_03.png">
+                                    </div>
+                                    <div class="layui-form-item-one">
+                                            <div class="layui-input-block-one">
+                                                <div class="radio_box to">
+                                                    <input type="radio" name="pic" value="With pictures" onclick="editpic(1)" title="With pictures" checked class="pic_input"><span class="pic_input_span">With pictures</span>
+
+                                                </div>
+                                                <div class="radio_box">
+                                                    <input type="radio" name="pic" value="Without pictures" onclick="editpic(0)" title="Without pictures" class="pic_input"><span class="pic_input_span">Without pictures</span>
+                                                </div>
+                                            </div>
+                                          </div>
+                            </div>
+                    </form>
+                </div> 
+                <div class="col-md-4">
+                        <div class="SelectionContainer">
+                            <input type="text" class="layui-input" id="Selectionform">
+                            <a href="#" id="SelectionIcon" onclick="updata_market_list(5,'commodity_updatetime desc',0,10,1)">
+                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
+                            </a>
+                        </div>
+                        <div class="S_btn">
+                                <a href="{:U('Index/Life/mineProduct')}" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
+                                        My product
+                                </a>
+                        </div>
+                        <div class="S_btn">
+                                <a href="{:U('Index/Life/postProduct')}" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
+                                        Post product
+                                </a>
+                        </div>
+                </div>
+            </div>
+            
+        </div>
+
+
+        <!-- Second-Hand Market start 二手市场-->
+        <div class="container S_Market">
+            <h4 class="text-center S_Market_title">
+                    New Products
+                </h4>
+            <div class="row S_Market_detail" id="marketlist">
+                <foreach name="commoditylist" item = "c" key="key">
+                <div class="col-md-12">
+                    <a href="{:U('Index/Life/lifeProductDetails')}&cid={$c['commodity_id']}">
+                        <div class="S_Market_detail_all">
+                                    <div class="fl">
+                                            <div class="pro_img">
+                                                    <img src="./Uploads/{$c['commodity_img']}" alt="" class="img-circle userimg" />
+                                            </div>
+                                            <div class="pro_detail">
+                                                <div class="pro_Name">
+                                                    Product Name:
+                                                    <span>{$c['commodity_name']}</span>
+                                                </div>
+                                                <div class="pro_Price">
+                                                    Price: 
+                                                    <p><small>$</small>{$c['commodity_price']}</p>
+                                                </div>
+                                                <div class="pro_Description">
+                                                    Product Description:
+                                                    <p>{$c['commodity_content']}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="fr pro_right">
+                                            <div class="pro_right_img">
+                                                    <img src="./Uploads/{$c['user_icon']}" alt="" class="img-circle userimg" />
+                                            </div>
+                                            <div class="pro_right_name">
+                                                {$c['user_name']}
+                                            </div>
+                                        </div>                                        
+                            </div>
+                        </a>                                    
+                </div>
+                </foreach>
+
+            </div>
+
+    </div>
+
+    <!-- Second-Hand Market end 二手市场 -->
+     <!-- foot start 底部信息 -->
+     <footer class="container-fluid FooterBg">
+            <div class="row FooterContainer">
+                <div class="col-xs-6 col-md-4">
+                    <dl>
+                        <dt>ABOUT</dt>
+                        <dd>
+                            NewWorld.net is a comprehensive website that provides an efficient source of resources and convenience for our every -day lives. We can easily discover, share and create a new world.
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-xs-6 col-md-4">
+                    <dl>
+                        <dt>SUPPORT</dt>
+                        <dd>Premium Support</dd>
+                        <dd>Get Started</dd>
+                        <dd>Partners</dd>
+                    </dl>
+                </div>
+                <div class="col-xs-6 col-md-4">
+                    <dl>
+                        <dt>Help Center</dt>
+                        <dd><a href="HelpCenter.html">Help Center</a></dd>
+                        <dd><a href="ContactUs.html">Contact Us</a></dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="row copyright">
+                <div class="col-md-12">
+                    <p class="text-center">&copy; 2018 NewWorld. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <!-- foot end 底部信息 -->
+    </body>
+    <script src="__PUBLIC__/Web/web/js/jquery-1.11.0.js"></script>
+    <script src="__PUBLIC__/Web/web/js/jquery-2.1.0.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+    <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
+
+
+<script>
+
+var pic = 1;
+var page = 1;
+var count = {$crowdcount};
+var c = 1;
+var a = 1;
+var staticli = 0;
+var moneyli = 0;
+var stateli = 0;
+var cityli = 0;
+var universityli = 0;
+
+    $(function(){
+        (function(){
+            var num;
+            $('.Produce_attribute').on('click','.attribute_content',function(event){
+                num = $(this).index();
+            })
+            $('.Produce_attribute .attribute_content .content_details li').on('click',function(event){
+                // console.log($(this).addClass("active").siblings().removeClass('active'))
+                $(this).addClass("active").siblings().removeClass('active')
+
+                staticli = document.getElementById("static").getElementsByClassName("active")[0]
+                moneyli = document.getElementById("price").getElementsByClassName("active")[0]
+                stateli = document.getElementById("state").getElementsByClassName("active")[0]
+                cityli = document.getElementById("city").getElementsByClassName("active")[0]
+                universityli = document.getElementById("university").getElementsByClassName("active")[0]
+                console.log(staticli.value)
+                console.log(moneyli.value)
+                console.log(stateli.value)
+                console.log(cityli.value)
+                console.log(universityli.value)
+                console.log('pic:'+pic)
+                //updata_market_list(5,'commodity_updatetime desc',0,10,1)
+                // $(this).eq(num).addClass("active").siblings().removeClass('active');
+            });
+            $(".layui-form-item-one .layui-input-block-one .radio_box input[type='radio']").click(function(){
+                $(this).parent().addClass("to").siblings().removeClass('to');
+            })
+        })();
+    });
+
+
+    function updata_market_list(mid,order,limit1,limit2,type) {
+
+        $.ajax({
+            type:"post",
+            url:"{:U('Index/Ajax/ajax_market_list')}",
+            data:{
+                staticli:staticli.value,
+                moneyli:moneyli.value,
+                stateli:stateli.value,
+                cityli:cityli.value,
+                universityli:universityli.value,
+                minmonry:$("#minmonry").val(),
+                maxmonry:$("#maxmonry").val(),
+                order:order,
+                limit1:limit1,
+                limit2:limit2,
+                name:$("#Selectionform").val(),
+
+            },
+            dataType:"json",
+            async:false,
+            success: function(list){
+                console.log(list)
+                if(list!=null&&list!=""){
+
+                    if (list.str == 1){
+
+                        var message = '';
+                        for (var i = 0; i < list.msg.length; i++) {
+
+                            message +='<div class="col-md-12">';
+                            var url="{:U('Index/Life/lifeProductDetails')}&cid="+list.msg[i].commodity_id;
+                            message += '<a href="'+url+'">';
+                            message += '<div class="S_Market_detail_all"><div class="fl"><div class="pro_img">';
+                            message += '<img src="./Uploads/'+list.msg[i].commodity_img+'" alt="" class="img-circle userimg" />';
+                            message += '</div><div class="pro_detail"><div class="pro_Name">Product Name:&nbsp;<span>'+list.msg[i].commodity_name+'</span></div>';
+                            message += '<div class="pro_Price">Price:<p><small>$</small>'+list.msg[i].commodity_price+'</p></div>';
+                            message += '<div class="pro_Description">Product Description:<p>'+list.msg[i].commodity_content+'</p></div></div></div>';
+                            message += '<div class="fr pro_right"><div class="pro_right_img">';
+                            message += '<img src="./Uploads/'+list.msg[i].user_icon+'" alt="" class="img-circle userimg" /></div>'
+                            message += '<div class="pro_right_name">'+list.msg[i].user_name+'</div>';
+                            message += '</div></div></a></div>'
+
+                        }
+
+                        if (type==1){
+                            page = 1;
+                            c = 1;
+                            count = list.count;
+                            $("#marketlist").html(message);
+
+                        }else{
+                            c=1;
+                            var crowdlisthtml = $("#crowdlist").html()+message
+                            $("#marketlist").html(crowdlisthtml);
+                        }
+                    }else if (list.str == 2){
+                        page = 1;
+                        c = 1;
+                        count = 0;
+                        $("#marketlist").html('');
+                        layer.msg(list.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }else{
+                        layer.msg(list.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+
+                    }
+                }else{
+                    layer.msg('请求错误!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                layer.msg('请求失败!',{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+
+        })
+        
+    }
+
+    function editpic(a) {
+        pic = a
+    }
+
+
+
+
+</script>
+
+</html>

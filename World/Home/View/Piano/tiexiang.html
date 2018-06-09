@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"  />
+		<?php if($a['l_type'] ==1){?>
+		<title>帖子分享</title>
+		<?php }elseif($a['l_type'] ==2){?>
+		<title>视频分享</title>
+		<?php }?>
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/admin/css/mui.min.css" />
+        <script type="text/javascript" src="__PUBLIC__/Admin/admin/js/TouchSlide.1.1.js"></script>
+        <script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="jquerys.js"></script>
+        <style type="text/css">
+			body, p, input, h1, h2, h3, h4, h5, h6, ul, li, dl, dt, dd, form { margin: 0; padding: 0; list-style: none; vertical-align: middle; font-weight:normal; }
+			img { border:0; margin: 0; padding: 0;   }
+			body { color: #000; -webkit-user-select: none; -webkit-text-size-adjust: none; font:normal 16px/200% "微软雅黑", helvetica, arial; text-align:left;   }
+			header, section, footer { display: block; margin: 0; padding: 0 }
+			a{text-decoration:none;color:#000;}
+		
+			html,body{ width:100%; max-width:640px; height:100%; margin:0 auto; font-size:18px;}
+			.bg{ width:100%; height:auto; background:#fff;}
+			.tab{ width:96%; height:auto; padding:0 2%;margin-bottom: -10px}
+			.tab li.yi{ width:100%; height:3rem; line-height:3rem; border-bottom:1px solid #56c5a8;}
+			.tab li.er{ width:100; height:auto; padding:.5rem 0; position:relative;}
+			.tab li.er .left{ border-radius: 100px; width: 50px; height: 300px;}
+			.tab li.er span{ width:3rem; height:3rem; border-radius:1.5rem; display:block;  position:absolute; left:0; top:.5rem; overflow: hidden;}
+			.tab li.er span img{ width:100%; height:50px; border-radius: 100px;}
+			.tab li.er dl{ width:100%; height:auto; padding-left:3.5rem; box-sizing:border-box;}
+			.tab li.er dd{ width:100%; height:1.5rem; line-height:1.5rem; font-size:.9rem; white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+			.tab li.er dd:last-child{ font-size:.7rem;}
+			
+			.focus{ width:96%; height:auto;  margin:0 auto; position:relative; overflow:hidden;   }
+			.focus .hd{ width:100%; height:10px;  position:absolute; left:50%; z-index:1; bottom:15px; text-align:center;  }
+			.focus .hd ul{ overflow:hidden; display:-moz-box; display:-webkit-box; display:box; width:auto; height:6px;   }
+			.focus .hd ul li{ /* -moz-box-flex:1; -webkit-box-flex:1; box-flex:1; */ width:6px; height:6px; border-radius:3rem; background:#fff; margin:0 2px;}
+			.focus .hd ul .on{ background:#FF4000;  }
+			.focus .bd{ position:relative; z-index:0; width:100%; height:13rem; margin: 10px 0 0 0;}
+			.focus .bd li{ width:100%; height:13rem; position:relative; background:#eee;}
+			.focus .bd li img{ width:auto;  height:13rem; margin:0 auto; position:absolute; left:50%; top:0;transform: translate(-50%,0);}
+			.focus .bd li a{ -webkit-tap-highlight-color:rgba(0, 0, 0, 0); /* 取消链接高亮 */ }
+			
+			.video{ width:96%; height:auto; margin-left:2%; position:relative; overflow: hidden;}
+			.video video{ width: 100%; height: auto; }
+			.fenmian{ width: 100%; height: auto; position: absolute; left: 0; top:0;}
+			.video img{ width: 100%; height: auto;} 
+			.fenmian div{ width: 40px; height: 40px; position: absolute; left: 50%; top:50%; margin: -20px 0 0 -20px ; background: url(__PUBLIC__/Admin/bf.png); background-size: 40px 40px; }
+			.neirong{ width:96%; height:auto; padding:0 2%; line-height:1.5rem; font-size:1rem; text-indent:2rem; word-wrap: break-word;}
+			
+	
+	img { width:100%; max-width:100%; height: auto; }
+	
+	
+	
+	.QRcode{ width:96%; height:auto; overflow:hidden; padding:20px 2%;}
+	.QRcode li{ width:33.33%; height:auto; float:left;}
+	.QRcode li img{ width:80%; height:auto; margin-left:10%;}
+	.QRcode li div{ text-align:center;}
+	.hide{ width:100%; height:100%; background:rgba(0,0,0,0.5); position:fixed; left:0; top:0; z-index:5; display:none;}
+	.hide img{ width:280px; height:280px; position:absolute; left:50%; top:50%; margin:-140px 0 0 -140px;}
+        </style>
+	</head>
+	<body> 
+    <div class="bg">
+    	<ul class="tab">
+        	<li class="yi"><?php echo $a['l_title']?></li>
+            <li class="er" >
+            	<span class="left">
+                	<img src="<?php echo $a['headerimg'];?>" />
+                </span>
+                <dl>
+                	<dd><?php echo $a['nickname']?></dd>
+                    <dd><?php echo $a['l_addtime']?></dd>
+                </dl>
+            </li>
+        </ul>
+        <?php if($a['l_img']){?>
+        <div id="focus" class="focus" >
+            <div class="hd">
+                <ul></ul>
+            </div>
+            <div class="bd" >
+                <ul>
+                	<?php foreach($a['l_img'] as $k => $v){?>		
+                	<li>
+					<a href="#" >
+					<img  src="<?php echo $v?>" data-preview-src="" data-preview-group="1"/>
+					</a>
+					</li>
+            		<?php }?>  
+
+                       
+                </ul>
+            </div>
+        </div>
+        <?php }?>
+
+       	<?php if($a['l_video']){?>   
+
+	     <!--   	<video id="video" controls="controls">
+				<source src="<?php echo $a['l_video'];?>">
+			</video>
+			<div id="output"></div> 	 -->
+       		
+
+       		<div class="video" style="height:500px">
+				<video id="video" src="<?php echo $a['l_video'];?>" controls></video>
+        		
+        		<!-- <img style="width: 40px; height: 40px; position: absolute; left: 50%; top:50%; margin: -20px 0 0 -20px;" scr="bf.png"> -->
+        		<div class="fenmian">
+					<img src="<?php echo $a['l_photo'];?>" />
+					<div ></div>
+        		</div>
+        		
+       		</div>
+        	
+        <?php }?>
+        <script type="text/javascript">
+            TouchSlide({ 
+                slideCell:"#focus",
+                titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+                mainCell:".bd ul", 
+                effect:"left", 
+                autoPlay:true,//自动播放
+                autoPage:true, //自动分页
+                switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+            });
+        </script>       
+        <div class="neirong"><?php echo $a['l_content']?></div>
+		<ul class="QRcode">
+        	<li>
+            	<img src="<?php echo $url2;?>" />
+                <div>安卓</div>
+            </li>
+            <li>
+            	<img src="<?php echo $url3;?>" />
+                <div>安卓平板</div>
+            </li>
+            <li>
+            	<img src="<?php echo $url1;?>" />
+                <div>苹果</div>
+            </li>
+        </ul>
+        <div class="hide">
+        	<img />
+        </div>
+    </div>
+	</body>
+</html>
+
+<script type="text/javascript">
+$(function(){
+	$('.video .fenmian').click(function(e){
+		$(this).css({'display':'none'})
+		$('video').trigger('play');
+	})
+})
+</script>
+
+
+
+        <script type="text/javascript">
+
+        	$(function(e){
+				$('.QRcode li img').click(function(){
+					var url = $(this).attr("src");
+					//alert(url);
+					$('.hide').css({'display':'block'})
+					$('.hide img').attr("src", url);
+					$('.hide').click(function(){
+						$(this).css({'display':'none'})
+					})	
+				})	
+			})
+        </script>
+	
+
+<script type="text/javascript">
+	$(function(){
+		var shulaing=($('.bd li').length)*10
+		$('.hd').css({'width':shulaing+'px','margin-left':-shulaing/2+'px'})
+	})
+</script>
+
+
+	<script type="text/javascript">
+		$(function(){ 
+			
+			if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+			    alert('1111');  
+			    // window.location.href ="iPhone.html";
+			    $('.download img').val(<?php echo $url1;?>)
+			} else if (navigator.userAgent.match(/android/i)) {
+			    alert('2222'); 
+			    // window.location.href ="Android.html";
+			    $('.download img').val(<?php echo $url2;?>)
+			} else{
+				alert('3333')
+			}
+		}); 
+
+
+
+		
+	</script>
+
+
+<script type="text/javascript">
+(function(){
+var video, output;
+var scale = 0.8;
+var initialize = function() {
+output = document.getElementById("output");
+video = document.getElementById("video");
+video.addEventListener('loadeddata',captureImage);
+};
+ 
+var captureImage = function() {
+            var canvas = document.createElement("canvas");
+            canvas.width = video.videoWidth * scale;
+            canvas.height = video.videoHeight * scale;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+ 
+            var img = document.createElement("img");
+            img.src = canvas.toDataURL("image/png");
+            output.appendChild(img);
+};
+ 
+initialize();
+})();
+</script>

@@ -1,0 +1,351 @@
+.LatestContentContainer .layui-tab .btnlist li{
+    display: inline-block;
+    border: 1px solid #46c4b8;
+    border-radius: 12px;
+    margin-right: 15px;
+    padding: 4px 12px;
+}
+.layui-tab-title{
+    border: none;
+}
+.layui-tab-title .layui-this{
+    background: #46c4b8;
+    color: #fff;
+    box-shadow: 2px 2px 14px #cecece;
+}
+.layui-tab-title .layui-this:after{
+    border: none;
+}
+
+.LatestContentContainer{
+    margin-top: 28px;
+}
+
+.personal_content{
+    width: 100%;
+    margin-top: 13px;
+}
+.personal_content .personal_title{
+    background: #f5fefd;
+    border: 1px solid #a2e1db;
+    text-align: center;
+    padding: 30px 0;
+    position: relative;
+
+}
+.personal_content .personal_title .title_back_img{
+    position: absolute;
+    top: 2%;
+    right: 1%;
+    cursor: pointer;
+}
+.personal_content .personal_title .P_title_pic{
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #a2e1db;
+    margin: 0 auto;
+    margin-bottom: 14px;
+    cursor: pointer;
+}
+.personal_content .personal_title .P_title_pic img{
+    width: 100%;
+    height: 100%;
+}
+.personal_content .personal_title .P_title_icon{
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+}
+.personal_content .personal_title .P_title_icon img{
+    width: 100%;
+}
+.personal_content .personal_title .P_title_name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+.personal_content .personal_title .P_title_name .P_title_icon{
+    margin-left: 8px;
+}
+.personal_content .personal_title .P_title_lifeMaxim{
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 29%;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+}
+.personal_content .personal_title .P_title_lifeMaxim .liftMaxim_title{
+    width: 26%;
+    display: inline-block;
+    vertical-align: top;
+}
+.personal_content .personal_title .P_title_lifeMaxim .liftMaxim_content{
+    width: 70%;
+    /* display: inline-block; */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    /* display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; */
+    overflow: hidden;
+}
+.personal_content .personal_title .P_title_FaA{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.personal_content .personal_title .P_title_FaA .FaA_line{
+    width: 2px;
+    height: 30px;
+    background: #999999;
+    margin: 0 20px;
+}
+.personal_content .personal_title .P_title_FaA .FaA_item a{
+    text-decoration: none; 
+}
+.personal_content .personal_title .P_title_FaA .FaA_item a .FaA_num{
+    font-size: 12px;
+    font-weight: bold;
+}
+.personal_content .personal_title .P_title_FaA .FaA_item a .FaA_name{
+    font-size: 10px;
+    color: #a0a1a1;
+}
+.personal_content .personal_title .P_title_friend{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.personal_content .personal_title .P_title_friend .friend_item{
+    width: 15%;
+    padding: 8px;
+    border-radius: 16px;
+    border: 1px solid #a2e1db;
+    margin: 0 15px;
+    cursor: pointer;
+}
+.personal_content .personal_title .P_title_friend .friend_item:hover{
+    background: #46c4b8;
+    color: #fff;
+}
+.personal_content .personal_title .P_title_friend .Friend_Follow{
+    position: relative;
+    width: 15%;
+}
+.personal_content .personal_title .P_title_friend .Friend_Follow_box{
+    width: 15%;
+    position: absolute;
+    bottom: -52px;
+    left: 51.5%;
+    display: none;
+    
+}
+.personal_content .personal_title .P_title_friend .Friend_Follow_box ul li{
+    border: 1px solid #46c4b8;
+    padding: 8px;
+    background: #fff;
+    cursor: pointer;
+}
+.personal_content .personal_title .P_title_friend .Friend_Follow_box ul li:first-child{
+    border-bottom: none;
+}
+.personal_content .personal_title .P_title_friend .Friend_Follow_box ul li:hover{
+    background: #46c4b8;
+    color: #fff;
+}
+/* personal Center details */
+.personal_content .personal_details{
+    margin-top: 20px;
+}
+.personal_content .personal_details .Personal_details_item{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: wrap;
+    width: 70%;
+}
+.personal_content .personal_details .Personal_details_item .Personal_details_list{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 47%;
+    margin-right: 19px;
+    margin-bottom: 20px;
+}
+.personal_content .personal_details .Personal_details_item .Personal_details_list .list_img{
+    width: 28px;
+    height: 28px;
+    margin-right: 5px;
+}
+.personal_content .personal_details .Personal_details_item .Personal_details_list .list_img img{
+    width: 100%;
+}
+.personal_content .personal_details .Personal_details_item .Personal_details_list .list_content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.personal_content .personal_details .Personal_details_item .Personal_details_list .list_content .list_content_title{
+    margin-right: 10px;
+}
+
+
+    .action
+    {
+        height: 30px;
+        margin: 10px 15px;
+        display: flex;
+        align-items: center;
+    }
+    .cropped{
+        margin-right: 10px;
+        
+    }
+    .cropped_img{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .cropped_img>img
+    {
+        width: 100%;
+    }
+    .tig{
+        position: absolute;
+        top: 48%;
+        left: 40%;
+    }
+    .imageBox
+{
+    position: relative;
+    height: 400px;
+    width: 400px;
+    border:1px solid #aaa;
+    background: #fff;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    cursor:move;
+}
+
+.imageBox .thumbBox
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+    box-sizing: border-box;
+    border: 1px solid rgb(102, 102, 102);
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    background: none repeat scroll 0% 0% transparent;
+}
+
+.imageBox .spinner
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    line-height: 400px;
+}
+
+.modal-cont{
+    padding: 30px;
+}
+
+#btnZoomIn,#btnZoomOut{
+    width: 7%;
+}
+#btnCrop{
+    width: 15%;
+}
+
+.modal-body-list{
+    background: #aaa;
+    padding: 15px;
+    margin-top: 15px;
+}
+.modal-body-list .modal-body-item-box{
+    height: 360px;
+    font-size: 0;
+    overflow-y: scroll;
+}
+.modal-body-list .modal-body-item-box::-webkit-scrollbar {display:none}
+.modal-body-list .modal-body-item-box .modal-body-item{
+    width: 50%;
+    margin-bottom: 8px;
+    display: inline-block;
+    font-size: 14px;
+}
+.modal-body-list .modal-body-item-box .modal-body-item input[type="checkbox"]{
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+}
+
+.modal-body-list .modal-body-addGroup{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 10px;
+    width: 50%;
+    background: #fff;
+    border: 1px solid #aaa;
+    border-radius: 13px;
+    cursor: pointer;
+}
+.modal-body-list .modal-body-addGroup .modal-body-addIcon{
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.modal-body-list .modal-body-addName{
+    cursor: pointer;
+    display: none;
+    
+}
+.modal-body-list .modal-body-addName button{
+    width: 18%;
+    background: #46c4b8;
+    border-radius: 7px;
+    color: #fff;
+    border: 1px solid #46c4b8;
+    cursor: pointer;
+    padding: 5px 5px;
+}
+button:focus {
+    outline: none;
+}
+.modal-body-list .modal-body-addName .addName_input{
+    padding: 5px 10px;
+}
+
+@media (min-width: 576px){
+    .modal-sm {
+        max-width: 400px;
+    }
+
+    .modal-dialog {
+        max-width: 400px;
+        margin: 1.75rem auto;
+    }
+
+
+}

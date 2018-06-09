@@ -1,0 +1,364 @@
+#public .FontIcon {
+  text-decoration: none;
+  display: inline-block;
+}
+.headerBox {
+  margin: 12px 0 0;
+}
+.logo {
+  width: 260px;
+  height: 60px;
+  border: none;
+  display: inline-block;
+  background: url(../img/common_logo.png) 0 0 no-repeat;
+  background-size: 260px;
+  margin-top: 20px;
+}
+.logreg {
+  float: right;
+}
+.logreg .Login {
+  color: #56c9be;
+  margin: 0 28px;
+  text-decoration: none;
+  display: inline-block;
+}
+.logreg .Login .LoginIcon {
+  background: url(../img/common_nav_dz_login.png) 0 0 no-repeat;
+  height: 20px;
+  width: 20px;
+  display: block;
+  margin: 0 6px;
+}
+.logreg .SignUp {
+  color: #56c9be;
+  text-decoration: none;
+  display: inline-block;
+}
+.logreg .SignUp .SignUpIcon {
+  background: url(../img/common_nav_dz_signup.png) 0 0 no-repeat;
+  height: 20px;
+  width: 20px;
+  display: block;
+  margin: 0 14px;
+}
+.nav {
+  clear: both;
+  position: absolute;
+  right: 10px;
+  top: 48px;
+}
+.nav .NavBg {
+  background-color: #46c4b8;
+  border-radius: 28px;
+  padding: 14px;
+}
+.nav .NavBg .ListInline > li {
+  display: inline;
+  margin: 0 14px;
+}
+.nav .NavBg .ListInline > li > a {
+  color: #fff;
+  text-decoration: none;
+}
+.nav .NavBg .ListInline > li > a:hover {
+  color: #80fff3;
+}
+.FooterBg {
+  background-color: #0e4d3d;
+  padding-top: 18px;
+  margin-top: 58px;
+}
+.FooterBg .FooterContainer {
+  width: 88%;
+  margin: auto;
+}
+.FooterBg .FooterContainer dt {
+  color: #56c9be;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.FooterBg .FooterContainer dd {
+  color: #7f8986;
+}
+.FooterBg .FooterContainer dd a{
+  color: #7f8986;
+  text-decoration: none;
+}
+.FooterBg .copyright {
+  background-color: #000000;
+  opacity: 0.2;
+  padding: 6px;
+  margin-top: 14px;
+}
+.FooterBg .copyright p {
+  color: #ababab;
+}
+.Banner {
+  margin: 18px 0;
+  border-top: solid #dedede 1px;
+  border-bottom: solid #dedede 1px;
+}
+.Banner .layui-carousel-ind li.layui-this {
+  background-color: #46c4b8;
+}
+#PublicStyleIcons .Icons {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+#PublicStyleIcons .Line {
+  position: relative;
+}
+#PublicStyleIcons .Title {
+  position: relative;
+  bottom: 20px;
+  color: #0f4e3e;
+  font-weight: bold;
+  font-size: 1.6em;
+  font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+}
+#PublicStyleIcons .Container {
+  border-radius: 4px;
+  box-shadow: 2px 2px 14px #cecece;
+}
+#PublicStyleIcons .SpilloverConcealment {
+  overflow: hidden;
+  /*自动隐藏文字*/
+  text-overflow: ellipsis;
+  /*文字隐藏后添加省略号*/
+  white-space: nowrap;
+  /*强制不换行*/
+  width: 20em;
+}
+#PublicStyleIcons .FontColor {
+  color: #45c5b8;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+}
+#PublicStyleIcons .More1 {
+  position: absolute;
+  right: 14px;
+  top: 18px;
+}
+#PublicStyleIcons .More2 {
+  position: absolute;
+  right: 14px;
+  top: 10px;
+}
+#PublicStyleIcons .More3 {
+  position: absolute;
+  right: 14px;
+  top: 2px;
+}
+#PublicStyleIcons .Edit {
+  position: absolute;
+  left: 14px;
+  top: 2px;
+}
+.PublicStyleIcons {
+  margin-top: 24px;
+}
+.PublicStyleIcons .TitleIcon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+.PublicStyleTitle {
+  margin-bottom: 6px;
+}
+.PublicStyleTitle .Titleline {
+  position: relative;
+}
+.PublicStyleTitle .Title {
+  position: relative;
+  bottom: 20px;
+  color: #0f4e3e;
+  font-weight: bold;
+  font-size: 1.6em;
+  font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+}
+#ListContainer {
+  border-radius: 4px;
+  box-shadow: 2px 2px 14px #cecece;
+}
+#ListContainer .layui-tab-title li {
+  color: #b3b3b3;
+  padding: 0 42px;
+}
+#ListContainer .layui-tab-title .More {
+  position: absolute;
+  right: 14px;
+  top: 18px;
+}
+#ListContainer .layui-tab-title .layui-this {
+  color: #56c9be;
+}
+.layui-tab-content .layui-table td {
+  border-top: none;
+  border-right: none;
+  border-bottom: solid 1px #efefef;
+  border-left: none;
+}
+.tile {
+  width: 582px;
+  height: 380px;
+  margin: 10px 0 0;
+  display: inline-block;
+  background-size: cover;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s ease-out;
+  box-shadow: 0px 35px 77px -17px rgba(0, 0, 0, 0.44);
+  overflow: hidden;
+}
+.tile img {
+  height: auto;
+  width: 100%;
+}
+.tile .text {
+  z-index: 99;
+  position: absolute;
+  height: calc(40%);
+}
+.tile:hover {
+  box-shadow: 0px 35px 77px -17px rgba(0, 0, 0, 0.64);
+  transform: scale(1.05);
+}
+.ListContainer {
+  border-radius: 4px;
+  box-shadow: 2px 2px 14px #cecece;
+}
+.layui-table .FontColor {
+  color: #45c5b8;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+}
+.layui-table .More {
+  position: absolute;
+  right: 14px;
+  top: 10px;
+}
+.layui-table .TimeColor {
+  color: #c5c5c5;
+  text-align: right;
+}
+.layui-table .FontOverflow {
+  overflow: hidden;
+  /*自动隐藏文字*/
+  text-overflow: ellipsis;
+  /*文字隐藏后添加省略号*/
+  white-space: nowrap;
+  /*强制不换行*/
+  width: 20em;
+}
+.DonateContainer {
+  border-radius: 4px;
+  box-shadow: 2px 2px 14px #cecece;
+  margin-top: 10px;
+  padding-bottom: 98px;
+}
+.DonateContainer .FontColor {
+  color: #45c5b8;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+  padding-top: 10px;
+}
+.DonateContainer .Prompt {
+  color: red;
+  padding: 25px;
+}
+.DonateContainer .DonateBut {
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  margin: 8px 20px;
+}
+.BannerContainer {
+  margin-top: 10px;
+  width: 174px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 14px #cecece;
+}
+.BannerContainer .FontColor {
+  color: #45c5b8;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+  padding: 4px 6px;
+}
+.BannerContainer .Container1 .Font {
+  padding: 4px 6px;
+}
+.BannerContainer .Container1 .img {
+  width: 174px;
+  height: auto;
+}
+.BannerContainer .Container2 .Font {
+  padding: 4px 6px;
+}
+.ProposalImg {
+  width: 630px;
+  height: auto;
+  margin: 0 28px 0 16px;
+}
+.ProposalContainer {
+  border-radius: 4px;
+  box-shadow: 2px 2px 14px #cecece;
+  padding: 2px 10px;
+}
+.ProposalContainer .TitleContainer {
+  position: relative;
+}
+.ProposalContainer .TitleContainer .FontColor {
+  margin-top: 10px;
+  color: #45c5b8;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+}
+.ProposalContainer .TitleContainer .More {
+  position: absolute;
+  right: 14px;
+  top: 2px;
+}
+.ProposalContainer .TitleContainer .Edit {
+  position: absolute;
+  left: 14px;
+  top: 2px;
+}
+.ProposalContainer .ProposaText {
+  width: 378px;
+  margin: 78px 0;
+  padding: 0 30px;
+}
+#exampleModal .ModalTitle {
+  color: #45c5b8;
+  font-size: 20px;
+  display: block;
+}
+#exampleModal .ModalTextColor {
+  color: red;
+}
+#exampleModal .ModalFormHints {
+  color: #ccc;
+}
+#NavSelected {
+  color: #80fff3;
+}
+
+.img-circle{
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.img-circle img{
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,24 @@
+.News_content .News_title{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bolder;
+    margin-bottom: 6px; 
+}
+.News_content .News_time{
+    text-align: center;
+    font-size: 12px;
+    color: #999999;
+    margin-bottom: 17px;
+}
+.News_content .News_pic{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.News_content .News_pic img{
+    width: 100%;
+}
+.News_content .News_contents p{
+    font-size: 14px;
+    text-indent: 2em;
+    line-height: 34px;
+}

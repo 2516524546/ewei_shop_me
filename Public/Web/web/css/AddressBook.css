@@ -1,0 +1,63 @@
+.crumbs{
+    margin: auto 0;
+}
+.row{
+    margin-top: 30px;
+}
+.AddressBook_box{
+    padding: 33px 100px;
+    margin-top: 38px;
+    box-shadow: 2px 2px 14px #cecece;
+    min-height: 655px;
+}
+.AddressBook_box .AddressBook_item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #cecece;
+    padding: 17px 0;
+}
+.AddressBook_box .AddressBook_item .AddressBook_left a{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+}
+.AddressBook_box .AddressBook_item .AddressBook_left .AddressBook_left_img{
+    width: 52px;
+    height: 52px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 30px;
+}
+.AddressBook_box .AddressBook_item .AddressBook_left .AddressBook_left_img img{
+    width: 100%;
+}
+.AddressBook_box .AddressBook_item .AddressBook_left .AddressBook_left_user{
+    font-size: 10px;
+}
+.AddressBook_box .AddressBook_item .AddressBook_right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 29%;
+}
+
+.AddressBook_box .AddressBook_item .AddressBook_right .AddressBook_btn{
+    width: 50%;
+    border: 1px solid #4ac5ba;
+    border-radius: 23px;
+    text-align: center;
+    padding: 13px 0;
+    margin-left: 10px; 
+    cursor: pointer;
+}
+.AddressBook_box .AddressBook_item .AddressBook_right .AddressBook_btn:hover{
+    background: #4ac5ba;
+    color: #fff;
+}
+
+#NumberOfPagesContainer{
+    text-align: center;
+    margin-top: 76px;
+}

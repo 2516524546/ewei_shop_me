@@ -1,0 +1,175 @@
+@charset "utf-8";
+@import "less/z";
+@import "pl";
+
+.body {
+    @body: #c4e6e5;
+    background-color: @body;
+}
+
+header {
+    .Return-icon {
+        @color: #6fd1c8;
+        @size: 30px;
+        margin: 24px 0 0 0;
+        display: inline-block;
+        color: @color;
+        font-size: @size;
+    }
+}
+
+.LoginContainer {
+
+    .shadowRB;
+
+    @L:22px;
+    @T:10px;
+
+    .mailbox-icon1 {
+        background: url(../img/01_shouye/home_register_icon_01.png) no-repeat 0 0;
+        width: 22px;
+        height: 18px;
+        position: absolute;
+        top: @T;
+        left: @L;
+    }
+
+    .mailbox-icon2 {
+        background: url(../img/01_shouye/home_register_icon_03.png) no-repeat 0 0;
+        width: 19px;
+        height: 22px;
+        position: absolute;
+        top: @T;
+        left: @L;
+    }
+
+    .FormContainer{
+        clear: both;
+
+        .layui-form-label{
+            width: 66px;
+        }
+
+        .input-spacing{
+            margin-left: 66px;
+        }
+
+    }
+
+    .from-but{
+
+        margin: 38px auto;
+        width: 66%;
+
+    	button{
+            width: @btn-w;
+    		height: @btn-h;
+    		line-height: @btn-L-h;
+    		.font-fm();
+    		.font-s(14px);
+    		margin: 16px 0 5px;
+    		background-color: #fff;
+    		color: @btn-color;
+    		border: solid 1px #1E9FFF;
+    	}
+    }
+
+    .LinkContainer{
+    	p{
+
+    		@color:#bcbcbc;
+
+			color: @color;
+
+    		margin: 20px 0;
+
+    		a{
+    			color: @color;
+
+    			&:hover{
+    				color: #1E9FFF;
+    			}
+    		}
+
+    		span{
+    			color: @color;
+    		}
+    	}
+    }
+
+    @color: #fff;
+    @btn-w:176px;
+    @btn-h:34px;
+    @btn-L-h:32px;
+    @btn-color:#666;
+    @btn-color-hover:#1E9FFF;
+
+    @w-lg: 580px;
+    @w-md: 600px;
+    @w-sm: 306px;
+
+    @sm-min: 768px;
+    @md-min: 992px;
+    @lg-min: 1200px;
+
+    .margin {
+        margin: 42px auto;
+        padding: 48px 20px;
+        .fillet;
+    }
+
+	.margin;
+    width: @w-sm;
+    background-color: @color;
+
+    @media (min-width: @sm-min) {
+
+ 		.margin;
+        width: @w-sm;
+        background-color: @color;
+
+        @media (min-resolution: 192dpi) {
+
+			.margin;
+            width: @w-md;
+            background-color: @color;
+
+            .from-but {
+                margin: 38px auto;
+                width: 32%;
+            }
+        }
+    }
+    @media (min-width: @lg-min) {
+
+        .margin;
+        width: @w-lg;
+        background-color: @color;
+
+        .from-but {
+            margin: 38px auto;
+            width: 32%;
+        }
+
+        .from-but{
+
+        	button{
+        		width: @btn-w;
+        		height: @btn-h;
+        		line-height: @btn-L-h;
+        		padding: 0 25px;
+        		.font-fm();
+        		.font-s(14px);
+        		background-color: #fff;
+        		color: @btn-color;
+        		border: solid 1px #1E9FFF;
+
+        		&:hover{
+        			background-color: @btn-color-hover;
+                    color: #fff;
+        		}
+        	}
+
+        }
+    }
+}

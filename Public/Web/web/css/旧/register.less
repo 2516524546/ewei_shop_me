@@ -1,0 +1,324 @@
+@charset "utf-8";
+@import "less/z";
+@import "pl";
+
+header {
+    width: @logo-w;
+    height: @logo-h;
+    background: @logo-img;
+    .logo;
+}
+
+.Crumbs {
+
+    span {
+
+        a {
+            width: 26px;
+            height: 24px;
+            display: inline-block;
+            margin: 0 0 -4px;
+            background: url(../img/common_dh_icon_home.png) no-repeat 0 0;
+        }
+
+        span {
+            color: #1E9FFF;
+            position: absolute;
+            top: 96px;
+        }
+
+        i {
+            color: #1E9FFF;
+            font-size: 20px;
+        }
+
+        cite {
+            width: 9px;
+            height: 15px;
+            display: inline-block;
+            margin: 15px 8px 0 4px;
+            background: url(../img/common_dh_to.png) no-repeat 0 0;
+        }
+    }
+}
+
+.PasswordContainer {
+
+    h4 {
+        .font-fa();
+        height: 28px;
+        line-height: 0;
+        color: #383838;
+        .font-w700();
+        .font-s(13px);
+    }
+
+    .shadowTRBL;
+
+    @L: 9px;
+    @T: 10px;
+    @w: 21px;
+    @h: 22px;
+
+    .mailbox-icon1 {
+        background: url(../img/01_shouye/home_register_icon_01.png) no-repeat 0 0;
+        width: 22px;
+        height: 18px;
+        position: absolute;
+        top: @T;
+        left: @L;
+    }
+
+    .mailbox-icon2 {
+        background: url(../img/01_shouye/home_donate_icon_03.png) no-repeat 0 0;
+        width: @w;
+        height: @h;
+        position: absolute;
+        top: @T;
+        left: @L;
+    }
+
+    .mailbox-icon3 {
+        background: url(../img/01_shouye/home_register_icon_03.png) no-repeat 0 0;
+        width: @w;
+        height: @h;
+        position: absolute;
+        top: @T;
+        left: @L;
+    }
+
+    .mailbox-icon4 {
+        background: url(../img/01_shouye/home_register_icon_03.png) no-repeat 0 0;
+        width: @w;
+        height: @h;
+        position: absolute;
+        top: @T;
+        left: @L;
+    }
+
+    .FormContainer {
+
+        clear: both;
+
+        .label-spacing {
+            width: 38px;
+        }
+
+        .input-spacing {
+            margin-left: 38px;
+        }
+
+        .input-float {
+            float: left;
+            width: 134px;
+        }
+
+        .Submit-but {
+            width: 100%;
+            margin-top: 20px;
+        }
+    }
+
+    .from-but {
+
+        margin: 38px auto;
+        width: 66%;
+
+        @color: #fff;
+        @btn-w: 176px;
+        @btn-h: 34px;
+        @btn-L-h: 32px;
+        @btn-color: #666;
+        @btn-color-hover: #1E9FFF;
+
+        button {
+            width: @btn-w;
+            height: @btn-h;
+            line-height: @btn-L-h;
+            .font-fm();
+            .font-s(14px);
+            margin: 16px 0 5px;
+            background-color: #fff;
+            color: @btn-color;
+            border: solid 1px #1E9FFF;
+
+            &:hover {
+                background-color: @btn-color-hover;
+                color: #fff;
+            }
+        }
+    }
+
+
+    @color: #fff;
+
+    @w-lg: 580px;
+    @w-md: 600px;
+    @w-sm: 356px;
+
+    @sm-min: 768px;
+    @md-min: 992px;
+    @lg-min: 1200px;
+
+    .margin {
+        margin: 20px auto;
+        padding: 40px 20px;
+        .fillet
+    }
+
+    .margin;
+    width: @w-sm;
+    background-color: @color;
+
+    @media (min-width: @sm-min) {
+
+        .margin;
+        width: @w-sm;
+        background-color: @color;
+
+        @media (min-resolution: 192dpi) {
+
+            .margin;
+            width: @w-md;
+            background-color: @color;
+
+            .FormContainer {
+
+                clear: both; // margin-top: 10px;
+                .label-spacing {
+                    width: 65px;
+                }
+
+                .input-spacing {
+                    margin-left: 65px;
+                }
+
+                .input-float {
+                    float: left;
+                    width: 62%;
+                    margin: 0 28px 0 0;
+                }
+
+                .Submit-but {
+                    width: 100%;
+                    margin-top: 20px;
+                }
+            }
+
+            @L: 22px;
+            @T: 10px;
+            @w: 21px;
+            @h: 22px;
+
+            .mailbox-icon1 {
+                background: url(../img/01_shouye/home_register_icon_01.png) no-repeat 0 0;
+                width: 22px;
+                height: 18px;
+                position: absolute;
+                top: @T;
+                left: @L;
+            }
+
+            .mailbox-icon2 {
+                background: url(../img/01_shouye/home_donate_icon_03.png) no-repeat 0 0;
+                width: @w;
+                height: @h;
+                position: absolute;
+                top: @T;
+                left: @L;
+            }
+
+            .mailbox-icon3 {
+                background: url(../img/01_shouye/home_register_icon_03.png) no-repeat 0 0;
+                width: @w;
+                height: @h;
+                position: absolute;
+                top: @T;
+                left: @L;
+            }
+
+            .mailbox-icon4 {
+                background: url(../img/01_shouye/home_register_icon_03.png) no-repeat 0 0;
+                width: @w;
+                height: @h;
+                position: absolute;
+                top: @T;
+                left: @L;
+            }
+        }
+    }
+    @media (min-width: @lg-min) {
+
+        .margin;
+        width: @w-lg;
+        background-color: @color;
+
+        .FormContainer {
+
+            clear: both; // margin-top: 10px;
+            .label-spacing {
+                width: 65px;
+            }
+
+            .input-spacing {
+                margin-left: 65px;
+            }
+
+            .input-float {
+                float: left;
+                width: 62%;
+                margin: 0 28px 0 0;
+            }
+
+            .Submit-but {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+
+        @L: 22px;
+        @T: 10px;
+        @w: 21px;
+        @h: 22px;
+
+        .mailbox-icon1 {
+            background: url(../img/01_shouye/home_register_icon_01.png) no-repeat 0 0;
+            width: 22px;
+            height: 18px;
+            position: absolute;
+            top: @T;
+            left: @L;
+        }
+
+        .mailbox-icon2 {
+            background: url(../img/01_shouye/home_donate_icon_03.png) no-repeat 0 0;
+            width: @w;
+            height: @h;
+            position: absolute;
+            top: @T;
+            left: @L;
+        }
+
+        .mailbox-icon3 {
+            background: url(../img/01_shouye/home_register_icon_03.png) no-repeat 0 0;
+            width: @w;
+            height: @h;
+            position: absolute;
+            top: @T;
+            left: @L;
+        }
+
+        .mailbox-icon4 {
+            background: url(../img/01_shouye/home_register_icon_03.png) no-repeat 0 0;
+            width: @w;
+            height: @h;
+            position: absolute;
+            top: @T;
+            left: @L;
+        }
+    }
+}
+
+footer {
+    color: #999;
+}

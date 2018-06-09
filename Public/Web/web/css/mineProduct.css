@@ -1,0 +1,178 @@
+.SelectionContainer #Selectionform {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 0 42px 0 18px;
+    border: none;
+    box-shadow: 2px 2px 14px #cecece;
+}
+.SelectionContainer #SelectionIcon {
+    position: absolute;
+    top: 10px;
+    right: 14%;
+}
+.crumbs{
+    margin: auto 0;
+}
+.layui-tab {
+    margin: 10px 0;
+    text-align: left!important;
+}
+.layui-tab-title {
+    position: relative;
+    left: 0;
+    height: 40px;
+    white-space: nowrap;
+    font-size: 0;
+    border-bottom-width: 0px;
+    border-bottom-style: none;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+}
+.layui-this:after{
+    border-color: #fff;
+}
+.layui-tab-title li {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+    position: relative;
+    line-height: 40px;
+    min-width: 65px;
+    padding: 0 15px;
+    text-align: center;
+    cursor: pointer;
+    width: 160px;
+    height: 39px;
+    line-height: 39px;
+    border-radius: 20px;
+    border: 1px solid #46c4b8;
+    color: #000;
+    margin-right: 10px; 
+}
+.layui-tab-title .layui-this{
+    background: #46c4b8;
+    color: #fff;
+    box-shadow: 2px 2px 14px #46c4b8;
+    
+}
+.layui-tab-title .layui-this:after{
+    border: none;
+    width: 160px;
+    height: 39px;
+    border-radius: 20px;
+}
+
+.item_box{
+    box-shadow: 2px 2px 14px #cecece;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px;
+    margin-top: 10px;
+}
+.item_box:hover{
+    border: 2px solid #46c4b8;
+}
+.item_box .item_box_left{
+    width: 77%;
+    margin-right: 40px;
+    /* display: flex;
+    justify-content: flex-start; */
+}
+.item_box .item_box_left .item_box_product_img{
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    margin-right: 10px; 
+}
+.item_box .item_box_left .item_box_product_details{
+    display: inline-block;
+    width: 85%;
+    vertical-align: top;
+    
+}
+.item_box .item_box_left .item_box_product_img img{
+    width: 100%;
+}
+.item_box .item_box_left .item_box_product_details ul li{
+    font-size: 14px;
+}
+.item_box .item_box_left .item_box_product_details ul li p{
+    display: inline-block;
+    font-weight: bolder;
+    margin-right: 3px;
+}
+.item_box .item_box_left .item_box_product_details ul li span{
+    display: inline-block;
+    line-height: 24px;
+}
+.item_box .item_box_right a{
+    text-decoration: none;
+}
+.layui-laypage {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px 0;
+    font-size: 0;
+}
+
+.item_box .item_box_right{
+    text-align: center;
+    width: 17%;
+}
+.item_box .item_box_right .right_pic{
+    width: 50px;
+    height:  50px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.item_box .item_box_right .right_pic img{
+    width: 100%;
+}
+
+.item_box .item_box_right .right_icon{
+    margin-right: 10px;
+}
+
+
+.layui-form-label{
+    width: 150px;
+    text-align: right;
+}
+
+.layui-input{
+    width: 90%;
+}
+
+.form-control{
+    width: 82%;
+}
+.layui-input-block{
+    margin-left: 128px;
+}
+.layui-textarea{
+    width: 98%;
+}
+.UserHeadImage .img {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    background-color: #bceee2;
+    border: none;
+}
+.UserHeadImage .but {
+    display: none;
+}
+.crumbs {
+    margin: auto 0;
+}
+.row{
+    margin-top: 30px;
+}

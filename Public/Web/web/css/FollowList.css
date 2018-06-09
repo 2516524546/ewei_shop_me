@@ -1,0 +1,154 @@
+.FollowList_content{
+    margin-top: 50px;
+}
+ .FollowList_content_left{
+    box-shadow: 0 2px 18px 2px #c0c0c0;
+    padding: 25px;
+}
+
+.FollowList_content .FollowList_content_left .FollowList_content_left_title{
+    color: #86d5cc;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.FollowList_content .FollowList_content_left .FollowList_content_left_title .title_name{
+    margin-right: 5px;
+}
+.FollowList_content .FollowList_content_left .FollowList_content_left_list .FollowList_content_left_item{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 17px;
+}
+.FollowList_content .FollowList_content_left .FollowList_content_left_list .FollowList_content_left_item .item_title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 12px;
+}
+
+.FollowList_content .FollowList_content_left .FollowList_content_left_list .FollowList_content_left_item .item_title .item_title_img{
+    width: 25px;
+    height: 21px;
+    overflow: hidden;
+}
+.FollowList_content .FollowList_content_left .FollowList_content_left_list .FollowList_content_left_item .item_title .item_title_img img{
+    width: 100%;
+}
+
+.FollowList_content .FollowList_content_left .FollowList_btn{
+    width: 90%;
+    height: 40px;
+    border: 1px solid #46c4b8;
+    border-radius: 44px;
+    text-align: center;
+    padding: 10px 0;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.FollowList_content .FollowList_content_left .FollowList_btn:hover{
+    background: #46c4b8;
+    color: #fff;
+}
+.FollowList_content_right{
+    box-shadow: 0 2px 18px 2px #c0c0c0;
+    padding: 26px 30px;
+    min-height: 407px; 
+}
+.FollowList_content_right .FollowList_content_right_title{
+    color: #86d5cc;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.FollowList_content_right .FollowList_content_right_title .title_name{
+    margin-right: 15px;
+}
+
+.FollowList_content_right .right_list{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: wrap;
+}
+.FollowList_content_right .right_list .right_list_item{
+    display: flex;
+    justify-content: flex-start;
+    box-shadow: 0 2px 18px 2px #c0c0c0;
+    border-radius: 4px;
+    width: 45%;
+    padding: 11px;
+    /* margin-right: 25px; */
+}
+.FollowList_content_right .right_list .right_list_item .right_list_item_left{
+    margin-right: 10px;
+}
+.FollowList_content_right .right_list .right_list_item .right_list_item_left .left_img{
+    width: 55px;
+    height: 55px;
+    overflow: hidden;
+}
+.FollowList_content_right .right_list .right_list_item .right_list_item_left .left_img img{
+    width: 100%;
+}
+.FollowList_content_right .right_list .right_list_item .right_list_item_right{
+    padding: 17px 0;
+}
+.FollowList_content_right .right_list .right_list_item .right_list_item_right .item_right_name{
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.FollowList_content_right .right_list .right_list_item .right_list_item_right .right_item_state{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.FollowList_content_right .right_list .right_list_item .right_list_item_right .right_item_state .state_icon{
+    width: 21px;
+    height: 18px;
+    overflow: hidden;
+    margin-right: 8px; 
+}
+.FollowList_content_right .right_list .right_list_item .right_list_item_right .right_item_state .state_icon img{
+    width: 100%;
+}
+.FollowList_content_right .right_list .right_list_item .right_list_item_right .right_item_state span{
+    font-size: 12px;
+    color: #808080;
+}
+.FollowList_content_right .right_list .right_list_item .right_list_item_right .right_item_Signature{
+    margin-bottom: 25px;
+}
+.FollowList_content_right .right_list .right_list_item .right_list_item_right .right_item_btn{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.FollowList_content_right .right_list .right_list_item .right_list_item_right .right_item_btn .right_btn{
+    border: 2px solid #46c4b8;
+    width: 33%;
+    height: 30px;
+    border-radius:23px; 
+    line-height: 28px;
+    text-align: center;
+    margin-right: 22px;
+    cursor: pointer;
+}
+.FollowList_content_right .right_list .right_list_item .right_list_item_right .right_item_btn .right_btn:hover{
+    background: #46c4b8;
+    color: #fff;
+}
+
+#NumberOfPagesContainer{
+    margin: 30px;
+    text-align: right;
+}

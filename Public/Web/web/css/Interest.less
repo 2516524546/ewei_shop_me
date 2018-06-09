@@ -1,0 +1,141 @@
+@import "BotOfpublicHea";
+
+#NavSelected{
+    color: #80fff3;
+}
+
+.Banner {
+    margin: 18px 0;
+    border-top: solid #dedede 1px;
+    border-bottom: solid #dedede 1px;
+    .layui-carousel-ind li.layui-this {
+        background-color: #46c4b8;
+    }
+}
+
+// PublicUserStyle stater  --公共样式图标
+#PublicUserStyle {
+	.spacing{
+		margin-top: 10px;
+		margin-left: 60px;
+	}
+	.SpilloverConcealment {
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    -webkit-line-clamp:3;
+	    -webkit-box-orient:vertical;
+	}
+	.Container {
+	    border-radius: 4px;
+	    box-shadow: 2px 2px 14px #cecece;
+	}
+	.FontColor {
+	    color: #45c5b8;
+	    font-size: 1.2em;
+	    font-weight: bold;
+	    font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+	}
+}
+// PublicUserStyle end  --公共样式图标
+
+.SearchContainer{
+	.SelectionTypeContainer{
+		clear: both;
+		.layui-input-block{
+			margin-left:80px;
+		}
+	}
+	#Selectionform{
+		width: 46%;
+		margin: 0 auto;
+		border-radius: 20px;
+		padding: 0 42px 0 18px;
+		border: none;
+		box-shadow: 2px 2px 14px #cecece;
+	}
+	#SelectionIcon{
+		position: absolute;
+		top: 10px;
+		right: 32%;
+	}
+
+	#GroupBtn{
+		text-decoration: none;
+		box-shadow: 2px 2px 14px #cecece;
+	}
+	.Help{
+		margin-top: 12px;
+		margin-right: 6px;
+	}
+}
+
+
+.GroupList{
+	@color: #ccc;
+	margin-top: 68px;
+	.GroupTitle{
+		position: relative;
+		bottom: 20px;
+		color: #46c4b8;
+		font-weight: bold;
+		font-size: 1.6em;
+		font-family: 'Arial Regular', Times, TimesNR,'New Century Schoolbook',Georgia,'New York', serif;
+	}
+	.UserBox{
+		margin-top: 25px;
+		box-shadow: 2px 2px 14px #cecece;
+		padding: 25px;
+		.UserLink{
+			text-decoration: none;
+		}
+		.userimg{
+			width: 50px;
+			height: auto;
+			float: left;
+			margin-top: 10px;
+		}
+		.UserTitle{
+			#PublicUserStyle > .spacing;
+		}
+		.UserFollow{
+			#PublicUserStyle > .spacing;
+			color: @color;
+		}
+		.UserName{
+			#PublicUserStyle > .spacing;
+			color: @color;
+			.UserTime{
+				margin-left: 32px;
+			}
+		}
+		.UserContent{
+			#PublicUserStyle > .spacing;
+			#PublicUserStyle > .SpilloverConcealment;
+		}
+	}
+}
+
+.BannerContainer {
+    margin-top: 50px;
+    width: 174px;
+    #PublicUserStyle>.Container;
+    .FontColor {
+        #PublicUserStyle>.FontColor;
+        padding: 4px 6px;
+    }
+    .Container1 {
+        .Font {
+            padding: 4px 6px;
+        }
+        .img{
+			width: 174px;
+			height: auto;
+        }
+    }
+    .Container2 {
+        .Font {
+            padding: 4px 6px;
+        }
+    }
+}

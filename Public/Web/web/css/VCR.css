@@ -1,0 +1,35 @@
+.layui-form-pane .layui-input-block{
+    margin-left: 0;
+}
+.PasswordContainer .from-but{
+    width: 49%;
+}
+.layui-form-pane .layui-form-label{
+    padding: 8px;
+}
+.inputWidth{
+    width: 46%;
+    margin-right: 9px;
+}
+.code_password{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.code_password .code_img{
+    width: 60px;
+    height: 22px;
+    margin-right: 9px;
+    cursor:pointer;
+}
+.code_password .code_img img{
+    width: 100%;
+}
+.code_password .code_change{
+    font-size: 12px;
+    color: #46c4b8;
+    cursor:pointer;
+}
+/* .PasswordContainer{
+    width: 48%;
+} */

@@ -1,0 +1,41 @@
+.feedback_box{
+    padding: 63px 180px;
+}
+.feedback_box .feedback_title{
+    font-size: 15px;
+
+}
+.feedback_box .feedback_title p{
+    line-height: 38px;
+    text-indent: 2em;
+    letter-spacing: 1px;
+}
+.layui-textarea{
+    min-height: 335px;
+    resize:none;
+    border: 1px solid #46c4b8;
+    border-radius: 3px;
+    margin-top: 63px;
+    margin-bottom: 48px;
+}
+.layui-textarea:hover{
+    border-color: #46c4b8!important;
+}
+button:focus{
+    outline: none;
+}
+.feedback_btn{
+    border: 1px solid #26c7a0;
+    background: transparent;
+    display: block;
+    margin: 0 auto;
+    width: 30%;
+    height: 30px;
+    border-radius: 17px;
+    cursor: pointer;
+}
+
+.feedback_btn:hover{
+    background: #26c7a0;
+    color: #fff;
+}

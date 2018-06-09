@@ -1,0 +1,19 @@
+{
+  "name": "layui",
+  "main": "src/layui.js",
+  "version": "2.2.45",
+  "homepage": "https://github.com/sentsin/layui",
+  "authors": [
+    "sentsin <xu@sentsin.com>"
+  ],
+  "description": "经典模块化前端 UI 框架",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "keywords": [
+    "layui",
+    "ui"
+  ],
+  "license": "MIT"
+}

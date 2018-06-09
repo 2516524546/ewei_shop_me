@@ -1,0 +1,53 @@
+.crumbs{
+    margin: auto 0;
+}
+
+.FansList_content{
+    box-shadow: 2px 2px 14px #cecece;
+    padding: 26px 47px;
+    margin-top: 37px;
+}
+.row{
+    margin-top: 30px;
+}
+.FansList_content .FansList_list .FansList_item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 0;
+    border-bottom: 1px solid #ededed;
+}
+.FansList_content .FansList_list .FansList_item .item_user{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.FansList_content .FansList_list .FansList_item .item_user .item_img{
+    width: 52px;
+    height: 52px;
+    border-radius:50%;
+    margin-right: 30px; 
+}
+.FansList_content .FansList_list .FansList_item .item_user .item_img img{
+    width: 100%;
+}
+
+.FansList_content .FansList_list .FansList_item .item_user .item_user_details .item_user_name{
+    margin-bottom: 9px;
+}
+.FansList_content .FansList_list .FansList_item .item_add{
+    border: 1px solid #46c4b8;
+    width: 15%;
+    text-align: center;
+    padding: 13px 0;
+    /* padding: 7px 37px; */
+    border-radius: 25px;
+    cursor:pointer;
+}
+.FansList_content .FansList_list .FansList_item .item_add:hover{
+    background: #46c4b8;
+    color: #fff;
+}
+.crumbs{
+    margin: auto 0;
+}

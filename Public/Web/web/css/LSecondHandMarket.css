@@ -1,0 +1,97 @@
+.Second_Market_detail{
+    margin-top: 30px;
+}
+/* new Products */
+.SelectionContainer #Selectionform {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 0 42px 0 18px;
+    border: none;
+    box-shadow: 2px 2px 14px #cecece;
+}
+
+.SelectionContainer #SelectionIcon {
+    position: absolute;
+    top: 10px;
+    right: 14%;
+}
+.S_btn {
+    margin-top: 29px;
+    text-align: right; 
+}
+.S_btn #GroupBtn{
+    width: 170px;
+    text-decoration: none;
+}
+.layui-btn-lg {
+    height: 34px;
+    line-height: 34px;
+    padding: 0 25px;
+    font-size: 16px;
+}
+
+/* Produce_attribute */
+.Produce_attribute .attribute_content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    
+    margin-top: 10px;
+}
+.Produce_attribute .attribute_content .content_img{
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+    margin-right: 15px;
+}
+.Produce_attribute .attribute_content .content_img img{
+    width: 100%;
+}
+.Produce_attribute .attribute_content .content_details{
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap:wrap;
+
+}
+
+.Produce_attribute .attribute_content .content_details li{
+    margin-right: 44px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: unset;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.Produce_attribute .attribute_content .content_details .active{
+    color: #46c4b8;
+}
+
+.Produce_attribute .attribute_content .content_input{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 45px;
+}
+.layui-form-mid{
+    margin-left: 10px;
+}
+.layui-input-block-one .pic_input{
+    margin-right: 5px;
+}
+.layui-input-block-one .pic_input_span{
+    margin-right: 10px;
+}
+.to{
+    color: #46c4b8;  
+}
+.layui-input-block-one{
+    display: flex;
+    justify-content: flex-start;
+    justify-items: center;
+}

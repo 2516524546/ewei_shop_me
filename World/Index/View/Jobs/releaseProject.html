@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Release project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0 user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/register.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/JobList.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/CreateInterest.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Donation.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
+</head>
+
+<body>
+    <!-- logo -->
+		<header class="container">
+            <include file = "./World/Index/View/Public/head.html"/>
+        </header>
+        <hr>
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
+            <cite class="Icon"></cite>
+            <a href="{:U('Index/Jobs/projectsProfessionals')}" class="crumbsa">Item List</a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">Publish the project</span>
+        </div>
+    <!-- Forget the password form -->
+    <form class="layui-form layui-form-pane" action="">
+        <div class="PasswordContainer">
+            <div class="StepContainer">
+                <div class="StepContainerOne">
+                    <div class="InterestTitle">
+                        <h3 class="text-center Interesth3">
+                            <span class="InterestTitleIcon"></span>Basic Information
+                        </h3>
+                    </div>
+                    <div class="FormContainer layui-form-item" pane>
+                        <label class="layui-form-label label-spacing">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_city.png">
+                        </label>
+                        <div class="layui-input-block" id="layui-input-block">
+                            <select name="city" lay-verify="required">
+                                <option value="">Choose a city</option>
+                                <option value="0">1</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="FormContainer layui-form-item" pane>
+                        <label class="layui-form-label label-spacing">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_industry.png">
+                        </label>
+                        <div class="layui-input-block" id="layui-input-block">
+                            <select name="city" lay-verify="required">
+                                <option value="">Choose industry</option>
+                                <option value="0">1</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="FormContainer layui-form-item" pane>
+                        <label class="layui-form-label label-spacing">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
+                        </label>
+                        <div class="layui-input-block" id="layui-input-block">
+                            <select name="city" lay-verify="required">
+                                <option value="">Choose a school</option>
+                                <option value="0">1</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 64px;">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_porjetname.png">
+                        </label>
+                        <div class="layui-input-block" style="margin-left: 64px;">
+                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the project name" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 64px;">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_realname.png" width="24px" height="auto">
+                        </label>
+                        <div class="layui-input-block" style="margin-left: 64px;">
+                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the sponsor's real name" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 64px;">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_contact.png">
+                        </label>
+                        <div class="layui-input-block" style="margin-left: 64px;">
+                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the contact information" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 64px;">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_email.png">
+                        </label>
+                        <div class="layui-input-block" style="margin-left: 64px;">
+                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the email" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 64px;">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_sy_icon_09.png">
+                        </label>
+                        <div class="layui-input-block" style="margin-left: 64px;">
+                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the company" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-form-text" style="height: 100px;">
+                        <label class="layui-form-label" style="width: 12%;z-index: 2;background: none;border: none;">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                        </label>
+                        <div class="layui-input-block" style="position: relative;top: -46px;">
+                            <textarea placeholder="Enter the company information" class="layui-textarea" style="padding: 12px 58px 0;"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-form-text" style="height: 100px;">
+                        <label class="layui-form-label" style="width: 12%;z-index: 2;background: none;border: none;">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png">
+                        </label>
+                        <div class="layui-input-block" style="position: relative;top: -46px;">
+                            <textarea placeholder="Enter the company information" class="layui-textarea" style="padding: 12px 58px 0;"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 64px;">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_money.png">
+                        </label>
+                        <div class="layui-input-block" style="margin-left: 64px;">
+                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the project budget" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 64px;">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_time.png">
+                        </label>
+                        <div class="layui-input-block" style="margin-left: 64px;">
+                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the project time" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 64px;">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_need.png">
+                        </label>
+                        <div class="layui-input-block" style="margin-left: 64px;">
+                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter professional needs" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="FormContainer from-but" style="margin-top: 0;">
+                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="" lay-filter="">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- foot start 底部信息 -->
+    <footer class="container-fluid FooterBg">
+        <div class="row FooterContainer">
+            <div class="col-xs-6 col-md-4">
+                <dl>
+                    <dt>ABOUT</dt>
+                    <dd>
+                        NewWorld.net is a comprehensive website that provides an efficient source of resources and convenience for our every -day lives. We can easily discover, share and create a new world.
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <dl>
+                    <dt>SUPPORT</dt>
+                    <dd>Premium Support</dd>
+                    <dd>Get Started</dd>
+                    <dd>Partners</dd>
+                </dl>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <dl>
+                    <dt>Help Center</dt>
+                    <dd><a href="HelpCenter.html">Help Center</a></dd>
+                    <dd><a href="ContactUs.html">Contact Us</a></dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row copyright">
+            <div class="col-md-12">
+                <p class="text-center">&copy; 2018 NewWorld. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- foot end 底部信息 -->
+    <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+    <script src="__PUBLIC__/Web/web/js/ListOfDonations.js"></script>
+    <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
+</body>
+
+</html>

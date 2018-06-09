@@ -1,0 +1,316 @@
+#public .FontIcon {
+    text-decoration: none;
+    display: inline-block;
+  }
+  /* 头部信息的边距 */
+  .headerBox {
+    margin: 12px 0 0;
+  }
+  /* logo的大小与位置 */
+  .logo {
+    width: 260px;
+    height: 60px;
+    border: none;
+    display: inline-block;
+    background: url(../img/common_logo.png) 0 0 no-repeat;
+    background-size: 260px;
+    margin-top: 20px;
+  }
+  /* 右上角登录与注册框右浮动 */
+  .logreg {
+    float: right;
+  }
+  /* 登录按钮样式 */
+  .logreg .Login {
+    color: #56c9be;
+    margin: 0 28px;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .logreg .Login .LoginIcon {
+    background: url(../img/common_nav_dz_login.png) 0 0 no-repeat;
+    height: 20px;
+    width: 20px;
+    display: block;
+    margin: 0 6px;
+  }
+  /* 注册按钮样式 */
+  .logreg .SignUp {
+    color: #56c9be;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .logreg .SignUp .SignUpIcon {
+    background: url(../img/common_nav_dz_signup.png) 0 0 no-repeat;
+    height: 20px;
+    width: 20px;
+    display: block;
+    margin: 0 14px;
+  }
+  /* 导航栏 */
+  .nav {
+    clear: both;
+    position: absolute;
+    right: 10px;
+    top: 48px;
+  }
+  /* 导航栏内边颜色 */
+  .nav .NavBg {
+    background-color: #46c4b8;
+    border-radius: 28px;
+    padding: 14px;
+  }
+  /* 导航栏li样式 */
+  .nav .NavBg .ListInline > li {
+    display: inline;
+    margin: 0 14px;
+  }
+  /* 导航栏a标签样式以及hover样式 */
+  .nav .NavBg .ListInline > li > a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav .NavBg .ListInline > li > a:hover {
+    color: #80fff3;
+  }
+/* 尾部末端样式 */
+  .FooterBg {
+    background-color: #0e4d3d;
+    padding-top: 18px;
+    margin-top: 58px;
+  }
+  .FooterBg .FooterContainer {
+    width: 88%;
+    margin: auto;
+  }
+  .FooterBg .FooterContainer dt {
+    color: #56c9be;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+  .FooterBg .FooterContainer dd {
+    color: #7f8986;
+  }
+  .FooterBg .copyright {
+    background-color: #000000;
+    opacity: 0.2;
+    padding: 6px;
+    margin-top: 14px;
+  }
+  .FooterBg .copyright p {
+    color: #ababab;
+  }
+/* 导航栏active项 */
+  #NavSelected {
+    color: #80fff3;
+  }
+
+  /* 轮播图样式 */
+  .Banner {
+    margin: 18px 0;
+    border-top: solid #dedede 1px;
+    border-bottom: solid #dedede 1px;
+  }
+  .Banner .layui-carousel-ind li.layui-this {
+    background-color: #46c4b8;
+  }
+  #PublicUserStyle .spacing {
+    margin-top: 10px;
+    margin-left: 60px;
+  }
+  #PublicUserStyle .SpilloverConcealment {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  #PublicUserStyle .Container {
+    border-radius: 4px;
+    box-shadow: 2px 2px 14px #cecece;
+  }
+  #PublicUserStyle .FontColor {
+    color: #45c5b8;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+  }
+
+  /* 搜索的样式 */
+  .SearchContainer .SelectionTypeContainer {
+    clear: both;
+  }
+  .SearchContainer .SelectionTypeContainer .layui-input-block {
+    margin-left: 80px;
+  }
+  .SearchContainer #Selectionform {
+    width: 46%;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 0 42px 0 18px;
+    border: none;
+    box-shadow: 2px 2px 14px #cecece;
+  }
+  .SearchContainer #SelectionIcon {
+    position: absolute;
+    top: 10px;
+    right: 32%;
+  }
+  .SearchContainer #GroupBtn {
+    text-decoration: none;
+    box-shadow: 2px 2px 14px #cecece;
+  }
+  .SearchContainer .Help {
+    margin-top: 12px;
+    margin-right: 6px;
+  }
+
+  /* Ground List 页面样式 */
+  .GroupList {
+    margin-top: 68px;
+  }
+  .GroupList .GroupTitle {
+    position: relative;
+    bottom: 20px;
+    color: #46c4b8;
+    font-weight: bold;
+    font-size: 1.6em;
+    font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+  }
+  .GroupList .UserBox {
+    margin-top: 25px;
+    box-shadow: 2px 2px 14px #cecece;
+    padding: 25px;
+    min-height: 195px;
+  }
+  .GroupList .UserBox .UserLink {
+    text-decoration: none;
+  }
+  .GroupList .UserBox .userimg {
+    width: 50px;
+    height: auto;
+    float: left;
+    margin-top: 10px;
+  }
+  .GroupList .UserBox .UserTitle {
+    margin-top: 10px;
+    margin-left: 60px;
+  }
+  .GroupList .UserBox .UserFollow {
+    margin-top: 10px;
+    margin-left: 60px;
+    color: #cccccc;
+  }
+  .GroupList .UserBox .UserName {
+    margin-top: 10px;
+    margin-left: 60px;
+    color: #cccccc;
+  }
+  .GroupList .UserBox .UserName .UserTime {
+    margin-left: 32px;
+  }
+  .GroupList .UserBox .UserContent {
+    margin-top: 10px;
+    margin-left: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  .BannerContainer {
+    margin-top: 50px;
+    width: 174px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 14px #cecece;
+  }
+  .BannerContainer .FontColor {
+    color: #45c5b8;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+    padding: 4px 6px;
+  }
+  .BannerContainer .Container1 .Font {
+    padding: 4px 6px;
+  }
+  .BannerContainer .Container1 .img {
+    width: 174px;
+    height: auto;
+  }
+  .BannerContainer .Container2 .Font {
+    padding: 4px 6px;
+  }
+  /* 二手市场样式 */
+  .S_Market{
+    margin-top: 25px;
+    margin-bottom: 77px;
+    box-shadow: 2px 2px 14px #cbefeb;
+    padding: 25px;
+  }
+  .S_Market .S_Market_title{
+    position: relative;
+    /* bottom: 20px; */
+    color: #46c4b8;
+    font-weight: bold;
+    font-size: 1.6em;
+    font-family: 'Arial Regular', Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+  }
+  .S_Market .S_Market_title .more{
+      position: absolute;
+      right: 0;
+  }
+  .S_Market_detail_all{
+      display: flex;
+      justify-content: space-between;
+  }
+  /* 二手市场内容 */
+  .fl{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+  }
+  .S_Market .S_Market_detail_all{
+      padding: 15px;
+      border-bottom: 1px solid #ededed;
+      font-size: 12px;
+      
+  }
+  .S_Market .S_Market_detail a:hover{
+    text-decoration: none;
+  } 
+  .S_Market .S_Market_detail .S_Market_detail_all .fl .pro_img{
+      width: 80px;
+      height: 80px;
+      margin-right: 12px;
+  }
+  .S_Market .S_Market_detail .S_Market_detail_all .fl .pro_img img{
+      width: 100%;
+  }
+  .S_Market .S_Market_detail .S_Market_detail_all .fl .pro_detail .pro_Name{
+    margin-bottom: 8px;
+  }
+  .S_Market .S_Market_detail .pro_detail .pro_Price{
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 8px;
+  }
+  .S_Market .S_Market_detail .S_Market_detail_all .fl .pro_detail .pro_Description p{
+    margin-top: 8px;
+    color: #999999;
+  }
+  .S_Market_detail_all .pro_right .pro_right_img{
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    overflow: hidden;
+  }
+  .S_Market_detail_all .pro_right .pro_right_img img{
+    width: 100%;
+    height: 100%;
+  }
+  .S_Market_detail_all .pro_right .pro_right_name{
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bolder;
+  }
