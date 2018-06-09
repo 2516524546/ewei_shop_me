@@ -13,3 +13,17 @@ layui.use(['laypage', 'layer'], function() {
     });
 
 });
+
+$(".greatIcon").on("click",function(){
+    if($(this).attr('data-Click')!="true"){
+        var num = Number($(this).parent().children(".like_num").text());
+        num++;
+        $(this).parent().children(".like_num").text(num);
+        $(this).attr('data-Click','true')
+    }else{
+        
+    }
+})
+
+
+

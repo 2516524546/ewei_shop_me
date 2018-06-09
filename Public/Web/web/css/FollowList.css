@@ -3,7 +3,7 @@
 }
  .FollowList_content_left{
     box-shadow: 0 2px 18px 2px #c0c0c0;
-    padding: 25px;
+    padding: 15px;
 }
 
 .FollowList_content .FollowList_content_left .FollowList_content_left_title{
@@ -29,6 +29,13 @@
     justify-content: flex-start;
     align-items: center;
     margin-right: 12px;
+}
+
+.FollowList_content .FollowList_content_left .FollowList_content_left_list .FollowList_content_left_item .item_title span{
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .FollowList_content .FollowList_content_left .FollowList_content_left_list .FollowList_content_left_item .item_title .item_title_img{
@@ -147,8 +154,129 @@
     background: #46c4b8;
     color: #fff;
 }
-
+.Following_tip{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 17px;
+}
+.Following_tip .tip_title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 12px;
+}
+.Following_tip .tip_title .tip_title_img{
+    width: 25px;
+    height: 21px;
+    overflow: hidden;
+}
+.Following_tip .tip_title .tip_title_img img{
+    width: 100%;
+}
+.FollowList_Create{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    display: none;
+}
+.FollowList_Create .FollowList_Create_input{
+    width: 54%;
+    margin-right: 5px;
+    padding: 5px 10px;
+}
+.FollowList_Create .FollowList_Create_Btn{
+    width: 24%;
+    border-radius: 8px;
+    padding: 4px 4px;
+    text-align: center;
+    background: #fff;
+    margin-right: 4px;
+    border: 1px solid #46c4b8;
+    cursor: pointer;
+}
+.FollowList_Create .FollowList_Create_Btn:hover{
+    background: #46c4b8;
+    color: #fff;
+}
+.FollowList_Create .FollowList_Create_Btn:last-child{
+    margin-right: 0;
+}
 #NumberOfPagesContainer{
     margin: 30px;
     text-align: right;
+}
+
+
+.modal-body-list{
+    background: #aaa;
+    padding: 15px;
+    margin-top: 15px;
+}
+.modal-body-list .modal-body-item-box{
+    height: 360px;
+    font-size: 0;
+    overflow-y: scroll;
+}
+.modal-body-list .modal-body-item-box::-webkit-scrollbar {display:none}
+.modal-body-list .modal-body-item-box .modal-body-item{
+    width: 50%;
+    margin-bottom: 8px;
+    display: inline-block;
+    font-size: 14px;
+}
+.modal-body-list .modal-body-item-box .modal-body-item input[type="checkbox"]{
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+}
+
+.modal-body-list .modal-body-addGroup{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 10px;
+    width: 50%;
+    background: #fff;
+    border: 1px solid #aaa;
+    border-radius: 13px;
+    cursor: pointer;
+}
+.modal-body-list .modal-body-addGroup .modal-body-addIcon{
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.modal-body-list .modal-body-addName{
+    cursor: pointer;
+    display: none;
+    
+}
+.modal-body-list .modal-body-addName button{
+    width: 18%;
+    background: #46c4b8;
+    border-radius: 7px;
+    color: #fff;
+    border: 1px solid #46c4b8;
+    cursor: pointer;
+    padding: 5px 5px;
+}
+button:focus {
+    outline: none;
+}
+.modal-body-list .modal-body-addName .addName_input{
+    padding: 5px 10px;
+}
+
+@media (min-width: 576px){
+    .modal-sm {
+        max-width: 400px;
+    }
+
+    .modal-dialog {
+        max-width: 400px;
+        margin: 1.75rem auto;
+    }
+
+
 }
