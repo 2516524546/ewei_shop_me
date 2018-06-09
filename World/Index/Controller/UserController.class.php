@@ -8,13 +8,21 @@ use Index\Model\UserModel;
 use Think\Controller;
 class UserController extends CommonController {
 
-    public function personalCenter(){
+    protected $_checkAction = ['FollowList','personalCenter','acountSetting','resumeDetails','myPosts','myMessage','myFollowing','addressBook'
+                                    ,'myGroup','feedback','virtualCurrencyRecharge'];//需要做登录验证的action
 
-        if (!$this->userid){
-            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-            Header("Location:".U('Index/Login/login'));
-            exit();
+    public function _initialize()
+    {
+        parent::_initialize();
+        if(in_array(ACTION_NAME,$this->_checkAction)){
+            if (!$this->userid){
+                session('returnurl', __SELF__);
+                $this->redirect(U('Index/Login/login'));
+            }
         }
+    }
+
+    public function personalCenter(){
         $id = $this->geturl('id');
         $usermodel = new UserModel();
         $userone = $usermodel->findone('user_id = '.$id);
@@ -46,12 +54,6 @@ class UserController extends CommonController {
 
     public function acountSetting(){
 
-        if (!$this->userid){
-            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-            Header("Location:".U('Index/Login/login'));
-            exit();
-        }
-
         $countrymodel = new UserCountryModel();
         $countrylist = $countrymodel->findlist('','user_country_sort desc,user_country_name');
 
@@ -66,12 +68,6 @@ class UserController extends CommonController {
     }
 
     public function resumeDetails(){
-
-        if (!$this->userid){
-            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-            Header("Location:".U('Index/Login/login'));
-            exit();
-        }
 
         $goindex = 1;
         if (isset($_GET['gourl'])){
@@ -93,13 +89,6 @@ class UserController extends CommonController {
     }
 
     public function myPosts(){
-
-        if (!$this->userid){
-            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-            Header("Location:".U('Index/Login/login'));
-            exit();
-        }
-
         $this->assign(array(
             'userid' => $this->userid,
             'usercontent' =>$this->usercontent,
@@ -110,12 +99,6 @@ class UserController extends CommonController {
     }
 
     public function myMessage(){
-
-        if (!$this->userid){
-            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-            Header("Location:".U('Index/Login/login'));
-            exit();
-        }
 
         $this->assign(array(
             'userid' => $this->userid,
@@ -128,12 +111,6 @@ class UserController extends CommonController {
 
     public function myFollowing(){
 
-        if (!$this->userid){
-            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-            Header("Location:".U('Index/Login/login'));
-            exit();
-        }
-
         $this->assign(array(
             'userid' => $this->userid,
             'usercontent' =>$this->usercontent,
@@ -144,12 +121,6 @@ class UserController extends CommonController {
     }
 
     public function addressBook(){
-
-        if (!$this->userid){
-            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-            Header("Location:".U('Index/Login/login'));
-            exit();
-        }
 
         $this->assign(array(
             'userid' => $this->userid,
@@ -162,12 +133,6 @@ class UserController extends CommonController {
 
     public function myGroup(){
 
-        if (!$this->userid){
-            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-            Header("Location:".U('Index/Login/login'));
-            exit();
-        }
-
         $this->assign(array(
             'userid' => $this->userid,
             'usercontent' =>$this->usercontent,
@@ -178,12 +143,6 @@ class UserController extends CommonController {
     }
 
     public function feedback(){
-
-        if (!$this->userid){
-            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-            Header("Location:".U('Index/Login/login'));
-            exit();
-        }
 
         $this->assign(array(
             'userid' => $this->userid,
@@ -196,18 +155,23 @@ class UserController extends CommonController {
 
     public function virtualCurrencyRecharge(){
 
-        if (!$this->userid){
-            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-            Header("Location:".U('Index/Login/login'));
-            exit();
-        }
-
         $this->assign(array(
             'userid' => $this->userid,
             'usercontent' =>$this->usercontent,
             'havemessage' => $this->havemessage,
 
         ));
+        $this->display();
+    }
+
+    /**
+     * 我的关注列表
+     * @return mixed
+     */
+    public function FollowList(){
+        $css = addCss('FollowList');
+        $this->assign('title','Follow List');
+        $this->assign('CSS',$css);
         $this->display();
     }
 
