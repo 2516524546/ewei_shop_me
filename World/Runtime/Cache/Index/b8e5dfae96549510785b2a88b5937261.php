@@ -3,17 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Details of the post</title>
+    <title>Honorary Edition</title>
     <meta name="viewport" content="width=device-width, initial-scale=0 user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="/Public/Web/web/css/register.css">
-    <link rel="stylesheet" href="/Public/Web/web/css/Donation.css">
-    <link rel="stylesheet" href="/Public/Web/web/css/CreateInterest.css">
-    <link rel="stylesheet" href="/Public/Web/web/css/GroupDetailsRelease.css">
-    <link rel="stylesheet" href="/Public/Web/web/css/StickSonDetails.css">
+    <link rel="stylesheet" href="/Public/Web/web/css/ListOfDonations.css">
     <link rel="stylesheet" href="/Public/Web/js/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/Public/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="/Public/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="/Public/Web/js/lib/layui/dist/css/layui.css">
+    <link rel="stylesheet" href="/Public/Web/web/css/NewsDetails.css">
+    <link rel="stylesheet" href="/Public/Web/web/css/Crumbsnav.css">
+    <link rel="stylesheet" href="/Public/Web/web/css/success_index.css">
+
 </head>
 
 <body>
@@ -144,161 +145,119 @@
     <hr>
     <!-- Crumbs nav -->
     <div class="container Crumbs">
-        <span class="CrumbsSpan">
-          <a href="<?php echo U('Index/Rnterst/interest');?>" class="CrumbsA">Interest</a>
-          <cite class="CrumbsIcon"></cite>
-          <span class="CrumbsTitle"><a href="<?php echo U('Index/Rnterst/groupDetails');?>" class="CrumbsA">Group name</a></span>
-        <cite class="CrumbsIcons"></cite>
-        <span class="CrumbsTitles">Post details</span>
+        <span>
+          <a href="index.html"></a>
+          <cite></cite>
+          <span>Honor List</span>
         </span>
     </div>
-    <div class="container StickSonDetailsContainer">
-        <div class="row">
-            <div class="col-md-9">
-                <p class="text-right">
-                    <a href="<?php echo U('Index/Rnterst/postSharing');?>">
-                        <img src="/Public/Web/web/img/02_interest/fenxiang.png">
-                    </a>
-                </p>
-                <h3 class="text-center">
-                    <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_top.png">
-                    <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_jing.png">
-                    Post Title
-                    <p class="text-center StickSonDetailsTitleTime">01-20-2018 20:18:58</p>
-                </h3>
-                <div class="StickSonDetailsContent">
-                    <p>
-                        Post content Post content Post content Post content Post content Post content Post content conten Post content Post content Post content Post content Post content Post content Post content conte Post content content Post content Post content conte Post content
-                    </p>
-                    <p>
-                        <img src="/Public/Web/web/img/banner.png" class="imgs">
-                    </p>
-                    <div class="PostReply">
-                        <P>
-                            <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_pl.png">&nbsp;&nbsp;
-                            <b>Comment</b>
-                        </P>
-                        <div class="box">
-                            <p class="GuestBookUserImg">
-                                <img src="/Public/Web/web/img/02_interest/user.png" class="imgs img-circle">
-                            </p>
-                            <div class="GuestBookContainer">
-                                <div class="GuestBookUserTitleContainer">
-                                    <p class="GuestBookUserName">David J.</p>
-                                    <p class="TimeFabulousContainer">
-                                        <span class="GuestBookUserTime">
-                                            <img src="/Public/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                            01/12/2018
+    <div class="container ContributionContainer">
+        <div class="layui-tab layui-tab-card">
+            <ul class="layui-tab-title">
+                <li class="layui-this" onclick="set(1)">Integral</li>
+                <li onclick="set(2)">Donate</li>
+                <li onclick="set(3)">Expenditure</li>
+            </ul>
+            <div class="layui-tab-content ListContainer">
+                <div class="layui-tab-item layui-show">
+                    <table class="layui-table" id="LayuiTableBorder" lay-skin="line">
+                        <tbody id="content">
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <!--<div class="layui-tab-item">
+                    <div class="layui-tab-item layui-show">
+                        <table class="layui-table" id="LayuiTableBorder" lay-skin="line">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span>
+                                        <img src="/Public/Web/web/img/01_shouye/home_sy_hl_icon_01.png">
+                                        &nbsp;&nbsp;1st
                                         </span>
-                                        <span class="GuestBookUserFabulous">
-                                            Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                            <img src="/Public/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png">
-                                            333
+                                    </td>
+                                    <td class="text-center">
+                                        &nbsp;&nbsp;Kendall J
+                                    </td>
+                                    <td class="text-right">800 integral</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>
+                                        <img src="/Public/Web/web/img/01_shouye/home_sy_hl_icon_04.png">
+                                        &nbsp;&nbsp;8st
                                         </span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="GuestBookUserMessage">
-                                coocommentcoocommentcoocommentcocoocommentcoocommentcoocommentcocoocommen
-                            </div>
-                            <div class="ReplyContainer">
-                                @Tom 回复 Jack ： xxxxxxxxxxxx
-                            </div>
-                        </div>
-                        <div class="box">
-                            <p class="GuestBookUserImg">
-                                <img src="/Public/Web/web/img/02_interest/user.png" class="imgs img-circle">
-                            </p>
-                            <div class="GuestBookContainer">
-                                <div class="GuestBookUserTitleContainer">
-                                    <p class="GuestBookUserName">David J.</p>
-                                    <p class="TimeFabulousContainer">
-                                        <span class="GuestBookUserTime">
-                                            <img src="/Public/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                            01/12/2018
-                                        </span>
-                                        <span class="GuestBookUserFabulous">
-                                            Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                            <img src="/Public/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png">
-                                            333
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="GuestBookUserMessage">
-                                coocommentcoocommentcoocommentcocoocommentcoocommentcoocommentcocoocommen
-                            </div>
-                            <div class="ReplyContainer">
-                                @Tom 回复 Jack ： xxxxxxxxxxxx
-                            </div>
-                        </div>
-                        <div class="box">
-                            <p class="GuestBookUserImg">
-                                <img src="/Public/Web/web/img/02_interest/user.png" class="imgs img-circle">
-                            </p>
-                            <div class="GuestBookContainer">
-                                <div class="GuestBookUserTitleContainer">
-                                    <p class="GuestBookUserName">David J.</p>
-                                    <p class="TimeFabulousContainer">
-                                        <span class="GuestBookUserTime">
-                                            <img src="/Public/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                            01/12/2018
-                                        </span>
-                                        <span class="GuestBookUserFabulous">
-                                            Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                            <img src="/Public/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png">
-                                            333
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="GuestBookUserMessage">
-                                coocommentcoocommentcoocommentcocoocommentcoocommentcoocommentcocoocommen
-                            </div>
-                            <div class="ReplyContainer">
-                                @Tom 回复 Jack ： xxxxxxxxxxxx
-                            </div>
-                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        &nbsp;&nbsp;Kendall J
+                                    </td>
+                                    <td class="text-right">800 integral</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-                <div class="container NumberOfPagesContainer">
-                    <div id="NumberOfPages"></div>
-                </div>
-                <form class="layui-form" action="">
-                    <p style="color: #999; margin-bottom: 10px;">
-                        Tips: think this article how? Evaluation helps other readers understand this article.
-                    </p>
-                    <div class="ReturnBox">
-                        <div class="layui-form-item layui-form-text">
-                            <span class="ReturnBoxicon">
-                                <img src="/Public/Web/web/img/02_interest/interest_xq_icon_pj.png">
-                                &nbsp;
-                                Comments
-                            </span>
-                            <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea"></textarea>
-                            <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut">Posted</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-3">
-                <div class="GroupDetailsContainer">
-                    <p class="text-center h5 p">Post Details</p>
-                    <p class="p"><b>Personal Information</b></p>
-                    <p class="p">
-                        <b>Group icon  : </b>
-                        &nbsp;&nbsp;<img src="/Public/Web/web/img/02_interest/Todoist.png">
-                    </p>
-                    <p class="p"><b>Nickname：</b>Xiao Li</p>
-                    <p class="p"><b>Number of posts  :</b>1278</p>
-                    <p class="text-center Followtbut">
-                        <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
-                        Homepage
-                        </a>
-                    </p>
-                </div>
+                </div>-->
+                <!--<div class="layui-tab-item">
+                    <table class="layui-table" id="LayuiTableBorder" lay-skin="line">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span>
+                                    <img src="/Public/Web/web/img/01_shouye/home_sy_hl_icon_01.png">
+                                    &nbsp;&nbsp;1st
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    &nbsp;&nbsp;Kendall J
+                                </td>
+                                <td class="text-right">$ 1000</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>
+                                    <img src="/Public/Web/web/img/01_shouye/home_sy_hl_icon_02.png">
+                                    &nbsp;&nbsp;2st
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    &nbsp;&nbsp;Kendall J
+                                </td>
+                                <td class="text-right">$ 1000</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>
+                                    <img src="/Public/Web/web/img/01_shouye/home_sy_hl_icon_03.png">
+                                    &nbsp;&nbsp;3st
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    &nbsp;&nbsp;Kendall J
+                                </td>
+                                <td class="text-right">$ 1000</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>
+                                    <img src="/Public/Web/web/img/01_shouye/home_sy_hl_icon_04.png">
+                                    &nbsp;&nbsp;8st
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    &nbsp;&nbsp;Kendall J
+                                </td>
+                                <td class="text-right">$ 1000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>-->
             </div>
         </div>
+    </div>
+    <div class="container NumberOfPagesContainer">
+        <div id="NumberOfPages"></div>
     </div>
     <!-- foot start 底部信息 -->
     <footer class="container-fluid FooterBg">
@@ -338,7 +297,113 @@
     <script src="/Public/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/Public/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/Public/Web/js/lib/layui/dist/layui.all.js"></script>
-    <script src="/Public/Web/web/js/StickSonDetails.js"></script>
+    <script src="/Public/Web/web/js/ListOfDonations.js"></script>
+    <script src="/Public/Web/web/js/loginQuit.js"></script>
+    <!--<script src="/Public/Web/web/js/ListOfDonations.js"></script>-->
 </body>
+
+<script>
+
+    set(1)
+    function set(type) {
+        layui.use(['laypage', 'layer'], function() {
+            var laypage = layui.laypage,
+                layer = layui.layer;
+
+            //完整功能
+            laypage.render({
+                elem: 'NumberOfPages',
+                count: <?php echo ($usercount); ?>,
+                layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+                jump: function(obj) {
+                    //console.log(obj)
+                    setintegral(type,obj.curr,obj.limit)
+
+                }
+            });
+
+        });
+    }
+
+    function  setintegral(type,limit1,limit2) {
+
+        $.ajax({
+            type:"post",
+            url:"<?php echo U('Index/Ajax/ajax_honorlist');?>",
+            data:{
+                type:type,
+                limit1:limit1,
+                limit2:limit2,
+
+            },
+            dataType:"json",
+            success: function(data){
+                if (data!=null&&data!="") {
+                    if (data.str == 1) {
+                        var message = '';
+                        for (var i = 0; i < data.msg.length; i++) {
+                            message +='<tr><td><span>';
+                            if(limit1==1){
+                                if (i == 0){
+                                    message += '<img src="/Public/Web/web/img/01_shouye/home_sy_hl_icon_01.png">';
+                                }else if(i == 1){
+                                    message += '<img src="/Public/Web/web/img/01_shouye/home_sy_hl_icon_02.png">';
+                                }else if (i == 2){
+                                    message += '<img src="/Public/Web/web/img/01_shouye/home_sy_hl_icon_03.png">';
+                                }else{
+                                    message += '<img src="/Public/Web/web/img/01_shouye/home_sy_hl_icon_04.png">';
+                                }
+                            }else{
+                                message += '<img src="/Public/Web/web/img/01_shouye/home_sy_hl_icon_04.png">';
+                            }
+
+                            message +='&nbsp;&nbsp;'+((limit1-1)*limit2+i+1)+'st';
+                            message +='</span></td>';
+                            message +='<td class="text-center">&nbsp;&nbsp;'+data.msg[i].user_name+'</td>';
+                            message +='<td class="text-right">'
+                            if (type == 1){
+                                message += data.msg[i].user_havecoin+' integral</td>';
+                            }else if (type == 2){
+                                message += data.msg[i].user_outcoin+' integral</td>';
+                            }else if (type == 3){
+                                message += data.msg[i].user_outmoney+' $</td>';
+                            }
+                            message +='</tr>';
+                        }
+
+                        $('#content').html(message);
+
+                    }else{
+                        layer.msg(data.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+
+                }else{
+                    layer.msg('请求错误!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                layer.msg('请求失败!',{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+
+        })
+
+    }
+
+
+</script>
 
 </html>

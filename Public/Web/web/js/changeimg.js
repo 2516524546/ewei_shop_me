@@ -21,7 +21,7 @@ var result = document.getElementById("result");
 							var result = document.getElementById("result");
 							var ndiv = document.createElement("div"); //创建div节点 创建外部img-div
 							var Cdiv = document.createElement("div");//创建cover遮罩层
-							var Cspan = "<img src='../web/img/false.png'>"; //遮罩层框的内容文字
+							var Cspan = "<img src='./Public/Web/web/img/false.png'>"; //遮罩层框的内容文字
 							
 
 
@@ -56,12 +56,12 @@ var result = document.getElementById("result");
 								$('#video').html('<video src="' + videoURL + '" controls="controls"></video>');
 
 								setTimeout(function() {
-									createIMG();
+									createIMG(videoURL);
 								}, 500);
 						}
 					}
 
-					function createIMG() {
+					function createIMG(url) {
                         var scale = 1,
                         video = $('#video').find('video')[0],
                         canvas = document.createElement("canvas"),
@@ -79,9 +79,9 @@ var result = document.getElementById("result");
 						var result = document.getElementById("result");
                         var ndiv = document.createElement("div"); //创建div节点
                         var Cdiv = document.createElement("div");
-						var Cspan = "<img src='../web/img/false.png'>"; //遮罩层框的内容文字
+						var Cspan = "<img src='./Public/Web/web/img/false.png'>"; //遮罩层框的内容文字
 						var Pdiv = document.createElement("div");
-						var Pimg = "<img src='../web/img/video_paly.png'>";
+						var Pimg = "<img src='./Public/Web/web/img/video_paly.png'>";
                         ndiv.appendChild(image)
                         ndiv.className = "img-div";
 						ndiv.id = "img-div";
@@ -92,7 +92,7 @@ var result = document.getElementById("result");
 						Pdiv.className = "Play_video";
 						ndiv.appendChild(Pdiv);
                         ndiv.appendChild(Cdiv);
-						console.log([result])
+						//console.log([result])
 						$(".img-div").remove();
                         result.prepend(ndiv);
                          // *删除功能*/
@@ -104,15 +104,13 @@ var result = document.getElementById("result");
 						$(".Play_video").click(function(){
 							$(".video_box").show();
 							$(".shadow_video").show();
-							$(".video_box .video_area").html(`<video width="100%" height="100%" autoplay="">
-			<source src="../web/img/video.mp4" type="video/mp4"></source>
-		</video>`)
+							$(".video_box .video_area").html('<video width="100%" height="100%" autoplay=""><source src="'+url+'" type="video/mp4"></source></video>')
 						})
 
 						$(".video_box .video_shut").click(function(){
 							$(".video_box").hide();
 							$(".shadow_video").hide();
-							console.log($(".video_box .video_area video"))
+							//console.log($(".video_box .video_area video"))
 							$(".video_box .video_area video")[0].pause()
 							// $(".video_box .video_area .Videos").pause();
 						})

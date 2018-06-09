@@ -24,12 +24,11 @@
     </header>
     <hr>
     <!-- Crumbs nav -->
-    <div class="container Crumbs">
-        <span class="CrumbsSpan">
-          <a href="{:U('Index/Rnterst/interest')}" class="CrumbsA">Interest</a>
-          <cite class="CrumbsIcon"></cite>
-          <span class="CrumbsTitle">{$crowone['crowd_name']}</span>
-        </span>
+    <div class="container crumbs">
+        <a href="{:U('Index/Rnterst/interest')}" class="crumbsa">interest</a>
+        <cite class="Icon"></cite>
+        <span class="crumbsTitle">Group name</span>
+
     </div>
     <!-- Carousel advertising start 轮播广告 -->
     <div class="layui-carousel Banner" id="test2">
@@ -498,11 +497,11 @@
                 <div class="GroupDetailsContainer">
                     <h4 class="text-center FontColor MoreMembersbox">
                         Group Member
-                        <a href="{:U('Index/Rnterst/moreMembers')}" class="MoreMembersA">
+                        <a href="{:U('Index/Rnterst/moreMembers')}&&cid={$cid}" class="MoreMembersA">
                             <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_icon_c_more_n.png">
                         </a>
                     </h4>
-                    <p class="p"><b>Group icon  : </b></p>
+                    <p class="p"><b>Administrator  : </b></p>
                     <p class="p">
 
                         <foreach name="memberlist" item="member" key="memberkey">
@@ -511,7 +510,7 @@
                             </if>
                         </foreach>
                         </p>
-                    <p class="p"><b>Group icon  : </b></p>
+                    <p class="p"><b>Member  : </b></p>
                     <p><foreach name="memberlist" item="member" key="memberkey">
                         <if condition='$member["crowd_member_status"] == 0'>
                             <img src="Uploads/{$member['user_icon']}" class="userimgs" style="width: 50px;height: 50px">

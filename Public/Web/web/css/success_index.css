@@ -2,7 +2,6 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    display: none;
     padding-right: 10%; 
 }
 .login_success .success_index{

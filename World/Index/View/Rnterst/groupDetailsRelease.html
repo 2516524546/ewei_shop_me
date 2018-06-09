@@ -15,26 +15,27 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/EditResource.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/changeimg.css">
 </head>
 
 <body>
     <!-- logo -->
     <header class="container">
         <include file = "./World/Index/View/Public/head.html"/>
-    </header>
-    <hr>
+        </header>
+        <hr>
     <!-- Crumbs nav -->
-    <div class="container Crumbs">
-        <span class="CrumbsSpan">
-          <a href="{:U('Index/Rnterst/interest')}" class="CrumbsA">Interest</a>
-          <cite class="CrumbsIcon"></cite>
-          <span class="CrumbsTitle"><a href="{:U('Index/Rnterst/groupDetails')}" class="CrumbsA">Group name</a></span>
-        <cite class="CrumbsIcons"></cite>
-        <span class="CrumbsTitles">Release</span>
-        </span>
+    <div class="container crumbs">
+        <a href="Interest.html" class="crumbsa">interest</a>
+        <cite class="Icon"></cite>
+        <a href="GroupDetails.html" class="crumbsa">Group name</a>
+        <cite class="Icon"></cite>
+        <span class="crumbsTitle">Relase</span>
     </div>
+
     <!-- Forget the password form -->
-    <form class="layui-form layui-form-pane" action="">
+    <form class="layui-form layui-form-pane" action="" id="formdata">
         <div class="PasswordContainer">
             <div class="StepContainer">
                 <div class="StepContainerOne">
@@ -48,7 +49,7 @@
                             <span class="TitlesIcon"></span>
                         </label>
                         <div class="layui-input-block input-spacing">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the title" class="layui-input">
+                            <input type="text" name="number" id="name" lay-verify="required" autocomplete="off" placeholder="Enter the title" class="layui-input">
                         </div>
                     </div>
                     <div class="FormContainer" pane>
@@ -56,37 +57,106 @@
                             <span class="TypesIcon"></span>
                         </label>
                         <div class="layui-input-block" id="layui-input-block">
-                            <select name="city" lay-verify="required">
-                                <foreach name="tablist" item = "tab" key="tabkey">
+                            <select name="city" lay-verify="required" class="select_use" lay-filter="test">
+                                <foreach name="tablist" item="tab" key="tabkey">
                                 <option value="{$tab['crowd_tab_id']}">{$tab['crowd_tab_name']}</option>
-                                </foreach>
 
+                                </foreach>
                             </select>
                         </div>
                     </div>
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <span class="ContentsIcon"></span>
-                        </label>
-                        <div class="layui-input-block input-spacing">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the content" class="layui-input">
+
+                    <div class="Post_box">
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <span class="ContentsIcon"></span>
+                            </label>
+                            <div class="layui-input-block input-spacing">
+                                <input type="text" name="number" id="postcontent" autocomplete="off" placeholder="Enter the content" class="layui-input">
+                            </div>
                         </div>
+
                     </div>
+
+                    <div class="QaA_box">
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <span class="MoneyIcon"></span>
+                            </label>
+                            <div class="layui-input-block input-spacing">
+                                <input type="text" name="number" id="qareward"  autocomplete="off" placeholder="Enter the amount of the reward" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <span class="ContentsIcon"></span>
+                            </label>
+                            <div class="layui-input-block input-spacing">
+                                <input type="text" name="number" id="qacontent"  autocomplete="off" placeholder="Enter the content" class="layui-input">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="Resource_box">
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <span class="NumberIcon"></span>
+                            </label>
+                            <div class="layui-input-block input-spacing">
+                                <input type="text" name="number" id="resourcereward" autocomplete="off" placeholder="Enter numbers of virtual currency to download" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <span class="ContentsIcon"></span>
+                            </label>
+                            <div class="layui-input-block input-spacing">
+                                <input type="text" name="number" id="resourcecontent" autocomplete="off" placeholder="Enter the resource description" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="FormContainer-one" pane>
+                            <label class="HeadPortraitbox-one">
+                                <span class="filesIcon">Upload resources</span>
+                            </label>
+                            <div class="picDiv-one">
+                                <div class="addImages">
+                                        <div class="files_name"><span>Choose to upload the resume file</span></div>
+                                        <button type="button" class="layui-btn layui-btn-normal" id="testList">Browse</button> 
+                                </div>
+                            </div>
+                            <div class="msg" style="display: none;"></div>
+                        </div>
+
+                    </div>
+
                     <div class="FormContainer" pane>
                         <label class="HeadPortraitbox">
                             <span class="HeadPortraitIcon"></span>
                         </label>
                         <div class="picDiv">
-                            <div class="addImages" id="addfile">
-                                <!--multiple属性可选择多个图片上传-->
-                                <input type="file" class="file" id="fileInput" multiple="" accept="image/png, image/jpeg, image/gif, image/jpg">
-                                <div class="text-detail">
+                            <div id="video" class="w50" style="display: none;"></div>
+                            <div id="result">
+                                <div class="add_btn" data-isNew="false">
+                                    <input type="file" name="file_input[]" id="file_input" multiple onchange="xmTanUploadImg(this)" />
                                     <span>+</span>
+                                </div>
+                                <div class="shadow_video">
+                                    </div>
+                                            <div class="video_box">
+                                                <div class="video_shut">x</div>
+                                                <div class="video_area">
+                                                <!-- <video width="100%" height="100%">
+                                                        <source src="../web/img/video.mp4" type="video/mp4"></source>
+                                                    </video>
+                                                </div> -->
+                                            </div>
                                 </div>
                             </div>
                         </div>
                         <div class="msg" style="display: none;"></div>
                     </div>
+
                     <div class="FormContainer from-but">
                         <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
                             Submit
@@ -96,6 +166,7 @@
             </div>
         </div>
     </form>
+    
     <!-- foot start 底部信息 -->
     <footer class="container-fluid FooterBg">
         <div class="row FooterContainer">
@@ -118,8 +189,8 @@
             <div class="col-xs-6 col-md-4">
                 <dl>
                     <dt>Help Center</dt>
-                    <dd>Help Center</dd>
-                    <dd>Contact Us</dd>
+                    <dd><a href="HelpCenter.html">Help Center</a></dd>
+                    <dd><a href="ContactUs.html">Contact Us</a></dd>
                 </dl>
             </div>
         </div>
@@ -136,131 +207,105 @@
     <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
     <script src="__PUBLIC__/Web/web/js/GroupDetailsRelease.js"></script>
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
-    <!--<script src="__PUBLIC__/Web/web/js/GroupDetailsRelease.js"></script>-->
-</body>
-
-
-<script>
-
-
-    layui.use('form', function(){
-        var form = layui.form;
-
-        form.on('submit(demo1)', function(data){
-
-            var filelist = $(".file")[0].files;
-
-            console.log(filelist[0].type)
-
-            $.ajax({
-                type:"post",
-                url:"{:U('Index/Ajax/ajax_createdonation')}",
-                data:{
-                },
-                dataType:"json",
-                async:false,
-                success: function(data){
-
-                    if (data!=null&&data!="") {
-
-                    }else{
-                        layer.msg('请求错误!',{
-                                time:1500,
-                                icon:2,
-                            }
-                        );
-                    }
-
-                },
-                error:function(XMLHttpRequest, textStatus, errorThrown){
-
-                    layer.msg('请求失败!',{
-                            time:1500,
-                            icon:2,
-                        }
-                    );
+    <script src="__PUBLIC__/Web/web/js/changeimg.js"></script>
+    <script>
+        var resourcefile=''
+        var $ = layui.jquery,upload = layui.upload;
+        var demoListView = $('.FormContainer-one .picDiv-one .addImages .files_name'),
+        uploadListIns = upload.render({
+                elem: '#testList'
+                ,url: 'yourUrl'
+                ,accept: 'file'
+                ,data:{}   //可放扩展数据  key-value
+                ,multiple: true
+                ,auto: false
+                ,bindAction: '#testListAction',elem: '#testList'
+                ,url: 'yourUrl'
+                ,accept: 'file'
+                ,data:{}   //可放扩展数据  key-value
+                ,multiple: true
+                ,auto: false
+                ,bindAction: '#testListAction',
+                choose:function(obj){
+                    obj.preview(function(index, file, result){
+                        var tr = $(['<span>'+file.name+'</span>'].join(''));
+                        demoListView.eq(0)[0].childNodes[0].remove();
+                        demoListView.append(tr);
+                        resourcefile = file
+                    }) 
                 }
+        })
+    </script>
+    <script>
+            var form = layui.form;
+            form.on('select',function(data){
+                console.log(data.value);
+                var selectedValue = data.value;
+                console.log(selectedValue)
+                if(selectedValue==1){
+                    $(".Post_box").css("display","block");
+                    $(".QaA_box").css("display","none");
+                    $(".Resource_box").css("display","none");
+                }
+                if(selectedValue==2){
+                    $(".Post_box").css("display","none");
+                    $(".QaA_box").css("display","block");
+                    $(".Resource_box").css("display","none");
+
+                }
+                if(selectedValue==3){
+                    $(".Post_box").css("display","none");
+                    $(".QaA_box").css("display","none");
+                    $(".Resource_box").css("display","block");
+                }
+
 
             })
-            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
-        });
 
-    });
+            layui.use('form', function(){
+                var form = layui.form;
 
+                form.on('submit(demo1)', function(data){
 
-    var imgnum = 0;
-    var videonum = 0;
-    //图片上传预览功能
-    var userAgent = navigator.userAgent; //用于判断浏览器类型
-
-    $(".file").change(function() {
-        //获取选择图片的对象
-        var docObj = $(this)[0];
-        var picDiv = $(this).parents(".picDiv");
-        //得到所有的图片文件
-        var fileList = docObj.files;
-        //循环遍历
-        for (var i = 0; i < fileList.length; i++) {
-
-            console.log(fileList[i])
-            if(fileList[i].type == 'video/mp4'){
-
-
-                var videoHtml = "<div class='imageDiv' > <video id='img" + fileList[i].name + "' ></video> <div class='cover'><i class='delbtn'>delete</i></div></div>";
-                picDiv.prepend(videoHtml);
-                var imgObjPreview = document.getElementById("img" + fileList[i].name);
-                imgObjPreview.src = window.URL.createObjectURL(docObj.files[i]);
-                imgObjPreview.style.display = 'block';
-                imgObjPreview.style.width = '160px';
-                imgObjPreview.style.height = '130px';
-
-            }
-
-            //动态添加html元素
-            var picHtml = "<div class='imageDiv' > <img id='img" + fileList[i].name + "' /> <div class='cover'><i class='delbtn'>delete</i></div></div>";
-            //console.log(picHtml);
-            picDiv.prepend(picHtml);
-            imgnum +=1;
-            //获取图片imgi的对象
-            var imgObjPreview = document.getElementById("img" + fileList[i].name);
-            if (fileList && fileList[i]) {
-                //图片属性
-                imgObjPreview.style.display = 'block';
-                imgObjPreview.style.width = '160px';
-                imgObjPreview.style.height = '130px';
-                //imgObjPreview.src = docObj.files[0].getAsDataURL();
-                //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要以下方式
-                if (userAgent.indexOf('MSIE') == -1) {
-                    //IE以外浏览器
-                    imgObjPreview.src = window.URL.createObjectURL(docObj.files[i]); //获取上传图片文件的物理路径;
-                    console.log(imgObjPreview.src);
-                    // var msgHtml = '<input type="file" id="fileInput" multiple/>';
-                } else {
-                    //IE浏览器
-                    if (docObj.value.indexOf(",") != -1) {
-                        var srcArr = docObj.value.split(",");
-                        imgObjPreview.src = srcArr[i];
-                    } else {
-                        imgObjPreview.src = docObj.value;
+                    var file_files = document.getElementById('file_input').files;
+                    var file_obj = document.getElementById('formdata');
+                    var fd = new FormData();
+                    for (var i = 0; i < file_files.length; i++){
+                        console.log(file_files[i])
+                        fd.append('img[]',file_files[i])
                     }
-                }
 
-            }
-            document.getElementById("addfile").style.visibility="hidden";
-        }
 
-        /*删除功能*/
-        $(".delbtn").click(function() {
-            var _this = $(this);
-            _this.parents(".imageDiv").remove();
-            imgnum -= 1 ;
-            if (imgnum == 0&&videonum == 0){
-                document.getElementById("addfile").style.visibility="visible";
-            }
-        });
-    });
+                    $.ajax({
+                        url: "{:U('Index/Ajax/ajax_createnote')}",
+                        type: "POST",
+                        async: false,
+                        cache: false,
+                        processData: false,// 告诉jQuery不要去处理发送的数据
+                        contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                        data: fd,
+                        dataType:"json",
+                        success: function(data){
+                            console.log(data)
 
-</script>
 
+
+                        },
+                        error: function(err) {
+
+                            layer.msg('请求失败!',{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+                        }
+                    });
+
+
+                    return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+                });
+            });
+    </script>
+</body>
 
 </html>

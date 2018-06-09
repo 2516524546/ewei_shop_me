@@ -20,97 +20,109 @@
 <body>
     <!-- logo -->
     <header class="container">
-        <div class="login_success">
+        
+<?php if(!$userid): ?><div class="logreg">
+                        <a href="<?php echo U('Index/Login/login');?>" class="Login">
+                            <span class="LoginIcon"></span>
+                            <span>Login</span>
+                        </a>
+                        <a href="<?php echo U('Index/SignUp/register');?>" class="SignUp">
+                            <span class="SignUpIcon"></span>
+                            <span>Sign Up</span>
+                        </a>
+                    </div>
+                    <?php else: ?>
+                    <div class="login_success">
 
-            <div class="success_index">
-                <a href="<?php echo U('Index/Index/index');?>">
-                    <img src="/Public/Web/web/img/common_dh_icon_home.png" alt="">
-                </a>
-            </div>
-            <div class="success_setting">
-                <img src="/Public/Web/web/img/setting.png" alt="">
-                <?php if($havemessage): ?><div class="dot"></div><?php endif; ?>
-                <div class="setting_usage">
-                    <ul>
-                        <li>
-                            <a href="<?php echo U('Index/User/acountSetting');?>">
-                                <div class="usage_img">
-                                    <img src="/Public/Web/web/img/person.png">
-                                </div>
-                                Account Settings
+                        <div class="success_index">
+                            <a href="<?php echo U('Index/Index/index');?>">
+                                <img src="/Public/Web/web/img/common_dh_icon_home.png" alt="">
                             </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo U('Index/User/resumeDetails');?>">
-                                <div class="usage_img">
-                                    <img src="/Public/Web/web/img/resume.png">
-                                </div>
-                                My Resume
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo U('Index/User/myPosts');?>">
-                                <div class="usage_img">
-                                    <img src="/Public/Web/web/img/release.png">
-                                </div>
-                                My Release
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo U('Index/User/myMessage');?>">
-                                <div class="usage_img">
-                                    <img src="/Public/Web/web/img/message.png">
-                                </div>
-                                Message
-                                <?php if($havemessage): ?><div class="dot1"></div><?php endif; ?>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo U('Index/User/myFollowing');?>">
-                                <div class="usage_img">
-                                    <img src="/Public/Web/web/img/focus.png">
-                                </div>
-                                My Focus
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo U('Index/User/addressBook');?>">
-                                <div class="usage_img">
-                                    <img src="/Public/Web/web/img/contacts.png">
-                                </div>
-                                Contacts
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo U('Index/User/myGroup');?>">
-                                <div class="usage_img">
-                                    <img src="/Public/Web/web/img/group.png">
-                                </div>
-                                My Group
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo U('Index/User/feedback');?>">
-                                <div class="usage_img">
-                                    <img src="/Public/Web/web/img/feedback.png">
-                                </div>
-                                Feedback
-                            </a>
-                        </li>
-                        <li class="quit">
-                            <a href="#" onclick="loginout()">
-                                <div class="usage_img">
-                                    <img src="/Public/Web/web/img/sign_out.png">
-                                </div>
-                                Sign Out
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="success_user">
-                <a href="<?php echo U('Index/User/personalCenter');?>&id=<?php echo ($userid); ?>">
-                    <img src="<?php if($usercontent["user_icon"]): ?>./Uploads/<?php echo ($usercontent['user_icon']); else: ?>/Public/Web/web/img/01_shouye/UserPic.png<?php endif; ?>" alt="">
+                        </div>
+                        <div class="success_setting">
+                            <img src="/Public/Web/web/img/setting.png" alt="">
+                            <?php if($havemessage): ?><div class="dot"></div><?php endif; ?>
+                            <div class="setting_usage">
+                                <ul>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/acountSetting');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/person.png">
+                                            </div>
+                                            Account Settings
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/resumeDetails');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/resume.png">
+                                            </div>
+                                            My Resume
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/myPosts');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/release.png">
+                                            </div>
+                                            My Release
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/myMessage');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/message.png">
+                                            </div>
+                                            Message
+                                            <?php if($havemessage): ?><div class="dot1"></div><?php endif; ?>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/myFollowing');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/focus.png">
+                                            </div>
+                                            My Focus
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/addressBook');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/contacts.png">
+                                            </div>
+                                            Contacts
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/myGroup');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/group.png">
+                                            </div>
+                                            My Group
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/feedback');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/feedback.png">
+                                            </div>
+                                            Feedback
+                                        </a>
+                                    </li>
+                                    <li class="quit">
+                                        <a href="#" onclick="loginout()">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/sign_out.png">
+                                            </div>
+                                            Sign Out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="success_user">
+                            <a href="<?php echo U('Index/User/personalCenter');?>&id=<?php echo ($userid); ?>">
+                                <img src="<?php if($usercontent["user_icon"]): ?>./Uploads/<?php echo ($usercontent['user_icon']); else: ?>/Public/Web/web/img/01_shouye/UserPic.png<?php endif; ?>" alt="">
                 </a>
             </div>
             <div class="success_name">
@@ -127,7 +139,8 @@
                     </div>
                 </a>
             </div>
-        </div>
+        </div><?php endif; ?>
+        <script src="/Public/Web/web/js/loginout.js"></script>
     </header>
     <hr>
     <!-- Crumbs nav -->
@@ -548,55 +561,6 @@
 
     }
 
-    function loginout() {
-
-        $.ajax({
-            type:"post",
-            url:"<?php echo U('Index/Ajax/ajax_loginout');?>",
-            data:{
-
-            },
-            dataType:"json",
-            async:false,
-            success: function(data){
-                if (data!=null&&data!="") {
-                    if (data.str == 1) {
-                        layer.msg(data.msg,{
-                                time:1500,
-                                icon:1,
-                            },function () {
-                                location.reload();
-                            }
-                        );
-                    }else{
-                        layer.msg(data.msg,{
-                                time:1500,
-                                icon:2,
-                            }
-                        );
-                    }
-
-                }else{
-                    layer.msg('请求错误!',{
-                            time:1500,
-                            icon:2,
-                        }
-                    );
-                }
-
-            },
-            error:function(XMLHttpRequest, textStatus, errorThrown){
-
-                layer.msg('请求失败!',{
-                        time:1500,
-                        icon:2,
-                    }
-                );
-            }
-
-        })
-
-    }
 
 </script>
 

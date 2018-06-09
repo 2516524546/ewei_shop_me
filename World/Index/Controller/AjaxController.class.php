@@ -8,6 +8,7 @@ use Index\Model\CrowdModel;
 use Index\Model\DonationModel;
 use Index\Model\FirstMarkModel;
 use Index\Model\FourthMarkModel;
+use Index\Model\FriendsModel;
 use Index\Model\OpinionModel;
 use Index\Model\ProposalModel;
 use Index\Model\ResumeModel;
@@ -1625,6 +1626,79 @@ public function ajax_donationpay()
         } else {
 
             die(json_encode(array('str' => 0, 'msg' => '存在非法字符')));
+        }
+
+    }
+
+    //群成员列表
+    public function ajax_members(){
+
+        if (IS_POST) {
+
+            if (!isset($_POST['limit1']) || $this->post('limit1') == ''){
+
+                die(json_encode(array('str' => 3, 'msg' => '页码错误')));
+            } else if (!isset($_POST['limit2']) || $this->post('limit2') == ''){
+
+                die(json_encode(array('str' => 4, 'msg' => '页码错误')));
+            } else if (!isset($_POST['cid']) || $this->post('cid') == ''){
+
+                die(json_encode(array('str' => 5, 'msg' => '没有该群')));
+            } else {
+
+                $limit2 = $this->post('limit2');
+                $limit1 = ($this->post('limit1')-1)*$limit2;
+                $crowdmembermodel = new CrowdMemberModel();
+                $list = $crowdmembermodel->findlistlimit('crowd_member_cid = '.$this->post('cid'),'u_user u on u_crowd_member.crowd_member_uid = u.user_id',$limit1,$limit2,'INNER','crowd_member_status desc,crowd_member_logintime desc','u_crowd_member.*,u.user_id,u.user_icon,u.user_name');
+                $adminlist = array();
+                $memberlist = array();
+                $friendmodel = new FriendsModel();
+                foreach ($list as $l){
+                    $friendone = $friendmodel->findone('firends_uid = '.$this->userid.' and firends_aid = '.$l['user_id'].' and firends_type = 1');
+
+                    if ($friendone){
+                        $l['isfriend']=1;
+                    }else{
+                        $l['isfriend']=0;
+                    }
+                    if ($l['crowd_member_status']!=0){
+                        $adminlist[]=$l;
+                    }else if ($l['crowd_member_status']==0){
+                        $memberlist[]=$l;
+                    }
+                }
+
+
+                if ($list) {
+
+                    die(json_encode(array('str' => 1, 'adminlist' => $adminlist, 'memberlist' => $memberlist)));
+                } else {
+
+                    die(json_encode(array('str' => 2, 'msg' => '暂无数据')));
+                }
+            }
+
+        } else {
+
+            die(json_encode(array('str' => 0, 'msg' => '存在非法字符')));
+        }
+
+
+    }
+
+    //发布帖子
+    public function ajax_createnote(){
+
+        $upload = new \Think\Upload();// 实例化上传类
+        $upload->maxSize = 307200 ;// 设置附件上传大小
+        $upload->exts = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+        $upload->rootPath = './Uploads/'; // 设置附件上传根目录
+        $info = $upload->upload($_FILES);
+
+        if(!$info) {// 上传错误提示错误信息
+            die(json_encode(array('str' => 0)));
+        }else{// 上传成功 获取上传文件信息
+            die(json_encode(array('str' => 1,'msg'=>$info,'file'=>$_FILES)));
         }
 
     }

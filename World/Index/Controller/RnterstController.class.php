@@ -31,9 +31,6 @@ class RnterstController extends CommonController {
         $crowdcount = $crodmodel->findone('crowd_mid = '.$this->modeleid,'','','count(*) num')['num'];
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
         $this->assign(array(
-            'userid' => $this->userid,
-            'usercontent' => $this->usercontent,
-            'havemessage' => $this->havemessage,
             'data' =>$data,
             'crodlist'=>$crodlist,
             'crowdcount' => $crowdcount,
@@ -103,12 +100,10 @@ class RnterstController extends CommonController {
         $memberlist = $crowdmembermodel->findlist('crowd_member_cid = '.$_GET['cid'],'u_user u on u_crowd_member.crowd_member_uid = u.user_id','INNER','crowd_member_status desc','u_crowd_member.*,u.user_icon');
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
         $this->assign(array(
-            'userid' => $this->userid,
-            'usercontent' => $this->usercontent,
-            'havemessage' => $this->havemessage,
             'crowone' => $crowone,
             'join_in' => $join_in,
             'memberlist' => $memberlist,
+            'cid' => $_GET['cid'],
 
         ));
 
@@ -169,7 +164,6 @@ class RnterstController extends CommonController {
      */
     public function groupDetailsRelease(){
 
-
         if (!isset($_GET['cid'])){
             Header("Location:".U('Index/Rnterst/interest'));
             exit();
@@ -198,10 +192,8 @@ class RnterstController extends CommonController {
         $crowdtabmodel = new CrowdTabModel();
         $tablist = $crowdtabmodel->findlist('','crowd_tab_sort');
         $this->assign(array(
-            'userid' => $this->userid,
-            'usercontent' => $this->usercontent,
-            'havemessage' => $this->havemessage,
             'tablist' => $tablist,
+            'cid' => $_GET['cid'],
 
         ));
 
@@ -212,6 +204,39 @@ class RnterstController extends CommonController {
     更多成员
      */
     public function moreMembers(){
+
+        if (!isset($_GET['cid'])){
+            Header("Location:".U('Index/Rnterst/interest'));
+            exit();
+        }
+        if (!$this->userid){
+            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
+            Header("Location:".U('Index/Login/login'));
+            exit();
+        }
+
+        $crowdmembermodel = new CrowdMemberModel();
+
+        $list = $crowdmembermodel->findlistlimit('crowd_member_cid = '.$_GET['cid'],'u_user u on u_crowd_member.crowd_member_uid = u.user_id',0,10,'INNER','crowd_member_status desc,crowd_member_logintime desc','u_crowd_member.*,u.user_icon,u.user_name');
+        $listcount =$crowdmembermodel->findonejoin('crowd_member_cid = '.$_GET['cid'],'u_user u on u_crowd_member.crowd_member_uid = u.user_id','INNER','crowd_member_status desc,crowd_member_logintime desc','count(*) num')['num'];
+
+        $adminlist = array();
+        $memberlist = array();
+        foreach ($list as $l){
+            if ($l['crowd_member_status']!=0){
+                $adminlist[]=$l;
+            }else if ($l['crowd_member_status']==0){
+                $memberlist[]=$l;
+            }
+        }
+
+        $this->assign(array(
+            'cid' => $_GET['cid'],
+            'adminlist' => $adminlist,
+            'memberlist' => $memberlist,
+            'listcount' => $listcount,
+
+        ));
 
         $this->display();
     }
