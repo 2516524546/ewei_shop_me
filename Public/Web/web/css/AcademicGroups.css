@@ -37,7 +37,7 @@
 	overflow: hidden;
 }
 .LatestContentContainer .layui-tab .btnlist li{
-	line-height: normal;
+	line-height: 21px;
 	display:block;
 }
 .layui-tab-title .layui-this{
@@ -156,7 +156,6 @@
 }
 .BannerContainer {
   margin-top: 50px;
-  width: 354px;
   border-radius: 4px;
   box-shadow: 2px 2px 14px #cecece;
 }

@@ -322,7 +322,7 @@
                         <div class="row">
                             <div class="col-xs-8 col-sm-6">
                                 <div class="UserBox">
-                                    <a href="lifeDetails.html" class="UserLink">
+                                    <a href="<?php echo U('Index/Life/lifeDetails');?>" class="UserLink">
                                         <div class="UserBox_img">
                                             <img src="/Public/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
                                         </div>
@@ -456,38 +456,41 @@
             <!--Group list end 群列表-->
 
 
-            <!--foot start 底部信息-->
-		<footer class="container-fluid FooterBg">
-                <div class="row FooterContainer">
-                    <div class="col-xs-6 col-md-4">
-                        <dl>
-                            <dt>ABOUT</dt>
-                            <dd>
-                                NewWorld.net is a comprehensive website that provides an efficient source of resources and convenience for our every -day lives. We can easily discover, share and create a new world.
-                            </dd>
-                        </dl>
-                    </div>
-                    <div class="col-xs-6 col-md-4">
-                        <dl>
-                            <dt>SUPPORT</dt>
-                            <dd>Premium Support</dd>
-                            <dd>Get Started</dd>
-                            <dd>Partners</dd>
-                        </dl>
-                    </div>
-                    <div class="col-xs-6 col-md-4">
-                        <dl>
-                            <dt>Help Center</dt>
-                            <dd><a href="HelpCenter.html">Help Center</a></dd>
-                            <dd><a href="ContactUs.html">Contact Us</a></dd>
-                        </dl>
-                    </div>
-                </div>
-                <div class="row copyright">
-                    <div class="col-md-12">
-                        <p class="text-center">&copy; 2018 NewWorld. All rights reserved.</p>
-                    </div>
-                </div>
+            <!-- footer -->
+            <footer>
+                <!-- foot start 底部信息 -->
+<footer class="container-fluid FooterBg">
+        <div class="row FooterContainer">
+            <div class="col-xs-6 col-md-4">
+                <dl>
+                    <dt>ABOUT</dt>
+                    <dd>
+                        NewWorld.net is a comprehensive website that provides an efficient source of resources and convenience for our every -day lives. We can easily discover, share and create a new world.
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <dl>
+                    <dt>SUPPORT</dt>
+                    <dd>Premium Support</dd>
+                    <dd>Get Started</dd>
+                    <dd>Partners</dd>
+                </dl>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <dl>
+                    <dt>Help Center</dt>
+                    <dd><a href="<?php echo U('Index/User/helpCenter');?>">Help Center</a></dd>
+                    <dd><a href="<?php echo U('Index/User/contactUs');?>">Contact Us</a></dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row copyright">
+            <div class="col-md-12">
+                <p class="text-center">&copy; 2018 NewWorld. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
             </footer>
                 <!--foot end 底部信息-->
                 <script src="/Public/Web/js/lib/jquery/dist/jquery.min.js"></script>

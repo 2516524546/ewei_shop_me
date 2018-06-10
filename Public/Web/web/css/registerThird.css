@@ -57,10 +57,6 @@
     margin-right: 17px;
     margin-bottom: 41px;     
 }
-.Group_list .Group_item:hover{
-    box-shadow: 0 2px 18px 2px #46c4b8;
-    border: 1px solid #46c4b8;
-}
 .Group_list .active{
     box-shadow: 0 2px 18px 2px #46c4b8;
     border: 1px solid #46c4b8;

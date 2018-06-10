@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="/Public/Web/web/css/register.css">
     <link rel="stylesheet" href="/Public/Web/web/css/Donation.css">
     <link rel="stylesheet" href="/Public/Web/web/css/AcademicGroups.css">
-    <link rel="stylesheet" href="/Public/Web/web/css/GroupDetails.css">
     <link rel="stylesheet" href="/Public/Web/js/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/Public/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="/Public/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="/Public/Web/js/lib/layui/dist/css/layui.css">
+    <link rel="stylesheet" href="/Public/Web/web/css/GroupDetails.css">
+    <link rel="stylesheet" href="/Public/Web//web/css/AcademicChose.css">
     <link rel="stylesheet" href="/Public/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="/Public/Web/web/css/success_index.css">
 </head>
@@ -179,11 +180,11 @@
                         	<div class="layui-row layui-col-space10">
 	                            <div class=" layui-col-md8 layui-col-space10 btnlist">
 	                            	<ul class="layui-tab-title layui-col-space10">
-	                               		<li class="layui-this layui-btn layui-btn-radius layui-btn-xs layui-btn-normal layui-col-md4" >Post</li>
-										<li class="layui-btn layui-btn-radius layui-btn-xs layui-btn-normal layui-col-md4" style="margin: 0 0 5px 0;line-break: normal;">Q&A</li>
-										<li class="layui-btn layui-btn-radius layui-btn-xs layui-btn-normal layui-col-md4" style="margin: 0 0 5px 0;padding-left: 5px;">Resources</li>
-										<li class="layui-btn layui-btn-radius layui-btn-xs layui-btn-normal layui-col-md6" style="margin: 0 0 5px 0;padding-left: 5px;">Provide counselling</li>
-										<li class="layui-btn layui-btn-radius layui-btn-xs layui-btn-normal layui-col-md6" style="margin: 0 0 5px 0;">Seeking counselling</li>
+	                               		<li class="layui-this layui-btn layui-btn-radius layui-btn-xs layui-btn-normal layui-col-md4 btn_normal" >Post</li>
+										<li class="layui-btn layui-btn-radius layui-btn-xs layui-btn-normal layui-col-md4 btn_normal">Q&A</li>
+										<li class="layui-btn layui-btn-radius layui-btn-xs layui-btn-normal layui-col-md4 btn_normal">Resources</li>
+										<li class="layui-btn layui-btn-radius layui-btn-xs layui-btn-normal layui-col-md6 btn_normal">Provide counselling</li>
+										<li class="layui-btn layui-btn-radius layui-btn-xs layui-btn-normal layui-col-md6 btn_normal">Seeking counselling</li>
 	                            	</ul>
 	                            </div>
 		                        <div class="layui-input-block More layui-col-md2">
