@@ -9,6 +9,8 @@ use Index\Model\DonationModel;
 use Index\Model\FirstMarkModel;
 use Index\Model\FourthMarkModel;
 use Index\Model\FriendsModel;
+use Index\Model\NoteModel;
+use Index\Model\NoteVIModel;
 use Index\Model\OpinionModel;
 use Index\Model\ProposalModel;
 use Index\Model\ResumeModel;
@@ -1690,40 +1692,91 @@ public function ajax_donationpay()
     public function ajax_createnote(){
 
 
-        if ($_FILES){
+        if (IS_POST){
 
 
-            die(json_encode(array('str' => 0,'msg'=>$_POST)));
+            if (!isset($_POST['name']) || $this->post('name') == ''){
 
+                die(json_encode(array('str' => 3, 'msg' => '请输入标题')));
+            }else if(!isset($_POST['content']) || $this->post('content') == ''){
 
-            $upload = new \Think\Upload();// 实例化上传类
-            $type = explode('/',$_FILES['img']['type'][0]);
-            if ($type[0]=='video'){
-                $upload->maxSize = 204800000 ;// 设置附件上传大小
-            }else{
-                $upload->maxSize = 5120000 ;// 设置附件上传大小
-            }
+                die(json_encode(array('str' => 4, 'msg' => '请输入内容')));
+            }else if(!isset($_POST['cid']) || $this->post('cid') == ''){
 
-            $upload->exts = array('jpg', 'gif', 'png', 'jpeg','mp4','avi');// 设置附件上传类型
-            $upload->rootPath = './Uploads/'; // 设置附件上传根目录
+                die(json_encode(array('str' => 6, 'msg' => '没有该群')));
+            }else {
+                if ($_FILES) {
+                    $upload = new \Think\Upload();// 实例化上传类
+                    $type = explode('/', $_FILES['img']['type'][0]);
+                    if ($type[0] == 'video') {
+                        $upload->maxSize = 204800000;// 设置附件上传大小
+                    } else {
+                        $upload->maxSize = 5120000;// 设置附件上传大小
+                    }
 
-            $filelist  = $upload->dealFiles($_FILES);
+                    $upload->exts = array('jpg', 'gif', 'png', 'jpeg', 'mp4', 'avi');// 设置附件上传类型
+                    $upload->rootPath = './Uploads/'; // 设置附件上传根目录
 
-            $info = $upload->upload($_FILES);
+                    $filelist = $upload->dealFiles($_FILES);
 
+                    $info = $upload->upload($_FILES);
 
-            if(!$info||count($filelist)!=count($info)) {// 上传错误提示错误信息
-                die(json_encode(array('str' => 0,'msg'=>$upload->getError())));
-            }else{// 上传成功 获取上传文件信息
+                    if (!$info || count($filelist) != count($info)) {
+                        // 上传错误提示错误信息
+                        die(json_encode(array('str' => 0, 'msg' => $upload->getError())));
+                    } else {
 
+                        $notemodel = new NoteModel();
+                        $notevimodel = new NoteVIModel();
 
+                        $notemodel->startTrans();
+                        try{
+                            $notedata = array(
+                                'note_cid' => $this->post('cid'),
+                                'note_uid' => $this->userid,
+                                'note_name' => $this->post('name'),
+                                'note_content' => $this->post('content'),
+                                'note_createtime' => date("Y-m-d H:i:s", time()),
+                            );
 
+                            $noteid = $notemodel->add($notedata);
+
+                            if ($noteid){
+
+                                foreach ($info as $i){
+                                    $url = $i['savepath'].$i['savename'];
+
+                                    $vidata = array(
+                                        'note_vi_nid' => $noteid,
+                                        'note_vi_url' =>$url,
+                                    );
+
+                                    $aa = $notevimodel->add($vidata);
+
+                                }
+
+                                $notemodel->commit();
+                                die(json_encode(array('str' => 1, 'id' => $noteid,'cid' => $this->post('cid'))));
+                            }else{
+                                $notevimodel->rollback();
+                                die(json_encode(array('str' => 2, 'msg' => '发布失败')));
+                            }
+                        }catch (Exception $e){
+                            $notevimodel->rollback();
+                            die(json_encode(array('str' => 2, 'msg' => '发布失败')));
+                        }
+
+                    }
+                }else{
+
+                    die(json_encode(array('str' => 5,'msg'=>'请上传相应的图片或视频')));
+                }
             }
         }else{
-            die(json_encode(array('str' => 0,'msg'=>$_POST)));
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
         }
-
-
     }
+
+
 
 }

@@ -20,7 +20,8 @@
 <body>
     <!-- logo -->
 		<header class="container">
-            <?php if(!$userid): ?><div class="logreg">
+            
+<?php if(!$userid): ?><div class="logreg">
                         <a href="<?php echo U('Index/Login/login');?>" class="Login">
                             <span class="LoginIcon"></span>
                             <span>Login</span>
@@ -139,6 +140,7 @@
                 </a>
             </div>
         </div><?php endif; ?>
+        <script src="/Public/Web/web/js/loginout.js"></script>
         </header>
         <hr>
         <!-- Crumbs nav -->
