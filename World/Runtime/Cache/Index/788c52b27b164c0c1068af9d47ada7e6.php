@@ -70,6 +70,17 @@
                         </button>
                     </div>
                 </div>
+                <div class="orContainer">
+                    <div class="orContainer_con">
+                        or
+                    </div>
+                    <div class="Facebook">
+                        <div class="Facebook_img">
+                            <img src="/Public/Web/web/img/facebook.png" alt="">
+                        </div>
+                        <p>Facebook</p>
+                    </div>
+                </div>
             </div>
         </div>
     </form>

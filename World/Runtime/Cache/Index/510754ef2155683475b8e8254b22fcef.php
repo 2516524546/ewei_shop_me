@@ -690,6 +690,7 @@
         </div>
     </div>
     <!-- Group list 群列表 end -->
+    <!-- footer -->
     <footer>
         <!-- foot start 底部信息 -->
 <footer class="container-fluid FooterBg">
