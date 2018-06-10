@@ -147,9 +147,9 @@
         <hr>
     <!-- Crumbs nav -->
     <div class="container crumbs">
-        <a href="Interest.html" class="crumbsa">interest</a>
+        <a href="<?php echo U('Index/Rnterst/interest');?>" class="crumbsa">interest</a>
         <cite class="Icon"></cite>
-        <a href="GroupDetails.html" class="crumbsa">Group name</a>
+        <a href="<?php echo U('Index/Rnterst/groupDetails');?>&cid=<?php echo ($cid); ?>" class="crumbsa"><?php echo ($crowdone['crowd_name']); ?></a>
         <cite class="Icon"></cite>
         <span class="crumbsTitle">Relase</span>
     </div>
@@ -412,7 +412,7 @@
                                             time:1500,
                                             icon:1,
                                         },function () {
-                                            window.location.href="<?php echo U('Index/Rnterst/postVideoDetails');?>&nid="+data.msg;
+                                            window.location.href="<?php echo U('Index/Rnterst/postVideoDetails');?>&id="+data.id+"&cid="+data.cid;
                                         }
                                     );
 
