@@ -105,7 +105,7 @@
                             if (data.str == 1) {
                                 layer.msg(data.msg,{
                                         time:1500,
-                                        icon:2,
+                                        icon:1,
                                     },function () {
                                     window.location.href="<?php echo U('Index/Login/login');?>";
                                     }

@@ -4,146 +4,148 @@
         <meta charset="UTF-8">
         <title>My Following</title>
         <meta name="viewport" content="width=device-width, initial-scale=0 user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-        <link rel="stylesheet" href="../web/css/register.css">
-        <link rel="stylesheet" href="../web/css/Donation.css">
-        <link rel="stylesheet" href="../web/css/Crumbsnav.css">
-        <link rel="stylesheet" href="../js/lib/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
-        <link rel="stylesheet" href="../js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
-        <link rel="stylesheet" href="../js/lib/layui/dist/css/layui.css">
-        <link rel="stylesheet" href="../web/css/Crumbsnav.css">
-        <link rel="stylesheet" href="../web/css/success_index.css">
-        <link rel="stylesheet" href="../web/css/MyFollowing.css">
+        <link rel="stylesheet" href="/Public/Web/web/css/register.css">
+        <link rel="stylesheet" href="/Public/Web/web/css/Donation.css">
+        <link rel="stylesheet" href="/Public/Web/web/css/Crumbsnav.css">
+        <link rel="stylesheet" href="/Public/Web/js/lib/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/Public/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="/Public/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
+        <link rel="stylesheet" href="/Public/Web/js/lib/layui/dist/css/layui.css">
+        <link rel="stylesheet" href="/Public/Web/web/css/Crumbsnav.css">
+        <link rel="stylesheet" href="/Public/Web/web/css/success_index.css">
+        <link rel="stylesheet" href="/Public/Web/web/css/MyFollowing.css">
     </head>
 
     <body>
          <!-- logo -->
         <header class="container">
-                <div class="logreg">
-                    <a href="login.html" class="Login">
-                        <span class="LoginIcon"></span>
-                        <span>Login</span>
-                    </a>
-                    <a href="register.html" class="SignUp">
-                        <span class="SignUpIcon"></span>
-                        <span>Sign Up</span>
-                    </a>
-                </div>
-                <div class="login_success">
-                                
+            
+<?php if(!$userid): ?><div class="logreg">
+                        <a href="<?php echo U('Index/Login/login');?>" class="Login">
+                            <span class="LoginIcon"></span>
+                            <span>Login</span>
+                        </a>
+                        <a href="<?php echo U('Index/SignUp/register');?>" class="SignUp">
+                            <span class="SignUpIcon"></span>
+                            <span>Sign Up</span>
+                        </a>
+                    </div>
+                    <?php else: ?>
+                    <div class="login_success">
+
                         <div class="success_index">
-                                <a href="index.html">
-                                    <img src="img/common_dh_icon_home.png" alt="">
-                                </a>
+                            <a href="<?php echo U('Index/Index/index');?>">
+                                <img src="/Public/Web/web/img/common_dh_icon_home.png" alt="">
+                            </a>
+                        </div>
+                        <div class="success_setting">
+                            <img src="/Public/Web/web/img/setting.png" alt="">
+                            <?php if($havemessage): ?><div class="dot"></div><?php endif; ?>
+                            <div class="setting_usage">
+                                <ul>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/acountSetting');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/person.png">
+                                            </div>
+                                            Account Settings
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/resumeDetails');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/resume.png">
+                                            </div>
+                                            My Resume
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/myPosts');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/release.png">
+                                            </div>
+                                            My Release
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/myMessage');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/message.png">
+                                            </div>
+                                            Message
+                                            <?php if($havemessage): ?><div class="dot1"></div><?php endif; ?>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/myFollowing');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/focus.png">
+                                            </div>
+                                            My Focus
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/addressBook');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/contacts.png">
+                                            </div>
+                                            Contacts
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/myGroup');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/group.png">
+                                            </div>
+                                            My Group
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo U('Index/User/feedback');?>">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/feedback.png">
+                                            </div>
+                                            Feedback
+                                        </a>
+                                    </li>
+                                    <li class="quit">
+                                        <a href="#" onclick="loginout()">
+                                            <div class="usage_img">
+                                                <img src="/Public/Web/web/img/sign_out.png">
+                                            </div>
+                                            Sign Out
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="success_setting">
-                                    <img src="img/setting.png" alt="">
-                                    <div class="dot"></div>
-                                    <div class="setting_usage">
-                                        <ul>
-                                            <li>
-                                                <a href="AcountSetting.html">
-                                                    <div class="usage_img">
-                                                        <img src="img/person.png"">
-                                                    </div>
-                                                    Account Settings
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="ResumeDetails.html">
-                                                    <div class="usage_img">
-                                                        <img src="img/resume.png"">
-                                                    </div>
-                                                    My Resume
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="MyPosts.html">
-                                                        <div class="usage_img">
-                                                                <img src="img/release.png"">
-                                                            </div>
-                                                    My Release
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="MyMessage.html">
-                                                        <div class="usage_img">
-                                                                <img src="img/message.png"">
-                                                            </div>
-                                                    Message
-                                                    <div class="dot1"></div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="MyFollowing.html">
-                                                        <div class="usage_img">
-                                                                <img src="img/focus.png"">
-                                                            </div>
-                                                    My Focus
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="AddressBook.html">
-                                                        <div class="usage_img">
-                                                                <img src="img/contacts.png"">
-                                                            </div>
-                                                    Contacts
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="MyGroup.html">
-                                                        <div class="usage_img">
-                                                                <img src="img/group.png"">
-                                                            </div>
-                                                    My Group
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="feedback.html">
-                                                        <div class="usage_img">
-                                                                <img src="img/feedback.png"">
-                                                            </div>
-                                                    Feedback
-                                                </a>
-                                            </li>
-                                            <li class="quit">
-                                                <a href="#">
-                                                    <div class="usage_img">
-                                                        <img src="img/sign_out.png"">
-                                                    </div>
-                                                    Sign Out
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                            </div>
-                            <div class="success_user">
-                                <a href="PersonalCenter.html">
-                                    <img src="img/01_shouye/UserPic.png" alt="">
-                                </a>
-                            </div>
-                            <div class="success_name">
-                                <a href="PersonalCenter.html">Davie</a>
-                            </div>
-                            <div class="success_line"></div>
-                            <div class="success_money">
-                                <a href="VirtualCurrencyRecharge.html">
-                                    <div class="money_img">
-                                        <img src="img/money.png" alt="">
-                                    </div>
-                                    <div class="money_num">
-                                        1280
-                                    </div>
-                                </a>
-                            </div>
-                            
+                        </div>
+                        <div class="success_user">
+                            <a href="<?php echo U('Index/User/personalCenter');?>&id=<?php echo ($userid); ?>">
+                                <img src="<?php if($usercontent["user_icon"]): ?>./Uploads/<?php echo ($usercontent['user_icon']); else: ?>/Public/Web/web/img/01_shouye/UserPic.png<?php endif; ?>" alt="">
+                </a>
             </div>
+            <div class="success_name">
+                <a href="<?php echo U('Index/User/personalCenter');?>&id=<?php echo ($userid); ?>"><?php echo ($usercontent['user_name']); ?></a>
+            </div>
+            <div class="success_line"></div>
+            <div class="success_money">
+                <a href="<?php echo U('Index/User/virtualCurrencyRecharge');?>">
+                    <div class="money_img">
+                        <img src="/Public/Web/web/img/money.png" alt="">
+                    </div>
+                    <div class="money_num">
+                        <?php echo ($usercontent['user_havecoin']); ?>
+                    </div>
+                </a>
+            </div>
+        </div><?php endif; ?>
+        <script src="/Public/Web/web/js/loginout.js"></script>
             </header>
             <hr>
 
         <!-- Crumbs nav -->
         <div class="container crumbs">
-            <a href="index.html" class="crumbsa"><img src="./img/common_dh_icon_home.png" alt=""></a>
+            <a href="index.html" class="crumbsa"><img src="/Public/Web/web/img/common_dh_icon_home.png" alt=""></a>
             <cite class="Icon"></cite>
             <span class="crumbsTitle">My following</span>
         </div>
@@ -215,7 +217,7 @@
                         <a href="#">
                             <div class="MyFollowing_content">
                                 <div class="MyFollowing_img">
-                                    <img src="../web/img/01_shouye/UserPic.png" alt="">
+                                    <img src="/Public/Web/web/img/01_shouye/UserPic.png" alt="">
                                 </div>
                                 <div class="MyFollowing_details">
                                     <div class="content_name">
@@ -242,7 +244,7 @@
                          <a href="#">
                              <div class="MyFollowing_content">
                                  <div class="MyFollowing_img">
-                                     <img src="../web/img/01_shouye/UserPic.png" alt="">
+                                     <img src="/Public/Web/web/img/01_shouye/UserPic.png" alt="">
                                  </div>
                                  <div class="MyFollowing_details">
                                      <div class="content_name">
@@ -312,12 +314,12 @@
             <!-- foot end 底部信息 -->
 
     </body>
-    <script src="../js/lib/jquery/dist/jquery.min.js"></script>
-    <script src="../js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../js/lib/layui/dist/layui.all.js"></script>
-    <script src="../web/js/StickSonDetails.js"></script>
-    <script src="../web/js/loginQuit.js"></script>
+    <script src="/Public/Web/js/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/Public/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/Public/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/Public/Web/js/lib/layui/dist/layui.all.js"></script>
+    <script src="/Public/Web/web/js/StickSonDetails.js"></script>
+    <script src="/Public/Web/web/js/loginQuit.js"></script>
     <script>
 
     </script>

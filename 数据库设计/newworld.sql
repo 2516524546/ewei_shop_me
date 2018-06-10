@@ -9,3 +9,8 @@ ADD COLUMN `note_comment_isreply`  smallint(3) NOT NULL DEFAULT 0 COMMENT 'ÊÇ·ñ»
 ALTER TABLE `u_note_vi`
 MODIFY COLUMN `note_vi_id`  bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Ìû×ÓµÄÊÓÆµÍ¼Æ¬±í×ÔÔöid' FIRST ;
 
+ALTER TABLE `u_note_vi`
+ADD COLUMN `note_vi_type`  smallint(3) NULL COMMENT 'ÎÄ¼þÀàÐÍ£¬1ÎªÍ¼Æ¬£¬2ÎªÊÓÆµ' AFTER `note_vi_url`;
+
+ALTER TABLE `u_question_vi`
+ADD COLUMN `question_vi_type`  smallint(3) NULL COMMENT 'ÎÄ¼þÀàÐÍ,1ÎªÍ¼Æ¬£¬2ÎªÊÓÆµ' AFTER `question_vi_url`;

@@ -37,7 +37,7 @@
                         </label>
                         <div class="layui-input-block input-spacing">
                             <input type="email" name="email" lay-verify="required" autocomplete="off" <?php if($register_mail): ?>value="<?php echo ($register_mail); ?>"<?php endif; ?> placeholder="Enter the mailbox" class="layui-input input-float" id="mail">
-                            <input class="layui-btn layui-btn-normal" type="button" name="CodeButton" value="Verification Code" onclick="sendemail()">
+                            <input class="layui-btn layui-btn-normal sendCode" type="button" name="CodeButton" value="Verification Code" onclick="sendemail()">
                         </div>
                     </div>
                     <div class="FormContainer" pane>
@@ -132,7 +132,9 @@ layui.use('form', function(){
       return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
     });
 });
-    
+
+
+
 function sendemail() {
     $.ajax({
         type:"post",
@@ -145,6 +147,7 @@ function sendemail() {
         success: function(data){
             if (data!=null&&data!="") {
                 if (data.str == 1) {
+                    cd()
                     layer.msg(data.msg,{
                             time:1500,
                             icon:1,
@@ -180,6 +183,30 @@ function sendemail() {
 
 }
 
+</script>
+
+<script>
+    var InterValObj; //timer变量，控制时间
+    var count = 60; //间隔函数，1秒执行
+    var curCount;//当前剩余秒数
+    function cd(){
+        curCount = count;
+        //设置button效果，开始计时
+        $(".sendCode").attr("disabled", "true");
+        // $(".sendCode").val("请在" + curCount + "秒内输入验证码");
+        InterValObj = window.setInterval(SetRemainTime, 100); //启动计时器，1秒执行一次
+    }
+    function SetRemainTime() {
+        if (curCount == 0) {
+            window.clearInterval(InterValObj);//停止计时器
+            $(".sendCode").removeAttr("disabled");//启用按钮
+            $(".sendCode").val("Resend the verification code");
+        }
+        else {
+            curCount--;
+            $(".sendCode").val(" " + curCount + " seconds");
+        }
+    }
 </script>
 
 

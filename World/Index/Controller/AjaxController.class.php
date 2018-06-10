@@ -919,7 +919,7 @@ public function ajax_donationpay()
             $file = $_FILES['img'];
 
             $upload = new \Think\Upload();// 实例化上传类
-            $upload->maxSize = 307200 ;// 设置附件上传大小
+            $upload->maxSize = 3072000 ;// 设置附件上传大小
             $upload->exts = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
             $upload->rootPath = './Uploads/'; // 设置附件上传根目录
 // 上传单个文件
@@ -1715,7 +1715,7 @@ public function ajax_donationpay()
                     if ($type[0] == 'video') {
                         $upload->maxSize = 204800000;// 设置附件上传大小
                     } else {
-                        $upload->maxSize = 5120000;// 设置附件上传大小
+                        $upload->maxSize = 3072000;// 设置附件上传大小
                     }
 
                     $upload->exts = array('jpg', 'gif', 'png', 'jpeg', 'mp4', 'avi');// 设置附件上传类型
@@ -1804,7 +1804,7 @@ public function ajax_donationpay()
                     if ($type[0] == 'video') {
                         $upload->maxSize = 204800000;// 设置附件上传大小
                     } else {
-                        $upload->maxSize = 5120000;// 设置附件上传大小
+                        $upload->maxSize = 3072000;// 设置附件上传大小
                     }
 
                     $upload->exts = array('jpg', 'gif', 'png', 'jpeg', 'mp4', 'avi');// 设置附件上传类型
@@ -1903,7 +1903,7 @@ public function ajax_donationpay()
                     if ($type[0] == 'video') {
                         $upload->maxSize = 204800000;// 设置附件上传大小
                     } else {
-                        $upload->maxSize = 5120000;// 设置附件上传大小
+                        $upload->maxSize = 3072000;// 设置附件上传大小
                     }
 
                     $upload->exts = array('jpg', 'gif', 'png', 'jpeg', 'mp4', 'avi');// 设置附件上传类型
@@ -1977,6 +1977,24 @@ public function ajax_donationpay()
         }
     }
 
+    //帖子懒加载
+    public function ajax_havenote(){
+        if (IS_POST){
 
+            $where = 'note_cid = '.$this->post('cid').' and note_ishide = 1';
+            if (isset($_POST['name'])&&$this->post('name')!=''){
+                $where .= ' and note_name like "%'.$this->post('name').'%"';
+            }
+            $notemodel = new NoteModel();
+            $limit1 = $this->post('limit1')*$this->post('limit2');
+            $limit2 = $this->post('limit2');
+            $notelist = $notemodel->joinonelist($where,'u_user u on u_note.note_uid = u.user_id',$this->post('order'),$limit1,$limit2);
+            $notecount = $notemodel->joinone($where,'u_user u on u_note.note_uid = u.user_id',$this->post('order'),'INNER','count(*) num')['num'];
+            die(json_encode(array('str' => 1,'msg'=>$notelist,'count'=>$notecount)));
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
 
 }
