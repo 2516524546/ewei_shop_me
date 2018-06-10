@@ -618,12 +618,17 @@
                         </a>
                     </h4>
                     <p class="p"><b>Administrator  : </b></p>
-                    <p class="p">
-
-                        <?php if(is_array($memberlist)): foreach($memberlist as $memberkey=>$member): if($member["crowd_member_status"] == 1||$member["crowd_member_status"] == 2): ?><img src="Uploads/<?php echo ($member['user_icon']); ?>" class="userimgs" style="width: 50px;height: 50px"><?php endif; endforeach; endif; ?>
-                        </p>
-                    <p class="p"><b>Member  : </b></p>
-                    <p><?php if(is_array($memberlist)): foreach($memberlist as $memberkey=>$member): if($member["crowd_member_status"] == 0): ?><img src="Uploads/<?php echo ($member['user_icon']); ?>" class="userimgs" style="width: 50px;height: 50px"><?php endif; endforeach; endif; ?></p>
+                    <div class="p_box">
+                    <?php if(is_array($memberlist)): foreach($memberlist as $memberkey=>$member): if($member["crowd_member_status"] == 1||$member["crowd_member_status"] == 2): ?><div class="p_img">
+                            <img src="Uploads/<?php echo ($member['user_icon']); ?>" class="userimgs">
+                        </div><?php endif; endforeach; endif; ?>
+                    </div>
+                    <p class="p"><b>Members  : </b></p>
+                    <div class="p_box">
+                    <?php if(is_array($memberlist)): foreach($memberlist as $memberkey=>$member): if($member["crowd_member_status"] == 0): ?><div class="p_img">
+                            <img src="Uploads/<?php echo ($member['user_icon']); ?>" class="userimgs">
+                        </div><?php endif; endforeach; endif; ?>
+                    </div>
                 </div>
                 <div class="BannerContainer">
                     <h4 class="text-center FontColor">Advertising</h4>

@@ -502,24 +502,25 @@
                         </a>
                     </h4>
                     <p class="p"><b>Administrator  : </b></p>
-                    <p class="p">
-
-                        <foreach name="memberlist" item="member" key="memberkey">
-                            <if condition='$member["crowd_member_status"] == 1||$member["crowd_member_status"] == 2'>
-                            <img src="Uploads/{$member['user_icon']}" class="userimgs" style="width: 50px;height: 50px">
-                            </if>
-                        </foreach>
-                        </p>
-<<<<<<< HEAD
-                    <p class="p"><b>Members  : </b></p>
-=======
-                    <p class="p"><b>Member  : </b></p>
->>>>>>> 881e79657ed5cae96a37203821aaa13053df7b75
-                    <p><foreach name="memberlist" item="member" key="memberkey">
-                        <if condition='$member["crowd_member_status"] == 0'>
-                            <img src="Uploads/{$member['user_icon']}" class="userimgs" style="width: 50px;height: 50px">
+                    <div class="p_box">
+                    <foreach name="memberlist" item="member" key="memberkey">
+                        <if condition='$member["crowd_member_status"] == 1||$member["crowd_member_status"] == 2'>
+                        <div class="p_img">
+                            <img src="Uploads/{$member['user_icon']}" class="userimgs">
+                        </div>
                         </if>
-                    </foreach></p>
+                    </foreach>
+                    </div>
+                    <p class="p"><b>Members  : </b></p>
+                    <div class="p_box">
+                    <foreach name="memberlist" item="member" key="memberkey">
+                        <if condition='$member["crowd_member_status"] == 0'>
+                        <div class="p_img">
+                            <img src="Uploads/{$member['user_icon']}" class="userimgs">
+                        </div>
+                        </if>
+                    </foreach>
+                    </div>
                 </div>
                 <div class="BannerContainer">
                     <h4 class="text-center FontColor">Advertising</h4>
