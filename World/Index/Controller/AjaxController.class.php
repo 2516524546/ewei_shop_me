@@ -1689,17 +1689,40 @@ public function ajax_donationpay()
     //发布帖子
     public function ajax_createnote(){
 
-        $upload = new \Think\Upload();// 实例化上传类
-        $upload->maxSize = 307200 ;// 设置附件上传大小
-        $upload->exts = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
-        $upload->rootPath = './Uploads/'; // 设置附件上传根目录
-        $info = $upload->upload($_FILES);
 
-        if(!$info) {// 上传错误提示错误信息
-            die(json_encode(array('str' => 0)));
-        }else{// 上传成功 获取上传文件信息
-            die(json_encode(array('str' => 1,'msg'=>$info,'file'=>$_FILES)));
+        if ($_FILES){
+
+
+            die(json_encode(array('str' => 0,'msg'=>$_POST)));
+
+
+            $upload = new \Think\Upload();// 实例化上传类
+            $type = explode('/',$_FILES['img']['type'][0]);
+            if ($type[0]=='video'){
+                $upload->maxSize = 204800000 ;// 设置附件上传大小
+            }else{
+                $upload->maxSize = 5120000 ;// 设置附件上传大小
+            }
+
+            $upload->exts = array('jpg', 'gif', 'png', 'jpeg','mp4','avi');// 设置附件上传类型
+            $upload->rootPath = './Uploads/'; // 设置附件上传根目录
+
+            $filelist  = $upload->dealFiles($_FILES);
+
+            $info = $upload->upload($_FILES);
+
+
+            if(!$info||count($filelist)!=count($info)) {// 上传错误提示错误信息
+                die(json_encode(array('str' => 0,'msg'=>$upload->getError())));
+            }else{// 上传成功 获取上传文件信息
+
+
+
+            }
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>$_POST)));
         }
+
 
     }
 
