@@ -48,6 +48,7 @@
 .StickSonDetailsContainer .PostReply .GuestBookContainer .GuestBookUserTitleContainer .TimeFabulousContainer .GuestBookUserFabulous {
   margin-right: 22px;
   color: #999;
+  cursor: pointer;
 }
 .StickSonDetailsContainer .PostReply .GuestBookUserMessage {
   display: inline-block;

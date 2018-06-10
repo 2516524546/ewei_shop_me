@@ -223,7 +223,7 @@ class Upload {
      * @param array $files  上传的文件变量
      * @return array
      */
-    private function dealFiles($files) {
+    public function dealFiles($files) {
         $fileArray  = array();
         $n          = 0;
         foreach ($files as $key=>$file){
