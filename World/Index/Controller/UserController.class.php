@@ -6,10 +6,12 @@ use Index\Model\ResumeModel;
 use Index\Model\UserCountryModel;
 use Index\Model\UserModel;
 use Think\Controller;
+use Think\Upload;
+
 class UserController extends CommonController {
 
     protected $_checkAction = ['FollowList','personalCenter','acountSetting','resumeDetails','myPosts','myMessage','myFollowing','addressBook'
-                                    ,'myGroup','feedback','virtualCurrencyRecharge'];//需要做登录验证的action
+                                    ,'myGroup','feedback','virtualCurrencyRecharge','FansList','DeliveryRecord','ResumeTemplateList'];//需要做登录验证的action
 
     public function _initialize()
     {
@@ -95,6 +97,9 @@ class UserController extends CommonController {
             'havemessage' => $this->havemessage,
 
         ));
+        $this->assign('title','My Posts');
+        $css = addCss('myPosts');
+        $this->assign('CSS',$css);
         $this->display();
     }
 
@@ -106,6 +111,9 @@ class UserController extends CommonController {
             'havemessage' => $this->havemessage,
 
         ));
+        $this->assign('title','My Message');
+        $css = addCss('MyMessage');
+        $this->assign('CSS',$css);
         $this->display();
     }
 
@@ -139,6 +147,9 @@ class UserController extends CommonController {
             'havemessage' => $this->havemessage,
 
         ));
+        $this->assign('title','My Group');
+        $css = addCss('MyGroup');
+        $this->assign('CSS',$css);
         $this->display();
     }
 
@@ -161,6 +172,9 @@ class UserController extends CommonController {
             'havemessage' => $this->havemessage,
 
         ));
+        $css = addCss('VCR');
+        $this->assign('title','Virtual Currency Recharge');
+        $this->assign('CSS',$css);
         $this->display();
     }
 
@@ -175,4 +189,37 @@ class UserController extends CommonController {
         $this->display();
     }
 
+    /**
+     * 我的粉丝列表
+     * @return mixed
+     */
+    public function FansList(){
+        $css = addCss('FansList');
+        $this->assign('title','FansList');
+        $this->assign('CSS',$css);
+        $this->display();
+    }
+
+
+    /**
+     * 我的投递记录
+     * @return mixed
+     */
+    public function DeliveryRecord(){
+        $css = addCss('DeliveryRecord');
+        $this->assign('title','Resume Details');
+        $this->assign('CSS',$css);
+        $this->display();
+    }
+
+    /**
+     * 简历模板
+     * @return mixed
+     */
+    public function ResumeTemplateList(){
+        $css = addCss('ResumeTemplateList');
+        $this->assign('title','Resume Template List');
+        $this->assign('CSS',$css);
+        $this->display();
+    }
 }
