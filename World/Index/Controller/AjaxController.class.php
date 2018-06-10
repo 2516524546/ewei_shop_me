@@ -1997,4 +1997,48 @@ public function ajax_donationpay()
         }
     }
 
+    //问答懒加载
+    public function ajax_havequestion(){
+
+        if (IS_POST){
+
+            $where = 'question_cid = '.$this->post('cid').' and question_ishide = 1';
+            if (isset($_POST['name'])&&$this->post('name')!=''){
+                $where .= ' and question_name like "%'.$this->post('name').'%"';
+            }
+
+            $questionmodel = new QuestionModel();
+            $limit1 = $this->post('limit1')*$this->post('limit2');
+            $limit2 = $this->post('limit2');
+            $questionlist = $questionmodel->joinonelist($where,'u_user u on u_question.question_uid = u.user_id',$this->post('order'),$limit1,$limit2);
+            $questioncount = $questionmodel->joinone($where,'u_user u on u_question.question_uid = u.user_id',$this->post('order'),'INNER','count(*) num')['num'];
+            die(json_encode(array('str' => 1,'msg'=>$questionlist,'count'=>$questioncount)));
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
+    //资源懒加载
+    public function ajax_haveresource(){
+
+        if (IS_POST){
+
+            $where = 'resource_cid = '.$this->post('cid').' and resource_ishide = 1';
+            if (isset($_POST['name'])&&$this->post('name')!=''){
+                $where .= ' and resource_name like "%'.$this->post('name').'%"';
+            }
+
+            $resourcemodel = new ResourceModel();
+            $limit1 = $this->post('limit1')*$this->post('limit2');
+            $limit2 = $this->post('limit2');
+            $resourcelist = $resourcemodel->joinonelist($where,'u_user u on u_resource.resource_uid = u.user_id',$this->post('order'),$limit1,$limit2);
+            $resourcecount = $resourcemodel->joinone($where,'u_user u on u_resource.resource_uid = u.user_id',$this->post('order'),'INNER','count(*) num')['num'];
+            die(json_encode(array('str' => 1,'msg'=>$resourcelist,'count'=>$resourcecount)));
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
 }

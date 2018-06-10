@@ -37,7 +37,7 @@
                         </label>
                         <div class="layui-input-block input-spacing">
                             <input type="email" name="email" lay-verify="required" autocomplete="off" <if condition='$register_mail'>value="{$register_mail}"</if> placeholder="Enter the mailbox" class="layui-input input-float" id="mail">
-                            <input class="layui-btn layui-btn-normal sendCode" type="button" name="CodeButton" value="Verification Code" onclick="sendemail()">
+                            <input class="layui-btn layui-btn-normal sendCode" style="min-width: 143px;" type="button" name="CodeButton" value="Verification Code" onclick="sendemail()">
                         </div>
                     </div>
                     <div class="FormContainer" pane>
@@ -200,7 +200,7 @@ function sendemail() {
         if (curCount == 0) {
             window.clearInterval(InterValObj);//停止计时器
             $(".sendCode").removeAttr("disabled");//启用按钮
-            $(".sendCode").val("Resend the verification code");
+            $(".sendCode").val("Verification code");
         }
         else {
             curCount--;

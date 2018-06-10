@@ -223,7 +223,7 @@
                                 </div>
                                 <div id="question" class="layui-tab-item">
                                     <table class="layui-table PostTable" lay-skin="line">
-                                        <tbody>
+                                        <tbody id="questioncontent">
                                         <?php if(is_array($questionlist)): foreach($questionlist as $questionkey=>$question): ?><tr>
                                                 <td>
                                                     <a href="<?php echo U('Index/Rnterst/questionAnswerDetails');?>" style="text-decoration: none;">
@@ -259,131 +259,36 @@
                                 </div>
                                 <div id="resource" class="layui-tab-item">
                                     <table class="layui-table PostTable" lay-skin="line">
-                                        <tbody>
-                                            <tr>
+                                        <tbody id="resourcecontent">
+                                        <?php if(is_array($resourcelist)): foreach($resourcelist as $resourcekey=>$resource): ?><tr>
                                                 <td>
                                                     <a href="<?php echo U('Index/Rnterst/resourceDetails');?>" style="text-decoration: none;">
-                                                        <span class="WithNumber">
+                                                        <!--<span class="WithNumber">
                                                             <span class="WithNumbers">18</span>
                                                             <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
-                                                        </span>
+                                                        </span>-->
                                                         <span class="ImgBox">
-                                                            <img src="/Public/Web/web/img/02_interest/Todoist.png">
+                                                            <img src="<?php if($resource["user_icon"]): ?>./Uploads/<?php echo ($question['user_icon']); else: ?>/Public/Web/web/img/01_shouye/UserPic.png<?php endif; ?>">
                                                         </span>
                                                     </a>
                                                 </td>
                                                 <td class="NameBox">
                                                     <a href="<?php echo U('Index/Rnterst/resourceDetails');?>" style="text-decoration: none;">
-                                                        Topic Title
+                                                        <?php echo ($resource["resource_name"]); ?>
                                                     </a>
                                                 </td>
                                                 <td class="NameIcom">
-                                                    <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_top.png">
-                                                    <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_jing.png">
+                                                    <?php if($resource["resource_istop"] == 1): ?><img src="/Public/Web/web/img/02_interest/interest_qxx_icon_top.png"><?php endif; ?>
+                                                    <?php if($resource["resource_iswally"] == 1): ?><img src="/Public/Web/web/img/02_interest/interest_qxx_icon_jing.png"><?php endif; ?>
                                                 </td>
                                                 <td class="text-right">
-                                                    <p>1 min</p>
+                                                    <p><?php echo ($resource["resource_createtime"]); ?></p>
                                                     <p>
-                                                        <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_download.png">888
-                                                        <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_pl.png">888
+                                                        <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_download.png"><?php echo ($resource["resource_reward"]); ?>
+                                                        <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_pl.png"><?php echo ($resource["resource_comments"]); ?>
                                                     </p>
                                                 </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
-                                                </td>
-                                                <td colspan="2">
-                                                    Topic Title
-                                                </td>
-                                                <td class="text-right">
-                                                    <p>1 min</p>
-                                                    <p>
-                                                        <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_download.png">888
-                                                        <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_pl.png">888
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
-                                                </td>
-                                                <td colspan="2">
-                                                    Topic Title
-                                                </td>
-                                                <td class="text-right">
-                                                    <p>1 min</p>
-                                                    <p>
-                                                        <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_download.png">888
-                                                        <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_pl.png">888
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
-                                                </td>
-                                                <td colspan="2">
-                                                    Topic Title
-                                                </td>
-                                                <td class="text-right">
-                                                    <p>1 min</p>
-                                                    <p>
-                                                        <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_download.png">888
-                                                        <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_pl.png">888
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
-                                                </td>
-                                                <td colspan="2">
-                                                    Topic Title
-                                                </td>
-                                                <td class="text-right">
-                                                    <p>1 min</p>
-                                                    <p>
-                                                        <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_download.png">888
-                                                        <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_pl.png">888
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
-                                                </td>
-                                                <td colspan="2">
-                                                    Topic Title
-                                                </td>
-                                                <td class="text-right">
-                                                    <p>1 min</p>
-                                                    <p>
-                                                        <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_download.png">888
-                                                        <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_pl.png">888
-                                                    </p>
-                                                </td>
-                                            </tr>
+                                            </tr><?php endforeach; endif; ?>
                                             
                                         </tbody>
                                     </table>
@@ -511,11 +416,17 @@
     }
     
     var type = 1;
-    var page = 1;
-    var count = <?php echo ($notecount); ?>;
+    var notepage = 1;
+    var questionpage = 1;
+    var resourcepage = 1;
+    var notecount = <?php echo ($notecount); ?>;
+    var questioncount = <?php echo ($questioncount); ?>;
+    var resourcecount = <?php echo ($resourcecount); ?>;
     var c = 1;
     var a = 1;
-    var order = 'note_istop desc,note_iswally desc,note_createtime desc'
+    var noteorder = 'note_istop desc,note_iswally desc,note_createtime desc'
+    var questionorder = 'question_istop desc,question_iswally desc,question_createtime desc'
+    var resourceorder = 'resource_istop desc,resource_iswally desc,resource_createtime desc'
 
     function settype(num) {
         type = num
@@ -531,11 +442,47 @@
 
             if (type == 1){
                 if (c==a){
-                    var limit1 = page*20;
-                    if (limit1<count){
+                    var limit1 = notepage*20;
+                    if (limit1<notecount){
                         c = 2;
-                        havenote(2,order,page,20)
-                        page += 1;
+                        havenote(2,noteorder,notepage,20)
+                        notepage += 1;
+                    }else{
+                        /*layer.msg('已没数据!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );*/
+                    }
+                }
+            }else if (type == 2){
+
+                if (c==a){
+
+                    var limit1 = questionpage*20;
+
+                    if (limit1<questioncount){
+                        c = 2;
+                        havequestion(2,questionorder,questionpage,20)
+                        questionpage += 1;
+                    }else{
+                        /*layer.msg('已没数据!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );*/
+                    }
+                }
+            }else if (type == 3){
+
+                if (c==a){
+
+                    var limit1 = resourcepage*20;
+
+                    if (limit1<resourcecount){
+                        c = 2;
+                        haveresource(2,resourceorder,resourcepage,20)
+                        resourcepage += 1;
                     }else{
                         /*layer.msg('已没数据!',{
                                 time:1500,
@@ -550,9 +497,15 @@
 
     function seek() {
         if (type == 1){
-            page = 0
-            havenote(1,order,page,20)
+            notepage = 0
+            havenote(1,noteorder,notepage,20)
 
+        }else if (type == 2){
+            questionpage = 0
+            havequestion(1,questionorder,questionpage,20)
+        } else if (type == 3){
+            resourcepage = 0
+            haveresource(1,resourceorder,resourcepage,20)
         }
     }
 
@@ -572,8 +525,7 @@
             dataType:"json",
             async:false,
             success: function(list){
-                c=1
-                console.log(list)
+
                 if(list!=null&&list!=""){
 
                     if (list.str == 1){
@@ -609,8 +561,8 @@
 
                         if (type==1){
                             c = 1;
-                            page = 1;
-                            count = list.count;
+                            notepage = 1;
+                            notecount = list.count;
                             $("#postcontent").html(message);
 
                         }else{
@@ -620,9 +572,9 @@
                         }
                     }else if (list.str == 2){
                         if (type==1){
-                            page = 1;
+                            notepage = 1;
                             c=1;
-                            count = list.count;
+                            notecount = list.count;
                             $("#postcontent").html('');
 
                         }else{
@@ -657,6 +609,226 @@
 
         })
 
+    }
+    
+    function havequestion(type,order,limit1,limit2) {
+
+        $.ajax({
+            type:"post",
+            url:"<?php echo U('Index/Ajax/ajax_havequestion');?>",
+            data:{
+                name:$("#Selectionform").val(),
+                order:order,
+                limit1:limit1,
+                limit2:limit2,
+                cid:'<?php echo ($cid); ?>'
+
+            },
+            dataType:"json",
+            async:false,
+            success: function(list){
+
+                if(list!=null&&list!=""){
+
+                    if (list.str == 1){
+
+                        var message = '';
+                        for (var i = 0; i < list.msg.length; i++) {
+
+                            message += '<tr><td>';
+                            var url = '#';
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
+                            message += '<span class="ImgBox">'
+                            var src = '/Public/Web/web/img/01_shouye/UserPic.png'
+                            if (list.msg[i].user_icon&&list.msg[i].user_icon!=''&&list.msg[i].user_icon!=null){
+                                src = 'Uploads/'+list.msg[i].user_icon;
+                            }
+                            message += '<img src="'+src+'">';
+                            message += '</span></a></td><td class="NameBox">'
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
+                            message += '<span class="TopicNames">'+list.msg[i].question_name+'</span>'
+                            message += '</a></td><td class="NameIcom">'
+                            if(list.msg[i].question_istop==1){
+                                message += '<img src="/Public/Web/web/img/02_interest/interest_qxx_icon_top.png">'
+                            }
+                            if(list.msg[i].question_iswally==1){
+                                message += '<img src="/Public/Web/web/img/02_interest/interest_qxx_icon_jing.png">'
+                            }
+                            message += '</td><td class="text-right">'
+                            message += '<p>'+list.msg[i].note_createtime+'</p>'
+                            message += '<p><img src="/Public/Web/web/img/02_interest/interest_qxx_icon_xs.png">'+list.msg[i].question_reward+'<img src="/Public/Web/web/img/02_interest/interest_qxx_icon_pl.png">'+list.msg[i].question_comments+'</p>'
+                            message += '</td></tr>'
+
+                        }
+
+                        if (type==1){
+                            c = 1;
+                            questionpage = 1;
+                            questioncount = list.count;
+                            $("#questioncontent").html(message);
+
+                        }else{
+                            c=1;
+                            var postcontenthtml = $("#questioncontent").html()+message
+                            $("#questioncontent").html(postcontenthtml);
+                        }
+                    }else if (list.str == 2){
+                        if (type==1){
+                            questionpage = 1;
+                            c=1;
+                            questioncount = list.count;
+                            $("#questioncontent").html('');
+
+                        }else{
+                            c=1;
+
+                        }
+                    }else{
+                        layer.msg(list.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+
+                    }
+                }else{
+                    layer.msg('请求错误!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                layer.msg('请求失败!',{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+
+        })
+    }
+
+    function haveresource(type,order,limit1,limit2) {
+
+        $.ajax({
+            type:"post",
+            url:"<?php echo U('Index/Ajax/ajax_haveresource');?>",
+            data:{
+                name:$("#Selectionform").val(),
+                order:order,
+                limit1:limit1,
+                limit2:limit2,
+                cid:'<?php echo ($cid); ?>'
+
+            },
+            dataType:"json",
+            async:false,
+            success: function(list){
+
+                if(list!=null&&list!=""){
+
+                    if (list.str == 1){
+
+                        var message = '';
+                        for (var i = 0; i < list.msg.length; i++) {
+
+                        /*
+                            <td class="NameBox">
+                                <a href="<?php echo U('Index/Rnterst/resourceDetails');?>" style="text-decoration: none;">
+                                <?php echo ($resource["resource_name"]); ?>
+                                </a>
+                                </td>
+                                <td class="NameIcom">
+                                <?php if($resource["resource_istop"] == 1): ?><img src="/Public/Web/web/img/02_interest/interest_qxx_icon_top.png"><?php endif; ?>
+                                <?php if($resource["resource_iswally"] == 1): ?><img src="/Public/Web/web/img/02_interest/interest_qxx_icon_jing.png"><?php endif; ?>
+                                </td>
+                                <td class="text-right">
+                                <p><?php echo ($resource["resource_createtime"]); ?></p>
+                                <p>
+                                <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_download.png"><?php echo ($resource["resource_reward"]); ?>
+                                <img src="/Public/Web/web/img/02_interest/interest_qxx_icon_pl.png"><?php echo ($resource["resource_comments"]); ?>
+                                </p>
+                                </td>
+                                </tr>*/
+                            message += '<tr><td>';
+                            var url = '#';
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
+                            message += '<span class="ImgBox">'
+                            var src = '/Public/Web/web/img/01_shouye/UserPic.png'
+                            if (list.msg[i].user_icon&&list.msg[i].user_icon!=''&&list.msg[i].user_icon!=null){
+                                src = 'Uploads/'+list.msg[i].user_icon;
+                            }
+                            message += '<img src="'+src+'">';
+                            message += '</span></a></td><td class="NameBox">'
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
+                            message += list.msg[i].resource_name
+                            message += '</a></td><td class="NameIcom">'
+                            if(list.msg[i].resource_istop==1){
+                                message += '<img src="/Public/Web/web/img/02_interest/interest_qxx_icon_top.png">'
+                            }
+                            if(list.msg[i].resource_iswally==1){
+                                message += '<img src="/Public/Web/web/img/02_interest/interest_qxx_icon_jing.png">'
+                            }
+                            message += '</td><td class="text-right">'
+                            message += '<p>'+list.msg[i].resource_createtime+'</p>'
+                            message += '<p><img src="/Public/Web/web/img/02_interest/interest_qxx_icon_download.png">'+list.msg[i].resource_reward+'<img src="/Public/Web/web/img/02_interest/interest_qxx_icon_pl.png">'+list.msg[i].resource_comments+'</p>'
+                            message += '</td></tr>'
+
+                        }
+
+                        if (type==1){
+                            c = 1;
+                            resourcepage = 1;
+                            resourcecount = list.count;
+                            $("#resourcecontent").html(message);
+
+                        }else{
+                            c=1;
+                            var postcontenthtml = $("#resourcecontent").html()+message
+                            $("#resourcecontent").html(postcontenthtml);
+                        }
+                    }else if (list.str == 2){
+                        if (type==1){
+                            resourcepage = 1;
+                            c=1;
+                            resourcecount = list.count;
+                            $("#resourcecontent").html('');
+
+                        }else{
+                            c=1;
+
+                        }
+                    }else{
+                        layer.msg(list.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+
+                    }
+                }else{
+                    layer.msg('请求错误!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                layer.msg('请求失败!',{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+
+        })
     }
     
     

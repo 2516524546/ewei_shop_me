@@ -37,7 +37,7 @@
                         </label>
                         <div class="layui-input-block input-spacing">
                             <input type="email" name="email" lay-verify="required" autocomplete="off" <?php if($register_mail): ?>value="<?php echo ($register_mail); ?>"<?php endif; ?> placeholder="Enter the mailbox" class="layui-input input-float" id="mail">
-                            <input class="layui-btn layui-btn-normal sendCode" type="button" name="CodeButton" value="Verification Code" onclick="sendemail()">
+                            <input class="layui-btn layui-btn-normal sendCode" style="min-width: 143px;" type="button" name="CodeButton" value="Verification Code" onclick="sendemail()">
                         </div>
                     </div>
                     <div class="FormContainer" pane>
@@ -194,13 +194,13 @@ function sendemail() {
         //设置button效果，开始计时
         $(".sendCode").attr("disabled", "true");
         // $(".sendCode").val("请在" + curCount + "秒内输入验证码");
-        InterValObj = window.setInterval(SetRemainTime, 100); //启动计时器，1秒执行一次
+        InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
     }
     function SetRemainTime() {
         if (curCount == 0) {
             window.clearInterval(InterValObj);//停止计时器
             $(".sendCode").removeAttr("disabled");//启用按钮
-            $(".sendCode").val("Resend the verification code");
+            $(".sendCode").val("Verification code");
         }
         else {
             curCount--;
