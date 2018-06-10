@@ -4,6 +4,9 @@ use Index\Model\CrowdMemberModel;
 use Index\Model\CrowdModel;
 use Index\Model\CrowdTabModel;
 use Index\Model\FirstMarkModel;
+use Index\Model\NoteModel;
+use Index\Model\QuestionModel;
+use Index\Model\ResourceModel;
 use Index\Model\SecondMarkModel;
 use Think\Controller;
 class RnterstController extends CommonController {
@@ -97,13 +100,32 @@ class RnterstController extends CommonController {
                 $join_in = 1;
             }
         }
-        $memberlist = $crowdmembermodel->findlist('crowd_member_cid = '.$_GET['cid'],'u_user u on u_crowd_member.crowd_member_uid = u.user_id','INNER','crowd_member_status desc','u_crowd_member.*,u.user_icon');
+        $adminlist = $crowdmembermodel->findlistlimit('crowd_member_cid = '.$_GET['cid'].' and crowd_member_status !=0','u_user u on u_crowd_member.crowd_member_uid = u.user_id',0,4,'INNER','crowd_member_status desc','u_crowd_member.*,u.user_icon');
+        $memberlist = $crowdmembermodel->findlistlimit('crowd_member_cid = '.$_GET['cid'].' and crowd_member_status =0','u_user u on u_crowd_member.crowd_member_uid = u.user_id',0,8,'INNER','crowd_member_status desc,crowd_member_logintime desc','u_crowd_member.*,u.user_icon');
+
+        $notemodel = new NoteModel();
+        $questionmodel = new QuestionModel();
+        $resourcemodel = new ResourceModel();
+
+        $notelist = $notemodel->joinonelist('note_cid = '.$_GET['cid'].' and note_ishide = 1','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+        $notecount = $notemodel->joinone('note_cid = '.$_GET['cid'].' and note_ishide = 1','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+
+        $questionlist = $questionmodel->joinonelist('question_cid = '.$_GET['cid'].' and question_ishide = 1','u_user u on u_question.question_uid = u.user_id','question_istop desc,question_iswally desc,question_createtime desc',0,20);
+
+        $resourcelist = $resourcemodel->joinonelist('resource_cid = '.$_GET['cid'].' and resource_ishide = 1','u_user u on u_resource.resource_uid = u.user_id','resource_istop desc,resource_iswally desc,resource_createtime desc',0,20);
+
+
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
         $this->assign(array(
             'crowone' => $crowone,
             'join_in' => $join_in,
+            'adminlist' => $adminlist,
             'memberlist' => $memberlist,
             'cid' => $_GET['cid'],
+            'notelist' => $notelist,
+            'notecount' => $notecount,
+            'questionlist' => $questionlist,
+            'resourcelist' => $resourcelist,
 
         ));
 

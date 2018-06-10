@@ -5,9 +5,9 @@ namespace Index\Model;
 use Think\Db;
 use Think\Model;
 
-class QuestionModel extends Model{
+class QuestionVIModel extends Model{
 
-    protected  $trueTableName = 'u_question';
+    protected  $trueTableName = 'u_question_vi';
 
     public function findone($where,$field=false){
 
