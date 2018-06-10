@@ -323,7 +323,9 @@
                             <div class="col-xs-8 col-sm-6">
                                 <div class="UserBox">
                                     <a href="lifeDetails.html" class="UserLink">
-                                        <img src="/Public/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
+                                        <div class="UserBox_img">
+                                            <img src="/Public/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
+                                        </div>
                                         <h4 class="UserTitle">Travel group</h4>
                                         <p class="UserFollow">
                                             <img src="/Public/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="" /> &nbsp;&nbsp;80
@@ -340,7 +342,9 @@
                             <div class="col-xs-4 col-sm-6">
                                 <div class="UserBox">
                                     <a href="AcademicGroups.html" class="UserLink">
-                                        <img src="/Public/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
+                                        <div class="UserBox_img">
+                                            <img src="/Public/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
+                                        </div>
                                         <h4 class="UserTitle">Travel group</h4>
                                         <p class="UserFollow">
                                             <img src="/Public/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="" /> &nbsp;&nbsp;80
@@ -357,7 +361,9 @@
                             <div class="col-xs-8 col-sm-6">
                                 <div class="UserBox">
                                     <a href="AcademicGroups.html" class="UserLink">
-                                        <img src="/Public/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
+                                        <div class="UserBox_img">
+                                            <img src="/Public/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
+                                        </div>
                                         <h4 class="UserTitle">Travel group</h4>
                                         <p class="UserFollow">
                                             <img src="/Public/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="" /> &nbsp;&nbsp;80
@@ -374,7 +380,9 @@
                             <div class="col-xs-4 col-sm-6">
                                 <div class="UserBox">
                                     <a href="AcademicGroups.html" class="UserLink">
-                                        <img src="/Public/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
+                                        <div class="UserBox_img">
+                                            <img src="/Public/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
+                                        </div>
                                         <h4 class="UserTitle">Travel group</h4>
                                         <p class="UserFollow">
                                             <img src="/Public/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="" /> &nbsp;&nbsp;80
@@ -391,7 +399,9 @@
                             <div class="col-xs-8 col-sm-6">
                                 <div class="UserBox">
                                     <a href="AcademicGroups.html" class="UserLink">
-                                        <img src="/Public/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
+                                        <div class="UserBox_img">
+                                            <img src="/Public/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
+                                        </div>
                                         <h4 class="UserTitle">Travel group</h4>
                                         <p class="UserFollow">
                                             <img src="/Public/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="" /> &nbsp;&nbsp;80
@@ -408,7 +418,9 @@
                             <div class="col-xs-4 col-sm-6">
                                 <div class="UserBox">
                                     <a href="AcademicGroups.html" class="UserLink">
-                                        <img src="/Public/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
+                                        <div class="UserBox_img">
+                                            <img src="/Public/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
+                                        </div>
                                         <h4 class="UserTitle">Travel group</h4>
                                         <p class="UserFollow">
                                             <img src="/Public/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="" /> &nbsp;&nbsp;80

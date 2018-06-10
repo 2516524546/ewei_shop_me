@@ -102,7 +102,9 @@
                     <div class="col-xs-8 col-sm-6">
                         <div class="UserBox">
                             <a href="{:U('Index/Rnterst/groupDetails')}&cid={$crod['crowd_id']}" class="UserLink">
-                                <img src="./Uploads/{$crod['crowd_icon']}" class="img-circle userimg">
+                                <div class="UserBox_img">
+                                    <img src="./Uploads/{$crod['crowd_icon']}" class="img-circle userimg">
+                                </div>    
                                 <h4 class="UserTitle">{$crod['crowd_name']}</h4>
                                 <p class="UserFollow">
                                     <img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">
