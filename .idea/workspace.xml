@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9ce3527-1f80-4327-bfa4-07f13a0bfb6f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/World/Index/Model/NoteModel.class.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/World/Index/Model/NoteVIModel.class.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/World/Index/Model/QuestionModel.class.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/World/Index/Model/QuestionVIModel.class.php" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/World/Index/Controller/AjaxController.class.php" afterPath="$PROJECT_DIR$/World/Index/Controller/AjaxController.class.php" />
       <change beforePath="$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php" afterPath="$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php" />
       <change beforePath="$PROJECT_DIR$/World/Index/View/Rnterst/groupDetailsRelease.html" afterPath="$PROJECT_DIR$/World/Index/View/Rnterst/groupDetailsRelease.html" />
-      <change beforePath="$PROJECT_DIR$/World/Index/View/Rnterst/postVideoDetails.html" afterPath="$PROJECT_DIR$/World/Index/View/Rnterst/postVideoDetails.html" />
       <change beforePath="$PROJECT_DIR$/World/Runtime/Cache/Index/0b1b6291761de93cc3e5975142a1c434.php" afterPath="$PROJECT_DIR$/World/Runtime/Cache/Index/0b1b6291761de93cc3e5975142a1c434.php" />
-      <change beforePath="$PROJECT_DIR$/World/Runtime/Cache/Index/43678956f4d43fb1793af95907dc76d6.php" afterPath="$PROJECT_DIR$/World/Runtime/Cache/Index/43678956f4d43fb1793af95907dc76d6.php" />
-      <change beforePath="$PROJECT_DIR$/World/Runtime/Cache/Index/59035209d7a80907ce2bdd8e865b5e17.php" afterPath="$PROJECT_DIR$/World/Runtime/Cache/Index/59035209d7a80907ce2bdd8e865b5e17.php" />
-      <change beforePath="$PROJECT_DIR$/World/Runtime/Cache/Index/dab54bd51c3d0ba2c97329c359167a29.php" afterPath="$PROJECT_DIR$/World/Runtime/Cache/Index/dab54bd51c3d0ba2c97329c359167a29.php" />
-      <change beforePath="$PROJECT_DIR$/World/Runtime/Logs/Index/18_06_09.log" afterPath="$PROJECT_DIR$/World/Runtime/Logs/Index/18_06_09.log" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,8 +22,8 @@
       <file leaf-file-name="AjaxController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/World/Index/Controller/AjaxController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="1758" column="109" lean-forward="false" selection-start-line="1758" selection-start-column="109" selection-end-line="1758" selection-end-column="109" />
+            <state relative-caret-position="756">
+              <caret line="1828" column="30" lean-forward="false" selection-start-line="1828" selection-start-column="30" selection-end-line="1828" selection-end-column="30" />
               <folding>
                 <element signature="e#16979#18626#0#PHP" expanded="false" />
                 <element signature="e#18645#20546#0#PHP" expanded="false" />
@@ -50,7 +45,28 @@
                 <element signature="e#53539#56735#0#PHP" expanded="false" />
                 <element signature="e#56752#59398#0#PHP" expanded="false" />
                 <element signature="e#59416#61504#0#PHP" expanded="false" />
+                <element signature="e#61521#64966#0#PHP" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QuestionModel.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/World/Index/Model/QuestionModel.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QuestionVIModel.class.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/World/Index/Model/QuestionVIModel.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -58,8 +74,8 @@
       <file leaf-file-name="RnterstController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="141" column="36" lean-forward="false" selection-start-line="141" selection-start-column="20" selection-end-line="141" selection-end-column="36" />
+            <state relative-caret-position="468">
+              <caret line="197" column="36" lean-forward="false" selection-start-line="197" selection-start-column="36" selection-end-line="197" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -78,14 +94,14 @@
       <file leaf-file-name="groupDetailsRelease.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/groupDetailsRelease.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="297" column="132" lean-forward="false" selection-start-line="297" selection-start-column="132" selection-end-line="297" selection-end-column="132" />
+            <state relative-caret-position="221">
+              <caret line="330" column="41" lean-forward="false" selection-start-line="330" selection-start-column="35" selection-end-line="330" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="postVideoDetails.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="postVideoDetails.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/postVideoDetails.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="384">
@@ -150,7 +166,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/World/Index/View/Academic/questionAnswerDetails.html" />
         <option value="$PROJECT_DIR$/World/Index/View/Academic/resourceDetails.html" />
         <option value="$PROJECT_DIR$/World/Index/View/Academic/stickSonDetails.html" />
         <option value="$PROJECT_DIR$/World/Index/View/Academic/videoFen.html" />
@@ -197,10 +212,11 @@
         <option value="$PROJECT_DIR$/ThinkPHP/Library/Think/Upload.class.php" />
         <option value="$PROJECT_DIR$/World/Index/Model/NoteVIModel.class.php" />
         <option value="$PROJECT_DIR$/World/Index/Model/NoteModel.class.php" />
+        <option value="$PROJECT_DIR$/World/Index/View/Rnterst/postVideoDetails.html" />
         <option value="$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php" />
         <option value="$PROJECT_DIR$/World/Index/View/Rnterst/groupDetailsRelease.html" />
         <option value="$PROJECT_DIR$/World/Index/Controller/AjaxController.class.php" />
-        <option value="$PROJECT_DIR$/World/Index/View/Rnterst/postVideoDetails.html" />
+        <option value="$PROJECT_DIR$/World/Index/Model/QuestionModel.class.php" />
       </list>
     </option>
   </component>
@@ -219,7 +235,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-18" />
     <option name="y" value="28" />
-    <option name="width" value="1580" />
+    <option name="width" value="1933" />
     <option name="height" value="913" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -276,6 +292,13 @@
               <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Index" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Index" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Model" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
@@ -350,18 +373,18 @@
       <option name="presentableId" value="Default" />
       <updated>1528509684872</updated>
       <workItem from="1528509686902" duration="28149000" />
-      <workItem from="1528593027793" duration="5035000" />
+      <workItem from="1528593027793" duration="6355000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33184000" />
+    <option name="totallyTimeSpent" value="34504000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-18" y="28" width="1580" height="913" extended-state="0" />
+    <frame x="-18" y="28" width="1933" height="913" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20396453" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -405,20 +428,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Jobs/releaseProject.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-756">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Jobs/resourceDetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="21" column="63" lean-forward="false" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/World/Index/View/Jobs/stickSonDetails.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="433">
@@ -746,14 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="141" column="36" lean-forward="false" selection-start-line="141" selection-start-column="20" selection-end-line="141" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Upload.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -762,18 +763,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="197" column="36" lean-forward="false" selection-start-line="197" selection-start-column="36" selection-end-line="197" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/postVideoDetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/groupDetailsRelease.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="297" column="132" lean-forward="false" selection-start-line="297" selection-start-column="132" selection-end-line="297" selection-end-column="132" />
+        <state relative-caret-position="221">
+          <caret line="330" column="41" lean-forward="false" selection-start-line="330" selection-start-column="35" selection-end-line="330" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/World/Index/Controller/AjaxController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="1758" column="109" lean-forward="false" selection-start-line="1758" selection-start-column="109" selection-end-line="1758" selection-end-column="109" />
+        <state relative-caret-position="756">
+          <caret line="1828" column="30" lean-forward="false" selection-start-line="1828" selection-start-column="30" selection-end-line="1828" selection-end-column="30" />
           <folding>
             <element signature="e#16979#18626#0#PHP" expanded="false" />
             <element signature="e#18645#20546#0#PHP" expanded="false" />
@@ -795,14 +812,23 @@
             <element signature="e#53539#56735#0#PHP" expanded="false" />
             <element signature="e#56752#59398#0#PHP" expanded="false" />
             <element signature="e#59416#61504#0#PHP" expanded="false" />
+            <element signature="e#61521#64966#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/postVideoDetails.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/QuestionModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+        <state relative-caret-position="216">
+          <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/QuestionVIModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

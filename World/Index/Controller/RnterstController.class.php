@@ -195,7 +195,7 @@ class RnterstController extends CommonController {
         $this->assign(array(
             'tablist' => $tablist,
             'cid' => $_GET['cid'],
-
+            'crowdone' => $crowdone,
         ));
 
         $this->display();

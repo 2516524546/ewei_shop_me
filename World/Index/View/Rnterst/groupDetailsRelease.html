@@ -27,9 +27,9 @@
         <hr>
     <!-- Crumbs nav -->
     <div class="container crumbs">
-        <a href="Interest.html" class="crumbsa">interest</a>
+        <a href="{:U('Index/Rnterst/interest')}" class="crumbsa">interest</a>
         <cite class="Icon"></cite>
-        <a href="GroupDetails.html" class="crumbsa">Group name</a>
+        <a href="{:U('Index/Rnterst/groupDetails')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
         <cite class="Icon"></cite>
         <span class="crumbsTitle">Relase</span>
     </div>
@@ -319,6 +319,54 @@
                         });
                     }else if (selectedValue ==2 ){
 
+                        var file_files = document.getElementById('file_input').files;
+                        var file_obj = document.getElementById('formdata');
+                        var fd = new FormData();
+                        for (var i = 0; i < file_files.length; i++){
+                            console.log(file_files[i])
+                            fd.append('img['+i+']',file_files[i])
+                        }
+                        fd.append('name',$("#name").val())
+                        fd.append('content',$("#qacontent").val())
+                        fd.append('reward',$("#qareward").val())
+                        fd.append('cid','{$cid}')
+                        $.ajax({
+                            url: "{:U('Index/Ajax/ajax_createqa')}",
+                            type: "POST",
+                            async: false,
+                            cache: false,
+                            processData: false,// 告诉jQuery不要去处理发送的数据
+                            contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                            data: fd,
+                            dataType: "json",
+                            success: function (data) {
+                                if (data.str == 1){
+                                    layer.msg('创建成功',{
+                                            time:1500,
+                                            icon:1,
+                                        },function () {
+                                            window.location.href="{:U('Index/Rnterst/postVideoDetails')}&id="+data.id+"&cid="+data.cid;
+                                        }
+                                    );
+
+                                }else{
+                                    layer.msg(data.msg,{
+                                            time:1500,
+                                            icon:2,
+                                        }
+                                    );
+
+                                }
+                            },
+                            error: function (err) {
+
+                                layer.msg('请求失败!', {
+                                        time: 1500,
+                                        icon: 2,
+                                    }
+                                );
+                            }
+                        });
                     }
 
 
