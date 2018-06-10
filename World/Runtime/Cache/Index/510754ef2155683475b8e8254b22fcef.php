@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/Public/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="/Public/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="/Public/Web/js/lib/layui/dist/css/layui.css">
+    <link rel="stylesheet" href="/Public/Web/web/css/Crumbsnav.css">
+    <link rel="stylesheet" href="/Public/Web/web/css/success_index.css">
 </head>
 
 <body>
@@ -142,13 +144,12 @@
     </header>
     <hr>
     <!-- Crumbs nav -->
-    <div class="container Crumbs">
-        <span class="CrumbsSpan">
-          <a href="<?php echo U('Index/Jobs/work');?>" class="CrumbsA">Jobs</a>
-          <cite class="CrumbsIcon"></cite>
-          <span class="CrumbsTitle">Group name</span>
-        </span>
+    <div class="container crumbs">
+        <a href="<?php echo U('Index/Jobs/work');?>" class="crumbsa">Jobs</a>
+        <cite class="Icon"></cite>
+        <span class="crumbsTitle">Group name</span>
     </div>
+
     <!-- Carousel advertising start 轮播广告 -->
     <div class="layui-carousel Banner" id="test2">
         <div carousel-item="">
@@ -632,8 +633,9 @@
         </div>
     </div>
     <!-- Group list 群列表 end -->
-    <!-- foot start 底部信息 -->
-    <footer class="container-fluid FooterBg">
+    <footer>
+        <!-- foot start 底部信息 -->
+<footer class="container-fluid FooterBg">
         <div class="row FooterContainer">
             <div class="col-xs-6 col-md-4">
                 <dl>
@@ -654,8 +656,8 @@
             <div class="col-xs-6 col-md-4">
                 <dl>
                     <dt>Help Center</dt>
-                    <dd>Help Center</dd>
-                    <dd>Contact Us</dd>
+                    <dd><a href="<?php echo U('Index/User/helpCenter');?>">Help Center</a></dd>
+                    <dd><a href="<?php echo U('Index/User/contactUs');?>">Contact Us</a></dd>
                 </dl>
             </div>
         </div>
@@ -665,7 +667,7 @@
             </div>
         </div>
     </footer>
-    <!-- foot end 底部信息 -->
+    </footer>
     <script src="/Public/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="/Public/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/Public/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>

@@ -175,4 +175,16 @@ class UserController extends CommonController {
         $this->display();
     }
 
+    //帮助
+    public function helpCenter(){
+
+        $this->display();
+    }
+
+    //告诉我们 
+    public function contactUs(){
+
+        $this->display();
+    }
+
 }
