@@ -122,9 +122,6 @@
   width: 100%;
   text-decoration: none;
 }
-.GroupDetailsContainer .userimgs {
-  margin: 5px 10px;
-}
 .GroupDetailsContainer .FontColor {
   color: #45c5b8;
   font-size: 1.2em;
@@ -142,7 +139,6 @@
 }
 .BannerContainer {
   margin-top: 50px;
-  width: 354px;
   border-radius: 4px;
   box-shadow: 2px 2px 14px #cecece;
 }
@@ -157,6 +153,60 @@
   padding: 4px 6px;
 }
 .BannerContainer .Container1 .img {
-  width: 354px;
+  width: 100%;
   height: auto;
+}
+.p{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.p .Group_icon{
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+  border: 1px solid #45c5b8;
+  margin-left: 17px;
+}
+.p .Group_icon img{
+  width: 100%;
+  height: 100%;
+}
+.p_box{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.p_box .p_img{
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 24px;
+  margin-bottom: 21px;
+  border: 1px solid #45c5b8;
+}
+
+.p_box .p_img img{
+  width: 100%;
+  height: 100%;
+}
+
+.LatestContentContainer .LatestContainer .PostTable .ImgBox{
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+  border: 1px solid #45c5b8;
+  overflow: hidden;
+  display: block;
+}
+.LatestContentContainer .LatestContainer .PostTable .ImgBox img{
+  width: 100%;
+  height: 100%;
+}
+
+.GroupDetailsContainer .userimgs {
+  margin: 0;
 }

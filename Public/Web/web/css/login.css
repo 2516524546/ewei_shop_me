@@ -68,6 +68,7 @@ header .Return-icon {
 }
 .LoginContainer .LinkContainer p a {
   color: #bcbcbc;
+  text-decoration: none;
 }
 .LoginContainer .LinkContainer p a:hover {
   color: #1E9FFF;

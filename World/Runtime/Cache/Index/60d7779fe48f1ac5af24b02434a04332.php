@@ -198,7 +198,7 @@
                                                             <span class="WithNumbers">18</span>
                                                             <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                         </span>
-                                                        <span>
+                                                        <span class="ImgBox">
                                                             <img src="/Public/Web/web/img/02_interest/Todoist.png">
                                                         </span>
                                                     </a>
@@ -226,7 +226,7 @@
                                                             <span class="WithNumbers">18</span>
                                                             <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                         </span>
-                                                        <span>
+                                                        <span class="ImgBox">
                                                             <img src="/Public/Web/web/img/02_interest/Todoist.png">
                                                         </span>
                                                     </a>
@@ -249,7 +249,7 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
                                                 </td>
                                                 <td colspan="2">
                                                     <span class="TopicNames">#Topic Name#</span> Topic Title
@@ -285,7 +285,7 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
                                                 </td>
                                                 <td colspan="2">
                                                     <span class="TopicNames">#Topic Name#</span> Topic Title
@@ -303,7 +303,7 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
                                                 </td>
                                                 <td colspan="2">
                                                     <span class="TopicNames">#Topic Name#</span> Topic Title
@@ -330,7 +330,7 @@
                                                             <span class="WithNumbers">18</span>
                                                             <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                         </span>
-                                                        <span>
+                                                        <span class="ImgBox">
                                                             <img src="/Public/Web/web/img/02_interest/Todoist.png">
                                                         </span>
                                                     </a>
@@ -358,7 +358,7 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -377,7 +377,7 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -396,7 +396,7 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -415,7 +415,7 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -434,7 +434,7 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -461,7 +461,7 @@
                                                             <span class="WithNumbers">18</span>
                                                             <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                         </span>
-                                                        <span>
+                                                        <span class="ImgBox">
                                                             <img src="/Public/Web/web/img/02_interest/Todoist.png">
                                                         </span>
                                                     </a>
@@ -489,7 +489,7 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -508,7 +508,7 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -527,7 +527,7 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -546,7 +546,7 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -565,7 +565,7 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox"><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -595,7 +595,7 @@
                 </div><?php endif; ?>
                 <div class="GroupDetailsContainer">
                     <h4 class="text-center FontColor">Group Details</h4>
-                    <p class="p"><b>Group icon  : </b>&nbsp;&nbsp;<img src="Uploads/<?php echo ($crowone['crowd_icon']); ?>" style="width: 50px; height: 50px"></p>
+                    <div class="p"><b>Group icon  : </b>&nbsp;&nbsp;<div class="Group_icon"><img src="Uploads/<?php echo ($crowone['crowd_icon']); ?>"></div></div>
                     <p class="p"><b>Group Name  :</b><?php echo ($crowone['crowd_name']); ?></p>
                     <p class="p"><b>Creator  : </b><?php echo ($crowone['user_name']); ?></p>
                     <p class="p">

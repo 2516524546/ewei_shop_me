@@ -227,8 +227,10 @@
 					<div class="row" id="crowdlist">
 						<?php if(is_array($crodlist)): foreach($crodlist as $crodkey=>$crod): ?><div class="col-xs-8 col-sm-6">
 							<div class="UserBox">
-								<a href="<?php echo U('Index/Academic/academicGroups');?>&cid=<?php echo ($crod['crowd_id']); ?>" class="UserLink">
-									<img src="./Uploads/<?php echo ($crod['crowd_icon']); ?>" alt="" class="img-circle userimg" />
+                                <a href="<?php echo U('Index/Academic/academicGroups');?>&cid=<?php echo ($crod['crowd_id']); ?>" class="UserLink">
+                                    <div class="UserBox_img">
+                                    <img src="./Uploads/<?php echo ($crod['crowd_icon']); ?>" alt="" class="img-circle userimg" />
+                                    </div>
 									<h4 class="UserTitle"><?php echo ($crod['crowd_name']); ?></h4>
 									<p class="UserFollow">
 										<img src="/Public/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="" /> &nbsp;&nbsp;<?php echo ($crod['crowd_peoplenum']); ?>
