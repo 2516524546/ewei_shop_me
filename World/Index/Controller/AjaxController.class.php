@@ -13,6 +13,10 @@ use Index\Model\NoteModel;
 use Index\Model\NoteVIModel;
 use Index\Model\OpinionModel;
 use Index\Model\ProposalModel;
+use Index\Model\QuestionModel;
+use Index\Model\QuestionVIModel;
+use Index\Model\ResourceModel;
+use Index\Model\ResourceVIModel;
 use Index\Model\ResumeModel;
 use Index\Model\SecondMarkModel;
 use Index\Model\ThirdMarkModel;
@@ -1751,7 +1755,7 @@ public function ajax_donationpay()
                                         'note_vi_url' =>$url,
                                     );
 
-                                    $aa = $notevimodel->add($vidata);
+                                    $notevimodel->add($vidata);
 
                                 }
 
@@ -1777,7 +1781,7 @@ public function ajax_donationpay()
         }
     }
 
-    //发布帖子
+    //发布问答
     public function ajax_createqa(){
 
 
@@ -1815,43 +1819,150 @@ public function ajax_donationpay()
                         die(json_encode(array('str' => 0, 'msg' => $upload->getError())));
                     } else {
 
-                        $notemodel = new NoteModel();
-                        $notevimodel = new NoteVIModel();
+                        $questionmodel = new QuestionModel();
+                        $questionvimodel = new QuestionVIModel();
 
-                        $notemodel->startTrans();
+                        $questionmodel->startTrans();
                         try{
-                            $notedata = array(
-                                'note_cid' => $this->post('cid'),
-                                'note_uid' => $this->userid,
-                                'note_name' => $this->post('name'),
-                                'note_content' => $this->post('content'),
-                                'note_createtime' => date("Y-m-d H:i:s", time()),
+                            $questiondata = array(
+                                'question_cid' => $this->post('cid'),
+                                'question_uid' => $this->userid,
+                                'question_name' => $this->post('name'),
+                                'question_content' => $this->post('content'),
+                                'question_createtime' => date("Y-m-d H:i:s", time()),
                             );
+                            if (isset($_POST['reward']) && $this->post('reward') != ''){
 
-                            $noteid = $notemodel->add($notedata);
+                                $questiondata['question_reward'] = $this->post('reward');
+                            }else{
 
-                            if ($noteid){
+                                $questiondata['question_reward']=0;
+                            }
+
+                            $questionid = $questionmodel->add($questiondata);
+
+                            if ($questionid){
 
                                 foreach ($info as $i){
                                     $url = $i['savepath'].$i['savename'];
 
                                     $vidata = array(
-                                        'note_vi_nid' => $noteid,
-                                        'note_vi_url' =>$url,
+                                        'question_vi_qid' => $questionid,
+                                        'question_vi_url' =>$url,
                                     );
 
-                                    $aa = $notevimodel->add($vidata);
+                                    $questionvimodel->add($vidata);
 
                                 }
 
-                                $notemodel->commit();
-                                die(json_encode(array('str' => 1, 'id' => $noteid,'cid' => $this->post('cid'))));
+                                $questionmodel->commit();
+                                die(json_encode(array('str' => 1, 'id' => $questionid,'cid' => $this->post('cid'))));
                             }else{
-                                $notevimodel->rollback();
+                                $questionmodel->rollback();
                                 die(json_encode(array('str' => 2, 'msg' => '发布失败')));
                             }
                         }catch (Exception $e){
-                            $notevimodel->rollback();
+                            $questionmodel->rollback();
+                            die(json_encode(array('str' => 2, 'msg' => '发布失败')));
+                        }
+
+                    }
+                }else{
+
+                    die(json_encode(array('str' => 5,'msg'=>'请上传相应的图片或视频')));
+                }
+            }
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
+    //发布资源
+    public function ajax_createresource(){
+
+
+        if (IS_POST){
+
+
+            if (!isset($_POST['name']) || $this->post('name') == ''){
+
+                die(json_encode(array('str' => 3, 'msg' => '请输入标题')));
+            } else if(!isset($_POST['content']) || $this->post('content') == ''){
+
+                die(json_encode(array('str' => 4, 'msg' => '请输入内容')));
+            } else if(!isset($_POST['cid']) || $this->post('cid') == ''){
+
+                die(json_encode(array('str' => 6, 'msg' => '没有该群')));
+            } else if(!isset($_POST['resourcefile']) || $this->post('resourcefile') == ''){
+
+                die(json_encode(array('str' => 7, 'msg' => '没有资源')));
+            } else {
+                if ($_FILES) {
+                    $upload = new \Think\Upload();// 实例化上传类
+                    $type = explode('/', $_FILES['img']['type'][0]);
+                    if ($type[0] == 'video') {
+                        $upload->maxSize = 204800000;// 设置附件上传大小
+                    } else {
+                        $upload->maxSize = 5120000;// 设置附件上传大小
+                    }
+
+                    $upload->exts = array('jpg', 'gif', 'png', 'jpeg', 'mp4', 'avi');// 设置附件上传类型
+                    $upload->rootPath = './Uploads/'; // 设置附件上传根目录
+
+                    $filelist = $upload->dealFiles($_FILES);
+
+                    $info = $upload->upload($_FILES);
+
+                    if (!$info || count($filelist) != count($info)) {
+                        // 上传错误提示错误信息
+                        die(json_encode(array('str' => 0, 'msg' => $upload->getError())));
+                    } else {
+
+                        $resourcemodel = new ResourceModel();
+                        $resourcevimodel = new ResourceVIModel();
+
+                        $resourcemodel->startTrans();
+                        try{
+                            $resourcedata = array(
+                                'resource_cid' => $this->post('cid'),
+                                'resource_uid' => $this->userid,
+                                'resource_name' => $this->post('name'),
+                                'resource_content' => $this->post('content'),
+                                'resource_url' => $this->post('resourcefile'),
+                                'resource_createtime' => date("Y-m-d H:i:s", time()),
+                            );
+                            if (isset($_POST['reward']) && $this->post('reward') != ''){
+
+                                $resourcedata['question_reward'] = $this->post('reward');
+                            }else{
+
+                                $resourcedata['question_reward']=0;
+                            }
+
+                            $resourceid = $resourcemodel->add($resourcedata);
+
+                            if ($resourceid){
+
+                                foreach ($info as $i){
+                                    $url = $i['savepath'].$i['savename'];
+
+                                    $vidata = array(
+                                        'question_vi_qid' => $resourceid,
+                                        'question_vi_url' =>$url,
+                                    );
+
+                                    $resourcevimodel->add($vidata);
+
+                                }
+
+                                $resourcemodel->commit();
+                                die(json_encode(array('str' => 1, 'id' => $resourceid,'cid' => $this->post('cid'))));
+                            }else{
+                                $resourcemodel->rollback();
+                                die(json_encode(array('str' => 2, 'msg' => '发布失败')));
+                            }
+                        }catch (Exception $e){
+                            $resourcemodel->rollback();
                             die(json_encode(array('str' => 2, 'msg' => '发布失败')));
                         }
 

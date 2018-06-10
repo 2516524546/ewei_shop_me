@@ -147,7 +147,7 @@
     <div class="container crumbs">
         <a href="<?php echo U('Index/Rnterst/interest');?>" class="crumbsa">interest</a>
         <cite class="Icon"></cite>
-        <span class="crumbsTitle">Group name</span>
+        <span class="crumbsTitle"><?php echo ($crowone['crowd_name']); ?></span>
 
     </div>
     <!-- Carousel advertising start 轮播广告 -->

@@ -155,7 +155,7 @@
     </div>
 
     <!-- Forget the password form -->
-    <form class="layui-form layui-form-pane" action="" id="formdata">
+    <form class="layui-form layui-form-pane" action="" autocomplete="off" id="formdata" >
         <div class="PasswordContainer">
             <div class="StepContainer">
                 <div class="StepContainerOne">
@@ -201,7 +201,7 @@
                                 <span class="MoneyIcon"></span>
                             </label>
                             <div class="layui-input-block input-spacing">
-                                <input type="text" name="number" id="qareward"  autocomplete="off" placeholder="Enter the amount of the reward" class="layui-input">
+                                <input type="number" name="number" id="qareward"  autocomplete="off" placeholder="Enter the amount of the reward" class="layui-input">
                             </div>
                         </div>
                         <div class="FormContainer" pane>
@@ -221,7 +221,7 @@
                                 <span class="NumberIcon"></span>
                             </label>
                             <div class="layui-input-block input-spacing">
-                                <input type="text" name="number" id="resourcereward" autocomplete="off" placeholder="Enter numbers of virtual currency to download" class="layui-input">
+                                <input type="number" name="number" id="resourcereward" autocomplete="off" placeholder="Enter numbers of virtual currency to download" class="layui-input">
                             </div>
                         </div>
                         <div class="FormContainer" pane>
@@ -349,7 +349,7 @@
                         demoListView.eq(0)[0].childNodes[0].remove();
                         demoListView.append(tr);
                         resourcefile = file
-                    }) 
+                    })
                 }
         })
     </script>
@@ -436,6 +436,137 @@
                         });
                     }else if (selectedValue ==2 ){
 
+                        var file_files = document.getElementById('file_input').files;
+                        var file_obj = document.getElementById('formdata');
+                        var fd = new FormData();
+                        for (var i = 0; i < file_files.length; i++){
+                            console.log(file_files[i])
+                            fd.append('img['+i+']',file_files[i])
+                        }
+                        fd.append('name',$("#name").val())
+                        fd.append('content',$("#qacontent").val())
+                        fd.append('reward',$("#qareward").val())
+                        fd.append('cid','<?php echo ($cid); ?>')
+                        $.ajax({
+                            url: "<?php echo U('Index/Ajax/ajax_createqa');?>",
+                            type: "POST",
+                            async: false,
+                            cache: false,
+                            processData: false,// 告诉jQuery不要去处理发送的数据
+                            contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                            data: fd,
+                            dataType: "json",
+                            success: function (data) {
+                                if (data.str == 1){
+                                    layer.msg('创建成功',{
+                                            time:1500,
+                                            icon:1,
+                                        },function () {
+                                            window.location.href="<?php echo U('Index/Rnterst/postVideoDetails');?>&id="+data.id+"&cid="+data.cid;
+                                        }
+                                    );
+
+                                }else{
+                                    layer.msg(data.msg,{
+                                            time:1500,
+                                            icon:2,
+                                        }
+                                    );
+
+                                }
+                            },
+                            error: function (err) {
+
+                                layer.msg('请求失败!', {
+                                        time: 1500,
+                                        icon: 2,
+                                    }
+                                );
+                            }
+                        });
+                    }else if (selectedValue ==3 ){
+                        if (resourcefile==''){
+                            layer.msg('请上传资源',{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+                        }else {
+                            var fd1 = new FormData();
+                            fd1.append('img', resourcefile);
+
+                            $.ajax({
+                                url: "<?php echo U('Index/Ajax/ajax_uploadfile');?>",
+                                type: "POST",
+                                async: false,
+                                cache: false,
+                                processData: false,// 告诉jQuery不要去处理发送的数据
+                                contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                                data: fd1,
+                                dataType: "json",
+                                success: function (data) {
+
+                                    var file_files = document.getElementById('file_input').files;
+                                    var file_obj = document.getElementById('formdata');
+                                    var fd = new FormData();
+                                    for (var i = 0; i < file_files.length; i++) {
+                                        console.log(file_files[i])
+                                        fd.append('img[]', file_files[i])
+                                    }
+                                    fd.append('name', $("#name").val())
+                                    fd.append('content', $("#resourcecontent").val())
+                                    fd.append('reward', $("#resourcereward").val())
+                                    fd.append('resourcefile', data.msg)
+                                    fd.append('cid', '<?php echo ($cid); ?>')
+                                    $.ajax({
+                                        url: "<?php echo U('Index/Ajax/ajax_createresource');?>",
+                                        type: "POST",
+                                        async: false,
+                                        cache: false,
+                                        processData: false,// 告诉jQuery不要去处理发送的数据
+                                        contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                                        data: fd,
+                                        dataType: "json",
+                                        success: function (data) {
+                                            console.log(data)
+                                            if (data.str == 1){
+                                                layer.msg('创建成功',{
+                                                        time:1500,
+                                                        icon:1,
+                                                    },function () {
+                                                        window.location.href="<?php echo U('Index/Rnterst/postVideoDetails');?>&id="+data.id+"&cid="+data.cid;
+                                                    }
+                                                );
+
+                                            }else{
+                                                layer.msg(data.msg,{
+                                                        time:1500,
+                                                        icon:2,
+                                                    }
+                                                );
+
+                                            }
+                                        },
+                                        error: function (err) {
+
+                                            layer.msg('请求失败!', {
+                                                    time: 1500,
+                                                    icon: 2,
+                                                }
+                                            );
+                                        }
+                                    });
+                                },
+                                error: function (err) {
+
+                                    layer.msg('请求失败!', {
+                                            time: 1500,
+                                            icon: 2,
+                                        }
+                                    );
+                                }
+                            });
+                        }
                     }
 
 
