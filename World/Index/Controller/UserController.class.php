@@ -189,17 +189,17 @@ class UserController extends CommonController {
         $this->display();
     }
 
-    /**
-     * 我的粉丝列表
-     * @return mixed
-     */
-    public function FansList(){
-        $css = addCss('FansList');
-        $this->assign('title','FansList');
-        $this->assign('CSS',$css);
+    //帮助
+    public function helpCenter(){
+
         $this->display();
     }
 
+    //告诉我们 
+    public function contactUs(){
+
+        $this->display();
+    }
 
     /**
      * 我的投递记录

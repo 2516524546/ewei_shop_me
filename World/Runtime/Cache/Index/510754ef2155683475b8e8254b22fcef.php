@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/Public/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="/Public/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="/Public/Web/js/lib/layui/dist/css/layui.css">
+    <link rel="stylesheet" href="/Public/Web/web/css/Crumbsnav.css">
+    <link rel="stylesheet" href="/Public/Web/web/css/success_index.css">
 </head>
 
 <body>
@@ -142,13 +144,12 @@
     </header>
     <hr>
     <!-- Crumbs nav -->
-    <div class="container Crumbs">
-        <span class="CrumbsSpan">
-          <a href="<?php echo U('Index/Jobs/work');?>" class="CrumbsA">Jobs</a>
-          <cite class="CrumbsIcon"></cite>
-          <span class="CrumbsTitle">Group name</span>
-        </span>
+    <div class="container crumbs">
+        <a href="<?php echo U('Index/Jobs/work');?>" class="crumbsa">Jobs</a>
+        <cite class="Icon"></cite>
+        <span class="crumbsTitle">Group name</span>
     </div>
+
     <!-- Carousel advertising start 轮播广告 -->
     <div class="layui-carousel Banner" id="test2">
         <div carousel-item="">
@@ -198,7 +199,7 @@
                                                             <span class="WithNumbers">18</span>
                                                             <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                         </span>
-                                                        <span>
+                                                        <span class="ImgBox">
                                                             <img src="/Public/Web/web/img/02_interest/Todoist.png">
                                                         </span>
                                                     </a>
@@ -226,7 +227,7 @@
                                                             <span class="WithNumbers">18</span>
                                                             <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                         </span>
-                                                        <span>
+                                                        <span class="ImgBox">
                                                             <img src="/Public/Web/web/img/02_interest/Todoist.png">
                                                         </span>
                                                     </a>
@@ -249,7 +250,9 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox">
+                                                        <img src="/Public/Web/web/img/02_interest/Todoist.png">
+                                                    </span>
                                                 </td>
                                                 <td colspan="2">
                                                     <span class="TopicNames">#Topic Name#</span> Topic Title
@@ -267,7 +270,9 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox">
+                                                        <img src="/Public/Web/web/img/02_interest/Todoist.png">
+                                                    </span>
                                                 </td>
                                                 <td colspan="2">
                                                     <span class="TopicNames">#Topic Name#</span> Topic Title
@@ -285,7 +290,9 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox">
+                                                        <img src="/Public/Web/web/img/02_interest/Todoist.png">
+                                                    </span>
                                                 </td>
                                                 <td colspan="2">
                                                     <span class="TopicNames">#Topic Name#</span> Topic Title
@@ -303,7 +310,9 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox">
+                                                        <img src="/Public/Web/web/img/02_interest/Todoist.png">
+                                                    </span>
                                                 </td>
                                                 <td colspan="2">
                                                     <span class="TopicNames">#Topic Name#</span> Topic Title
@@ -330,7 +339,7 @@
                                                             <span class="WithNumbers">18</span>
                                                             <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                         </span>
-                                                        <span>
+                                                        <span class="ImgBox">
                                                             <img src="/Public/Web/web/img/02_interest/Todoist.png">
                                                         </span>
                                                     </a>
@@ -358,7 +367,9 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox">
+                                                        <img src="/Public/Web/web/img/02_interest/Todoist.png">
+                                                    </span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -377,7 +388,9 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox">
+                                                        <img src="/Public/Web/web/img/02_interest/Todoist.png">
+                                                    </span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -396,7 +409,9 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox">
+                                                        <img src="/Public/Web/web/img/02_interest/Todoist.png">
+                                                    </span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -415,7 +430,9 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox">
+                                                        <img src="/Public/Web/web/img/02_interest/Todoist.png">
+                                                    </span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -434,7 +451,9 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox">
+                                                        <img src="/Public/Web/web/img/02_interest/Todoist.png">
+                                                    </span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -461,7 +480,7 @@
                                                             <span class="WithNumbers">18</span>
                                                             <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                         </span>
-                                                        <span>
+                                                        <span class="ImgBox">
                                                             <img src="/Public/Web/web/img/02_interest/Todoist.png">
                                                         </span>
                                                     </a>
@@ -489,7 +508,9 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox">
+                                                        <img src="/Public/Web/web/img/02_interest/Todoist.png">
+                                                    </span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -508,7 +529,9 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox">
+                                                        <img src="/Public/Web/web/img/02_interest/Todoist.png">
+                                                    </span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -527,7 +550,9 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox">
+                                                        <img src="/Public/Web/web/img/02_interest/Todoist.png">
+                                                    </span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -546,7 +571,9 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox">
+                                                        <img src="/Public/Web/web/img/02_interest/Todoist.png">
+                                                    </span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -565,7 +592,9 @@
                                                         <span class="WithNumbers">18</span>
                                                     <img class="WithNumberImg" src="/Public/Web/web/img/02_interest/interest_qxx_pic_ups.png">
                                                     </span>
-                                                    <span><img src="/Public/Web/web/img/02_interest/Todoist.png"></span>
+                                                    <span class="ImgBox">
+                                                        <img src="/Public/Web/web/img/02_interest/Todoist.png">
+                                                    </span>
                                                 </td>
                                                 <td colspan="2">
                                                     Topic Title
@@ -595,7 +624,7 @@
                 </div>
                 <div class="GroupDetailsContainer">
                     <h4 class="text-center FontColor">Group Details</h4>
-                    <p class="p"><b>Group icon  : </b>&nbsp;&nbsp;<img src="/Public/Web/web/img/02_interest/Todoist.png"></p>
+                    <div class="p"><b>Group icon  : </b>&nbsp;&nbsp;<div class="Group_icon"><img src="/Public/Web/web/img/02_interest/Todoist.png"></div></div>
                     <p class="p"><b>Group Name  :</b>Fancy Child</p>
                     <p class="p"><b>Creator  : </b>Jess.J</p>
                     <p class="p">
@@ -616,10 +645,39 @@
                             <img src="/Public/Web/web/img/01_shouye/home_sy_icon_c_more_n.png">
                         </a>
                     </h4>
-                    <p class="p"><b>Group icon  : </b></p>
-                    <p class="p"><img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs"><img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs"><img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs"><img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs"><img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs"></p>
-                    <p class="p"><b>Group icon  : </b></p>
-                    <p><img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs"><img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs"><img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs"><img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs"></p>
+                    <p class="p"><b>Administrator  : </b></p>
+                    <div class="p_box">
+                            <div class="p_img">
+                                <img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs">
+                            </div>
+                            <div class="p_img">
+                                <img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs">
+                            </div>
+                            <div class="p_img">
+                                <img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs">
+                            </div>
+                            <div class="p_img">
+                                <img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs">
+                            </div>
+                        </div>
+                    <p class="p"><b>Members  : </b></p>
+                    <div class="p_box">
+                            <div class="p_img">
+                                <img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs">
+                            </div>
+                            <div class="p_img">
+                                <img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs">
+                            </div>
+                            <div class="p_img">
+                                <img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs">
+                            </div>
+                            <div class="p_img">
+                                <img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs">
+                            </div>
+                            <div class="p_img">
+                                <img src="/Public/Web/web/img/02_interest/Todoist.png" class="userimgs">
+                            </div>
+                        </div>
                 </div>
                 <div class="BannerContainer">
                     <h4 class="text-center FontColor">Advertising</h4>
@@ -632,8 +690,9 @@
         </div>
     </div>
     <!-- Group list 群列表 end -->
-    <!-- foot start 底部信息 -->
-    <footer class="container-fluid FooterBg">
+    <footer>
+        <!-- foot start 底部信息 -->
+<footer class="container-fluid FooterBg">
         <div class="row FooterContainer">
             <div class="col-xs-6 col-md-4">
                 <dl>
@@ -654,8 +713,8 @@
             <div class="col-xs-6 col-md-4">
                 <dl>
                     <dt>Help Center</dt>
-                    <dd>Help Center</dd>
-                    <dd>Contact Us</dd>
+                    <dd><a href="<?php echo U('Index/User/helpCenter');?>">Help Center</a></dd>
+                    <dd><a href="<?php echo U('Index/User/contactUs');?>">Contact Us</a></dd>
                 </dl>
             </div>
         </div>
@@ -665,7 +724,7 @@
             </div>
         </div>
     </footer>
-    <!-- foot end 底部信息 -->
+    </footer>
     <script src="/Public/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="/Public/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/Public/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
