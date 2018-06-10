@@ -355,9 +355,10 @@
     </script>
     <script>
             var form = layui.form;
+            var selectedValue =1
             form.on('select',function(data){
                 console.log(data.value);
-                var selectedValue = data.value;
+                selectedValue = data.value;
                 console.log(selectedValue)
                 if(selectedValue==1){
                     $(".Post_box").css("display","block");
@@ -384,39 +385,58 @@
 
                 form.on('submit(demo1)', function(data){
 
-                    var file_files = document.getElementById('file_input').files;
-                    var file_obj = document.getElementById('formdata');
-                    var fd = new FormData();
-                    for (var i = 0; i < file_files.length; i++){
-                        console.log(file_files[i])
-                        fd.append('img[]',file_files[i])
-                    }
 
-
-                    $.ajax({
-                        url: "<?php echo U('Index/Ajax/ajax_createnote');?>",
-                        type: "POST",
-                        async: false,
-                        cache: false,
-                        processData: false,// 告诉jQuery不要去处理发送的数据
-                        contentType: false,// 告诉jQuery不要去设置Content-Type请求头
-                        data: fd,
-                        dataType:"json",
-                        success: function(data){
-                            console.log(data)
-
-
-
-                        },
-                        error: function(err) {
-
-                            layer.msg('请求失败!',{
-                                    time:1500,
-                                    icon:2,
-                                }
-                            );
+                    if (selectedValue ==1 ) {
+                        var file_files = document.getElementById('file_input').files;
+                        var file_obj = document.getElementById('formdata');
+                        var fd = new FormData();
+                        for (var i = 0; i < file_files.length; i++){
+                            console.log(file_files[i])
+                            fd.append('img['+i+']',file_files[i])
                         }
-                    });
+                        fd.append('name',$("#name").val())
+                        fd.append('content',$("#postcontent").val())
+                        fd.append('cid','<?php echo ($cid); ?>')
+                        $.ajax({
+                            url: "<?php echo U('Index/Ajax/ajax_createnote');?>",
+                            type: "POST",
+                            async: false,
+                            cache: false,
+                            processData: false,// 告诉jQuery不要去处理发送的数据
+                            contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                            data: fd,
+                            dataType: "json",
+                            success: function (data) {
+                                if (data.str == 1){
+                                    layer.msg('创建成功',{
+                                            time:1500,
+                                            icon:1,
+                                        },function () {
+                                            window.location.href="<?php echo U('Index/Rnterst/postVideoDetails');?>&nid="+data.msg;
+                                        }
+                                    );
+
+                                }else{
+                                    layer.msg(data.msg,{
+                                            time:1500,
+                                            icon:2,
+                                        }
+                                    );
+
+                                }
+                            },
+                            error: function (err) {
+
+                                layer.msg('请求失败!', {
+                                        time: 1500,
+                                        icon: 2,
+                                    }
+                                );
+                            }
+                        });
+                    }else if (selectedValue ==2 ){
+
+                    }
 
 
                     return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
