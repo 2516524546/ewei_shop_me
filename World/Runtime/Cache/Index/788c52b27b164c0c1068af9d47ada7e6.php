@@ -70,6 +70,17 @@
                         </button>
                     </div>
                 </div>
+                <div class="orContainer">
+                    <div class="orContainer_con">
+                        or
+                    </div>
+                    <div class="Facebook">
+                        <div class="Facebook_img">
+                            <img src="/Public/Web/web/img/facebook.png" alt="">
+                        </div>
+                        <p>Facebook</p>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
@@ -194,7 +205,7 @@ function sendemail() {
         //设置button效果，开始计时
         $(".sendCode").attr("disabled", "true");
         // $(".sendCode").val("请在" + curCount + "秒内输入验证码");
-        InterValObj = window.setInterval(SetRemainTime, 100); //启动计时器，1秒执行一次
+        InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
     }
     function SetRemainTime() {
         if (curCount == 0) {

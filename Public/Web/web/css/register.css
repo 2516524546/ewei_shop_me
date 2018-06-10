@@ -219,6 +219,40 @@ header {
   align-items: center;
   margin: 37px;
 }
+.orContainer{
+  border-top: 2px dashed #dbdbdb;
+  margin-top: 46px;
+  position: relative;
+}
+.orContainer .orContainer_con{
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  font-size: 18px;
+  background: #fff;
+  color: #dbdbdb;
+
+}
+.orContainer .Facebook{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 30px;
+}
+.orContainer .Facebook .Facebook_img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.orContainer .Facebook .Facebook_img img{
+  width: 100%;
+}
+.orContainer .Facebook p{
+  color: #dbdbdb;
+  margin-left: 10px;
+}
 .Previous{
   width: 40%;
 }

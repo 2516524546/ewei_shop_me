@@ -11,7 +11,9 @@
     text-align: center;
     border: 1px solid #1E9FFF;
     border-radius: 100px;
-    margin-right: 50px;
+}
+.btn_box .btn_box_item:last-child{
+    margin-left: 25px;
 }
 .btn_box .btn_box_item:hover{
     background-color: #1e9fff;
@@ -77,3 +79,38 @@
 .Group_list .Group_item .item_circle .item_pic img{
     width: 100%;
 }
+
+.orContainer{
+    border-top: 2px dashed #dbdbdb;
+    margin-top: 46px;
+    position: relative;
+  }
+  .orContainer .orContainer_con{
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    font-size: 18px;
+    background: #fff;
+    color: #dbdbdb;
+  
+  }
+  .orContainer .Facebook{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 30px;
+  }
+  .orContainer .Facebook .Facebook_img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .orContainer .Facebook .Facebook_img img{
+    width: 100%;
+  }
+  .orContainer .Facebook p{
+    color: #dbdbdb;
+    margin-left: 10px;
+  }
