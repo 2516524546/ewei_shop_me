@@ -37,7 +37,7 @@
                 <div class="container">
                     <div class="butbox">
                         <a href="{:U('Index/Jobs/releaseProject')}" class="layui-btn layui-btn-normal layui-btn-radius fontcss">Publish project</a>
-                        <a href="MyProject.html" class="layui-btn layui-btn-normal layui-btn-radius fontcss">My project</a>
+                        <a href="{:U('Jobs/MyProject')}" class="layui-btn layui-btn-normal layui-btn-radius fontcss">My project</a>
                     </div>
                     <div class="frombox">
                         <div class="SelectionTypeContainer">
@@ -78,7 +78,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="UserBox">
-                                <a href="ProjectDetails.html" class="UserLink">
+                                <a href="{:U('Jobs/ProjectDetails')}" class="UserLink">
                                     <p style="float: left;margin-right: 14px;">
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/UserPic.png" style="width: 84px;height: auto;margin-bottom: 54px;border-radius: 40%;">
                                     </p>
@@ -200,7 +200,7 @@
             <div class="layui-tab-item">
                 <div class="container">
                     <div class="butbox">
-                        <a href="ReleaseProfessional.html" class="layui-btn layui-btn-normal layui-btn-radius fontcss">Professional</a>
+                        <a href="{:U('Jobs/ReleaseProfessional')}" class="layui-btn layui-btn-normal layui-btn-radius fontcss">Professional</a>
                         <!-- <a href="MyProject.html" class="layui-btn layui-btn-normal layui-btn-radius fontcss">My project</a> -->
                     </div>
                     <div class="frombox">
@@ -245,7 +245,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="UserBox">
-                                <a href="ProfessionalDetails.html" class="UserLink">
+                                <a href="{:U('Jobs/ProfessionalDetails')}" class="UserLink">
                                     <p style="float: left;margin-right: 14px;">
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/UserPic.png" style="width: 84px;height: auto;margin-bottom: 54px;border-radius: 40%;">
                                     </p>
@@ -394,38 +394,7 @@
         <div id="NumberOfPages"></div>
     </div>
     <!-- foot start 底部信息 -->
-    <footer class="container-fluid FooterBg">
-        <div class="row FooterContainer">
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>ABOUT</dt>
-                    <dd>
-                        NewWorld.net is a comprehensive website that provides an efficient source of resources and convenience for our every -day lives. We can easily discover, share and create a new world.
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>SUPPORT</dt>
-                    <dd>Premium Support</dd>
-                    <dd>Get Started</dd>
-                    <dd>Partners</dd>
-                </dl>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>Help Center</dt>
-                    <dd><a href="HelpCenter.html">Help Center</a></dd>
-                    <dd><a href="ContactUs.html">Contact Us</a></dd>
-                </dl>
-            </div>
-        </div>
-        <div class="row copyright">
-            <div class="col-md-12">
-                <p class="text-center">&copy; 2018 NewWorld. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <include file = "./World/Index/View/Public/footer.html"/>
     <!-- foot end 底部信息 -->
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
