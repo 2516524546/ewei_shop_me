@@ -27,85 +27,61 @@
                         Empty messages
                 </div>
                 <div class="Message_details">
-                    <div class="Message_details_item">
-                        <a href="MessageDetails.html">
-                            <div class="item_question">
-                                Your question "Q: Why is the world so big?" Someone has already
-                            </div>
-                            <div class="item_time">
-                                <div class="item_time_img">
-                                    <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/timer.png" alt="">
+                    <foreach name="messages" item="m">
+                    <if condition="$m['message_type'] == 0">
+                        <div class="Message_details_item">
+                            <a href="MessageDetails.html">
+                                <div class="item_question">
+                                    {$m['message_title']}
                                 </div>
-                                <span>01/12/2018  15:36:58</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="Message_details_item">
-                        <a href="#">
-                            <div class="item_question">
-                                Your question "Q: Why is the world so big?" Someone has already
-                            </div>
-                            <div class="item_time">
-                                <div class="item_time_img">
-                                    <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/timer.png" alt="">
-                                </div>
-                                <span>01/12/2018  15:36:58</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="Message_details_item">
-                        <a href="#">
-                            <div class="item_question">
-                                Your question "Q: Why is the world so big?" Someone has already
-                            </div>
-                            <div class="item_time">
-                                <div class="item_time_img">
-                                    <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/timer.png" alt="">
-                                </div>
-                                <span>01/12/2018  15:36:58</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="Message_details_item item_friend">
-                            <div class="details_top">
-                                <div class="details_top_user">
-                                    <div class="details_top_user_pic">
-                                        <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
-                                    </div>
-                                    <div class="details_top_user_name">
-                                        Jessi
-                                    </div>
-                                </div>
-                                <div class="details_top_btn">
-                                    <div class="top_btn">
-                                            Agree
-                                    </div>
-                                    <div class="top_btn">
-                                            Refuse
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="details_bottom">
-                                <div class="bottom_hint">
-                                    Find you through the xxxx group, apply to be your friend
-                                </div>
-                                <div class="bottom_time">
-                                    <div class="bottom_time_img">
+                                <div class="item_time">
+                                    <div class="item_time_img">
                                         <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/timer.png" alt="">
                                     </div>
-                                    <span>01/12/2018  15:36:58</span>
+                                    <span>{$m['message_sendtime']}</span>
+                                </div>
+                            </a>
+                        </div>
+                    <else />
+
+                        <div class="Message_details_item item_friend">
+                                <div class="details_top">
+                                    <div class="details_top_user">
+                                        <div class="details_top_user_pic">
+                                            <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
+                                        </div>
+                                        <div class="details_top_user_name">
+                                            Jessi
+                                        </div>
+                                    </div>
+                                    <div class="details_top_btn">
+                                        <div class="top_btn">
+                                                Agree
+                                        </div>
+                                        <div class="top_btn">
+                                                Refuse
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="details_bottom">
+                                    <div class="bottom_hint">
+                                        {$m['message_title']}
+                                    </div>
+                                    <div class="bottom_time">
+                                        <div class="bottom_time_img">
+                                            <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/timer.png" alt="">
+                                        </div>
+                                        <span>{$m['message_sendtime']}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                    </if>
+                    </foreach>
                 </div>
                 <div class="container" id="NumberOfPagesContainer">
                         <div id="NumberOfPages"></div>
             </div>
 
-        </div>
         </div>
         <!-- foot start 底部信息 -->
         <footer class="container-fluid FooterBg">
