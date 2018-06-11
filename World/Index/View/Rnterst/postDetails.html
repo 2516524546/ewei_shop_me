@@ -183,19 +183,19 @@
             </div>
             <div class="col-md-3">
                 <div class="GroupDetailsContainer">
-                    <p class="text-center h5 p">Post Details</p>
-                    <p class="p"><b>Personal Information</b></p>
-                    <p class="p">
+                    <div class="text-center h5 p">Post Details</div>
+                    <div class="p"><b>Personal Information</b></div>
+                    <div class="p">
                         <b>Group icon  : </b>
-                        &nbsp;&nbsp;<img src="<if condition='$noteuser["user_icon"]'>./Uploads/{$noteuser['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
-                    </p>
-                    <p class="p"><b>Nickname：</b>{$noteuser['user_name']}</p>
-                    <p class="p"><b>Number of posts  :</b>{$noteuser['user_notes']}</p>
-                    <p class="text-center Followtbut">
+                        <div class="p_pic"><img src="<if condition='$noteuser["user_icon"]'>./Uploads/{$noteuser['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>"></div>  
+                    </div>
+                    <div class="p"><b>Nickname：</b>{$noteuser['user_name']}</div>
+                    <div class="p"><b>Number of posts  :</b>{$noteuser['user_notes']}</div>
+                    <div class="text-center Followtbut">
                         <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
                         Homepage
                         </a>
-                    </p>
+                    </div>
                 </div>
             </div>
         </div>
