@@ -1303,6 +1303,7 @@ public function ajax_donationpay()
             } else {
 
                 $data = array(
+                    'user_icon' => $this->post('icon'),
                     'user_name' => $this->post('name'),
                     'user_sex' => $this->post('sex'),
                     'user_country' => $this->post('country'),
@@ -2000,6 +2001,122 @@ public function ajax_donationpay()
         }
     }
 
+    //发布post
+    public function ajax_createpost(){
+
+
+        if (IS_POST){
+
+
+            if (!isset($_POST['name']) || $this->post('name') == ''){
+
+                die(json_encode(array('str' => 3, 'msg' => '请输入标题')));
+            } else if(!isset($_POST['content']) || $this->post('content') == ''){
+
+                die(json_encode(array('str' => 4, 'msg' => '请输入内容')));
+            } else if(!isset($_POST['cid']) || $this->post('cid') == ''){
+
+                die(json_encode(array('str' => 6, 'msg' => '没有该群')));
+            } else {
+                if ($_POST['posttype']==3){
+                    if(!isset($_POST['resourcefile']) || $this->post('resourcefile') == ''){
+
+                        die(json_encode(array('str' => 7, 'msg' => '没有资源')));
+                    }
+                }
+
+                if ($_FILES) {
+                    $upload = new \Think\Upload();// 实例化上传类
+                    $type = explode('/', $_FILES['img']['type'][0]);
+                    if ($type[0] == 'video') {
+                        $upload->maxSize = 204800000;// 设置附件上传大小
+                    } else {
+                        $upload->maxSize = 3072000;// 设置附件上传大小
+                    }
+
+                    $upload->exts = array('jpg', 'gif', 'png', 'jpeg', 'mp4', 'avi');// 设置附件上传类型
+                    $upload->rootPath = './Uploads/'; // 设置附件上传根目录
+
+                    $filelist = $upload->dealFiles($_FILES);
+
+                    $info = $upload->upload($_FILES);
+
+                    if (!$info || count($filelist) != count($info)) {
+                        // 上传错误提示错误信息
+                        die(json_encode(array('str' => 0, 'msg' => $upload->getError())));
+                    } else {
+
+                        $notemodel = new NoteModel();
+                        $notevimodel = new NoteVIModel();
+                        $usermodel = new UserModel();
+
+                        $notemodel->startTrans();
+                        try{
+                            $notedata = array(
+                                'note_cid' => $this->post('cid'),
+                                'note_uid' => $this->userid,
+                                'note_name' => $this->post('name'),
+                                'note_content' => $this->post('content'),
+                                'note_type' => $this->post('posttype'),
+                                'note_createtime' => date("Y-m-d H:i:s", time()),
+                            );
+                            if ($this->post('posttype')==2){
+                                $notedata['note_reward'] = $this->post('reward');
+                            }
+                            if ($this->post('posttype')==3){
+                                $notedata['note_reward'] = $this->post('reward');
+                                $notedata['note_url'] = $this->post('resourcefile');
+                            }
+
+                            $noteid = $notemodel->add($notedata);
+                            $userone = $usermodel->findone('user_id = '.$this->userid);
+                            $userdata = array(
+                                'user_notes' => $userone['user_notes']+1,
+                            );
+                            $usermodel->updataone('user_id = '.$this->userid,$userdata);
+
+                            if ($noteid){
+
+                                foreach ($info as $i){
+                                    $url = $i['savepath'].$i['savename'];
+
+                                    $vidata = array(
+                                        'note_vi_nid' => $noteid,
+                                        'note_vi_url' =>$url,
+                                    );
+                                    $vitype = explode('/', $i['type']);
+                                    if ($vitype[0]== 'video'){
+                                        $vidata['note_vi_type']=2;
+                                    }else{
+                                        $vidata['note_vi_type']=1;
+                                    }
+
+                                    $notevimodel->add($vidata);
+
+                                }
+
+                                $notemodel->commit();
+                                die(json_encode(array('str' => 1, 'id' => $noteid,'cid' => $this->post('cid'))));
+                            }else{
+                                $notevimodel->rollback();
+                                die(json_encode(array('str' => 2, 'msg' => '发布失败')));
+                            }
+                        }catch (Exception $e){
+                            $notevimodel->rollback();
+                            die(json_encode(array('str' => 2, 'msg' => '发布失败')));
+                        }
+
+                    }
+                }else{
+
+                    die(json_encode(array('str' => 5,'msg'=>'请上传相应的图片或视频')));
+                }
+            }
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
     //帖子懒加载
     public function ajax_havenote(){
         if (IS_POST){
@@ -2070,6 +2187,34 @@ public function ajax_donationpay()
                 die(json_encode(array('str' => 1,'msg'=>$resourcelist,'count'=>$resourcecount)));
             }else{
                 die(json_encode(array('str' => 2,'msg'=>$resourcelist,'count'=>$resourcecount)));
+            }
+
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
+    //post懒加载
+    public function ajax_havepost(){
+
+        if (IS_POST){
+
+            $where = 'note_cid = '.$this->post('cid').' and note_ishide = 1 and note_type = '.$this->post('type');
+
+            if (isset($_POST['name'])&&$this->post('name')!=''){
+                $where .= ' and note_name like "%'.$this->post('name').'%"';
+            }
+
+            $notemodel = new NoteModel();
+            $limit1 = $this->post('limit1')*$this->post('limit2');
+            $limit2 = $this->post('limit2');
+            $notelist = $notemodel->joinonelist($where,'u_user u on u_note.note_uid = u.user_id',$this->post('order'),$limit1,$limit2);
+            $notecount = $notemodel->joinone($where,'u_user u on u_note.note_uid = u.user_id',$this->post('order'),'INNER','count(*) num')['num'];
+            if ($notelist){
+                die(json_encode(array('str' => 1,'msg'=>$notelist,'count'=>$notecount)));
+            }else{
+                die(json_encode(array('str' => 2,'msg'=>$notelist,'count'=>$notecount)));
             }
 
 

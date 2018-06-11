@@ -217,15 +217,44 @@
 
 <script>
 
+    var imgurl = "{$usercontent['user_icon']}"
     layui.use('form', function(){
         var form = layui.form;
 
         form.on('submit(demo1)', function(data){
 
+            var file_obj = document.getElementById('upload').files[0];
+            if (file_obj){
+                var fd = new FormData();
+                fd.append('img', file_obj);
+                $.ajax({
+                    url: "{:U('Index/Ajax/ajax_uploadimg')}",
+                    type: "POST",
+                    async: false,
+                    cache: false,
+                    processData: false,// 告诉jQuery不要去处理发送的数据
+                    contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                    data: fd,
+                    dataType:"json",
+                    success: function(data){
+                        imgurl=data.msg
+
+                    },
+                    error: function(err) {
+
+                        layer.msg('请求失败!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+                });
+            }
             $.ajax({
                 type:"post",
                 url:"{:U('Index/Ajax/ajax_acountSetting')}",
                 data:{
+                    icon:imgurl,
                     name:$("#name").val(),
                     birth:$("#birth").val(),
                     sex:$("input[name='Sex']:checked").val(),
@@ -279,55 +308,7 @@
         });
     });
 
-    function loginout() {
 
-        $.ajax({
-            type:"post",
-            url:"{:U('Index/Ajax/ajax_loginout')}",
-            data:{
-
-            },
-            dataType:"json",
-            async:false,
-            success: function(data){
-                if (data!=null&&data!="") {
-                    if (data.str == 1) {
-                        layer.msg(data.msg,{
-                                time:1500,
-                                icon:1,
-                            },function () {
-                                location.reload();
-                            }
-                        );
-                    }else{
-                        layer.msg(data.msg,{
-                                time:1500,
-                                icon:2,
-                            }
-                        );
-                    }
-
-                }else{
-                    layer.msg('请求错误!',{
-                            time:1500,
-                            icon:2,
-                        }
-                    );
-                }
-
-            },
-            error:function(XMLHttpRequest, textStatus, errorThrown){
-
-                layer.msg('请求失败!',{
-                        time:1500,
-                        icon:2,
-                    }
-                );
-            }
-
-        })
-
-    }
 
 </script>
 </html>

@@ -57,9 +57,6 @@ class UserController extends CommonController {
         $countrylist = $countrymodel->findlist('','user_country_sort desc,user_country_name');
 
         $this->assign(array(
-            'userid' => $this->userid,
-            'usercontent' =>$this->usercontent,
-            'havemessage' => $this->havemessage,
             'countrylist' =>$countrylist,
 
         ));

@@ -110,16 +110,22 @@ class RnterstController extends CommonController {
         $questionmodel = new QuestionModel();
         $resourcemodel = new ResourceModel();
 
-        $notelist = $notemodel->joinonelist('note_cid = '.$_GET['cid'].' and note_ishide = 1','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
-        $notecount = $notemodel->joinone('note_cid = '.$_GET['cid'].' and note_ishide = 1','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+        $notelist = $notemodel->joinonelist('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 1','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+        $notecount = $notemodel->joinone('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 1','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
 
-        $questionlist = $questionmodel->joinonelist('question_cid = '.$_GET['cid'].' and question_ishide = 1','u_user u on u_question.question_uid = u.user_id','question_istop desc,question_iswally desc,question_createtime desc',0,20);
+        /*$questionlist = $questionmodel->joinonelist('question_cid = '.$_GET['cid'].' and question_ishide = 1','u_user u on u_question.question_uid = u.user_id','question_istop desc,question_iswally desc,question_createtime desc',0,20);
 
-        $questioncount = $questionmodel->joinone('question_cid = '.$_GET['cid'].' and question_ishide = 1','u_user u on u_question.question_uid = u.user_id','question_istop desc,question_iswally desc,question_createtime desc','INNER','count(*) num')['num'];
+        $questioncount = $questionmodel->joinone('question_cid = '.$_GET['cid'].' and question_ishide = 1','u_user u on u_question.question_uid = u.user_id','question_istop desc,question_iswally desc,question_createtime desc','INNER','count(*) num')['num'];*/
+        $questionlist = $notemodel->joinonelist('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 2','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
 
-        $resourcelist = $resourcemodel->joinonelist('resource_cid = '.$_GET['cid'].' and resource_ishide = 1','u_user u on u_resource.resource_uid = u.user_id','resource_istop desc,resource_iswally desc,resource_createtime desc',0,20);
+        $questioncount = $notemodel->joinone('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 2','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
 
-        $resourcecount = $resourcemodel->joinone('resource_cid = '.$_GET['cid'].' and resource_ishide = 1','u_user u on u_resource.resource_uid = u.user_id','resource_istop desc,resource_iswally desc,resource_createtime desc','INNER','count(*) num')['num'];
+        /*$resourcelist = $resourcemodel->joinonelist('resource_cid = '.$_GET['cid'].' and resource_ishide = 1','u_user u on u_resource.resource_uid = u.user_id','resource_istop desc,resource_iswally desc,resource_createtime desc',0,20);
+
+        $resourcecount = $resourcemodel->joinone('resource_cid = '.$_GET['cid'].' and resource_ishide = 1','u_user u on u_resource.resource_uid = u.user_id','resource_istop desc,resource_iswally desc,resource_createtime desc','INNER','count(*) num')['num'];*/
+        $resourcelist = $notemodel->joinonelist('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 3','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+
+        $resourcecount = $notemodel->joinone('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 3','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
 
 
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
