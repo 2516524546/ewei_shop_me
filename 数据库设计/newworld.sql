@@ -9,8 +9,18 @@ ADD COLUMN `note_comment_isreply`  smallint(3) NOT NULL DEFAULT 0 COMMENT 'ÊÇ·ñ»
 ALTER TABLE `u_note_vi`
 MODIFY COLUMN `note_vi_id`  bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Ìû×ÓµÄÊÓÆµÍ¼Æ¬±í×ÔÔöid' FIRST ;
 
+
 ALTER TABLE `u_note_vi`
 ADD COLUMN `note_vi_type`  smallint(3) NULL COMMENT 'ÎÄ¼þÀàÐÍ£¬1ÎªÍ¼Æ¬£¬2ÎªÊÓÆµ' AFTER `note_vi_url`;
 
 ALTER TABLE `u_question_vi`
 ADD COLUMN `question_vi_type`  smallint(3) NULL COMMENT 'ÎÄ¼þÀàÐÍ,1ÎªÍ¼Æ¬£¬2ÎªÊÓÆµ' AFTER `question_vi_url`;
+ALTER TABLE `newworld`.`u_firends`
+ADD COLUMN `firends_mark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '±¸×¢Ãû' AFTER `firends_createtime`;
+
+ALTER TABLE `newworld`.`u_message`
+ADD COLUMN `message_type` tinyint UNSIGNED NOT NULL  COMMENT 'ÐÅÏ¢ÀàÐÍ 0£ºÏµÍ³ÌáÊ¾ 1£ººÃÓÑÉêÇë' AFTER `message_isread`;
+
+ALTER TABLE `newworld`.`u_message` 
+MODIFY COLUMN `message_sendtime` datetime(0) NOT NULL COMMENT 'ÐÅÏ¢·¢ËÍÊ±¼ä' AFTER `message_content`,
+MODIFY COLUMN `message_delivertime` datetime(0) NOT NULL COMMENT 'ÐÅÏ¢ËÍ´ïÊ±¼ä' AFTER `message_sendtime`;
