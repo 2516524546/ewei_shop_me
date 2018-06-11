@@ -9,6 +9,19 @@ use Think\Controller;
 class JobsController extends CommonController {
     public $modeleid = 4;
 
+    protected $_checkAction = ['MyProject','releasePosition','releaseMyPosition','ReleaseProfessional'];//需要做登录验证的action
+
+    public function _initialize()
+    {
+        parent::_initialize();
+        if(in_array(ACTION_NAME,$this->_checkAction)){
+            if (!$this->userid){
+                session('returnurl', __SELF__);
+                $this->redirect(U('Index/Login/login'));
+            }
+        }
+    }
+
 	/*
 	工作首页
 	 */
@@ -50,12 +63,6 @@ class JobsController extends CommonController {
     发布工作
      */
     public function releasePosition(){
-        if (!$this->userid){
-            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-            Header("Location:".U('Index/Login/login'));
-            exit();
-        }
-
         $companytypemodel = new WorksCompanyTypeModel();
         $companytypelist = $companytypemodel->findlist('','works_company_type_sort desc');
 
@@ -70,11 +77,6 @@ class JobsController extends CommonController {
     我发布的工作
      */
     public function releaseMyPosition(){
-        if (!$this->userid){
-            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-            Header("Location:".U('Index/Login/login'));
-            exit();
-        }
 
         $workmodel = new WorksModel();
         $worklist = $workmodel->limitlist('works_uid = '.$this->userid.' and works_isdel = 1',0,10);
@@ -189,4 +191,29 @@ class JobsController extends CommonController {
     	$this->display();
     }
 
+    public function MyProject(){
+        $this->assign('title','My project');
+        $css = addCss('WorkList');
+        $this->assign('CSS',$css);
+        $this->display();
+    }
+
+    public function ProjectDetails(){
+        $this->assign('title','Project details');
+        $this->display();
+    }
+
+    public function ReleaseProfessional(){
+        $this->assign('title','I am a professional');
+        $css = addCss('JobList');
+        $this->assign('CSS',$css);
+        $this->display();
+    }
+
+    public function ProfessionalDetails(){
+        $this->assign('title','Professional Details');
+        $css = addCss(['lifeProductDetails','StickSonDetails']);
+        $this->assign('CSS',$css);
+        $this->display();
+    }
 }

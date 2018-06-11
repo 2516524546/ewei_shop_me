@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <include file="./World/Index/View/Public/meta.html"/>
+</head>
+
+<body>
+    <!-- logo -->
+    <header class="container">
+        <include file = "./World/Index/View/Public/head.html"/>
+    </header>
+    <hr>
+    <!-- Crumbs nav -->
+    <div class="container crumbs">
+        <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
+        <cite class="Icon"></cite>
+        <a href="{:U('Jobs/projectsProfessionals')}" class="crumbsa">Item List</a>
+        <cite class="Icon"></cite>
+        <span class="crumbsTitle">{$title}</span>
+    </div>
+    <form class="layui-form" action="">
+        <div class="PasswordContainer">
+            <div class="StepContainer">
+                <div class="StepContainerOne">
+                    <div class="InterestTitle">
+                        <h3 class="Interesth3">
+                            Basic Information
+                        </h3>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="text-right" style="line-height: 30px;">Project Name :</p>
+                                <p class="text-right" style="line-height: 30px;">Initiator :</p>
+                                <p class="text-right" style="line-height: 30px;">Contact information : </p>
+                                <p class="text-right" style="line-height: 30px;">Mailbox :</p>
+                                <p class="text-right" style="line-height: 30px;">the companyl :</p>
+                                <p class="text-right" style="line-height: 30px;margin-bottom: 270px;">Project Description :</p>
+                                <p class="text-right" style="line-height: 30px;">Project Type :</p>
+                                <p class="text-right" style="line-height: 30px;">Project Budget :</p>
+                                <p class="text-right" style="line-height: 30px;">Project Time :</p>
+                                <p class="text-right" style="line-height: 30px;">Professional needs :</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="text-left" style="line-height: 30px;">xxxxxxxxxxx</p>
+                                <p class="text-left" style="line-height: 30px;">xxxxxxxxx</p>
+                                <p class="text-left" style="line-height: 30px;">$ 1000 ~ $ 2000</p>
+                                <p class="text-left" style="line-height: 30px;">3 years</p>
+                                <p class="text-left" style="line-height: 30px;">Harvard University</p>
+                                <p class="text-left" style="line-height: 30px;">Lorem ipsum dolor sit amet, consectet
+                                    ur adipiscing elit. Aenean euismod bib
+                                    endum laoreet. Proin gravida dolor sit
+                                    amet lacus accumsan et viverra justo c
+                                    ommodo. Proin sodales pulvinar tempo
+                                    r. Cum sociis natoque penatibus et ma
+                                    gnis dis parturient montes, nascetur rid
+                                    iculus mus. Nam fermentum, nulla luc
+                                    tus pharetra vulputate.
+                                </p>
+                                <p class="text-left" style="line-height: 30px;">State-owned company</p>
+                                <p class="text-left" style="line-height: 30px;">xxxxxxxxxxx</p>
+                                <p class="text-left" style="line-height: 30px;">xxxxxxxxxxx</p>
+                                <p class="text-left" style="line-height: 30px;">xxxxxxxxxxx</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="but" style="margin: 30px auto 0;width: 30%;">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Immediate Delivery</button>
+                    </div> -->
+                    <!-- 弹窗 -->
+                    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                        <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style="padding-bottom: 0;">
+                                    <h4 class="modal-title text-left" id="myModalLabel">Modal title</h4>
+                                    <button type="button" style="margin-top: -26px;" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Please select the resume to be delivered</p>
+                                    <div class="layui-input-block" style="margin: 18px 66px 10px 0;">
+                                        <select name="interest" lay-filter="aihao">
+                                            <option value="" selected="">Resume 1</option>
+                                            <option value="0">1</option>
+                                            <option value="1">2</option>
+                                        </select>
+                                    </div>
+                                    <p style="line-height: 20px;">
+                                        Note:
+                                        <br> If you do not have a resume, you can click on the inverted triangle icon on the right side of the login account, select My Resume -> Create Resume in My Resume
+                                    </p>
+                                    <p style="margin: 14px 0;">Clickable: <span style="color: #46c4b8;">Create a resume</span></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Delivery</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- foot start 底部信息 -->
+    <footer class="container-fluid FooterBg">
+        <div class="row FooterContainer">
+            <div class="col-xs-6 col-md-4">
+                <dl>
+                    <dt>ABOUT</dt>
+                    <dd>
+                        NewWorld.net is a comprehensive website that provides an efficient source of resources and convenience for our every -day lives. We can easily discover, share and create a new world.
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <dl>
+                    <dt>SUPPORT</dt>
+                    <dd>Premium Support</dd>
+                    <dd>Get Started</dd>
+                    <dd>Partners</dd>
+                </dl>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <dl>
+                    <dt>Help Center</dt>
+                    <dd>Help Center</dd>
+                    <dd>Contact Us</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row copyright">
+            <div class="col-md-12">
+                <p class="text-center">&copy; 2018 NewWorld. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- foot end 底部信息 -->
+    <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+    <script src="__PUBLIC__/Web/web/js/ListOfDonations.js"></script>
+    <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
+    <script>
+        $(function(){
+            (function(){
+                var num;
+                $(".ContributionContainer .UserBox_list").on('click',".UserBox", function(event) {
+                    num = $(this).index();
+                });
+                $(".btn-primary").on('click', function(event) {
+                    $(".ContributionContainer .UserBox").eq(num).remove();
+                });
+            })();
+
+        });
+    </script>
+</body>
+
+</html>

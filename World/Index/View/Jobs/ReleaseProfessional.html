@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <include file="./World/Index/View/Public/meta.html"/>
+</head>
+
+<body>
+    <!-- logo -->
+    <header class="container">
+        <include file = "./World/Index/View/Public/head.html"/>
+    </header>
+    <hr>
+    <!-- Crumbs nav -->
+    <div class="container crumbs">
+        <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
+        <cite class="Icon"></cite>
+        <a href="{:U('Jobs/projectsProfessionals')}" class="crumbsa">Item List</a>
+        <cite class="Icon"></cite>
+        <span class="crumbsTitle">{$title}</span>
+    </div>
+    <form class="layui-form layui-form-pane" action="">
+        <div class="PasswordContainer">
+            <div class="StepContainer">
+                <div class="StepContainerOne">
+                    <div class="InterestTitle">
+                        <h3 class="text-center Interesth3">
+                            <span class="InterestTitleIcon"></span>Basic Information
+                        </h3>
+                    </div>
+                    <div class="FormContainer layui-form-item" pane>
+                        <label class="layui-form-label label-spacing">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_city.png">
+                        </label>
+                        <div class="layui-input-block" id="layui-input-block">
+                            <select name="city" lay-verify="required">
+                                <option value="">Choose a city</option>
+                                <option value="0">1</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="FormContainer layui-form-item" pane>
+                        <label class="layui-form-label label-spacing">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_industry.png">
+                        </label>
+                        <div class="layui-input-block" id="layui-input-block">
+                            <select name="city" lay-verify="required">
+                                <option value="">Choose industry</option>
+                                <option value="0">1</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 64px;">
+                            <img src="__PUBLIC__/Web/web/img/03_academic/academic_create_icon_04.png">
+                        </label>
+                        <div class="layui-input-block" style="margin-left: 64px;">
+                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter specialties" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="FormContainer layui-form-item" pane>
+                        <label class="layui-form-label label-spacing">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
+                        </label>
+                        <div class="layui-input-block" id="layui-input-block">
+                            <select name="city" lay-verify="required">
+                                <option value="">Choose a school</option>
+                                <option value="0">1</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 64px;">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_realname.png" width="24px" height="auto">
+                        </label>
+                        <div class="layui-input-block" style="margin-left: 64px;">
+                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the sponsor's real name" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 64px;">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_contact.png">
+                        </label>
+                        <div class="layui-input-block" style="margin-left: 64px;">
+                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the contact information" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-form-text" style="height: 100px;">
+                        <label class="layui-form-label" style="width: 12%;z-index: 2;background: none;border: none;">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                        </label>
+                        <div class="layui-input-block" style="position: relative;top: -46px;">
+                            <textarea placeholder="Enter the company information" class="layui-textarea" style="padding: 12px 58px 0;resize:none;"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-form-text" style="height: 100px;">
+                        <label class="layui-form-label" style="width: 12%;z-index: 2;background: none;border: none;">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                        </label>
+                        <div class="layui-input-block" style="position: relative;top: -46px;">
+                            <textarea placeholder="Enter the company information" class="layui-textarea" style="padding: 12px 58px 0;resize:none;"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-form-text" style="height: 100px;">
+                        <label class="layui-form-label" style="width: 12%;z-index: 2;background: none;border: none;">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                        </label>
+                        <div class="layui-input-block" style="position: relative;top: -46px;">
+                            <textarea placeholder="Enter the company information" class="layui-textarea" style="padding: 12px 58px 0;resize:none;"></textarea>
+                        </div>
+                    </div>
+                    <div class="FormContainer" pane="">
+                        <label class="HeadPortraitbox">
+                            <span class="HeadPortraitIcon"></span>
+                        </label>
+                        <div class="UserHeadImage">
+                            <img id="pic" class="img">
+                            <input id="upload" class="but" name="file" accept="image/*" type="file">
+                        </div>
+                    </div>
+                    <div class="FormContainer from-but" style="margin-top: 0;">
+                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="" lay-filter="">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- foot start 底部信息 -->
+    <include file = "./World/Index/View/Public/footer.html"/>
+    <!-- foot end 底部信息 -->
+    <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+    <script src="__PUBLIC__/Web/web/js/ListOfDonations.js"></script>
+    <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
+    <script>
+        $(function(){
+            (function(){
+                var num;
+                $(".ContributionContainer .UserBox_list").on('click',".UserBox", function(event) {
+                    num = $(this).index();
+                });
+                $(".btn-primary").on('click', function(event) {
+                    $(".ContributionContainer .UserBox").eq(num).remove();
+                });
+            })();
+
+        });
+    </script>
+</body>
+
+</html>

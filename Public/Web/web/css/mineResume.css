@@ -1,0 +1,78 @@
+.mineResume_content{
+    padding: 65px 10%;
+}
+.mineResume_content .mineResume_title{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+
+}
+.mineResume_content .mineResume_title a{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bolder;
+    cursor: pointer;
+    text-decoration: none;
+    width: 22%;
+}
+
+.mineResume_content .mineResume_title .title_img{
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    margin-right: 7px;
+}
+
+.mineResume_content .mineResume_title .title_img img{
+    width: 100%;
+}
+
+.mineResume_content .mineResume_table{
+    box-shadow: 2px 2px 14px #cbefeb;
+    padding: 25px 15px;
+}
+.mineResume_content .mineResume_table table{
+    width: 100%;
+}
+.mineResume_content .mineResume_table .mineResume_table_tr{
+    border-top: 1px solid #ededed;
+}
+.mineResume_content .mineResume_table tr th{
+    width: 33.33%;
+    text-align: center;
+    padding: 15px 0;
+    color: #46c4b8;
+}
+.mineResume_content .mineResume_table tr th:nth-child(2){
+    border-left: 1px solid #ededed;
+    border-right: 1px solid #ededed;
+
+}
+.mineResume_content .mineResume_table tr td{
+    width: 33.33%;
+    text-align: center;
+    padding: 15px 0;
+}
+.mineResume_content .mineResume_table tr td:nth-child(2){
+    border-left: 1px solid #ededed;
+    border-right: 1px solid #ededed;
+}
+.mineResume_content .mineResume_table tr .btn_choose{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.mineResume_content .mineResume_table tr .btn_choose .line{
+    width: 2px;
+    height: 18px;
+    background: #9a9a9a;
+    margin: 0 12px;
+    display: block;
+}
+
+.mineResume_content .mineResume_table tr .btn_choose .minResume_btn{
+    cursor: pointer;
+}
