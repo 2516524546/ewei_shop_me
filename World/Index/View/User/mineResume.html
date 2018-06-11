@@ -35,7 +35,7 @@
     <div class="container">
         <div class="mineResume_content">
             <div class="mineResume_title">
-                <a href="#">
+                <a href="{:U('Index/User/createResume')}">
                     <div class="title_img">
                         <img src="__PUBLIC__/Web/web/img/common_icon_write.png" alt="">
                     </div>
@@ -55,11 +55,21 @@
                         <td>My resume 1</td>
                         <td>2018.6.6</td>
                         <td class="btn_choose">
-                            <span class="minResume_btn btn_Edit" data-toggle="modal" data-target="#box2">Edit</span>
+                            <span class="minResume_btn btn_Edit"><a href="{:U('Index/User/resumeDetails')}">Edit</a></span>
                             <span class="line"></span>
                             <span class="minResume_btn btn_Delete" data-toggle="modal" data-target="#box1">Delete</span>
                         </td>
                     </tr>
+
+                    <tr class="mineResume_table_tr">
+                            <td>My resume 1</td>
+                            <td>2018.6.6</td>
+                            <td class="btn_choose">
+                                <span class="minResume_btn btn_Edit"><a href="{:U('Index/User/resumeDetails')}">Edit</a></span>
+                                <span class="line"></span>
+                                <span class="minResume_btn btn_Delete" data-toggle="modal" data-target="#box1">Delete</span>
+                            </td>
+                        </tr>
 
                 </table>
             </div>
@@ -77,178 +87,11 @@
                                 </a>
                             </div>
                             <div class="modal-body">
-                                <p class="text-center">Are you closing the job?</p>
+                                <p class="text-center">Are you Delete the Resume?</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">confirm</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 编辑 -->
-                <div id="box2" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <span class="modal-title">
-                                    Editing project
-                                </span>
-                                <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
-                                    <span aria-hidden="true">&times;</span>
-                                </a>
-                            </div>
-                            <div class="modal-body">
-                                <p style="margin:14px 0;">Essential information</p>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="margin-left: -22px;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png">
-                                    </label>
-                                    <div class="label" style="padding-top: 13px;padding-left: 120px;">
-                                        <label class="radio-inline">
-                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Full Time
-                                        </label>
-                                        <label class="radio-inline" style="margin: 0 32px;">
-                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Part Time
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Practice
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 64px;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_sy_icon_08.png">
-                                    </label>
-                                    <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter a job title" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <div class="layui-inline">
-                                        <label class="layui-form-label" style="width: 64px;">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_money.png">
-                                        </label>
-                                        <div class="layui-input-inline" style="width: 100px;">
-                                            <input type="text" name="price_min" placeholder="￥" autocomplete="off" class="layui-input">
-                                        </div>
-                                        <div class="layui-form-mid">-</div>
-                                        <div class="layui-input-inline" style="width: 100px;">
-                                            <input type="text" name="price_max" placeholder="￥" autocomplete="off" class="layui-input">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 64px;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_sy_icon_07.png" width="24px" height="auto">
-                                    </label>
-                                    <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the number of years of service" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 64px;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
-                                    </label>
-                                    <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter a graduate school" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 64px;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/1.png">
-                                    </label>
-                                    <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter your degree" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 64px;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_major.png">
-                                    </label>
-                                    <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter professional" class="layui-input">
-                                    </div>
-                                </div>
-
-                                <p class="h6 text-center">Company Information</p>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 64px;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_company.png">
-                                    </label>
-                                    <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter a job title" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="FormContainer layui-form-item" pane>
-                                    <label class="col-sm-2 control-label" style="position: absolute;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_choose.png" style="position: absolute;left: 26px;top: 10px;">
-                                    </label>
-                                    <div class="col-sm-10" style="position: absolute;left: 66px;">
-                                        <select class="form-control">
-                                            <option>Please choose the nature of the company</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="FormContainer layui-form-item" pane style="margin-top: 70px;margin-bottom: 124px;">
-                                    <label class="col-sm-2 control-label" style="position: absolute;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png" style="position: absolute;left: 26px;top: 10px;">
-                                    </label>
-                                    <div class="col-sm-10" style="position: absolute;left: 66px;">
-                                        <select class="form-control">
-                                            <option>Please select company type</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 64px;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_groupname.png">
-                                    </label>
-                                    <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the company size" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 64px;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_email.png">
-                                    </label>
-                                    <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the resume mailbox" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item layui-form-text" style="height: 100px;">
-                                    <label class="layui-form-label" style="z-index: 2;background: none;border: none;position: absolute;left: 0;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
-                                    </label>
-                                    <div class="layui-input-block" style="position: relative;left: -46px;">
-                                        <textarea placeholder="Enter the company information" class="layui-textarea"></textarea>
-                                    </div>
-                                </div>
-                                <!--  -->
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="margin-left: -22px;width: 150px;margin-right: 28px;">
-                                        Salary Negotiable
-                                    </label>
-                                    <div class="label" style="padding-top: 13px;padding-left: 120px;">
-                                        <label class="radio-inline">
-                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> no
-                                        </label>
-                                        <label class="radio-inline" style="margin: 0 32px;">
-                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> yes
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Preservation</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">confirm</button>
                             </div>
                         </div>
                     </div>
@@ -265,11 +108,27 @@
 
 
 </body>
-
-
-
-
-
-
+    <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+    <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
+    <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
+    <script>
+        $(function(){
+            (function(){
+                var num;
+                $(".mineResume_content .mineResume_table").on('click',".mineResume_table_tr", function(event) {
+                    num = $(this).index()-1;
+                    console.log($(this).index())
+                });
+                $(".btn-primary").on('click', function(event) {
+                    console.log($(".mineResume_content .mineResume_table tr").eq(num))
+                        $(".mineResume_content .mineResume_table .mineResume_table_tr").eq(num).remove();
+                });
+            })();
+            
+        });
+    </script>
 
 </html>

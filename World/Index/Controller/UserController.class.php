@@ -207,6 +207,17 @@ class UserController extends CommonController {
         $this->display();
     }
 
+     //我的简历
+     public function mineResume(){
+
+        $this->display();
+    }
+
+     //我的简历
+     public function createResume(){
+
+        $this->display();
+    }
     /**
      * 我的投递记录
      * @return mixed

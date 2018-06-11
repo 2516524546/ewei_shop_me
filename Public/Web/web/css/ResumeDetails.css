@@ -175,3 +175,8 @@
 .ResumeDetails_shadow .shadow_box span{
     line-height: 310px;
 }
+
+.layui-form-select {
+    position: relative;
+    width: 100%;
+}

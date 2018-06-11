@@ -72,7 +72,9 @@
     margin: 0 12px;
     display: block;
 }
-
 .mineResume_content .mineResume_table tr .btn_choose .minResume_btn{
     cursor: pointer;
+}
+.mineResume_content .mineResume_table tr .btn_choose .minResume_btn a{
+    text-decoration: none;
 }

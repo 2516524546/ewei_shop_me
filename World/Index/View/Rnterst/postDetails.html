@@ -73,43 +73,69 @@
                             </video>
                         </if>
                     </foreach>
-                    <div class="PostReply">
-                        <P>
-                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">&nbsp;&nbsp;
-                            <b>Comment</b>
-                        </P>
-                        <foreach name="commentlist" item="comment" key="commentkey">
-                        <div class="box">
-                            <p class="GuestBookUserImg">
-                                <img src="<if condition='$comment["user_icon"]'>./Uploads/{$comment['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" class="imgs img-circle">
-                            </p>
-                            <div class="GuestBookContainer">
-                                <div class="GuestBookUserTitleContainer">
-                                    <p class="GuestBookUserName">{$comment['user_name']}</p>
-                                    <p class="TimeFabulousContainer">
-                                        <span class="GuestBookUserTime">
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                            {$comment['note_comment_createtime']}
-                                        </span>
-                                        <span class="GuestBookUserFabulous">
-                                            Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png">
-                                            {$comment['note_comment_zans']}
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="GuestBookUserMessage">
 
-                                {$comment['note_comment_content']}
+                    <div class="PostReply_box">
+                        <div class="PostReply_box_title">
+                            <div class="title_pic">
+                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
                             </div>
-                            <div class="ReplyContainer">
-                                <if condition='$comment["note_comment_isreply"]==1'>
-                                {$noteuser['user_name']} 回复 {$comment['user_name']} ： {$comment['note_comment_reply']}
-                                </if>
+                            <div class="title_content">
+                                    Comment
                             </div>
                         </div>
+                        <div class="PostReply_box_content">
+                        <foreach name="commentlist" item="comment" key="commentkey">
+                            <div class="PostReply_box_content_item">
+                                <div class="item_pic">
+                                    <img src="<if condition='$comment["user_icon"]'>./Uploads/{$comment['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
+                                </div>
+                                <div class="item_con">
+                                    <div class="item_con_title">
+                                        <div class="item_user_name">
+                                            <span class="User_name">{$comment['user_name']}</span>
+                                            <div class="item_Top">
+                                                <img src="__PUBLIC__/Web/web/img/Top.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="item_user_det">
+                                            <div class="det_time">
+                                                <div class="det_time_img">
+                                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
+                                                </div>
+                                                <div class="det_timed">
+                                                    {$comment['note_comment_createtime']}
+                                                </div>
+                                            </div>
+                                            <div class="det_zan">
+                                                <div class="det_reply">Reply</div>
+                                                <div class="line"></div>
+                                                <div class="det_zan_box">
+                                                    <div class="zan_box_img">
+                                                        <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png" alt="">
+                                                    </div>
+                                                    <div class="zan_box_num">
+                                                        {$comment['note_comment_zans']}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="item_con_det">
+                                        {$comment['note_comment_content']}
+                                    </div>
+
+                                    <div class="item_con_reply">
+                                        <div class="reply_person">
+                                        <if condition='$comment["note_comment_isreply"]==1'>
+                                            {$noteuser['user_name']} 回复 {$comment['user_name']} ： <span class="reply_c">{$comment['note_comment_reply']}</span>
+                                        </if> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </foreach>
+                        </div>
                     </div>
                 </div>
                 <div class="container NumberOfPagesContainer">
@@ -126,6 +152,7 @@
                                 &nbsp;
                                 Comments
                             </span>
+                            <!-- <span class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</span> -->
                             <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea" id="content"></textarea>
                             <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut" onclick="createcomment()">Posted</button>
                         </div>
@@ -192,7 +219,41 @@
     <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 </body>
+<script>
+    $(".item_con_title .item_user_det .det_zan .det_zan_box .zan_box_img").on("click",function(){
+    console.log()
+    if($(this).attr('data-Click')!="true"){
+        $(this).html("<img src='__PUBLIC__/Web/web/img/greated.png'>")
+        console.log()
+        $(this).attr('data-Click','true')
+    }else{
+        
+    }
+})
+// $(function(){
+//             (function(){
+//                 var num;
+//                 $(".PostReply_box_content").on('click',".PostReply_box_content_item", function(event) {
+//                     num = $(this).index();
+//                     console.log(num)
+//                 });
+                // $(".btn-primary").on('click', function(event) {
+                //         $(".ContributionContainer .UserBox").eq(num).remove();
+                // });
+        //     })();
+            
+        // });
 
+    var num;
+    $(".item_con_title .item_user_det .det_zan .det_reply").on("click",function(){
+        console.log($(this).parent().parent().parent().children(".item_user_name").children(".User_name").text())
+        var name = $(this).parent().parent().parent().children(".item_user_name").children(".User_name").text();
+        var Cspan = "<span class='ReplyUser'>reply @ <span class='ReplyUser_name'>"+name+"</span> ：</span>"
+        $(".ReplyUser").remove()
+        $(".layui-form-item").append(Cspan);
+        // console.log($(".layui-form-item .ReplyUser").remove())
+    })
+</script>
 <script>
 
     layui.use(['laypage', 'layer'], function() {
