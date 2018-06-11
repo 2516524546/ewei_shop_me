@@ -4,6 +4,7 @@ use Index\Model\CrowdMemberModel;
 use Index\Model\CrowdModel;
 use Index\Model\CrowdTabModel;
 use Index\Model\FirstMarkModel;
+use Index\Model\NoteCommentModel;
 use Index\Model\NoteModel;
 use Index\Model\NoteVIModel;
 use Index\Model\QuestionModel;
@@ -173,14 +174,16 @@ class RnterstController extends CommonController {
         $crowdmembermodel = new CrowdMemberModel();
         $notemodel = new NoteModel();
         $notevimodel = new NoteVIModel();
+        $notecommentmodel = new NoteCommentModel();
         $usermodel = new UserModel();
 
         $crowdone = $crowdmodel->findone('crowd_id = '.$_GET['cid']);
         $crowdmemberone = $crowdmembermodel->findone('crowd_member_cid = '.$_GET['cid'].' and crowd_member_uid = '.$this->userid.' and crowd_member_status != -1');
         $noteone = $notemodel->findone('note_id = '.$_GET['nid']);
         $vilist = $notevimodel->findlist('note_vi_nid = '.$_GET['nid'],'note_vi_sort desc');
+        $commentlist = $notecommentmodel->joinonelist('note_comment_nid = '.$_GET['nid'],'u_user u on u_note_comment.note_comment_uid = u.user_id','note_comment_zans desc,note_comment_createtime desc',0,10);
+        $commentcount = $notecommentmodel->joinone('note_comment_nid = '.$_GET['nid'],'u_user u on u_note_comment.note_comment_uid = u.user_id','note_comment_zans desc,note_comment_createtime desc','INNER','count(*) num')['num'];
         $noteuser = $usermodel->findone('user_id = '.$noteone['note_uid']);
-
 
         $isjoin = 0;
         $ishave = 0;
@@ -199,7 +202,9 @@ class RnterstController extends CommonController {
             'cid' => $_GET['cid'],
             'noteuser' => $noteuser,
             'ishave' => $ishave,
-            'vilist' => $vilist
+            'vilist' => $vilist,
+            'commentlist' => $commentlist,
+            'commentcount' => $commentcount
 
         ));
 

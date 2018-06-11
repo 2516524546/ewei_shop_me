@@ -43,9 +43,6 @@ class UserController extends CommonController {
         $concernsone = $concernsmodel->findone('concerns_uid = '.$this->userid.' and concerns_cuid = '.$userone['user_id']);
 
         $this->assign(array(
-            'userid' => $this->userid,
-            'usercontent' =>$this->usercontent,
-            'havemessage' => $this->havemessage,
             'userone' => $userone,
             'firendone' => $firendone,
             'concernsone' => $concernsone
