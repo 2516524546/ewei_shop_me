@@ -155,10 +155,10 @@ class RnterstController extends CommonController {
     }
 
     /*
-    兴趣帖子详情(文字图片)
+    兴趣帖子详情
      */
-    public function stickSonDetails(){
-
+    public function postDetails(){
+        
 
         $this->display();
     }

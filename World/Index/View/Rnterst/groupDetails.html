@@ -75,7 +75,7 @@
                                             <foreach name="notelist" item="note" key="notekey">
                                             <tr>
                                                 <td>
-                                                    <a href="{:U('Index/Rnterst/stickSonDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
+                                                    <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
 
                                                         <span class="ImgBox">
                                                             <img src="<if condition='$note["user_icon"]'>./Uploads/{$note['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
@@ -83,7 +83,7 @@
                                                     </a>
                                                 </td>
                                                 <td class="NameBox">
-                                                    <a href="{:U('Index/Rnterst/stickSonDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
+                                                    <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
                                                         <span class="TopicNames">{$note['note_name']}</span>
                                                     </a>
                                                 </td>
