@@ -176,3 +176,9 @@
 .row{
     margin-top: 30px;
 }
+
+.btn-completion-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}

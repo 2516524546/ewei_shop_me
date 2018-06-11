@@ -1,0 +1,53 @@
+.layui-tab-title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    height: auto;
+  }
+  
+  .layui-btn-xs{
+    height: auto;
+  }
+  .LatestContentContainer .layui-tab .btnlist li {
+    display: block;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    min-width: 26%;
+  }
+  .layui-btn+.layui-btn{
+    margin-left: 0;
+  }
+  
+  .btn_normal{
+    background:#fff;
+    border: 1px solid #45c5b8;
+    color: #000;
+  
+  }
+  
+  .layui-btn:hover{
+    opacity: 1;
+    color: #000;
+  }
+  
+  .layui-tab-title .layui-this{
+    color: #fff;
+    background: #45c5b8;
+    box-shadow: 2px 2px 14px #cecece;
+  }
+  .layui-badge-rim, .layui-colla-content, .layui-colla-item, .layui-collapse, .layui-elem-field, .layui-form-pane .layui-form-item[pane], .layui-form-pane .layui-form-label, .layui-input, .layui-layedit, .layui-layedit-tool, .layui-quote-nm, .layui-select, .layui-tab-bar, .layui-tab-card, .layui-tab-title, .layui-tab-title .layui-this:after, .layui-textarea{
+    border: transparent;
+  }
+  
+  
+  
+  @media screen and (min-width: 992px){
+    .layui-col-md6 {
+        width: auto;
+    }
+    .layui-col-md4 {
+      width: auto;
+    }
+  
+  }

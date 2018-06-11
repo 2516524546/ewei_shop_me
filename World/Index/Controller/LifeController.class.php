@@ -116,6 +116,13 @@ class LifeController extends CommonController {
 
     }
 
+    public function lifeDetails(){
+
+
+        $this->display();
+
+    }
+
 
 
 }

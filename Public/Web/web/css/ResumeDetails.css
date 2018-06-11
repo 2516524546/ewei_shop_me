@@ -11,7 +11,7 @@
 
 .Resumetails_content .Resumetails_title .title_item{
     border: 1px solid #54c8bd;
-    width: 25%;
+    /* width: 25%; */
     border-radius: 24px;
     text-align: center;
     padding: 12px 31px;
