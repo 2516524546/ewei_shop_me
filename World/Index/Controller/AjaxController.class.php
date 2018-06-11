@@ -1695,9 +1695,7 @@ public function ajax_donationpay()
     //发布帖子
     public function ajax_createnote(){
 
-
         if (IS_POST){
-
 
             if (!isset($_POST['name']) || $this->post('name') == ''){
 
@@ -1732,6 +1730,7 @@ public function ajax_donationpay()
 
                         $notemodel = new NoteModel();
                         $notevimodel = new NoteVIModel();
+                        $usermodel = new UserModel();
 
                         $notemodel->startTrans();
                         try{
@@ -1744,6 +1743,11 @@ public function ajax_donationpay()
                             );
 
                             $noteid = $notemodel->add($notedata);
+                            $userone = $usermodel->findone('user_id = '.$this->userid);
+                            $userdata = array(
+                                'user_notes' => $userone['user_notes']+1,
+                            );
+                            $usermodel->updataone('user_id = '.$this->userid,$userdata);
 
                             if ($noteid){
 
@@ -1990,7 +1994,12 @@ public function ajax_donationpay()
             $limit2 = $this->post('limit2');
             $notelist = $notemodel->joinonelist($where,'u_user u on u_note.note_uid = u.user_id',$this->post('order'),$limit1,$limit2);
             $notecount = $notemodel->joinone($where,'u_user u on u_note.note_uid = u.user_id',$this->post('order'),'INNER','count(*) num')['num'];
-            die(json_encode(array('str' => 1,'msg'=>$notelist,'count'=>$notecount)));
+            if ($notelist){
+                die(json_encode(array('str' => 1,'msg'=>$notelist,'count'=>$notecount)));
+            }else{
+                die(json_encode(array('str' => 2,'msg'=>$notelist,'count'=>$notecount)));
+            }
+
 
         }else{
             die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
@@ -2012,7 +2021,11 @@ public function ajax_donationpay()
             $limit2 = $this->post('limit2');
             $questionlist = $questionmodel->joinonelist($where,'u_user u on u_question.question_uid = u.user_id',$this->post('order'),$limit1,$limit2);
             $questioncount = $questionmodel->joinone($where,'u_user u on u_question.question_uid = u.user_id',$this->post('order'),'INNER','count(*) num')['num'];
-            die(json_encode(array('str' => 1,'msg'=>$questionlist,'count'=>$questioncount)));
+            if ($questionlist){
+                die(json_encode(array('str' => 1,'msg'=>$questionlist,'count'=>$questioncount)));
+            }else{
+                die(json_encode(array('str' => 2,'msg'=>$questionlist,'count'=>$questioncount)));
+            }
 
         }else{
             die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
@@ -2034,7 +2047,57 @@ public function ajax_donationpay()
             $limit2 = $this->post('limit2');
             $resourcelist = $resourcemodel->joinonelist($where,'u_user u on u_resource.resource_uid = u.user_id',$this->post('order'),$limit1,$limit2);
             $resourcecount = $resourcemodel->joinone($where,'u_user u on u_resource.resource_uid = u.user_id',$this->post('order'),'INNER','count(*) num')['num'];
-            die(json_encode(array('str' => 1,'msg'=>$resourcelist,'count'=>$resourcecount)));
+            if ($resourcelist){
+                die(json_encode(array('str' => 1,'msg'=>$resourcelist,'count'=>$resourcecount)));
+            }else{
+                die(json_encode(array('str' => 2,'msg'=>$resourcelist,'count'=>$resourcecount)));
+            }
+
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
+    //加入普通群
+    public function ajax_followcrowd(){
+
+        if (IS_POST){
+
+            if (!$this->userid){
+
+                die(json_encode(array('str' => 3, 'msg' => '请先登录')));
+            }else if (!isset($_POST['cid'])||$this->post('cid')==''){
+
+                die(json_encode(array('str' => 4, 'msg' => '请选择群')));
+            }else {
+
+                $crowdmembermodel = new CrowdMemberModel();
+                $memberone = $crowdmembermodel->findone('crowd_member_cid = '.$this->post('cid').' and crowd_member_uid = '.$this->userid);
+                if ($memberone['crowd_member_status']==-1){
+
+                    die(json_encode(array('str' => 5, 'msg' => '你是该群的黑名单')));
+                }else if ($memberone){
+
+                    die(json_encode(array('str' => 6, 'msg' => '你已是该群成员')));
+                }else {
+
+                    $data=array(
+                        'crowd_member_cid'=>$this->post('cid'),
+                        'crowd_member_uid'=>$this->userid,
+                        'crowd_member_status'=>0,
+                        'crowd_member_logintime'=>date("Y-m-d H:i:s", time()),
+                    );
+
+                    $res = $crowdmembermodel->add($data);
+
+                    if ($res) {
+                        die(json_encode(array('str' => 1, 'msg' => '加入成功')));
+                    } else {
+                        die(json_encode(array('str' => 2, 'msg' => '加入失败')));
+                    }
+                }
+            }
 
         }else{
             die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));

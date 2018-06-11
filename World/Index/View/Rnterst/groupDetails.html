@@ -75,7 +75,7 @@
                                             <foreach name="notelist" item="note" key="notekey">
                                             <tr>
                                                 <td>
-                                                    <a href="{:U('Index/Rnterst/stickSonDetails')}" style="text-decoration: none;">
+                                                    <a href="{:U('Index/Rnterst/stickSonDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
 
                                                         <span class="ImgBox">
                                                             <img src="<if condition='$note["user_icon"]'>./Uploads/{$note['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
@@ -83,7 +83,7 @@
                                                     </a>
                                                 </td>
                                                 <td class="NameBox">
-                                                    <a href="{:U('Index/Rnterst/stickSonDetails')}" style="text-decoration: none;">
+                                                    <a href="{:U('Index/Rnterst/stickSonDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
                                                         <span class="TopicNames">{$note['note_name']}</span>
                                                     </a>
                                                 </td>
@@ -216,7 +216,7 @@
                     <p><img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">&nbsp;&nbsp;<b>{$crowone['crowd_peoplenum']}</b></p>
                     <if condition='$join_in != 1'>
                     <p class="text-center Followtbut">
-                        <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" id="GroupBtn">
+                        <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" id="GroupBtn" onclick="follow()">
                             To join the group
                         </a>
                     </p>
@@ -309,9 +309,19 @@
 
         var aa = "{$userid}";
         var cid = "{$crowone['crowd_id']}"
+        var join = "{$join_in}"
         if(aa){
-            var url = "{:U('Index/Rnterst/groupDetailsRelease')}&cid="+cid
-            window.location.href=url;
+            if (join){
+                var url = "{:U('Index/Rnterst/groupDetailsRelease')}&cid="+cid
+                window.location.href=url;
+            }else{
+                layer.msg("你还未加入该群",{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+
         }else{
             layer.msg("请先登录",{
                     time:1500,
@@ -323,6 +333,68 @@
         }
 
 
+    }
+    
+    function follow() {
+        var aa = "{$userid}";
+        var cid = "{$crowone['crowd_id']}"
+        if(aa){
+
+            $.ajax({
+                type:"post",
+                url:"{:U('Index/Ajax/ajax_followcrowd')}",
+                data:{
+                    cid:cid,
+                },
+                dataType:"json",
+                async:false,
+                success: function(data){
+                    if (data!=null&&data!="") {
+                        if (data.str == 1) {
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:1,
+                                },function () {
+                                    location.reload();
+                                }
+                            );
+                        }else{
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+                        }
+
+                    }else{
+                        layer.msg('请求错误!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                    layer.msg('请求失败!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            })
+
+        }else{
+            layer.msg("请先登录",{
+                    time:1500,
+                },function(){
+
+                    window.location.href="{:U('Index/Login/login')}";
+                }
+            );
+        }
     }
     
     var type = 1;
@@ -556,7 +628,7 @@
                             message += '<img src="'+src+'">';
                             message += '</span></a></td><td class="NameBox">'
                             message += '<a href="'+url+'" style="text-decoration: none;">';
-                            message += '<span class="TopicNames">'+list.msg[i].question_name+'</span>'
+                            message += list.msg[i].question_name
                             message += '</a></td><td class="NameIcom">'
                             if(list.msg[i].question_istop==1){
                                 message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">'
@@ -646,28 +718,6 @@
                         var message = '';
                         for (var i = 0; i < list.msg.length; i++) {
 
-                        /*
-                            <td class="NameBox">
-                                <a href="{:U('Index/Rnterst/resourceDetails')}" style="text-decoration: none;">
-                                {$resource["resource_name"]}
-                                </a>
-                                </td>
-                                <td class="NameIcom">
-                                <if condition='$resource["resource_istop"] == 1'>
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
-                                </if>
-                                <if condition='$resource["resource_iswally"] == 1'>
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
-                                </if>
-                                </td>
-                                <td class="text-right">
-                                <p>{$resource["resource_createtime"]}</p>
-                                <p>
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_download.png">{$resource["resource_reward"]}
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$resource["resource_comments"]}
-                                </p>
-                                </td>
-                                </tr>*/
                             message += '<tr><td>';
                             var url = '#';
                             message += '<a href="'+url+'" style="text-decoration: none;">';

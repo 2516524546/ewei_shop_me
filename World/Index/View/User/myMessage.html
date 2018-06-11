@@ -1,19 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>My Posts</title>
-        <meta name="viewport" content="width=device-width, initial-scale=0 user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-        <link rel="stylesheet" href="../web/css/register.css">
-        <link rel="stylesheet" href="../web/css/Donation.css">
-        <link rel="stylesheet" href="../web/css/Crumbsnav.css">
-        <link rel="stylesheet" href="../js/lib/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
-        <link rel="stylesheet" href="../js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
-        <link rel="stylesheet" href="../js/lib/layui/dist/css/layui.css">
-        <link rel="stylesheet" href="../web/css/Crumbsnav.css">
-        <link rel="stylesheet" href="../web/css/success_index.css">
-        <link rel="stylesheet" href="../web/css/MyMessage.css">
+        <include file="./World/Index/View/Public/meta.html"/>
     </head>
 
     <body>
@@ -25,7 +13,7 @@
 
         <!-- Crumbs nav -->
         <div class="container crumbs">
-            <a href="index.html" class="crumbsa"><img src="./img/common_dh_icon_home.png" alt=""></a>
+            <a href="index.html" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
             <cite class="Icon"></cite>
             <span class="crumbsTitle">Messages</span>
         </div>
@@ -39,85 +27,61 @@
                         Empty messages
                 </div>
                 <div class="Message_details">
-                    <div class="Message_details_item">
-                        <a href="MessageDetails.html">
-                            <div class="item_question">
-                                Your question "Q: Why is the world so big?" Someone has already
-                            </div>
-                            <div class="item_time">
-                                <div class="item_time_img">
-                                    <img src="../web/img/06_gerenzhongxin/timer.png" alt="">
+                    <foreach name="messages" item="m">
+                    <if condition="$m['message_type'] == 0">
+                        <div class="Message_details_item">
+                            <a href="MessageDetails.html">
+                                <div class="item_question">
+                                    {$m['message_title']}
                                 </div>
-                                <span>01/12/2018  15:36:58</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="Message_details_item">
-                        <a href="#">
-                            <div class="item_question">
-                                Your question "Q: Why is the world so big?" Someone has already
-                            </div>
-                            <div class="item_time">
-                                <div class="item_time_img">
-                                    <img src="../web/img/06_gerenzhongxin/timer.png" alt="">
-                                </div>
-                                <span>01/12/2018  15:36:58</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="Message_details_item">
-                        <a href="#">
-                            <div class="item_question">
-                                Your question "Q: Why is the world so big?" Someone has already
-                            </div>
-                            <div class="item_time">
-                                <div class="item_time_img">
-                                    <img src="../web/img/06_gerenzhongxin/timer.png" alt="">
-                                </div>
-                                <span>01/12/2018  15:36:58</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="Message_details_item item_friend">
-                            <div class="details_top">
-                                <div class="details_top_user">
-                                    <div class="details_top_user_pic">
-                                        <img src="../web/img/01_shouye/UserPic.png" alt="">
+                                <div class="item_time">
+                                    <div class="item_time_img">
+                                        <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/timer.png" alt="">
                                     </div>
-                                    <div class="details_top_user_name">
-                                        Jessi
-                                    </div>
+                                    <span>{$m['message_sendtime']}</span>
                                 </div>
-                                <div class="details_top_btn">
-                                    <div class="top_btn">
-                                            Agree
-                                    </div>
-                                    <div class="top_btn">
-                                            Refuse
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="details_bottom">
-                                <div class="bottom_hint">
-                                    Find you through the xxxx group, apply to be your friend
-                                </div>
-                                <div class="bottom_time">
-                                    <div class="bottom_time_img">
-                                        <img src="../web/img/06_gerenzhongxin/timer.png" alt="">
-                                    </div>
-                                    <span>01/12/2018  15:36:58</span>
-                                </div>
-                            </div>
+                            </a>
                         </div>
+                    <else />
+
+                        <div class="Message_details_item item_friend">
+                                <div class="details_top">
+                                    <div class="details_top_user">
+                                        <div class="details_top_user_pic">
+                                            <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
+                                        </div>
+                                        <div class="details_top_user_name">
+                                            Jessi
+                                        </div>
+                                    </div>
+                                    <div class="details_top_btn">
+                                        <div class="top_btn">
+                                                Agree
+                                        </div>
+                                        <div class="top_btn">
+                                                Refuse
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="details_bottom">
+                                    <div class="bottom_hint">
+                                        {$m['message_title']}
+                                    </div>
+                                    <div class="bottom_time">
+                                        <div class="bottom_time_img">
+                                            <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/timer.png" alt="">
+                                        </div>
+                                        <span>{$m['message_sendtime']}</span>
+                                    </div>
+                                </div>
+                            </div>
+                    </if>
+                    </foreach>
                 </div>
                 <div class="container" id="NumberOfPagesContainer">
                         <div id="NumberOfPages"></div>
             </div>
 
-        </div>
         </div>
         <!-- foot start 底部信息 -->
         <footer class="container-fluid FooterBg">
@@ -155,12 +119,12 @@
             <!-- foot end 底部信息 -->
     </body>
 
-    <script src="../js/lib/jquery/dist/jquery.min.js"></script>
-    <script src="../js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../js/lib/layui/dist/layui.all.js"></script>
-    <script src="../web/js/StickSonDetails.js"></script>
-    <script src="../web/js/loginQuit.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+    <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
+    <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
     <script>
         $(".Message_box .Empty_messages").on("click",function(){
             $(".Message_box .Message_details").children().remove()
