@@ -128,6 +128,7 @@
 .GroupDetailsContainer .Followtbut #GroupBtn {
   width: 100%;
   text-decoration: none;
+  color: #fff;
 }
 .GroupDetailsContainer .FontColor {
   color: #45c5b8;
@@ -216,4 +217,9 @@
 
 .GroupDetailsContainer .userimgs {
   margin: 0;
+}
+
+.layui-btn:hover {
+  opacity: 1;
+  /* color: #fff; */
 }
