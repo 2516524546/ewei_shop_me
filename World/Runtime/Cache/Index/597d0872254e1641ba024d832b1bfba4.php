@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="/Public/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="/Public/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="/Public/Web/js/lib/layui/dist/css/layui.css">
+    <link rel="stylesheet" href="/Public/Web/web/css/Crumbsnav.css">
+    <link rel="stylesheet" href="/Public/Web/web/css/success_index.css">
 </head>
 
 <body>
@@ -143,14 +145,13 @@
     </header>
     <hr>
     <!-- Crumbs nav -->
-    <div class="container Crumbs">
-        <span class="CrumbsSpan">
-          <a href="<?php echo U('Index/Rnterst/interest');?>" class="CrumbsA">Interest</a>
-          <cite class="CrumbsIcon"></cite>
-          <span class="CrumbsTitle"><a href="<?php echo U('Index/Rnterst/groupDetails');?>" class="CrumbsA">Group name</a></span>
-        <cite class="CrumbsIcons"></cite>
-        <span class="CrumbsTitles">Post details</span>
-        </span>
+    <div class="container crumbs">
+        <a href="<?php echo U('Index/Rnterst/interest');?>" class="crumbsa">interest</a>
+        <cite class="Icon"></cite>
+        <a href="<?php echo U('Index/Rnterst/groupDetails');?>" class="crumbsa">Group name</a>
+        <cite class="Icon"></cite>
+        <span class="crumbsTitle">Post details</span>
+
     </div>
     <div class="container StickSonDetailsContainer">
         <div class="row">
@@ -339,6 +340,7 @@
     <script src="/Public/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/Public/Web/js/lib/layui/dist/layui.all.js"></script>
     <script src="/Public/Web/web/js/StickSonDetails.js"></script>
+    <script src="/Public/Web/web/js/loginQuit.js"></script>
 </body>
 
 </html>
