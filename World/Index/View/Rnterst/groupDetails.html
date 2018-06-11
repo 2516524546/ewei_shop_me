@@ -214,13 +214,20 @@
                         <div class="textp">{$crowone['crowd_intro']}</div>
                     </p>
                     <p><img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">&nbsp;&nbsp;<b>{$crowone['crowd_peoplenum']}</b></p>
-                    <if condition='$join_in != 1'>
+
                     <p class="text-center Followtbut">
+                        <if condition='$join_in != 1'>
                         <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" id="GroupBtn" onclick="follow()">
                             To join the group
                         </a>
+                            <else />
+                            <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" style="background:#bdbdbd;" id="GroupBtn">
+                                Have joined the group
+                            </a>
+
+                        </if>
                     </p>
-                    </if>
+
                 </div>
                 <div class="GroupDetailsContainer">
                     <h4 class="text-center FontColor MoreMembersbox">
@@ -798,7 +805,7 @@
     
 </script>
 
-<script>
+<!--<script>
         $(".GroupDetailsContainer .Followtbut .join_btn").on("click",function(){
             if($(this).attr("data-Join")!="true"){
                 $(this).css("background","#bdbdbd")
@@ -808,6 +815,6 @@
 
             }
         })
-    </script>
+    </script>-->
 
 </html>

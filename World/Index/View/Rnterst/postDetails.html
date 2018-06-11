@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/CreateInterest.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/GroupDetailsRelease.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/StickSonDetails.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/PostVideoDetails.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
@@ -28,7 +29,7 @@
     <div class="container crumbs">
         <a href="{:U('Index/Rnterst/interest')}" class="crumbsa">interest</a>
         <cite class="Icon"></cite>
-        <a href="{:U('Index/Rnterst/groupDetails')}" class="crumbsa">Group name</a>
+        <a href="{:U('Index/Rnterst/groupDetails')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
         <cite class="Icon"></cite>
         <span class="crumbsTitle">Post details</span>
 
@@ -42,18 +43,36 @@
                     </a>
                 </p>
                 <h3 class="text-center">
+                    <if condition='$noteone["note_istop"]'>
                     <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
+                    </if>
+                    <if condition='$noteone["note_iswally"]'>
                     <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
-                    Post Title
-                    <p class="text-center StickSonDetailsTitleTime">01-20-2018 20:18:58</p>
+                    </if>
+                    {$noteone["note_name"]}
+                    <p class="text-center StickSonDetailsTitleTime">{$noteone["note_createtime"]}</p>
                 </h3>
                 <div class="StickSonDetailsContent">
                     <p>
-                        Post content Post content Post content Post content Post content Post content Post content conten Post content Post content Post content Post content Post content Post content Post content conte Post content content Post content Post content conte Post content
+                        {$noteone["note_content"]}
                     </p>
+                    <foreach name="vilist" item="vi" key="vikey">
+                        <if condition='$vi["note_vi_type"]==1'>
                     <p>
-                        <img src="__PUBLIC__/Web/web/img/banner.png" class="imgs">
+                        <img src="./Uploads/{$vi['note_vi_url']}" class="imgs">
                     </p>
+                        </if>
+                        <if condition='$vi["note_vi_type"]==2'>
+                            <div class="picfenxiangbox">
+                                <a href="{:U('Index/Rnterst/videoFen')}">
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/picfenxiang.png" class="picfenxiang">
+                                </a>
+                            </div>
+                            <video class="imgs" controls preload="auto">
+                                <source src="./Uploads/{$vi['note_vi_url']}" type="video/mp4">
+                            </video>
+                        </if>
+                    </foreach>
                     <div class="PostReply">
                         <P>
                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">&nbsp;&nbsp;
@@ -168,10 +187,10 @@
                     <p class="p"><b>Personal Information</b></p>
                     <p class="p">
                         <b>Group icon  : </b>
-                        &nbsp;&nbsp;<img src="__PUBLIC__/Web/web/img/02_interest/Todoist.png">
+                        &nbsp;&nbsp;<img src="<if condition='$noteuser["user_icon"]'>./Uploads/{$noteuser['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
                     </p>
-                    <p class="p"><b>Nickname：</b>Xiao Li</p>
-                    <p class="p"><b>Number of posts  :</b>1278</p>
+                    <p class="p"><b>Nickname：</b>{$noteuser['user_name']}</p>
+                    <p class="p"><b>Number of posts  :</b>{$noteuser['user_notes']}</p>
                     <p class="text-center Followtbut">
                         <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
                         Homepage

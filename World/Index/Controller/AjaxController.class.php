@@ -1758,6 +1758,12 @@ public function ajax_donationpay()
                                         'note_vi_nid' => $noteid,
                                         'note_vi_url' =>$url,
                                     );
+                                    $vitype = explode('/', $i['type']);
+                                    if ($vitype[0]== 'video'){
+                                        $vidata['note_vi_type']=2;
+                                    }else{
+                                        $vidata['note_vi_type']=1;
+                                    }
 
                                     $notevimodel->add($vidata);
 
@@ -1854,6 +1860,12 @@ public function ajax_donationpay()
                                         'question_vi_qid' => $questionid,
                                         'question_vi_url' =>$url,
                                     );
+                                    $vitype = explode('/', $i['type']);
+                                    if ($vitype[0]== 'video'){
+                                        $vidata['question_vi_type']=2;
+                                    }else{
+                                        $vidata['question_vi_type']=1;
+                                    }
 
                                     $questionvimodel->add($vidata);
 
@@ -1954,6 +1966,12 @@ public function ajax_donationpay()
                                         'question_vi_qid' => $resourceid,
                                         'question_vi_url' =>$url,
                                     );
+                                    $vitype = explode('/', $i['type']);
+                                    if ($vitype[0]== 'video'){
+                                        $vidata['resource_vi_type']=2;
+                                    }else{
+                                        $vidata['resource_vi_type']=1;
+                                    }
 
                                     $resourcevimodel->add($vidata);
 
