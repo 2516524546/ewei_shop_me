@@ -9,6 +9,7 @@ use Index\Model\DonationModel;
 use Index\Model\FirstMarkModel;
 use Index\Model\FourthMarkModel;
 use Index\Model\FriendsModel;
+use Index\Model\NoteCommentModel;
 use Index\Model\NoteModel;
 use Index\Model\NoteVIModel;
 use Index\Model\OpinionModel;
@@ -2115,6 +2116,41 @@ public function ajax_donationpay()
                         die(json_encode(array('str' => 2, 'msg' => '加入失败')));
                     }
                 }
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
+    //发表帖子评论
+    public function ajax_createNoteComment(){
+
+        if (IS_POST){
+
+            if (!isset($_POST['content'])||$this->post('content')==''){
+
+                die(json_encode(array('str' => 3, 'msg' => '请填写内容')));
+            }else if (!isset($_POST['nid'])||$this->post('nid')==''){
+
+                die(json_encode(array('str' => 4, 'msg' => '没有该帖子')));
+            }else {
+
+                $data = array(
+                    'note_comment_uid' => $this->userid,
+                    'note_comment_nid' => $this->post('nid'),
+                    'note_comment_content' => $this->post('content'),
+                    'note_comment_createtime' => date("Y-m-d H:i:s", time()),
+                );
+                $notecommentmodel = new NoteCommentModel();
+                $res = $notecommentmodel->add($data);
+                if ($res){
+
+                    die(json_encode(array('str' => 1,'msg'=>'发表成功')));
+                }else{
+                    die(json_encode(array('str' => 2,'msg'=>'发表失败')));
+                }
+
             }
 
         }else{

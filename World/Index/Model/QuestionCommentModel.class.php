@@ -5,17 +5,13 @@ namespace Index\Model;
 use Think\Db;
 use Think\Model;
 
-class NoteCommentModel extends Model{
+class QuestionCommentModel extends Model{
 
-    protected  $trueTableName = 'u_note_comment';
+    protected  $trueTableName = 'u_question_comment';
 
     public function findone($where,$field=false){
 
         return $this->where($where)->field($field)->find();
-    }
-    public function joinone($where,$join1,$order,$jointype1='INNER',$field=false){
-
-        return $this->join($join1,$jointype1)->field($field)->where($where)->order($order)->find();
     }
 
     public function updataone($where, $data)

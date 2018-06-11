@@ -44,9 +44,7 @@
                 <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/paint.png" alt="">
             </div>
             <div class="P_title_pic">
-                <img src="<if condition='$userone[" user_icon"]'>./Uploads/{$userone['user_icon']}
-                <else/>
-                __PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
+                <img src="<if condition='$userone["user_icon"]'>./Uploads/{$userone['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
             </div>
             <div class="P_title_name">
                 {$userone['user_name']}

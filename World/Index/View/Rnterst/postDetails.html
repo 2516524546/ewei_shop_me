@@ -78,93 +78,44 @@
                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">&nbsp;&nbsp;
                             <b>Comment</b>
                         </P>
+                        <foreach name="commentlist" item="comment" key="commentkey">
                         <div class="box">
                             <p class="GuestBookUserImg">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/user.png" class="imgs img-circle">
+                                <img src="<if condition='$comment["user_icon"]'>./Uploads/{$comment['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" class="imgs img-circle">
                             </p>
                             <div class="GuestBookContainer">
                                 <div class="GuestBookUserTitleContainer">
-                                    <p class="GuestBookUserName">David J.</p>
+                                    <p class="GuestBookUserName">{$comment['user_name']}</p>
                                     <p class="TimeFabulousContainer">
                                         <span class="GuestBookUserTime">
                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                            01/12/2018
+                                            {$comment['note_comment_createtime']}
                                         </span>
                                         <span class="GuestBookUserFabulous">
                                             Reply&nbsp;&nbsp;|&nbsp;&nbsp;
                                             <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png">
-                                            333
+                                            {$comment['note_comment_zans']}
                                         </span>
                                     </p>
                                 </div>
                             </div>
                             <div class="GuestBookUserMessage">
-                                coocommentcoocommentcoocommentcocoocommentcoocommentcoocommentcocoocommen
+
+                                {$comment['note_comment_content']}
                             </div>
                             <div class="ReplyContainer">
-                                @Tom 回复 Jack ： xxxxxxxxxxxx
+                                <if condition='$comment["note_comment_isreply"]==1'>
+                                {$noteuser['user_name']} 回复 {$comment['user_name']} ： {$comment['note_comment_reply']}
+                                </if>
                             </div>
                         </div>
-                        <div class="box">
-                            <p class="GuestBookUserImg">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/user.png" class="imgs img-circle">
-                            </p>
-                            <div class="GuestBookContainer">
-                                <div class="GuestBookUserTitleContainer">
-                                    <p class="GuestBookUserName">David J.</p>
-                                    <p class="TimeFabulousContainer">
-                                        <span class="GuestBookUserTime">
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                            01/12/2018
-                                        </span>
-                                        <span class="GuestBookUserFabulous">
-                                            Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png">
-                                            333
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="GuestBookUserMessage">
-                                coocommentcoocommentcoocommentcocoocommentcoocommentcoocommentcocoocommen
-                            </div>
-                            <div class="ReplyContainer">
-                                @Tom 回复 Jack ： xxxxxxxxxxxx
-                            </div>
-                        </div>
-                        <div class="box">
-                            <p class="GuestBookUserImg">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/user.png" class="imgs img-circle">
-                            </p>
-                            <div class="GuestBookContainer">
-                                <div class="GuestBookUserTitleContainer">
-                                    <p class="GuestBookUserName">David J.</p>
-                                    <p class="TimeFabulousContainer">
-                                        <span class="GuestBookUserTime">
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                            01/12/2018
-                                        </span>
-                                        <span class="GuestBookUserFabulous">
-                                            Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png">
-                                            333
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="GuestBookUserMessage">
-                                coocommentcoocommentcoocommentcocoocommentcoocommentcoocommentcocoocommen
-                            </div>
-                            <div class="ReplyContainer">
-                                @Tom 回复 Jack ： xxxxxxxxxxxx
-                            </div>
-                        </div>
+                        </foreach>
                     </div>
                 </div>
                 <div class="container NumberOfPagesContainer">
                     <div id="NumberOfPages"></div>
                 </div>
-                <form class="layui-form" action="">
+                <form class="layui-form" onsubmit="return false">
                     <p style="color: #999; margin-bottom: 10px;">
                         Tips: think this article how? Evaluation helps other readers understand this article.
                     </p>
@@ -175,8 +126,8 @@
                                 &nbsp;
                                 Comments
                             </span>
-                            <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea"></textarea>
-                            <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut">Posted</button>
+                            <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea" id="content"></textarea>
+                            <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut" onclick="createcomment()">Posted</button>
                         </div>
                     </div>
                 </form>
@@ -192,7 +143,7 @@
                     <div class="p"><b>Nickname：</b>{$noteuser['user_name']}</div>
                     <div class="p"><b>Number of posts  :</b>{$noteuser['user_notes']}</div>
                     <div class="text-center Followtbut">
-                        <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
+                        <a href="{:U('Index/User/personalCenter')}&id={$noteuser['user_id']}" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
                         Homepage
                         </a>
                     </div>
@@ -241,5 +192,85 @@
     <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 </body>
+
+<script>
+
+    layui.use(['laypage', 'layer'], function() {
+        var laypage = layui.laypage,
+            layer = layui.layer;
+
+        //完整功能
+        laypage.render({
+            elem: 'NumberOfPages',
+            count: {$commentcount},
+            layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+            jump: function(obj) {
+                console.log(obj)
+            }
+        });
+
+    });
+    
+    
+    function createcomment() {
+        var userid = "{$userid}"
+
+        if (userid) {
+
+            $.ajax({
+                type: "post",
+                url: "{:U('Index/Ajax/ajax_createNoteComment')}",
+                data: {
+                    content: $("#content").val(),
+                    nid: '{$noteone["note_id"]}'
+
+                },
+                dataType: "json",
+                async: false,
+                success: function (list) {
+                    //console.log(interest)
+                    if (list.str == 1){
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:1,
+                        },function () {
+                        location.reload();
+                        }
+                    );
+
+                }else{
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+
+                }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    layer.msg('请求失败!', {
+                            time: 1500,
+                            icon: 2,
+                        }
+                    );
+                }
+
+            })
+        }else {
+            layer.msg("请先登录",{
+                    time:1500,
+                },function(){
+
+                    window.location.href="{:U('Index/Login/login')}";
+                }
+            );
+        }
+
+
+    }
+
+</script>
 
 </html>
