@@ -287,7 +287,7 @@
                                 01/12/2018
                             </span>
                                 <span class="GuestBookUserFabulous">
-                                Reply&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span class="Reply_btn">Reply</span>&nbsp;&nbsp;|&nbsp;&nbsp;
                                 <img src="/Public/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png">
                                 333
                             </span>
@@ -314,7 +314,7 @@
                                 01/12/2018
                             </span>
                                 <span class="GuestBookUserFabulous">
-                                Reply&nbsp;&nbsp;|&nbsp;&nbsp;
+                                    <span class="Reply_btn">Reply</span>&nbsp;&nbsp;|&nbsp;&nbsp;
                                 <img src="/Public/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png">
                                 333
                             </span>
@@ -341,7 +341,7 @@
                                 01/12/2018
                             </span>
                                 <span class="GuestBookUserFabulous">
-                                Reply&nbsp;&nbsp;|&nbsp;&nbsp;
+                                    <span class="Reply_btn">Reply</span>&nbsp;&nbsp;|&nbsp;&nbsp;
                                 <img src="/Public/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png">
                                 333
                             </span>

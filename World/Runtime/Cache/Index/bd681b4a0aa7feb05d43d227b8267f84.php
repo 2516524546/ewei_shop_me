@@ -622,8 +622,8 @@
                     </p>
                     <p><img src="/Public/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">&nbsp;&nbsp;<b>1288</b></p>
                     <p class="text-center Followtbut">
-                        <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
-                        Follow
+                        <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" id="GroupBtn">
+                            To join the group
                         </a>
                     </p>
                 </div>
@@ -718,6 +718,17 @@
     <script src="/Public/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/Public/Web/js/lib/layui/dist/layui.all.js"></script>
     <script src="/Public/Web/web/js/index.js"></script>
+    <script>
+        $(".GroupDetailsContainer .Followtbut .join_btn").on("click",function(){
+            if($(this).attr("data-Join")!="true"){
+                $(this).css("background","#bdbdbd")
+                $(this).text("Have joined the group")
+                $(this).attr("data-Join","true")
+            }else{
+
+            }
+        })
+    </script>
 </body>
 
 </html>
