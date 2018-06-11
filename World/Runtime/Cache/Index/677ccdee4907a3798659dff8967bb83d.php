@@ -344,11 +344,11 @@
                         </a>
                     </div>
                     <div class="modal-body">
-                        <p class="text-center">Are you closing the product?</p>
+                        <p class="text-center">Do you confirm the completion of the transaction?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">confirm</button>
+                        <button type="button" class="btn btn-completion-primary" data-dismiss="modal">confirm</button>
                     </div>
                 </div>
             </div>
@@ -505,6 +505,7 @@
         });
     </script>    
     <script src="/Public/Web/web/js/ListOfDonations.js"></script>
+    <!-- 点击关闭删除 -->
     <script>
         $(function(){
             (function(){
@@ -515,8 +516,14 @@
                 $(".btn-primary").on('click', function(event) {
                         $(".MyRelease .item_box").eq(num).remove();
                 });
+                $('.btn-completion-primary').on('click',function(){
+                    console.log($(".MyRelease .item_box .item_box_right").eq(num))
+                    $(".MyRelease .item_box .item_box_right").eq(num).html("<img src='/Public/Web/web/img/05_life/life_mproduct_icon_finished.png'>")
+                })
             })();
             
         });
     </script>
+
+
 </html>
