@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Resume Details</title>
+        <title>Create Resume</title>
         <meta name="viewport" content="width=device-width, initial-scale=0 user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/register.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Donation.css">
@@ -38,6 +38,8 @@
         <else />
             <a href="{:U('Index/Jobs/jobList')}" class="crumbsa">Jobs List</a>
             <cite class="Icon"></cite>
+            <a href="{:U('Index/Jobs/mineResume')}" class="crumbsa">My Resume</a>
+            <cite class="Icon"></cite>
             <span class="crumbsTitle">Resume details</span>
         </if>
         
@@ -46,24 +48,6 @@
     <!-- ResumeDetails content -->
     <div class="container">
     <div class="Resumetails_content">
-            <div class="Resumetails_title">
-                <div class="title_item">
-                    <a href="{:U('User/DeliveryRecord')}">
-                        Delivery record
-                    </a>
-                </div>
-                <div class="title_item">
-                    <a href="{:U('User/ResumeTemplateList')}">
-                        Resume template
-                    </a>
-                </div>
-                <div class="title_item AutoDelivery">
-                    <a href="#">
-                        Automatic delivery
-                    </a>
-                </div>
-            </div>
-
             <div class="Resume_details">
                 <form action="" class="layui-form layui-form-pane">
                     <div class="form_box">
@@ -91,42 +75,21 @@
                             <div class="form_details_item">
                                     <div class="form_details_left form_details_item_border">
                                             <div class="form_details_item_img">
-                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="">
-                                            </div>
-                                        </div>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="title" id="name" required  lay-verify="required" placeholder="Enter the real name" autocomplete="off" <if condition='$resumeone["resume_name"]'>value="{$resumeone['resume_name']}"</if> class="layui-input">
-                                    </div>
-                            </div>
-
-                            <div class="form_details_item">
-                                    <div class="form_details_left form_details_item_border">
-                                            <div class="form_details_item_img">
                                                 <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/grzx_sz_icon_06.png" alt="">
                                             </div>
                                         </div>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="title" id="position" required  lay-verify="required" placeholder="Enter a job title" autocomplete="off" <if condition='$resumeone["resume_position"]'>value="{$resumeone['resume_position']}"</if> class="layui-input">
+                                    <div class="layui-input-block" id="layui-input-block" >
+                                        <input type="hidden" value="" id="in{$first['first_mark_id']}">
+                                        <!--style="width: 25%;float: left;margin: 0 0;"-->
+                                        <select name="second" lay-verify="required" lay-filter="firstselect">
+                                            <option value="" selected="selected"><if condition='$firstkey == 0'>Please select the position information<elseif condition='$firstkey == 1'/>Choose a school<else />Choose interest</if></option>
+                                            <foreach name="first['message']" item = "second" key="secondkey">
+                                            <option value="{$second['second_mark_id']}">{$second['second_mark_name']}</option>
+                                            </foreach>
+                                        </select>
                                     </div>
                             </div>
 
-
-                            <div class="form_details_item">
-                                    <div class="form_details_left form_details_item_border">
-                                            <div class="form_details_item_img">
-                                                <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/grzx_icon_money.png" alt="">
-                                            </div>
-                                        </div>
-                                    <div class="layui-input-block">
-                                            <div class="layui-input-inline">
-                                                <input type="text" name="price_min" id="lowmoney" placeholder="$" autocomplete="off" <if condition='$resumeone["resume_lowmoney"]'>value="{$resumeone['resume_lowmoney']}"</if> class="layui-input">
-                                            </div>
-                                                <div class="layui-form-mid">~</div>
-                                            <div class="layui-input-inline">
-                                                <input type="text" name="price_max" id="hightmoney" placeholder="$" autocomplete="off" <if condition='$resumeone["resume_hightmoney"]'>value="{$resumeone['resume_hightmoney']}"</if> class="layui-input">
-                                            </div>
-                                    </div>
-                            </div>
 
                             <div class="form_details_item">
                                     <div class="form_details_left form_details_item_border">
@@ -135,7 +98,7 @@
                                             </div>
                                         </div>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" id="workyear" required  lay-verify="required" placeholder="Enter the number of years of service" autocomplete="off" <if condition='$resumeone["resume_workyear"]'>value="{$resumeone['resume_workyear']}"</if> class="layui-input">
+                                        <input type="text" name="title" id="workyear" required  lay-verify="required" placeholder="Please enter the number of years of work" autocomplete="off" <if condition='$resumeone["resume_workyear"]'>value="{$resumeone['resume_workyear']}"</if> class="layui-input">
                                     </div>
                             </div>
 
@@ -146,7 +109,7 @@
                                             </div>
                                         </div>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" id="university" required  lay-verify="required" placeholder="Enter a graduate school" autocomplete="off" <if condition='$resumeone["resume_university"]'>value="{$resumeone['resume_university']}"</if> class="layui-input">
+                                        <input type="text" name="title" id="university" required  lay-verify="required" placeholder="Please enter a graduate school" autocomplete="off" <if condition='$resumeone["resume_university"]'>value="{$resumeone['resume_university']}"</if> class="layui-input">
                                     </div>
                             </div>
 
@@ -157,7 +120,7 @@
                                             </div>
                                         </div>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" id="degree" required  lay-verify="required" placeholder="Enter your degree" autocomplete="off" <if condition='$resumeone["resume_degree"]'>value="{$resumeone['resume_degree']}"</if> class="layui-input">
+                                        <input type="text" name="title" id="degree" required  lay-verify="required" placeholder="Please enter a degree" autocomplete="off" <if condition='$resumeone["resume_degree"]'>value="{$resumeone['resume_degree']}"</if> class="layui-input">
                                     </div>
                             </div>
 
@@ -168,7 +131,7 @@
                                             </div>
                                         </div>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" id="specialty" required  lay-verify="required" placeholder="Enter professional" autocomplete="off" <if condition='$resumeone["resume_specialty"]'>value="{$resumeone['resume_specialty']}"</if> class="layui-input">
+                                        <input type="text" name="title" id="specialty" required  lay-verify="required" placeholder="Please enter a major" autocomplete="off" <if condition='$resumeone["resume_specialty"]'>value="{$resumeone['resume_specialty']}"</if> class="layui-input">
                                     </div>
                             </div>
 
@@ -184,27 +147,8 @@
                                     </div>
                             </div>
 
-                            <div class="form_details_item">
-                                <div class="form_details_middle">
-                                            Salary Negotiable :
-                                </div>
-                                <div class="layui-input-block">
-                                    <input type="radio" name="isnegotiable" value="0" title="no" <if condition='!$resumeone["resume_isnegotiable"]||$resumeone["resume_isnegotiable"]==0'>checked</if>>
-                                    <input type="radio" name="isnegotiable" value="1" title="yes" <if condition='$resumeone["resume_isnegotiable"]==1'>checked</if>>
-                                </div>
-                            </div>
-
-                            <div class="form_details_item">
-                                <div class="form_details_middle">
-                                    Upload status :
-                                </div>
-                                <div class="layui-input-block">
-                                    <p><if condition='$resumeone["resume_status"]==1'>To be delivered</if><if condition='!$resumeone["resume_status"]||$resumeone["resume_status"]==0'>To be prefect</if></p>
-                                </div>
-                            </div>
-
                             <div class="form_details_item item_btn" style="cursor: pointer;" lay-submit="demo1" lay-filter="demo1">
-                                    <button>Save</button>
+                                    <button>Create</button>
                             </div>
                         </div>
                     </div>
