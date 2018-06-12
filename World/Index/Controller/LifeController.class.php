@@ -112,6 +112,24 @@ class LifeController extends CommonController {
             exit();
         }
 
+        $data = array();
+
+        $firstmodel = new FirstMarkModel();
+        $secondmodel = new SecondMarkModel();
+        $firstlist = $firstmodel->findlist('first_mark_mid = '.$this->modeleid.' and first_mark_type = 1','firsth_mark_sort');
+        foreach ($firstlist as $firthkey =>$first){
+
+            $data[$firthkey] = $first;
+            $secondlist = $secondmodel->findlist('second_mark_fid = '.$first['first_mark_id'],'second_mark_sort');
+
+            $data[$firthkey]['message'] = $secondlist;
+
+        }
+
+        $this->assign(array(
+            'data' => $data,
+
+        ));
         $this->display();
 
     }
