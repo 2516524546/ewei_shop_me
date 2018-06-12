@@ -22,10 +22,22 @@
   margin-left: 88px;
 }
 .PasswordContainer .InterestTitle {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 16px;
   margin-top: -14px;
   margin-left: 30px;
+}
+.PasswordContainer .InterestTitle .InterestImg{
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  margin-right: 15px;
+}
+.PasswordContainer .InterestTitle .InterestImg img{
+  width: 100%;
+  height: 100%;
 }
 .PasswordContainer .InterestTitle .Interesth3 {
   margin-top: 10px;
@@ -41,9 +53,6 @@
   width: 32px;
   height: 33px;
   display: inline-block;
-  position: absolute;
-  left: 130px;
-  top: -6px;
 }
 .FormContainer .CountryIcon {
   background: url(../img/02_interest/interest_create_icon_01.png) no-repeat 0 0;
@@ -69,9 +78,6 @@
   top: 8px;
   left: 22px;
 }
-.FormContainer .HeadPortraitbox {
-  position: absolute;
-}
 .FormContainer .HeadPortraitbox .HeadPortraitIcon {
   background: url(../img/02_interest/interest_create_icon_04.png) no-repeat 0 0;
   width: 25px;
@@ -87,7 +93,6 @@
   height: 50px;
   border-radius: 4px;
   background-color: #bceee2;
-  margin-left: 76px;
   margin-bottom: 10px;
   border: none;
 }
@@ -111,4 +116,113 @@
   left: 22px;
 }
 
+.PasswordContainer .FormContainer .label-spacing {
+  /* width: 38px; */
+  width: 10%;
+}
 
+.layui-form-pane .layui-form-label{
+  padding: 0;
+}
+
+.PasswordContainer .FormContainer {
+  clear: both;
+  display: flex;
+}
+
+.PasswordContainer .FormContainer .label-spacing {
+  width: 20%;
+}
+
+.PasswordContainer #layui-input-block {
+  margin-left: 0;
+  width: 80%;
+}
+
+.layui-form-select {
+  position: relative;
+  display: flex;
+  /* width: 80%; */
+}
+
+.layui-form-select .layui-edge {
+  right: 6%;
+}
+
+.layui-select-title{
+  width: 100%;
+}
+
+.FormContainer .CountryIcon {
+  background: url(../img/02_interest/interest_create_icon_01.png) no-repeat 0 0;
+  width: 20px;
+  height: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 8px;
+  position: unset;
+}
+
+.FormContainer .SchoolIcon {
+  background: url(../img/02_interest/interest_create_icon_02.png) no-repeat 0 0;
+  width: 20px;
+  height: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 8px;
+  position: unset;
+}
+.FormContainer .InterestIcon {
+  background: url(../img/02_interest/interest_create_icon_03.png) no-repeat 0 0;
+  width: 20px;
+  height: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 8px;
+  position: unset;
+}
+.FormContainer .GroupNameIcon {
+  background: url(../img/02_interest/interest_create_icon_05.png) no-repeat 0 0;
+  width: 20px;
+  height: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 8px;
+  position: unset;
+}
+.FormContainer .BriefIntroductionIcon {
+  background: url(../img/02_interest/interest_create_icon_06.png) no-repeat 0 0;
+  width: 20px;
+  height: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 8px;
+  position: unset;
+}
+
+.FormContainer .HeadPortraitbox {
+  width: 20%;
+}
+
+.FormContainer .HeadPortraitbox .HeadPortraitIcon {
+  background: url(../img/02_interest/interest_create_icon_04.png) no-repeat 0 0;
+  width: 25px;
+  height: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 13px;
+  position: unset;
+}
+
+.UserHeadImage{
+  margin-left: 10px;
+}
+
+.PasswordContainer .FormContainer .input-spacing {
+  margin-left: 0;
+}
+
+.PasswordContainer .FormContainer .inputW{
+  width: 80%;
+
+}

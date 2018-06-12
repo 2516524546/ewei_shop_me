@@ -5,26 +5,27 @@
     <meta charset="UTF-8">
     <title>Registration information</title>
     <meta name="viewport" content="width=device-width, initial-scale=0 user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/register.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/register.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
 </head>
 
 <body>
     <!-- logo -->
     <header class="container"></header>
     <hr>
-    <!-- Crumbs nav -->
-    <div class="container Crumbs">
-        <span>
-          <a href="{:U('Index/Index/index')}"></a>
-          <cite></cite>
-          <span>Sign up</span>
-        </span>
 
+    <!-- Crumbs nav -->
+    <div class="container crumbs">
+        <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+        <cite class="Icon"></cite>
+        <span class="crumbsTitle">Sign up</span>
     </div>
+    
     <!-- Forget the password form -->
     <form class="layui-form layui-form-pane" action="" >
         <div class="PasswordContainer">
@@ -36,7 +37,7 @@
                             <span class="mailbox-icon1"></span>
                         </label>
                         <div class="layui-input-block input-spacing">
-                            <input type="email" name="email" lay-verify="required" autocomplete="off" <if condition='$register_mail'>value="{$register_mail}"</if> placeholder="Enter the mailbox" class="layui-input input-float" id="mail">
+                            <input type="email" name="email" lay-verify="required" autocomplete="off" <if condition='$register_mail'>value="{$register_mail}"</if> placeholder="Enter the email" class="layui-input input-float" id="mail">
                             <input class="layui-btn layui-btn-normal sendCode" style="min-width: 143px;" type="button" name="CodeButton" value="Verification Code" onclick="sendemail()">
                         </div>
                     </div>
@@ -45,7 +46,7 @@
                             <span class="mailbox-icon2"></span>
                         </label>
                         <div class="layui-input-block input-spacing">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Input verification code" class="layui-input" id="code">
+                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter confirmation code" class="layui-input" id="code">
                         </div>
                     </div>
                     <div class="FormContainer" pane>
@@ -53,7 +54,7 @@
                             <span class="mailbox-icon3"></span>
                         </label>
                         <div class="layui-input-block input-spacing">
-                            <input type="password" name="password" lay-verify="required" autocomplete="off" <if condition='$register_password'>value="{$register_password}"</if> placeholder="Input verification code" class="layui-input" id="passwordone">
+                            <input type="password" name="password" lay-verify="required" autocomplete="off" <if condition='$register_password'>value="{$register_password}"</if> placeholder="Enter password" class="layui-input" id="passwordone">
                         </div>
                     </div>
                     <div class="FormContainer" pane>
@@ -61,7 +62,7 @@
                             <span class="mailbox-icon4"></span>
                         </label>
                         <div class="layui-input-block input-spacing">
-                            <input type="password" name="password" lay-verify="required" autocomplete="off" <if condition='$register_password'>value="{$register_password}"</if> placeholder="Input verification code" class="layui-input" id="passwordtwo">
+                            <input type="password" name="password" lay-verify="required" autocomplete="off" <if condition='$register_password'>value="{$register_password}"</if> placeholder="Enter the password again" class="layui-input" id="passwordtwo">
                         </div>
                     </div>
                     <div class="FormContainer from-but">
@@ -81,10 +82,13 @@
                         <p>Facebook</p>
                     </div>
                 </div>
-            </div>
+            </div>                                                  
         </div>
     </form>
-
+    <!-- footer -->
+    <footer>
+        <p>&copy; 2018 NewWorld. All rights reserved.</p>
+    </footer>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>

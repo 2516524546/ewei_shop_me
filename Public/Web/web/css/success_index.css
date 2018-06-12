@@ -129,6 +129,14 @@
     color: #7f8986;
     text-decoration: none;
 }
+.Carousel_img{
+    width: 100%;
+  }
+  .Carousel_img img{
+    width: 100%;
+    height: 100%;
+  }
+
 #NumberOfPages {
     text-align: center;
     margin-top: 30px;

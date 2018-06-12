@@ -11,6 +11,8 @@
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/register.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/registerSecond.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/registerThird.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
     </head>
 
     <body>
@@ -18,13 +20,11 @@
             <header class="container"></header>
             <hr>
             <!-- Crumbs nav -->
-            <div class="container Crumbs">
-                <span>
-                <a href="{:U('Index/Index/index')}"></a>
-                <cite></cite>
-                <span>Sign up</span>
-                </span>
-        </div>
+            <div class="container crumbs">
+                <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+                <cite class="Icon"></cite>
+                <span class="crumbsTitle">Sign up</span>
+            </div>
 
         <!-- Forget the password form -->
     <form class="layui-form layui-form-pane" action="registerThird.html" >

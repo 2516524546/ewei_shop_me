@@ -7,16 +7,16 @@
 .btn_box .btn_box_item{
     width: 27%;
     height: 34px;
-    line-height: 34px;
+    line-height: 33px;
     text-align: center;
-    border: 1px solid #1E9FFF;
+    border: 1px solid #46c4b8;
     border-radius: 100px;
 }
 .btn_box .btn_box_item:last-child{
     margin-left: 25px;
 }
 .btn_box .btn_box_item:hover{
-    background-color: #1e9fff;
+    background-color: #46c4b8;
 }
 .btn_box .btn_box_item:hover a{
     color: #fff;
