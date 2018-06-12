@@ -227,7 +227,7 @@ class AcademicController extends CommonController {
     }
 
     /*
-    发布
+    发布帖子
      */
     public function groupDetailsRelease(){
 
@@ -291,6 +291,9 @@ class AcademicController extends CommonController {
     }
 
 
+    /*
+     帖子详情
+     */
     public function postDetails(){
         if (!$this->userid){
             session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
@@ -385,6 +388,69 @@ class AcademicController extends CommonController {
 
         $this->display();
     }
+
+    /*
+     发布提供辅导
+     */
+    public function releasedCounseling(){
+
+        if (!isset($_GET['cid'])){
+            Header("Location:".U('Index/Academic/academic'));
+            exit();
+        }
+        if (!$this->userid){
+            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
+            Header("Location:".U('Index/Login/login'));
+            exit();
+        }
+
+        $crowdmodel = new CrowdModel();
+        $crowdone = $crowdmodel->findone('crowd_id = '.$_GET['cid'],'');
+
+        if (!$crowdone){
+            Header("Location:".U('Index/Academic/academic'));
+            exit();
+        }
+
+        if ($crowdone['crowd_mid']!=$this->modeleid){
+            if ($crowdone['crowd_mid']==1){
+                Header("Location:".U('Index/Index/index'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==2){
+                Header("Location:".U('Index/Rnterst/interest'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==3){
+                Header("Location:".U('Index/Academic/academic'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==4){
+                Header("Location:".U('Index/Jobs/work'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==5){
+                Header("Location:".U('Index/Life/life'));
+                exit();
+            }
+        }
+
+        $crowdmembermodel = new CrowdMemberModel();
+        $memberone = $crowdmembermodel->findone('crowd_member_cid = '.$_GET['cid'].' and crowd_member_uid = '.$this->userid);
+        if (!$memberone){
+            Header("Location:".U('Index/Academic/academicGroups').'&cid = '.$_GET['cid']);
+            exit();
+        }
+
+        $this->assign(array(
+
+            'cid' => $_GET['cid'],
+            'crowdone' => $crowdone,
+        ));
+
+
+    }
+
 
     /*
     更多成员
