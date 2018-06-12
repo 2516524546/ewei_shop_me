@@ -100,40 +100,10 @@
     <div class="container NumberOfPagesContainer">
         <div id="NumberOfPages"></div>
     </div>
-    <!-- foot start 底部信息 -->
-    <footer class="container-fluid FooterBg">
-        <div class="row FooterContainer">
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>ABOUT</dt>
-                    <dd>
-                        NewWorld.net is a comprehensive website that provides an efficient source of resources and convenience for our every -day lives. We can easily discover, share and create a new world.
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>SUPPORT</dt>
-                    <dd>Premium Support</dd>
-                    <dd>Get Started</dd>
-                    <dd>Partners</dd>
-                </dl>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>Help Center</dt>
-                    <dd>Help Center</dd>
-                    <dd>Contact Us</dd>
-                </dl>
-            </div>
-        </div>
-        <div class="row copyright">
-            <div class="col-md-12">
-                <p class="text-center">&copy; 2018 NewWorld. All rights reserved.</p>
-            </div>
-        </div>
+    <!-- footer -->
+    <footer>
+        <include file = "./World/Index/View/Public/footer.html"/>
     </footer>
-    <!-- foot end 底部信息 -->
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -193,8 +163,8 @@
                                 if (data.adminlist[i].user_icon&&data.adminlist[i].user_icon!=''&&data.adminlist[i].user_icon!=null){
                                     imgurl = './Uploads/'+data.adminlist[i].user_icon;
                                 }
-                                adminmessage += '<img src="'+imgurl+'" class="Memberimg">'
-                                adminmessage += '<span>'+data.adminlist[i].user_name+'</span>';
+                                adminmessage += '<a href="javascript:void(0)"><div class="ImgName_img"><img src="'+imgurl+'" class="Memberimg"></div>'
+                                adminmessage += '<span>'+data.adminlist[i].user_name+'</span></a>';
                                 adminmessage += '</div><div class="MemberBut">'
                                 if (data.adminlist[i].isfriend==1){
                                     adminmessage += '<button class="layui-btn layui-btn-normal layui-btn-radius " clicked>Added</button>'
@@ -214,8 +184,8 @@
                                 if (data.memberlist[i].user_icon&&data.memberlist[i].user_icon!=''&&data.memberlist[i].user_icon!=null){
                                     imgurl = './Uploads/'+data.memberlist[i].user_icon;
                                 }
-                                membermessage += '<img src="'+imgurl+'" class="Memberimg">'
-                                membermessage += '<span>'+data.memberlist[i].user_name+'</span>';
+                                membermessage += '<a href="javascript:void(0)"><div class="ImgName_img"><img src="'+imgurl+'" class="Memberimg"></div>'
+                                membermessage += '<span>'+data.memberlist[i].user_name+'</span></a>';
                                 membermessage += '</div><div class="MemberBut">'
                                 if (data.memberlist[i].isfriend==1){
                                     membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius " clicked>Added</button>'
