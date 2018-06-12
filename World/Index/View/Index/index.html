@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>index</title>
     <meta name="viewport" content="width=device-width, initial-scale=0 user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/register.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/index.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
@@ -15,30 +16,10 @@
 </head>
 
 <body>
-    <!-- Head information start 头信息 -->
-    <div class="container headerBox">
-        <div class="row">
-            <div class="col-md-6">
-                <a href="#" class="logo" title="logo"></a>
-            </div>
-
-            <div class="col-md-6">
-                <include file = "./World/Index/View/Public/head.html"/>
-                <div class="nav">
-                    <nav class="navbar NavBg">
-                        <ul class="ListInline">
-                            <li><a href="{:U('Index/Index/index')}" id="NavSelected">Home</a></li>
-                            <li><a href="{:U('Index/Rnterst/interest')}" >Interst</a></li>
-                            <li><a href="{:U('Index/Academic/academic')}">Academic</a></li>
-                            <li><a href="{:U('Index/Jobs/work')}">Jobs</a></li>
-                            <li><a href="{:U('Index/Life/life')}">Life</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Head information end 头信息 -->
+    <!-- logo -->
+    <header class="container">
+        <include file = "./World/Index/View/Public/head.html"/>
+    </header>
     <!-- Carousel advertising start 轮播广告 -->
     <div class="layui-carousel Banner" id="test2">
         <div carousel-item="">
@@ -52,13 +33,19 @@
     <!-- Carousel advertising end 轮播广告 -->
     <!-- Honor list start 荣誉榜 -->
     <div class="container">
-        <p class="text-center PublicStyleIcons">
-            <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_icon_01.png" class="TitleIcon">
-        </p>
-        <p class="text-center PublicStyleTitle">
-            <span class="Titleline"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_fgx.png"></span>
-            <span class="Title">HONOR LIST</span>
-        </p>
+        <div class="title_Icons">
+            <div class="title_Icons_box">
+                <div class="title_ICon_pic">
+                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_icon_01.png">
+                </div>
+                <div class="title_ICon_con">
+                    HONOR LIST
+                </div>
+            </div>
+            <div class="title_Icons_line">
+                <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_fgx.png">
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="layui-tab layui-tab-brief" id="ListContainer" lay-filter="docDemoTabBrief">
@@ -206,13 +193,20 @@
     <!-- Honor list end 荣誉榜 -->
     <!-- donate start 捐赠 -->
     <div class="container">
-        <p class="text-center PublicStyleIcons">
-            <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_icon_02.png" class="TitleIcon">
-        </p>
-        <p class="text-center PublicStyleTitle">
-            <span class="Titleline"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_fgx.png"></span>
-            <span class="Title">Donate</span>
-        </p>
+        <div class="title_Icons">
+                <div class="title_Icons_box">
+                    <div class="title_ICon_pic">
+                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_icon_02.png">
+                    </div>
+                    <div class="title_ICon_con">
+                        Donate
+                    </div>
+                </div>
+                <div class="title_Icons_line">
+                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_fgx.png">
+                </div>
+            </div>
+
         <div class="row">
             <div class="col-xs-6 col-md-7">
                 <table class="layui-table ListContainer" lay-skin="line">
@@ -271,13 +265,19 @@
     <!-- donate end 捐赠 -->
     <!-- advice start 建议 -->
     <div class="container">
-        <p class="text-center PublicStyleIcons">
-            <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_icon_03.png" class="TitleIcon">
-        </p>
-        <p class="text-center PublicStyleTitle">
-            <span class="Titleline"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_fgx.png"></span>
-            <span class="Title">Advice</span>
-        </p>
+        <div class="title_Icons">
+                <div class="title_Icons_box">
+                    <div class="title_ICon_pic">
+                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_icon_03.png">
+                    </div>
+                    <div class="title_ICon_con">
+                            Advice
+                    </div>
+                </div>
+                <div class="title_Icons_line">
+                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_fgx.png">
+                </div>
+            </div>
         <!-- Modal frame stater 模态框 -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
           <div class="modal-dialog" role="document">
@@ -341,40 +341,10 @@
         </div>
     </div>
     <!-- advice end 建议 -->
-    <!-- foot start 底部信息 -->
-    <footer class="container-fluid FooterBg">
-        <div class="row FooterContainer">
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>ABOUT</dt>
-                    <dd>
-                        NewWorld.net is a comprehensive website that provides an efficient source of resources and convenience for our every -day lives. We can easily discover, share and create a new world.
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>SUPPORT</dt>
-                    <dd>Premium Support</dd>
-                    <dd>Get Started</dd>
-                    <dd>Partners</dd>
-                </dl>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>Help Center</dt>
-                    <dd>Help Center</dd>
-                    <dd>Contact Us</dd>
-                </dl>
-            </div>
-        </div>
-        <div class="row copyright">
-            <div class="col-md-12">
-                <p class="text-center">&copy; 2018 NewWorld. All rights reserved.</p>
-            </div>
-        </div>
+    <!-- footer -->
+    <footer>
+        <include file = "./World/Index/View/Public/footer.html"/>
     </footer>
-    <!-- foot end 底部信息 -->
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
