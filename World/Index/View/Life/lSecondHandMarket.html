@@ -178,7 +178,7 @@
                                         </div>
                                         <div class="fr pro_right">
                                             <div class="pro_right_img">
-                                                    <img src="./Uploads/{$c['user_icon']}" alt="" class="img-circle userimg" />
+                                                    <img src="<if condition='$c["user_icon"]'>./Uploads/{$c['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="" class="img-circle userimg" />
                                             </div>
                                             <div class="pro_right_name">
                                                 {$c['user_name']}
