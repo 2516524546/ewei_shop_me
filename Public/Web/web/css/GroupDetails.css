@@ -32,26 +32,38 @@
   padding: 20px;
 }
 .LatestContentContainer .TitleSearch .h4 {
-  float: left;
+  /* float: left; */
   font-size: 20px;
   color: #46c4b8;
   margin-top: 10px;
 }
-.LatestContentContainer .SelectionContainer {
-  clear: right;
+.TitleSearch{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
+.LatestContentContainer .SelectionContainer {
+  /* clear: right; */
+  width: 48%;
+  position: relative;
+}
+
 .LatestContentContainer .SelectionContainer #Selectionform {
-  width: 46%;
-  margin-left: 372px;
+  width: 100%;
+  /* margin-left: 372px; */
   border-radius: 20px;
-  padding: 0 42px 0 18px;
+  /* padding: 0 42px 0 18px; */
   border: none;
   box-shadow: 2px 2px 14px #cecece;
 }
 .LatestContentContainer .SelectionContainer #SelectionIcon {
-  position: absolute;
+  /* position: absolute;
   top: 30px;
-  right: 56px;
+  right: 56px; */
+  position: absolute;
+  top: 9px;
+  right: 7%;
 }
 .LatestContentContainer .LatestContainer {
   clear: both;
