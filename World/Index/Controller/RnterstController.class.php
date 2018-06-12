@@ -167,6 +167,11 @@ class RnterstController extends CommonController {
     兴趣帖子详情
      */
     public function postDetails(){
+        if (!$this->userid){
+            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
+            Header("Location:".U('Index/Login/login'));
+            exit();
+        }
 
         if (!isset($_GET['cid'])||$_GET['cid']==''){
             Header("Location:".U('Index/Rnterst/interest'));
@@ -188,6 +193,16 @@ class RnterstController extends CommonController {
         $noteone = $notemodel->findone('note_id = '.$_GET['nid']);
         $vilist = $notevimodel->findlist('note_vi_nid = '.$_GET['nid'],'note_vi_sort desc');
         $commentlist = $notecommentmodel->joinonelist('note_comment_nid = '.$_GET['nid'],'u_user u on u_note_comment.note_comment_uid = u.user_id','note_comment_zans desc,note_comment_createtime desc',0,10);
+        foreach ($commentlist as $key => $comment){
+            $uidlist = explode(',',$comment['note_comment_zaner']);
+            if (in_array($this->userid,$uidlist)){
+
+                $commentlist[$key]['iszan'] = 1;
+            }else{
+
+                $commentlist[$key]['iszan'] = 0;
+            }
+        }
         $commentcount = $notecommentmodel->joinone('note_comment_nid = '.$_GET['nid'],'u_user u on u_note_comment.note_comment_uid = u.user_id','note_comment_zans desc,note_comment_createtime desc','INNER','count(*) num')['num'];
         $noteuser = $usermodel->findone('user_id = '.$noteone['note_uid']);
 

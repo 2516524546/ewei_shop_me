@@ -2303,4 +2303,95 @@ public function ajax_donationpay()
         }
     }
 
+    //评论点赞
+    public function ajax_noteCommentZan(){
+
+        if (IS_POST){
+
+            if (!isset($_POST['commemtid'])||$this->post('commemtid')==''){
+
+                die(json_encode(array('str' => 3, 'msg' => '请填写内容')));
+            }else {
+
+
+                $notecommentmodel = new NoteCommentModel();
+                $commentone = $notecommentmodel->findone('note_comment_id = '.$this->post('commemtid'));
+                $uidlist = explode(',',$commentone['note_comment_zaner']);
+                if (in_array($this->userid,$uidlist)){
+
+                    die(json_encode(array('str' => 4,'msg'=>'你已经点赞过了')));
+                }else{
+
+                    $data['note_comment_zans'] = $commentone['note_comment_zans']+1;
+                    if ($commentone['note_comment_zaner']){
+                        $data['note_comment_zaner'] = $this->userid;
+                    }else{
+                        $data['note_comment_zaner'] = ','.$this->userid;
+                    }
+
+                    $res = $notecommentmodel->updataone('note_comment_id = '.$this->post('commemtid'),$data);
+
+                    if ($res){
+                        $commenttwo = $notecommentmodel->findone('note_comment_id = '.$this->post('commemtid'));
+                        die(json_encode(array('str' => 1,'msg'=>$commenttwo['note_comment_zans'])));
+                    }else{
+                        die(json_encode(array('str' => 2,'msg'=>'点赞失败')));
+                    }
+
+                }
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
+    //评论取消点赞
+    public function ajax_noteCommentUnzan(){
+
+        if (IS_POST){
+
+            if (!isset($_POST['commemtid'])||$this->post('commemtid')==''){
+
+                die(json_encode(array('str' => 3, 'msg' => '请填写内容')));
+            }else {
+
+
+                $notecommentmodel = new NoteCommentModel();
+                $commentone = $notecommentmodel->findone('note_comment_id = '.$this->post('commemtid'));
+                $uidlist = explode(',',$commentone['note_comment_zaner']);
+                if (!in_array($this->userid,$uidlist)){
+
+                    die(json_encode(array('str' => 4,'msg'=>'你还未点赞')));
+                }else{
+
+                    $data['note_comment_zans'] = $commentone['note_comment_zans']-1;
+                    foreach( $uidlist as $k=>$uid) {
+                        if($uid == $this->userid) {
+                            unset($uidlist[$k]);
+                        }
+                    }
+                    $uidlist = array_values($uidlist);
+                    $zaner = implode(',',$uidlist);
+                    $data['note_comment_zaner'] = $zaner;
+
+                    $res = $notecommentmodel->updataone('note_comment_id = '.$this->post('commemtid'),$data);
+
+                    if ($res){
+                        $commenttwo = $notecommentmodel->findone('note_comment_id = '.$this->post('commemtid'));
+                        die(json_encode(array('str' => 1,'msg'=>$commenttwo['note_comment_zans'])));
+                    }else{
+                        die(json_encode(array('str' => 2,'msg'=>'取消点赞失败')));
+                    }
+
+                }
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
+
+
 }
