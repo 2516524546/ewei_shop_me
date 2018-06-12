@@ -24,9 +24,10 @@
   background: url(../img/02_interest/interest_qxx_fb_icon_01.png) no-repeat 0 0;
   width: 23px;
   height: 21px;
-  position: absolute;
-  top: 8px;
-  left: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 9px;
+  position: unset;
 }
 .FormContainer{
   margin-top: 10px;
@@ -35,69 +36,80 @@
   background: url(../img/03_academic/academic_fabu_icon_01.png) no-repeat 0 0;
   width: 23px;
   height: 21px;
-  position: absolute;
-  top: 8px;
-  left: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 9px;
+  position: unset;
 }
 .FormContainer .MoneyIcon {
   background: url(../img/03_academic/academic_fabu_icon_05.png) no-repeat 0 0;
   width: 23px;
   height: 21px;
-  position: absolute;
-  top: 8px;
-  left: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 9px;
+  position: unset;
 }
 .FormContainer .TimesIcon {
   background: url(../img/03_academic/academic_fabu_icon_06.png) no-repeat 0 0;
   width: 23px;
   height: 21px;
-  position: absolute;
-  top: 8px;
-  left: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 9px;
+  position: unset;
 }
 
 .FormContainer .talkIcon {
   background: url(../img/03_academic/academic_fabu_icon_02.png) no-repeat 0 0;
   width: 23px;
   height: 21px;
-  position: absolute;
-  top: 8px;
-  left: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 9px;
+  position: unset;
 }
 .FormContainer .MoneyIcon {
   background: url(../img/02_interest/interest_qxx_icon_xs.png) no-repeat 0 0;
   width: 23px;
   height: 21px;
-  position: absolute;
-  top: 8px;
-  left: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 9px;
+  position: unset;
 }
 .FormContainer .TypesIcon {
   background: url(../img/02_interest/interest_qxx_fb_icon_02.png) no-repeat 0 0;
   width: 23px;
   height: 21px;
-  position: absolute;
-  top: 8px;
-  left: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 9px;
+  position: unset;
 }
 .FormContainer .NumberIcon{
   background: url(../img/06_gerenzhongxin/grzx_icon_con.png) no-repeat 0 0;
   width: 23px;
   height: 21px;
-  position: absolute;
-  top: 8px;
-  left: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 9px;
+  position: unset;
 }
 .FormContainer .ContentsIcon {
   background: url(../img/02_interest/interest_qxx_fb_icon_03.png) no-repeat 0 0;
   width: 23px;
   height: 21px;
-  position: absolute;
-  top: 8px;
-  left: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 9px;
+  position: unset;
+}
+.layui-form-pane .layui-form-label{
+  padding: 0;
 }
 .picDiv {
-  margin-left: 64px;
+  margin-left: 10px;
 }
 .picDiv .imageDiv {
   display: inline-block;

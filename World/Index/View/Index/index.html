@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>index</title>
     <meta name="viewport" content="width=device-width, initial-scale=0 user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/register.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/index.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
@@ -16,18 +15,57 @@
 </head>
 
 <body>
-    <!-- logo -->
-    <header class="container">
-        <include file = "./World/Index/View/Public/head.html"/>
-    </header>
+    <!-- Head information start 头信息 -->
+    <div class="container headerBox">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="#" class="logo" title="logo"></a>
+            </div>
+
+            <div class="col-md-6">
+                <include file = "./World/Index/View/Public/head.html"/>
+                <div class="nav">
+                    <nav class="navbar NavBg">
+                        <ul class="ListInline">
+                            <li><a href="{:U('Index/Index/index')}" id="NavSelected">Home</a></li>
+                            <li><a href="{:U('Index/Rnterst/interest')}" >Interst</a></li>
+                            <li><a href="{:U('Index/Academic/academic')}">Academic</a></li>
+                            <li><a href="{:U('Index/Jobs/work')}">Jobs</a></li>
+                            <li><a href="{:U('Index/Life/life')}">Life</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Head information end 头信息 -->
     <!-- Carousel advertising start 轮播广告 -->
     <div class="layui-carousel Banner" id="test2">
         <div carousel-item="">
-            <div class="Carousel_img"><img src="__PUBLIC__/Web/web/img/banner.png"></div>
-            <div class="Carousel_img"><img src="__PUBLIC__/Web/web/img/banner.png"></div>
-            <div class="Carousel_img"><img src="__PUBLIC__/Web/web/img/banner.png"></div>
-            <div class="Carousel_img"><img src="__PUBLIC__/Web/web/img/banner.png"></div>
-            <div class="Carousel_img"><img src="__PUBLIC__/Web/web/img/banner.png"></div>
+            <div class="Carousel_img">
+                <a href="#">
+                    <img src="__PUBLIC__/Web/web/img/banner.png">
+                </a> 
+            </div>
+            <div class="Carousel_img">
+                <a href="#">
+                    <img src="__PUBLIC__/Web/web/img/banner.png">
+                </a> 
+            </div>
+            <div class="Carousel_img">
+                <a href="#">
+                    <img src="__PUBLIC__/Web/web/img/banner.png">
+                </a> 
+            </div><div class="Carousel_img">
+                <a href="#">
+                    <img src="__PUBLIC__/Web/web/img/banner.png">
+                </a> 
+            </div>
+            <div class="Carousel_img">
+                <a href="#">
+                    <img src="__PUBLIC__/Web/web/img/banner.png">
+                </a> 
+            </div>
         </div>
     </div>
     <!-- Carousel advertising end 轮播广告 -->
@@ -193,6 +231,7 @@
     <!-- Honor list end 荣誉榜 -->
     <!-- donate start 捐赠 -->
     <div class="container">
+
         <div class="title_Icons">
                 <div class="title_Icons_box">
                     <div class="title_ICon_pic">
@@ -266,18 +305,18 @@
     <!-- advice start 建议 -->
     <div class="container">
         <div class="title_Icons">
-                <div class="title_Icons_box">
-                    <div class="title_ICon_pic">
-                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_icon_03.png">
-                    </div>
-                    <div class="title_ICon_con">
-                            Advice
-                    </div>
+            <div class="title_Icons_box">
+                <div class="title_ICon_pic">
+                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_icon_03.png">
                 </div>
-                <div class="title_Icons_line">
-                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_fgx.png">
+                <div class="title_ICon_con">
+                        Advice
                 </div>
             </div>
+            <div class="title_Icons_line">
+                <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_fgx.png">
+            </div>
+        </div>
         <!-- Modal frame stater 模态框 -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
           <div class="modal-dialog" role="document">
