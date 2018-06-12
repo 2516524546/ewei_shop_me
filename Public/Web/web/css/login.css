@@ -60,7 +60,11 @@ header .Return-icon {
   margin: 16px 0 5px;
   background-color: #fff;
   color: #666666;
-  border: solid 1px #1E9FFF;
+  border: solid 1px #46c4b8;
+}
+.LoginContainer .from-but button:hover{
+  background: #46c4b8;
+  color: #fff;
 }
 .LoginContainer .LinkContainer p {
   color: #bcbcbc;
@@ -136,10 +140,10 @@ header .Return-icon {
     font-size: 14px;
     background-color: #fff;
     color: #666666;
-    border: solid 1px #1E9FFF;
+    border: solid 1px #46c4b8;
   }
   .LoginContainer .from-but button:hover {
-    background-color: #1e9fff;
+    background-color: #46c4b8;
     color: #fff;
   }
 }

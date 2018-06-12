@@ -196,13 +196,13 @@ header {
   margin: 37px 0 5px;
   background-color: #fff;
   color: #666666;
-  border: solid 1px #1E9FFF;
+  border: solid 1px #46c4b8;
 }
 .PasswordContainer .from-but button:focus{
   outline:none;
 }
 .PasswordContainer .from-but button:hover {
-  background-color: #1e9fff;
+  background-color: #46c4b8;
   color: #fff;
 }
 .PasswordContainer .margin {
@@ -256,6 +256,11 @@ header {
 .Previous{
   width: 40%;
 }
+
+.layui-btn-normal {
+  background-color: #46c4b8;
+}
+
 footer{
   text-align: center;
   margin-top: 46px;
