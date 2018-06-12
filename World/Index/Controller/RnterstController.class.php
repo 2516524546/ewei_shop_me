@@ -87,10 +87,33 @@ class RnterstController extends CommonController {
         }
 
         $crowdmodel = new CrowdModel();
-        $crowone = $crowdmodel->findone('crowd_id = '.$_GET['cid'],'u_user u on u_crowd.crowd_uid = u.user_id','INNER','u_crowd.*,u.user_name');
-        if (!$crowone){
+        $crowdone = $crowdmodel->findone('crowd_id = '.$_GET['cid'],'u_user u on u_crowd.crowd_uid = u.user_id','INNER','u_crowd.*,u.user_name');
+        if (!$crowdone){
             Header("Location:".U('Index/Rnterst/interest'));
             exit();
+        }
+
+        if ($crowdone['crowd_mid']!=$this->modeleid){
+            if ($crowdone['crowd_mid']==1){
+                Header("Location:".U('Index/Index/index'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==2){
+                Header("Location:".U('Index/Rnterst/interest'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==3){
+                Header("Location:".U('Index/Academic/academic'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==4){
+                Header("Location:".U('Index/Jobs/work'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==5){
+                Header("Location:".U('Index/Life/life'));
+                exit();
+            }
         }
 
         $crowdmembermodel = new CrowdMemberModel();
@@ -130,7 +153,7 @@ class RnterstController extends CommonController {
 
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
         $this->assign(array(
-            'crowone' => $crowone,
+            'crowone' => $crowdone,
             'join_in' => $join_in,
             'adminlist' => $adminlist,
             'memberlist' => $memberlist,
@@ -189,8 +212,36 @@ class RnterstController extends CommonController {
         $usermodel = new UserModel();
 
         $crowdone = $crowdmodel->findone('crowd_id = '.$_GET['cid']);
+
+        if ($crowdone['crowd_mid']!=$this->modeleid){
+            if ($crowdone['crowd_mid']==1){
+                Header("Location:".U('Index/Index/index'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==2){
+                Header("Location:".U('Index/Rnterst/postDetails').'&cid='.$_GET['cid'].'&nid='.$_GET['nid']);
+                exit();
+            }
+            if ($crowdone['crowd_mid']==3){
+                Header("Location:".U('Index/Academic/postDetails').'&cid='.$_GET['cid'].'&nid='.$_GET['nid']);
+                exit();
+            }
+            if ($crowdone['crowd_mid']==4){
+                Header("Location:".U('Index/Jobs/postDetails').'&cid='.$_GET['cid'].'&nid='.$_GET['nid']);
+                exit();
+            }
+            if ($crowdone['crowd_mid']==5){
+                Header("Location:".U('Index/Life/postDetails').'&cid='.$_GET['cid'].'&nid='.$_GET['nid']);
+                exit();
+            }
+        }
+
         $crowdmemberone = $crowdmembermodel->findone('crowd_member_cid = '.$_GET['cid'].' and crowd_member_uid = '.$this->userid.' and crowd_member_status != -1');
         $noteone = $notemodel->findone('note_id = '.$_GET['nid']);
+        if ($noteone['note_cid']!=$_GET['cid']){
+            Header("Location:".U('Index/Rnterst/groupDetails')."&cid=".$_GET['cid']);
+            exit();
+        }
         $vilist = $notevimodel->findlist('note_vi_nid = '.$_GET['nid'],'note_vi_sort desc');
         $commentlist = $notecommentmodel->joinonelist('note_comment_nid = '.$_GET['nid'],'u_user u on u_note_comment.note_comment_uid = u.user_id','note_comment_isanswer desc,note_comment_zans desc,note_comment_createtime desc',0,10);
         foreach ($commentlist as $key => $comment){
@@ -281,6 +332,29 @@ class RnterstController extends CommonController {
             exit();
         }
 
+        if ($crowdone['crowd_mid']!=$this->modeleid){
+            if ($crowdone['crowd_mid']==1){
+                Header("Location:".U('Index/Index/index'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==2){
+                Header("Location:".U('Index/Rnterst/interest'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==3){
+                Header("Location:".U('Index/Academic/academic'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==4){
+                Header("Location:".U('Index/Jobs/work'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==5){
+                Header("Location:".U('Index/Life/life'));
+                exit();
+            }
+        }
+
         $crowdmembermodel = new CrowdMemberModel();
         $memberone = $crowdmembermodel->findone('crowd_member_cid = '.$_GET['cid'].' and crowd_member_uid = '.$this->userid);
         if (!$memberone){
@@ -313,9 +387,10 @@ class RnterstController extends CommonController {
             Header("Location:".U('Index/Login/login'));
             exit();
         }
-
+        $crowdmodel = new CrowdModel();
         $crowdmembermodel = new CrowdMemberModel();
 
+        $crowdone = $crowdmodel->findone('crowd_id = '.$_GET['cid']);
         $list = $crowdmembermodel->findlistlimit('crowd_member_cid = '.$_GET['cid'],'u_user u on u_crowd_member.crowd_member_uid = u.user_id',0,10,'INNER','crowd_member_status desc,crowd_member_logintime desc','u_crowd_member.*,u.user_icon,u.user_name');
         $listcount =$crowdmembermodel->findonejoin('crowd_member_cid = '.$_GET['cid'],'u_user u on u_crowd_member.crowd_member_uid = u.user_id','INNER','crowd_member_status desc,crowd_member_logintime desc','count(*) num')['num'];
 
@@ -330,6 +405,7 @@ class RnterstController extends CommonController {
         }
 
         $this->assign(array(
+            'crowdone'=>$crowdone,
             'cid' => $_GET['cid'],
             'adminlist' => $adminlist,
             'memberlist' => $memberlist,
