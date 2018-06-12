@@ -166,100 +166,101 @@
         });
     }
 
-    function setmembers(limit1,limit2){
+     function setmembers(limit1,limit2){
 
-        $.ajax({
-            type:"post",
-            url:"{:U('Index/Ajax/ajax_members')}",
-            data:{
-                limit1:limit1,
-                limit2:limit2,
-                cid:'{$cid}',
-            },
-            dataType:"json",
-            success: function(data){
-                console.log(data)
-                if (data!=null&&data!="") {
-                    if (data.str == 1) {
-                        var message = '';
-                        var adminmessage = '';
-                        var membermessage = '';
+$.ajax({
+    type:"post",
+    url:"{:U('Index/Ajax/ajax_members')}",
+    data:{
+        limit1:limit1,
+        limit2:limit2,
+        cid:'{$cid}',
+    },
+    dataType:"json",
+    success: function(data){
+        console.log(data)
+        if (data!=null&&data!="") {
+            if (data.str == 1) {
+                var message = '';
+                var adminmessage = '';
+                var membermessage = '';
 
-                        if(data.adminlist != ''){
-                            adminmessage +='<div class="box1"><div class="Membertitle">Administrator</div>'
-                            for (var i = 0; i < data.adminlist.length; i++){
-                                adminmessage += '<div class="MemberContainer"><div class="MemberImgName">'
-                                var imgurl = '__PUBLIC__/Web/web/img/01_shouye/UserPic.png';
-                                if (data.adminlist[i].user_icon&&data.adminlist[i].user_icon!=''&&data.adminlist[i].user_icon!=null){
-                                    imgurl = './Uploads/'+data.adminlist[i].user_icon;
-                                }
-                                adminmessage += '<img src="'+imgurl+'" class="Memberimg">'
-                                adminmessage += '<span>'+data.adminlist[i].user_name+'</span>';
-                                adminmessage += '</div><div class="MemberBut">'
-                                if (data.adminlist[i].isfriend==1){
-                                    adminmessage += '<button class="layui-btn layui-btn-normal layui-btn-radius " clicked>Added</button>'
-                                }else{
-                                    adminmessage += '<button class="layui-btn layui-btn-normal layui-btn-radius ">Add friend</button>'
-                                }
-
-                                adminmessage += '</div></div>'
-                            }
-                            adminmessage += '</div>'
+                if(data.adminlist != ''){
+                    adminmessage +='<div class="box1"><div class="Membertitle">Administrator</div>'
+                    for (var i = 0; i < data.adminlist.length; i++){
+                        adminmessage += '<div class="MemberContainer"><div class="MemberImgName">'
+                        var imgurl = '__PUBLIC__/Web/web/img/02_interest/user.png';
+                        if (data.adminlist[i].user_icon&&data.adminlist[i].user_icon!=''&&data.adminlist[i].user_icon!=null){
+                            imgurl = './Uploads/'+data.adminlist[i].user_icon;
                         }
-                        if(data.memberlist != ''){
-                            membermessage +='<div class="box2"><div class="Membertitle">Member</div>'
-                            for (var i = 0; i < data.memberlist.length; i++){
-                                membermessage += '<div class="MemberContainer"><div class="MemberImgName">'
-                                var imgurl = '__PUBLIC__/Web/web/img/01_shouye/UserPic.png';
-                                if (data.memberlist[i].user_icon&&data.memberlist[i].user_icon!=''&&data.memberlist[i].user_icon!=null){
-                                    imgurl = './Uploads/'+data.memberlist[i].user_icon;
-                                }
-                                membermessage += '<img src="'+imgurl+'" class="Memberimg">'
-                                membermessage += '<span>'+data.memberlist[i].user_name+'</span>';
-                                membermessage += '</div><div class="MemberBut">'
-                                if (data.memberlist[i].isfriend==1){
-                                    membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius " clicked>Added</button>'
-                                }else{
-                                    membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius ">Add friend</button>'
-                                }
-
-                                membermessage += '</div></div>'
-                            }
-                            membermessage += '</div>'
+                        adminmessage += '<a href="javascript:void(0)"><div class="ImgName_img"><img src="'+imgurl+'" class="Memberimg"></div>'
+                        adminmessage += '<span>'+data.adminlist[i].user_name+'</span></a>';
+                        adminmessage += '</div><div class="MemberBut">'
+                        if (data.adminlist[i].isfriend==1){
+                            adminmessage += '<button class="layui-btn layui-btn-normal layui-btn-radius " clicked>Added</button>'
+                        }else{
+                            adminmessage += '<button class="layui-btn layui-btn-normal layui-btn-radius ">Add friend</button>'
                         }
-                        message = adminmessage+membermessage;
 
-                        $('#content').html(message);
-
-                    }else{
-                        layer.msg(data.msg,{
-                                time:1500,
-                                icon:2,
-                            }
-                        );
+                        adminmessage += '</div></div>'
                     }
-
-                }else{
-                    layer.msg('请求错误!',{
-                            time:1500,
-                            icon:2,
-                        }
-                    );
+                    adminmessage += '</div>'
                 }
+                if(data.memberlist != ''){
+                    membermessage +='<div class="box2"><div class="Membertitle">Member</div>'
+                    for (var i = 0; i < data.memberlist.length; i++){
+                        membermessage += '<div class="MemberContainer"><div class="MemberImgName">'
+                        var imgurl = '__PUBLIC__/Web/web/img/02_interest/user.png';
+                        if (data.memberlist[i].user_icon&&data.memberlist[i].user_icon!=''&&data.memberlist[i].user_icon!=null){
+                            imgurl = './Uploads/'+data.memberlist[i].user_icon;
+                        }
+                        membermessage += '<a href="javascript:void(0)"><div class="ImgName_img"><img src="'+imgurl+'" class="Memberimg"></div>'
+                        membermessage += '<span>'+data.memberlist[i].user_name+'</span></a>';
+                        membermessage += '</div><div class="MemberBut">'
+                        if (data.memberlist[i].isfriend==1){
+                            membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius " clicked>Added</button>'
+                        }else{
+                            membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius ">Add friend</button>'
+                        }
 
-            },
-            error:function(XMLHttpRequest, textStatus, errorThrown){
+                        membermessage += '</div></div>'
+                    }
+                    membermessage += '</div>'
+                }
+                message = adminmessage+membermessage;
 
-                layer.msg('请求失败!',{
+                $('#content').html(message);
+
+            }else{
+                layer.msg(data.msg,{
                         time:1500,
                         icon:2,
                     }
                 );
             }
 
-        })
+        }else{
+            layer.msg('请求错误!',{
+                    time:1500,
+                    icon:2,
+                }
+            );
+        }
 
+    },
+    error:function(XMLHttpRequest, textStatus, errorThrown){
+
+        layer.msg('请求失败!',{
+                time:1500,
+                icon:2,
+            }
+        );
     }
+
+})
+
+}
+
 
 
 </script>

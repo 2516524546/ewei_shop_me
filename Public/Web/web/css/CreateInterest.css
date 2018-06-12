@@ -78,7 +78,7 @@
   top: 8px;
   left: 22px;
 }
-.FormContainer .HeadPortraitbox .HeadPortraitIcon {
+/* .FormContainer .HeadPortraitbox .HeadPortraitIcon {
   background: url(../img/02_interest/interest_create_icon_04.png) no-repeat 0 0;
   width: 25px;
   height: 22px;
@@ -87,7 +87,7 @@
   left: 22px;
   margin-top: 5px;
   display: inline-block;
-}
+} */
 .FormContainer .UserHeadImage .img {
   width: 50px;
   height: 50px;

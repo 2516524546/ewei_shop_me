@@ -80,9 +80,6 @@
   top: 8px;
   left: 22px;
 }
-.FormContainer .HeadPortraitbox {
-  position: absolute;
-}
 .FormContainer .HeadPortraitbox .HeadPortraitIcon {
   background: url(../img/02_interest/interest_create_icon_04.png) no-repeat 0 0;
   width: 25px;
@@ -98,7 +95,6 @@
   height: 50px;
   border-radius: 4px;
   background-color: #bceee2;
-  margin-left: 76px;
   margin-bottom: 10px;
   border: none;
 }

@@ -51,7 +51,7 @@
 
 .LatestContentContainer .SelectionContainer #Selectionform {
   width: 100%;
-  /* margin-left: 372px; */
+  margin-left: 0;
   border-radius: 20px;
   /* padding: 0 42px 0 18px; */
   border: none;
