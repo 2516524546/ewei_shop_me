@@ -192,7 +192,7 @@ class RnterstController extends CommonController {
         $crowdmemberone = $crowdmembermodel->findone('crowd_member_cid = '.$_GET['cid'].' and crowd_member_uid = '.$this->userid.' and crowd_member_status != -1');
         $noteone = $notemodel->findone('note_id = '.$_GET['nid']);
         $vilist = $notevimodel->findlist('note_vi_nid = '.$_GET['nid'],'note_vi_sort desc');
-        $commentlist = $notecommentmodel->joinonelist('note_comment_nid = '.$_GET['nid'],'u_user u on u_note_comment.note_comment_uid = u.user_id','note_comment_zans desc,note_comment_createtime desc',0,10);
+        $commentlist = $notecommentmodel->joinonelist('note_comment_nid = '.$_GET['nid'],'u_user u on u_note_comment.note_comment_uid = u.user_id','note_comment_isanswer desc,note_comment_zans desc,note_comment_createtime desc',0,10);
         foreach ($commentlist as $key => $comment){
             $uidlist = explode(',',$comment['note_comment_zaner']);
             if (in_array($this->userid,$uidlist)){

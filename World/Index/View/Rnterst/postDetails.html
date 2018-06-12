@@ -83,8 +83,8 @@
                                     Comment
                             </div>
                         </div>
-                        <div class="PostReply_box_content">
-                        <foreach name="commentlist" item="comment" key="commentkey">
+                        <div class="PostReply_box_content" id="commentlist">
+                        <!--<foreach name="commentlist" item="comment" key="commentkey">
                             <div class="PostReply_box_content_item">
                                 <div class="item_pic">
                                     <img src="<if condition='$comment["user_icon"]'>./Uploads/{$comment['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
@@ -142,7 +142,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </foreach>
+                        </foreach>-->
                         </div>
                     </div>
                 </div>
@@ -371,7 +371,7 @@
             count: {$commentcount},
             layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
             jump: function(obj) {
-                setcommentlist({$noteone['note_id']},limit1,limit2)
+                setcommentlist({$noteone['note_id']},obj.curr,obj.limit)
             }
         });
 
@@ -380,23 +380,56 @@
     function setcommentlist(nid,limit1,limit2) {
         $.ajax({
             type:"post",
-            url:"{:U('Index/Ajax/ajax_honorlist')}",
+            url:"{:U('Index/Ajax/ajax_commentlist')}",
             data:{
-                type:type,
+                nid:nid,
                 limit1:limit1,
                 limit2:limit2,
 
             },
             dataType:"json",
             success: function(data){
+                console.log(data);
                 if (data!=null&&data!="") {
                     if (data.str == 1) {
                         var message = '';
                         for (var i = 0; i < data.msg.length; i++) {
+                            message += '<div class="PostReply_box_content_item"><div class="item_pic">'
+                            var img = '__PUBLIC__/Web/web/img/01_shouye/UserPic.png';
+                            if (data.msg[i].user_icon){
+                                img = './Uploads/'+data.msg[i].user_icon
+                            }
+                            message += '<img src="'+img+'">'
+                            message += '</div><div class="item_con"><div class="item_con_title"><div class="item_user_name">'
+                            message += '<span class="User_name">'+data.msg[i].user_name+'</span>'
+                            message += '<div class="item_Top">'
+                            if (data.msg[i].note_comment_isanswer == 1){
+                                message += '<img src="__PUBLIC__/Web/web/img/Top.png" alt="">'
+                            }
+                            message += '</div></div><div class="item_user_det"><div class="det_time"><div class="det_time_img"><img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png"></div>'
+                            message += '<div class="det_timed">'+data.msg[i].note_comment_createtime+'</div>'
+                            message += '</div><div class="det_zan">'
+                            if (data.msg[i].note_comment_isreply != 1){
+                                message += '<div class="det_reply" onclick="reply('+data.msg[i].note_comment_id+',this)">Reply</div>'
+                            }
+                            message += '<div class="line"></div><div class="det_zan_box">'
+                            if (data.msg[i].iszan == 0){
+                                message += '<div class="zan_box_img" onclick="zan('+data.msg[i].note_comment_id+',this)"><img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png" alt=""></div>'
+                            }else{
+                                message += '<div class="zan_box_img" onclick="unzan('+data.msg[i].note_comment_id+',this)"><img src="__PUBLIC__/Web/web/img/greated.png"></div>'
+                            }
+                            message += '<div class="zan_box_num">'+data.msg[i].note_comment_zans+'</div>'
+                            message += '</div></div></div></div>'
+                            message += '<div class="item_con_det">'+data.msg[i].note_comment_content+'</div>'
+                            message += '<div class="item_con_reply"><div class="reply_person">'
+                            if (data.msg[i].note_comment_isreply == 1){
+                                message += '{$noteuser["user_name"]} 回复 '+data.msg[i].user_name+' ：<span class="reply_c">'+data.msg[i].note_comment_reply+'</span>'
+                            }
+                            message += '</div></div></div></div>'
 
                         }
 
-                        $('#content').html(message);
+                        $('#commentlist').html(message);
 
                     }else{
                         layer.msg(data.msg,{

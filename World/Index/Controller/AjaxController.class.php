@@ -2392,6 +2392,39 @@ public function ajax_donationpay()
         }
     }
 
+    //评论列表
+    public function ajax_commentlist(){
+
+        if (IS_POST){
+
+            if (!isset($_POST['nid'])||$this->post('nid')==''){
+
+                die(json_encode(array('str' => 3, 'msg' => '没有这个内容')));
+            }else {
+
+                $notecommentmodel = new NoteCommentModel();
+                $limit1 = ($this->post('limit1')-1)*$this->post('limit2');
+                $commentlist = $notecommentmodel->joinonelist('note_comment_nid = '.$this->post('nid'),'u_user u on u_note_comment.note_comment_uid = u.user_id','note_comment_isanswer desc,note_comment_zans desc,note_comment_createtime desc',$limit1,$this->post('limit2'));
+                foreach ($commentlist as $key => $comment){
+                    $uidlist = explode(',',$comment['note_comment_zaner']);
+                    if (in_array($this->userid,$uidlist)){
+
+                        $commentlist[$key]['iszan'] = 1;
+                    }else{
+
+                        $commentlist[$key]['iszan'] = 0;
+                    }
+                }
+                die(json_encode(array('str' => 1,'msg'=>$commentlist)));
+
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+
+    }
+
 
 
 }
