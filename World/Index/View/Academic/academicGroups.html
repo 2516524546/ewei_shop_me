@@ -715,12 +715,12 @@
                     </a>
                 </div>
                 <div class="ReleaseButContainer">
-                    <a href="{:U('Index/Academic/groupDetailsRelease')}" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
+                    <a href="javascript:void(0)" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn" onclick="Provide()">
                         Provide counseling
                     </a>
                 </div>
                 <div class="ReleaseButContainer">
-                    <a href="{:U('Index/Academic/groupDetailsRelease')}" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
+                    <a href="javascript:void(0)" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn" onclick="Seeking()">
                         Seeking counseling
                     </a>
                 </div>
@@ -872,6 +872,62 @@
         if(aa){
             if (join){
                 var url = "{:U('Index/Academic/groupDetailsRelease')}&cid="+cid
+                window.location.href=url;
+            }else{
+                layer.msg("你还未加入该群",{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+
+        }else{
+            layer.msg("请先登录",{
+                    time:1500,
+                },function(){
+
+                    window.location.href="{:U('Index/Login/login')}";
+                }
+            );
+        }
+    }
+
+    function Provide() {
+
+        var aa = "{$userid}";
+        var cid = "{$crowone['crowd_id']}"
+        var join = "{$join_in}"
+        if(aa){
+            if (join){
+                var url = "{:U('Index/Academic/releasedCounseling')}&cid="+cid
+                window.location.href=url;
+            }else{
+                layer.msg("你还未加入该群",{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+
+        }else{
+            layer.msg("请先登录",{
+                    time:1500,
+                },function(){
+
+                    window.location.href="{:U('Index/Login/login')}";
+                }
+            );
+        }
+    }
+
+    function Seeking() {
+
+        var aa = "{$userid}";
+        var cid = "{$crowone['crowd_id']}"
+        var join = "{$join_in}"
+        if(aa){
+            if (join){
+                var url = "{:U('Index/Academic/postDemand')}&cid="+cid
                 window.location.href=url;
             }else{
                 layer.msg("你还未加入该群",{
