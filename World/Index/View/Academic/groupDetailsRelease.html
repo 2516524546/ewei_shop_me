@@ -13,26 +13,29 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/EditResource.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/changeimg.css">
 </head>
 
 <body>
     <!-- logo -->
     <header class="container">
         <include file = "./World/Index/View/Public/head.html"/>
-    </header>
-    <hr>
+        </header>
+        <hr>
     <!-- Crumbs nav -->
-    <div class="container Crumbs">
-        <span class="CrumbsSpan">
-          <a href="{:U('Index/Academic/academic')}" class="CrumbsA">Academic</a>
-          <cite class="CrumbsIcon"></cite>
-          <span class="CrumbsTitle"><a href="{:U('Index/Academic/academicGroups')}" class="CrumbsA">Group name</a></span>
-        <cite class="CrumbsIcons"></cite>
-        <span class="CrumbsTitles">Release</span>
-        </span>
+    <div class="container crumbs">
+        <a href="{:U('Index/Academic/academic')}" class="crumbsa">Academic</a>
+        <cite class="Icon"></cite>
+        <a href="{:U('Index/Academic/academicGroups')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
+        <cite class="Icon"></cite>
+        <span class="crumbsTitle">Relase</span>
     </div>
+
     <!-- Forget the password form -->
-    <form class="layui-form layui-form-pane" action="">
+    <form class="layui-form layui-form-pane" action="" autocomplete="off" id="formdata" >
         <div class="PasswordContainer">
             <div class="StepContainer">
                 <div class="StepContainerOne">
@@ -46,7 +49,7 @@
                             <span class="TitlesIcon"></span>
                         </label>
                         <div class="layui-input-block input-spacing">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the title" class="layui-input">
+                            <input type="text" name="number" id="name" lay-verify="required" autocomplete="off" placeholder="Enter the title" class="layui-input">
                         </div>
                     </div>
                     <div class="FormContainer" pane>
@@ -54,37 +57,108 @@
                             <span class="TypesIcon"></span>
                         </label>
                         <div class="layui-input-block" id="layui-input-block">
-                            <select name="city" lay-verify="required">
-                                <option value="">Post</option>
-                                <option value="0">1</option>
+                            <select name="city" lay-verify="required" class="select_use" lay-filter="test">
+                                <foreach name="tablist" item="tab" key="tabkey">
+                                <option value="{$tab['crowd_tab_id']}">{$tab['crowd_tab_name']}</option>
+
+                                </foreach>
                             </select>
                         </div>
                     </div>
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <span class="ContentsIcon"></span>
-                        </label>
-                        <div class="layui-input-block input-spacing">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the content" class="layui-input">
+
+                    <div class="Post_box">
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <span class="ContentsIcon"></span>
+                            </label>
+                            <div class="layui-input-block input-spacing">
+                                <input type="text" name="number" id="postcontent" autocomplete="off" placeholder="Enter the content" class="layui-input">
+                            </div>
                         </div>
+
                     </div>
+
+                    <div class="QaA_box">
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <span class="MoneyIcon"></span>
+                            </label>
+                            <div class="layui-input-block input-spacing">
+                                <input type="number" name="number" id="qareward"  autocomplete="off" placeholder="Enter the amount of the reward" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <span class="ContentsIcon"></span>
+                            </label>
+                            <div class="layui-input-block input-spacing">
+                                <input type="text" name="number" id="qacontent"  autocomplete="off" placeholder="Enter the content" class="layui-input">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="Resource_box">
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <span class="NumberIcon"></span>
+                            </label>
+                            <div class="layui-input-block input-spacing">
+                                <input type="number" name="number" id="resourcereward" autocomplete="off" placeholder="Enter numbers of virtual currency to download" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <span class="ContentsIcon"></span>
+                            </label>
+                            <div class="layui-input-block input-spacing">
+                                <input type="text" name="number" id="resourcecontent" autocomplete="off" placeholder="Enter the resource description" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="FormContainer-one" pane>
+                            <label class="HeadPortraitbox-one">
+                                <span class="filesIcon">Upload resources</span>
+                            </label>
+                            <div class="picDiv-one">
+                                <div class="addImages">
+                                        <div class="files_name"><span>Choose to upload the resume file</span></div>
+                                        <button type="button" class="layui-btn layui-btn-normal" id="testList">Browse</button> 
+                                </div>
+                            </div>
+                            <div class="msg" style="display: none;"></div>
+                        </div>
+
+                    </div>
+
                     <div class="FormContainer" pane>
                         <label class="HeadPortraitbox">
                             <span class="HeadPortraitIcon"></span>
                         </label>
                         <div class="picDiv">
-                            <div class="addImages">
-                                <!--multiple属性可选择多个图片上传-->
-                                <input type="file" class="file" id="fileInput" multiple="" accept="image/png, image/jpeg, image/gif, image/jpg">
-                                <div class="text-detail">
+                            <div id="video" class="w50" style="display: none;"></div>
+                            <div id="result">
+                                <div class="add_btn" data-isNew="false">
+                                    <input type="file" name="file_input[]" id="file_input" multiple onchange="xmTanUploadImg(this)" />
                                     <span>+</span>
+                                </div>
+                                <div class="shadow_video">
+                                    </div>
+                                            <div class="video_box">
+                                                <div class="video_shut">x</div>
+                                                <div class="video_area">
+                                                <!-- <video width="100%" height="100%">
+                                                        <source src="../web/img/video.mp4" type="video/mp4"></source>
+                                                    </video>
+                                                </div> -->
+                                            </div>
                                 </div>
                             </div>
                         </div>
                         <div class="msg" style="display: none;"></div>
                     </div>
+
                     <div class="FormContainer from-but">
-                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="" lay-filter="">
+                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
                             Submit
                         </button>
                     </div>
@@ -92,6 +166,7 @@
             </div>
         </div>
     </form>
+    
     <!-- foot start 底部信息 -->
     <footer class="container-fluid FooterBg">
         <div class="row FooterContainer">
@@ -114,8 +189,8 @@
             <div class="col-xs-6 col-md-4">
                 <dl>
                     <dt>Help Center</dt>
-                    <dd>Help Center</dd>
-                    <dd>Contact Us</dd>
+                    <dd><a href="HelpCenter.html">Help Center</a></dd>
+                    <dd><a href="ContactUs.html">Contact Us</a></dd>
                 </dl>
             </div>
         </div>
@@ -131,6 +206,498 @@
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
     <script src="__PUBLIC__/Web/web/js/GroupDetailsRelease.js"></script>
+    <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
+    <script src="__PUBLIC__/Web/web/js/changeimg.js"></script>
+    <script>
+        var resourcefile=''
+        var $ = layui.jquery,upload = layui.upload;
+        var demoListView = $('.FormContainer-one .picDiv-one .addImages .files_name'),
+        uploadListIns = upload.render({
+                elem: '#testList'
+                ,url: 'yourUrl'
+                ,accept: 'file'
+                ,data:{}   //可放扩展数据  key-value
+                ,multiple: true
+                ,auto: false
+                ,bindAction: '#testListAction',elem: '#testList'
+                ,url: 'yourUrl'
+                ,accept: 'file'
+                ,data:{}   //可放扩展数据  key-value
+                ,multiple: true
+                ,auto: false
+                ,bindAction: '#testListAction',
+                choose:function(obj){
+                    obj.preview(function(index, file, result){
+                        var tr = $(['<span>'+file.name+'</span>'].join(''));
+                        demoListView.eq(0)[0].childNodes[0].remove();
+                        demoListView.append(tr);
+                        resourcefile = file
+                    })
+                }
+        })
+    </script>
+    <script>
+            var form = layui.form;
+            var selectedValue =1
+            form.on('select',function(data){
+                console.log(data.value);
+                selectedValue = data.value;
+                console.log(selectedValue)
+                if(selectedValue==1){
+                    $(".Post_box").css("display","block");
+                    $(".QaA_box").css("display","none");
+                    $(".Resource_box").css("display","none");
+                }
+                if(selectedValue==2){
+                    $(".Post_box").css("display","none");
+                    $(".QaA_box").css("display","block");
+                    $(".Resource_box").css("display","none");
+
+                }
+                if(selectedValue==3){
+                    $(".Post_box").css("display","none");
+                    $(".QaA_box").css("display","none");
+                    $(".Resource_box").css("display","block");
+                }
+
+
+            })
+
+            layui.use('form', function(){
+                var form = layui.form;
+
+                /*form.on('submit(demo1)', function(data){
+
+
+                    if (selectedValue ==1 ) {
+                        var file_files = document.getElementById('file_input').files;
+                        var file_obj = document.getElementById('formdata');
+                        var fd = new FormData();
+                        for (var i = 0; i < file_files.length; i++){
+                            console.log(file_files[i])
+                            fd.append('img['+i+']',file_files[i])
+                        }
+                        fd.append('name',$("#name").val())
+                        fd.append('content',$("#postcontent").val())
+                        fd.append('cid','{$cid}')
+                        $.ajax({
+                            url: "{:U('Index/Ajax/ajax_createnote')}",
+                            type: "POST",
+                            async: false,
+                            cache: false,
+                            processData: false,// 告诉jQuery不要去处理发送的数据
+                            contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                            data: fd,
+                            dataType: "json",
+                            success: function (data) {
+                                console.log(data)
+                                if (data.str == 1){
+                                    layer.msg('创建成功',{
+                                            time:1500,
+                                            icon:1,
+                                        },function () {
+                                            window.location.href="{:U('Index/Rnterst/postDetails')}&nid="+data.id+"&cid="+data.cid;
+                                        }
+                                    );
+
+                                }else{
+                                    layer.msg(data.msg,{
+                                            time:1500,
+                                            icon:2,
+                                        }
+                                    );
+
+                                }
+                            },
+                            error: function (err) {
+
+                                layer.msg('请求失败!', {
+                                        time: 1500,
+                                        icon: 2,
+                                    }
+                                );
+                            }
+                        });
+                    }else if (selectedValue ==2 ){
+
+                        var file_files = document.getElementById('file_input').files;
+                        var file_obj = document.getElementById('formdata');
+                        var fd = new FormData();
+                        for (var i = 0; i < file_files.length; i++){
+                            console.log(file_files[i])
+                            fd.append('img['+i+']',file_files[i])
+                        }
+                        fd.append('name',$("#name").val())
+                        fd.append('content',$("#qacontent").val())
+                        fd.append('reward',$("#qareward").val())
+                        fd.append('cid','{$cid}')
+                        $.ajax({
+                            url: "{:U('Index/Ajax/ajax_createqa')}",
+                            type: "POST",
+                            async: false,
+                            cache: false,
+                            processData: false,// 告诉jQuery不要去处理发送的数据
+                            contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                            data: fd,
+                            dataType: "json",
+                            success: function (data) {
+                                if (data.str == 1){
+                                    layer.msg('创建成功',{
+                                            time:1500,
+                                            icon:1,
+                                        },function () {
+                                            window.location.href="{:U('Index/Rnterst/postVideoDetails')}&id="+data.id+"&cid="+data.cid;
+                                        }
+                                    );
+
+                                }else{
+                                    layer.msg(data.msg,{
+                                            time:1500,
+                                            icon:2,
+                                        }
+                                    );
+
+                                }
+                            },
+                            error: function (err) {
+
+                                layer.msg('请求失败!', {
+                                        time: 1500,
+                                        icon: 2,
+                                    }
+                                );
+                            }
+                        });
+                    }else if (selectedValue ==3 ){
+                        if (resourcefile==''){
+                            layer.msg('请上传资源',{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+                        }else {
+                            var fd1 = new FormData();
+                            fd1.append('img', resourcefile);
+
+                            $.ajax({
+                                url: "{:U('Index/Ajax/ajax_uploadfile')}",
+                                type: "POST",
+                                async: false,
+                                cache: false,
+                                processData: false,// 告诉jQuery不要去处理发送的数据
+                                contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                                data: fd1,
+                                dataType: "json",
+                                success: function (data) {
+
+                                    var file_files = document.getElementById('file_input').files;
+                                    var file_obj = document.getElementById('formdata');
+                                    var fd = new FormData();
+                                    for (var i = 0; i < file_files.length; i++) {
+                                        console.log(file_files[i])
+                                        fd.append('img[]', file_files[i])
+                                    }
+                                    fd.append('name', $("#name").val())
+                                    fd.append('content', $("#resourcecontent").val())
+                                    fd.append('reward', $("#resourcereward").val())
+                                    fd.append('resourcefile', data.msg)
+                                    fd.append('cid', '{$cid}')
+                                    $.ajax({
+                                        url: "{:U('Index/Ajax/ajax_createresource')}",
+                                        type: "POST",
+                                        async: false,
+                                        cache: false,
+                                        processData: false,// 告诉jQuery不要去处理发送的数据
+                                        contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                                        data: fd,
+                                        dataType: "json",
+                                        success: function (data) {
+                                            console.log(data)
+                                            if (data.str == 1){
+                                                layer.msg('创建成功',{
+                                                        time:1500,
+                                                        icon:1,
+                                                    },function () {
+                                                        window.location.href="{:U('Index/Rnterst/postVideoDetails')}&id="+data.id+"&cid="+data.cid;
+                                                    }
+                                                );
+
+                                            }else{
+                                                layer.msg(data.msg,{
+                                                        time:1500,
+                                                        icon:2,
+                                                    }
+                                                );
+
+                                            }
+                                        },
+                                        error: function (err) {
+
+                                            layer.msg('请求失败!', {
+                                                    time: 1500,
+                                                    icon: 2,
+                                                }
+                                            );
+                                        }
+                                    });
+                                },
+                                error: function (err) {
+
+                                    layer.msg('请求失败!', {
+                                            time: 1500,
+                                            icon: 2,
+                                        }
+                                    );
+                                }
+                            });
+                        }
+                    }
+
+
+                    return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+                });*/
+
+                form.on('submit(demo1)', function(data){
+
+
+                    if (selectedValue ==1 ) {
+                        var file_files = document.getElementById('file_input').files;
+                        var file_obj = document.getElementById('formdata');
+                        var fd = new FormData();
+                        for (var i = 0; i < file_files.length; i++){
+                            console.log(file_files[i])
+                            fd.append('img['+i+']',file_files[i])
+                        }
+                        fd.append('name',$("#name").val())
+                        fd.append('content',$("#postcontent").val())
+                        fd.append('cid','{$cid}')
+                        fd.append('posttype',selectedValue)
+                        $.ajax({
+                            url: "{:U('Index/Ajax/ajax_createpost')}",
+                            type: "POST",
+                            async: false,
+                            cache: false,
+                            processData: false,// 告诉jQuery不要去处理发送的数据
+                            contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                            data: fd,
+                            dataType: "json",
+                            success: function (data) {
+                                console.log(data)
+                                if (data.str == 1){
+                                    layer.msg('创建成功',{
+                                            time:1500,
+                                            icon:1,
+                                        },function () {
+                                            window.location.href="{:U('Index/Academic/postDetails')}&nid="+data.id+"&cid="+data.cid;
+                                        }
+                                    );
+
+                                }else{
+                                    layer.msg(data.msg,{
+                                            time:1500,
+                                            icon:2,
+                                        }
+                                    );
+
+                                }
+                            },
+                            error: function (err) {
+
+                                layer.msg('请求失败!', {
+                                        time: 1500,
+                                        icon: 2,
+                                    }
+                                );
+                            }
+                        });
+                    }else if (selectedValue ==2 ){
+
+                        var file_files = document.getElementById('file_input').files;
+                        var file_obj = document.getElementById('formdata');
+                        var fd = new FormData();
+                        for (var i = 0; i < file_files.length; i++){
+                            console.log(file_files[i])
+                            fd.append('img['+i+']',file_files[i])
+                        }
+                        fd.append('name',$("#name").val())
+                        fd.append('content',$("#qacontent").val())
+                        fd.append('reward',$("#qareward").val())
+                        fd.append('cid','{$cid}')
+                        fd.append('posttype',selectedValue)
+                        $.ajax({
+                            url: "{:U('Index/Ajax/ajax_createpost')}",
+                            type: "POST",
+                            async: false,
+                            cache: false,
+                            processData: false,// 告诉jQuery不要去处理发送的数据
+                            contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                            data: fd,
+                            dataType: "json",
+                            success: function (data) {
+                                if (data.str == 1){
+                                    layer.msg('创建成功',{
+                                            time:1500,
+                                            icon:1,
+                                        },function () {
+                                        window.location.href="{:U('Index/Academic/postDetails')}&nid="+data.id+"&cid="+data.cid;
+                                        }
+                                    );
+
+                                }else{
+                                    layer.msg(data.msg,{
+                                            time:1500,
+                                            icon:2,
+                                        }
+                                    );
+
+                                }
+                            },
+                            error: function (err) {
+
+                                layer.msg('请求失败!', {
+                                        time: 1500,
+                                        icon: 2,
+                                    }
+                                );
+                            }
+                        });
+                    }else if (selectedValue ==3 ){
+                        var file_files = document.getElementById('file_input').files;
+                        var file_obj = document.getElementById('formdata');
+                        var fd = new FormData();
+                        for (var i = 0; i < file_files.length; i++) {
+                            console.log(file_files[i])
+                            fd.append('img[]', file_files[i])
+                        }
+                        fd.append('name', $("#name").val())
+                        fd.append('content', $("#resourcecontent").val())
+                        fd.append('reward', $("#resourcereward").val())
+                        fd.append('cid', '{$cid}')
+                        fd.append('posttype',selectedValue)
+                        if (resourcefile==''){
+                            $.ajax({
+                                url: "{:U('Index/Ajax/ajax_createpost')}",
+                                type: "POST",
+                                async: false,
+                                cache: false,
+                                processData: false,// 告诉jQuery不要去处理发送的数据
+                                contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                                data: fd,
+                                dataType: "json",
+                                success: function (data) {
+                                    console.log(data)
+                                    if (data.str == 1){
+                                        layer.msg('创建成功',{
+                                                time:1500,
+                                                icon:1,
+                                            },function () {
+                                                window.location.href="{:U('Index/Academic/postDetails')}&nid="+data.id+"&cid="+data.cid;
+                                            }
+                                        );
+
+                                    }else{
+                                        layer.msg(data.msg,{
+                                                time:1500,
+                                                icon:2,
+                                            }
+                                        );
+
+                                    }
+                                },
+                                error: function (err) {
+
+                                    layer.msg('请求失败!', {
+                                            time: 1500,
+                                            icon: 2,
+                                        }
+                                    );
+                                }
+                            });
+                        }else {
+                            var fd1 = new FormData();
+                            fd1.append('img', resourcefile);
+
+                            $.ajax({
+                                url: "{:U('Index/Ajax/ajax_uploadfile')}",
+                                type: "POST",
+                                async: false,
+                                cache: false,
+                                processData: false,// 告诉jQuery不要去处理发送的数据
+                                contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                                data: fd1,
+                                dataType: "json",
+                                success: function (data) {
+
+                                    var file_files = document.getElementById('file_input').files;
+                                    var file_obj = document.getElementById('formdata');
+                                    var fd = new FormData();
+                                    for (var i = 0; i < file_files.length; i++) {
+                                        console.log(file_files[i])
+                                        fd.append('img[]', file_files[i])
+                                    }
+                                    fd.append('name', $("#name").val())
+                                    fd.append('content', $("#resourcecontent").val())
+                                    fd.append('reward', $("#resourcereward").val())
+                                    fd.append('resourcefile', data.msg)
+                                    fd.append('cid', '{$cid}')
+                                    fd.append('posttype',selectedValue)
+                                    $.ajax({
+                                        url: "{:U('Index/Ajax/ajax_createpost')}",
+                                        type: "POST",
+                                        async: false,
+                                        cache: false,
+                                        processData: false,// 告诉jQuery不要去处理发送的数据
+                                        contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                                        data: fd,
+                                        dataType: "json",
+                                        success: function (data) {
+                                            console.log(data)
+                                            if (data.str == 1){
+                                                layer.msg('创建成功',{
+                                                        time:1500,
+                                                        icon:1,
+                                                    },function () {
+                                                    window.location.href="{:U('Index/Academic/postDetails')}&nid="+data.id+"&cid="+data.cid;
+                                                    }
+                                                );
+
+                                            }else{
+                                                layer.msg(data.msg,{
+                                                        time:1500,
+                                                        icon:2,
+                                                    }
+                                                );
+
+                                            }
+                                        },
+                                        error: function (err) {
+
+                                            layer.msg('请求失败!', {
+                                                    time: 1500,
+                                                    icon: 2,
+                                                }
+                                            );
+                                        }
+                                    });
+                                },
+                                error: function (err) {
+
+                                    layer.msg('请求失败!', {
+                                            time: 1500,
+                                            icon: 2,
+                                        }
+                                    );
+                                }
+                            });
+                        }
+                    }
+
+
+                    return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+                });
+
+            });
+    </script>
 </body>
 
 </html>

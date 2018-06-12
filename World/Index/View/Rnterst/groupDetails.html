@@ -242,7 +242,7 @@
                     <foreach name="adminlist" item="admin" key="adminkey">
 
                         <div class="p_img">
-                            <img src="Uploads/{$admin['user_icon']}" class="userimgs">
+                            <img src="<if condition='$admin["user_icon"]'>Uploads/{$admin['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" class="userimgs">
                         </div>
 
                     </foreach>
@@ -252,7 +252,7 @@
                     <foreach name="memberlist" item="member" key="memberkey">
 
                         <div class="p_img">
-                            <img src="Uploads/{$member['user_icon']}" class="userimgs">
+                            <img src="<if condition='$member["user_icon"]'>Uploads/{$member['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" class="userimgs">
                         </div>
 
                     </foreach>
