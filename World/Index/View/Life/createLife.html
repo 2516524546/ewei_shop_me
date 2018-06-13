@@ -38,43 +38,27 @@
                             <span class="InterestTitleIcon"></span>Basic Information
                         </h3>
 						</div>
-						<div class="FormContainer" pane>
-							<label class="layui-form-label label-spacing">
-                            <span class="CountryIcon"></span>
-                        </label>
-							<div class="layui-input-block" id="layui-input-block">
-								<select name="city" lay-verify="required">
-									<option value="">Choose the state</option>
-									<option value="0">2000</option>
-									<option value="1">2001</option>
-									<option value="2">2002</option>
-								</select>
+
+						<foreach name="data" item="first" key="firstkey">
+							<div id="first{$first['first_mark_id']}" class="FormContainer" pane>
+
+								<label class="layui-form-label label-spacing">
+									<span class="<if condition='$firstkey == 0'>CountryIcon<elseif condition='$firstkey == 1'/>SchoolIcon<else />InterestIcon</if>"></span>
+								</label>
+								<div class="layui-input-block" id="layui-input-block" >
+									<input type="hidden" value="" id="in{$first['first_mark_id']}">
+									<!--style="width: 25%;float: left;margin: 0 0;"-->
+									<select name="second" lay-verify="required" lay-filter="firstselect">
+										<option value="" selected="selected"><if condition='$firstkey == 0'>Choose a country<elseif condition='$firstkey == 1'/>Choose a school<else />Choose interest</if></option>
+										<foreach name="first['message']" item = "second" key="secondkey">
+											<option value="{$second['second_mark_id']}">{$second['second_mark_name']}</option>
+										</foreach>
+									</select>
+								</div>
+
 							</div>
-						</div>
-						<div class="FormContainer" pane>
-							<label class="layui-form-label label-spacing">
-                            <span class="SchoolIcon"></span>
-                        </label>
-							<div class="layui-input-block" id="layui-input-block">
-								<select name="city" lay-verify="required">
-									<option value="">Choose a City</option>
-									<option value="0">Harvard University</option>
-									<option value="1">Oxford</option>
-								</select>
-							</div>
-						</div>
-						<div class="FormContainer" pane>
-							<label class="layui-form-label label-spacing">
-                            <span class="InterestIcon"></span>
-                        </label>
-							<div class="layui-input-block" id="layui-input-block">
-								<select name="city" lay-verify="required">
-									<option value="">Choose University</option>
-									<option value="0">College of Information Engineering</option>
-									<option value="1">Faculty of Foreign Languages</option>
-								</select>
-							</div>
-						</div>
+						</foreach>
+
 						<div class="FormContainer" pane>
 							<label class="HeadPortraitbox">
                             <span class="HeadPortraitIcon"></span>
@@ -89,7 +73,7 @@
                             <span class="GroupNameIcon"></span>
                         </label>
 							<div class="layui-input-block input-spacing">
-								<input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the group name" class="layui-input">
+								<input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the group name" class="layui-input" id="name">
 							</div>
                         </div>
                         <div class="FormContainer" pane>
@@ -97,7 +81,7 @@
                             <span class="ResidenceIcon"></span>
                         </label>
 							<div class="layui-input-block input-spacing">
-								<input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the residence (apartment , streets, etc.)" class="layui-input">
+								<input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the residence (apartment , streets, etc.)" class="layui-input" id="address">
 							</div>
 						</div>
 						<div class="FormContainer" pane>
@@ -105,11 +89,11 @@
                             <span class="BriefIntroductionIcon"></span>
                         </label>
 							<div class="layui-input-block input-spacing">
-								<input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the company information" class="layui-input">
+								<input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the company information" class="layui-input" id="content">
 							</div>
 						</div>
 						<div class="FormContainer from-but">
-							<button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="" lay-filter="">
+							<button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
                             Submit
                         </button>
 						</div>
@@ -157,5 +141,254 @@
 		<script src="__PUBLIC__/Web/web/js/CreateLife.js"></script>
 		<script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 	</body>
+
+<script>
+
+    layui.use('form', function(){
+        var form = layui.form;
+
+        form.on('select(firstselect)', function(firstdata){
+            //父级id
+            //data.othis.parent().parent().attr('id')
+            $.ajax({
+                type:"post",
+                url:"{:U('Index/Ajax/ajax_secondmarkone')}",
+                data:{
+                    secondid:firstdata.value,
+                },
+                dataType:"json",
+                success: function(data){
+                    if (data!=null&&data!="") {
+                        //alert(data.str)
+                        if (data.str == 1) {
+                            console.log(data.msg)
+
+                            if ( $("#second"+data.firstid).length > 0 ) {
+
+                                var message = '<div class="layui-input-block" id="layui-input-block" style="margin-bottom: 8px;"><select name="third" lay-verify="required" lay-filter="secondselect"><option value="">choose</option>';
+
+                                for (var i = 0; i < data.msg.length; i++) {
+
+                                    message +='<option value="'+data.msg[i]['third_mark_id']+'">';
+                                    message +=data.msg[i]['third_mark_name']+'</option>';
+
+                                }
+                                message +='</select></div>';
+                                $("#second"+data.firstid).html(message)
+                            }else{
+
+                                var message = '<div id="second'+data.firstid+'" class="FormContainer" pane><div class="layui-input-block" id="layui-input-block" style="margin-bottom: 8px;"><select name="third" lay-verify="required" lay-filter="secondselect"><option value="">choose</option>';
+                                for (var i = 0; i < data.msg.length; i++) {
+
+                                    message +='<option value="'+data.msg[i]['third_mark_id']+'">';
+                                    message +=data.msg[i]['third_mark_name']+'</option>';
+
+                                }
+                                message +='</select></div></div>';
+
+                                firstdata.othis.parent().parent().after(message);
+                            }
+
+                            form.render()
+                            rmfour($('#in'+data.firstid).val())
+                            $('#in'+data.firstid).val(firstdata.value)
+                            createthird();
+                        }
+
+                    }
+                }
+
+            })
+
+        });
+
+        form.on('submit(demo1)', function(data){
+            var second = ''
+            $("select[name='second']").each(function(j,item){
+                if(second == ''){
+                    second+=item.value //输出input 中的 value 值到控制台
+                }else{
+                    second+=','+item.value //输出input 中的 value 值到控制台
+                }
+
+            });
+            var third = ''
+            $("select[name='third']").each(function(j,item){
+                if(third == ''){
+                    third+=item.value //输出input 中的 value 值到控制台
+                }else{
+                    third+=','+item.value //输出input 中的 value 值到控制台
+                }
+            });
+            var four = ''
+            $("select[name='four']").each(function(j,item){
+                if(four == ''){
+                    four += item.value //输出input 中的 value 值到控制台
+                }else{
+                    four += ','+item.value //输出input 中的 value 值到控制台
+                }
+            });
+
+
+            var file_obj = document.getElementById('upload').files[0];
+            var fd = new FormData();
+            fd.append('img', file_obj);
+
+            $.ajax({
+                url: "{:U('Index/Ajax/ajax_uploadimg')}",
+                type: "POST",
+                async: false,
+                cache: false,
+                processData: false,// 告诉jQuery不要去处理发送的数据
+                contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                data: fd,
+                dataType:"json",
+                success: function(data){
+                    //console.log(data)
+                    if (data.str == 1){
+                        $.ajax({
+                            type:"post",
+                            url:"{:U('Index/Ajax/ajax_createlife')}",
+                            data:{
+                                second:second,
+                                third:third,
+                                four:four,
+                                crowd_name:$("#name").val(),
+                                crowd_icon:data.msg,
+                                crowd_intro:$("#content").val(),
+
+                            },
+                            dataType:"json",
+                            async:false,
+                            success: function(life){
+                                //console.log(interest)
+                                if (life.str == 1){
+                                    layer.msg('创建成功',{
+                                            time:1500,
+                                            icon:1,
+                                        },function () {
+                                            window.location.href="{:U('Index/Life/lifeDetails')}&cid="+life.msg;
+                                        }
+                                    );
+
+                                }else{
+                                    layer.msg(life.msg,{
+                                            time:1500,
+                                            icon:2,
+                                        }
+                                    );
+
+                                }
+
+                            },
+                            error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                                layer.msg('请求失败!',{
+                                        time:1500,
+                                        icon:2,
+                                    }
+                                );
+                            }
+
+                        })
+
+                    }else{
+                        layer.msg('图片上传失败!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+
+                },
+                error: function(err) {
+
+                    layer.msg('请求失败!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+            });
+
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+    });
+
+    function createthird() {
+
+        layui.use('form', function(){
+            var form = layui.form;
+
+            form.on('select(secondselect)', function(seconddata){
+
+                $.ajax({
+                    type:"post",
+                    url:"{:U('Index/Ajax/ajax_thirdmarkone')}",
+                    data:{
+                        thirdid:seconddata.value,
+                    },
+                    dataType:"json",
+                    success: function(data){
+                        console.log(data)
+                        if (data.str == 1) {
+                            if ($("#third" + data.secondid).length > 0) {
+
+                                var message = '<div class="layui-input-block"  id="layui-input-block"><select name="four" lay-verify="required" lay-filter="thirdselect"><option value="">choose</option>';
+
+                                for (var i = 0; i < data.msg.length; i++) {
+
+                                    message += '<option value="' + data.msg[i]['fourth_mark_id'] + '">';
+                                    message += data.msg[i]['fourth_mark_name'] + '</option>';
+
+                                }
+                                message += '</select></div>';
+                                $("#third" + data.secondid).html(message)
+                            } else {
+
+                                var message = '<div id="third' + data.secondid + '" class="FormContainer" style="margin-bottom: 8px;" pane><div class="layui-input-block" id="layui-input-block"><select name="four" lay-verify="required" lay-filter="thirdselect"><option value="">choose</option>';
+                                for (var i = 0; i < data.msg.length; i++) {
+
+                                    message += '<option value="' + data.msg[i]['fourth_mark_id'] + '">';
+                                    message += data.msg[i]['fourth_mark_name'] + '</option>';
+
+                                }
+                                message += '</select></div></div>';
+
+                                seconddata.othis.parent().parent().after(message);
+
+                            }
+
+                            form.render()
+                        }else{
+                            if ($("#third" + data.secondid).length > 0) {
+                                $("#third" + data.secondid).remove();
+                            }
+
+                            form.render();
+                        }
+                    }
+
+                })
+
+            });
+        });
+
+    }
+
+    function rmfour(firstid) {
+
+        layui.use('form', function() {
+            var form = layui.form;
+            //alert(aa)
+            if ($("#third" + firstid).length > 0) {
+                $("#third" + firstid).remove();
+            }
+            form.render();
+        });
+
+    }
+
+</script>
 
 </html>
