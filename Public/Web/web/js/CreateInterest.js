@@ -11,6 +11,19 @@ $(function() {
     });
 });
 
+// $(function() {
+    $("#pics").click(function() {
+        $("#upload2").click(); //隐藏了input:file样式后，点击头像就可以本地上传
+        $("#upload2").on("change", function() {
+            var objUrl = getObjectURL(this.files[0]); //获取图片的路径，该路径不是图片在本地的路径
+            if (objUrl) {
+                $("#pics").attr("src", objUrl); //将图片路径存入src中，显示出图片
+                upimgs();
+            }
+        });
+    });
+// });
+
 //建立一?可存取到?file的url
 function getObjectURL(file) {
     var url = null;
@@ -40,6 +53,26 @@ function upimg() {
             console.log(data);
             var res = data;
             $("#resimg").append("<img src='/" + res + "'>")
+        }
+    });
+}
+
+function upimgs() {
+    var pic = $('#upload2')[0].files[0];
+    var file = new FormData();
+    console.log(file)
+    file.append('image', pic);
+    $.ajax({
+        url: "/uploadImg",
+        type: "post",
+        data: file,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+            console.log(data);
+            var res = data;
+            $("#resimgs").append("<img src='/" + res + "'>")
         }
     });
 }
