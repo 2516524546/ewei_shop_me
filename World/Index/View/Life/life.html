@@ -153,7 +153,7 @@
                             <foreach name="crodlist" item="crod" key="crodkey">
                                 <div class="col-xs-8 col-sm-6">
                                     <div class="UserBox">
-                                        <a href="{:U('Index/Academic/academicGroups')}&cid={$crod['crowd_id']}" class="UserLink">
+                                        <a href="{:U('Index/Life/lifeDetails')}&cid={$crod['crowd_id']}" class="UserLink">
                                             <div class="UserBox_img">
                                                 <img src="./Uploads/{$crod['crowd_icon']}" alt="" class="img-circle userimg" />
                                             </div>
@@ -217,7 +217,7 @@
     function gocreate() {
         var aa = "{$userid}";
         if(aa){
-            window.location.href="{:U('Index/Academic/createAcademic')}";
+            window.location.href="{:U('Index/Life/createLife')}";
         }else{
             layer.msg("请先登录",{
                     time:1500,
@@ -431,7 +431,7 @@
                         var message = '';
                         for (var i = 0; i < list.msg.length; i++) {
                             message +='<div class="col-xs-8 col-sm-6"><div class="UserBox">';
-                            var url="{:U('Index/Rnterst/groupDetails')}"+list.msg[i].crowd_id;
+                            var url="{:U('Index/Life/lifeDetails')}"+list.msg[i].crowd_id;
                             message += '<a href="'+url+'" class="UserLink">';
                             message += '<img src="./Uploads/'+list.msg[i].crowd_icon+'" class="img-circle userimg">';
                             message += '<h4 class="UserTitle">'+list.msg[i].crowd_name+'</h4>'

@@ -1121,7 +1121,7 @@
                         for (var i = 0; i < list.msg.length; i++) {
 
                             message += '<tr><td>';
-                            var url = '#';
+                            var url = '{:U("Index/Academic/postDetails")}&cid={$cid}&nid='+list.msg[i].note_id;
                             message += '<a href="'+url+'" style="text-decoration: none;">';
                             message += '<span class="ImgBox">'
                             var src = '__PUBLIC__/Web/web/img/01_shouye/UserPic.png'
