@@ -127,104 +127,90 @@
                         Homepage
                     </a>
                 </div>
-                <div class="right_btn">
+                <!-- <div class="right_btn">
                     <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
                         Private Letter
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 
     <!-- PostReply -->
-    <div class="container StickSonDetailsContainer">
-        <div class="PostReply">
-            <P>
-                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
-                &nbsp;&nbsp;
-                <b>Comment</b>
-            </P>
-            <div class="box">
-                <p class="GuestBookUserImg">
-                    <img src="__PUBLIC__/Web/web/img/02_interest/user.png" class="imgs img-circle">
-                </p>
-                <div class="GuestBookContainer">
-                    <div class="GuestBookUserTitleContainer">
-                        <p class="GuestBookUserName">David J.</p>
-                        <p class="TimeFabulousContainer">
-                            <span class="GuestBookUserTime">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                01/12/2018
-                            </span>
-                            <span class="GuestBookUserFabulous">
-                                Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png">
-                                333
-                            </span>
-                        </p>
+    <div class="container">
+        <div class="col-md-9">
+            <div class="PostReply_box">
+                    <div class="PostReply_box_title">
+                        <div class="title_pic">
+                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
+                        </div>
+                        <div class="title_content">
+                                Comment
+                        </div>
                     </div>
-                </div>
-                <div class="GuestBookUserMessage">
-                    coocommentcoocommentcoocommentcocoocommentcoocommentcoocommentcocoocommen
-                </div>
-                <div class="ReplyContainer">
-                    @Tom 回复 Jack ： xxxxxxxxxxxx
-                </div>
-            </div>
-            <div class="box">
-                <p class="GuestBookUserImg">
-                    <img src="__PUBLIC__/Web/web/img/02_interest/user.png" class="imgs img-circle">
-                </p>
-                <div class="GuestBookContainer">
-                    <div class="GuestBookUserTitleContainer">
-                        <p class="GuestBookUserName">David J.</p>
-                        <p class="TimeFabulousContainer">
-                            <span class="GuestBookUserTime">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                01/12/2018
-                            </span>
-                            <span class="GuestBookUserFabulous">
-                                Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png">
-                                333
-                            </span>
-                        </p>
+                    <div class="PostReply_box_content" id="commentlist">
+                    <!--<foreach name="commentlist" item="comment" key="commentkey">
+                        <div class="PostReply_box_content_item">
+                            <div class="item_pic">
+                                <img src="<if condition='$comment["user_icon"]'>./Uploads/{$comment['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
+                            </div>
+                            <div class="item_con">
+                                <div class="item_con_title">
+                                    <div class="item_user_name">
+                                        <span class="User_name">{$comment['user_name']}</span>
+                                        <div class="item_Top">
+                                            <img src="__PUBLIC__/Web/web/img/Top.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="item_user_det">
+                                        <div class="det_time">
+                                            <div class="det_time_img">
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
+                                            </div>
+                                            <div class="det_timed">
+                                                {$comment['note_comment_createtime']}
+                                            </div>
+                                        </div>
+                                        <div class="det_zan">
+                                            <if condition='$comment["note_comment_isreply"]!=1'>
+                                            <div class="det_reply" onclick="reply({$comment['note_comment_id']},this)">Reply</div>
+                                            </if>
+                                            <div class="line"></div>
+                                            <div class="det_zan_box">
+                                                <if condition='$comment["iszan"] == 0'>
+                                                <div class="zan_box_img" onclick="zan({$comment['note_comment_id']},this)">
+                                                    <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png" alt="">
+                                                </div>
+                                                    <else />
+                                                    <div class="zan_box_img" onclick="unzan({$comment['note_comment_id']},this)">
+                                                        <img src='__PUBLIC__/Web/web/img/greated.png'>
+                                                    </div>
+                                                </if>
+                                                <div class="zan_box_num">
+                                                    {$comment['note_comment_zans']}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="item_con_det">
+                                    {$comment['note_comment_content']}
+                                </div>
+        
+                                <div class="item_con_reply">
+                                    <div class="reply_person">
+                                    <if condition='$comment["note_comment_isreply"]==1'>
+                                        {$noteuser['user_name']} 回复 {$comment['user_name']} ： <span class="reply_c">{$comment['note_comment_reply']}</span>
+                                    </if> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </foreach>-->
                     </div>
-                </div>
-                <div class="GuestBookUserMessage">
-                    coocommentcoocommentcoocommentcocoocommentcoocommentcoocommentcocoocommen
-                </div>
-                <div class="ReplyContainer">
-                    @Tom 回复 Jack ： xxxxxxxxxxxx
-                </div>
             </div>
-            <div class="box">
-                <p class="GuestBookUserImg">
-                    <img src="__PUBLIC__/Web/web/img/02_interest/user.png" class="imgs img-circle">
-                </p>
-                <div class="GuestBookContainer">
-                    <div class="GuestBookUserTitleContainer">
-                        <p class="GuestBookUserName">David J.</p>
-                        <p class="TimeFabulousContainer">
-                            <span class="GuestBookUserTime">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                01/12/2018
-                            </span>
-                            <span class="GuestBookUserFabulous">
-                                Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png">
-                                333
-                            </span>
-                        </p>
-                    </div>
-                </div>
-                <div class="GuestBookUserMessage">
-                    coocommentcoocommentcoocommentcocoocommentcoocommentcoocommentcocoocommen
-                </div>
-                <div class="ReplyContainer">
-                    @Tom 回复 Jack ： xxxxxxxxxxxx
-                </div>
-            </div>
+    
         </div>
     </div>
 
@@ -253,7 +239,9 @@
         </form>
     </div>
     <!-- foot start 底部信息 -->
-    <include file = "./World/Index/View/Public/footer.html"/>
+    <footer>
+        <include file = "./World/Index/View/Public/footer.html"/>
+    </footer>
     <!-- foot end 底部信息 -->
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
