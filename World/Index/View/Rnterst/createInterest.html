@@ -49,7 +49,7 @@
                         <div class="layui-input-block" id="layui-input-block" >
                             <input type="hidden" value="" id="in{$first['first_mark_id']}">
                             <!--style="width: 25%;float: left;margin: 0 0;"-->
-                            <select name="second" lay-verify="required" lay-filter="firstselect">
+                            <select name="second" lay-verify="required" lay-filter="firstselect" title="0">
                                 <option value="" selected="selected"><if condition='$firstkey == 0'>Choose a country<elseif condition='$firstkey == 1'/>Choose a school<else />Choose interest</if></option>
                                 <foreach name="first['message']" item = "second" key="secondkey">
                                 <option value="{$second['second_mark_id']}">{$second['second_mark_name']}</option>
@@ -135,9 +135,7 @@
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 </body>
 <script>
-    $(".PasswordContainer .FormContainer .Submit-but").on("click",function(){
-        alert(1)
-    })
+    
 </script>
 
 <script>
@@ -185,7 +183,7 @@
 
                                 firstdata.othis.parent().parent().after(message);
                             }
-
+                            firstdata.elem.title=data.firstid
                             form.render()
                             rmfour($('#in'+data.firstid).val())
                             $('#in'+data.firstid).val(firstdata.value)
