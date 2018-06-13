@@ -73,7 +73,7 @@
                                     </label>
                                     <div class="UserHeadImage">
                                         <img id="pic" class="img">
-                                        <input id="upload1" class="but" name="file" accept="image/*" type="file">
+                                        <input id="upload" class="but" name="file" accept="image/*" type="file">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -81,7 +81,7 @@
                                         <span class="GroupNameIcon"></span>
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" lay-verify="required" autocomplete="off" id="name1" placeholder="Group name" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" id="name1" placeholder="Group name" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -89,11 +89,11 @@
                                         <span class="BriefIntroductionIcon"></span>
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" lay-verify="required" autocomplete="off" id="content1" placeholder="Enter an introduction" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" id="content1" placeholder="Enter an introduction" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer from-but">
-                                    <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="" lay-filter="">
+                                    <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
                                         Submit
                                     </button>
                                 </div>
@@ -120,7 +120,7 @@
                                     </label>
                                     <div class="layui-input-block" id="layui-input-block">
                                         <input type="hidden" value="" id="in{$first2['first_mark_id']}">
-                                        <select name="second2" lay-verify="required" lay-filter="first2select">
+                                        <select name="second2" lay-filter="first2select">
                                             <option value="">Choose a <if condition='$first2key == 0'>location<elseif condition='$first2key == 1'/>industry<else />major</if></option>
 
                                             <foreach name="first2['message']" item = "second2" key="second2key">
@@ -146,7 +146,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_groupname.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" lay-verify="required" autocomplete="off" id="name2" placeholder="Group name" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" id="name2" placeholder="Group name" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -155,7 +155,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" lay-verify="required" autocomplete="off" id="school2" placeholder="Enter a graduate school" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" id="school2" placeholder="Enter a graduate school" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -164,7 +164,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_time.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter a graduate time" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" placeholder="Enter a graduate time" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -173,7 +173,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_jobtitle.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the job title" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" placeholder="Enter the job title" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -182,7 +182,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_company.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the working company" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" placeholder="Enter the working company" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item layui-form-text" style="height: 100px;margin-bottom: 8px;">
@@ -208,7 +208,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the school" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" placeholder="Enter the school" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -217,7 +217,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_133333.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter college" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" placeholder="Enter college" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -226,7 +226,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_major.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter professional" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" placeholder="Enter professional" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -235,7 +235,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_time.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the graduation time" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" placeholder="Enter the graduation time" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -244,7 +244,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/1.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the highest education level" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" placeholder="Enter the highest education level" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -253,7 +253,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_renshu.png">
                                     </label>
                                     <div class="layui-input-block" id="layui-input-block">
-                                        <select name="city" lay-verify="required">
+                                        <select name="city">
                                             <option value="">The maximum number of people</option>
                                             <option value="0">1</option>
                                         </select>
@@ -265,7 +265,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_money.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the fee for joining" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" placeholder="Enter the fee for joining" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer from-but">
@@ -292,6 +292,8 @@
     <script src="__PUBLIC__/Web/web/js/CreateInterest.js"></script>
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 </body>
+
+
 
 <script>
 
@@ -431,7 +433,7 @@
 
         form.on('submit(demo1)', function(data){
             var second = ''
-            $("select[name='second']").each(function(j,item){
+            $("select[name='1second']").each(function(j,item){
                 if(second == ''){
                     second+=item.value //输出input 中的 value 值到控制台
                 }else{
@@ -440,7 +442,7 @@
 
             });
             var third = ''
-            $("select[name='third']").each(function(j,item){
+            $("select[name='1third']").each(function(j,item){
                 if(third == ''){
                     third+=item.value //输出input 中的 value 值到控制台
                 }else{
@@ -448,7 +450,7 @@
                 }
             });
             var four = ''
-            $("select[name='four']").each(function(j,item){
+            $("select[name='1four']").each(function(j,item){
                 if(four == ''){
                     four += item.value //输出input 中的 value 值到控制台
                 }else{
@@ -475,39 +477,37 @@
                     if (data.str == 1){
                         $.ajax({
                             type:"post",
-                            url:"{:U('Index/Ajax/ajax_createinterest')}",
+                            url:"{:U('Index/Ajax/ajax_createworkone')}",
                             data:{
                                 second:second,
                                 third:third,
                                 four:four,
-                                crowd_name:$("#name").val(),
+                                crowd_name:$("#name1").val(),
                                 crowd_icon:data.msg,
-                                crowd_intro:$("#content").val(),
+                                crowd_intro:$("#content1").val(),
 
                             },
                             dataType:"json",
                             async:false,
-                            success: function(interest){
+                            success: function(list){
                                 //console.log(interest)
-                                if (interest.str == 1){
+                                if (list.str == 1){
                                     layer.msg('创建成功',{
                                             time:1500,
                                             icon:1,
                                         },function () {
-                                            window.location.href="{:U('Index/Rnterst/groupDetails')}&cid="+interest.msg;
+                                            window.location.href="{:U('Index/Jobs/groupDetails')}&cid="+list.msg;
                                         }
                                     );
 
                                 }else{
-                                    layer.msg(interest.msg,{
+                                    layer.msg(list.msg,{
                                             time:1500,
                                             icon:2,
                                         }
                                     );
 
                                 }
-
-
 
                             },
                             error:function(XMLHttpRequest, textStatus, errorThrown){

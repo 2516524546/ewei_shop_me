@@ -1,7 +1,11 @@
 <?php
 namespace Index\Controller;
+use Index\Model\CrowdMemberModel;
 use Index\Model\CrowdModel;
 use Index\Model\FirstMarkModel;
+use Index\Model\NoteModel;
+use Index\Model\QuestionModel;
+use Index\Model\ResourceModel;
 use Index\Model\SecondMarkModel;
 use Index\Model\WorksCompanyTypeModel;
 use Index\Model\WorksModel;
@@ -166,6 +170,84 @@ class JobsController extends CommonController {
      */
     public function groupDetails(){
 
+        if (!isset($_GET['cid'])){
+            Header("Location:".U('Index/Rnterst/interest'));
+            exit();
+        }
+
+        $crowdmodel = new CrowdModel();
+        $crowdone = $crowdmodel->findone('crowd_id = '.$_GET['cid'],'u_user u on u_crowd.crowd_uid = u.user_id','INNER','u_crowd.*,u.user_name');
+        if (!$crowdone){
+            Header("Location:".U('Index/Rnterst/interest'));
+            exit();
+        }
+
+        if ($crowdone['crowd_mid']!=$this->modeleid){
+            if ($crowdone['crowd_mid']==1){
+                Header("Location:".U('Index/Index/index'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==2){
+                Header("Location:".U('Index/Rnterst/interest'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==3){
+                Header("Location:".U('Index/Academic/academic'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==4){
+                Header("Location:".U('Index/Jobs/work'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==5){
+                Header("Location:".U('Index/Life/life'));
+                exit();
+            }
+        }
+
+        $crowdmembermodel = new CrowdMemberModel();
+        $join_in = 0;
+        if ($this->userid){
+
+            $memberone = $crowdmembermodel->findone('crowd_member_cid = '.$_GET['cid'].' and crowd_member_uid = '.$this->userid);
+
+            if ($memberone){
+                $join_in = 1;
+            }
+        }
+        $adminlist = $crowdmembermodel->findlistlimit('crowd_member_cid = '.$_GET['cid'].' and crowd_member_status !=0','u_user u on u_crowd_member.crowd_member_uid = u.user_id',0,4,'INNER','crowd_member_status desc','u_crowd_member.*,u.user_icon');
+        $memberlist = $crowdmembermodel->findlistlimit('crowd_member_cid = '.$_GET['cid'].' and crowd_member_status =0','u_user u on u_crowd_member.crowd_member_uid = u.user_id',0,8,'INNER','crowd_member_status desc,crowd_member_logintime desc','u_crowd_member.*,u.user_icon');
+
+        $notemodel = new NoteModel();
+        $questionmodel = new QuestionModel();
+        $resourcemodel = new ResourceModel();
+
+        $notelist = $notemodel->joinonelist('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 1','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+        $notecount = $notemodel->joinone('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 1','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+
+        $questionlist = $notemodel->joinonelist('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 2','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+
+        $questioncount = $notemodel->joinone('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 2','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+
+        $resourcelist = $notemodel->joinonelist('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 3','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+
+        $resourcecount = $notemodel->joinone('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 3','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+
+        session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
+        $this->assign(array(
+            'crowone' => $crowdone,
+            'join_in' => $join_in,
+            'adminlist' => $adminlist,
+            'memberlist' => $memberlist,
+            'cid' => $_GET['cid'],
+            'notelist' => $notelist,
+            'notecount' => $notecount,
+            'questionlist' => $questionlist,
+            'questioncount' => $questioncount,
+            'resourcelist' => $resourcelist,
+            'resourcecount' => $resourcecount,
+
+        ));
 
     	$this->display();
     }
