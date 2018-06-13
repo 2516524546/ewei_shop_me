@@ -135,7 +135,7 @@
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 </body>
 <script>
-
+    
 </script>
 
 <script>
@@ -160,7 +160,6 @@
                             console.log(data.msg)
 
                             if ( $("#second"+data.firstid).length > 0 ) {
-
                                 var message = '<div class="layui-input-block" id="layui-input-block" style="margin-bottom: 8px;"><select name="third" lay-verify="required" lay-filter="secondselect"><option value="">choose</option>';
 
                                 for (var i = 0; i < data.msg.length; i++) {
@@ -173,7 +172,7 @@
                                 $("#second"+data.firstid).html(message)
                             }else{
 
-                                var message = '<div id="second'+data.firstid+'" class="FormContainer" pane><div class="layui-input-block" id="layui-input-block" style="margin-bottom: 8px;"><select name="third" lay-verify="required" lay-filter="secondselect"><option value="">choose</option>';
+                                var message = '<div id="second'+data.firstid+'" class="FormContainer" pane style="margin-left:20%;width:100%;"><div class="layui-input-block" id="layui-input-block" style="margin-bottom: 8px;"><select name="third" lay-verify="required" lay-filter="secondselect"><option value="">choose</option>';
                                 for (var i = 0; i < data.msg.length; i++) {
 
                                     message +='<option value="'+data.msg[i]['third_mark_id']+'">';
@@ -190,11 +189,11 @@
                             $('#in'+data.firstid).val(firstdata.value)
                             createthird();
                         }else{
-
-                            if ($("#second"+ firstdata.elem.title).length  > 0) {
-                                $("#second" + firstdata.elem.title).remove();
+                            
+                            if ($("#second" + data.firstid).length > 0) {
+                                $("#second" + data.firstid).remove();
                             }
-                            rmfour($('#in'+firstdata.elem.title).val())
+                            rmfour($('#in'+data.firstid).val())
                         }
 
                     }
@@ -375,7 +374,7 @@
                                 $("#third" + data.secondid).html(message)
                             } else {
 
-                                var message = '<div id="third' + data.secondid + '" class="FormContainer" style="margin-bottom: 8px;" pane><div class="layui-input-block" id="layui-input-block"><select name="four" lay-verify="required" lay-filter="thirdselect"><option value="">choose</option>';
+                                var message = '<div id="third' + data.secondid + '" class="FormContainer" style="margin-bottom: 8px;margin-left:20%;width:100%;" pane><div class="layui-input-block" id="layui-input-block"><select name="four" lay-verify="required" lay-filter="thirdselect"><option value="">choose</option>';
                                 for (var i = 0; i < data.msg.length; i++) {
 
                                     message += '<option value="' + data.msg[i]['fourth_mark_id'] + '">';

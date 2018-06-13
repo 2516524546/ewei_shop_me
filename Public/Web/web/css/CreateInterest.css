@@ -237,3 +237,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.FormContainer .HeadPortraitbox{
+  position: unset;
+}
+.PasswordContainer .layui_subdivide{
+  margin-left: 20%;
+}

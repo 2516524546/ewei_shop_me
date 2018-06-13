@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/EditResource.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/changeimg.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/loading.css">
 </head>
 
 <body>
@@ -167,6 +168,12 @@
         </div>
     </form>
     
+    <!-- loading -->
+    <div class="loading_box">
+        <div class="loading_gif">
+            <img src="__PUBLIC__/Web/web/img/timg.gif" alt="">
+        </div>
+    </div>
     <!-- foot start 底部信息 -->
     <footer>
         <include file = "./World/Index/View/Public/footer.html"/>
@@ -427,10 +434,15 @@
 
                     return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
                 });*/
-
+                // $(".PasswordContainer .FormContainer .Submit-but").on("click",function(){
+                //             $(".loading_box").css("display","block")
+                //             $("body").css("overflow", "hidden");
+                        
+                //         })
                 form.on('submit(demo1)', function(data){
-
-
+                    $(".loading_box").css("display","block")
+                    // $("body").css("overflow", "hidden");
+                   
                     if (selectedValue ==1 ) {
                         var file_files = document.getElementById('file_input').files;
                         var file_obj = document.getElementById('formdata');
@@ -443,16 +455,18 @@
                         fd.append('content',$("#postcontent").val())
                         fd.append('cid','{$cid}')
                         fd.append('posttype',selectedValue)
+                        
                         $.ajax({
                             url: "{:U('Index/Ajax/ajax_createpost')}",
                             type: "POST",
-                            async: false,
+                            async: true,
                             cache: false,
                             processData: false,// 告诉jQuery不要去处理发送的数据
                             contentType: false,// 告诉jQuery不要去设置Content-Type请求头
                             data: fd,
                             dataType: "json",
                             success: function (data) {
+                                
                                 console.log(data)
                                 if (data.str == 1){
                                     layer.msg('创建成功',{
@@ -467,16 +481,19 @@
                                     layer.msg(data.msg,{
                                             time:1500,
                                             icon:2,
+                                        },function(){
+                                                $(".loading_box").css("display","none") 
                                         }
                                     );
 
                                 }
                             },
                             error: function (err) {
-
                                 layer.msg('请求失败!', {
                                         time: 1500,
                                         icon: 2,
+                                    },function(){
+                                        $(".loading_box").css("display","none") 
                                     }
                                 );
                             }
@@ -518,7 +535,9 @@
                                     layer.msg(data.msg,{
                                             time:1500,
                                             icon:2,
-                                        }
+                                        },function(){
+                                        $(".loading_box").css("display","none") 
+                                    }
                                     );
 
                                 }
@@ -528,6 +547,8 @@
                                 layer.msg('请求失败!', {
                                         time: 1500,
                                         icon: 2,
+                                    },function(){
+                                        $(".loading_box").css("display","none") 
                                     }
                                 );
                             }
@@ -549,7 +570,7 @@
                             $.ajax({
                                 url: "{:U('Index/Ajax/ajax_createpost')}",
                                 type: "POST",
-                                async: false,
+                                async: true,
                                 cache: false,
                                 processData: false,// 告诉jQuery不要去处理发送的数据
                                 contentType: false,// 告诉jQuery不要去设置Content-Type请求头
@@ -570,6 +591,8 @@
                                         layer.msg(data.msg,{
                                                 time:1500,
                                                 icon:2,
+                                            },function(){
+                                                $(".loading_box").css("display","none") 
                                             }
                                         );
 
@@ -580,6 +603,8 @@
                                     layer.msg('请求失败!', {
                                             time: 1500,
                                             icon: 2,
+                                        },function(){
+                                            $(".loading_box").css("display","none") 
                                         }
                                     );
                                 }
@@ -591,7 +616,7 @@
                             $.ajax({
                                 url: "{:U('Index/Ajax/ajax_uploadfile')}",
                                 type: "POST",
-                                async: false,
+                                async: true,
                                 cache: false,
                                 processData: false,// 告诉jQuery不要去处理发送的数据
                                 contentType: false,// 告诉jQuery不要去设置Content-Type请求头
@@ -615,7 +640,7 @@
                                     $.ajax({
                                         url: "{:U('Index/Ajax/ajax_createpost')}",
                                         type: "POST",
-                                        async: false,
+                                        async: true,
                                         cache: false,
                                         processData: false,// 告诉jQuery不要去处理发送的数据
                                         contentType: false,// 告诉jQuery不要去设置Content-Type请求头
@@ -636,7 +661,9 @@
                                                 layer.msg(data.msg,{
                                                         time:1500,
                                                         icon:2,
-                                                    }
+                                                    },function(){
+                                                            $(".loading_box").css("display","none") 
+                                                        }
                                                 );
 
                                             }
@@ -646,6 +673,8 @@
                                             layer.msg('请求失败!', {
                                                     time: 1500,
                                                     icon: 2,
+                                                },function(){
+                                                    $(".loading_box").css("display","none") 
                                                 }
                                             );
                                         }
@@ -656,6 +685,8 @@
                                     layer.msg('请求失败!', {
                                             time: 1500,
                                             icon: 2,
+                                        },function(){
+                                            $(".loading_box").css("display","none") 
                                         }
                                     );
                                 }
