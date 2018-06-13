@@ -1,0 +1,98 @@
+.PasswordContainer {
+    -webkit-box-shadow: 0 2px 18px 2px #c0c0c0;
+    -moz-box-shadow: 0 2px 18px 2px #c0c0c0;
+    -o-box-shadow: 0 2px 18px 2px #c0c0c0;
+    box-shadow: 0 2px 18px 2px #c0c0c0;
+    margin: 20px auto;
+    padding: 40px 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-right: 5px;
+    width: 46%;
+    background-color: #ffffff;
+}
+.layui-form-item .layui-inline {
+    display: flex;
+}
+.layui-form-item .layui-input-inline {
+    float: left;
+    width: auto;
+    margin-right: 10px;
+}
+.layui-form-item {
+    display: flex;
+}
+.PasswordContainer #layui-input-block {
+    margin-left: 0;
+    width: 100%;
+}
+.layui-form-pane .layui-input-block {
+    margin-left: 0;
+    width: 100%;
+}
+.layui-form-pane .layui-form-item[pane] {
+    position: relative;
+    border-width: 0; 
+     border-style: none;
+}
+.layui-form-pane .layui-form-item[pane] .layui-form-label {
+    position: unset;
+    height: auto;
+    border-width: 0 1px 0 0;
+}
+
+.layui-form-pane .layui-form-text .layui-form-label {
+    /* float: none;
+    width: 20%;
+    border-radius: 2px;
+    box-sizing: border-box;
+    text-align: left; */
+    width: auto;
+    padding: 8px 15px;
+    height: 38px;
+    line-height: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px 0 0 2px;
+    text-align: center;
+    background-color: #FBFBFB;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+.layui-form-pane .layui-form-label {
+    width: auto;
+    padding: 8px 15px;
+    height: 38px;
+    line-height: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px 0 0 2px;
+    text-align: center;
+    background-color: #FBFBFB;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+.layui-form-label {
+    float: left;
+    display: block;
+    padding: 9px 15px;
+    width: auto;
+    font-weight: 400;
+    text-align: right;
+}
+
+.label_img{
+    width: 23px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.label_img img{
+    width: 100%;
+    height: 100%;
+}

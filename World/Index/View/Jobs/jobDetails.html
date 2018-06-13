@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/jobDetails.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
 </head>
 
 <body>
@@ -21,16 +24,14 @@
     </header>
     <hr>
     <!-- Crumbs nav -->
-    <div class="container Crumbs">
-        <span class="CrumbsSpan">
-          <a href="{:U('Index/Jobs/work')}" class="CrumbsA" style="position: relative;top: -3px;background: none;left: -6px;color: #1E9FFF;text-decoration: none;">Jobs</a>
-          <cite class="CrumbsIcon" style="margin-left: -70px;position: relative;top: -2px;"></cite>
-          <a href="{:U('Index/Jobs/jobList')}" class="CrumbsA" style="position: relative;top: -3px;background: none;left: 20px;color: #1E9FFF;text-decoration: none;">Job Listings</a>
-          <cite class="CrumbsIcon" style="margin-left: 78px;position: relative;top: -2px;"></cite>
-          <span class="CrumbsTitle" style="margin-left: 0;margin-top: -3px;">Job Details</span>
-        </span>
-        
-    </div>
+    <div class="container crumbs">
+            <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
+            <cite class="Icon"></cite>
+            <a href="{:U('Index/Jobs/jobList')}" class="crumbsa">Job Listings</a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">Job Details</span>
+    
+        </div>
     <!-- Forget the password form -->
     <form class="layui-form" action="">
         <div class="PasswordContainer">
@@ -90,7 +91,7 @@
                         </div>
                     </div>
                     <div class="but" style="margin: 30px auto 0;width: 30%;">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Immediate Delivery</button>
+                        <button type="button" class="btn btn-primary btn_Delivery" data-toggle="modal" data-target=".bs-example-modal-sm">Immediate Delivery</button>
                     </div>
                     <!-- 弹窗 -->
                     <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -117,7 +118,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Delivery</button>
+                                    <button type="button" class="btn btn-primary"  data-dismiss="modal">Delivery</button>
                                 </div>
                             </div>
                         </div>
@@ -126,45 +127,16 @@
             </div>
         </div>
     </form>
-    <!-- foot start 底部信息 -->
-    <footer class="container-fluid FooterBg">
-        <div class="row FooterContainer">
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>ABOUT</dt>
-                    <dd>
-                        NewWorld.net is a comprehensive website that provides an efficient source of resources and convenience for our every -day lives. We can easily discover, share and create a new world.
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>SUPPORT</dt>
-                    <dd>Premium Support</dd>
-                    <dd>Get Started</dd>
-                    <dd>Partners</dd>
-                </dl>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>Help Center</dt>
-                    <dd>Help Center</dd>
-                    <dd>Contact Us</dd>
-                </dl>
-            </div>
-        </div>
-        <div class="row copyright">
-            <div class="col-md-12">
-                <p class="text-center">&copy; 2018 NewWorld. All rights reserved.</p>
-            </div>
-        </div>
+    <!-- footer -->
+    <footer>
+        <include file = "./World/Index/View/Public/footer.html"/>
     </footer>
-    <!-- foot end 底部信息 -->
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
     <script src="__PUBLIC__/Web/web/js/CreateInterest.js"></script>
+    <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 </body>
 
 </html>

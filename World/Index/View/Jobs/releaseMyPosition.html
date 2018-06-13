@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/WorkList.css">
 </head>
 
 <body>
@@ -31,7 +32,7 @@
         </div>
     <div class="container ContributionContainer">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12 UserBox_list">
                 <div class="UserBox">
                     <a href="JobDetails.html" class="UserLink">
                         <p class="lintpheight">
@@ -43,259 +44,29 @@
                         <p class="lintpheight">
                             Work experience : 3 years
                         </p>
-                        <p class="lintpheight">
+                        <div class="lintpheight">
                             Salary : $ 1000 ~ $ 2000
-                            <a href="PostDeliveryRecord.html" style="position: absolute;right: 150px;">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_jl_icon_deliveryrecord.png">
-                            </a>
-                            <a href="#" style="position: absolute;right: 110px;" data-toggle="modal" data-target="#box3">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png">
-                            </a>
-                            <a href="#" style="position: absolute;right: 70px;" data-toggle="modal" data-target="#box2">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_close.png">
-                            </a>
-                            <a href="#" style="position: absolute;right: 40px;" data-toggle="modal" data-target="#box1">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png">
-                            </a>
-                            <!-- 删除 -->
-                            <div id="box1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                                <div class="modal-dialog modal-sm" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <span class="modal-title">
-                                                Reminder
-                                            </span>
-                                            <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
-                                                <span aria-hidden="true">&times;</span>
-                                            </a>
-                                        </div>
-                                        <div class="modal-body">
-                        <p class="text-center">Are you closing the job?</p>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">confirm</button>
-                                        </div>
-                                    </div>
-
-                                </div>
+                        
+                                
+                            <div class="lintpheight_icon_box">
+                                <a href="PostDeliveryRecord.html" class="lintpheight_icon">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_jl_icon_deliveryrecord.png"">
+                                </a>
+                                <a href="#" data-toggle="modal" data-target="#box3" class="lintpheight_icon">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png"">
+                                </a>
+                                <a href="#" data-toggle="modal" data-target="#box2" class="lintpheight_icon">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_close.png"">
+                                </a>
+                                <a href="#" data-toggle="modal" data-target="#box1" class="lintpheight_icon">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png"">
+                                </a>
                             </div>
-                            <!-- 关闭 -->
-                            <div id="box2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                                <div class="modal-dialog modal-sm" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <span class="modal-title">
-                                                Reminder
-                                            </span>
-                                            <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
-                                                <span aria-hidden="true">&times;</span>
-                                            </a>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p class="text-center">Are you closing the job?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">confirm</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 编辑 -->
-                            <div id="box3" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                                <div class="modal-dialog modal-lg" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <span class="modal-title">
-                                                Editing project
-                                            </span>
-                                            <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
-                                                <span aria-hidden="true">&times;</span>
-                                            </a>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p style="margin:14px 0;">Essential information</p>
-                                            <div class="layui-form-item">
-                                                <label class="layui-form-label" style="margin-left: -22px;">
-                                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png">
-                                                </label>
-                                                <div class="label" style="padding-top: 13px;padding-left: 120px;">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Full Time
-                                                    </label>
-                                                    <label class="radio-inline" style="margin: 0 32px;">
-                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Part Time
-                                                    </label>
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Practice
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="layui-form-item">
-                                                <label class="layui-form-label" style="width: 64px;">
-                                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_sy_icon_08.png">
-                                                </label>
-                                                <div class="layui-input-block" style="margin-left: 64px;">
-                                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter a job title" class="layui-input">
-                                                </div>
-                                            </div>
-                                            <div class="layui-form-item">
-                                                <div class="layui-inline">
-                                                    <label class="layui-form-label" style="width: 64px;">
-                                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_money.png">
-                                                    </label>
-                                                    <div class="layui-input-inline" style="width: 100px;">
-                                                        <input type="text" name="price_min" placeholder="￥" autocomplete="off" class="layui-input">
-                                                    </div>
-                                                    <div class="layui-form-mid">-</div>
-                                                    <div class="layui-input-inline" style="width: 100px;">
-                                                        <input type="text" name="price_max" placeholder="￥" autocomplete="off" class="layui-input">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="layui-form-item">
-                                                <label class="layui-form-label" style="width: 64px;">
-                                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_sy_icon_07.png" width="24px" height="auto">
-                                                </label>
-                                                <div class="layui-input-block" style="margin-left: 64px;">
-                                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the number of years of service" class="layui-input">
-                                                </div>
-                                            </div>
-                                            <div class="layui-form-item">
-                                                <label class="layui-form-label" style="width: 64px;">
-                                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
-                                                </label>
-                                                <div class="layui-input-block" style="margin-left: 64px;">
-                                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter a graduate school" class="layui-input">
-                                                </div>
-                                            </div>
-                                            <div class="layui-form-item">
-                                                <label class="layui-form-label" style="width: 64px;">
-                                                    <img src="__PUBLIC__/Web/web/img/04_jobs/1.png">
-                                                </label>
-                                                <div class="layui-input-block" style="margin-left: 64px;">
-                                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter your degree" class="layui-input">
-                                                </div>
-                                            </div>
-                                            <div class="layui-form-item">
-                                                <label class="layui-form-label" style="width: 64px;">
-                                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_major.png">
-                                                </label>
-                                                <div class="layui-input-block" style="margin-left: 64px;">
-                                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter professional" class="layui-input">
-                                                </div>
-                                            </div>
 
-                                            <p class="h6 text-center">Company Information</p>
-                                            <div class="layui-form-item">
-                                                <label class="layui-form-label" style="width: 64px;">
-                                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_company.png">
-                                                </label>
-                                                <div class="layui-input-block" style="margin-left: 64px;">
-                                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter a job title" class="layui-input">
-                                                </div>
-                                            </div>
-                                            <div class="FormContainer layui-form-item" pane>
-                                                <label class="col-sm-2 control-label" style="position: absolute;">
-                                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_choose.png" style="position: absolute;left: 26px;top: 10px;">
-                                                </label>
-                                                <div class="col-sm-10" style="position: absolute;left: 66px;">
-                                                    <select class="form-control">
-                                                        <option>Please choose the nature of the company</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="FormContainer layui-form-item" pane style="margin-top: 70px;margin-bottom: 124px;">
-                                                <label class="col-sm-2 control-label" style="position: absolute;">
-                                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png" style="position: absolute;left: 26px;top: 10px;">
-                                                </label>
-                                                <div class="col-sm-10" style="position: absolute;left: 66px;">
-                                                    <select class="form-control">
-                                                        <option>Please select company type</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="layui-form-item">
-                                                <label class="layui-form-label" style="width: 64px;">
-                                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_groupname.png">
-                                                </label>
-                                                <div class="layui-input-block" style="margin-left: 64px;">
-                                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the company size" class="layui-input">
-                                                </div>
-                                            </div>
-                                            <div class="layui-form-item">
-                                                <label class="layui-form-label" style="width: 64px;">
-                                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_email.png">
-                                                </label>
-                                                <div class="layui-input-block" style="margin-left: 64px;">
-                                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the resume mailbox" class="layui-input">
-                                                </div>
-                                            </div>
-                                            <div class="layui-form-item layui-form-text" style="height: 100px;">
-                                                <label class="layui-form-label" style="z-index: 2;background: none;border: none;position: absolute;left: 0;">
-                                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
-                                                </label>
-                                                <div class="layui-input-block" style="position: relative;left: -46px;">
-                                                    <textarea placeholder="Enter the company information" class="layui-textarea"></textarea>
-                                                </div>
-                                            </div>
-                                            <!--  -->
-                                            <div class="layui-form-item">
-                                                <label class="layui-form-label" style="margin-left: -22px;width: 150px;margin-right: 28px;">
-                                                    Salary Negotiable
-                                                </label>
-                                                <div class="label" style="padding-top: 13px;padding-left: 120px;">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> no
-                                                    </label>
-                                                    <label class="radio-inline" style="margin: 0 32px;">
-                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> yes
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary">Preservation</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </p>
-                    </a>
+                           
+                        </div>
+                    </a>  
                 </div>
-    <foreach name="worklist" item="w" key="k">
-                <div class="UserBox">
-                    <a href="JobDetails.html" class="UserLink">
-                        <p class="lintpheight">
-                            Job Title : {$w['works_position']}
-                        </p>
-                        <p class="lintpheight">
-                            Company Name : {$w['works_company_name']}
-                        </p>
-                        <p class="lintpheight">
-                            Work experience : {$w['works_years']} years
-                        </p>
-                        <p class="lintpheight">
-                            Salary : $ {$w['works_minmoney']} ~ $ {$w['works_maxmoney']}
-                            <if condition='$w["works_isclose"]==1'><a href="PostDeliveryRecord.html" style="position: absolute;right: 150px;"><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_jl_icon_deliveryrecord.png"></a>
-                                <a href="#" style="position: absolute;right: 110px;"><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png"></a>
-                                <a href="#" style="position: absolute;right: 70px;"><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_close.png"></a>
-                                <a href="#" style="position: absolute;right: 40px;"><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png"></a><else /></if>
-
-                        </p>
-                    </a>
-                </div>
-    </foreach>
                 <div class="UserBox">
                     <a href="JobDetails.html" class="UserLink">
                         <p class="lintpheight">
@@ -307,70 +78,341 @@
                         <p class="lintpheight">
                             Work experience : 3 years
                         </p>
-                        <p class="lintpheight">
+                        <div class="lintpheight">
                             Salary : $ 1000 ~ $ 2000
-                            <a href="PostDeliveryRecord.html" style="position: absolute;right: 150px;"><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_jl_icon_deliveryrecord.png"></a>
-                            <a href="#" style="position: absolute;right: 110px;"><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png"></a>
-                            <a href="#" style="position: absolute;right: 70px;"><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_close.png"></a>
-                            <a href="#" style="position: absolute;right: 40px;"><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png"></a>
+                        
+                            <div class="lintpheight_icon_box">
+                                <a href="PostDeliveryRecord.html" class="lintpheight_icon">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_jl_icon_deliveryrecord.png"">
+                                </a>
+                                <a href="#" data-toggle="modal" data-target="#box3" class="lintpheight_icon">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png"">
+                                </a>
+                                <a href="#" data-toggle="modal" data-target="#box2" class="lintpheight_icon">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_close.png"">
+                                </a>
+                                <a href="#" data-toggle="modal" data-target="#box1" class="lintpheight_icon">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png"">
+                                </a>
+                            </div>
+
+                           
+                        </div>
+                          </a>  
+                </div>
+                <div class="UserBox">
+                    <a href="JobDetails.html" class="UserLink">
+                        <p class="lintpheight">
+                            Job Title : Mobile development engineer
                         </p>
-                    </a>
+                        <p class="lintpheight">
+                            Company Name : Apple
+                        </p>
+                        <p class="lintpheight">
+                            Work experience : 3 years
+                        </p>
+                        <div class="lintpheight">
+                            Salary : $ 1000 ~ $ 2000
+                        
+                                
+                            <div class="lintpheight_icon_box">
+                                <a href="PostDeliveryRecord.html" class="lintpheight_icon">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_jl_icon_deliveryrecord.png"">
+                                </a>
+                                <a href="#" data-toggle="modal" data-target="#box3" class="lintpheight_icon">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png"">
+                                </a>
+                                <a href="#" data-toggle="modal" data-target="#box2" class="lintpheight_icon">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_close.png"">
+                                </a>
+                                <a href="#" data-toggle="modal" data-target="#box1" class="lintpheight_icon">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png"">
+                                </a>
+                            </div>
+
+                           
+                        </div>
+                          </a>  
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="UserBox">
-                    <a href="JobDetails.html" class="UserLink">
-                        <p class="lintpheight">
-                            Job Title : Mobile development engineer
-                        </p>
-                        <p class="lintpheight">
-                            Company Name : Apple
-                        </p>
-                        <p class="lintpheight">
-                            Work experience : 3 years
-                        </p>
-                        <p class="lintpheight">
-                            Salary : $ 1000 ~ $ 2000
-                            <a href="#" style="position: absolute;right: 40px;"><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_closed.png"></a>
-                        </p>
-                    </a>
+            <!-- 删除 -->
+            <div id="box1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="modal-title">
+                                Reminder
+                            </span>
+                            <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                                <span aria-hidden="true">&times;</span>
+                            </a>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-center">Do you delete the occupation?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-Delete-primary" data-dismiss="modal">confirm</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="UserBox">
-                    <a href="JobDetails.html" class="UserLink">
-                        <p class="lintpheight">
-                            Job Title : Mobile development engineer
-                        </p>
-                        <p class="lintpheight">
-                            Company Name : Apple
-                        </p>
-                        <p class="lintpheight">
-                            Work experience : 3 years
-                        </p>
-                        <p class="lintpheight">
-                            Salary : $ 1000 ~ $ 2000
-                            <a href="#" style="position: absolute;right: 40px;"><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_deleted.png"></a>
-                        </p>
-                    </a>
+            </div>
+            <!-- 关闭 -->
+            <div id="box2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="modal-title">
+                                Reminder
+                            </span>
+                            <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                                <span aria-hidden="true">&times;</span>
+                            </a>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-center">Are you closing the job?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-Close-primary" data-dismiss="modal">confirm</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="UserBox">
-                    <a href="JobDetails.html" class="UserLink">
-                        <p class="lintpheight">
-                            Job Title : Mobile development engineer
-                        </p>
-                        <p class="lintpheight">
-                            Company Name : Apple
-                        </p>
-                        <p class="lintpheight">
-                            Work experience : 3 years
-                        </p>
-                        <p class="lintpheight">
-                            Salary : $ 1000 ~ $ 2000
-                            <a href="PostDeliveryRecord.html" style="position: absolute;right: 150px;"><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_jl_icon_deliveryrecord.png"></a>
-                            <a href="#" style="position: absolute;right: 110px;"><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png"></a>
-                            <a href="#" style="position: absolute;right: 70px;"><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_close.png"></a>
-                            <a href="#" style="position: absolute;right: 40px;"><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png"></a>
-                        </p>
-                    </a>
+            </div>
+            <!-- 编辑 -->
+            <div id="box3" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="modal-title">
+                                Editing project
+                            </span>
+                            <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                                <span aria-hidden="true">&times;</span>
+                            </a>
+                        </div>
+                        <div class="modal-body">
+                            <p style="margin:14px 0;">Essential information</p>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="margin-left: -22px;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png">
+                                </label>
+                                <div class="label" style="padding-top: 13px;padding-left: 120px;">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Full Time
+                                    </label>
+                                    <label class="radio-inline" style="margin: 0 32px;">
+                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Part Time
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Practice
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="width: 64px;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_sy_icon_08.png">
+                                </label>
+                                <div class="layui-input-block" style="margin-left: 64px;">
+                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter a job title" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label" style="width: 64px;">
+                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_money.png">
+                                    </label>
+                                    <div class="layui-input-inline" style="width: 100px;">
+                                        <input type="text" name="price_min" placeholder="￥" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid">-</div>
+                                    <div class="layui-input-inline" style="width: 100px;">
+                                        <input type="text" name="price_max" placeholder="￥" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="width: 64px;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_sy_icon_07.png" width="24px" height="auto">
+                                </label>
+                                <div class="layui-input-block" style="margin-left: 64px;">
+                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the number of years of service" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="width: 64px;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
+                                </label>
+                                <div class="layui-input-block" style="margin-left: 64px;">
+                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter a graduate school" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="width: 64px;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/1.png">
+                                </label>
+                                <div class="layui-input-block" style="margin-left: 64px;">
+                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter your degree" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="width: 64px;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_major.png">
+                                </label>
+                                <div class="layui-input-block" style="margin-left: 64px;">
+                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter professional" class="layui-input">
+                                </div>
+                            </div>
+                            <p class="h6">Matching circle reordering : </p>
+                            <div class="layui-form-item">
+                                <select class="form-control">
+                                    <option>Graduated School</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                                <p class="text-center" style="margin: 4px 0;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
+                                </p>
+                            </div>
+                            <div class="layui-form-item">
+                                <select class="form-control">
+                                    <option>Years of service</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                                <p class="text-center" style="margin: 4px 0;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
+                                </p>
+                            </div>
+                            <div class="layui-form-item">
+                                <select class="form-control">
+                                    <option>Bachelor of Science</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                                <p class="text-center" style="margin: 4px 0;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
+                                </p>
+                            </div>
+                            <div class="layui-form-item">
+                                <select class="form-control">
+                                    <option>Position</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                                <p class="text-center" style="margin: 4px 0;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
+                                </p>
+                            </div>
+                            <div class="layui-form-item">
+                                <select class="form-control">
+                                    <option>Profession</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                                <p class="text-center" style="margin: 4px 0;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
+                                </p>
+                            </div>
+                            <div class="layui-form-item">
+                                <select class="form-control">
+                                    <option>Position</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <p class="h6 text-center">Company Information</p>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="width: 64px;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_company.png">
+                                </label>
+                                <div class="layui-input-block" style="margin-left: 64px;">
+                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter a job title" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="FormContainer layui-form-item" pane>
+                                <label class="col-sm-2 control-label" style="position: absolute;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_choose.png" style="position: absolute;left: 26px;top: 10px;">
+                                </label>
+                                <div class="col-sm-10" style="position: absolute;left: 66px;">
+                                    <select class="form-control">
+                                        <option>Please choose the nature of the company</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="FormContainer layui-form-item" pane style="margin-top: 70px;margin-bottom: 124px;">
+                                <label class="col-sm-2 control-label" style="position: absolute;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png" style="position: absolute;left: 26px;top: 10px;">
+                                </label>
+                                <div class="col-sm-10" style="position: absolute;left: 66px;">
+                                    <select class="form-control">
+                                        <option>Please select company type</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="width: 64px;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_groupname.png">
+                                </label>
+                                <div class="layui-input-block" style="margin-left: 64px;">
+                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the company size" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="width: 64px;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_email.png">
+                                </label>
+                                <div class="layui-input-block" style="margin-left: 64px;">
+                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the resume mailbox" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-form-text" style="height: 100px;">
+                                <label class="layui-form-label" style="z-index: 2;background: none;border: none;position: absolute;left: 0;">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                                </label>
+                                <div class="layui-input-block" style="position: relative;left: -46px;">
+                                    <textarea placeholder="Enter the company information" class="layui-textarea"></textarea>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="margin-left: -22px;width: 150px;margin-right: 28px;">
+                                    Salary Negotiable
+                                </label>
+                                <div class="label" style="padding-top: 13px;padding-left: 120px;">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> no
+                                    </label>
+                                    <label class="radio-inline" style="margin: 0 32px;">
+                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> yes
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-Preservation-primary" data-dismiss="modal">Preservation</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -418,6 +460,31 @@
     <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
     <script src="__PUBLIC__/Web/web/js/ListOfDonations.js"></script>
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
+    <script>
+        $(function(){
+            (function(){
+                var num;
+                $(".ContributionContainer .UserBox_list").on('click',".UserBox", function(event) {
+                    num = $(this).index();
+                });
+                // Delete
+                $(".btn-Delete-primary").on('click', function(event) {
+                        var D_pic = "<img src='__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_deleted.png'>"
+                        // console.log($(".lintpheight_icon_box").eq(num).html())
+                        $(".lintpheight_icon_box").eq(num).html(D_pic)
+                });
+                // Close
+                $(".btn-Close-primary").on('click', function(event) {
+                    // <a href='javascript:void(0)' class='lintpheight_icon'></a>
+                        var C_pic = "<img src='__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_closed.png'>"
+                        // console.log($(".lintpheight_icon_box").eq(num).html())
+                        $(".lintpheight_icon_box").eq(num).html(C_pic)
+                });
+            })();
+            
+        });
+
+    </script>
 </body>
 
 </html>
