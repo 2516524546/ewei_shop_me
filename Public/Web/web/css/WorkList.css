@@ -208,7 +208,7 @@
   }
   .frombox .SelectionTypeContainer {
     float: left;
-    width: 258px;
+    width: auto;
   }
   .frombox .SelectionTypeContainer .fromboxxiala {
     display: flex;
@@ -236,10 +236,7 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     max-height: 223px;
-    display: block;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    /* display: block; */
 }
 
 
@@ -259,4 +256,10 @@
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
+}
+
+.ContributionContainer .UserBox .lintpheight_box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

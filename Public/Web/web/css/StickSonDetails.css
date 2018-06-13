@@ -163,8 +163,8 @@
   border-bottom: 1px solid #ededed;
 }
 .PostReply_box .PostReply_box_content .PostReply_box_content_item .item_pic{
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -175,7 +175,7 @@
 .PostReply_box .PostReply_box_content .PostReply_box_content_item .item_con{
   flex-grow: 1;
   width: 80%;
-  padding-top: 7px;
+  padding-top: 0;
   margin-left: 15px;
 }
 .PostReply_box .PostReply_box_content .PostReply_box_content_item .item_con_title{
