@@ -137,7 +137,7 @@
   .ContributionContainer .UserBox .lintpheight {
     line-height: 30px;
   }
-  .ContributionContainer .UserBox .lintpheight .lintpheight_icon{
+  /* .ContributionContainer .UserBox .lintpheight .lintpheight_icon{
     position: absolute;
     right: 120px;
   }
@@ -152,7 +152,7 @@
   .ContributionContainer .UserBox .lintpheight .lintpheight_icon:last-child{
     position: absolute;
     right: 30px;
-  }
+  } */
   .ContributionContainer .UserBox .lintpheight_botton{
     display: flex;
     justify-content: space-between;
@@ -231,9 +231,32 @@
 }  
 .ContributionContainer .UserBox .lintpheight{
     overflow : hidden;
-text-overflow: ellipsis;
-display: -webkit-box;
--webkit-line-clamp: 3;
--webkit-box-orient: vertical;
-max-height: 223px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-height: 223px;
+    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.btn-Close-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-Delete-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-Preservation-primary{
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
 }

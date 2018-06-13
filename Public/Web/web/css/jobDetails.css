@@ -1,0 +1,18 @@
+.PasswordContainer {
+    width: 46%;
+}
+.btn_Delivery{
+    background: #fff;
+    border-radius: 23px;
+    border: 1px solid #46c4b8;
+    color: #000;
+}
+.btn-primary:hover{
+    color: #fff;
+    background-color: #46c4b8;
+    border-color: #46c4b8;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: none;
+}
