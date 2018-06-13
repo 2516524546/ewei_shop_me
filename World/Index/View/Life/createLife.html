@@ -48,7 +48,7 @@
 								<div class="layui-input-block" id="layui-input-block" >
 									<input type="hidden" value="" id="in{$first['first_mark_id']}">
 									<!--style="width: 25%;float: left;margin: 0 0;"-->
-									<select name="second" lay-verify="required" lay-filter="firstselect">
+									<select name="second" lay-verify="required" lay-filter="firstselect" title="0">
 										<option value="" selected="selected"><if condition='$firstkey == 0'>Choose a country<elseif condition='$firstkey == 1'/>Choose a school<else />Choose interest</if></option>
 										<foreach name="first['message']" item = "second" key="secondkey">
 											<option value="{$second['second_mark_id']}">{$second['second_mark_name']}</option>
@@ -188,12 +188,17 @@
 
                                 firstdata.othis.parent().parent().after(message);
                             }
-
+                            firstdata.elem.title=data.firstid
                             form.render()
                             rmfour($('#in'+data.firstid).val())
                             $('#in'+data.firstid).val(firstdata.value)
                             createthird();
-                        }
+                        }else{
+                            if ($("#second"+ firstdata.elem.title).length  > 0) {
+                                $("#second" + firstdata.elem.title).remove();
+                            }
+                            rmfour($('#in'+firstdata.elem.title).val())
+						}
 
                     }
                 }

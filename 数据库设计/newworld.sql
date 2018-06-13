@@ -24,3 +24,28 @@ ADD COLUMN `message_type` tinyint UNSIGNED NOT NULL  COMMENT '信息类型 0：系统提
 ALTER TABLE `newworld`.`u_message` 
 MODIFY COLUMN `message_sendtime` datetime(0) NOT NULL COMMENT '信息发送时间' AFTER `message_content`,
 MODIFY COLUMN `message_delivertime` datetime(0) NOT NULL COMMENT '信息送达时间' AFTER `message_sendtime`;
+
+/*
+lyx
+2018.06.13 start
+*/
+
+ALTER TABLE `u_crowd`
+ADD COLUMN `crowd_scool`  varchar(255) NULL COMMENT '毕业院校' AFTER `crowd_icon`;
+
+ALTER TABLE `u_crowd`
+ADD COLUMN `crowd_scooltime`  varchar(255) NULL COMMENT '毕业时间' AFTER `crowd_scool`;
+
+ALTER TABLE `u_crowd`
+ADD COLUMN `crowd_profession`  varchar(255) NULL COMMENT '职业岗位' AFTER `crowd_scooltime`;
+
+ALTER TABLE `u_crowd`
+ADD COLUMN `crowd_company`  varchar(255) NULL COMMENT '在职公司' AFTER `crowd_profession`;
+
+ALTER TABLE `u_crowd`
+ADD COLUMN `crowd_help`  text NULL COMMENT '能够提供的帮助' AFTER `crowd_company`;
+
+/*
+lyx
+2018.06.13 end
+*/

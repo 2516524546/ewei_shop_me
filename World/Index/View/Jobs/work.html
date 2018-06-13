@@ -189,7 +189,7 @@
 					<a href="{:U('Index/Jobs/projectsProfessionals')}" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn" style="margin-bottom: 12px;margin-left: 4px;padding: 0 60px;">
 						Project
 					</a>
-					<a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn" style="margin-left: 4px;padding: 0 32px;">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn" style="margin-left: 4px;padding: 0 32px;" onclick="gocreate()">
 						Create A Group
 					</a>
                     <p class="text-right Help">
@@ -343,36 +343,7 @@
     <!--Group list end 群列表-->
     <!--foot start 底部信息-->
     <footer class="container-fluid FooterBg">
-        <div class="row FooterContainer">
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>ABOUT</dt>
-                    <dd>
-                        NewWorld.net is a comprehensive website that provides an efficient source of resources and convenience for our every -day lives. We can easily discover, share and create a new world.
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>SUPPORT</dt>
-                    <dd>Premium Support</dd>
-                    <dd>Get Started</dd>
-                    <dd>Partners</dd>
-                </dl>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>Help Center</dt>
-                    <dd>Help Center</dd>
-                    <dd>Contact Us</dd>
-                </dl>
-            </div>
-        </div>
-        <div class="row copyright">
-            <div class="col-md-12">
-                <p class="text-center">&copy; 2018 NewWorld. All rights reserved.</p>
-            </div>
-        </div>
+        <include file = "./World/Index/View/Public/footer.html"/>
     </footer>
     <!--foot end 底部信息-->
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
@@ -385,56 +356,21 @@
 </body>
 
 <script>
-
-    function loginout() {
-
-        $.ajax({
-            type:"post",
-            url:"{:U('Index/Ajax/ajax_loginout')}",
-            data:{
-
-            },
-            dataType:"json",
-            async:false,
-            success: function(data){
-                if (data!=null&&data!="") {
-                    if (data.str == 1) {
-                        layer.msg(data.msg,{
-                                time:1500,
-                                icon:1,
-                            },function () {
-                                location.reload();
-                            }
-                        );
-                    }else{
-                        layer.msg(data.msg,{
-                                time:1500,
-                                icon:2,
-                            }
-                        );
-                    }
-
-                }else{
-                    layer.msg('请求错误!',{
-                            time:1500,
-                            icon:2,
-                        }
-                    );
+    function gocreate() {
+        var aa = "{$userid}";
+        if(aa){
+            window.location.href="{:U('Index/Jobs/createWork')}";
+        }else{
+            layer.msg("请先登录",{
+                    time:1500,
+                },function(){
+                    window.location.href="{:U('Index/Login/login')}";
+                    //window.location.href="{:U('Index/Login/login')}";
                 }
-
-            },
-            error:function(XMLHttpRequest, textStatus, errorThrown){
-
-                layer.msg('请求失败!',{
-                        time:1500,
-                        icon:2,
-                    }
-                );
-            }
-
-        })
-
+            );
+        }
     }
+
 </script>
 
 </html>

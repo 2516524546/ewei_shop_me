@@ -117,6 +117,49 @@ class JobsController extends CommonController {
         $this->display();
     }
 
+    /*
+    创建工作群
+     */
+    public function createWork(){
+
+        if (!$this->userid){
+            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
+            Header("Location:".U('Index/Login/login'));
+            exit();
+        }
+        $firstmodel = new FirstMarkModel();
+        $secondmodel = new SecondMarkModel();
+
+        $data1 = array();
+        $firstlist = $firstmodel->findlist('first_mark_mid = '.$this->modeleid.' and first_mark_type = 1','firsth_mark_sort');
+        foreach ($firstlist as $firthkey =>$first){
+
+            $data1[$firthkey] = $first;
+            $secondlist = $secondmodel->findlist('second_mark_fid = '.$first['first_mark_id'],'second_mark_sort');
+
+            $data1[$firthkey]['message'] = $secondlist;
+
+        }
+
+        $data2 = array();
+        $firstlist = $firstmodel->findlist('first_mark_mid = '.$this->modeleid.' and first_mark_type = 2','firsth_mark_sort');
+        foreach ($firstlist as $firthkey =>$first){
+
+            $data2[$firthkey] = $first;
+            $secondlist = $secondmodel->findlist('second_mark_fid = '.$first['first_mark_id'],'second_mark_sort');
+
+            $data2[$firthkey]['message'] = $secondlist;
+
+        }
+
+        $this->assign(array(
+            'data1' => $data1,
+            'data2' => $data2,
+
+        ));
+        $this->display();
+    }
+
 
     /*
     工作群详情
