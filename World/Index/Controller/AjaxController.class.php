@@ -1120,7 +1120,7 @@ public function ajax_donationpay()
 
     }
 
-    //创建学术群
+    //创建生活群
     public function ajax_createlife(){
 
         if (IS_POST) {

@@ -472,6 +472,7 @@
         }
     }
 
+    //查询帖子，目前弃用
     function havenote(type,order,limit1,limit2) {
 
         $.ajax({
@@ -573,7 +574,8 @@
         })
 
     }
-    
+
+    //查询问答，目前弃用
     function havequestion(type,order,limit1,limit2) {
 
         $.ajax({
@@ -675,6 +677,7 @@
         })
     }
 
+    //查资源，目前弃用
     function haveresource(type,order,limit1,limit2) {
 
         $.ajax({
@@ -802,7 +805,7 @@
                         for (var i = 0; i < list.msg.length; i++) {
 
                             message += '<tr><td>';
-                            var url = '#';
+                            var url = '{:U("Index/Rnterst/postDetails")}&cid={$cid}&nid='+list.msg[i].note_id;
                             message += '<a href="'+url+'" style="text-decoration: none;">';
                             message += '<span class="ImgBox">'
                             var src = '__PUBLIC__/Web/web/img/01_shouye/UserPic.png'
