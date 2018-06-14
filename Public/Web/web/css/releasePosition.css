@@ -48,7 +48,7 @@
     border-radius: 2px;
     box-sizing: border-box;
     text-align: left; */
-    width: auto;
+    width: 20%;
     padding: 8px 15px;
     height: 38px;
     line-height: 20px;
@@ -89,6 +89,7 @@
 .label_img{
     width: 23px;
     height: 20px;
+    margin:0 auto;
     overflow: hidden;
 }
 
@@ -96,3 +97,4 @@
     width: 100%;
     height: 100%;
 }
+
