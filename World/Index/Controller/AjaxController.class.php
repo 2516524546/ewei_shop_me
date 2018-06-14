@@ -1411,7 +1411,7 @@ public function ajax_donationpay()
                 $order = $this->post('order');
                 $limit1 = $this->post('limit1');
                 $limit2 = $this->post('limit2');
-                $where = 'crowd_mid = '.$this->post('mid');
+                $where = 'crowd_mid = '.$this->post('mid').' and crowd_type = 1';
 
                 if (isset($_POST['crowd_name'])&&$this->post('crowd_name')!=''){
 
@@ -1450,6 +1450,83 @@ public function ajax_donationpay()
         }
 
 
+    }
+
+    //获取社交群
+    public function ajax_crowd_two_list(){
+
+        if (IS_POST) {
+
+            if (!isset($_POST['mid']) || $this->post('mid') == 0) {
+
+                die(json_encode(array('str' => 3, 'msg' => 'mid不存在')));
+            } else if (!isset($_POST['order']) || $this->post('order') == '') {
+
+                die(json_encode(array('str' => 4, 'msg' => 'order不存在')));
+            } else if (!isset($_POST['limit1']) || $this->post('limit1') <0) {
+
+                die(json_encode(array('str' => 5, 'msg' => 'limit1不存在')));
+            } else if (!isset($_POST['limit2']) || $this->post('limit2') <0) {
+
+                die(json_encode(array('str' => 6, 'msg' => 'limit2不存在')));
+            } else {
+
+                $order = $this->post('order');
+                $limit1 = $this->post('limit1');
+                $limit2 = $this->post('limit2');
+                $where = 'crowd_mid = '.$this->post('mid').' and crowd_type = 2';
+
+                if (isset($_POST['crowd_name'])&&$this->post('crowd_name')!=''){
+
+                    $where.=" and crowd_name like '%".$this->post('crowd_name')."%'";
+                }
+                if (isset($_POST['second'])&&$this->post('second')!=''){
+
+                    $where.=" and crowd_secondmarks like '%".$this->post('second')."%'";
+                }
+                if (isset($_POST['third'])&&$this->post('third')!=''){
+
+                    $where.=" and crowd_thirdmarks like '%".$this->post('third')."%'";
+                }
+                if (isset($_POST['four'])&&$this->post('four')!=''){
+
+                    $where.=" and crowd_fourthmarks like '%".$this->post('four')."%'";
+                }
+                if (isset($_POST['crowd_school'])&&$this->post('crowd_school')!=''){
+
+                    $where.=" and crowd_scool like '%".$this->post('crowd_school')."%'";
+                }
+                if (isset($_POST['crowd_schooltime'])&&$this->post('crowd_schooltime')!=''){
+
+                    $where.=" and crowd_scooltime like '%".$this->post('crowd_schooltime')."%'";
+                }
+                if (isset($_POST['crowd_profession'])&&$this->post('crowd_profession')!=''){
+
+                    $where.=" and crowd_profession like '%".$this->post('crowd_profession')."%'";
+                }
+                if (isset($_POST['crowd_company'])&&$this->post('crowd_company')!=''){
+
+                    $where.=" and crowd_company like '%".$this->post('crowd_company')."%'";
+                }
+
+                $crowdmodel = new CrowdModel();
+
+                $crowdlist = $crowdmodel->findlist($where,'u_user u on u_crowd.crowd_uid = u.user_id','INNER',$order,'u.user_name,u_crowd.*',$limit1,$limit2);
+                $count = $crowdmodel->findone($where,'','INNER','count(*) num')['num'];
+
+                if ($crowdlist) {
+
+                    die(json_encode(array('str' => 1, 'msg' => $crowdlist,'count'=>$count)));
+                } else {
+
+                    die(json_encode(array('str' => 2,'msg' => '暂无数据','count'=>$count)));
+                }
+
+            }
+        } else {
+
+            die(json_encode(array('str' => 0, 'msg' => '存在非法字符')));
+        }
     }
 
     //发布工作

@@ -406,7 +406,7 @@
                         var message = '';
                         for (var i = 0; i < list.msg.length; i++) {
                             message +='<div class="col-xs-8 col-sm-6"><div class="UserBox">';
-                            var url="{:U('Index/Rnterst/groupDetails')}"+list.msg[i].crowd_id;
+                            var url="{:U('Index/Academic/academicDetails')}"+list.msg[i].crowd_id;
                             message += '<a href="'+url+'" class="UserLink">';
                             message += '<img src="./Uploads/'+list.msg[i].crowd_icon+'" class="img-circle userimg">';
                             message += '<h4 class="UserTitle">'+list.msg[i].crowd_name+'</h4>'
@@ -432,15 +432,19 @@
                             $("#crowdlist").html(crowdlisthtml);
                         }
                     }else if (list.str == 2){
-                        page = 1;
-                        c = 1;
-                        count = 0;
-                        $("#crowdlist").html('');
-                        layer.msg(list.msg,{
-                                time:1500,
-                                icon:2,
-                            }
-                        );
+                        if (type == 1) {
+                            page = 1;
+                            c = 1;
+                            count = list.count;
+                            $("#crowdlist").html('');
+                            layer.msg(list.msg, {
+                                    time: 1500,
+                                    icon: 2,
+                                }
+                            );
+                        }else{
+
+                        }
                     }else{
                         layer.msg(list.msg,{
                                 time:1500,
