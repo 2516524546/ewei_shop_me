@@ -3,6 +3,7 @@
 namespace Index\Controller;
 
 use Index\Model\CommodityModel;
+use Index\Model\CrowdConditionModel;
 use Index\Model\CrowdMemberModel;
 use Index\Model\CrowdModel;
 use Index\Model\DonationModel;
@@ -1321,6 +1322,7 @@ public function ajax_donationpay()
 
                 $firstdata = array(
                     'crowd_mid' => 4,
+                    'crowd_type' => 2,
                     'crowd_uid' => $this->userid,
                     'crowd_name' => $this->post('crowd_name'),
                     'crowd_icon' => $this->post('crowd_icon'),
@@ -1341,6 +1343,7 @@ public function ajax_donationpay()
 
                 $crowdmodel = new CrowdModel();
                 $crowdmembermodel = new CrowdMemberModel();
+                $conditionmodel = new CrowdConditionModel();
 
                 $crowdmodel->startTrans();
                 try{
@@ -1352,6 +1355,18 @@ public function ajax_donationpay()
                         'crowd_member_logintime'=>date('Y-m-d H:i:s',time()),
                     );
                     $memberres = $crowdmembermodel->add($memberdata);
+
+                    $conditiondata = array(
+                        'crowd_condition_cid' => $crowdres,
+                        'crowd_condition_university' => $this->post('university'),
+                        'crowd_condition_college' => $this->post('college'),
+                        'crowd_condition_specialty' => $this->post('specialty'),
+                        'crowd_condition_graduatetime' => $this->post('graduatetime'),
+                        'crowd_condition_higheducation' => $this->post('higheducation'),
+                        'crowd_condition_maxpeople' => $this->post('maxpeople'),
+                        'crowd_condition_joinmoney' => $this->post('joinmoney'),
+                    );
+                    $conditionmodel = $conditionmodel->add($conditiondata);
 
                     if ($crowdres&&$memberres) {
                         $crowdmodel->commit();
