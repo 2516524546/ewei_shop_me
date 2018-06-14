@@ -476,15 +476,19 @@
                             $("#crowdlist").html(crowdlisthtml);
                         }
                     }else if (list.str == 2){
-                        page = 1;
-                        c = 1;
-                        count = 0;
-                        $("#crowdlist").html('');
-                        layer.msg(list.msg,{
-                                time:1500,
-                                icon:2,
-                            }
-                        );
+                        if (type == 1) {
+                            page = 1;
+                            c = 1;
+                            count = list.count;
+                            $("#crowdlist").html('');
+                            layer.msg(list.msg, {
+                                    time: 1500,
+                                    icon: 2,
+                                }
+                            );
+                        }else{
+
+                        }
                     }else{
                         layer.msg(list.msg,{
                                 time:1500,

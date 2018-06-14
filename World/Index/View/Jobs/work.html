@@ -79,91 +79,65 @@
     </div>
     <!-- Carousel advertising end 轮播广告 -->
     <!-- search sataer 搜索 -->
-    <form class="layui-form" action="">
+    <form class="layui-form" action="" id="ff">
         <div class="container SearchContainer">
             <div class="row">
                 <div class="col-md-5">
 
-                    <div class="SelectionTypeContainer">
-                        <label class="layui-form-label">
-                            <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_location.png"></span>
-                        </label>
-                        <div class="layui-input-block">
-                            <select name="city" lay-verify="required">
-                                <option>Choose a location</option>
-                                <option>Washington</option>
-                                <option>Washington</option>
-                                <option>Washington</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="SelectionTypeContainer">
-                        <label class="layui-form-label">
-                            <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_industry.png"></span>
-                        </label>
-                        <div class="layui-input-block">
-                            <select name="city" lay-verify="required">
-                                <option>Choose industry</option>
-                                <option>Investment</option>
-                                <option>Investment</option>
-                            </select>
-                        </div>
-                    </div>
+
                     <div class="SelectionTypeContainer">
                         <label class="layui-form-label">
                             <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png"></span>
                         </label>
                         <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
                             <ul class="layui-tab-title" style="border: none;">
-                                <li class="layui-this">Ordinary group</li>
-                                <li>Social network group</li>
+                                <li class="layui-this" onclick="refrom(1)">Ordinary group</li>
+                                <li onclick="refrom(2)">Social network group</li>
                             </ul>
                             <div class="layui-tab-content">
                                 <div class="layui-tab-item layui-show">
-                                    <div class="SelectionTypeContainer" style="margin-left: -10px;">
+                                    <foreach name="data1" item="first1" key="first1key">
+                                    <div class="SelectionTypeContainer" style="margin-left: -10px;" id="1first{$first1['first_mark_id']}">
                                         <label class="layui-form-label">
-                                            <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_country.png"></span>
+                                            <span><img src="__PUBLIC__/Web/web/img/04_jobs/<if condition='$first1key == 0'>jobs_create_icon_country.png<elseif condition='$first1key == 1'/>jobs_create_icon_location.png<elseif condition='$first1key == 2'/>jobs_create_icon_industry.png<else />jobs_create_icon_school.png</if>"></span>
                                         </label>
                                         <div class="layui-input-block">
-                                            <select name="city" lay-verify="required">
-                                                <option>Choose a country</option>
-                                                <option>China</option>
-                                                <option>China</option>
+                                            <input type="hidden" value="" id="1in{$first1['first_mark_id']}">
+                                            <select name="1second" lay-verify="required" lay-filter="1firstselect" title="0">
+                                                <option value="">Choose a <if condition='$first1key == 0'>country<elseif condition='$first1key == 1'/>location<elseif condition='$first1key == 2'/>industry<else />school</if></option>
+                                                <foreach name="first1['message']" item = "second1" key="second1key">
+                                                <option value="{$second1['second_mark_id']}">{$second1['second_mark_name']}</option>
+                                                </foreach>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="SelectionTypeContainer" style="margin-left: -10px;">
-                                        <label class="layui-form-label">
-                                            <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png"></span>
-                                        </label>
-                                        <div class="layui-input-block">
-                                            <select name="city" lay-verify="required">
-                                                <option>Choose a school</option>
-                                                <option>Harvard</option>
-                                                <option>Harvard</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                    </foreach>
+
                                 </div>
                                 <div class="layui-tab-item">
-                                    <div class="SelectionTypeContainer" style="margin-left: -10px;">
+                                    <foreach name="data2" item="first2" key="first2key">
+                                    <div class="SelectionTypeContainer" style="margin-left: -10px;" id="2first{$first2['first_mark_id']}">
                                         <label class="layui-form-label">
-                                            <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_major.png"></span>
+                                            <span><img src="__PUBLIC__/Web/web/img/04_jobs/<if condition='$first2key == 0'>jobs_create_icon_location.png<elseif condition='$first2key == 1'/>jobs_create_icon_industry.png<else />jobs_create_icon_major.png</if>"></span>
                                         </label>
                                         <div class="layui-input-block">
-                                            <select name="city" lay-verify="required">
-                                                <option>Choose the major</option>
-                                                <option>1</option>
-                                                <option>2</option>
+                                            <input type="hidden" value="" id="2in{$first2['first_mark_id']}">
+                                            <select name="2second" lay-verify="required" lay-filter="2firstselect" title="0">
+                                                <option value="">Choose a <if condition='$first2key == 0'>location<elseif condition='$first2key == 1'/>industry<else />major</if></option>
+                                                <foreach name="first2['message']" item = "second2" key="second2key">
+                                                    <option value="{$second2['second_mark_id']}">{$second2['second_mark_name']}</option>
+                                                </foreach>
                                             </select>
                                         </div>
                                     </div>
+                                    </foreach>
+
                                     <div class="SelectionTypeContainer" style="margin-left: -10px;">
                                         <label class="layui-form-label">
                                             <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png"></span>
                                         </label>
                                         <div class="layui-input-block">
-                                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter a graduate school" class="layui-input">
+                                            <input type="text" name="title" lay-verify="title" autocomplete="off" id="school" placeholder="Enter a graduate school" class="layui-input">
                                         </div>
                                     </div>
                                     <div class="SelectionTypeContainer" style="margin-left: -10px;">
@@ -171,7 +145,7 @@
                                             <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_sy_icon_07.png"></span>
                                         </label>
                                         <div class="layui-input-block">
-                                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Graduation time  xx/xx/xxxx" class="layui-input">
+                                            <input type="text" name="title" lay-verify="title" autocomplete="off" id="schooltime" placeholder="Graduation time  xx/xx/xxxx" class="layui-input">
                                         </div>
                                     </div>
                                     <div class="SelectionTypeContainer" style="margin-left: -10px;">
@@ -179,7 +153,7 @@
                                             <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_jobtitle.png"></span>
                                         </label>
                                         <div class="layui-input-block">
-                                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the job title" class="layui-input">
+                                            <input type="text" name="title" lay-verify="title" autocomplete="off" id="job" placeholder="Enter the job title" class="layui-input">
                                         </div>
                                     </div>
                                     <div class="SelectionTypeContainer" style="margin-left: -10px;">
@@ -187,7 +161,7 @@
                                             <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_company.png"></span>
                                         </label>
                                         <div class="layui-input-block">
-                                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the working company" class="layui-input">
+                                            <input type="text" name="title" lay-verify="title" autocomplete="off" id="company" placeholder="Enter the working company" class="layui-input">
                                         </div>
                                     </div>
                                 </div>
@@ -198,7 +172,7 @@
                 <div class="col-md-5">
                     <div class="SelectionContainer">
                         <input type="text" class="layui-input" id="Selectionform">
-                        <a href="#" id="SelectionIcon"><img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png"></a>
+                        <a href="javascript:void(0)" id="SelectionIcon" onclick="updata_work_list(4,'crowd_creattime desc',0,10,1)"><img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png"></a>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -226,121 +200,31 @@
         <div class="row">
             <div class="col-md-10">
                 <h4 class="text-center GroupTitle">Group List</h4>
-                <div class="row">
-                    <div class="col-xs-8 col-sm-6">
-                        <div class="UserBox">
-                            <a href="{:U('Index/Jobs/groupDetails')}" class="UserLink">
-                                <div class="UserBox_img">
-									<img src="__PUBLIC__/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
-                                </div>
-									<h4 class="UserTitle">Travel group</h4>
-									<p class="UserFollow">
-										<img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="" /> &nbsp;&nbsp;80
-									</p>
-									<p class="UserName">
-										Creator : Jess J <span class="UserTime">01/20/2018</span>
-									</p>
-									<p class="UserContent">
-										Introduction : Long life, I have accompanied you. The world is so big, human beings are so small, but even so...
-									</p>
-								</a>
-                        </div>
-                    </div>
-                    <div class="col-xs-4 col-sm-6">
-                        <div class="UserBox">
-                            <a href="{:U('Index/Jobs/groupDetails')}" class="UserLink">
-                                <div class="UserBox_img">
-									<img src="__PUBLIC__/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
-                                </div>
-									<h4 class="UserTitle">Travel group</h4>
-									<p class="UserFollow">
-										<img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="" /> &nbsp;&nbsp;80
-									</p>
-									<p class="UserName">
-										Creator : Jess J <span class="UserTime">01/20/2018</span>
-									</p>
-									<p class="UserContent">
-										Introduction : Long life, I have accompanied you. The world is so big, human beings are so small, but even so...
-									</p>
-								</a>
-                        </div>
-                    </div>
-                    <div class="col-xs-8 col-sm-6">
-                        <div class="UserBox">
-                            <a href="{:U('Index/Jobs/groupDetails')}" class="UserLink">
+                <div class="row" id="crowdlist">
+                    <foreach name="crodlist" item="crod" key="crodkey">
+                        <div class="col-xs-8 col-sm-6">
+                            <div class="UserBox">
+                                <a href="{:U('Index/Jobs/groupDetails')}&cid={$crod['crowd_id']}" class="UserLink">
                                     <div class="UserBox_img">
-                                        <img src="__PUBLIC__/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
+                                        <img src="./Uploads/{$crod['crowd_icon']}" class="img-circle userimg">
                                     </div>
-									<h4 class="UserTitle">Travel group</h4>
-									<p class="UserFollow">
-										<img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="" /> &nbsp;&nbsp;80
-									</p>
-									<p class="UserName">
-										Creator : Jess J <span class="UserTime">01/20/2018</span>
-									</p>
-									<p class="UserContent">
-										Introduction : Long life, I have accompanied you. The world is so big, human beings are so small, but even so...
-									</p>
-								</a>
+                                    <h4 class="UserTitle">{$crod['crowd_name']}</h4>
+                                    <p class="UserFollow">
+                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">
+                                        &nbsp;&nbsp;{$crod['crowd_peoplenum']}
+                                    </p>
+                                    <p class="UserName">
+                                        Creator : {$crod['user_name']} <span class="UserTime">{$crod['crowd_creattime']}</span>
+                                    </p>
+                                    <p class="UserContent">
+                                        {$crod['crowd_intro']}
+                                    </p>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xs-4 col-sm-6">
-                        <div class="UserBox">
-                            <a href="{:U('Index/Jobs/groupDetails')}" class="UserLink">
-                                    <div class="UserBox_img">
-                                        <img src="__PUBLIC__/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
-                                    </div>
-									<h4 class="UserTitle">Travel group</h4>
-									<p class="UserFollow">
-										<img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="" /> &nbsp;&nbsp;80
-									</p>
-									<p class="UserName">
-										Creator : Jess J <span class="UserTime">01/20/2018</span>
-									</p>
-									<p class="UserContent">
-										Introduction : Long life, I have accompanied you. The world is so big, human beings are so small, but even so...
-									</p>
-								</a>
-                        </div>
-                    </div>
-                    <div class="col-xs-8 col-sm-6">
-                        <div class="UserBox">
-                            <a href="{:U('Index/Jobs/groupDetails')}" class="UserLink">
-                                    <div class="UserBox_img">
-                                        <img src="__PUBLIC__/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
-                                    </div>
-									<h4 class="UserTitle">Travel group</h4>
-									<p class="UserFollow">
-										<img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="" /> &nbsp;&nbsp;80
-									</p>
-									<p class="UserName">
-										Creator : Jess J <span class="UserTime">01/20/2018</span>
-									</p>
-									<p class="UserContent">
-										Introduction : Long life, I have accompanied you. The world is so big, human beings are so small, but even so...
-									</p>
-								</a>
-                        </div>
-                    </div>
-                    <div class="col-xs-4 col-sm-6">
-                        <div class="UserBox">
-                            <a href="{:U('Index/Jobs/groupDetails')}" class="UserLink">
-                                    <div class="UserBox_img">
-                                        <img src="__PUBLIC__/Web/web/img/02_interest/user.png" alt="" class="img-circle userimg" />
-                                    </div>
-									<h4 class="UserTitle">Travel group</h4>
-									<p class="UserFollow">
-										<img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="" /> &nbsp;&nbsp;80
-									</p>
-									<p class="UserName">
-										Creator : Jess J <span class="UserTime">01/20/2018</span>
-									</p>
-									<p class="UserContent">
-										Introduction : Long life, I have accompanied you. The world is so big, human beings are so small, but even so...
-									</p>
-								</a>
-                        </div>
-                    </div>
+                    </foreach>
+
+
                 </div>
             </div>
             <div class="col-md-2">
@@ -376,6 +260,7 @@
 </body>
 
 <script>
+
     function gocreate() {
         var aa = "{$userid}";
         if(aa){
@@ -390,6 +275,578 @@
             );
         }
     }
+
+    layui.use('form', function(){
+        var form = layui.form;
+
+        form.on('select(1firstselect)', function(firstdata){
+            //父级id
+            //data.othis.parent().parent().attr('id')
+            $.ajax({
+                type:"post",
+                url:"{:U('Index/Ajax/ajax_secondmarkone')}",
+                data:{
+                    secondid:firstdata.value,
+                },
+                dataType:"json",
+                success: function(data){
+
+                    if (data!=null&&data!="") {
+                        /*console.log(firstdata.elem.title)
+                        firstdata.elem.title=3*/
+                        //alert(data.str)
+                        if (data.str == 1) {
+
+                            if ( $("#1second"+data.firstid).length > 0 ) {
+
+                                var message = '<div class="layui-input-block" ><select name="1third" lay-verify="required" lay-filter="1secondselect"><option value="">choose</option>';
+
+                                for (var i = 0; i < data.msg.length; i++) {
+
+                                    message +='<option value="'+data.msg[i]['third_mark_id']+'">';
+                                    message +=data.msg[i]['third_mark_name']+'</option>';
+
+                                }
+                                message +='</select></div>';
+                                $("#1second"+data.firstid).html(message)
+                            }else{
+
+                                var message = '<div id="1second'+data.firstid+'" class="SelectionTypeContainer" style="margin-bottom: 10px;"><div class="layui-input-block" ><select name="1third" lay-verify="required" lay-filter="1secondselect"><option value="">choose</option>';
+                                for (var i = 0; i < data.msg.length; i++) {
+
+                                    message +='<option value="'+data.msg[i]['third_mark_id']+'">';
+                                    message +=data.msg[i]['third_mark_name']+'</option>';
+
+                                }
+                                message +='</select></div></div>';
+
+                                firstdata.othis.parent().parent().after(message);
+                            }
+                            firstdata.elem.title=data.firstid
+                            form.render()
+                            rmfour($('#1in'+data.firstid).val())
+                            $('#1in'+data.firstid).val(firstdata.value)
+                            createthird();
+                        }else{
+
+                            if ($("#1second"+ firstdata.elem.title).length  > 0) {
+                                $("#1second" + firstdata.elem.title).remove();
+                            }
+                            rmfour($('#1in'+firstdata.elem.title).val())
+
+
+                        }
+
+                    }
+                }
+
+            })
+
+        });
+
+        form.on('select(2firstselect)', function(firstdata){
+            //父级id
+            //data.othis.parent().parent().attr('id')
+            $.ajax({
+                type:"post",
+                url:"{:U('Index/Ajax/ajax_secondmarkone')}",
+                data:{
+                    secondid:firstdata.value,
+                },
+                dataType:"json",
+                success: function(data){
+
+                    if (data!=null&&data!="") {
+                        /*console.log(firstdata.elem.title)
+                        firstdata.elem.title=3*/
+                        //alert(data.str)
+                        if (data.str == 1) {
+
+                            if ( $("#2second"+data.firstid).length > 0 ) {
+
+                                var message = '<div class="layui-input-block" ><select name="2third" lay-verify="required" lay-filter="2secondselect"><option value="">choose</option>';
+
+                                for (var i = 0; i < data.msg.length; i++) {
+
+                                    message +='<option value="'+data.msg[i]['third_mark_id']+'">';
+                                    message +=data.msg[i]['third_mark_name']+'</option>';
+
+                                }
+                                message +='</select></div>';
+                                $("#2second"+data.firstid).html(message)
+                            }else{
+
+                                var message = '<div id="2second'+data.firstid+'" class="SelectionTypeContainer" style="margin-bottom: 10px;"><div class="layui-input-block" ><select name="2third" lay-verify="required" lay-filter="2secondselect"><option value="">choose</option>';
+                                for (var i = 0; i < data.msg.length; i++) {
+
+                                    message +='<option value="'+data.msg[i]['third_mark_id']+'">';
+                                    message +=data.msg[i]['third_mark_name']+'</option>';
+
+                                }
+                                message +='</select></div></div>';
+
+                                firstdata.othis.parent().parent().after(message);
+                            }
+                            firstdata.elem.title=data.firstid
+                            form.render()
+                            rmfour2($('#2in'+data.firstid).val())
+                            $('#2in'+data.firstid).val(firstdata.value)
+                            createthird2();
+                        }else{
+
+                            if ($("#2second"+ firstdata.elem.title).length  > 0) {
+                                $("#2second" + firstdata.elem.title).remove();
+                            }
+                            rmfour2($('#2in'+firstdata.elem.title).val())
+
+
+                        }
+
+                    }
+                }
+
+            })
+
+        });
+
+    });
+
+    function createthird() {
+
+        layui.use('form', function(){
+            var form = layui.form;
+
+            form.on('select(1secondselect)', function(seconddata){
+
+                $.ajax({
+                    type:"post",
+                    url:"{:U('Index/Ajax/ajax_thirdmarkone')}",
+                    data:{
+                        thirdid:seconddata.value,
+                    },
+                    dataType:"json",
+                    success: function(data){
+                        //console.log(data)
+                        if (data.str == 1) {
+                            if ($("#1third" + data.secondid).length > 0) {
+
+                                var message = '<div class="layui-input-block" ><select name="1four" lay-verify="required" lay-filter="1thirdselect"><option value="">choose</option>';
+
+                                for (var i = 0; i < data.msg.length; i++) {
+
+                                    message += '<option value="' + data.msg[i]['fourth_mark_id'] + '">';
+                                    message += data.msg[i]['fourth_mark_name'] + '</option>';
+
+                                }
+                                message += '</select></div>';
+                                $("#1third" + data.secondid).html(message)
+                            } else {
+
+                                var message = '<div id="1third' + data.secondid + '" class="SelectionTypeContainer" style="margin-bottom: 10px;"><div class="layui-input-block" ><select name="1four" lay-verify="required" lay-filter="1thirdselect"><option value="">choose</option>';
+                                for (var i = 0; i < data.msg.length; i++) {
+
+                                    message += '<option value="' + data.msg[i]['fourth_mark_id'] + '">';
+                                    message += data.msg[i]['fourth_mark_name'] + '</option>';
+
+                                }
+                                message += '</select></div></div>';
+
+                                seconddata.othis.parent().parent().after(message);
+
+                            }
+                            form.render()
+                        }else{
+                            if ($("#1third" + data.secondid).length > 0) {
+                                $("#1third" + data.secondid).remove();
+                            }
+
+                            form.render();
+                        }
+                    }
+
+                })
+
+            });
+        });
+
+    }
+
+    function createthird2() {
+
+        layui.use('form', function(){
+            var form = layui.form;
+
+            form.on('select(2secondselect)', function(seconddata){
+
+                $.ajax({
+                    type:"post",
+                    url:"{:U('Index/Ajax/ajax_thirdmarkone')}",
+                    data:{
+                        thirdid:seconddata.value,
+                    },
+                    dataType:"json",
+                    success: function(data){
+                        //console.log(data)
+                        if (data.str == 1) {
+                            if ($("#2third" + data.secondid).length > 0) {
+
+                                var message = '<div class="layui-input-block" ><select name="2four" lay-verify="required" lay-filter="2thirdselect"><option value="">choose</option>';
+
+                                for (var i = 0; i < data.msg.length; i++) {
+
+                                    message += '<option value="' + data.msg[i]['fourth_mark_id'] + '">';
+                                    message += data.msg[i]['fourth_mark_name'] + '</option>';
+
+                                }
+                                message += '</select></div>';
+                                $("#2third" + data.secondid).html(message)
+                            } else {
+
+                                var message = '<div id="2third' + data.secondid + '" class="SelectionTypeContainer" style="margin-bottom: 10px;"><div class="layui-input-block" ><select name="2four" lay-verify="required" lay-filter="2thirdselect"><option value="">choose</option>';
+                                for (var i = 0; i < data.msg.length; i++) {
+
+                                    message += '<option value="' + data.msg[i]['fourth_mark_id'] + '">';
+                                    message += data.msg[i]['fourth_mark_name'] + '</option>';
+
+                                }
+                                message += '</select></div></div>';
+
+                                seconddata.othis.parent().parent().after(message);
+
+                            }
+                            form.render()
+                        }else{
+                            if ($("#2third" + data.secondid).length > 0) {
+                                $("#2third" + data.secondid).remove();
+                            }
+
+                            form.render();
+                        }
+                    }
+
+                })
+
+            });
+        });
+
+    }
+
+    function rmfour(firstid) {
+
+        layui.use('form', function() {
+
+            //console.log($("#1third" + firstid))
+            if ($("#1third" + firstid).length > 0) {
+                $("#1third" + firstid).remove();
+            }
+
+        });
+
+    }
+
+    function rmfour2(firstid) {
+
+        layui.use('form', function() {
+
+            //console.log($("#1third" + firstid))
+            if ($("#2third" + firstid).length > 0) {
+                $("#2third" + firstid).remove();
+            }
+
+        });
+
+    }
+
+
+    var page = 1;
+    var count = {$crowdcount};
+    var c = 1;
+    var a = 1;
+    var crowdtype = 1;
+    //切换群
+    function refrom(num) {
+        $("#ff")[0].reset()
+        crowdtype = num;
+        updata_work_list(4,'crowd_creattime desc',0,10,1)
+    }
+
+    function updata_work_list(mid,order,limit1,limit2,type) {
+
+        if (crowdtype == 1) {
+            var second = ''
+            $("select[name='1second']").each(function (j, item) {
+                if (item.value != '') {
+                    if (second == '') {
+                        second += item.value //输出input 中的 value 值到控制台
+                    } else {
+                        second += ',' + item.value //输出input 中的 value 值到控制台
+                    }
+                }
+            });
+            var third = ''
+            $("select[name='1third']").each(function (j, item) {
+                if (item.value != '') {
+                    if (third == '') {
+                        third += item.value //输出input 中的 value 值到控制台
+                    } else {
+                        third += ',' + item.value //输出input 中的 value 值到控制台
+                    }
+                }
+            });
+            var four = ''
+            $("select[name='1four']").each(function (j, item) {
+                if (item.value != '') {
+                    if (four == '') {
+                        four += item.value //输出input 中的 value 值到控制台
+                    } else {
+                        four += ',' + item.value //输出input 中的 value 值到控制台
+                    }
+                }
+            });
+
+            $.ajax({
+                type: "post",
+                url: "{:U('Index/Ajax/ajax_crowd_list')}",
+                data: {
+                    second: second,
+                    third: third,
+                    four: four,
+                    crowd_name: $("#Selectionform").val(),
+                    mid: mid,
+                    order: order,
+                    limit1: limit1,
+                    limit2: limit2,
+
+                },
+                dataType: "json",
+                async: false,
+                success: function (list) {
+                    console.log(list)
+                    if (list != null && list != "") {
+
+                        if (list.str == 1) {
+
+                            var message = '';
+                            for (var i = 0; i < list.msg.length; i++) {
+                                message += '<div class="col-xs-8 col-sm-6"><div class="UserBox">';
+                                var url = "{:U('Index/Jobs/groupDetails')}&cid=" + list.msg[i].crowd_id;
+                                message += '<a href="' + url + '" class="UserLink">';
+                                message += '<img src="./Uploads/' + list.msg[i].crowd_icon + '" class="img-circle userimg">';
+                                message += '<h4 class="UserTitle">' + list.msg[i].crowd_name + '</h4>'
+                                message += '<p class="UserFollow"><img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">&nbsp;&nbsp;';
+                                message += list.msg[i].crowd_peoplenum + '</p>';
+                                message += '<p class="UserName">Creator : ' + list.msg[i].user_name;
+                                message += '<span class="UserTime">' + list.msg[i].crowd_creattime + '</span></p>';
+                                message += '<p class="UserContent">' + list.msg[i].crowd_intro + '</p>';
+                                message += '</a></div></div>';
+
+                            }
+
+                            if (type == 1) {
+                                page = 1;
+                                c = 1;
+                                count = list.count;
+                                $("#crowdlist").html(message);
+
+                            } else {
+                                c = 1;
+                                var crowdlisthtml = $("#crowdlist").html() + message
+                                $("#crowdlist").html(crowdlisthtml);
+                            }
+                        } else if (list.str == 2) {
+                            if (type == 1) {
+                                page = 1;
+                                c = 1;
+                                count = list.count;
+                                $("#crowdlist").html('');
+                                layer.msg(list.msg, {
+                                        time: 1500,
+                                        icon: 2,
+                                    }
+                                );
+                            }else{
+
+                            }
+                        } else {
+                            layer.msg(list.msg, {
+                                    time: 1500,
+                                    icon: 2,
+                                }
+                            );
+
+                        }
+                    } else {
+                        layer.msg('请求错误!', {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    layer.msg('请求失败!', {
+                            time: 1500,
+                            icon: 2,
+                        }
+                    );
+                }
+
+            })
+        }else{
+
+            var second = ''
+            $("select[name='2second']").each(function (j, item) {
+                if (item.value != '') {
+                    if (second == '') {
+                        second += item.value //输出input 中的 value 值到控制台
+                    } else {
+                        second += ',' + item.value //输出input 中的 value 值到控制台
+                    }
+                }
+            });
+            var third = ''
+            $("select[name='2third']").each(function (j, item) {
+                if (item.value != '') {
+                    if (third == '') {
+                        third += item.value //输出input 中的 value 值到控制台
+                    } else {
+                        third += ',' + item.value //输出input 中的 value 值到控制台
+                    }
+                }
+            });
+            var four = ''
+            $("select[name='2four']").each(function (j, item) {
+                if (item.value != '') {
+                    if (four == '') {
+                        four += item.value //输出input 中的 value 值到控制台
+                    } else {
+                        four += ',' + item.value //输出input 中的 value 值到控制台
+                    }
+                }
+            });
+
+            $.ajax({
+                type: "post",
+                url: "{:U('Index/Ajax/ajax_crowd_two_list')}",
+                data: {
+                    second: second,
+                    third: third,
+                    four: four,
+                    crowd_name: $("#Selectionform").val(),
+                    crowd_school: $("#school").val(),
+                    crowd_schooltime: $("#schooltime").val(),
+                    crowd_profession: $("#job").val(),
+                    crowd_company: $("#company").val(),
+                    mid: mid,
+                    order: order,
+                    limit1: limit1,
+                    limit2: limit2,
+
+                },
+                dataType: "json",
+                async: false,
+                success: function (list) {
+                    console.log(list)
+                    if (list != null && list != "") {
+
+                        if (list.str == 1) {
+
+                            var message = '';
+                            for (var i = 0; i < list.msg.length; i++) {
+                                message += '<div class="col-xs-8 col-sm-6"><div class="UserBox">';
+                                var url = "{:U('Index/Jobs/groupDetails')}&cid=" + list.msg[i].crowd_id;
+                                message += '<a href="' + url + '" class="UserLink">';
+                                message += '<img src="./Uploads/' + list.msg[i].crowd_icon + '" class="img-circle userimg">';
+                                message += '<h4 class="UserTitle">' + list.msg[i].crowd_name + '</h4>'
+                                message += '<p class="UserFollow"><img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">&nbsp;&nbsp;';
+                                message += list.msg[i].crowd_peoplenum + '</p>';
+                                message += '<p class="UserName">Creator : ' + list.msg[i].user_name;
+                                message += '<span class="UserTime">' + list.msg[i].crowd_creattime + '</span></p>';
+                                message += '<p class="UserContent">' + list.msg[i].crowd_intro + '</p>';
+                                message += '</a></div></div>';
+
+                            }
+
+                            if (type == 1) {
+                                page = 1;
+                                c = 1;
+                                count = list.count;
+                                $("#crowdlist").html(message);
+
+                            } else {
+                                c = 1;
+                                var crowdlisthtml = $("#crowdlist").html() + message
+                                $("#crowdlist").html(crowdlisthtml);
+                            }
+                        } else if (list.str == 2) {
+                            if (type == 1) {
+                                page = 1;
+                                c = 1;
+                                count = list.count;
+                                $("#crowdlist").html('');
+                                layer.msg(list.msg, {
+                                        time: 1500,
+                                        icon: 2,
+                                    }
+                                );
+                            }else{
+
+                            }
+                        } else {
+                            layer.msg(list.msg, {
+                                    time: 1500,
+                                    icon: 2,
+                                }
+                            );
+
+                        }
+                    } else {
+                        layer.msg('请求错误!', {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    layer.msg('请求失败!', {
+                            time: 1500,
+                            icon: 2,
+                        }
+                    );
+                }
+
+            })
+
+        }
+
+
+    }
+
+    $(window).scroll(function () {
+        var scrollTop = $(document).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        var gocheng =parseInt(scrollTop)+parseInt(windowHeight);
+
+        if (gocheng>(scrollHeight-200)) {
+
+                if (c == a) {
+                    var limit1 = page * 10;
+                    c = 2;
+                    if (limit1 < count) {
+
+                        updata_work_list(4, 'crowd_creattime desc', limit1, 10, 2);
+                        page += 1;
+                    }
+                }
+
+        }
+    })
 
 </script>
 

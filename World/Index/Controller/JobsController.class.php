@@ -35,20 +35,31 @@ class JobsController extends CommonController {
         $secondmodel = new SecondMarkModel();
         $crodmodel = new CrowdModel();
         $firstlist = $firstmodel->findlist('first_mark_mid = '.$this->modeleid.' and first_mark_type = 1','firsth_mark_sort');
-        $data = array();
+        $data1 = array();
         foreach ($firstlist as $firthkey =>$first){
 
-            $data[$firthkey] = $first;
+            $data1[$firthkey] = $first;
             $secondlist = $secondmodel->findlist('second_mark_fid = '.$first['first_mark_id'],'second_mark_sort');
-            $data[$firthkey]['message'] = $secondlist;
+            $data1[$firthkey]['message'] = $secondlist;
         }
 
-        $crodlist = $crodmodel->findlist('crowd_mid = '.$this->modeleid,'u_user u on u_crowd.crowd_uid = u.user_id','INNER','crowd_creattime desc','u.user_name,u_crowd.*');
 
-        $crowdcount = $crodmodel->findone('crowd_mid = '.$this->modeleid,'','','count(*) num')['num'];
+        $firstlist = $firstmodel->findlist('first_mark_mid = '.$this->modeleid.' and first_mark_type = 2','firsth_mark_sort');
+        $data2 = array();
+        foreach ($firstlist as $firthkey =>$first){
+
+            $data2[$firthkey] = $first;
+            $secondlist = $secondmodel->findlist('second_mark_fid = '.$first['first_mark_id'],'second_mark_sort');
+            $data2[$firthkey]['message'] = $secondlist;
+        }
+
+        $crodlist = $crodmodel->findlist('crowd_mid = '.$this->modeleid.' and crowd_type = 1','u_user u on u_crowd.crowd_uid = u.user_id','INNER','crowd_creattime desc','u.user_name,u_crowd.*');
+
+        $crowdcount = $crodmodel->findone('crowd_mid = '.$this->modeleid.' and crowd_type = 1','u_user u on u_crowd.crowd_uid = u.user_id','INNER','count(*) num')['num'];
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
         $this->assign(array(
-            'data' =>$data,
+            'data1' =>$data1,
+            'data2' =>$data2,
             'crodlist'=>$crodlist,
             'crowdcount' => $crowdcount,
         ));
