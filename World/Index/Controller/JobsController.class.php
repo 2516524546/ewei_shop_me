@@ -2,6 +2,7 @@
 namespace Index\Controller;
 use Index\Model\CrowdMemberModel;
 use Index\Model\CrowdModel;
+use Index\Model\CrowdTabModel;
 use Index\Model\FirstMarkModel;
 use Index\Model\NoteModel;
 use Index\Model\QuestionModel;
@@ -321,6 +322,62 @@ class JobsController extends CommonController {
     发布
      */
     public function groupDetailsRelease(){
+
+        if (!isset($_GET['cid'])){
+            Header("Location:".U('Index/Jobs/work'));
+            exit();
+        }
+        if (!$this->userid){
+            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
+            Header("Location:".U('Index/Login/login'));
+            exit();
+        }
+
+        $crowdmodel = new CrowdModel();
+        $crowdone = $crowdmodel->findone('crowd_id = '.$_GET['cid'],'');
+
+        if (!$crowdone){
+            Header("Location:".U('Index/Jobs/work'));
+            exit();
+        }
+
+        if ($crowdone['crowd_mid']!=$this->modeleid){
+            if ($crowdone['crowd_mid']==1){
+                Header("Location:".U('Index/Index/index'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==2){
+                Header("Location:".U('Index/Rnterst/interest'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==3){
+                Header("Location:".U('Index/Academic/academic'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==4){
+                Header("Location:".U('Index/Jobs/work'));
+                exit();
+            }
+            if ($crowdone['crowd_mid']==5){
+                Header("Location:".U('Index/Life/life'));
+                exit();
+            }
+        }
+
+        $crowdmembermodel = new CrowdMemberModel();
+        $memberone = $crowdmembermodel->findone('crowd_member_cid = '.$_GET['cid'].' and crowd_member_uid = '.$this->userid);
+        if (!$memberone){
+            Header("Location:".U('Index/Jobs/groupDetails').'&cid = '.$_GET['cid']);
+            exit();
+        }
+
+        $crowdtabmodel = new CrowdTabModel();
+        $tablist = $crowdtabmodel->findlist('','crowd_tab_sort');
+        $this->assign(array(
+            'tablist' => $tablist,
+            'cid' => $_GET['cid'],
+            'crowdone' => $crowdone,
+        ));
 
     	$this->display();
     }
