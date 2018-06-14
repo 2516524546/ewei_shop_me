@@ -5,8 +5,10 @@ layui.use(['laypage', 'layer'], function() {
     //完整功能
     laypage.render({
         elem: 'NumberOfPages',
-        count: 78,
-        layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+        count: 78, 
+        prev: 'Previous',
+        next: 'Next',
+        layout: [ 'prev', 'page', 'next','count', 'skip'],
         jump: function(obj) {
             console.log(obj)
         }
