@@ -1275,6 +1275,105 @@ public function ajax_donationpay()
         }
     }
 
+    //创建社交网络群
+    public function ajax_createworktwo(){
+
+        if (IS_POST) {
+
+            if (!isset($_POST['crowd_icon']) || $this->post('crowd_icon') == '') {
+
+                die(json_encode(array('str' => 3, 'msg' => '不存在图标')));
+            } else if (!isset($_POST['crowd_name']) || $this->post('crowd_name') == '') {
+
+                die(json_encode(array('str' => 4, 'msg' => '请输入群名称')));
+            } else if (!isset($_POST['crowd_scool']) || $this->post('crowd_scool') == '') {
+
+                die(json_encode(array('str' => 5, 'msg' => '请输入毕业院校')));
+            } else if (!isset($_POST['crowd_schooltime']) || $this->post('crowd_schooltime') == '') {
+
+                die(json_encode(array('str' => 6, 'msg' => '请输入毕业时间')));
+            } else if (!isset($_POST['crowd_profession']) || $this->post('crowd_profession') == '') {
+
+                die(json_encode(array('str' => 7, 'msg' => '请输入职业岗位')));
+            } else if (!isset($_POST['crowd_company']) || $this->post('crowd_company') == '') {
+
+                die(json_encode(array('str' => 8, 'msg' => '请输入在职公司')));
+            } else if (!isset($_POST['crowd_help']) || $this->post('crowd_help') == '') {
+
+                die(json_encode(array('str' => 9, 'msg' => '请输入能提供的帮助')));
+            } else if (!isset($_POST['crowd_intro']) || $this->post('crowd_intro') == '') {
+
+                die(json_encode(array('str' => 10, 'msg' => '请输入群简介')));
+            } else {
+
+                $fistmodel = new FirstMarkModel();
+                $firstlist = $fistmodel->findlist('first_mark_mid = 5 and first_mark_type = 1','firsth_mark_sort');
+                $firststr = '';
+                foreach ($firstlist as $key =>$first){
+
+                    if ($firststr==''){
+                        $firststr .=$first['first_mark_id'];
+                    }else{
+                        $firststr .=','.$first['first_mark_id'];
+                    }
+
+                }
+
+                $firstdata = array(
+                    'crowd_mid' => 4,
+                    'crowd_uid' => $this->userid,
+                    'crowd_name' => $this->post('crowd_name'),
+                    'crowd_icon' => $this->post('crowd_icon'),
+                    'crowd_intro' => $this->post('crowd_intro'),
+                    'crowd_peoplenum' => 1,
+                    'crowd_firstmarks' => $firststr,
+                    'crowd_secondmarks' => $this->post('second'),
+                    'crowd_thirdmarks' => $this->post('third'),
+                    'crowd_fourthmarks' => $this->post('four'),
+                    'crowd_scool' => $this->post('crowd_scool'),
+                    'crowd_scooltime' => $this->post('crowd_schooltime'),
+                    'crowd_profession' => $this->post('crowd_profession'),
+                    'crowd_company' => $this->post('crowd_company'),
+                    'crowd_help' => $this->post('crowd_help'),
+                    'crowd_creattime' => date('Y-m-d H:i:s',time()),
+
+                );
+
+                $crowdmodel = new CrowdModel();
+                $crowdmembermodel = new CrowdMemberModel();
+
+                $crowdmodel->startTrans();
+                try{
+                    $crowdres = $crowdmodel->add($firstdata);
+                    $memberdata = array(
+                        'crowd_member_cid'=>$crowdres,
+                        'crowd_member_uid'=>$this->userid,
+                        'crowd_member_status'=>2,
+                        'crowd_member_logintime'=>date('Y-m-d H:i:s',time()),
+                    );
+                    $memberres = $crowdmembermodel->add($memberdata);
+
+                    if ($crowdres&&$memberres) {
+                        $crowdmodel->commit();
+                        die(json_encode(array('str' => 1, 'msg' => $crowdres)));
+                    } else {
+                        $crowdmodel->rollback();
+                        die(json_encode(array('str' => 2, 'msg' => '创建失败')));
+                    }
+                }catch (Exception $e){
+                    $crowdmodel->rollback();
+                    die(json_encode(array('str' => 6, 'msg' => '创建失败')));
+                }
+
+            }
+        } else {
+
+            die(json_encode(array('str' => 0, 'msg' => '存在非法字符')));
+        }
+    }
+
+
+
     //获取群列表
     public function ajax_crowd_list(){
 

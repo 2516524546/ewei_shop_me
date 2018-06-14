@@ -57,7 +57,7 @@
                                     </label>
                                     <div class="layui-input-block" id="layui-input-block">
                                         <input type="hidden" value="" id="1in{$first1['first_mark_id']}">
-                                        <select name="1second" lay-verify="required" lay-filter="1firstselect" title="0">
+                                        <select name="1second" lay-filter="1firstselect" title="0">
                                             <option value="">Choose a <if condition='$first1key == 0'>country<elseif condition='$first1key == 1'/>location<elseif condition='$first1key == 2'/>industry<else />school</if></option>
                                             <foreach name="first1['message']" item = "second1" key="second1key">
                                                 <option value="{$second1['second_mark_id']}">{$second1['second_mark_name']}</option>
@@ -119,8 +119,8 @@
 
                                     </label>
                                     <div class="layui-input-block" id="layui-input-block">
-                                        <input type="hidden" value="" id="in{$first2['first_mark_id']}">
-                                        <select name="second2" lay-filter="first2select">
+                                        <input type="hidden" value="" id="2in{$first2['first_mark_id']}">
+                                        <select name="2second" lay-filter="2firstselect" title="0">
                                             <option value="">Choose a <if condition='$first2key == 0'>location<elseif condition='$first2key == 1'/>industry<else />major</if></option>
 
                                             <foreach name="first2['message']" item = "second2" key="second2key">
@@ -164,7 +164,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_time.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" placeholder="Enter a graduate time" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" id="schooltime2" placeholder="Enter a graduate time" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -173,7 +173,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_jobtitle.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" placeholder="Enter the job title" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" id="profession2" placeholder="Enter the job title" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -182,7 +182,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_company.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" placeholder="Enter the working company" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" id="company2" placeholder="Enter the working company" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item layui-form-text" style="height: 100px;margin-bottom: 8px;">
@@ -190,7 +190,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
                                     </label>
                                     <div class="layui-input-block" style="position: relative;top: -46px;">
-                                        <textarea placeholder="Enter the help you can provide" class="layui-textarea" style="padding: 12px 58px 0;"></textarea>
+                                        <textarea placeholder="Enter the help you can provide" id="help2" class="layui-textarea" style="padding: 12px 58px 0;"></textarea>
                                     </div>
                                 </div>
                                 <div class="layui-form-item layui-form-text" style="height: 100px;margin-bottom: 16px;">
@@ -198,7 +198,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
                                     </label>
                                     <div class="layui-input-block" style="position: relative;top: -46px;">
-                                        <textarea placeholder="Enter an introduction" class="layui-textarea" style="padding: 12px 58px 0;"></textarea>
+                                        <textarea placeholder="Enter an introduction" id="content2" class="layui-textarea" style="padding: 12px 58px 0;"></textarea>
                                     </div>
                                 </div>
                                 <p class="h4 text-center" style="margin-bottom: 18px;">Apply to join the conditions</p>
@@ -208,7 +208,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" placeholder="Enter the school" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" id="university2" placeholder="Enter the school" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -217,7 +217,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_133333.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" placeholder="Enter college" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" id="college2" placeholder="Enter college" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -226,7 +226,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_major.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" placeholder="Enter professional" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" id="specialty2" placeholder="Enter professional" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -235,7 +235,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_time.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" placeholder="Enter the graduation time" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" id="graduatetime2" placeholder="Enter the graduation time" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -244,7 +244,7 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/1.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" placeholder="Enter the highest education level" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" id="higheducation2" placeholder="Enter the highest education level" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer" pane>
@@ -253,9 +253,11 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_renshu.png">
                                     </label>
                                     <div class="layui-input-block" id="layui-input-block">
-                                        <select name="city">
+                                        <select name="maxpeople" id="maxpeople">
                                             <option value="">The maximum number of people</option>
-                                            <option value="0">1</option>
+                                            <foreach name="data3['message']" item = "second3" key="second3key">
+                                            <option value="{$second3['second_mark_name']}">{$second3['second_mark_name']}</option>
+                                            </foreach>
                                         </select>
                                     </div>
                                 </div>
@@ -265,11 +267,11 @@
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_money.png">
                                     </label>
                                     <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" placeholder="Enter the fee for joining" class="layui-input">
+                                        <input type="text" name="number" autocomplete="off" id="joinmoney2" placeholder="Enter the fee for joining" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="FormContainer from-but">
-                                    <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="" lay-filter="">
+                                    <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo2" lay-filter="demo2">
                                         Submit
                                     </button>
                                 </div>
@@ -431,137 +433,263 @@
 
         form.on('submit(demo1)', function(data){
             var second = ''
+            var ishavesecond = 1;
             $("select[name='1second']").each(function(j,item){
-                if(second == ''){
-                    second+=item.value //输出input 中的 value 值到控制台
-                }else{
-                    second+=','+item.value //输出input 中的 value 值到控制台
-                }
-
-            });
-            var third = ''
-            $("select[name='1third']").each(function(j,item){
-                if(third == ''){
-                    third+=item.value //输出input 中的 value 值到控制台
-                }else{
-                    third+=','+item.value //输出input 中的 value 值到控制台
-                }
-            });
-            var four = ''
-            $("select[name='1four']").each(function(j,item){
-                if(four == ''){
-                    four += item.value //输出input 中的 value 值到控制台
-                }else{
-                    four += ','+item.value //输出input 中的 value 值到控制台
-                }
-            });
-
-
-            var file_obj = document.getElementById('upload').files[0];
-            var fd = new FormData();
-            fd.append('img', file_obj);
-
-            $.ajax({
-                url: "{:U('Index/Ajax/ajax_uploadimg')}",
-                type: "POST",
-                async: false,
-                cache: false,
-                processData: false,// 告诉jQuery不要去处理发送的数据
-                contentType: false,// 告诉jQuery不要去设置Content-Type请求头
-                data: fd,
-                dataType:"json",
-                success: function(data){
-                    //console.log(data)
-                    if (data.str == 1){
-                        $.ajax({
-                            type:"post",
-                            url:"{:U('Index/Ajax/ajax_createworkone')}",
-                            data:{
-                                second:second,
-                                third:third,
-                                four:four,
-                                crowd_name:$("#name1").val(),
-                                crowd_icon:data.msg,
-                                crowd_intro:$("#content1").val(),
-
-                            },
-                            dataType:"json",
-                            async:false,
-                            success: function(list){
-                                //console.log(interest)
-                                if (list.str == 1){
-                                    layer.msg('创建成功',{
-                                            time:1500,
-                                            icon:1,
-                                        },function () {
-                                            window.location.href="{:U('Index/Jobs/groupDetails')}&cid="+list.msg;
-                                        }
-                                    );
-
-                                }else{
-                                    layer.msg(list.msg,{
-                                            time:1500,
-                                            icon:2,
-                                        }
-                                    );
-
-                                }
-
-                            },
-                            error:function(XMLHttpRequest, textStatus, errorThrown){
-
-                                layer.msg('请求失败!',{
-                                        time:1500,
-                                        icon:2,
-                                    }
-                                );
-                            }
-
-                        })
-
-                    }else{
-                        layer.msg('图片上传失败!',{
-                                time:1500,
-                                icon:2,
+                if (ishavesecond == 1) {
+                    if (item.value == '') {
+                        ishavesecond = 0;
+                        layer.msg('请选择标签!', {
+                                time: 1500,
+                                icon: 2,
                             }
                         );
                     }
-
-                },
-                error: function(err) {
-
-                    layer.msg('请求失败!',{
-                            time:1500,
-                            icon:2,
-                        }
-                    );
+                    if (second == '') {
+                        second += item.value //输出input 中的 value 值到控制台
+                    } else {
+                        second += ',' + item.value //输出input 中的 value 值到控制台
+                    }
                 }
+
             });
+            if(ishavesecond == 1) {
+                var third = ''
+                $("select[name='1third']").each(function (j, item) {
+                    if (third == '') {
+                        third += item.value //输出input 中的 value 值到控制台
+                    } else {
+                        third += ',' + item.value //输出input 中的 value 值到控制台
+                    }
+                });
+                var four = ''
+                $("select[name='1four']").each(function (j, item) {
+                    if (four == '') {
+                        four += item.value //输出input 中的 value 值到控制台
+                    } else {
+                        four += ',' + item.value //输出input 中的 value 值到控制台
+                    }
+                });
 
 
+                var file_obj = document.getElementById('upload').files[0];
+                var fd = new FormData();
+                fd.append('img', file_obj);
 
-            /*$.ajax({
-                type:"post",
-                url:"{:U('Index/Ajax/ajax_createinterest')}",
-                data:{
-                    img:file_obj,
-                },
-                dataType:"json",
-                async:false,
-                success: function(data){
-                    console.log(data)
+                $.ajax({
+                    url: "{:U('Index/Ajax/ajax_uploadimg')}",
+                    type: "POST",
+                    async: false,
+                    cache: false,
+                    processData: false,// 告诉jQuery不要去处理发送的数据
+                    contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                    data: fd,
+                    dataType: "json",
+                    success: function (data) {
+                        //console.log(data)
+                        if (data.str == 1) {
+                            $.ajax({
+                                type: "post",
+                                url: "{:U('Index/Ajax/ajax_createworkone')}",
+                                data: {
+                                    second: second,
+                                    third: third,
+                                    four: four,
+                                    crowd_name: $("#name1").val(),
+                                    crowd_icon: data.msg,
+                                    crowd_intro: $("#content1").val(),
 
-                },
-                error:function(XMLHttpRequest, textStatus, errorThrown){
+                                },
+                                dataType: "json",
+                                async: false,
+                                success: function (list) {
+                                    //console.log(interest)
+                                    if (list.str == 1) {
+                                        layer.msg('创建成功', {
+                                                time: 1500,
+                                                icon: 1,
+                                            }, function () {
+                                                window.location.href = "{:U('Index/Jobs/groupDetails')}&cid=" + list.msg;
+                                            }
+                                        );
 
-                    layer.msg('请求失败!',{
-                            time:1500,
-                            icon:2,
-                        },sendverify()
-                    );
+                                    } else {
+                                        layer.msg(list.msg, {
+                                                time: 1500,
+                                                icon: 2,
+                                            }
+                                        );
+
+                                    }
+
+                                },
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                                    layer.msg('请求失败!', {
+                                            time: 1500,
+                                            icon: 2,
+                                        }
+                                    );
+                                }
+
+                            })
+
+                        } else {
+                            layer.msg('图片上传失败!', {
+                                    time: 1500,
+                                    icon: 2,
+                                }
+                            );
+                        }
+
+                    },
+                    error: function (err) {
+
+                        layer.msg('请求失败!', {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }
+                });
+            }
+
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+
+        form.on('submit(demo2)', function(data){
+            var second = ''
+            var ishavesecond = 1;
+            $("select[name='2second']").each(function(j,item){
+                console.log(item.value)
+                if (ishavesecond == 1) {
+
+                    if (item.value==''){
+                        ishavesecond = 0;
+                        layer.msg('请选择标签!', {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }
+                    if (second == '') {
+                        second += item.value //输出input 中的 value 值到控制台
+                    } else {
+                        second += ',' + item.value //输出input 中的 value 值到控制台
+                    }
                 }
 
-            })*/
+            });
+            if (ishavesecond == 1) {
+                var third = ''
+                $("select[name='2third']").each(function (j, item) {
+                    if (third == '') {
+                        third += item.value //输出input 中的 value 值到控制台
+                    } else {
+                        third += ',' + item.value //输出input 中的 value 值到控制台
+                    }
+                });
+                var four = ''
+                $("select[name='2four']").each(function (j, item) {
+                    if (four == '') {
+                        four += item.value //输出input 中的 value 值到控制台
+                    } else {
+                        four += ',' + item.value //输出input 中的 value 值到控制台
+                    }
+                });
+
+                var file_obj = document.getElementById('upload2').files[0];
+                var fd = new FormData();
+                fd.append('img', file_obj);
+
+                $.ajax({
+                    url: "{:U('Index/Ajax/ajax_uploadimg')}",
+                    type: "POST",
+                    async: false,
+                    cache: false,
+                    processData: false,// 告诉jQuery不要去处理发送的数据
+                    contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                    data: fd,
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data)
+                        if (data.str == 1) {
+                            $.ajax({
+                                type: "post",
+                                url: "{:U('Index/Ajax/ajax_createworktwo')}",
+                                data: {
+                                    second: second,
+                                    third: third,
+                                    four: four,
+                                    crowd_icon: data.msg,
+                                    crowd_name: $("#name2").val(),
+                                    crowd_scool: $("#school2").val(),
+                                    crowd_schooltime: $("#schooltime2").val(),
+                                    crowd_profession: $("#profession2").val(),
+                                    crowd_company: $("#company2").val(),
+                                    crowd_help: $("#help2").val(),
+                                    crowd_intro: $("#content2").val(),
+                                    university: $("#university2").val(),
+                                    college: $("#college2").val(),
+                                    specialty: $("#specialty2").val(),
+                                    graduatetime: $("#graduatetime2").val(),
+                                    higheducation: $("#higheducation2").val(),
+                                    joinmoney: $("#joinmoney2").val(),
+
+                                },
+                                dataType: "json",
+                                async: false,
+                                success: function (list) {
+                                    //console.log(interest)
+                                    if (list.str == 1) {
+                                        layer.msg('创建成功', {
+                                                time: 1500,
+                                                icon: 1,
+                                            }, function () {
+                                                window.location.href = "{:U('Index/Jobs/groupDetails')}&cid=" + list.msg;
+                                            }
+                                        );
+
+                                    } else {
+                                        layer.msg(list.msg, {
+                                                time: 1500,
+                                                icon: 2,
+                                            }
+                                        );
+
+                                    }
+
+                                },
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                                    layer.msg('请求失败!', {
+                                            time: 1500,
+                                            icon: 2,
+                                        }
+                                    );
+                                }
+
+                            })
+
+                        } else {
+                            layer.msg('图片上传失败!', {
+                                    time: 1500,
+                                    icon: 2,
+                                }
+                            );
+                        }
+
+                    },
+                    error: function (err) {
+
+                        layer.msg('请求失败!', {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }
+                });
+
+            }
 
             return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
         });

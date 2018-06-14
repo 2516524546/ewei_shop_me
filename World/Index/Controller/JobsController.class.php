@@ -155,10 +155,16 @@ class JobsController extends CommonController {
             $data2[$firthkey]['message'] = $secondlist;
 
         }
+        $firstone = $firstmodel->findone('first_mark_mid = '.$this->modeleid.' and first_mark_type = 0');
+        $data3 = array();
+        $data3 = $firstone;
+        $data3['message'] = $secondmodel->findlist('second_mark_fid = '.$firstone['first_mark_id'],'second_mark_sort');
+
 
         $this->assign(array(
             'data1' => $data1,
             'data2' => $data2,
+            'data3' => $data3,
 
         ));
         $this->display();
