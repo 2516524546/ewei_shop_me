@@ -218,6 +218,45 @@
   position: unset;
 }
 
+.FormContainer .GroupProductNameIcon {
+  background: url(../img/05_life/life_fabu_icon_productnamme.png) no-repeat 0 0;
+  width: 26px;
+  height: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 13px;
+  position: unset;
+}
+
+.FormContainer .GroupProductPriceIcon {
+  background: url(../img/05_life/life_secondhandmarket_icon_02.png) no-repeat 0 0;
+  width: 26px;
+  height: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 13px;
+  position: unset;
+}
+
+.FormContainer .GroupContactNumber {
+  background: url(../img/03_academic/academic_fabu_icon_02.png) no-repeat 0 0;
+  width: 26px;
+  height: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 13px;
+  position: unset;
+}
+
+.FormContainer .defaultIcon {
+  background: url(../img/05_life/life_secondhandmarket_icon_01.png) no-repeat 0 0;
+  width: 26px;
+  height: 22px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 13px;
+  position: unset;
+}
 .UserHeadImage{
   margin-left: 10px;
 }
@@ -243,4 +282,17 @@
 }
 .PasswordContainer .layui_subdivide{
   margin-left: 20%;
+}
+
+.FormContainer .GroupImg{
+  width: 22px;
+  height: 22px;
+  margin: 0 auto;
+  line-height: 38px;
+}
+.FormContainer .ImglineH{
+  line-height: 52px;
+}
+.FormContainer .GroupImg img{
+  width: 100%;
 }

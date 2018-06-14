@@ -83,7 +83,8 @@
 .Product_box .product_right{
   box-shadow: 2px 2px 14px #cecece;
   padding: 26px 34px;
-  min-height: 510px;
+  max-height: 430px;
+  /* min-height: 510px; */
 }
 
 .Product_box .product_right .product_right_title{
