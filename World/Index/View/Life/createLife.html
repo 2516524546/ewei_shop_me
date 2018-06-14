@@ -45,7 +45,11 @@
 							<div id="first{$first['first_mark_id']}" class="FormContainer" pane>
 
 								<label class="layui-form-label label-spacing">
-									<span class="<if condition='$firstkey == 0'>CountryIcon<elseif condition='$firstkey == 1'/>SchoolIcon<else />InterestIcon</if>"></span>
+                                    <!-- <span class="<if condition='$firstkey == 0'>CountryIcon<elseif condition='$firstkey == 1'/>SchoolIcon<else />InterestIcon</if>"></span> -->
+                                    <div class="GroupImg">
+                                        <!-- <img src="__PUBLIC__/Web/web/img/05_life/life_secondhandmarket_icon_02.png"> -->
+                                        <img src="__PUBLIC__/Web/web/img/<if condition='$firstkey == 0'>02_interest/interest_create_icon_01.png<elseif condition='$firstkey == 1'/>02_interest/interest_create_icon_02.png<elseif condition='$firstkey == 2'/>02_interest/interest_create_icon_03.png</if>">
+                                    </div>
 								</label>
 								<div class="layui-input-block" id="layui-input-block" >
 									<input type="hidden" value="" id="in{$first['first_mark_id']}">
@@ -63,8 +67,10 @@
 
 						<div class="FormContainer" pane>
 							<label class="HeadPortraitbox">
-                            <span class="HeadPortraitIcon"></span>
-                        </label>
+                                <div class="GroupImg ImglineH">
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png">
+                                </div>
+                            </label>
 							<div class="UserHeadImage">
 								<img id="pic" class="img">
 								<input id="upload" class="but" name="file" accept="image/*" type="file">
@@ -72,23 +78,29 @@
 						</div>
 						<div class="FormContainer" pane>
 							<label class="layui-form-label label-spacing">
-                            <span class="GroupNameIcon"></span>
-                        </label>
+                                <div class="GroupImg">
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_05.png">
+                                </div>
+                            </label>
 							<div class="layui-input-block input-spacing inputW">
 								<input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the group name" class="layui-input" id="name">
 							</div>
                         </div>
                         <div class="FormContainer" pane>
-							<label class="layui-form-label label-spacing">
-                            <span class="ResidenceIcon"></span>
-                        </label>
+                            <label class="layui-form-label label-spacing">
+                                <div class="GroupImg">
+                                    <img src="__PUBLIC__/Web/web/img/05_life/life_create_icon_adress.png">
+                                </div>
+                            </label>
 							<div class="layui-input-block input-spacing inputW">
 								<input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the residence (apartment , streets, etc.)" class="layui-input" id="address">
 							</div>
 						</div>
 						<div class="FormContainer" pane>
 							<label class="layui-form-label label-spacing">
-                            <span class="BriefIntroductionIcon"></span>
+                            <div class="GroupImg">
+                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_06.png">
+                            </div>
                         </label>
 							<div class="layui-input-block input-spacing inputW">
 								<input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the company information" class="layui-input" id="content">
