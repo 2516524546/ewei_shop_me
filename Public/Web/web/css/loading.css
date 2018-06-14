@@ -1,5 +1,5 @@
 .loading_box{
-    position: absolute;
+    position: fixed;
     top:0;
     left: 0;
     right: 0;
@@ -14,11 +14,11 @@
     display: none; 
 }
 
-.loading_box .loading_gif{
+.loading_box .loading_gif {
     position: absolute;
-    top: 25%;
-    left: 25%;
-    width: 50%;
+    top: 50%;
+    left: 47%;
+    width: 5%;
 }
 
 .loading_box .loading_gif img{

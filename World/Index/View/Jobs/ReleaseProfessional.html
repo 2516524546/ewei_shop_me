@@ -3,6 +3,8 @@
 
 <head>
     <include file="./World/Index/View/Public/meta.html"/>
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/CreateInterest.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/releasePosition.css">
 </head>
 
 <body>
@@ -24,13 +26,16 @@
             <div class="StepContainer">
                 <div class="StepContainerOne">
                     <div class="InterestTitle">
-                        <h3 class="text-center Interesth3">
-                            <span class="InterestTitleIcon"></span>Basic Information
-                        </h3>
+                        <div class="InterestImg">
+                            <img src="__PUBLIC__/Web/web/img/common_icon_write.png" alt="">
+                        </div>
+                        <span class="InterestCon">Basic Information</span>
                     </div>
-                    <div class="FormContainer layui-form-item" pane>
+                    <div class="layui-form-item">
                         <label class="layui-form-label label-spacing">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_city.png">
+                            <div class="label_img">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_city.png">
+                            </div>
                         </label>
                         <div class="layui-input-block" id="layui-input-block">
                             <select name="city" lay-verify="required">
@@ -39,9 +44,11 @@
                             </select>
                         </div>
                     </div>
-                    <div class="FormContainer layui-form-item" pane>
+                    <div class="layui-form-item">
                         <label class="layui-form-label label-spacing">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_industry.png">
+                            <div class="label_img">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_industry.png">
+                            </div>
                         </label>
                         <div class="layui-input-block" id="layui-input-block">
                             <select name="city" lay-verify="required">
@@ -51,16 +58,20 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 64px;">
-                            <img src="__PUBLIC__/Web/web/img/03_academic/academic_create_icon_04.png">
+                        <label class="layui-form-label">
+                            <div class="label_img">
+                                <img src="__PUBLIC__/Web/web/img/03_academic/academic_create_icon_04.png">
+                            </div>
                         </label>
-                        <div class="layui-input-block" style="margin-left: 64px;">
+                        <div class="layui-input-block">
                             <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter specialties" class="layui-input">
                         </div>
                     </div>
-                    <div class="FormContainer layui-form-item" pane>
+                    <div class="layui-form-item">
                         <label class="layui-form-label label-spacing">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
+                            <div class="label_img">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
+                            </div>
                         </label>
                         <div class="layui-input-block" id="layui-input-block">
                             <select name="city" lay-verify="required">
@@ -70,55 +81,67 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 64px;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_realname.png" width="24px" height="auto">
+                        <label class="layui-form-label">
+                            <div class="label_img">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_realname.png" width="24px" height="auto">
+                            </div>
                         </label>
-                        <div class="layui-input-block" style="margin-left: 64px;">
+                        <div class="layui-input-block">
                             <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the sponsor's real name" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 64px;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_contact.png">
+                        <label class="layui-form-label">
+                            <div class="label_img">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_contact.png">
+                            </div>
                         </label>
-                        <div class="layui-input-block" style="margin-left: 64px;">
+                        <div class="layui-input-block">
                             <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the contact information" class="layui-input">
                         </div>
                     </div>
-                    <div class="layui-form-item layui-form-text" style="height: 100px;">
-                        <label class="layui-form-label" style="width: 12%;z-index: 2;background: none;border: none;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">
+                            <div class="label_img">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                            </div>
                         </label>
-                        <div class="layui-input-block" style="position: relative;top: -46px;">
-                            <textarea placeholder="Enter the company information" class="layui-textarea" style="padding: 12px 58px 0;resize:none;"></textarea>
+                        <div class="layui-input-block">
+                            <textarea placeholder="Enter the company information" class="layui-textarea"></textarea>
                         </div>
                     </div>
-                    <div class="layui-form-item layui-form-text" style="height: 100px;">
-                        <label class="layui-form-label" style="width: 12%;z-index: 2;background: none;border: none;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">
+                            <div class="label_img">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                            </div>
                         </label>
-                        <div class="layui-input-block" style="position: relative;top: -46px;">
-                            <textarea placeholder="Enter the company information" class="layui-textarea" style="padding: 12px 58px 0;resize:none;"></textarea>
+                        <div class="layui-input-block">
+                            <textarea placeholder="Enter the company information" class="layui-textarea"></textarea>
                         </div>
                     </div>
-                    <div class="layui-form-item layui-form-text" style="height: 100px;">
-                        <label class="layui-form-label" style="width: 12%;z-index: 2;background: none;border: none;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">
+                            <div class="label_img">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                            </div>
                         </label>
-                        <div class="layui-input-block" style="position: relative;top: -46px;">
-                            <textarea placeholder="Enter the company information" class="layui-textarea" style="padding: 12px 58px 0;resize:none;"></textarea>
+                        <div class="layui-input-block">
+                            <textarea placeholder="Enter the company information" class="layui-textarea"></textarea>
                         </div>
                     </div>
-                    <div class="FormContainer" pane="">
-                        <label class="HeadPortraitbox">
-                            <span class="HeadPortraitIcon"></span>
+                    <div class="FormContainer layui-form-item">
+                        <label class="layui-form-label" style="background: transparent;border: none;">
+                            <div class="label_img" >
+                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png">
+                            </div>
                         </label>
                         <div class="UserHeadImage">
                             <img id="pic" class="img">
                             <input id="upload" class="but" name="file" accept="image/*" type="file">
                         </div>
                     </div>
-                    <div class="FormContainer from-but" style="margin-top: 0;">
+                    <div class="FormContainer from-but">
                         <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="" lay-filter="">
                             Submit
                         </button>

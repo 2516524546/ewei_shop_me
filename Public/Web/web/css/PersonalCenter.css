@@ -1,9 +1,9 @@
 .LatestContentContainer .layui-tab .btnlist li{
     display: inline-block;
     border: 1px solid #46c4b8;
-    border-radius: 12px;
+    border-radius: 23px;
     margin-right: 15px;
-    padding: 4px 12px;
+    min-width: 20%;
 }
 .layui-tab-title{
     border: none;
@@ -335,6 +335,10 @@ button:focus {
 }
 .modal-body-list .modal-body-addName .addName_input{
     padding: 5px 10px;
+}
+
+.layui-tab-title{
+    height: auto;
 }
 
 @media (min-width: 576px){

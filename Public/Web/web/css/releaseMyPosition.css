@@ -1,0 +1,9 @@
+.EditImg{
+    width: 22px;
+    height: 22px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.EditImg img{
+    width: 100%;
+}
