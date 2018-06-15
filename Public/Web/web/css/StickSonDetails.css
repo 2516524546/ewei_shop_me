@@ -68,26 +68,22 @@
   position: relative;
 }
 .ReturnBox .ReturnBoxicon {
-  position: absolute;
+  /* position: absolute;
   z-index: 2;
   top: 6px;
-  left: 12px;
+  left: 12px; */
 }
 .ReturnBox .ReplyUser{
-  position: absolute;
-  z-index: 2;
-  top: 25px;
-  left: 12px;
   color: #46c4b8;
 }
 .ReturnBox .Returntextarea {
-  padding: 44px 100px 0 10px;
+  /* padding: 44px 100px 0 10px; */
 }
 .ReturnBox .Returnbut {
-  position: absolute;
+  /* position: absolute;
   z-index: 2;
   bottom: 10px;
-  right: 12px;
+  right: 12px; */
 }
 .GroupDetailsContainer {
   clear: both;
@@ -266,4 +262,30 @@
   text-align: center;
   padding: 1px 0;
   cursor: pointer;
+}
+.ReturnBox{
+  border: 2px solid #46c4b8;
+  padding: 10px 12px;
+  border-radius: 7px;
+}
+.ReturnBox textarea{
+  border: none;
+  resize: none;
+}
+.ReturnBox .bottom_btn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ReturnBox .refresh_btn{
+  /* position: absolute;
+  bottom: 7px;
+  left: 1%; */
+  width: 15px;
+  height: 15px;
+  transition: all 1s;
+  cursor: pointer;
+}
+.ReturnBox .refresh_btn img{
+  width: 100%;
 }
