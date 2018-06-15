@@ -257,3 +257,13 @@
   width: 100%;
   height: 100%;
 }
+
+.item_con_title .item_user_det .det_zan .det_accept{
+  background: #46c4b8;
+  color: #fff;
+  border-radius: 23px;
+  width: 66px;
+  text-align: center;
+  padding: 1px 0;
+  cursor: pointer;
+}
