@@ -379,6 +379,7 @@
                             message += '</div></div><div class="item_user_det"><div class="det_time"><div class="det_time_img"><img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png"></div>'
                             message += '<div class="det_timed">'+data.msg[i].note_comment_createtime+'</div>'
                             message += '</div><div class="det_zan">'
+                            message += '<div class="det_accept">Accept</div><div class="line"></div>'
                             if (data.msg[i].note_comment_isreply != 1){
                                 message += '<div class="det_reply" onclick="reply('+data.msg[i].note_comment_id+',this)">Reply</div>'
                             }
