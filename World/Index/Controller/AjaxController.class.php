@@ -2771,6 +2771,103 @@ public function ajax_donationpay()
 
     }
 
+    //下载资源扣取积分
+    public function ajax_haveResourceUrl(){
+
+        if (IS_POST){
+
+            if (!isset($_POST['money'])||$this->post('money')==''){
+
+                die(json_encode(array('str' => 3, 'msg' => '这个不是资源')));
+            }else {
+
+                $usermodel = new UserModel();
+                $userone = $usermodel->findone('user_id = '.$this->userid);
+                if ($userone['user_havecoin'] < $this->post('money')){
+                    die(json_encode(array('str' => 4,'msg'=>'你拥有的虚拟币不够')));
+                }
+                $userdata = array(
+                    'user_havecoin' => $userone['user_havecoin']-$this->post('money'),
+                );
+                $res = $usermodel->updataone('user_id = '.$this->userid,$userdata);
+                if ($res){
+                    die(json_encode(array('str' => 1,'msg'=>'正在下载')));
+                }else{
+                    die(json_encode(array('str' => 2,'msg'=>'扣取失败')));
+                }
+
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+
+    }
+
+    //选择答案
+    public function ajax_isaccept(){
+
+        if (IS_POST){
+
+            if (!isset($_POST['comid'])||$this->post('comid')==''){
+
+                die(json_encode(array('str' => 3, 'msg' => '没有这个评论')));
+            }else {
+
+
+                $commentmodel = new NoteCommentModel();
+                $commentone = $commentmodel->findone('note_comment_id = '.$this->post('comid'));
+
+                $notemodel = new NoteModel();
+                $noteone = $notemodel->findone('note_id = '.$commentone['note_comment_nid']);
+
+                $usermodel = new UserModel();
+                $userone = $usermodel->findone('user_id = '.$commentone['note_comment_uid']);
+
+                $commentmodel->startTrans();
+
+                try {
+
+                    $userdata = array(
+                        'user_havecoin' => $userone['user_havecoin'] + $noteone['note_reward'],
+                    );
+
+                    $userres = $usermodel->updataone('user_id = ' . $commentone['note_comment_uid'], $userdata);
+
+                    $commentdata = array(
+                        'note_comment_isanswer' => 1,
+                    );
+
+                    $commentres = $commentmodel->updataone('note_comment_id = ' . $this->post('comid'), $commentdata);
+
+                    $notedata = array(
+                        'note_haveanswer'=>1,
+                    );
+
+                    $noteres = $notemodel->updataone('note_id = '.$commentone['note_comment_nid'],$notedata);
+
+
+                    if ($userres&&$commentres&&$noteres) {
+                        $commentmodel->commit();
+                        die(json_encode(array('str' => 1, 'msg' => '采取答案成功')));
+                    } else {
+                        $commentmodel->rollback();
+                        die(json_encode(array('str' => 2, 'msg' => '采取答案失败')));
+                    }
+                }catch (Exception $e){
+
+                    $commentmodel->rollback();
+                    die(json_encode(array('str' => 2, 'msg' => '采取答案失败')));
+                }
+
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+
+    }
+
 
 
 }
