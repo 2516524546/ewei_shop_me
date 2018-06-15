@@ -15,6 +15,20 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/GroupDetails.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
+    <style>
+    a:not([href]):not([tabindex]){
+            color: #2e3b47;
+        }
+        a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover{
+            color: #2e3b47;
+        }
+        .layui-layer-btn .layui-layer-btn0 {
+            border-color: #1E9FFF;
+            background-color: #1E9FFF;
+            color: #FFF!important;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -205,33 +219,46 @@
                 <div class="GroupDetailsContainer">
                     <h4 class="text-center FontColor">Group Details</h4>
                     <div class="p"><b>Group icon  : </b>&nbsp;&nbsp;<div class="Group_icon"><img src="Uploads/{$crowone['crowd_icon']}"></div></div>
-                    <p class="p"><b>Group Name  :</b>{$crowone['crowd_name']}</p>
-                    <p class="p"><b>Creator  : </b>{$crowone['user_name']}</p>
-                    <p class="p">
+                    <div class="p"><b>Group Name  :</b><div class="P_content">{$crowone['crowd_name']}</div></div>
+                    <div class="p"><b>Creator  : </b><div class="P_content">{$crowone['user_name']}</div></div>
+                    <div class="p_B">
                         <b>Introduction  :</b>
                         <div class="textp">{$crowone['crowd_intro']}</div>
-                    </p>
+                    </div>
 
-                    <p class="p">
+                    <div class="p_B">
                         <b>Graduated School  :</b>
                         <div class="textp"> University of Pennsylvania</div>
-                    </p>
-                    <p><img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">&nbsp;&nbsp;<b>{$crowone['crowd_peoplenum']}</b></p>
+                    </div>
 
-                    <p class="text-center Followtbut">
-                        <if condition='$join_in != 1'>
-                        <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" id="GroupBtn" onclick="follow()">
-                            To join the group
+                    <div class="p"><b>Graduation Time  : </b><div class="P_content" style="width: 50%">xxxxxxxxxxxxxxxxx</div></div>
+                    <div class="p"><b>Occupation Post  : </b><div class="P_content"  style="width: 50%">xxxxxxxxxxxxxxxxx</div></div>
+                    <div class="p_B">
+                        <b>In-service Company  :</b>
+                        <div class="textp" > xxxxxxxxxxxxxxxxx</div>
+                    </div>
+                    <div class="p_B">
+                        <b>Can provide help  :</b>
+                        <div class="textp"> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+                    </div>
+                <div class="p"><b>Creator  : </b><div class="P_content">{$crowone['user_name']}</div></div>
+                <p><img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">&nbsp;&nbsp;<b>{$crowone['crowd_peoplenum']}</b></p>
+                
+                <p class="text-center Followtbut">
+                    <if condition='$join_in != 1'>
+                    <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" id="GroupBtn" onclick="follow()">
+                        To join the group
+                    </a>
+                        <else />
+                        <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" style="background:#bdbdbd;" id="GroupBtn">
+                            Have joined the group
                         </a>
-                            <else />
-                            <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" style="background:#bdbdbd;" id="GroupBtn">
-                                Have joined the group
-                            </a>
 
-                        </if>
-                    </p>
+                    </if>
+                </p>
+            </div>
 
-                </div>
+                </p>
                 <div class="GroupDetailsContainer">
                     <h4 class="text-center FontColor MoreMembersbox">
                         Group Member
@@ -271,6 +298,9 @@
         </div>
     </div>
     <!-- Group list 群列表 end -->
+    <div class="shadowGroup">
+        
+    </div>
     <!-- footer -->
     <footer>
         <include file = "./World/Index/View/Public/footer.html"/>
@@ -284,7 +314,20 @@
 </body>
 
 <script>
-    
+    $(".join_btn").on("click",function(){
+        layer.msg('你确定你很帅么？', {
+            time: 0 //不自动关闭
+            ,btn: ['必须啊', '丑到爆']
+            ,yes: function(index){
+                layer.close(index);
+                layer.msg('雅蠛蝶 O.o', {
+                icon: 6
+                ,btn: ['嗷','嗷','嗷']
+                });
+            }
+            });
+
+        })
     function release() {
 
         var aa = "{$userid}";

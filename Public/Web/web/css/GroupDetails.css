@@ -236,3 +236,13 @@
   /* color: #fff; */
 }
 
+.p_B{
+  line-height: 46px;
+}
+
+.P_content{
+  width: 60%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
