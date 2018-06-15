@@ -226,22 +226,31 @@
                         <div class="textp">{$crowone['crowd_intro']}</div>
                     </div>
 
+                    <if condition="$crowone['crowd_scool']">
                     <div class="p_B">
                         <b>Graduated School  :</b>
-                        <div class="textp"> University of Pennsylvania</div>
+                        <div class="textp"> {$crowone['crowd_scool']}</div>
                     </div>
-
-                    <div class="p"><b>Graduation Time  : </b><div class="P_content" style="width: 50%">xxxxxxxxxxxxxxxxx</div></div>
-                    <div class="p"><b>Occupation Post  : </b><div class="P_content"  style="width: 50%">xxxxxxxxxxxxxxxxx</div></div>
+                    </if>
+                    <if condition="$crowone['crowd_scooltime']">
+                    <div class="p"><b>Graduation Time  : </b><div class="P_content" style="width: 50%">{$crowone['crowd_scooltime']}</div></div>
+                    </if>
+                    <if condition="$crowone['crowd_profession']">
+                    <div class="p"><b>Occupation Post  : </b><div class="P_content"  style="width: 50%">{$crowone['crowd_profession']}</div></div>
+                    </if>
+                    <if condition="$crowone['crowd_company']">
                     <div class="p_B">
                         <b>In-service Company  :</b>
-                        <div class="textp" > xxxxxxxxxxxxxxxxx</div>
+                        <div class="textp" > {$crowone['crowd_company']}</div>
                     </div>
+                    </if>
+                    <if condition="$crowone['crowd_help']">
                     <div class="p_B">
                         <b>Can provide help  :</b>
-                        <div class="textp"> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+                        <div class="textp"> {$crowone['crowd_help']}</div>
                     </div>
-                <div class="p"><b>Creator  : </b><div class="P_content">{$crowone['user_name']}</div></div>
+                    </if>
+
                 <p><img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">&nbsp;&nbsp;<b>{$crowone['crowd_peoplenum']}</b></p>
                 
                 <p class="text-center Followtbut">
