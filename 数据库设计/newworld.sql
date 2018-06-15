@@ -49,3 +49,19 @@ ADD COLUMN `crowd_help`  text NULL COMMENT '能够提供的帮助' AFTER `crowd_company
 lyx
 2018.06.13 end
 */
+
+
+/*
+lyx
+2018.06.15 start
+*/
+
+ALTER TABLE `u_note`
+ADD COLUMN `note_haveanswer`  smallint(3) NOT NULL DEFAULT 0 COMMENT '0为还没选择答案，1为选择答案了' AFTER `note_reward`;
+
+/*
+lyx
+2018.06.15 end
+*/
+
+
