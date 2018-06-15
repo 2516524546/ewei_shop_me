@@ -154,15 +154,22 @@
                         Tips: think this article how? Evaluation helps other readers understand this article.
                     </p>
                     <div class="ReturnBox">
-                        <div class="layui-form-item layui-form-text">
+                        <div class="layui-form-text">
                             <span class="ReturnBoxicon">
                                 <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_pj.png">
                                 &nbsp;
                                 Comments
                             </span>
-                            <!-- <span class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</span> -->
+                            <div class="RepllyBox">
+                                <!-- <div class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</div> -->
+                            </div>
                             <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea" id="content"></textarea>
-                            <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut" onclick="createcomment()">Posted</button>
+                            <div class="bottom_btn">
+                                <div class="refresh_btn">
+                                    <img src="__PUBLIC__/Web/web/img/refresh.png" alt="">
+                                </div>
+                                <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut" onclick="createcomment()">Posted</button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -198,6 +205,10 @@
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 </body>
 <script>
+    $(".ReturnBox .refresh_btn").on("click",function(){
+        $('.ReturnBox .ReplyUser').remove();
+        $(".ReturnBox .Returntextarea").val("")
+    })
     /*$(".item_con_title .item_user_det .det_zan .det_zan_box .zan_box_img").on("click",function(){
     console.log()
     if($(this).attr('data-Click')!="true"){
@@ -323,7 +334,7 @@
         var name = $(obj).parent().parent().parent().children(".item_user_name").children(".User_name").text();
         var Cspan = "<span class='ReplyUser'>reply @ <span class='ReplyUser_name'>"+name+"</span> ：</span>"
         $(".ReplyUser").remove()
-        $(".layui-form-item").append(Cspan);
+        $(".RepllyBox").append(Cspan);
 
     }
 
