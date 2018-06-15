@@ -408,7 +408,7 @@
                             message +='<div class="col-xs-8 col-sm-6"><div class="UserBox">';
                             var url="{:U('Index/Academic/academicDetails')}"+list.msg[i].crowd_id;
                             message += '<a href="'+url+'" class="UserLink">';
-                            message += '<img src="./Uploads/'+list.msg[i].crowd_icon+'" class="img-circle userimg">';
+                            message += '<div class="UserBox_img"><img src="./Uploads/'+list.msg[i].crowd_icon+'" class="img-circle userimg"></div>';
                             message += '<h4 class="UserTitle">'+list.msg[i].crowd_name+'</h4>'
                             message += '<p class="UserFollow"><img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">&nbsp;&nbsp;';
                             message += list.msg[i].crowd_peoplenum+'</p>';

@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/CreateAcademic.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/CreateInterest.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/releasePosition.css">
 		<link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
 		<link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
 	</head>
@@ -44,8 +45,10 @@
 						</div>
 						<foreach name="data" item="first" key="firstkey">
 						<div id="first{$first['first_mark_id']}" class="FormContainer" pane>
-							<label class="layui-form-label label-spacing">
-                            <span class="<if condition='$firstkey == 0'>CountryIcon<elseif condition='$firstkey == 1'/>SchoolIcon<elseif condition='$firstkey == 2'/>InterestIcon<else />ProfessionIcon</if>"></span>
+                        <label class="layui-form-label label-spacing">
+                            <div class="label_img">
+                                <img src="__PUBLIC__/Web/web/img/<if condition='$firstkey == 0'>02_interest/interest_create_icon_01.png<elseif condition='$firstkey == 1'/>02_interest/interest_create_icon_02.png<elseif condition='$firstkey == 2'/>02_interest/interest_create_icon_03.png<else />03_academic/academic_create_icon_04.png</if>">
+                            </div>
                         </label>
 							<div class="layui-input-block" id="layui-input-block">
 								<input type="hidden" value="" id="in{$first['first_mark_id']}">
@@ -60,27 +63,39 @@
 						</foreach>
 
 						<div class="FormContainer" pane>
-							<label class="HeadPortraitbox">
-                                <span class="HeadPortraitIcon"></span>
+                            <label class="layui-form-label label-spacing">
+                                <div class="label_img">
+                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png" alt="">
+                                </div>
                             </label>
-							<div class="UserHeadImage">
+                            <!-- <label class="layui-form-label label-spacing">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png" alt="">
+                                </div>
+                            </label> -->
+                            
+							<div class="UserHeadImage layui-input-block" style="margin-left: 10px;">
 								<img id="pic" class="img">
 								<input id="upload" class="but" name="file" accept="image/*" type="file">
 							</div>
 						</div>
 						<div class="FormContainer" pane>
-							<label class="layui-form-label label-spacing">
-                            <span class="GroupNameIcon"></span>
+                        <label class="layui-form-label label-spacing">
+                            <div class="label_img">
+                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_05.png" alt="">
+                            </div>
                         </label>
-							<div class="layui-input-block input-spacing inputW">
+							<div class="layui-input-block">
 								<input type="text" name="number" id="name" lay-verify="required" autocomplete="off" placeholder="Group name" class="layui-input">
 							</div>
 						</div>
 						<div class="FormContainer" pane>
 							<label class="layui-form-label label-spacing">
-                            <span class="BriefIntroductionIcon"></span>
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_06.png" alt="">
+                                </div>
                         </label>
-							<div class="layui-input-block input-spacing inputW">
+							<div class="layui-input-block">
 								<input type="text" id="content"  name="number" lay-verify="required" autocomplete="off" placeholder="Enter the signature" class="layui-input">
 							</div>
 						</div>
@@ -345,7 +360,7 @@
                                 $("#third" + data.secondid).html(message)
                             } else {
 
-                                var message = '<div id="third' + data.secondid + '" class="FormContainer" style="margin-bottom: 8px;" pane><div class="layui-input-block" id="layui-input-block"><select name="four" lay-verify="required" lay-filter="thirdselect"><option value="">choose</option>';
+                                var message = '<div id="third' + data.secondid + '" class="FormContainer" style="margin-bottom: 8px; margin-left: 20%; width: 100%;" pane><div class="layui-input-block" id="layui-input-block"><select name="four" lay-verify="required" lay-filter="thirdselect"><option value="">choose</option>';
                                 for (var i = 0; i < data.msg.length; i++) {
 
                                     message += '<option value="' + data.msg[i]['fourth_mark_id'] + '">';
