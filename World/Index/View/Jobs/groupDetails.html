@@ -226,20 +226,28 @@
                         <div class="textp">{$crowone['crowd_intro']}</div>
                     </div>
 
+                    <if condition="$crowone['crowd_scool']">
                     <div class="p_B">
                         <b>Graduated School  :</b>
-                        <div class="textp"> University of Pennsylvania</div>
+                        <div class="textp"> {$crowone['crowd_scool']}</div>
                     </div>
-
-                    <div class="p"><b>Graduation Time  : </b><div class="P_content" style="width: 50%">xxxxxxxxxxxxxxxxx</div></div>
-                    <div class="p"><b>Occupation Post  : </b><div class="P_content"  style="width: 50%">xxxxxxxxxxxxxxxxx</div></div>
+                    </if>
+                    <if condition="$crowone['crowd_scooltime']">
+                    <div class="p"><b>Graduation Time  : </b><div class="P_content" style="width: 50%">{$crowone['crowd_scooltime']}</div></div>
+                    </if>
+                    <if condition="$crowone['crowd_profession']">
+                    <div class="p"><b>Occupation Post  : </b><div class="P_content"  style="width: 50%">{$crowone['crowd_profession']}</div></div>
+                    </if>
+                    <if condition="$crowone['crowd_company']">
                     <div class="p_B">
                         <b>In-service Company  :</b>
-                        <div class="textp" > xxxxxxxxxxxxxxxxx</div>
+                        <div class="textp" > {$crowone['crowd_company']}</div>
                     </div>
+                    </if>
+                    <if condition="$crowone['crowd_help']">
                     <div class="p_B">
                         <b>Can provide help  :</b>
-                        <div class="textp"> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+                        <div class="textp"> {$crowone['crowd_help']}</div>
                     </div>
                 <p><img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">&nbsp;&nbsp;<b>{$crowone['crowd_peoplenum']}</b></p>
                 
@@ -319,10 +327,7 @@
             ,btn: ['必须啊', '丑到爆']
             ,yes: function(index){
                 layer.close(index);
-                layer.msg('雅蠛蝶 O.o', {
-                icon: 6
-                ,btn: ['嗷','嗷','嗷']
-                });
+
             }
             });
 
@@ -358,56 +363,59 @@
     }
 
     //加入群，要改善
-    /*function follow() {
+    function follow() {
         var aa = "{$userid}";
         var cid = "{$crowone['crowd_id']}"
-        if(aa){
 
-            $.ajax({
-                type:"post",
-                url:"{:U('Index/Ajax/ajax_followcrowd')}",
-                data:{
-                    cid:cid,
-                },
-                dataType:"json",
-                async:false,
-                success: function(data){
-                    if (data!=null&&data!="") {
-                        if (data.str == 1) {
-                            layer.msg(data.msg,{
-                                    time:1500,
-                                    icon:1,
-                                },function () {
-                                    location.reload();
-                                }
-                            );
-                        }else{
-                            layer.msg(data.msg,{
-                                    time:1500,
-                                    icon:2,
+        if(aa){
+            if ({$crowone['crowd_id']} == 1) {
+
+                $.ajax({
+                    type: "post",
+                    url: "{:U('Index/Ajax/ajax_followcrowd')}",
+                    data: {
+                        cid: cid,
+                    },
+                    dataType: "json",
+                    async: false,
+                    success: function (data) {
+                        if (data != null && data != "") {
+                            if (data.str == 1) {
+                                layer.msg(data.msg, {
+                                        time: 1500,
+                                        icon: 1,
+                                    }, function () {
+                                        location.reload();
+                                    }
+                                );
+                            } else {
+                                layer.msg(data.msg, {
+                                        time: 1500,
+                                        icon: 2,
+                                    }
+                                );
+                            }
+
+                        } else {
+                            layer.msg('请求错误!', {
+                                    time: 1500,
+                                    icon: 2,
                                 }
                             );
                         }
 
-                    }else{
-                        layer.msg('请求错误!',{
-                                time:1500,
-                                icon:2,
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                        layer.msg('请求失败!', {
+                                time: 1500,
+                                icon: 2,
                             }
                         );
                     }
 
-                },
-                error:function(XMLHttpRequest, textStatus, errorThrown){
-
-                    layer.msg('请求失败!',{
-                            time:1500,
-                            icon:2,
-                        }
-                    );
-                }
-
-            })
+                })
+            }
 
         }else{
             layer.msg("请先登录",{
@@ -418,7 +426,7 @@
                 }
             );
         }
-    }*/
+    }
     
     var type = 1;
     var notepage = 1;

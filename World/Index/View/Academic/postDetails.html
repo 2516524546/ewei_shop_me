@@ -17,6 +17,19 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
+    <style>
+        a:not([href]):not([tabindex]){
+            color: #2e3b47;
+        }
+        a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover{
+            color: #2e3b47;
+        }
+        .layui-layer-btn .layui-layer-btn0 {
+            border-color: #1E9FFF;
+            background-color: #1E9FFF;
+            color: #FFF!important;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,9 +40,9 @@
     <hr>
     <!-- Crumbs nav -->
     <div class="container crumbs">
-        <a href="{:U('Index/Rnterst/interest')}" class="crumbsa">interest</a>
+        <a href="{:U('Index/Academic/academic')}" class="crumbsa">Academic</a>
         <cite class="Icon"></cite>
-        <a href="{:U('Index/Rnterst/groupDetails')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
+        <a href="{:U('Index/Academic/academicGroups')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
         <cite class="Icon"></cite>
         <span class="crumbsTitle">Post details</span>
 
@@ -38,7 +51,7 @@
         <div class="row">
             <div class="col-md-9">
                 <p class="text-right">
-                    <a href="{:U('Index/Rnterst/postSharing')}">
+                    <a href="{:U('Index/Academic/postSharing')}">
                         <img src="__PUBLIC__/Web/web/img/02_interest/fenxiang.png">
                     </a>
                 </p>
@@ -64,7 +77,7 @@
                         </if>
                         <if condition='$vi["note_vi_type"]==2'>
                             <div class="picfenxiangbox">
-                                <a href="{:U('Index/Rnterst/videoFen')}">
+                                <a href="{:U('Index/Academic/videoFen')}">
                                     <img src="__PUBLIC__/Web/web/img/02_interest/picfenxiang.png" class="picfenxiang">
                                 </a>
                             </div>
@@ -73,7 +86,9 @@
                             </video>
                         </if>
                     </foreach>
-
+                    <if condition='$noteone["note_type"] == 3'>
+                    <p class="Resource_link">Download link : <a href="javascript:void(0)" onclick="downloadFile('./Uploads/{$noteone["note_url"]}')">点击此处下载资源</a></p>
+                    </if>
                     <div class="PostReply_box">
                         <div class="PostReply_box_title">
                             <div class="title_pic">
@@ -172,11 +187,19 @@
                     <div class="text-center h5 p">Post Details</div>
                     <div class="p"><b>Personal Information</b></div>
                     <div class="p">
-                        <b>Group icon  : </b>
+                        <b>Acatar：</b>
                         <div class="p_pic"><img src="<if condition='$noteuser["user_icon"]'>./Uploads/{$noteuser['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>"></div>  
                     </div>
                     <div class="p"><b>Nickname：</b>{$noteuser['user_name']}</div>
                     <div class="p"><b>Number of posts  :</b>{$noteuser['user_notes']}</div>
+                    <if condition='$noteone["note_type"]==2'>
+                    <div class="p"><b>Post Information</b></div>
+                    <div class="p"><b>Reward：</b>{$noteone['note_reward']}</div>
+                    </if>
+                    <if condition='$noteone["note_type"]==3'>
+                        <div class="p"><b>Post Information</b></div>
+                        <div class="p"><b>Download：</b>{$noteone['note_reward']}</div>
+                    </if>
                     <div class="text-center Followtbut">
                         <a href="{:U('Index/User/personalCenter')}&id={$noteuser['user_id']}" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
                         Homepage
@@ -186,40 +209,10 @@
             </div>
         </div>
     </div>
-    <!-- foot start 底部信息 -->
-    <footer class="container-fluid FooterBg">
-        <div class="row FooterContainer">
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>ABOUT</dt>
-                    <dd>
-                        NewWorld.net is a comprehensive website that provides an efficient source of resources and convenience for our every -day lives. We can easily discover, share and create a new world.
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>SUPPORT</dt>
-                    <dd>Premium Support</dd>
-                    <dd>Get Started</dd>
-                    <dd>Partners</dd>
-                </dl>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>Help Center</dt>
-                    <dd>Help Center</dd>
-                    <dd>Contact Us</dd>
-                </dl>
-            </div>
-        </div>
-        <div class="row copyright">
-            <div class="col-md-12">
-                <p class="text-center">&copy; 2018 NewWorld. All rights reserved.</p>
-            </div>
-        </div>
+    <!-- footer -->
+    <footer>
+        <include file = "./World/Index/View/Public/footer.html"/>
     </footer>
-    <!-- foot end 底部信息 -->
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -409,7 +402,10 @@
                             message += '</div></div><div class="item_user_det"><div class="det_time"><div class="det_time_img"><img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png"></div>'
                             message += '<div class="det_timed">'+data.msg[i].note_comment_createtime+'</div>'
                             message += '</div><div class="det_zan">'
-                            if (data.msg[i].note_comment_isreply != 1){
+                            if ({$noteone["note_haveanswer"]}==0 && {$noteone["note_type"]} == 2 && {$ishave}==1) {
+                                message += '<div class="det_accept" onclick="isaccept('+data.msg[i].note_comment_id+')">Accept</div><div class="line"></div>'
+                            }
+                            if (data.msg[i].note_comment_isreply != 1 && {$ishave}==1){
                                 message += '<div class="det_reply" onclick="reply('+data.msg[i].note_comment_id+',this)">Reply</div>'
                             }
                             message += '<div class="line"></div><div class="det_zan_box">'
@@ -519,6 +515,121 @@
 
     }
 
+    function downloadFile(url){
+
+        layer.msg('确定要消耗积分下载吗？', {
+            time: 0 //不自动关闭
+            ,btn: ['确 定','暂时不']
+            ,yes: function(index){
+
+                layer.close(index);
+
+                $.ajax({
+                    type: "post",
+                    url: "{:U('Index/Ajax/ajax_haveResourceUrl')}",
+                    data: {
+                        money: "{$noteone['note_reward']}",
+
+                    },
+                    dataType: "json",
+                    async: false,
+                    success: function (list) {
+                        console.log(list)
+                        if (list.str == 1){
+                            var link = document.createElement('a');
+                            link.href = url;
+
+                            if (link.download !== undefined) {
+                                //Set HTML5 download attribute. This will prevent file from opening if supported.
+                                var fileName = url.substring(url.lastIndexOf('/') + 1, url.length);
+                                link.download = fileName;
+                            }
+
+                            //Dispatching click event.
+                            if (document.createEvent) {
+                                var e = document.createEvent('MouseEvents');
+                                e.initEvent('click', true, true);
+                                link.dispatchEvent(e);
+                                return true;
+                            }
+                            layer.msg(list.msg,{
+                                    time:1500,
+                                    icon:1,
+                                }
+                            );
+
+                        }else{
+                            layer.msg(list.msg,{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+
+                        }
+
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                        layer.msg('请求失败!', {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }
+
+                })
+
+            }
+
+        });
+
+    }
+    
+    function isaccept(comid) {
+
+        $.ajax({
+            type: "post",
+            url: "{:U('Index/Ajax/ajax_isaccept')}",
+            data: {
+                comid: comid,
+
+            },
+            dataType: "json",
+            async: false,
+            success: function (list) {
+                console.log(list)
+                if (list.str == 1){
+
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:1,
+                        },function () {
+                        location.reload();
+                        }
+                    );
+
+                }else{
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+
+                }
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                layer.msg('请求失败!', {
+                        time: 1500,
+                        icon: 2,
+                    }
+                );
+            }
+
+        })
+
+    }
 
 
 </script>
