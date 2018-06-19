@@ -150,7 +150,7 @@
                                             <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_sy_icon_07.png"></span>
                                         </label>
                                         <div class="layui-input-block">
-                                            <input type="text" name="title" lay-verify="title" autocomplete="off" id="schooltime" placeholder="Graduation time  xx/xx/xxxx" class="layui-input">
+                                            <input type="text" name="title" lay-verify="title" autocomplete="off" id="schooltime" placeholder="Graduation time  xx/xx/xxxx" class="layui-input Wtime">
                                         </div>
                                     </div>
                                     <div class="SelectionTypeContainer" style="margin-left: -10px;">
@@ -265,7 +265,15 @@
 </body>
 
 <script>
-
+        layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        
+        //执行一个laydate实例
+        laydate.render({
+            elem: '.Wtime', //指定元素
+            lang:'en',
+        });
+        });
     function gocreate() {
         var aa = "{$userid}";
         if(aa){
