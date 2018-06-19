@@ -6,7 +6,9 @@ layui.use(['laypage', 'layer'], function() {
     laypage.render({
         elem: 'NumberOfPages',
         count: 78,
-        layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+        prev:"Previous",
+        next:"Next",
+        layout: ['count', 'prev', 'page', 'next', 'skip'],
         jump: function(obj) {
             console.log(obj)
         }

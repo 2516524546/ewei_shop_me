@@ -7,19 +7,20 @@ $(".file").change(function() {
     var picDiv = $(this).parents(".picDiv");
     //得到所有的图片文件
     var fileList = docObj.files;
+    console.log(fileList)
     //循环遍历
     for (var i = 0; i < fileList.length; i++) {
         //动态添加html元素
         var picHtml = "<div class='imageDiv' > <img id='img" + fileList[i].name + "' /> <div class='cover'><i class='delbtn'>delete</i></div></div>";
         console.log(picHtml);
+        $(".imageDiv").remove();
         picDiv.prepend(picHtml);
         //获取图片imgi的对象
         var imgObjPreview = document.getElementById("img" + fileList[i].name);
         if (fileList && fileList[i]) {
             //图片属性
-            imgObjPreview.style.display = 'block';
-            imgObjPreview.style.width = '160px';
-            imgObjPreview.style.height = '130px';
+            imgObjPreview.style.width = '100%';
+            imgObjPreview.style.height =  '100%';
             //imgObjPreview.src = docObj.files[0].getAsDataURL();
             //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要以下方式
             if (userAgent.indexOf('MSIE') == -1) {

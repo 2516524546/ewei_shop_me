@@ -75,15 +75,26 @@
                 </div>
             </div>
             <div class="P_title_friend">
-
-                <if condition='$userone["user_id"]!=$userid && !$firendone'>
+                <if condition='$userid != $userone[user_id] && !$firendone && !$fir_message'>
                     <div class="friend_item" data-toggle="modal" data-target="#box1">
                         add friend
                     </div>
+                <elseif condition="$userid != $userone[user_id] && !$firendone"/>
+                    <div class="friend_item" data-toggle="modal">
+                        check pending
+                    </div>
+                <elseif condition="$userid != $userone[user_id] && isset($firendone)"/>
+                    <div class="friend_item" data-toggle="modal">
+                        My Friend
+                    </div>
                 </if>
-                <if condition='$userone["user_id"]!=$userid && !$concernsone'>
+                <if condition='$userid != $userone[user_id] && !$concernsone'>
                     <div class="friend_item Friend_Follow" data-Ison="true">
                         Follow
+                    </div>
+                <else/>
+                    <div class="friend_item Friend_Follow" data-Ison="false">
+                        Followed
                     </div>
                 </if>
             </div>
@@ -1363,13 +1374,24 @@
 </script>
 <script>
     $(".personal_content .personal_title .P_title_friend .Friend_Follow").on("click", function () {
-        if ($(this).attr("data-ison") === "true") {
-            $(this).text("Followed")
-            $(this).attr("data-Ison", "false")
-        } else {
-            $(this).text("Follow")
-            $(this).attr("data-ison", "true")
-        }
+        $.post(
+            '{:U("User/FollowFriend")}',
+            {id:{$userone['user_id']}},
+            function(data){
+                if(data.status == 0){
+                    alert(data.msg);
+                }else{
+                    alert(data.msg);
+                    if ($(".personal_content .personal_title .P_title_friend .Friend_Follow").attr("data-ison") === "true") {
+                        $(".personal_content .personal_title .P_title_friend .Friend_Follow").text("Followed")
+                        $(".personal_content .personal_title .P_title_friend .Friend_Follow").attr("data-Ison", "false")
+                    } else {
+                        $(".personal_content .personal_title .P_title_friend .Friend_Follow").text("Follow")
+                        $(".personal_content .personal_title .P_title_friend .Friend_Follow").attr("data-ison", "true")
+                    }
+                }
+            },'json'
+        );
     })
 
     //add friend
