@@ -10,6 +10,7 @@ use Index\Model\NoteVIModel;
 use Index\Model\QuestionModel;
 use Index\Model\ResourceModel;
 use Index\Model\SecondMarkModel;
+use Index\Model\TutorShipIssueModel;
 use Index\Model\UserModel;
 use Think\Controller;
 class AcademicController extends CommonController {
@@ -157,6 +158,11 @@ class AcademicController extends CommonController {
         $resourcelist = $notemodel->joinonelist('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 3','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
 
         $resourcecount = $notemodel->joinone('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 3','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+
+        $tutorissuemodel = new TutorShipIssueModel();
+        $issuelist = $tutorissuemodel->joinonelist('tutorship_issue_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 3','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+
+        $issuecount = $notemodel->joinone('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 3','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
 
 
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);

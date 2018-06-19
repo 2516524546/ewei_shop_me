@@ -1,0 +1,489 @@
+<head>
+		<meta charset="utf-8" />
+		<title>快乐琴行后台管理系统</title>
+		<meta name="keywords" content="快乐琴行后台管理系统" />
+		<meta name="description" content="快乐琴行后台管理系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
+		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+ 
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+			<!--[if !IE]> -->
+
+		<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+		
+		<!-- <![endif]-->
+		<!-- ace settings handler -->
+
+		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+		<script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body style='background:#fff;'>
+	<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+							<li class="active">控制台</li>
+						</ul><!-- .breadcrumb -->
+					</div>
+
+				
+				</div><!-- /.main-content -->
+	
+	
+<div class="page-content">
+	<div class="page-header">
+		<h1>
+			直播管理
+			<small> <i class="icon-double-angle-right"></i>
+				培训直播室列表
+			</small>
+			 
+		</h1>
+
+</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			 <div class="row" style="padding-bottom: 10px;">
+							<div class="col-sm-12">
+								<div id="sample-table-2_filter">
+									<form class="form-horizontal" action="{:U('Admin/Live/peixun_list_sou')}" method="POST" role="form" enctype="multipart/form-data">
+									<input type='hidden' id='kind' value='2'/>
+
+									<div class="btn-group" style='margin-top:5px;'>
+										<span>主播姓名:</span>
+										<input type="text" name="name" value="<?php if($name){echo $name;}?>">
+									</div>
+									<input type='hidden' name='button' value='1'/>
+									<input type='hidden' name='status' value="<?php echo $status?>"/>
+									<div class="btn-group" style='margin-top:5px;'>
+										<span>房间ID:</span>
+										<input type="text" name="room_id" value="<?php if($room_id){echo $room_id;}?>">
+									</div>
+									<div class="btn-group" style='margin-top:5px;'>
+										<span>标题:</span>
+										<input type="text" name="title_name" value="<?php if($title_name){echo $title_name;}?>">
+									</div>
+							
+									<div class="btn-group" style='margin-top:5px;'>
+											<span class="input-group-btn">
+												<button type="submit" style="padding:0" class="btn btn-purple btn-sm">
+													搜索<i class="icon-search icon-on-right bigger-110"></i>
+												</button>
+											</span>
+										
+									</div>
+								
+									</form>
+
+				
+								<!-- 按钮样式 -->		
+							<style type='text/css'>
+								.anniu{width:100%; height:40px; position:relative;}
+								 .anniu ul{width:auto; height:30px; border:1px solid #ccc; overflow:hidden; position:absolute; top:0; left:0; list-style:none; color:#333; box-sizing:border-box; font-size:13px; cursor: pointer;}	    
+								 .anniu ul li.current{background:#2679b5; color:#fff;width:100px; height:30px; float:left; border-right:1px solid #ccc;  line-height:30px; text-align:center; box-sizing:border-box;}
+								.anniu ul li{width:100px; height:30px; float:left; border-right:1px solid #ccc;  line-height:30px; text-align:center; box-sizing:border-box;}
+							</style>
+
+							<div class='anniu'>
+								<?php if($status==1){?>
+									<ul>
+										<li onclick="send1()" >未开播</li>
+										<li class="current" onclick="send2()" >正在直播</li>
+										<li onclick="send3()">已结束</li>
+									</ul>
+								<?php }elseif($status==0){?>
+									<ul>
+										<li class="current" onclick="send1()" >未开播</li>
+										<li  onclick="send2()" >正在直播</li>
+										<li onclick="send3()">已结束</li>
+									</ul>
+								<?php }else{?>
+									<ul>
+										<li  onclick="send1()" >未开播</li>
+										<li  onclick="send2()" >正在直播</li>
+										<li class="current" onclick="send3()">已结束</li>
+									</ul>
+								<?php }?>
+							</div>
+								<!-- 按钮样式 -->
+
+								</div>
+							</div>
+
+									 <button id="myModal" type="button" class="btn btn-success"  data-toggle="modal" data-target=".bs-example-modal-lg" style="margin-right: 20px;" >导出</button>
+						</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="table-responsive">
+						<table id="sample-table-1" class="table table-striped table-bordered table-hover" style="margin-bottom: 0px;font-size:13px;">
+							<thead>
+								<tr style=' font-size: 13px;'>
+								    <!-- <th><input type='checkbox' name='' value=''></th> -->
+									<th>ID</th>
+									<th>姓名</th>
+									<th>性别</th>
+									<th>电话</th>		
+									<th>身份</th>
+									<th>标题</th>	
+									<th>房间号</th>
+									<th>开播时间</th>
+									<th>直播种类</th>	
+									<th>观看人数</th>	
+									<th>直播收入</th>
+									<th>直播时长</th>
+									<th>具体详情</th>
+									<?php if($status != 2){?>
+									<th colspan="2">操作</th>
+									<?php }?>
+								</tr>
+							</thead>
+
+							<tbody>
+							<?php foreach($list as $k=>$v){?>
+								<tr>
+									<td><?php echo $v['id'];?></td>
+									<td><?php if($v['zhubo_truename']){echo $v['zhubo_truename'];}else{echo $v['nickname'];}?>
+									</td>
+									<td><?php echo $v['sex'];?></td>
+								
+									<td><?php if($v['zhubo_phone']){echo $v['zhubo_phone'];}else{echo $v['username'];}?></td>
+									<td><?php if($v['role']==1){echo '学生';}
+											elseif($v['role']==2){echo '老师';}
+											else{echo '普通用户';} ?>
+									</td>
+									<td><?php echo $v['title_name'];?></td>
+									<td><?php echo $v['room_id']?></td>
+									<td><?php echo $v['s_time'];?></td>
+								    <td><?php if($v['kind']==1){echo '教学课程';}elseif($v['kind']==2){echo '培训课程';}else{echo 'show房';}?>
+								    </td>
+								    <td> <?php echo $v['total_num'];?> </td>
+								    <td><?php echo $v['total_money'];?></td>
+								      <td><?php echo $v['long'];?></td>
+								    <td>
+										<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+
+											<a href="index.php?m=Admin&c=Live&a=show_rooms_xiang&id=<?php echo $v['id']?>&room_id=<?php echo $v['room_id']?>" class="btn btn-xs btn-success">详情</a>	
+											
+										</div>
+									</td>
+									<?php if($status != 2){?>
+									<td>
+										<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+								
+									       <?php if($v['status'] ==0){if($v['pinbi']==0){?>
+									      	<a onclick="pinbi(<?php echo $v['r_id']?>)" class="btn btn-xs btn-success" >屏蔽</a>
+									      	<?php }else{?>
+									      	<a onclick="pinbi(<?php echo $v['r_id']?>)" class="btn btn-xs btn-success" >解除屏蔽</a>
+									       <?php }if($v['tui']==0){?>
+									       	<a onclick="tuijian(<?php echo $v['r_id']?>)" class="btn btn-xs btn-success" >推荐</a>
+									       	<?php }else{?>
+									       		<a onclick="tuijian(<?php echo $v['r_id']?>)" class="btn btn-xs btn-success" >取消推荐</a>
+									       	<?php }}?>	
+
+									        <?php if($v['status'] ==1){if($v['pinbi']==0){?>
+									      	<a onclick="pinbi1(<?php echo $v['r_id']?>)" class="btn btn-xs btn-success" >屏蔽</a>
+									      	<?php }else{?>
+									      	<a onclick="pinbi1(<?php echo $v['r_id']?>)" class="btn btn-xs btn-success" >解除屏蔽</a>
+									       <?php }if($v['tui']==0){?>
+									       		<a onclick="tuijian1(<?php echo $v['r_id']?>)" class="btn btn-xs btn-success" >推荐</a>
+									       	<?php }else{?>
+									       		<a onclick="tuijian1(<?php echo $v['r_id']?>)" class="btn btn-xs btn-success" >取消推荐</a>
+									       	<?php }}?>	
+
+										</div>
+									</td>
+									<?php }?>
+								</tr>
+							<?php }?>	
+							</tbody>
+						</table>
+						<div class="dataTables_paginate paging_bootstrap" style="border-top: 1px solid #DDD;padding-top: 12px;padding-bottom: 12px;background-color: #eff3f8;border-bottom: 1px solid #DDD;">
+							<div style='margin-right:56px;'>
+							  <?php echo $page;?>
+							</div>
+						</div>
+					</div>
+					<!-- /.table-responsive -->
+				</div>
+				<!-- /span -->
+			</div>
+			<!-- /row -->
+			<div class="hr hr-18 dotted hr-double"></div>
+
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+	.btn-xs {
+		margin-right: 10px!important;
+	}
+</style>
+
+
+<form class="form-horizontal" id='admin_add' action="{:U('Admin/Live/room_daochu')}" method="POST" role="form" enctype="multipart/form-data">
+<!-- 模拟框Modal 添加 -->
+
+<div class="modal fade bs-example-modal-lg" id="add-auth"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body" style="overflow: hidden">
+                <div class="content" id='bianji_content'>
+     				<div class="btn-group" style="margin-right:10px;margin-top:5px;">								<input type='hidden' id="fire" name='time_status' value="<?php echo $status?>"/>			
+							<div class="input-group">
+							<span>直播日期：</span>
+								<input class="form-control date-picker" value="<?php if($stime){echo $stime;}?>" name="stime" id="time1" style="width: 35%" type="text" data-date-format="yyyy-mm-dd" />
+								-
+								<input class="form-control date-picker" value="<?php if($etime){echo $etime;}?>" name="etime" id="time2" style="width: 35%" type="text" data-date-format="yyyy-mm-dd" /> 
+							</div>
+					</div> 
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a  class="btn btn-primary" data-dismiss="modal" id="submit-ed" onclick="daochu()" >确定</a>
+                <a  class="btn btn-default"  data-dismiss="modal">取消</a>
+               
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+	.btn-xs {
+		margin-right: 10px!important;
+	}
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script type="text/javascript">
+
+
+$('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
+	$(this).prev().focus();
+});
+
+</script>
+<script type="text/javascript">
+	$(function(){
+		$('button.btn-success').click(function(e){
+			$('#myModalLabel').html('请选择时间')	
+		})	
+
+	
+
+// 		$('#submit-ed').click(function(){
+// 	alert(1)
+// 		var stime = $('#id-date-picker-1').val()
+// 		var etime = $('#id-date-picker-2').val()
+// 		var time_status = $('#fire').val()
+
+// 		location.href = "index.php?m=Admin&c=Live&a=room_daochu&time_status="
+// 		+time_status="stime="+stime+"etime="+etime;
+		
+// }
+		// $('a.btn-success').click(function(e){
+		// 	$('#myModalLabel').html('修改管理员信息')	
+		// })	
+	})
+</script>
+
+
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+<script>
+	function daochu(){
+		var stime = $('#time1').val()
+		if(stime == ''){
+			alert('请选择起始时间')
+			return false
+		}
+
+		var etime = $('#time2').val()
+		if(etime == ''){
+			alert('请选择结束时间')
+			return false
+		}
+		if(stime > etime){
+			alert('结束时间不能小于开始时间')
+			return false
+		}
+		var time_status = $('#fire').val()
+		var kind = $('#kind').val()
+		// alert(time_status) 
+
+		location.href = "index.php?m=Admin&c=Live&a=room_daochu&time_status="+time_status+"&stime="+stime+"&etime="+etime+"&kind="+kind;
+
+		$('#myModal').modal('hide')
+
+	}
+
+
+</script>
+<script src="__PUBLIC__/Admin/admin/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/jquery.js" type="text/javascript"></script>
+<script>
+
+function send1(){
+	location.href = "index.php?m=Admin&c=Live&a=show_peixun_list&status=0";
+}
+function send2(){
+	location.href = "index.php?m=Admin&c=Live&a=show_peixun_list&status=1";
+}
+function send3(){
+	location.href = "index.php?m=Admin&c=Live&a=show_peixun_list&status=2";
+}
+</script>
+
+<script language="javascript">
+
+
+
+	<!--
+	function linkok(url){
+	  question = confirm("你确认要删除吗？");
+	  if (question){
+	   window.location.href = url;
+	  }
+	}
+	//-->
+	</script>
+<script type="text/javascript">
+	
+
+
+function pinbi(rid){
+	// alert(rid);
+	// die;
+	if(confirm("确定此操作吗?")){
+		$.ajax({
+			url:'index.php?m=Admin&c=Live&a=zhibo_pinbi',
+			type:'post',
+			data:'rid='+rid,
+			success:function(msg){
+				// alert(msg);
+				// die;
+				if(msg == 1){
+					alert('操作成功')
+					location.href = "index.php?m=Admin&c=Live&a=show_peixun_list&status=0"
+				}else{
+					alert(msg)
+					return false
+				}
+			}
+		})
+	}
+}
+
+function pinbi1(id,room_id){
+	if(confirm("确定此操作吗?")){
+		$.ajax({
+			url:'index.php?m=Admin&c=Live&a=zhibo_pinbi',
+			type:'post',
+			data:'id='+id+'&room_id='+room_id,
+			success:function(msg){
+				if(msg == 1){
+					alert('操作成功')
+					location.href = "index.php?m=Admin&c=Live&a=show_peixun_list&status=1"
+				}else{
+					alert(msg)
+					return false
+				}
+			}
+		})
+	}
+}
+
+
+function tuijian(id,room_id){
+	if(confirm("确定此操作吗?")){
+		$.ajax({
+			url:'index.php?m=Admin&c=Live&a=zhibo_tuijian',
+			type:'post',
+			data:'id='+id+'&room_id='+room_id,
+			success:function(msg){
+				if(msg == 1){
+					alert('操作成功')
+					location.href = "index.php?m=Admin&c=Live&a=show_peixun_list&status=0"
+				}else{
+					alert(msg)
+					return false
+				}
+			}
+		})
+	}
+}
+
+function tuijian1(id,room_id){
+	if(confirm("确定此操作吗?")){
+		$.ajax({
+			url:'index.php?m=Admin&c=Live&a=zhibo_tuijian',
+			type:'post',
+			data:'id='+id+'&room_id='+room_id,
+			success:function(msg){
+				if(msg == 1){
+					alert('操作成功')
+					location.href = "index.php?m=Admin&c=Live&a=show_peixun_list&status=1"
+				}else{
+					alert(msg)
+					return false
+				}
+			}
+		})
+	}
+}
+</script>

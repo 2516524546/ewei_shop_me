@@ -58,6 +58,7 @@ class UserController extends CommonController {
         //好友请求
         $fir_message = D('Message')->where('(message_sid='.$this->userid.' AND message_uid='.$id.') OR (message_sid='.$id.' AND message_uid='.$this->userid.')')->getField('message_id'); //对方申请成为我的好友或我申请成为对方的好友
 
+
         $this->assign(array(
             'userone' => $userone,
             'firendone' => $firendone,

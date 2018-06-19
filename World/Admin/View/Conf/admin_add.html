@@ -1,0 +1,301 @@
+<head>
+		<meta charset="utf-8" />
+		<title>快乐琴行后台管理系统</title>
+		<meta name="keywords" content="快乐琴行后台管理系统" />
+		<meta name="description" content="快乐琴行后台管理系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
+		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+			<!--[if !IE]> -->
+
+		<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+		
+		<!-- <![endif]-->
+		<!-- ace settings handler -->
+
+		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+		<script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+		<![endif]-->
+		<style type="text/css">
+			
+			.td-yi{ font-size:13px;width:150px; height:30px; padding-left:50px; line-height:30px; border:1px solid #d5d5d5; border-top:none;}
+			tr .td-er{ width:200px; padding:none; text-align:center;border-left:1px solid #d5d5d5;}
+			th,td{font-size:13px; width:150px; height:30px; border-bottom:1px solid #d5d5d5; border-right:1px solid #d5d5d5; position:relative; }
+			th{ border-top:1px solid #d5d5d5;}
+			td input{ width:10px; height:10px; position:absolute; left:50%; top:50%; margin:-5px 0 0 -5px !important;}
+			.yi{ border-top:1px solid #d5d5d5; text-align:center;font-size:13px;}
+			.td-yiyi{ width:170px; padding-left:30px;font-size:13px;}
+		</style>
+	</head>
+	<body style='background:#fff;'>
+	<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+							<li class="active">控制台</li>
+						</ul><!-- .breadcrumb -->
+					</div>
+
+				
+				</div><!-- /.main-content -->
+	
+	
+<div class="page-content">
+	<div class="page-header">
+		<h1>
+			<a href="{:U('Admin/Conf/admin_list')}" target="rightFrame" style='text-decoration:none;'>账号列表</a>
+			 <small> <i class="icon-double-angle-right"></i>
+			新增管理员
+			</small> 
+			
+		</h1>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<!-- PAGE CONTENT BEGINS -->
+		
+			<!-- <div class="alert alert-block alert-success">
+				<button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+			
+			</div> -->
+		
+			<div class="row" style="padding-bottom: 10px;">
+							<div class="col-sm-12">
+								<div id="sample-table-2_filter">
+									<form class="form-horizontal" action="{:U('Admin/Other/juese_add')}" method="POST" role="form" enctype="multipart/form-data">
+									
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right" for="form-field-1">账号</label>
+												<div class="col-sm-9">
+													<input type="text" name="username" value="" placeholder="账号" /></div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right" for="form-field-1">密码</label>
+												<div class="col-sm-9">
+													<input type="password" name="pwd" value="" placeholder="密码" /></div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right" for="form-field-1">确认密码</label>
+												<div class="col-sm-9">
+													<input type="password" name="repwd" value="" placeholder="确认密码" /></div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right" for="form-field-1">姓名</label>
+												<div class="col-sm-9">
+													<input type="text" name="name" value="" placeholder="姓名" /></div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right" for="form-field-1">联系方式</label>
+												<div class="col-sm-9">
+													<input type="text" name="mobile" value="" placeholder="联系方式" /></div>
+											</div>
+											
+											<div>
+											    <div style="margin-right:30px;">
+											       <label class="col-sm-3 control-label no-padding-right" for="form-field-1">权限菜单</label>
+											    </div>
+												
+												<div style="margin-left:10px;width:400px;display:inline-block;">
+												   <table style=" height:auto; display:inline-block; margin-right:10px;">
+													     <tr>
+													       <th style="text-align:center;border-left:1px solid #d5d5d5">导航名称</th>
+													       <th style="text-align:center;">选择</th>
+													     </tr>
+													      <?php foreach($menus as $val){?>
+														      <tr>
+														        <td class="td-yi td-yiyi"><?php echo $val['m_name'];?></td>
+														        <td><input type="checkbox" name="zhanghao" value="1"/></td>
+														      </tr>
+														       <?php foreach($val['child'] as $v){?>	
+															       <tr>
+															        <td class="td-yi"><?php echo $v['m_name'];?></td>
+															        <td><input type="checkbox" name="jue[]" value="3"/></td>
+															      </tr>
+														        <?PHP }?> 
+													     <?PHP }?> 
+											      </table>
+												</div>
+											   
+											</div>
+											
+					
+								
+										
+										
+										<div class="form-actions center">
+											<a id='tianjia' class="btn btn-sm btn-success">
+												<i class="icon-edit bigger-110"></i>
+												新增
+											</a>
+											<a class="btn btn-sm btn-warning" href="{:U('Admin/Other/juese_list')}" target="rightFrame" class="myButton">
+												<i class="icon-arrow-left icon-on-left bigger-110"></i>
+												取消
+											</a>
+					
+				                       </div>
+								
+									</form>
+								
+								</div>
+							</div>
+						</div>
+			
+	
+			<div class="hr hr-18 dotted hr-double"></div>
+
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+	.btn-xs {
+		margin-right: 10px!important;
+	}
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+<script type="text/javascript">
+	
+$('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
+	$(this).prev().focus();
+});
+</script>
+
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+<script>
+function showStart(){
+    return true;
+}
+function showSuccess(data){
+    	if(data == 1){
+    		alert('新增成功')
+    		location.href="{:U('Admin/Other/juese_list')}"
+    	}else{
+    		alert(data)
+    		return
+    	}
+
+}
+$(function(){
+	var options = {
+		        beforeSubmit:showStart,
+		        success:showSuccess,
+
+		 };
+	$('#tianjia').click(function(){	
+		//alert(0)
+	
+		$('.form-horizontal').ajaxSubmit(options);
+	})
+	  //点击全选
+	 //获取所有checkbox对象
+	   var box = document.getElementsByName("zhanghao");
+	   var checkbox = document.getElementsByName("jue[]");
+	   //alert(box[0].checked)
+	   //return false
+	   $("input[name='zhanghao']").click(function(){ 
+		   if(box[0].checked){	
+			    for(var i=0;i<checkbox.length;i++){
+			        checkbox[i].checked = true;
+			     }	
+		    }else{
+		    	for(var i=0;i<checkbox.length;i++){
+			        checkbox[i].checked = false;
+			     }
+		    }
+	   })
+	   
+	   $("input[name='jue[]']").click(function(){ 
+		    var length=0;
+		    for(var i=0;i<checkbox.length;i++){
+		        if(checkbox[i].checked){
+		        	length++
+		        }  
+		     }
+		    if(length == checkbox.length){
+		    	box[0].checked = true
+		    }else{
+		    	box[0].checked = false
+		    }
+	   })
+	
+	   
+	   var yemian = document.getElementsByName("yemian");
+	   var ye = document.getElementsByName("ye[]");
+	   $("input[name='yemian']").click(function(){ 
+		   if(yemian[0].checked){	
+			    for(var i=0;i<ye.length;i++){
+			    	ye[i].checked = true;
+			     }	
+		    }else{
+		    	for(var i=0;i<ye.length;i++){
+		    		ye[i].checked = false;
+			     }
+		    }
+	   })
+	   
+	   $("input[name='ye[]']").click(function(){ 
+		    var length=0;
+		    for(var i=0;i<ye.length;i++){
+		        if(ye[i].checked){
+		        	length++
+		        }  
+		     }
+		    if(length == ye.length){
+		    	yemian[0].checked = true
+		    }else{
+		    	yemian[0].checked = false
+		    }
+	   })
+})
+</script>
+

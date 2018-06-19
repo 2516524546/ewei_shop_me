@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+	.bg .Exhibition{ width:100%; height:auto; background:#fff; padding-left:23%; box-sizing:border-box;overflow:hidden;}
+	.bg .Exhibition ul{ width:97%; padding:0 1.5%; height:auto; overflow:hidden; list-style:none;}
+	.bg .Exhibition ul li{ width:100px; height:105px; float:left;}
+	.bg .Exhibition dl{ width:80px; height:80px; margin:0 auto; position:relative;}
+		/*.Exhibition dl dt{ width:3.74rem; height:3.74rem; background:url(../img/jia.png) no-repeat; background-size:3.74rem 3.74rem; border:1px solid #ccc;}*/
+		.Exhibition dl dt{ position:relative; text-align:center; width:80px; height:25px; line-height:25px; color:#333;}
+		#imagePreviewyi,#imagePreviewer,#imagePreviewsan,#imagePreviewsi,#imagePreviewwu,#imagePreviewliu,#imagePreviewqi,#imagePreviewba{ width:80px; height:80px; background:url(../img/jia.png) no-repeat; background-size:100% 100%; border:1px solid #ccc; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);}
+		#imageInputyi,#imageInputer,#imageInputsan,#imageInputsi,#imageInputwu,#imageInputliu,#imageInputqi,#imageInputba{ width:80px; height:80px; opacity:0; position:absolute; left:0; top:0; z-index:2;}
+		.Exhibition dl dd{width:3.74rem; height:1.4rem; line-height:1.4rem; text-align:center; }
+	
+	
+	

@@ -1,0 +1,292 @@
+<head>
+		<meta charset="utf-8" />
+		<title>子昊钢琴后台管理系统</title>
+		<meta name="keywords" content="子昊钢琴后台管理系统" />
+		<meta name="description" content="子昊钢琴后台管理系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
+		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+			<!--[if !IE]> -->
+
+		<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+		
+		<!-- <![endif]-->
+		<!-- ace settings handler -->
+
+		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+		<script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body style='background:#fff;'>
+	<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+							<li class="active">控制台</li>
+						</ul><!-- .breadcrumb -->
+					</div>
+
+				
+				</div><!-- /.main-content -->
+	
+	
+<div class="page-content">
+	<div class="page-header">
+		<h1>
+			认证管理
+			<small> <i class="icon-double-angle-right"></i>
+				设备认证列表
+			</small>
+			 
+		</h1>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<!-- PAGE CONTENT BEGINS -->
+		
+			<!-- <div class="alert alert-block alert-success">
+				<button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+			
+			</div> -->
+		
+			<div class="row" style="padding-bottom: 10px;">
+							<div class="col-sm-12">
+								<div id="sample-table-2_filter">
+								<form class="form-horizontal" action="{:U('Admin/Renzheng/shebei_renzheng_list_sou')}" method="POST" role="form" enctype="multipart/form-data">
+									<div class="btn-group" style='margin-top:5px;'>
+										<span>姓名:</span>
+										<input type="text" name="name" value="<?php if($name){echo $name;}?>">
+									</div>
+									<input type='hidden' name='button' value='1'/>
+									<input type='hidden' name='status' value="<?php echo $status;?>"/>
+									<div class="btn-group" style='margin-top:5px;'>
+										<span>设备编号:</span>
+										<input type="text" name="hao" value="<?php if($hao){echo $hao;}?>">
+									</div>
+									 <div class="btn-group" style='margin-top:5px;'>
+										
+										<div class="input-group">
+										<span>申请时间：</span>
+											<input class="form-control date-picker" value="<?php if($stime){echo $stime;}?>" name="stime" id="id-date-picker-1" style="width: 35%" type="text" data-date-format="yyyy-mm-dd" />
+											-
+											<input class="form-control date-picker" value="<?php if($etime){echo $etime;}?>" name="etime" id="id-date-picker-1" style="width: 35%" type="text" data-date-format="yyyy-mm-dd" />
+										</div>
+									</div>
+										<div class="btn-group" style="width: 230px;margin-top:5px;">
+											<div class="input-group" style="float:left;margin-left:20px;">
+												
+												<span class="input-group-btn">
+													<button type="submit" style="padding:0" class="btn btn-purple btn-sm">
+														搜索<i class="icon-search icon-on-right bigger-110"></i>
+													</button>
+												</span>
+											</div>
+										</div> 
+									<!-- </div> -->
+									</form>
+								<!-- 按钮样式 -->		
+							<style type='text/css'>
+								.anniu{width:100%; height:40px; position:relative;}
+								 .anniu ul{width:auto; height:30px; border:1px solid #ccc; overflow:hidden; position:absolute; top:0; left:0; list-style:none; color:#333; box-sizing:border-box; font-size:13px; cursor: pointer;}	    
+								 .anniu ul li.current{background:#2679b5; color:#fff;width:100px; height:30px; float:left; border-right:1px solid #ccc;  line-height:30px; text-align:center; box-sizing:border-box;}
+								.anniu ul li{width:100px; height:30px; float:left; border-right:1px solid #ccc;  line-height:30px; text-align:center; box-sizing:border-box;}
+							</style>
+								<div class='anniu'>
+								    <!-- <a href="#" target="rightFrame"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>审核通过</span></a>
+								    <a href="#" target="rightFrame"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>审核不通过</span></a> -->
+								 
+								<!--     <a href="#" style="width:100px; height:34px; display:block; position:absolute; top:0; right:0;" target="rightFrame"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;' id='del'>删除</span></a> -->
+								
+									<ul>
+										<li class="<?php if($status==1){echo 'current';}?>" onclick="shebie_renzheng(1)">待认证</li>
+										<li class="<?php if($status==2){echo 'current';}?>" onclick="shebie_renzheng(2)">认证通过</li>
+										<li class="<?php if($status==3){echo 'current';}?>" onclick="shebie_renzheng(3)">认证不通过</li>
+										
+									</ul>
+								</div>
+								<!-- 按钮样式 -->
+								</div>
+							</div>
+						</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="table-responsive">
+						<table id="sample-table-1" class="table table-striped table-bordered table-hover" style="margin-bottom: 0px;font-size:13px;">
+							<thead>
+								<tr style=' font-size:13px;'>
+								     <!-- <th><input type='checkbox' name='box' ></th>  -->
+									<th>序号</th> 
+									<th>申请人姓名</th>
+									<th>手机号</th>									
+									<th>身份证号</th>
+									<th>邮箱</th> 
+									<th>设备编码</th>									
+									<th>申请时间</th>
+					            	<?php if($status != 2){?>
+								    <th>操作</th>
+								    <?php }?>
+								</tr>
+							</thead>
+
+							<tbody>
+							<?php foreach($list as $k=>$v){?>
+								<tr>
+								  <!-- <td><input type='checkbox' name='ids' value="<?php echo $v['tid']?>"></td>  -->
+							
+									 <td><?php echo $k+1;?></td>
+									<td><?php echo $v['sb_truename'];?></td>
+									<td><?php echo $v['sb_mobile'];?></td> 
+									 <td><?php echo $v['sb_card'];?></td>
+									<td><?php echo $v['sb_email'];?></td>
+									<td><?php echo $v['sb_hao'];?></td>
+									<td><?php echo $v['sb_addtime'];?></td>
+									<?php if($status != 2){?>
+										<td>
+											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+												 <a href="#" class="btn btn-xs btn-success" onclick="renzheng(<?php echo $v['sb_id'];?>,2)">认证通过</a>
+											<?php if($status == 1){?>	
+												 <a href="#" class="btn btn-xs btn-success" onclick="renzheng(<?php echo $v['sb_id'];?>,3)">认证不通过</a>
+											<?php }?>
+											</div>
+										</td>
+								    <?php }?>
+								</tr>
+							<?php }?>
+							</tbody>
+						</table>
+						<div class="dataTables_paginate paging_bootstrap" style="border-top: 1px solid #DDD;padding-top: 12px;padding-bottom: 12px;background-color: #eff3f8;border-bottom: 1px solid #DDD;">
+							<div style='margin-right:56px;'>
+							  <?php echo $page;?>
+							</div>
+						</div>
+					</div>
+					<!-- /.table-responsive -->
+				</div>
+				<!-- /span -->
+			</div>
+			<!-- /row -->
+			<div class="hr hr-18 dotted hr-double"></div>
+
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+</div>
+<div id='datu' style=" background:rgba(0,0,0,0.5); height:auto; left:0; position: absolute; top:0; width:100%; padding-bottom:10%; z-index: 2;display:none"></div> 
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+	.btn-xs {
+		margin-right: 10px!important;
+	}
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+<script type="text/javascript">
+	
+$('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
+	$(this).prev().focus();
+});
+</script>
+<script src="__PUBLIC__/Admin/admin/js/jquery.js" type="text/javascript"></script>
+<script>
+function shebie_renzheng(status){
+	//alert(status)
+	location.href = "index.php?m=Admin&c=Renzheng&a=shebei_renzheng_list&status="+status
+}
+function renzheng(sb_id,status){
+	if(confirm("确定执行吗？")){
+		$.ajax({
+			url:"index.php?m=Admin&c=Renzheng&a=shebei_renzheng",
+			data:'status='+status+'&sb_id='+sb_id,
+			type:'post',
+			success:function(msg){
+				if(msg == 1){
+					location.href = "index.php?m=Admin&c=Renzheng&a=shebei_renzheng_list&status="+status
+				}else{
+					alert(msg)
+					return false
+				}
+				
+			}
+		})
+	}
+	
+}
+$(function(){
+   
+   //点击全选
+	 //获取所有checkbox对象
+	/*    var box = document.getElementsByName("box");
+	   var checkbox = document.getElementsByName("ids");
+	   //alert(box[0].checked)
+	   //return false
+	   $("input[name='box']").click(function(){ 
+		   if(box[0].checked){	
+			    for(var i=0;i<checkbox.length;i++){
+			        checkbox[i].checked = true;
+			     }	
+		    }else{
+		    	for(var i=0;i<checkbox.length;i++){
+			        checkbox[i].checked = false;
+			     }
+		    }
+	   })
+	   
+	   $("input[name='ids']").click(function(){ 
+		    var length=0;
+		    for(var i=0;i<checkbox.length;i++){
+		        if(checkbox[i].checked){
+		        	length++
+		        }  
+		     }
+		    if(length == checkbox.length){
+		    	box[0].checked = true
+		    }else{
+		    	box[0].checked = false
+		    }
+	   }) */
+})
+</script> 
+

@@ -1,0 +1,436 @@
+<head>
+		<meta charset="utf-8" />
+		<title>子昊钢琴后台管理系统</title>
+		<meta name="keywords" content="子昊钢琴后台管理系统" />
+		<meta name="description" content="子昊钢琴后台管理系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
+		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+			<!--[if !IE]> -->
+
+		<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+		
+		<!-- <![endif]-->
+		<!-- ace settings handler -->
+
+		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+		<script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body style='background:#fff;'>
+	<div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="#">首页</a>
+                </li>
+                <li class="active">控制台</li>
+            </ul><!-- .breadcrumb -->
+        </div>
+    </div><!-- /.main-content -->
+<div class="page-content">
+	<div class="page-header">
+		<h1>
+			设置
+			<small> <i class="icon-double-angle-right"></i>
+				管理员账号管理
+			</small>
+			 
+		</h1>
+	<!-- 	 <form class="daoru" action="{:U('Daili/Index/upload_execl')}" method="POST" enctype="multipart/form-data" style="margin-top:20px;">
+         <input type='file' name='execl' style=" width:150px; height:30px; display:inline-block; margin-right:30px;"/>
+		 <span style='width:85px; height:30px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:30px;text-align:center; borde-radius:4px;' id='daoru'>导入数据</span>
+		</form> 	 -->	 
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+		   
+			 <div class="row" style="padding-bottom: 10px;">
+							<div class="col-sm-12">
+								<div id="sample-table-2_filter">
+								<!-- 	<form class="form-horizontal" action="{:U('Admin/Fenxiao/fenxiao_list_sou')}" method="POST" role="form" enctype="multipart/form-data">
+									<div class="btn-group" style='margin-top:5px;'>
+										<span>账号:</span>
+										<input type="text" name="username" value="<?php if($username){echo $username;}?>">
+									</div>
+									<input type='hidden' name='button' value='1'/> -->
+								<!-- 	<?php if($agent){?>
+								
+										<div class="btn-group" style='margin-top:5px;'>
+												<span>所属代理商：</span>
+												<select name="aid" style="width:130px;">
+													<option value="">全部</option>
+													<?php foreach($agent as $v){?>
+													  <option value="<?php echo $v['aid']?>" <?php if($aid == $v['aid']){echo 'selected';}?>><?php echo $v['agent_name'];?></option>
+													<?php }?>
+												</select>
+										</div>
+									<?php }?>
+									<div class="btn-group" style='margin-top:5px;'>
+										<span>分销商名称:</span>
+										<input type="text" name="name" value="<?php if($name){echo $name;}?>">
+									</div> 
+									
+									<div class="btn-group" style="margin-right:10px;margin-top:5px;">											
+											<div class="input-group">
+											<span>加入时间：</span>
+												<input class="form-control date-picker" value="<?php if($stime){echo $stime;}?>" name="stime" id="id-date-picker-1" style="width: 35%" type="text" data-date-format="yyyy-mm-dd" />
+												-
+												<input class="form-control date-picker" value="<?php if($etime){echo $etime;}?>" name="etime" id="id-date-picker-1" style="width: 35%" type="text" data-date-format="yyyy-mm-dd" /> 
+											</div>
+									</div> -->
+			<!-- 省市级联动 -->
+			 <!--  <script type="text/javascript" src="__PUBLIC__/Admin/admin/js/region_select.js"></script>
+										<div class="btn-group" style='margin-right:12px;margin-top:5px;'>
+											<span style='margin-left:12px;'>代理区域：</span>
+																	
+								            <select name="location_p" id="location_p" class="tongselect"></select>
+								           <select name="location_c" id="location_c" class="tongselect" ></select>
+								         <select name="location_a" id="location_a" class="tongselect"></select> 
+								                <script src="js/region_select.js"></script>
+								                <script type="text/javascript">
+								                    new PCAS('location_p', 'location_c', 'location_a', '<?php if($p){echo $p;}?>', '<?php if($c){echo $c;}?>', '<?php if($a){echo $a;}?>');
+								                </script>
+        
+										</div> -->
+	<!-- 
+										<div class="btn-group" style='margin-top:5px;'>
+												<span class="input-group-btn">
+													<button type="submit" style="padding:0" class="btn btn-purple btn-sm">
+														搜索<i class="icon-search icon-on-right bigger-110"></i>
+													</button>
+												</span>
+											
+										</div>
+								
+									</form> -->
+							 <div class="row" style="padding-bottom: 10px;">
+					                <div class="col-sm-12">
+					                    <div class="col-xs-12">
+					
+					                        <button type="button" class="btn btn-success"  data-toggle="modal" data-target=".bs-example-modal-lg" style="margin-right: 20px;" onClick="admin_add()">新增管理员</button>
+					
+					                     <!--    <a href="javascript:(0)" id="auth_update" class="btn btn-primary" style="margin-right: 20px;">修改</a>
+					
+					                        <button type="button" id="auth_delete" class="btn btn-danger" style="margin-right: 20px;">删除</button>
+					 -->
+					                    </div>
+					                </div>
+					            </div>
+							<!--	<div style=' width:100%; height:40px; '>
+								   <a href="{:U('Admin/Conf/admin_add')}" target="rightFrame"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>添加管理员</span></a>
+								     <a href="#" target="rightFrame"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>删除</span></a>
+								
+								</div> -->
+								</div>
+							</div>
+						</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="table-responsive">
+						<table id="sample-table-1" class="table table-striped table-bordered table-hover" style="margin-bottom: 0px;font-size:13px;">
+							<thead>
+								<tr style=' font-size: 13px;'>
+								<!--   <th><input type='checkbox' name='' value=''></th>   -->
+									
+									<th>账号</th>
+									<th>姓名</th>
+									<th>角色</th>
+									<th>创建人账号</th>
+									<th>创建人时间</th>
+									
+									<th>上次登录时间</th>
+									<th>上次登录ip</th>			
+									<th>状态</th>								
+								
+									<th>操作</th>
+								</tr>
+							</thead>
+
+							<tbody>
+							<?php foreach($list as $k=>$v){?>
+								<tr>
+								 <!--    <td><input type='checkbox' name='' value=''></td>--> 
+									<td><?php echo $v['username'];?></td>
+									<td><?php echo $v['fzr_name'];?></td>
+									<td><?php if($v['juese']==1){echo '超级管理员';}else{echo '普通管理员';}?></td>
+									<td><?php echo $v['careater_username'];?></td>
+									<td><?php echo $v['add_time'];?></td>
+									<td><?php echo $v['login_time'];?></td>
+									<td><?php echo $v['login_ip']?></td>
+									<td><?php if($v['status']==1){echo '启用';}else{echo '禁用';}?></td>
+									
+									
+									 <td>
+										 <?php if($juese == 1){?>
+
+										 <?php if($v['juese'] != 1){?>
+										    <a href="#" class="btn btn-xs btn-success" data-toggle="modal" data-target=".bs-example-modal-lg" onClick="bianji(<?php echo $v['aid'];?>)">编辑</a>
+									<?php }?>
+										 <?php }?>
+									</td> 
+								</tr>
+							<?php }?>	
+							</tbody>
+						</table>
+						<div class="dataTables_paginate paging_bootstrap" style="border-top: 1px solid #DDD;padding-top: 12px;padding-bottom: 12px;background-color: #eff3f8;border-bottom: 1px solid #DDD;">
+							<div style='margin-right:56px;'>
+							  <?php echo $page;?>
+							</div>
+						</div>
+					</div>
+					<!-- /.table-responsive -->
+				</div>
+				<!-- /span -->
+			</div>
+			<!-- /row -->
+			<div class="hr hr-18 dotted hr-double"></div>
+
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+</div>
+
+<form class="form-horizontal" id='admin_add' action="{:U('Admin/Conf/admin_add')}" method="POST" role="form" enctype="multipart/form-data">
+<!-- 模拟框Modal 添加 -->
+
+<div class="modal fade bs-example-modal-lg" id="add-auth"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">新增 管理员</h4>
+            </div>
+            <div class="modal-body" style="overflow: hidden">
+                
+                <div class="content" id='bianji_content'>
+                    <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
+                        <label class="col-sm-3 control-label" for="name">账号:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="username" value="" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
+                        <label class="col-sm-3 control-label" for="admin">密码:</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="pwd" value="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
+                        <label class="col-sm-3 control-label" for="name">确认密码:</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="repwd" value="" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
+                        <label class="col-sm-3 control-label" for="admin">姓名:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="name" value="" class="form-control">
+                        </div>
+                    </div>
+                     <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
+                        <label class="col-sm-3 control-label" for="admin">联系方式:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="mobile" value="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
+                        <label class="col-sm-3 control-label" for="admin">权限菜单:</label>
+                        <div class="col-sm-8">
+                            <table id="add-table" class="table table-bordered" style="margin-bottom: 0px;font-size:13px;">
+                                <tr>
+                                    <th>导航名称</th>
+                                    <th>选择</th>
+                                </tr>
+
+                                <?php foreach($menus as $val){?>
+
+                                    <tr>
+                                        <td><img src="__PUBLIC__/Admin/admin/images/images/u6380.png"><?php echo $val['m_name']?></td>
+                                        <td><?php ?></td>
+                                    </tr>
+                                    <?php foreach($val['child'] as $v){?>	
+	                                    <tr>
+	                                        <td><img style="margin-left: 10px;" src="__PUBLIC__/Admin/admin/images/images/u6380.png"><?php echo $v['m_name']?></td>
+	                                        <td><input type="checkbox"  value="<?php echo $v['mid']?>" name="cid[]" /> </td>
+	                                    </tr>
+                                     <?php }?>
+                                <?php }?>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
+                        <label class="col-sm-3 control-label" for="admin">状态:</label>
+                        <div class="col-sm-8">
+                            <div class="radio1">
+								<label>
+									<input name="status" type="radio" value="1" class='ace' checked/>
+									<span class="lbl">启用</span>
+								</label>
+								<label>
+									<input name="status" type="radio" value="2" class='ace' />
+									<span class="lbl">禁用</span>
+								</label>
+								
+							</div>
+                        </div>
+                    </div>
+                  <?php if($_SESSION['piano_user']['role']==1){?>  
+                    <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
+                        <label class="col-sm-3 control-label" for="admin">角色:</label>
+                        <div class="col-sm-8">
+                            <div class="radio1">
+								<label>
+									<input name="juese" type="radio" value="2" class='ace' checked/>
+									<span class="lbl">普通管理员</span>
+								</label>
+								<label>
+									<input name="juese" type="radio" value="1" class='ace' />
+									<span class="lbl">超级管理员</span>
+								</label>
+								
+							</div>
+                        </div>
+                    </div>
+                   <?php }?> 
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a  class="btn btn-primary" id="submit-ed" >保存</a>
+                <a  class="btn btn-default"  data-dismiss="modal">取消</a>
+               
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<script src="__PUBLIC__/Admin/admin/js/bootstrap.min.js"></script>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+	.btn-xs {
+		margin-right: 10px!important;
+	}
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+<script type="text/javascript">
+	
+$('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
+	$(this).prev().focus();
+});
+</script>
+<script type="text/javascript">
+	$(function(){
+		$('button.btn-success').click(function(e){
+			$('#myModalLabel').html('新增管理员')	
+		})	
+		$('a.btn-success').click(function(e){
+			$('#myModalLabel').html('修改管理员信息')	
+		})	
+	})
+</script>
+
+
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+<script>
+//新增
+function admin_add(){
+	$.ajax({
+		url:'index.php?m=Admin&c=Conf&a=admin_ajaxadd',
+		data:'',
+		type:'post',
+		success:function(msg){
+
+			$('#bianji_content').html(msg)
+		}
+	})
+}
+//编辑
+function bianji(aid){
+
+	$.ajax({
+		url:'index.php?m=Admin&c=Conf&a=admin_edit',
+		data:'aid='+aid,
+		type:'post',
+		success:function(msg){
+			//alert(msg)
+			//return false
+			$('#bianji_content').html(msg)
+		}
+	})
+} 
+function showStart(){
+    return true;
+}
+function showSuccess(data){
+    	if(data == 1){
+    		alert('操作成功')
+    		location.href="{:U('Admin/Conf/admin_list')}"
+    	}else{
+    		alert(data)
+    		$('.modal').css('overflow','')
+    		return
+    	}
+
+}
+$(function(){
+	var options = {
+		        beforeSubmit:showStart,
+		        success:showSuccess,
+
+		 };
+	$('#submit-ed').click(function(){	
+		//alert('a')
+		//return false
+		$('#admin_add').ajaxSubmit(options);
+	})
+	
+})
+</script>

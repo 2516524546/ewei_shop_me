@@ -1,0 +1,101 @@
+<head>
+		<meta charset="utf-8" />
+		<title>快乐琴行后台管理系统</title>
+		<meta name="keywords" content="快乐琴行后台管理系统" />
+		<meta name="description" content="快乐琴行后台管理系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+
+		
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+		
+
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+		
+		<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+	</head>
+	<body style='background:#fff;'>
+	<div class="page-content">
+	<div class="page-header">
+		<h1>
+			设备管理
+			<small> <i class="icon-double-angle-right"></i>
+				更换记录
+			</small>
+			 
+		</h1>
+	</div>
+	
+
+	
+<div class="row">
+	<div class="col-xs-12">
+		<table id="sample-table-1" class="table table-striped table-bordered table-hover" style="margin-bottom: 0px;font-size:13px;">
+		    <thead>
+				<tr style=' font-size: 13px;'>
+				    <!-- <th><input type='checkbox' name='' value=''></th> -->
+					<th>旧设备序列号</th>
+					<th>新设备序列号</th>
+					<th>操作者</th>		
+					<th>更换时间</th>			
+				</tr>
+			</thead>  
+		    <tbody>
+				<?php foreach($list as $k=>$v){?>
+					<tr>
+					   <!--  <td><input type='checkbox' name='' value=''></td> -->
+						<td><?php echo $v['old_hao']?></td>
+						<td><?php echo $v['new_hao'];?></td>
+						<td><?php echo $v['who']?></td>
+						<td><?php echo $v['time']?></td>
+						
+					</tr>
+				<?php }?>	
+			</tbody>
+		</table>
+		<div class="dataTables_paginate paging_bootstrap" style="border-top: 1px solid #DDD;padding-top: 12px;padding-bottom: 12px;background-color: #eff3f8;border-bottom: 1px solid #DDD;">
+							<div style='margin-right:56px;'>
+							  <?php echo $page;?>
+							</div>
+						</div>
+	</div>
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+	.btn-xs {
+		margin-right: 10px!important;
+	}
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+
+
+
+
+
+
+

@@ -1,0 +1,145 @@
+<head>
+		<meta charset="utf-8" />
+		<title>子昊钢琴后台管理系统</title>
+		<meta name="keywords" content="子昊钢琴后台管理系统" />
+		<meta name="description" content="子昊钢琴后台管理系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
+		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+
+		<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+
+
+		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+	</head>
+	<body style='background:#fff;'>
+	<div class="page-content">
+	<div class="page-header">
+		<h1>
+			<a href="{:U('Tiezi/tiezi_type')}" target="rightFrame" style='text-decoration:none;'>教程管理</a>
+			<small> <i class="icon-double-angle-right"></i>
+				编辑教材类别
+			</small>
+		</h1>
+	</div>
+	
+	<div class="row">
+		<div class="col-xs-12">
+			<form class="form-horizontal" action="{:U('Admin/Songs/songs_catgory_edit')}" method="POST" role="form" enctype="multipart/form-data">
+					<input type='hidden' name='cid' value="<?php echo $cat['cid']?>"/>
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">专业教材名称</label>
+						<div class="col-sm-9">
+							<input type="text" name="name" value="<?php echo $cat['c_name']?>" placeholder="专业教材名称" /></div>
+					</div>
+				
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">启用状态</label>
+						<div class="col-sm-9">
+							<div class="radio">
+								<label>
+								   <input class="ace" name="status" value="1" type="radio" <?php if($cat['c_status']==1){echo 'checked';}?>>
+								    <span class="lbl">启用</span>
+								</label>
+								<label>
+								   <input class="ace" name="status" value="2" type="radio" <?php if($cat['c_status']==2){echo 'checked';}?>>
+								   <span class="lbl">禁用</span>
+								</label>
+							</div>
+						</div>
+					</div>
+				<div class="form-actions center">
+					<a  class="btn btn-sm btn-success" id='queren'>
+						<i class="icon-edit bigger-110"></i>
+						确认修改
+					</a>
+					<a class="btn btn-sm btn-warning" href="javascript:history.back(-1)" target="rightFrame" class="myButton">
+						<i class="icon-arrow-left icon-on-left bigger-110"></i>
+						返回列表
+					</a>
+					
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+	.btn-xs {
+		margin-right: 10px!important;
+	}
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+<script>
+function showStart(){
+    return true;
+}
+function showSuccess(data){
+	alert(data);
+	die;
+    	if(data == 1){
+    		alert('修改成功')
+    		location.href="{:U('Admin/Songs/songs_catgroy')}"
+    	}else{
+    		alert(data)
+    		return false
+    	}
+
+}
+$(function(){
+	var options = {
+		        beforeSubmit:showStart,
+		        success:showSuccess,
+
+		 };
+	$('#queren').click(function(){
+	  
+		$('.form-horizontal').ajaxSubmit(options);
+		
+	})
+	
+})
+
+
+</script>
+
+
+
+
+
+
+
+
+
+

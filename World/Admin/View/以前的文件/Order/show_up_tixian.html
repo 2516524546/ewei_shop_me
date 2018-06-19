@@ -1,0 +1,278 @@
+<head>
+		<meta charset="utf-8" />
+		<title>子昊钢琴后台管理系统</title>
+		<meta name="keywords" content="子昊钢琴后台管理系统" />
+		<meta name="description" content="子昊钢琴后台管理系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
+		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+			<!--[if !IE]> -->
+
+		<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+		
+		<!-- <![endif]-->
+		<!-- ace settings handler -->
+
+		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+		<script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+		<![endif]-->
+
+		<style type="text/css">
+			.info_table{
+				margin-top:50px; 
+				width:60%;
+				float: left;
+				margin-left:10%;
+			}
+			.info_table tr td{
+				height: 50px;
+				border: 1px;
+				border: ridge;
+				border-color:#ddd;
+			}
+			.table_title{
+				width:20%;
+				background-color: #eeeeee;
+			}
+			.table_content{
+				width:30%;
+			}
+			.prd_table div{
+				float:left;
+				width:200px;
+				height:320px;
+				margin-top:40px;
+				margin-left:40px;
+			}
+			.prd_table button{
+				float: right;
+				width: 25px;
+				height:25px;
+				margin-left:150px; 
+			}
+			.prd_table img{
+				
+				width:160px;
+				height:220px;
+				
+			}
+			.prd_table p{
+				font-size:15px;
+			}
+			.moliao tr td{
+				width:170px;
+				height: 35px;
+				border: 1px;
+				border: ridge;
+				border-color:#ddd;
+				text-align:center;
+			}
+			.moliao{
+				margin-top:20px;
+			}
+			.user_op{
+				border-style: solid;
+				border-color:#eee;
+				background: #ddd;
+				float:right;
+				width:125px;
+				margin-left:10px;
+				margin-top:5px;
+			}
+			.page{
+				position: absolute;
+				bottom: 0px;
+				right: 80%;
+			}
+			.fenhao{
+				margin-left:15%; 
+            	margin-bottom: 3px;    
+            	width:350px;
+            	height:200px;
+            	text-align:center;
+            	display: none;
+			}
+			.remen{
+				margin-left:15%; 
+            	margin-bottom: 3px;    
+            	width:350px;
+            	height:200px;
+            	text-align:center;
+            	display: none;
+			}
+			.closeroom{
+				float;left;
+				margin-left:15%; 
+            	margin-bottom: 3px;    
+            	width:350px;
+            	height:200px;
+            	text-align:center;
+            	display: none;
+			}
+			.btnn{
+				margin:15px;
+				font-size: 21px;
+				margin-left:15px;
+				border: none;
+				background-color:#ffffff; 
+				color: blue;
+			}
+		</style>
+	</head>
+	<body style='background:#fff;'>
+	<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+							<li class="active">控制台</li>
+						</ul><!-- .breadcrumb -->
+					</div>
+
+				
+				</div><!-- /.main-content -->
+<div class="page-content">
+	<div class="page-header">
+		<h1>
+			提现审核 
+		</h1>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">	
+	
+
+			
+	
+	<div class="row" style="background-color: #eff3f8;">
+	
+	<div class="row">
+		<div class="col-xs-12">
+			<form class="form-horizontal" action="{:U('Admin/Order/up_tixian')}" method="POST" role="form" enctype="multipart/form-data">
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">用户ID</label>
+						<div class="col-sm-9">
+							<input type="text" name="id" value="<?php echo $user['xf_userid'];?>" readonly />
+						</div>
+					</div>
+
+				
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">金额</label>
+						<div class="col-sm-9">
+							<input type="text" name="money" value="<?php echo $user['xf_money'];?>"  readonly/>	
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">订单号</label>
+						<div class="col-sm-9">
+							<input type="text" name="orderSn" value="<?php echo $user['xf_num'];?>"  readonly/>	
+						</div>
+					</div>
+
+			     	<div class="form-group" >
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">
+						拒绝理由</label>
+						<div class="col-sm-9">
+							<textarea type="text" name="text" value=""></textarea>
+						</div>
+			     	</div>
+
+					<div class="form-actions center">
+					<a  class="btn btn-sm btn-success" id='queren'>
+						<i class="icon-edit bigger-110"></i>
+						确认
+					</a>
+					<a class="btn btn-sm btn-warning" href="javascript:history.back(-1)" target="rightFrame" class="myButton">
+						<i class="icon-arrow-left icon-on-left bigger-110"></i>
+						取消
+					</a>
+					</div>
+			</form>
+
+		</div>
+	</div>
+</div>
+
+
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+<script>
+
+
+$(function(){
+	var options = {
+		        beforeSubmit:showStart,
+		        success:showSuccess,
+		 };
+	$('#queren').click(function(){
+	  
+		$('.form-horizontal').ajaxSubmit(options);
+		
+	})
+	
+})
+function showSuccess(data){
+    	if(data == 1){
+    		alert('操作成功')
+    		location.href="{:U('Admin/Order/show_tixian_list')}"
+    	}else{
+    		alert(data)
+    		return false
+    	}
+
+}
+function showStart(){
+    return true;
+}
+</script>
+
+
+
+
+
+
