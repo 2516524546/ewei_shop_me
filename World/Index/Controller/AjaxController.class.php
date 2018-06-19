@@ -22,6 +22,7 @@ use Index\Model\ResourceVIModel;
 use Index\Model\ResumeModel;
 use Index\Model\SecondMarkModel;
 use Index\Model\ThirdMarkModel;
+use Index\Model\TutorShipNeedModel;
 use Index\Model\UserModel;
 use Index\extend;
 use Index\Model\WorksModel;
@@ -2614,6 +2615,79 @@ public function ajax_donationpay()
         }
     }
 
+    //加入社交网络群
+    public function ajax_followcrowdtwo(){
+
+        if (IS_POST){
+
+            if (!$this->userid){
+
+                die(json_encode(array('str' => 3, 'msg' => '请先登录')));
+            }else if (!isset($_POST['cid'])||$this->post('cid')==''){
+
+                die(json_encode(array('str' => 4, 'msg' => '请选择群')));
+            }else {
+
+                $crowdmembermodel = new CrowdMemberModel();
+                $memberone = $crowdmembermodel->findone('crowd_member_cid = '.$this->post('cid').' and crowd_member_uid = '.$this->userid);
+                if ($memberone['crowd_member_status']==-1){
+
+                    die(json_encode(array('str' => 5, 'msg' => '你是该群的黑名单')));
+                }else if ($memberone){
+
+                    die(json_encode(array('str' => 6, 'msg' => '你已是该群成员')));
+                }else {
+
+                    $conditionmodel = new CrowdConditionModel();
+                    $conditionone = $conditionmodel->findone('crowd_condition_cid = '.$this->post('cid'));
+                    $usermodel = new UserModel();
+                    $userone = $usermodel->findone('user_id = '.$this->userid);
+                    $memberadmin = $crowdmembermodel->findone('crowd_member_cid = '.$this->post('cid').' and crowd_member_status = 2');
+                    $usertwo = $usermodel->findone('user_id = '.$memberadmin['crowd_member_uid']);
+                    if ($userone['user_havecoin']<$conditionone['crowd_condition_joinmoney']){
+                        die(json_encode(array('str' => 7, 'msg' => '您的虚拟币数量不足')));
+                    }
+                    $crowdmembermodel->startTrans();
+                    try{
+
+                        $data=array(
+                            'crowd_member_cid'=>$this->post('cid'),
+                            'crowd_member_uid'=>$this->userid,
+                            'crowd_member_status'=>0,
+                            'crowd_member_logintime'=>date("Y-m-d H:i:s", time()),
+                        );
+
+                        $userdata1 = array(
+                            'user_havecoin' => $userone['user_havecoin']-$conditionone['crowd_condition_joinmoney'],
+                        );
+                        $userdata2 = array(
+                            'user_havecoin' => $usertwo['user_havecoin']+$conditionone['crowd_condition_joinmoney'],
+                        );
+
+                        $usermodel->updataone('user_id = '.$this->userid,$userdata1);
+                        $usermodel->updataone('user_id = '.$memberadmin['crowd_member_uid'],$userdata2);
+                        $res = $crowdmembermodel->add($data);
+
+                        if ($res) {
+                            $crowdmembermodel->commit();
+                            die(json_encode(array('str' => 1, 'msg' => '加入成功')));
+                        } else {
+                            $crowdmembermodel->rollback();
+                            die(json_encode(array('str' => 2, 'msg' => '加入失败')));
+                        }
+                    }catch (Exception $e){
+                        $crowdmembermodel->rollback();
+                        die(json_encode(array('str' => 2, 'msg' => '加入失败')));
+                    }
+
+                }
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
     //发表帖子评论
     public function ajax_createNoteComment(){
 
@@ -2868,6 +2942,60 @@ public function ajax_donationpay()
 
     }
 
+    //发布寻求辅导
+    public function ajax_createDemand(){
 
+        if (IS_POST){
+
+            if (!isset($_POST['cid'])||$this->post('cid')==''){
+
+                die(json_encode(array('str' => 3, 'msg' => '没有这个群')));
+            }else if (!isset($_POST['name'])||$this->post('name')==''){
+
+                die(json_encode(array('str' => 4, 'msg' => '请输入姓名')));
+            }else if (!isset($_POST['contact'])||$this->post('contact')==''){
+
+                die(json_encode(array('str' => 5, 'msg' => '请输入联系方式')));
+            }else if (!isset($_POST['title'])||$this->post('title')==''){
+
+                die(json_encode(array('str' => 6, 'msg' => '请输入标题')));
+            }else if (!isset($_POST['time'])||$this->post('time')==''){
+
+                die(json_encode(array('str' => 7, 'msg' => '请输入辅导时间')));
+            }else if (!isset($_POST['demand'])||$this->post('demand')==''){
+
+                die(json_encode(array('str' => 8, 'msg' => '请输入需求条件')));
+            }else if (!isset($_POST['content'])||$this->post('content')==''){
+
+                die(json_encode(array('str' => 9, 'msg' => '请输入内容')));
+            }else {
+
+                $tutorneedmodel = new TutorShipNeedModel();
+                $data = array(
+                    'tutorship_need_cid' => $this->post('cid'),
+                    'tutorship_need_uid' => $this->userid,
+                    'tutorship_need_name' => $this->post('name'),
+                    'tutorship_need_contact' => $this->post('contact'),
+                    'tutorship_need_title' => $this->post('title'),
+                    'tutorship_need_time' => $this->post('time'),
+                    'tutorship_need_demand' => $this->post('demand'),
+                    'tutorship_need_content' => $this->post('content'),
+                    'tutorship_need_explain' => $this->post('explain'),
+                    'tutorship_need_createtime' => date("Y-m-d H:i:s", time()),
+                );
+
+                $res = $tutorneedmodel->add($data);
+                if ($res){
+                    die(json_encode(array('str' => 1,'id'=>$res,'cid'=>$this->post('cid'))));
+                }else{
+                    die(json_encode(array('str' => 2,'msg'=>'发布失败')));
+                }
+
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
 
 }

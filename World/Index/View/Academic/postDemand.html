@@ -46,7 +46,7 @@
                             <span class="PersonIcon"></span>
                         </label>
                         <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the real name" class="layui-input">
+                            <input type="text" name="number" lay-verify="required" autocomplete="off" id="name" placeholder="Enter the real name" class="layui-input">
                         </div>
                     </div>
                     <div class="FormContainer" pane>
@@ -54,7 +54,7 @@
                             <span class="talkIcon"></span>
                         </label>
                         <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the contact number / email address" class="layui-input">
+                            <input type="text" name="number" lay-verify="required" autocomplete="off" id="contact" placeholder="Enter the contact number / email address" class="layui-input">
                         </div>
                     </div>
                     <div class="InterestTitle">
@@ -67,7 +67,7 @@
                             <span class="TitlesIcon"></span>
                         </label>
                         <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the title" class="layui-input">
+                            <input type="text" name="number" lay-verify="required" autocomplete="off" id="title" placeholder="Enter the title" class="layui-input">
                         </div>
                     </div>
 
@@ -76,7 +76,7 @@
                             <span class="TimesIcon"></span>
                         </label>
                         <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter counseling time" class="layui-input">
+                            <input type="text" name="number" lay-verify="required" autocomplete="off" id="time" placeholder="Enter counseling time" class="layui-input">
                         </div>
                     </div>
 
@@ -85,7 +85,7 @@
                             <span class="ContentsIcon"></span>
                         </label>
                         <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter counseling requirements  (30 words or less)" class="layui-input">
+                            <input type="text" name="number" lay-verify="required" autocomplete="off" id="demand" placeholder="Enter counseling requirements  (30 words or less)" class="layui-input">
                         </div>
                     </div>
                     
@@ -94,7 +94,7 @@
                             <span class="ContentsIcon"></span>
                         </label>
                         <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter tutorial content" class="layui-input">
+                            <input type="text" name="number" lay-verify="required" autocomplete="off" id="content" placeholder="Enter tutorial content" class="layui-input">
                         </div>
                     </div>
 
@@ -103,11 +103,11 @@
                                 <span class="ContentsIcon"></span>
                             </label>
                             <div class="layui-input-block input-spacing inputW">
-                                <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter a note" class="layui-input">
+                                <input type="text" name="number" lay-verify="required" autocomplete="off" id="explain" placeholder="Enter a note" class="layui-input">
                             </div>
                         </div>
                     <div class="FormContainer from-but">
-                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="" lay-filter="">
+                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
                             Submit
                         </button>
                     </div>
@@ -156,5 +156,55 @@
     <script src="__PUBLIC__/Web/web/js/GroupDetailsRelease.js"></script>
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 </body>
+
+<script>
+
+    layui.use('form', function(){
+        var form = layui.form;
+
+        form.on('submit(demo1)', function(data1){
+
+            $.ajax({
+                type:"post",
+                url:"{:U('Index/Ajax/ajax_createDemand')}",
+                data:{
+                    cid:{$cid},
+                    name:$("#name").val(),
+                    contact:$("#contact").val(),
+                    title:$("#title").val(),
+                    time:$("#time").val(),
+                    demand:$("#demand").val(),
+                    content:$("#content").val(),
+                    explain:$("#explain").val(),
+                },
+                dataType:"json",
+                success: function(data){
+                    console.log(data)
+                    if (data.str == 1) {
+                        layer.msg('发布成功',{
+                                time:1500,
+                                icon:1,
+                            },function () {
+                                window.location.href="{:U('Index/Academic/counselingDetails')}&tid="+data.id+"&cid="+data.cid;
+                            }
+                        );
+                    }else{
+                        layer.msg(data.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+                }
+
+            })
+
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+
+    });
+
+
+</script>
 
 </html>
