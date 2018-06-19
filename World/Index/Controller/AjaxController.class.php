@@ -22,6 +22,7 @@ use Index\Model\ResourceVIModel;
 use Index\Model\ResumeModel;
 use Index\Model\SecondMarkModel;
 use Index\Model\ThirdMarkModel;
+use Index\Model\TutorShipIssueModel;
 use Index\Model\TutorShipNeedModel;
 use Index\Model\UserModel;
 use Index\extend;
@@ -2980,9 +2981,11 @@ public function ajax_donationpay()
                     'tutorship_need_time' => $this->post('time'),
                     'tutorship_need_demand' => $this->post('demand'),
                     'tutorship_need_content' => $this->post('content'),
-                    'tutorship_need_explain' => $this->post('explain'),
                     'tutorship_need_createtime' => date("Y-m-d H:i:s", time()),
                 );
+                if (!isset($_POST['explain'])||$this->post('explain')==''){
+                    $data['tutorship_need_explain'] = $this->post('explain');
+                }
 
                 $res = $tutorneedmodel->add($data);
                 if ($res){
@@ -2996,6 +2999,81 @@ public function ajax_donationpay()
         }else{
             die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
         }
+    }
+
+    //发布提供辅导
+    public function ajax_createCounseling(){
+
+        if (IS_POST){
+
+            if (!isset($_POST['cid'])||$this->post('cid')==''){
+
+                die(json_encode(array('str' => 3, 'msg' => '没有这个群')));
+            }else if (!isset($_POST['name'])||$this->post('name')==''){
+
+                die(json_encode(array('str' => 4, 'msg' => '请输入姓名')));
+            }else if (!isset($_POST['contact'])||$this->post('contact')==''){
+
+                die(json_encode(array('str' => 5, 'msg' => '请输入联系方式')));
+            }else if (!isset($_POST['title'])||$this->post('title')==''){
+
+                die(json_encode(array('str' => 6, 'msg' => '请输入标题')));
+            }else if (!isset($_POST['time'])||$this->post('time')==''){
+
+                die(json_encode(array('str' => 7, 'msg' => '请输入辅导时间')));
+            }else if (!isset($_POST['price'])||$this->post('price')==''){
+
+                die(json_encode(array('str' => 8, 'msg' => '请输入辅导金额')));
+            }else if (!isset($_POST['content'])||$this->post('content')==''){
+
+                die(json_encode(array('str' => 9, 'msg' => '请输入内容')));
+            }else {
+
+                $file = $_FILES['img'];
+                if (!$file){
+                    die(json_encode(array('str' => 10, 'msg' => '请选择一张个人照片')));
+                }
+
+                $upload = new \Think\Upload();// 实例化上传类
+                $upload->maxSize = 3072000 ;// 设置附件上传大小
+                $upload->exts = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+                $upload->rootPath = './Uploads/'; // 设置附件上传根目录
+// 上传单个文件
+                $info = $upload->uploadOne($file);
+                if(!$info) {// 上传错误提示错误信息
+                    die(json_encode(array('str' => 0,'msg'=>'发布失败')));
+                }
+
+                $tutorissuemodel = new TutorShipIssueModel();
+                $data = array(
+                    'tutorship_issue_cid' => $this->post('cid'),
+                    'tutorship_issue_uid' => $this->userid,
+                    'tutorship_issue_name' => $this->post('name'),
+                    'tutorship_issue_contact' => $this->post('contact'),
+                    'tutorship_issue_picture' => $info['savepath'].$info['savename'],
+                    'tutorship_issue_title' => $this->post('title'),
+                    'tutorship_issue_price' => $this->post('price'),
+                    'tutorship_issue_time' => $this->post('time'),
+                    'tutorship_issue_content' => $this->post('content'),
+                    'tutorship_issue_createtime' => date("Y-m-d H:i:s", time()),
+                );
+                if (!isset($_POST['explain'])||$this->post('explain')==''){
+                    $data['tutorship_issue_explain'] = $this->post('explain');
+                }
+
+                $res = $tutorissuemodel->add($data);
+                if ($res){
+                    die(json_encode(array('str' => 1,'id'=>$res,'cid'=>$this->post('cid'))));
+                }else{
+                    die(json_encode(array('str' => 2,'msg'=>'发布失败')));
+                }
+
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+
     }
 
 }

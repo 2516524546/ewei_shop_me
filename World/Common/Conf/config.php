@@ -29,5 +29,10 @@ return array(
 	'D_APPKEY1' => 'aabd0016952aa348019316f8',
 	'D_MAS1' => '2dfd8ef803de86d74b426a31',
 
+	'LANG_SWITCH_ON' => true,   // 开启语言包功能
+    'LANG_AUTO_DETECT' => true, // 自动侦测语言 开启多语言功能后有效
+    'LANG_LIST'        => 'zh-cn,en-us', // 允许切换的语言列表 用逗号分隔
+    'VAR_LANGUAGE'     => 'l', // 默认语言切换变量
+
 
 );
