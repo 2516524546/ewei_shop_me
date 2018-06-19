@@ -1,0 +1,398 @@
+<head>
+		<meta charset="utf-8" />
+		<title>子昊钢琴后台管理系统</title>
+		<meta name="keywords" content="子昊钢琴后台管理系统" />
+		<meta name="description" content="子昊钢琴后台管理系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
+		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+			<!--[if !IE]> -->
+
+		<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+		
+		<!-- <![endif]-->
+		<!-- ace settings handler -->
+
+		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+		<script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body style='background:#fff;'>
+	<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+							<li class="active">控制台</li>
+						</ul><!-- .breadcrumb -->
+					</div>
+
+				
+				</div><!-- /.main-content -->
+	
+	
+<div class="page-content">
+	<div class="page-header">
+		<h1>
+			认证管理
+			<small> <i class="icon-double-angle-right"></i>
+				调律师认证列表
+			</small>
+			 
+		</h1>
+		
+	<!-- 	 <form class="daoru" action="{:U('Daili/Index/upload_execl')}" method="POST" enctype="multipart/form-data" style="margin-top:20px;">
+         <input type='file' name='execl' style=" width:150px; height:30px; display:inline-block; margin-right:30px;"/>
+		 <span style='width:85px; height:30px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:30px;text-align:center; borde-radius:4px;' id='daoru'>导入数据</span>
+		</form> 	 -->	
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			 <div class="row" style="padding-bottom: 10px;">
+							<div class="col-sm-12">
+								<div id="sample-table-2_filter">
+									<form class="form-horizontal" action="{:U('Admin/Renzheng/tiaoer_renzheng_list_sou')}" method="POST" role="form" enctype="multipart/form-data">
+									<div class="btn-group" style='margin-top:5px;'>
+										<span>姓名:</span>
+										<input type="text" name="name" value="<?php if($name){echo $name;}?>">
+									</div>
+									<input type='hidden' name='mod' value='<?php echo $mod?>'/>
+									<input type='hidden' name='button' value='1'/>
+									<input type='hidden' name='status' value="<?php echo $status;?>"/>
+									<div class="btn-group" style='margin-top:5px;'>
+										<span>账号:</span>
+										<input type="text" name="username" value="<?php if($username){echo $username;}?>">
+									</div>
+								
+									<div class="btn-group" style='margin-top:5px;'>
+										<span>所属机构:</span>
+										<input type="text" name="jxid" value="<?php if($jxid){echo $jxid;}?>">
+									</div>
+									
+								
+									<div class="btn-group" style="margin-right:10px;margin-top:5px;">											
+											<div class="input-group">
+											<span>加入时间：</span>
+												<input class="form-control date-picker" value="<?php if($stime){echo $stime;}?>" name="stime" id="id-date-picker-1" style="width: 35%" type="text" data-date-format="yyyy-mm-dd" />
+												-
+												<input class="form-control date-picker" value="<?php if($etime){echo $etime;}?>" name="etime" id="id-date-picker-1" style="width: 35%" type="text" data-date-format="yyyy-mm-dd" /> 
+											</div>
+									</div>
+		
+	
+										<div class="btn-group" style='margin-top:5px;'>
+												<span class="input-group-btn">
+													<button type="submit" style="padding:0" class="btn btn-purple btn-sm">
+														搜索<i class="icon-search icon-on-right bigger-110"></i>
+													</button>
+												</span>
+											
+										</div>
+								
+									</form>
+									<!-- 按钮样式 -->		
+							<style type='text/css'>
+								.anniu{width:100%; height:40px; position:relative;}
+								 .anniu ul{width:auto; height:30px; border:1px solid #ccc; overflow:hidden; position:absolute; top:0; left:0; list-style:none; color:#333; box-sizing:border-box; font-size:13px; cursor: pointer;}	    
+								 .anniu ul li.current{background:#2679b5; color:#fff;width:100px; height:30px; float:left; border-right:1px solid #ccc;  line-height:30px; text-align:center; box-sizing:border-box;}
+								.anniu ul li{width:100px; height:30px; float:left; border-right:1px solid #ccc;  line-height:30px; text-align:center; box-sizing:border-box;}
+							</style>
+
+							<div class='anniu'> 
+								<?php if($mod == 1){?>
+									<ul>
+										<li class="current" onclick="send1()" >全部</li>
+										<li onclick="send2()" >审核中</li>
+										<li onclick="send3()">审核不通过</li>
+									</ul>
+								<?php }elseif($mod == 2){?>
+									<ul>
+										<li onclick="send1()" >全部</li>
+										<li class="current" onclick="send2()" >审核中</li>
+										<li onclick="send3()">审核不通过</li>
+									</ul>
+								<?php }else{?>
+									<ul>
+										<li onclick="send1()" >全部</li>
+										<li onclick="send2()" >审核中</li>
+										<li class="current" onclick="send3()">审核不通过</li>
+									</ul>
+								<?php }?>
+							</div>
+								</div>
+							</div>
+						</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="table-responsive">
+						<table id="sample-table-1" class="table table-striped table-bordered table-hover" style="margin-bottom: 0px;font-size:13px;">
+							<thead>
+								<tr style=' font-size: 13px;'>
+								    <!-- <th><input type='checkbox' name='' value=''></th> -->
+									<th>ID</th>
+									<th>姓名</th>
+									<th>账号</th>		
+									<th>电话</th>		
+									<th>所属机构</th>		
+									<th>执照</th>
+									<th>身份证照片正面</th>
+									<th>身份证照片反面</th>
+									<th>提交时间</th>	
+									<th>认证状态</th>
+								<?php if($status !=2){?>	
+									<th>操作</th>
+								<?php }?>	
+								</tr>
+							</thead>
+
+							<tbody>
+							<?php foreach($list as $k=>$v){?>
+								<tr>
+								   <!--  <td><input type='checkbox' name='' value=''></td> -->
+									<td><?php echo $v['id'];?></td>
+									<td><?php echo $v['tiaoer_name'];?></td>
+									<td><?php echo $v['username']?></td>
+									
+									<td><?php echo $v['tiaoer_mobile']?></td>
+									<td><?php echo $v['jx_name']?></td>
+									
+									<td>
+									   <img class="license" src="<?php echo $v['tiaoer_img']?>" style="width:50px;height:30px;"/>
+									</td>
+									<td>
+									   <img class="license1" src="<?php echo $v['tiaoer_card_img1']?>" style="width:50px;height:30px;"/>
+									</td>
+									<td>
+									   <img class="license1" src="<?php echo $v['tiaoer_card_img2']?>" style="width:50px;height:30px;"/>
+									</td>
+									<td><?php if($v['tiaoer_status']==1){echo '待审核';}elseif ($v['tiaoer_status']==2){echo '审核通过';}else{echo '审核不通过';}?></td>
+
+									<td><?php echo $v['tiaoer_addtime']?></td>
+								  <?php if($status !=2){?>	 
+									<td>
+										<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+											<a href="#" class="btn btn-xs btn-success" onclick="renzheng_caozuo(<?php echo $v['tiaoer_id']?>,2)">通过</a>
+										<?php if($v['tiaoer_status']==1){?>	
+											<a href="#" class="btn btn-xs btn-success" onclick="renzheng_caozuo(<?php echo $v['tiaoer_id']?>,3)">不通过</a>
+											<a href="#" class="btn btn-xs btn-success" onclick="shanchu(<?php echo $v['id']?>)">删除</a>
+										    <a href="index.php?m=Admin&c=Renzheng&a=renzheng_tiaoer_bianji&id=<?php echo $v['id'];?>" class="btn btn-xs btn-success">编辑</a> 
+										<?php }?>	
+										</div>
+									<?php }?>		
+									</td>
+								</tr>
+							<?php }?>	
+							</tbody>
+						</table>
+						<div class="dataTables_paginate paging_bootstrap" style="border-top: 1px solid #DDD;padding-top: 12px;padding-bottom: 12px;background-color: #eff3f8;border-bottom: 1px solid #DDD;">
+							<div style='margin-right:56px;'>
+							  <?php echo $page;?>
+							</div>
+						</div>
+					</div>
+					<!-- /.table-responsive -->
+				</div>
+				<!-- /span -->
+			</div>
+			<!-- /row -->
+			<div class="hr hr-18 dotted hr-double"></div>
+
+		</div>
+		<!-- /.col -->
+	</div>
+	<div class="public_img" style="width:100% ;height: 100%;position:fixed; left: 0;top:0;z-index:20;
+background:rgba(0,0,0,0.5); display: none;"><img src="" style="width:300px;height: auto;position: absolute;left: 50%;top: 50%;margin-left: -150px;"></div>
+	<!-- /.row -->
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+	.btn-xs {
+		margin-right: 10px!important;
+	}
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+<script type="text/javascript"> 
+function send1(){
+	location.href = "index.php?m=Admin&c=Renzheng&a=tiaoer_renzheng_list&mod=1"
+}
+function send2(){
+	location.href = "index.php?m=Admin&c=Renzheng&a=tiaoer_renzheng_list&mod=2"
+}
+function send3(){
+	location.href = "index.php?m=Admin&c=Renzheng&a=tiaoer_renzheng_list&mod=3"
+}
+
+    //tab切换
+	 function renzheng(status){
+	      location.href = 'index.php?m=Admin&c=Renzheng&a=tiaoer_renzheng_list&status='+status  	
+	 } 
+    //认证操作
+    function renzheng_caozuo(tiaoer_id,status){
+    	// alert(tiaoer_id);
+    	// die;
+    	if(status == 2){
+    		question = confirm("确定审核通过吗?")
+    	}else{
+    		question = confirm("确定审核不通过吗?")
+    	}
+    	if(question){
+    		$.ajax({
+    			url:'index.php?m=Admin&c=Renzheng&a=tiaoer_renzheng_caozuo',
+    			data:'tiaoer_id='+tiaoer_id+'&status='+status,
+    			type:'post',
+    			success:function(msg){
+    				// alert(msg);
+    				// die;
+    				if(msg == 1){
+    					location.href = 'index.php?m=Admin&c=Renzheng&a=tiaoer_renzheng_list'
+    				}else{
+    					alert(msg)
+    					return false
+    				}
+    			}
+    		})
+    	}
+    }
+function shanchu(id){
+	if(confirm("确定执行此操作吗？")){
+		$.ajax({
+			url:'index.php?m=Admin&c=Renzheng&a=del_tiaoer',
+			data:'id='+id,
+			type:'post',
+			success:function(msg){
+				if(msg == 1){
+					alert('操作成功')
+					location.href = 'index.php?m=Admin&c=Renzheng&a=tiaoer_renzheng_list'
+					return false
+				}else{
+					alert(msg)
+					return false
+				}
+			}
+		})
+	}
+	
+} 
+$('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
+	$(this).prev().focus();
+});
+
+
+$(".license").click(function() {
+	  	var url = $(this).attr("src");
+	  	$(".public_img img").attr("src", url);
+	
+	  
+		$('html,body').css({'height':'auto','overflow':'hidden'})
+	   	$('.public_img').css({'display':'block'})
+	  
+
+	   	var imgw=$('.public_img img').height()
+	   	$('.public_img img').css({'margin-top': -imgw / 2 + 'px'})
+	   		
+	   	$(".public_img").click(function() {
+
+		   	$(this).css({'display':'none'})
+		   	$('html,body').css({'height':'auto','overflow':''})
+	 	})  	
+	 })  	
+
+$(".license1").click(function() {
+	  	var url = $(this).attr("src");
+	  	$(".public_img img").attr("src", url);
+	
+	  
+		$('html,body').css({'height':'auto','overflow':'hidden'})
+	   	$('.public_img').css({'display':'block'})
+	  
+
+	   	var imgw=$('.public_img img').height()
+	   	$('.public_img img').css({'margin-top': -imgw / 2 + 'px'})
+	   		
+	   	$(".public_img").click(function() {
+
+		   	$(this).css({'display':'none'})
+		   	$('html,body').css({'height':'auto','overflow':''})
+	 	})  	
+	 })  
+
+</script>
+
+
+
+
+<!-- ajax 提交表单 
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+<script>
+function showStart(){
+    return true;
+}
+function showSuccess(data){
+    	if(data == 1){
+    		alert('导入成功')
+    		location.href="{:U('Daili/Index/student_list')}"
+    	}else{
+    		alert(data)
+    		return
+    	}
+
+}
+$(function(){
+	var options = {
+		        beforeSubmit:showStart,
+		        success:showSuccess,
+
+		 };
+	$('#daoru').click(function(){	
+		//alert('a')
+		//return false
+		$('.daoru').ajaxSubmit(options);
+	})
+	
+})
+</script>-->

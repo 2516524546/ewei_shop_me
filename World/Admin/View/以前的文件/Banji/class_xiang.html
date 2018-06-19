@@ -1,0 +1,392 @@
+
+<head>
+		<meta charset="utf-8" />
+		<title>快乐琴行后台管理系统</title>
+		<meta name="keywords" content="快乐琴行后台管理系统" />
+		<meta name="description" content="快乐琴行后台管理系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
+		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+			<!--[if !IE]> -->
+
+		<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+		
+		<!-- <![endif]-->
+		<!-- ace settings handler -->
+
+		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+		<script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+		<![endif]-->
+
+		<style type="text/css">
+			.info_table{
+				margin-top:50px; 
+				width:60%;
+				float: left;
+				margin-left:10%;
+			}
+			.info_table tr td{
+				height: 50px;
+				border: 1px;
+				border: ridge;
+				border-color:#ddd;
+			}
+			.table_title{
+				width:20%;
+				background-color: #eeeeee;
+			}
+			.table_content{
+				width:30%;
+			}
+			.prd_table div{
+				float:left;
+				width:200px;
+				height:320px;
+				margin-top:40px;
+				margin-left:40px;
+			}
+			.prd_table button{
+				float: right;
+				width: 25px;
+				height:25px;
+				margin-left:150px; 
+			}
+			.prd_table img{
+				
+				width:160px;
+				height:220px;
+				
+			}
+			.prd_table p{
+				font-size:15px;
+			}
+			.moliao tr td{
+				width:170px;
+				height: 35px;
+				border: 1px;
+				border: ridge;
+				border-color:#ddd;
+				text-align:center;
+			}
+			.moliao{
+				margin-top:20px;
+			}
+			.user_op{
+				border-style: solid;
+				border-color:#eee;
+				background: #ddd;
+				float:right;
+				width:125px;
+				margin-left:10px;
+				margin-top:5px;
+			}
+			.page{
+				position: absolute;
+				bottom: 0px;
+				right: 80%;
+			}
+			.fenhao{
+				margin-left:15%; 
+            	margin-bottom: 3px;    
+            	width:350px;
+            	height:200px;
+            	text-align:center;
+            	display: none;
+			}
+			.remen{
+				margin-left:15%; 
+            	margin-bottom: 3px;    
+            	width:350px;
+            	height:200px;
+            	text-align:center;
+            	display: none;
+			}
+			.closeroom{
+				float;left;
+				margin-left:15%; 
+            	margin-bottom: 3px;    
+            	width:350px;
+            	height:200px;
+            	text-align:center;
+            	display: none;
+			}
+			.btnn{
+				margin:15px;
+				font-size: 21px;
+				margin-left:15px;
+				border: none;
+				background-color:#ffffff; 
+				color: blue;
+			}
+		</style>
+	</head>
+	<body style='background:#fff;'>
+	<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+							<li class="active">控制台</li>
+						</ul><!-- .breadcrumb -->
+					</div>
+
+				
+				</div><!-- /.main-content -->
+	
+	
+<div class="page-content">
+	<div class="page-header">
+		<h1>
+			<a href="{:U('Admin/User/teacher_list')}" target="rightFrame" style='text-decoration:none;'>班级管理</a>
+			<small> <i class="icon-double-angle-right"></i>
+				班级详情
+			</small>
+		</h1>
+	</div>
+	
+	<div class="row" style="background-color: #eff3f8;width:60%;">
+	
+	<div class="col-xs-12" style="background-color: #ffffff;">
+			
+
+			<div class="ceng01" id="t4" style="margin-top: 20px;">
+				<table class=" table" >
+				<tr align="center">
+					<td class="table_title">班级名称</td>
+					<td class="table_content"><?php echo $list[0]['class_name'];?></td>
+					<td class="table_title">带班老师</td>
+					<td class="table_content"><?php echo $list[0]['teacher']['t_truename'];?></td>
+				</tr>
+				<tr align="center">
+					<td class="table_title">所属代理商</td>
+					<td class="table_content"><?php echo $list[0]['jx_name'];?></td>
+					<td class="table_title">联系方式</td>
+					<td class="table_content"><?php echo $list[0]['teacher']['t_mobile'];?></td>
+				</tr>
+				
+				
+				</table>
+
+			</div>
+				
+			<div class="hr hr-18 dotted hr-double"></div>
+
+		</div>
+		<!-- /.col -->
+	</div>
+<div style=' width:100%; height:40px; '>
+		   <a href="index.php?m=Admin&c=Banji&a=class_add_student&class_id=<?php echo $list[0]['class_id']?>" target="rightFrame"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>添加学生</span></a>
+		    <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg" target="rightFrame"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>修改带班老师</span></a>
+		 <a href="#" target="rightFrame"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;' id="del_student">移除学生</span></a>
+		
+</div>
+<form class="form-horizontal" id='class_teacher_delete' action="{:U('Admin/Banji/class_teacher_delete')}" method="POST" role="form" enctype="multipart/form-data">
+
+	<!-- /.row -->
+	<div style="margin-top:30px;">
+	  <span style='width:65px;float:left;margin-left:10px;'>学生列表：</span>
+	   <div class="row" style='margin-left:75px;'>
+				<div class="col-xs-12">
+					<div class="table-responsive">
+						<table id="sample-table-1" class="table table-striped table-bordered table-hover" style="margin-bottom: 0px;font-size:13px;width:60%;">
+							<thead>
+								<tr style=' font-size: 13px;'>
+								   <th><input type='checkbox' name='box' ></th>
+								    <th>学生ID</th>
+									<th>账号</th>
+									<th>昵称</th>
+									<th>头像</th>
+									<th>性别</th>
+									<th>年龄</th>
+									
+								</tr>
+							</thead>
+     <input type="hidden" name='class_id' value="<?php echo $list[0]['class_id']?>"/>    
+
+							<tbody>
+							<?php foreach($students as $key=>$val){?>
+								<tr>
+								   <td><input type='checkbox' name='ids[]' value="<?php echo $val['id'];?>"></td> 
+								   <td><?php echo $val['id'];?></td>
+									<td><?php echo $val['username'];?></td>
+									<td><?php echo $val['nickname'];?></td>	
+									<td>
+									    <img src="<?php echo $val['headerimg'];?>" style="width:50px;height:30px;"/>
+									</td>
+									<td><?php echo $val['sex'];?></td>
+									<td><?php echo $val['age'];?></td>
+									
+								</tr>
+							 <?php }?>
+							</tbody>
+						</table>
+						<div class="dataTables_paginate paging_bootstrap" style="border-top: 1px solid #DDD;padding-top: 12px;padding-bottom: 12px;background-color: #eff3f8;border-bottom: 1px solid #DDD;width:60%;">
+							<div style='margin-right:56px;'>
+							  <?php echo $page;?>
+							</div>
+						</div>
+					</div>
+					<!-- /.table-responsive -->
+				</div>
+				<!-- /span -->
+			</div>
+	</div>
+</div>
+</form>
+<form class="form-horizontal" id='admin_add' action="{:U('Admin/Banji/class_teacher_edit')}" method="POST" role="form" enctype="multipart/form-data">
+<!-- 模拟框Modal 添加 -->
+
+<div class="modal fade bs-example-modal-lg" id="add-auth"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">修改带班老师</h4>
+            </div>
+            <div class="modal-body" >
+                <div class="form-group" >
+			     	<label class="col-sm-3 control-label" for="name">所属老师</label>
+			     	<div class="col-sm-8" style="height:40px;overflow:hidden;">
+						<select name="tid" style="width:135px;float:left;" id='cat_name'>
+						    <option value="">请选择</option>							
+							<?php foreach($teacher as $v){?>
+							  <option value="<?php echo $v['t_userid']?>" <?php if($list[0]['class_teacher']==$v['t_userid']){echo 'selected';}?>><?php echo $v['t_truename']?></option>
+							<?php }?>
+						</select>	
+				   </div>
+                 </div>
+              <input type="hidden" name='class_id' value="<?php echo $list[0]['class_id']?>"/>    
+
+            </div>
+            <div class="modal-footer">
+                <a  class="btn btn-primary" id="submit-ed" >保存</a>
+                <a  class="btn btn-default"  data-dismiss="modal">取消</a>
+               
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+</body>
+<!-- /.page-content -->
+<!-- <style type="text/css" media="screen">
+	.btn-xs {
+		margin-right: 10px!important;
+	}
+</style> -->
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+<script src="__PUBLIC__/Admin/admin/js/bootstrap.min.js"></script>
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+<script>
+function showStart(){
+    return true;
+}
+function showSuccess(data){
+    	if(data == 1){
+    		alert('操作成功')
+    		location.href="{:U('Admin/Banji/class_list')}"
+    	}else{
+    		alert(data)
+    	
+    		return
+    	}
+
+}
+
+$(function(){
+	var options = {
+		        beforeSubmit:showStart,
+		        success:showSuccess,
+
+		 };
+	$('#submit-ed').click(function(){	
+		//alert('a')
+		//return false
+		$('#admin_add').ajaxSubmit(options);
+	})
+	
+	$('#del_student').click(function(){
+		$('#class_teacher_delete').ajaxSubmit(options);
+	})
+	
+	
+	 //获取所有checkbox对象
+      var box = document.getElementsByName("box");
+	   var checkbox = document.getElementsByName("ids[]");
+	   //alert(box[0].checked)
+	   //return false
+	   $("input[name='box']").click(function(){ 
+		 
+		   if(box[0].checked){	
+			    for(var i=0;i<checkbox.length;i++){
+			        checkbox[i].checked = true;
+			     }	
+		    }else{
+		    	for(var i=0;i<checkbox.length;i++){
+			        checkbox[i].checked = false;
+			     }
+		    }
+	   })
+	   
+	   $("input[name='ids[]']").click(function(){ 
+		    var length=0;
+		    for(var i=0;i<checkbox.length;i++){
+		        if(checkbox[i].checked){
+		        	length++
+		        }  
+		     }
+		    if(length == checkbox.length){
+		    	box[0].checked = true
+		    }else{
+		    	box[0].checked = false
+		    }
+	   })
+	   
+	 
+	
+})
+</script>

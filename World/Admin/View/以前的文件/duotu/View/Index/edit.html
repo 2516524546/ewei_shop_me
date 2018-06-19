@@ -1,0 +1,128 @@
+<html>
+<head>
+  <meta content="text/html"; charset=utf8 />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"  />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>图片页面</title>
+   <!-- <link rel="stylesheet" type="text/css" href="./yjyh/Admin/View/Daili/duotu/Home/CSS/global.css" /> -->
+    <link rel="stylesheet" href="./tn/Admin/View/duotu/Home/CSS/tianxie-san.css" type="text/css" />
+</head>
+<body>
+   <div class="bg">
+            <div class="Exhibition">
+              
+  
+   
+               <ul>
+                <li>
+                    <dl class="yi">
+                        <div id="imagePreviewyi"></div>                      
+                        <input id="imageInputyi" type="file" name="yi" onChange="loadImageFileyi();" />
+                         <?php if($imgs[0]){?>
+                           <img src="__PUBLIC__<?php echo $imgs[0]['img_url'];?>" style="position:absolute; left:0px; top:0px; width:80px; height:80px;"/>
+                        <?php }?>
+                        <dt>一</dt>
+                    </dl>
+                </li>
+                <li>
+                    <dl class="er">
+                        <div id="imagePreviewer"></div>
+                        <input id="imageInputer" type="file" name="er" onChange="loadImageFileer();" />
+                         <?php if($imgs[1]){?>
+                           <img src="__PUBLIC__<?php echo $imgs[1]['img_url'];?>" style="position:absolute; left:0px; top:0px; width:80px; height:80px;"/>
+                        <?php }?>
+                        <dt>二</dt>
+                    </dl>
+                </li>
+                <li>
+                    <dl class="san">
+                        <div id="imagePreviewsan"></div>
+                       	<input id="imageInputsan" type="file" name="san" onChange="loadImageFilesan();"/>
+                         <?php if($imgs[2]){?>
+                           <img src="__PUBLIC__<?php echo $imgs[2]['img_url'];?>" style="position:absolute; left:0px; top:0px; width:80px; height:80px;"/>
+                        <?php }?>
+                        <dt>三</dt>
+                    </dl>
+                </li>
+                <li>
+                    <dl class="si">
+                        <div id="imagePreviewsi"></div>
+                        <input id="imageInputsi" type="file" name="si" onChange="loadImageFilesi();" />
+                        <?php if($imgs[3]){?>
+                           <img src="__PUBLIC__<?php echo $imgs[3]['img_url'];?>" style="position:absolute; left:0px; top:0px; width:80px; height:80px;"/>
+                        <?php }?>
+                        <dt>四</dt>
+                    </dl>
+                </li>
+                <li>
+                    <dl class="wu">
+                        <div id="imagePreviewwu"></div>
+                        <input id="imageInputwu" type="file" name="wu" onChange="loadImageFilewu();" />
+                        <?php if($imgs[4]){?>
+                           <img src="__PUBLIC__<?php echo $imgs[4]['img_url'];?>" style="position:absolute; left:0px; top:0px; width:80px; height:80px;"/>
+                        <?php }?>
+                        <dt>五</dt>
+                    </dl>
+                </li>
+                
+                <li>
+                    <dl class="liu">
+                        <div id="imagePreviewliu"></div>
+                        <input id="imageInputliu" type="file" name="liu" onChange="loadImageFileliu();" />
+                        <?php if($imgs[5]){?>
+                           <img src="__PUBLIC__<?php echo $imgs[5]['img_url'];?>" style="position:absolute; left:0px; top:0px; width:80px; height:80px;"/>
+                        <?php }?>
+                        <dt>六</dt>
+                    </dl>
+                </li>
+                 <li>
+                    <dl class="qi">
+                        <div id="imagePreviewqi"></div>
+                        <input id="imageInputqi" type="file" name="qi" onChange="loadImageFileqi();" />
+                        <?php if($imgs[6]){?>
+                           <img src="__PUBLIC__<?php echo $imgs[6]['img_url'];?>" style="position:absolute; left:0px; top:0px; width:80px; height:80px;"/>
+                        <?php }?>
+                        <dt>七</dt>
+                    </dl>
+                </li>
+                <li>
+                    <dl class="ba">
+                        <div id="imagePreviewba"></div>
+                        <input id="imageInputba" type="file" name="ba" onChange="loadImageFileba();" />
+                       <?php if($imgs[7]){?>
+                           <img src="__PUBLIC__<?php echo $imgs[7]['img_url'];?>" style="position:absolute; left:0px; top:0px; width:80px; height:80px;"/>
+                        <?php }?>
+                        <dt>八</dt>
+                    </dl>
+                </li>
+               
+                
+            </ul>
+            </div>
+            <input type='hidden' name='img1' value="<?php echo $imgs[0]['id']?>" >
+            <input type='hidden' name='img2' value="<?php echo $imgs[1]['id']?>" >
+            <input type='hidden' name='img3' value="<?php echo $imgs[2]['id']?>" >
+            <input type='hidden' name='img4' value="<?php echo $imgs[3]['id']?>" >
+            <input type='hidden' name='img5' value="<?php echo $imgs[4]['id']?>" >
+            <input type='hidden' name='img6' value="<?php echo $imgs[5]['id']?>" >
+            <input type='hidden' name='img7' value="<?php echo $imgs[6]['id']?>" >
+            <input type='hidden' name='img8' value="<?php echo $imgs[7]['id']?>" >
+</body>
+</html>
+
+
+<script type="text/javascript" ></script>
+<script  src='./tn/Admin/View/duotu/View/Index/img.js'></script>
+
+
+
+
+
+
+
+
+
+
+

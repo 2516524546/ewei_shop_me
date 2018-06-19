@@ -1,0 +1,239 @@
+<head>
+		<meta charset="utf-8" />
+		<title>子昊钢琴后台管理系统</title>
+		<meta name="keywords" content="子昊钢琴后台管理系统" />
+		<meta name="description" content="子昊钢琴后台管理系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
+		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+			<!--[if !IE]> -->
+
+		<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+		
+		<!-- <![endif]-->
+		<!-- ace settings handler -->
+
+		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+		<script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body style='background:#fff;'>
+	<div class="page-content">
+	<div class="page-header">
+		<h1>
+			教材管理
+			<small> <i class="icon-double-angle-right"></i>
+				新增曲谱
+			</small>
+			 
+		</h1>
+	</div>
+
+
+	<div class="row">
+		<div class="col-xs-12">
+			<form class="form-horizontal" action="{:U('Admin/Songs/songs_add')}" method="POST" role="form" enctype="multipart/form-data">
+				<div class="form-group" >
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">所属教材</label>
+						<div class="col-sm-9" style="height:40px;overflow:hidden;">
+						<select name="cid" style="width:135px;float:left;" id='cat_name'>
+						    <option value="">请选择</option>							
+							<?php foreach($cat as $v){?>
+							  <option value="<?php echo $v['cid']?>"><?php echo $v['c_name']?></option>
+							<?php }?>
+						</select>
+						<select name="c_type" style="width:135px;display:none;float:left;margin-left:5px;" id='child_cat'>
+						   		
+						</select>
+						  </div>
+				</div>
+					 <div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">教材名称</label>
+						<div class="col-sm-9">
+							<input type="text" name="songs" value="" placeholder="曲谱名称" /></div>
+					   </div>
+					<div class="form-group" id="user-profile-3" >
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-1">教材封面</label>
+							<div class="col-sm-9">
+								<div class="col-xs-12 col-sm-4">
+									<input type="file" name="thumb" id='upload_picture'/>
+								   <div id='img'>	  
+									   <img width="40%" src=""/>
+								    </div>
+								</div>
+								<input type='hidden' name='imgurl' value="">
+							 
+							</div>
+
+					</div>
+					<script type="text/javascript" src="__PUBLIC__/Tools/uploadify/jquery.uploadify.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Tools/uploadify/uploadify.css">											
+<script type="text/javascript">
+//上传图片
+   /* 初始化上传插件 */
+    var userid = <?php echo $_SESSION['piano_user']['aid']?>//登陆用户id
+ $("#upload_picture").uploadify({
+       "height"          : 30,     
+       "swf"             : "__PUBLIC__/Tools/uploadify/uploadify.swf",
+       "fileObjName"     : "download",
+       "buttonText"      : "上传图片",
+       "uploader"        : "{:U('Admin/File/uploadPicture',array('sessionid'=>'"+userid+"'))}",
+       "width"           : 120,
+      // 'multi': true,//是否多文件上传
+       'removeTimeout'	  : 1,
+       'fileTypeExts'	  : '*.jpg; *.png; *.jpeg;',
+       "onUploadSuccess" : uploadPicturecover,
+       'onFallback' : function() {
+           alert('未检测到兼容版本的Flash.');
+       }
+   });
+    
+   
+   function uploadPicturecover(file, data){ 			
+			       	$("#img").html('<img width="40%" src="' + data + '"/>');
+				   $("input[name='imgurl']").val(data)
+								   
+   } 
+   $('#upload_picture-button').css('background','#87b87f');
+   $('#upload_picture-button').css('border','none');
+</script>
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">状态</label>
+						<div class="col-sm-9">
+							<div class="radio1">
+								<label>
+									<input name="status" type="radio" value="1" class='ace' checked/>
+									<span class="lbl">启用</span>
+								</label>
+								<label>
+									<input name="status" type="radio" value="2" class='ace' />
+									<span class="lbl">禁用</span>
+								</label>
+								
+							</div>
+						</div>
+					</div>
+	
+					
+				
+				</fieldset>
+
+				<div class="form-actions center">
+					<a  class="btn btn-sm btn-success" id='tianjia'>
+						<i class="icon-edit bigger-110"></i>
+						添加
+					</a>
+					 <a class="btn btn-sm btn-warning" href="javascript:history.back(-1)" class="myButton">
+						<i class="icon-arrow-left icon-on-left bigger-110"></i>
+						返回列表
+					</a> 
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+	.btn-xs {
+		margin-right: 10px!important;
+	}
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+<script>
+function showStart(){
+    return true;
+}
+function showSuccess(data){
+	
+    	if(data == 1){
+    		alert('新增成功')
+    		location.href="{:U('Admin/Songs/songs')}"
+    	}else{
+    		alert(data)
+    		return false
+    	} 
+
+}
+$(function(){
+	var options = {
+		        beforeSubmit:showStart,
+		        success:showSuccess,
+
+		 };
+	$('#tianjia').click(function(){
+		
+		$('.form-horizontal').ajaxSubmit(options);
+	})
+
+	//二级联动
+	$("#cat_name").change(function(){
+		$cid = $(this).val()
+		if($cid != 1){
+			$("#child_cat").css("display",'none')
+			return false
+		}
+		$("#child_cat").css("display",'block')
+		$.ajax({
+			url:'index.php?m=Admin&c=Songs&a=zhuanye_cat',
+			data:'',
+			type:'post',
+			success:function(msg){
+				$("#child_cat").html(msg)
+			}
+		})
+	})
+	
+	
+	
+})
+</script>
+
+
+
+
+
+
+
+

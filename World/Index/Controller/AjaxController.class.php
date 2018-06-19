@@ -2979,10 +2979,12 @@ public function ajax_donationpay()
                     'tutorship_need_contact' => $this->post('contact'),
                     'tutorship_need_title' => $this->post('title'),
                     'tutorship_need_time' => $this->post('time'),
-                    'tutorship_need_demand' => $this->post('demand'),
                     'tutorship_need_content' => $this->post('content'),
                     'tutorship_need_createtime' => date("Y-m-d H:i:s", time()),
                 );
+                if (!isset($_POST['demand'])||$this->post('demand')==''){
+                    $data['tutorship_need_demand'] = $this->post('demand');
+                }
                 if (!isset($_POST['explain'])||$this->post('explain')==''){
                     $data['tutorship_need_explain'] = $this->post('explain');
                 }

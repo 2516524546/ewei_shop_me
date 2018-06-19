@@ -1,0 +1,303 @@
+<head>
+		<meta charset="utf-8" />
+		<title>子昊钢琴后台管理系统</title>
+		<meta name="keywords" content="子昊钢琴后台管理系统" />
+		<meta name="description" content="子昊钢琴后台管理系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
+		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+			<!--[if !IE]> -->
+
+		<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+		
+		<!-- <![endif]-->
+		<!-- ace settings handler -->
+
+		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+		<script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+		<![endif]-->
+
+		<style type="text/css">
+			.info_table{
+				margin-top:50px; 
+				width:60%;
+				float: left;
+				margin-left:10%;
+			}
+			.info_table tr td{
+				height: 50px;
+				border: 1px;
+				border: ridge;
+				border-color:#ddd;
+			}
+			.table_title{
+				width:20%;
+				background-color: #eeeeee;
+			}
+			.table_content{
+				width:30%;
+			}
+			.prd_table div{
+				float:left;
+				width:200px;
+				height:320px;
+				margin-top:40px;
+				margin-left:40px;
+			}
+			.prd_table button{
+				float: right;
+				width: 25px;
+				height:25px;
+				margin-left:150px; 
+			}
+			.prd_table img{
+				
+				width:160px;
+				height:220px;
+				
+			}
+			.prd_table p{
+				font-size:15px;
+			}
+			.moliao tr td{
+				width:170px;
+				height: 35px;
+				border: 1px;
+				border: ridge;
+				border-color:#ddd;
+				text-align:center;
+			}
+			.moliao{
+				margin-top:20px;
+			}
+			.user_op{
+				border-style: solid;
+				border-color:#eee;
+				background: #ddd;
+				float:right;
+				width:125px;
+				margin-left:10px;
+				margin-top:5px;
+			}
+			.page{
+				position: absolute;
+				bottom: 0px;
+				right: 80%;
+			}
+			.fenhao{
+				margin-left:15%; 
+            	margin-bottom: 3px;    
+            	width:350px;
+            	height:200px;
+            	text-align:center;
+            	display: none;
+			}
+			.remen{
+				margin-left:15%; 
+            	margin-bottom: 3px;    
+            	width:350px;
+            	height:200px;
+            	text-align:center;
+            	display: none;
+			}
+			.closeroom{
+				float;left;
+				margin-left:15%; 
+            	margin-bottom: 3px;    
+            	width:350px;
+            	height:200px;
+            	text-align:center;
+            	display: none;
+			}
+			.btnn{
+				margin:15px;
+				font-size: 21px;
+				margin-left:15px;
+				border: none;
+				background-color:#ffffff; 
+				color: blue;
+			}
+		</style>
+	</head>
+	<body style='background:#fff;'>
+	<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+							<li class="active">控制台</li>
+						</ul><!-- .breadcrumb -->
+					</div>
+
+				
+				</div><!-- /.main-content -->
+<div class="page-content">
+	<div class="page-header">
+		  <h1>
+            财富管理
+            <small> <i class="icon-double-angle-right"></i>
+                乐币兑换率
+            </small>
+        </h1>
+	</div>
+				<!-- 按钮样式 -->		
+							<style type='text/css'>
+								.anniu{width:100%; height:40px; position:relative;}
+								 .anniu ul{width:auto; height:30px; border:1px solid #ccc; overflow:hidden; position:absolute; top:0; left:0; list-style:none; color:#333; box-sizing:border-box; font-size:13px; cursor: pointer;}	    
+								 .anniu ul li.current{background:#2679b5; color:#fff;width:100px; height:30px; float:left; border-right:1px solid #ccc;  line-height:30px; text-align:center; box-sizing:border-box;}
+								.anniu ul li{width:100px; height:30px; float:left; border-right:1px solid #ccc;  line-height:30px; text-align:center; box-sizing:border-box;}
+							</style>
+
+							<div class='anniu'>
+								<?php if($status==1){?>
+									<ul>
+										<li class="current" onclick="send1()" >充值兑换率</li>
+										<li onclick="send2()" >提现兑换率</li>
+										
+									</ul>
+								<?php }else{?>
+									<ul>
+										<li onclick="send1()" >充值兑换率</li>
+										<li class="current" onclick="send2()" >提现兑换率</li>
+										
+									</ul>
+								<?php }?>
+							</div>
+	<div class="row">
+		<div class="col-xs-12">	
+	
+
+			
+	
+	<div class="row" style="background-color: #eff3f8;">
+	
+	<div class="row">
+		<div class="col-xs-12">
+			<form class="form-horizontal" action="{:U('Admin/Order/up_convert')}" method="POST" role="form" enctype="multipart/form-data">
+			<?php foreach($list as $k=>$v){?>
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">
+						<?php echo $v['c_money']?>元 = </label>
+						<div class="col-sm-9">
+							<input type="text" name="value[]" value="<?php echo $v['c_point'];?>"  />乐币	
+						</div>
+					</div>
+			<?php }?>
+				
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">
+						<input type="text" name="money" value="" />元 =</label>
+						<div class="col-sm-9">
+							<input type="text" name="point" value="" />乐币		
+						</div>
+					</div>
+				
+					
+		
+				
+			 
+
+					<div class="form-actions center">
+					<a  class="btn btn-sm btn-success" id='queren'>
+						<i class="icon-edit bigger-110"></i>
+						确认
+					</a>
+					<a class="btn btn-sm btn-warning" href="javascript:history.back(-1)" target="rightFrame" class="myButton">
+						<i class="icon-arrow-left icon-on-left bigger-110"></i>
+						取消
+					</a>
+					</div>
+			</form>
+
+		</div>
+	</div>
+</div>
+
+
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+<script>
+function send1(){
+	location.href = "index.php?m=Admin&c=Order&a=show_convert&status=1";
+}
+function send2(){
+	location.href = "index.php?m=Admin&c=Order&a=show_tixian_convert&status=2";
+}
+
+$(function(){
+	var options = {
+		        beforeSubmit:showStart,
+		        success:showSuccess,
+		 };
+	$('#queren').click(function(){
+	  
+		$('.form-horizontal').ajaxSubmit(options);
+		
+	})
+	
+})
+function showSuccess(data){
+    	if(data == 1){
+    		alert('修改成功')
+    		location.href="{:U('Admin/Order/show_convert')}"
+    	}else{
+    		alert(data)
+    		location.href="{:U('Admin/Order/show_convert')}"
+    	}
+
+}
+function showStart(){
+    return true;
+}
+</script>
+
+
+
+
+
+

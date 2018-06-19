@@ -1,0 +1,156 @@
+<head>
+		<meta charset="utf-8" />
+		<title>子昊钢琴后台管理系统</title>
+		<meta name="keywords" content="子昊钢琴后台管理系统" />
+		<meta name="description" content="子昊钢琴后台管理系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
+		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+			<!--[if !IE]> -->
+
+		<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+		
+		<!-- <![endif]-->
+		<!-- ace settings handler -->
+
+		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+		<script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body style='background:#fff;'>
+	<div class="page-content">
+	<div class="page-header">
+		<h1>
+			<?php echo $songs['songs_name']?>
+			<small> <i class="icon-double-angle-right"></i>
+				回复
+			</small>
+			 
+		</h1>
+	</div>
+
+
+	<div class="row">
+		<div class="col-xs-12">
+			<foreach name="list" item="v">
+			<form class="form-horizontal" action="{:U('Admin/Conf/tuisong',array('eid'=>$v['ad_id']))}" method="POST" role="form" enctype="multipart/form-data">
+				
+				     <input type="hidden" name="x_userid" value="{$v.ad_user}" >
+				     <div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1" >反馈信息</label>
+						<div class="col-sm-9">
+							<input type="text" name="x_title" value="{$v.ad_text}"  style="width:200px"/>
+					    </div>
+					   </div>
+					 <div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">回复</label>
+						<div class="col-sm-9">
+							<input type="text" name="x_content" value="" style="width:200px"></div>
+					   </div>
+					</foreach>															
+
+	
+		
+				</fieldset>
+
+				<div class="form-actions center">
+					
+					<input name="" class="btn btn-sm btn-success" type="submit" class="btn" value="添加"/>
+					 <a class="btn btn-sm btn-warning" href="javascript:history.back(-1)" class="myButton">
+						<i class="icon-arrow-left icon-on-left bigger-110"></i>
+						返回列表
+					</a> 
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+	.btn-xs {
+		margin-right: 10px!important;
+	}
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+<script>
+function showStart(){
+    return true;
+}
+function showSuccess(data){
+	
+    	if(data == 1){
+    		alert('新增成功')
+    		location.href="index.php?m=Admin&c=Songs&a=songs_list&sid=<?php echo $songs['sid']?>"
+    	}else{
+    		alert(data)
+    		return false
+    	} 
+
+}
+$(function(){
+	var options = {
+		        beforeSubmit:showStart,
+		        success:showSuccess,
+
+		 };
+	$('#tianjia').click(function(){
+		
+		$('.form-horizontal').ajaxSubmit(options);
+	})
+
+	
+	
+	
+	
+})
+</script>
+
+
+
+
+
+
+
+

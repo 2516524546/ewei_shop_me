@@ -1,0 +1,349 @@
+<head>
+	<meta charset="utf-8" />
+	<title>子昊钢琴后台管理系统</title>
+	<meta name="keywords" content="子昊钢琴后台管理系统" />
+	<meta name="description" content="子昊钢琴后台管理系统" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+	<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+	<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+</head>
+<body style='background:#fff;'>
+	<div class="main-content">
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+			</script>
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home home-icon"></i>
+					<a href="#">首页</a>
+				</li>
+				<li class="active">控制台</li>
+			</ul>
+		</div>
+	</div>	
+	<div class="page-header">
+		<h1>
+			认证管理
+			<small> <i class="icon-double-angle-right"></i>
+				主播认证列表
+			</small>	 
+		</h1>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			 <div class="row" style="padding-bottom: 10px;">
+					<div class="col-sm-12">
+						<div id="sample-table-2_filter">
+							<form class="form-horizontal" action="{:U('Admin/Live/zhubo_rz_sou')}" method="POST" role="form" enctype="multipart/form-data">
+							<div class="btn-group" style='margin-top:5px;'>
+								<span>姓名:</span>
+								<input type="text" name="name" value="<?php if($name){echo $name;}?>">
+							</div>
+							<input type='hidden' name='status' value='<?php echo $status;?>'/>
+							<input type='hidden' name='button' value='1'/>
+							<div class="btn-group" style='margin-top:5px;'>
+								<span>账号:</span>
+								<input type="text" name="username" value="<?php if($username){echo $username;}?>">
+							</div>
+
+
+
+
+							<div class="btn-group" style='margin-top:5px;'>
+								<span>认证类型:</span>
+								<select name="kind">
+									<option value="" >全部</option>
+									<option value="1" <?php if($kind == 1){echo 'selected';}?>>直播间老师</option>
+									<option value="2" <?php if($kind == 2){echo 'selected';}?>>培训老师</option>
+									
+								</select>
+							</div>
+
+
+
+
+
+							<div class="btn-group" style='margin-top:5px;'> 
+									<span class="input-group-btn">
+										<button type="submit" style="padding:0" class="btn btn-purple btn-sm">
+											搜索<i class="icon-search icon-on-right bigger-110"></i>
+										</button>
+									</span>
+							</div>
+							</form>	
+			<!-- 按钮样式 -->		
+							<style type='text/css'>
+								.anniu{width:100%; height:40px; position:relative;}
+								 .anniu ul{width:auto; height:30px; border:1px solid #ccc; overflow:hidden; position:absolute; top:0; left:0; list-style:none; color:#333; box-sizing:border-box; font-size:13px; cursor: pointer;}	    
+								 .anniu ul li.current{background:#2679b5; color:#fff;width:100px; height:30px; float:left; border-right:1px solid #ccc;  line-height:30px; text-align:center; box-sizing:border-box;}
+								.anniu ul li{width:100px; height:30px; float:left; border-right:1px solid #ccc;  line-height:30px; text-align:center; box-sizing:border-box;}
+							</style>
+
+							<div class='anniu'>
+								<?php if($status==1){?>
+									<ul>
+										<li class="current" onclick="send1()" >全部</li>
+										<li onclick="send2()" >待审核</li>
+										<li onclick="send3()">已通过</li>
+										<li onclick="send4()">未通过</li>
+									</ul>
+								<?php }elseif($status==2){?>
+									<ul>
+										<li  onclick="send1()" >全部</li>
+										<li  class="current" onclick="send2()" >待审核</li>
+										<li  onclick="send3()">已通过</li>
+										<li  onclick="send4()">未通过</li>
+									</ul>
+								<?php }elseif($status ==3){?>
+									<ul>
+										<li  onclick="send1()" >全部</li>
+										<li  onclick="send2()" >待审核</li>
+										<li  class="current" onclick="send3()">已通过</li>
+										<li  onclick="send4()">未通过</li>
+									</ul>
+								<?php }else{?>
+									<ul>
+										<li  onclick="send1()" >全部</li>
+										<li  onclick="send2()" >待审核</li>
+										<li  onclick="send3()">已通过</li>
+										<li  class="current"  onclick="send4()">未通过</li>
+									</ul>
+								<?php }?>
+							</div>
+								<!-- 按钮样式 -->
+
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="table-responsive">
+						<table id="sample-table-1" class="table table-striped table-bordered table-hover" style="margin-bottom: 0px;font-size:13px;">
+							<thead>
+								<tr style=' font-size: 13px;' align="center">
+									<th>ID</th>
+									<th>姓名</th>
+									<th>手机号</th>
+									<th>用户身份</th>
+									<th>所属琴行</th>		
+									<th>申请种类</th>		
+									<th>执照</th>
+									<th>身份证（正面）</th>
+									<th>身份证（反面）</th>
+									<th>认证状态</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+							<?php foreach($list as $k=>$v){?>
+								<tr>
+									<td><?php echo $v['zb_id'];?></td>
+									<td><?php echo $v['zhubo_truename']?></td>
+									<td><?php echo $v['zhubo_phone'];?></td>
+									<td><?php if($v['role'] == 1){echo '学生';}elseif($v['role'] == 2){echo '老师';}else{echo '普通用户';}?></td>
+
+									<td><?php echo $v['jx_name']?></td>
+									<td><?php if($v['zb_kind']==2){echo '培训老师';}
+											else{echo '直播间老师';} ?>
+									</td>
+									<td><img class="license" src="<?php echo $v['zb_zhizhao']?>" style="width: 100px;height: 100px;"></td>
+									<td><img class="license1" src="<?php echo $v['zb_cardimg1']?>" style="width: 100px;height: 100px;"></td>
+									<td><img class="license2" src="<?php echo $v['zb_cardimg2']?>" style="width: 100px;height: 100px;"></td>
+								    <td><?php if($v['zbrz_status']==1){echo '待认证';}elseif($v['zbrz_status']==2){echo '认证通过';}else{echo '认证不通过';}?>
+								    </td>
+								    <td>
+									    <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+											  <?php if($v['zbrz_status'] ==1){?>
+												<a href="#" class="btn btn-xs btn-success" onclick="renzheng(<?php echo $v['zb_id']?>,2,<?php echo $v['zb_kind'];?>)">通过</a>
+												<a href="#" class="btn btn-xs btn-success" onclick="renzheng(<?php echo $v['zb_id']?>,3,<?php echo $v['zb_kind'];?>)" padding="">拒绝</a>
+											  <?php }?>	
+											  <?php if($v['zbrz_status']==3){?>
+											    <a href="#" class="btn btn-xs btn-success" onclick="renzheng(<?php echo $v['zb_id']?>,2,<?php echo $v['zb_kind'];?>)">通过</a>
+											  <?php }?>	
+											  <?php if($v['zbrz_status'] == 2){if($v['acc_on']==1){?>
+												<a href="#" class="btn btn-xs btn-success" onclick="feng(<?php echo $v['zb_id']?>)">封号</a>
+											<?php }else{?>
+												<a href="#" class="btn btn-xs btn-success" onclick="feng(<?php echo $v['zb_id']?>)">解封</a>
+											  <?php }}?>
+										</div>
+								    </td>
+								</tr>
+							<?php }?>	
+							</tbody>
+						</table>
+						<div class="dataTables_paginate paging_bootstrap" style="border-top: 1px solid #DDD;padding-top: 12px;padding-bottom: 12px;background-color: #eff3f8;border-bottom: 1px solid #DDD;">
+							<div style='margin-right:56px;'>
+							  <?php echo $page;?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="hr hr-18 dotted hr-double"></div>
+		</div>
+	</div>
+</div>
+
+<div class="public_img" style="width:100% ;height: 100%;position:fixed; left: 0;top:0;z-index:20;
+background:rgba(0,0,0,0.5); display: none;"><img src="" style="width:300px;height: auto;position: absolute;left: 50%;top: 50%;margin-left: -150px;"></div>
+
+</body>
+<style type="text/css" media="screen">
+	.btn-xs {
+		margin-right: 10px!important;
+	}
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+<script type="text/javascript">
+
+
+function send1(){
+	location.href = "index.php?m=Admin&c=Live&a=show_rz_zhubo&status=1";
+}
+function send2(){
+	location.href = "index.php?m=Admin&c=Live&a=show_rz_zhubo&status=2";
+}
+function send3(){
+	location.href = "index.php?m=Admin&c=Live&a=show_rz_zhubo&status=3";
+}
+function send4(){
+	location.href = "index.php?m=Admin&c=Live&a=show_rz_zhubo&status=0";
+}
+	function renzheng(id,status,kind){
+		if(confirm("确定执行此操作吗？")){
+			$.ajax({
+				url:'index.php?m=Admin&c=Live&a=renzheng_zhubo',
+				data:'zhubo_id='+id+'&status='+status+"&kind="+kind,
+		        type:'post',
+		        success:function(msg){
+		        	//alert(msg);
+		        	if(msg == 1){
+		        		alert('审核通过')	
+		        		location.href = 'index.php?m=Admin&c=Live&a=show_rz_zhubo'
+		        	}
+		        	if(msg ==2){
+		        		alert('审核拒绝')	
+		        		location.href = 'index.php?m=Admin&c=Live&a=show_rz_zhubo'
+		        	}
+		        	if(msg != 1 && msg != 2){
+		        		alert(msg)
+		        		return
+		        	}
+		        }
+			})
+		}
+	} 
+
+$('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
+	$(this).prev().focus();
+});
+</script>
+
+
+<script type="text/javascript">
+function feng(id){
+		if(confirm("确定执行此操作吗？")){
+			$.ajax({
+				url:'index.php?m=Admin&c=Live&a=feng',
+				data:'id='+id,
+		        type:'post',
+		        success:function(msg){
+		        	if(msg == 1){
+		      			alert('操作成功')
+		        		location.href = 'index.php?m=Admin&c=Live&a=show_rz_zhubo'
+		        	}else{
+		        		alert(msg)
+		        		location.href = 'index.php?m=Admin&c=Live&a=show_rz_zhubo'
+		        	}
+		        }
+			})
+		}
+	} 
+
+
+
+$(".license").click(function() {
+	  	var url = $(this).attr("src");
+	  	$(".public_img img").attr("src", url);
+	
+	  
+		$('html,body').css({'height':'auto','overflow':'hidden'})
+	   	$('.public_img').css({'display':'block'})
+	  
+
+	   	var imgw=$('.public_img img').height()
+	   	$('.public_img img').css({'margin-top': -imgw / 2 + 'px'})
+	   		
+	   	$(".public_img").click(function() {
+
+		   	$(this).css({'display':'none'})
+		   	$('html,body').css({'height':'auto','overflow':''})
+	 	})  	
+	 })  	
+
+$(".license1").click(function() {
+	  	var url = $(this).attr("src");
+	  	$(".public_img img").attr("src", url);
+	
+	  
+		$('html,body').css({'height':'auto','overflow':'hidden'})
+	   	$('.public_img').css({'display':'block'})
+	  
+
+	   	var imgw=$('.public_img img').height()
+	   	$('.public_img img').css({'margin-top': -imgw / 2 + 'px'})
+	   		
+	   	$(".public_img").click(function() {
+
+		   	$(this).css({'display':'none'})
+		   	$('html,body').css({'height':'auto','overflow':''})
+	 	})  	
+	 })  	
+
+$(".license2").click(function() {
+  	var url = $(this).attr("src");
+  	$(".public_img img").attr("src", url);
+
+  
+	$('html,body').css({'height':'auto','overflow':'hidden'})
+   	$('.public_img').css({'display':'block'})
+  
+
+   	var imgw=$('.public_img img').height()
+   	$('.public_img img').css({'margin-top': -imgw / 2 + 'px'})
+   		
+   	$(".public_img").click(function() {
+
+	   	$(this).css({'display':'none'})
+	   	$('html,body').css({'height':'auto','overflow':''})
+ 	})  	
+ })  	
+   		
+
+
+
+
+
+</script>
+
+
+
+

@@ -1,0 +1,412 @@
+<head>
+		<meta charset="utf-8" />
+		<title>子昊钢琴后台管理系统</title>
+		<meta name="keywords" content="子昊钢琴后台管理系统" />
+		<meta name="description" content="子昊钢琴后台管理系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
+		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+			<!--[if !IE]> -->
+
+		<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+		
+		<!-- <![endif]-->
+		<!-- ace settings handler -->
+
+		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+		<script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body style='background:#fff;'>
+	<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+							<li class="active">控制台</li>
+						</ul><!-- .breadcrumb -->
+					</div>
+
+				
+				</div><!-- /.main-content -->
+	
+	
+<div class="page-content">
+	<div class="page-header">
+		<h1>
+			论坛管理
+			<small> <i class="icon-double-angle-right"></i>
+				活动帖子列表
+			</small>
+			 
+		</h1>
+		
+	<!-- 	 <form class="daoru" action="{:U('Daili/Index/upload_execl')}" method="POST" enctype="multipart/form-data" style="margin-top:20px;">
+         <input type='file' name='execl' style=" width:150px; height:30px; display:inline-block; margin-right:30px;"/>
+		 <span style='width:85px; height:30px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:30px;text-align:center; borde-radius:4px;' id='daoru'>导入数据</span>
+		</form> 	 -->	
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+
+		   
+			 <div class="row" style="padding-bottom: 10px;">
+							<div class="col-sm-12">
+								<div id="sample-table-2_filter">
+									<form class="form-horizontal" action="{:U('Admin/Luntan/huodong_list_sou1')}" method="POST" role="form" enctype="multipart/form-data">
+									<div class="btn-group" style='margin-top:5px;'>
+										<span>发贴人:</span>
+										<input type="text" name="name" value="<?php if($name){echo $name;}?>">
+									</div>
+									<input type='hidden' name='button' value='1'/>
+						
+									
+									<div class="btn-group" style="margin-right:10px;margin-top:5px;">											
+											<div class="input-group">
+											<span>发布时间：</span>
+												<input class="form-control date-picker" value="<?php if($stime){echo $stime;}?>" name="stime" id="id-date-picker-1" style="width: 35%" type="text" data-date-format="yyyy-mm-dd" />
+												-
+												<input class="form-control date-picker" value="<?php if($etime){echo $etime;}?>" name="etime" id="id-date-picker-1" style="width: 35%" type="text" data-date-format="yyyy-mm-dd" /> 
+											</div>
+									</div>
+
+									<div class="btn-group" style='margin-top:5px;'>
+										<span>状态：</span>
+										<select name="order">
+											<option value="">请选择</option>
+											<option value="1">被屏蔽</option>>
+										</select>
+									</div>
+
+						
+									<div class="btn-group" style='margin-top:5px;'>
+											<span class="input-group-btn">
+												<button type="submit" style="padding:0" class="btn btn-purple btn-sm">
+													搜索<i class="icon-search icon-on-right bigger-110"></i>
+												</button>
+											</span>
+										
+									</div>
+								
+									</form>
+				
+							<!-- 按钮样式 -->		
+							<style type='text/css'>
+								.anniu{width:100%; height:40px; position:relative;}
+								 .anniu ul{width:auto; height:30px; border:1px solid #ccc; overflow:hidden; position:absolute; top:0; left:0; list-style:none; color:#333; box-sizing:border-box; font-size:13px; cursor: pointer;}	    
+								 .anniu ul li.current{background:#2679b5; color:#fff;width:100px; height:30px; float:left; border-right:1px solid #ccc;  line-height:30px; text-align:center; box-sizing:border-box;}
+								.anniu ul li{width:100px; height:30px; float:left; border-right:1px solid #ccc;  line-height:30px; text-align:center; box-sizing:border-box;}
+							</style>
+
+							<div class='anniu'>
+								<?php if($status==0){?>
+									<ul>
+										<li class="current" onclick="send1()" >未进行</li>
+										<li onclick="send2()" >正在进行</li>
+										<li onclick="send3()">已结束</li>
+									</ul>
+								<?php }elseif($status==1){?>
+									<ul>
+										<li onclick="send1()" >未进行</li>
+										<li class="current" onclick="send2()" >正在进行</li>
+										<li onclick="send3()">已结束</li>
+									</ul>
+								<?php }else{?>
+									<ul>
+										<li onclick="send1()" >未进行</li>
+										<li onclick="send2()" >正在进行</li>
+										<li class="current" onclick="send3()">已结束</li>
+									</ul>
+								<?php }?>
+							</div>
+								<!-- 按钮样式 -->
+								</div>
+							</div>
+							
+						</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="table-responsive">
+						<table id="sample-table-1" class="table table-striped table-bordered table-hover" style="margin-bottom: 0px;font-size:13px;">
+							<thead>
+								<tr style=' font-size: 13px;'>
+								<!--   <th><input type='checkbox' name='' value=''></th>   -->
+									<th>发贴人ID</th>
+										
+									<th>发贴人</th>
+									
+									<th>标题</th>
+								<!-- 	<th>发布时间</th> -->
+									<th>开始时间</th>
+									<th>结束时间</th>
+									<th>活动地点</th>		
+									<th>人气</th>
+									<th>点赞数</th>
+									<th>参与人数</th>		
+									<th>详情</th>
+									<th>消息</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+
+							<tbody>
+							<?php foreach($list as $k=>$v){?>
+								<tr>
+								 <!--    <td><input type='checkbox' name='' value=''></td>--> 
+									<td><?php echo $v['id'];?></td>
+									<td><?php echo $v['nickname'];?></td>
+
+									<td><?php echo $v['l_title']?></td>
+								<!-- 	<td><?php echo $v['l_addtime'];?></td> -->
+									<td><?php echo $v['l_wtime'];?></td>
+									<td><?php echo $v['l_wadr'];?></td>
+									<td><?php echo $v['l_history_num'];?></td>
+									<td><?php echo $v['zan'];?></td>
+									<td><?php echo $v['join_num'];?></td>
+									<td><div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+											<a href="index.php?m=Admin&c=Luntan&a=luntan_xiang&id=<?php echo $v['tiezi_id']?>" class="btn btn-xs btn-success">详情</a>	
+									</div></td>
+									
+									<td>
+										<a onclick="send(<?php echo $v['tiezi_id']?>)" style="margin:1px;" class="btn btn-xs btn-success" class="btn btn-xs btn-success">消息推送</a>	
+										<a href="index.php?m=Admin&c=Luntan&a=show_msg_list" style="margin:1px;" class="btn btn-xs btn-success">历史消息</a>	
+									</td>
+									<td>
+										<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+								<!-- 		<a href="index.php?m=Admin&c=Luntan&a=show_huodong_save&id=<?php echo $v['tiezi_id']?>" class="btn btn-xs btn-success">编辑</a>	 -->	
+										<?php if($v['l_pinbi'] == 1){?>
+											<a onclick="pinbi_tiezi(<?php echo $v['tiezi_id']?>)" style="margin:1px;" class="btn btn-xs btn-success">屏蔽</a>	
+										<?php }else{?>
+											<a onclick="pinbi_tiezi(<?php echo $v['tiezi_id']?>)" style="margin:1px;" class="btn btn-xs btn-success">解除屏蔽</a>	
+										<?php }?>
+											<a onclick="del_tiezi(<?php echo $v['tiezi_id']?>)" style="margin:1px;" class="btn btn-xs btn-success">删贴</a>	
+										</div>
+									</td>
+								</tr>
+							<?php }?>	
+							</tbody>
+						</table>
+						<div class="dataTables_paginate paging_bootstrap" style="border-top: 1px solid #DDD;padding-top: 12px;padding-bottom: 12px;background-color: #eff3f8;border-bottom: 1px solid #DDD;">
+							<div style='margin-right:56px;'>
+							  <?php echo $page;?>
+							</div>
+						</div>
+					</div>
+					<!-- /.table-responsive -->
+				</div>
+				<!-- /span -->
+			</div>
+			<!-- /row -->
+			<div class="hr hr-18 dotted hr-double"></div>
+
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+</div>
+
+
+<script src="__PUBLIC__/Admin/admin/js/bootstrap.min.js"></script>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+	.btn-xs {
+		margin-right: 10px!important;
+	}
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+<script type="text/javascript">
+	
+$('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
+	$(this).prev().focus();
+});
+</script>
+
+
+
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+<script>
+function send1(){
+	location.href = "index.php?m=Admin&c=Luntan&a=show_huodong_list"
+}
+function send2(){
+	location.href = "index.php?m=Admin&c=Luntan&a=show_huodong_list1"
+}
+function send3(){
+	location.href = "index.php?m=Admin&c=Luntan&a=show_huodong_list2"
+}
+
+//推荐
+function tuijian(id){
+	if(confirm("确定此操作吗?")){
+		$.ajax({
+			url:'index.php?m=Admin&c=Luntan&a=luntan_tuijian',
+			data:'id='+id,
+			type:'post',
+			success:function(msg){
+				if(msg == 1){
+						alert('操作成功')
+						location.href = "index.php?m=Admin&c=Luntan&a=show_huodong_list"
+					}else{
+						alert(msg)
+						return false
+					}
+			}
+		})
+	}	
+}
+
+//编辑
+function jinhua(id){
+	if(confirm("确定此操作吗?")){
+		$.ajax({
+			url:'index.php?m=Admin&c=Luntan&a=luntan_jinhua',
+			data:'id='+id,
+			type:'post',
+			success:function(msg){
+				if(msg == 1){
+						alert('操作成功')
+						location.href = "index.php?m=Admin&c=Luntan&a=show_huodong_list"
+					}else{
+						alert(msg)
+						return false
+					}
+			}
+		})
+	}	
+}
+
+//编辑
+function mnew(id){
+	if(confirm("确定此操作吗?")){
+		$.ajax({
+			url:'index.php?m=Admin&c=Luntan&a=luntan_new',
+			data:'id='+id,
+			type:'post',
+			success:function(msg){
+				if(msg == 1){
+						alert('操作成功')
+						location.href = "index.php?m=Admin&c=Luntan&a=show_huodong_list"
+					}else{
+						alert(msg)
+						return false
+					}
+			}
+		})
+	}	
+}
+
+//编辑
+function del_tiezi(id){
+	if(confirm("确定此操作吗?")){
+		$.ajax({
+			url:'index.php?m=Admin&c=Luntan&a=del_luntan',
+			data:'id='+id,
+			type:'post',
+			success:function(msg){
+				if(msg == 1){
+						alert('操作成功')
+						location.href = "index.php?m=Admin&c=Luntan&a=show_huodong_list"
+					}else{
+						alert(msg)
+						return false
+					}
+			}
+		})
+	}	
+}
+
+function pinbi_tiezi(id){
+	if(confirm("确定此操作吗?")){
+		$.ajax({
+			url:'index.php?m=Admin&c=Luntan&a=pinbi_tiezi',
+			data:'id='+id,
+			type:'post',
+			success:function(msg){
+				if(msg == 1){
+						alert('操作成功')
+						location.href = "index.php?m=Admin&c=Luntan&a=show_huodong_list"
+					}else{
+						alert(msg)
+						return false
+					}
+			}
+		})
+	}	
+}
+
+
+function showStart(){
+    return true;
+}
+function showSuccess(data){
+    	if(data == 1){
+    		alert('操作成功')
+    		location.href="{:U('Admin/Conf/admin_list')}"
+    	}else{
+    		alert(data)
+    		$('.modal').css('overflow','')
+    		return
+    	}
+
+}
+$(function(){
+	var options = {
+		        beforeSubmit:showStart,
+		        success:showSuccess,
+
+		 };
+	$('#submit-ed').click(function(){	
+		//alert('a')
+		//return false
+		$('#room_add').ajaxSubmit(options);
+	})
+	
+})
+</script>

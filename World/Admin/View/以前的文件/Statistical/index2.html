@@ -1,0 +1,257 @@
+<head>
+    <meta charset="utf-8" />
+    <title>子昊钢琴后台管理系统</title>
+    <meta name="keywords" content="子昊钢琴后台管理系统" />
+    <meta name="description" content="子昊钢琴后台管理系统" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- basic styles -->
+    <link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
+    <![endif]-->
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css" />
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
+    <!--[if !IE]> -->
+
+    <script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+
+    <!-- <![endif]-->
+    <!-- ace settings handler -->
+
+    <script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+    <script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+//        function living(btn01){
+//            var btn01 = document.getElementById('btn01');
+//            btn01.style.width:'300px';
+//        }
+    </script>
+    <style type="text/css">
+        .a_btn{
+            font-size: 21px;
+            margin-left:15px
+
+        }
+        .a_btn:hover{
+            text-decoration:none;
+        }
+    </style>
+
+    <style>
+        #daohang li a{line-height: 30px;padding-left: 20px;padding-right: 20px;}
+    </style>
+
+    <!--// 数据统计JS-->
+    <script type="text/javascript" src="__PUBLIC__/Admin/admin/js/jqplot.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/admin/js/m_jqplot.js"></script>
+    <script>
+        $(document).ready(function() {
+//            var data = [[1,2,3,4,5,6,7,8,9],[3,6,8,1,11,22,4,21,6]];
+//            var data_max = 30; //Y轴最大刻度
+//            var line_title = ["A","B"]; //曲线名称
+//            var y_label = "这是Y轴"; //Y轴标题
+//            var x_label = "这是X轴"; //X轴标题
+//            var x = [11,22,33,4,5,6,7,8,9]; //定义X轴刻度值
+//            var xx = [9,8,7,6,5,4,3,2,1]
+//            var title = "这是标题"; //统计图标标题
+//            j.jqplot.diagram.base("chart1", data, line_title, "这是统计标题", x, x_label, y_label, data_max, 1);
+//            j.jqplot.diagram.base("chart3", data, line_title, "这是统计标题", xx, x_label, y_label, data_max, 1);
+
+            var data = [[{$list}]];
+            var data_max = {$list_max}; //Y轴最大刻度
+            var line_title = ["A","B"]; //曲线名称
+            var y_label = ""; //Y轴标题
+            var x_label = ""; //X轴标题
+            var x = [{$time_name}]; //定义X轴刻度值
+            var title = "这是标题"; //统计图标标题
+          
+            j.jqplot.diagram.base("index1", data, line_title, "", x, x_label, y_label, data_max, 1);
+           
+        });
+        /* $(document).ready(function() {
+            var data = [[{$listl}]];
+            var data_max = {$listl_max}; //Y轴最大刻度
+            var line_title = ["活跃比"]; //曲线名称
+            var y_label = ""; //Y轴标题
+            var x_label = ""; //X轴标题
+            var x = [{$time_namel}]; //定义X轴刻度值
+            var title = "这是标题"; //统计图标标题
+            j.jqplot.diagram.base("chart2", data, line_title, "", x, x_label, y_label, data_max, 1);
+        });
+        $(document).ready(function() {
+
+            var data = [[{$listc}]];
+            var data_max = {$listc_max}; //Y轴最大刻度
+            var line_title = ["营业额","B"]; //曲线名称
+            var y_label = ""; //Y轴标题
+            var x_label = ""; //X轴标题
+            var x = [{$time_namec}]; //定义X轴刻度值
+            var title = "这是标题"; //统计图标标题
+            j.jqplot.diagram.base("chart3", data, line_title, "", x, x_label, y_label, data_max, 1);
+        }); */
+    </script>
+
+</head>
+<body style='background:#fff;'>
+
+<div class="main-content">
+    <div class="breadcrumbs" id="breadcrumbs">
+        <!-- <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+        </script> -->
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="icon-home home-icon"></i>
+                <a href="#">首页</a>
+            </li>
+            <li class="active">控制台</li>
+        </ul><!-- .breadcrumb -->
+    </div>
+
+
+</div><!-- /.main-content -->
+
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            统计管理
+            <small> <i class="icon-double-angle-right"></i>
+                app用户统计
+            </small>
+        </h1>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row" style="padding-bottom: 10px;">
+                <div class="col-sm-12 ">
+                    <ul class="nav nav-tabs" id="daohang" role="tablist">
+                        <li role="presentation"  class="active" >
+                            <a  class="btn btn-sm btn-success" href="{:U('Statistical/get_user')}" style="cursor: pointer;">所有用户</a>
+                        </li>
+                        <li role="presentation"  class="active" >
+                            <a  class="btn btn-sm btn-success" href="{:U('Statistical/get_student')}" style="cursor: pointer;">学生用户</a>
+                        </li>
+                        <li role="presentation"  class="active" >
+                            <a  class="btn btn-sm btn-success" href="{:U('Statistical/get_teacher')}" style="cursor: pointer;">老师用户</a>
+                        </li>
+                        <li role="presentation"  class="active" >
+                            <a   class="btn btn-sm btn-success"href="{:U('Statistical/get_bang1')}" style="cursor: pointer;">已绑定用户</a>
+                        </li>
+                        <li role="presentation"  class="active" >
+                            <a   class="btn btn-sm btn-success" href="{:U('Statistical/get_bang2')}" style="cursor: pointer;">未绑定用户</a>
+                        </li>
+                     
+                     </ul>
+                </div>
+
+                <div class="col-sm-12">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                            <div class="row">
+                                <form action="{:U('Statistical/get_student')}" method="POST">
+                                    <div class="col-md-12">
+                                        <div class="col-md-5"><h3>学生用户数：{$count}</h3></div>
+                                        <div class="col-md-5">
+                                            <div class="input-group" style="margin-top: 15px;">
+
+                                                <input class="form-control date-picker" value="<?php echo $stime01;?>" name="stime01" id="start1" style="width: 35%;height:25px;margin-top:5px;" type="text" data-date-format="yyyy-mm-dd" />
+                                                -
+                                                <input class="form-control date-picker" value="<?php echo $etime01;?>" name="etime01" id="over1" style="width: 35%;height:25px;margin-top:5px;" type="text" data-date-format="yyyy-mm-dd" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button style="margin-top: 8px;" type="submit" class="btn btn-success" style="margin-right: 20px;" onclick="return check(1)">筛选</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div id="index1"></div>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+<!-- /.page-content -->
+
+<style type="text/css" media="screen">
+    .btn-xs {
+        margin-right: 10px!important;
+    }
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/bootstrap.min.js"></script>
+
+<script>
+    $(function(){
+
+        $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
+            $(this).prev().focus();
+        });
+        $("#datu").click(function(){
+            $("#datu").css('display','none')
+
+        })
+
+    })
+</script>
+<script type="text/javascript">
+    function check(num){
+        var st = Date.parse(new Date(document.getElementById('start'+num).value));
+        var ov = Date.parse(new Date(document.getElementById('over'+num).value));
+        if(parseInt(ov)<parseInt(st)){
+            alert('结束时间不能小于开始时间!');
+            return false;
+        }else{
+            if(((parseInt(ov)-parseInt(st))/86400000)>60){
+                alert('查询时间跨度不能大于60天!');
+                return false;
+            }else{
+                return true;
+            }
+        }
+    } 
+   
+</script>
