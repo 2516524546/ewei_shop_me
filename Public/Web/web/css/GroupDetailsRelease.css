@@ -110,6 +110,8 @@
 }
 .picDiv {
   margin-left: 10px;
+  display: flex;
+  align-items: center;
 }
 .picDiv .imageDiv {
   display: inline-block;
