@@ -132,10 +132,17 @@
   align-items: center;
 }
 .PasswordContainer .RefreshCode .img_code{
-  width: 70%;
+  width: 35%;
+  height: 38px;
   margin-right: 10px;
 }
 .PasswordContainer .RefreshCode .img_code img{
   width: 100%;
+  height: 100%;
+}
+
+.PasswordContainer .RefreshCode .RefreshFont{
+  font-size: 12px;
+  width:65%;
 }
 

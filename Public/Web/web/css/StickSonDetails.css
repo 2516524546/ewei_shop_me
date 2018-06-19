@@ -80,10 +80,7 @@
   /* padding: 44px 100px 0 10px; */
 }
 .ReturnBox .Returnbut {
-  /* position: absolute;
-  z-index: 2;
-  bottom: 10px;
-  right: 12px; */
+  min-width: 130px;
 }
 .GroupDetailsContainer {
   clear: both;
