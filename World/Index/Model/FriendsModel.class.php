@@ -62,6 +62,15 @@ class FriendsModel extends Model{
         $friend = $this->findone(['firends_uid'=>$data['firends_aid'],'firends_aid'=>$data['firends_uid']],'firends_type');
         if($friend){
             $firends_type = $friend['firends_type'];
+        }elseif($type === self::TYPE_FRIEND){
+            //如果没有记录，说明2用户第一次添加好友，互加为好友
+            $friend['firends_updatetime'] = isset($data['firends_updatetime']) ? $data['firends_updatetime'] : date('Y-m-d H:i:s',time());
+            $friend['firends_createtime'] = isset($data['firends_createtime']) ? $data['firends_createtime'] : date('Y-m-d H:i:s',time());
+            $friend['firends_uid'] = $data['firends_aid'];
+            $friend['firends_aid'] = $data['firends_uid'];
+            $friend['firends_type'] = self::TYPE_FRIEND;
+            $this->add($friend);
+
         }
         switch ($firends_type){
             case self::TYPE_FRIEND:         //firend是我的好友

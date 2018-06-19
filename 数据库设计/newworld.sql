@@ -64,4 +64,5 @@ lyx
 2018.06.15 end
 */
 
-
+ALTER TABLE `newworld`.`u_concerns` 
+ADD COLUMN `concerns_status` tinyint(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '0：取消关注 1 关注' AFTER `concerns_cuid`;
