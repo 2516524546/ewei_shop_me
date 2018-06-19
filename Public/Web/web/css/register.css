@@ -408,3 +408,9 @@ footer{
 footer {
   color: #999;
 }
+
+.layui-form-pane .layui-input {
+  border-radius: 0 2px 2px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

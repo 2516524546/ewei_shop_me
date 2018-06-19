@@ -48,9 +48,10 @@
     border: 1px solid #4ac5ba;
     border-radius: 23px;
     text-align: center;
-    padding: 13px 0;
+    padding: 8px 0;
     margin-left: 10px; 
     cursor: pointer;
+    min-width: 130px;
 }
 .AddressBook_box .AddressBook_item .AddressBook_right .AddressBook_btn:hover{
     background: #4ac5ba;

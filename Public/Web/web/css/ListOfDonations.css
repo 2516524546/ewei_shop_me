@@ -101,7 +101,7 @@
   /*文字隐藏后添加省略号*/
   white-space: nowrap;
   /*强制不换行*/
-  width: 60em;
+  /* width: 60em; */
 }
 #PublicStyleIcons .Container {
   box-shadow: 2px 2px 14px #cecece;
@@ -114,15 +114,6 @@
 }
 .ListContainer {
   box-shadow: 2px 2px 14px #cecece;
-}
-.ListContainer .FontOverflow {
-  overflow: hidden;
-  /*自动隐藏文字*/
-  text-overflow: ellipsis;
-  /*文字隐藏后添加省略号*/
-  white-space: nowrap;
-  /*强制不换行*/
-  width: 60em;
 }
 .ListContainer .TimeColor {
   color: #c5c5c5;
