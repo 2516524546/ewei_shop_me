@@ -2,6 +2,13 @@
 <html lang="en">
     <head>
         <include file="./World/Index/View/Public/meta.html"/>
+        <style>
+            .btn-DropOut-primary,.btn-Dissolve-primary{
+                color: #fff;
+                background-color: #007bff;
+                border-color: #007bff;
+            }
+        </style>
     </head>
     <body>
         <!-- logo -->
@@ -14,7 +21,7 @@
         <div class="container">
             <div class="row" style="margin-top: 15px;">
                 <div class="col-md-6 crumbs">
-                        <a href="index.html" class="crumbsa"><img src="__PUBLIC__/Web/img/common_dh_icon_home.png" alt=""></a>
+                        <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
                         <cite class="Icon"></cite>
                         <span class="crumbsTitle">My group</span>
                     </div>
@@ -39,7 +46,7 @@
                               <li>I Joined</li>
                             </ul>
                             <div class="layui-tab-content">
-                              <div class="layui-tab-item layui-show">
+                              <div class="layui-tab-item layui-show Created_item">
                                   <div class="MyGroup_list">
                                       <div class="MyGroup_item">
                                         <div class="MyGroup_left">
@@ -61,10 +68,10 @@
                                             </div>
                                         </div>
                                         <div class="MyGroup_right">
-                                            <div class="right_btn">
+                                            <div class="right_btn btn_Do" data-target="#box1" data-toggle="modal">
                                                     Drop Out
                                             </div>
-                                            <div class="right_btn">
+                                            <div class="right_btn btn_Dis" data-target="#box2" data-toggle="modal">
                                                     Dissolve
                                             </div>
                                         </div>
@@ -90,10 +97,10 @@
                                             </div>
                                         </div>
                                         <div class="MyGroup_right">
-                                            <div class="right_btn">
+                                            <div class="right_btn btn_Do" data-target="#box1" data-toggle="modal">
                                                     Drop Out
                                             </div>
-                                            <div class="right_btn">
+                                            <div class="right_btn btn_Dis" data-target="#box2" data-toggle="modal">
                                                     Dissolve
                                             </div>
                                         </div>
@@ -119,17 +126,17 @@
                                             </div>
                                         </div>
                                         <div class="MyGroup_right">
-                                            <div class="right_btn">
+                                            <div class="right_btn btn_Do" data-target="#box1" data-toggle="modal">
                                                     Drop Out
                                             </div>
-                                            <div class="right_btn">
+                                            <div class="right_btn btn_Dis" data-target="#box2" data-toggle="modal">
                                                     Dissolve
                                             </div>
                                         </div>
                                       </div>
                                   </div>
                                 </div>
-                              <div class="layui-tab-item">
+                              <div class="layui-tab-item Joined_item">
                                    <div class="MyGroup_list">
                                       <div class="MyGroup_item">
                                         <div class="MyGroup_left">
@@ -151,7 +158,7 @@
                                             </div>
                                         </div>
                                         <div class="MyGroup_right">
-                                            <div class="right_btn">
+                                            <div class="right_btn"  data-target="#box3" data-toggle="modal">
                                                     Drop Out
                                             </div>
                                         </div>
@@ -177,7 +184,7 @@
                                             </div>
                                         </div>
                                         <div class="MyGroup_right">
-                                            <div class="right_btn">
+                                            <div class="right_btn"  data-target="#box3" data-toggle="modal">
                                                     Drop Out
                                             </div>
                                         </div>
@@ -203,7 +210,7 @@
                                             </div>
                                         </div>
                                         <div class="MyGroup_right">
-                                            <div class="right_btn">
+                                            <div class="right_btn"  data-target="#box3" data-toggle="modal">
                                                     Drop Out
                                             </div>
                                         </div>
@@ -216,6 +223,76 @@
             <div class="container" id="NumberOfPagesContainer">
                     <div id="NumberOfPages"></div>
         </div>
+
+        <!-- Create Drop out -->
+        <div id="box1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="modal-title">
+                            Reminder
+                        </span>
+                        <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                            <span aria-hidden="true">&times;</span>
+                        </a>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-center">Are you sure to quit the group?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-DropOut-primary" data-dismiss="modal">confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dissolve -->
+        <div id="box2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="modal-title">
+                            Reminder
+                        </span>
+                        <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                            <span aria-hidden="true">&times;</span>
+                        </a>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-center">Are you sure about dissolving the group?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-Dissolve-primary" data-dismiss="modal">confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Join Drop out -->
+        <div id="box3" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="modal-title">
+                                Reminder
+                            </span>
+                            <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                                <span aria-hidden="true">&times;</span>
+                            </a>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-center">Are you sure to quit the group?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-DropOut-primary" data-dismiss="modal">confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <!-- foot start 底部信息 -->
     <footer class="container-fluid FooterBg">
@@ -260,11 +337,47 @@
     <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
     <script>
-            //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
-            layui.use('element', function(){
-              var element = layui.element;
-              
-              //…
-            });
-            </script>
+        //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+        layui.use('element', function(){
+            var element = layui.element;
+            
+            //…
+        });
+    </script>
+    <script>
+        // I Create it
+        $(function(){
+            (function(){
+                var num;
+                $(".Created_item .MyGroup_list").on('click',".MyGroup_item", function(event) {
+                    num = $(this).index();
+                });
+                // Drop Out
+                $(".btn-DropOut-primary").on('click', function(event) {
+                        $('.Created_item .MyGroup_list .MyGroup_item').eq(num).remove();
+                });
+                // Dissolve
+                $(".btn-Dissolve-primary").on('click', function(event) {
+                    $('.Created_item .MyGroup_list .MyGroup_item').eq(num).remove();
+                });
+            })();
+            
+        });
+
+        // I Joined
+        $(function(){
+            (function(){
+                var num;
+                $(".Joined_item  .MyGroup_list").on('click',".MyGroup_item", function(event) {
+                    num = $(this).index();
+                });
+                // Drop Out
+                $(".btn-DropOut-primary").on('click', function(event) {
+                        $('.Joined_item .MyGroup_list .MyGroup_item').eq(num).remove();
+                });
+            })();
+            
+        });
+
+    </script>
 </html>
