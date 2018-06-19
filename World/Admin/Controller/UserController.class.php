@@ -139,7 +139,7 @@ class UserController extends CommonController {
             }
 		}*/
         foreach ($list as $k => $v){
-            $courseList[$k]['user_icon'] = 'http://newworld.bofanchina.com/'.$v['user_icon'];
+            $courseList[$k]['user_icon'] = 'Uploads/'.$v['user_icon'];
         }
   
 		$this->assign('list',$list);
