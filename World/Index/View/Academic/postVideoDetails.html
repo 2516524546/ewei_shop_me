@@ -153,19 +153,27 @@
                 <div class="container NumberOfPagesContainer">
                     <div id="NumberOfPages"></div>
                 </div>
-                <form class="layui-form" action="">
+                <form class="layui-form" onsubmit="return false">
                     <p style="color: #999; margin-bottom: 10px;">
-                        Tips: think this article how? Evaluation helps other readers understand this article.
+                            Tips: How do you think of this article? Post a comment to help others understanding this article.
                     </p>
                     <div class="ReturnBox">
-                        <div class="layui-form-item layui-form-text">
+                        <div class="layui-form-text">
                             <span class="ReturnBoxicon">
                                 <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_pj.png">
                                 &nbsp;
-                                Comments
+                                Comment
                             </span>
-                            <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea"></textarea>
-                            <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut">Posted</button>
+                            <div class="RepllyBox">
+                                <!-- <div class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</div> -->
+                            </div>
+                            <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea" id="content"></textarea>
+                            <div class="bottom_btn">
+                                <div class="refresh_btn">
+                                    <img src="__PUBLIC__/Web/web/img/refresh.png" alt="">
+                                </div>
+                                <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut" onclick="createcomment()">Post</button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -189,40 +197,10 @@
             </div>
         </div>
     </div>
-    <!-- foot start 底部信息 -->
-    <footer class="container-fluid FooterBg">
-        <div class="row FooterContainer">
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>ABOUT</dt>
-                    <dd>
-                        NewWorld.net is a comprehensive website that provides an efficient source of resources and convenience for our every -day lives. We can easily discover, share and create a new world.
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>SUPPORT</dt>
-                    <dd>Premium Support</dd>
-                    <dd>Get Started</dd>
-                    <dd>Partners</dd>
-                </dl>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <dl>
-                    <dt>Help Center</dt>
-                    <dd>Help Center</dd>
-                    <dd>Contact Us</dd>
-                </dl>
-            </div>
-        </div>
-        <div class="row copyright">
-            <div class="col-md-12">
-                <p class="text-center">&copy; 2018 NewWorld. All rights reserved.</p>
-            </div>
-        </div>
+    <!-- footer -->
+    <footer>
+        <include file = "./World/Index/View/Public/footer.html"/>
     </footer>
-    <!-- foot end 底部信息 -->
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>

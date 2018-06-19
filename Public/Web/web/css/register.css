@@ -262,7 +262,7 @@ header {
 }
 
 footer{
-  text-align: center;
+  /* text-align: center; */
   margin-top: 46px;
 }
 .FooterBg .FooterContainer dd a{
