@@ -37,12 +37,12 @@
                         My group
                 </div>
                 <div class="MyFollowing_list">
-                    <div class="MyFollowing_item">
+                    <div class="MyFollowing_item Group_My_item">
                         <div class="Group_name">
                             Group Name
                         </div>
                         <div class="Group_btn">
-                            <div class="GroupBtn">
+                            <div class="GroupBtn" data-toggle="modal" data-target="#box2">
                                 ChangeName 
                             </div>
                             <div class="GroupBtn" data-toggle="modal" data-target="#box1">
@@ -73,12 +73,12 @@
                         </div>
                     </div>
 
-                     <div class="MyFollowing_item">
+                     <div class="MyFollowing_item Group_My_item">
                         <div class="Group_name">
                             Group Name
                         </div>
                         <div class="Group_btn">
-                            <div class="GroupBtn">
+                            <div class="GroupBtn" data-toggle="modal" data-target="#box2">
                                 ChangeName 
                             </div>
                             <div class="GroupBtn">
@@ -87,110 +87,100 @@
                         </div>
                     </div>
 
+                    <!-- 修改 -->
+                    <div id="box2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                        <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                        <span class="modal-title">
+                                                Reminder
+                                            </span>
+                                    <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                                                <span aria-hidden="true">&times;
+                                    </a>
+                                </div>
+                                <div class="modal-body">
+                                    <span>name :</span>
+                                    <input type="text" placeholder="Please enter your name" class="box2_input">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-change-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-change-primary " data-dismiss="modal">confirm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="MyFollowing_title">
                         My Following
                 </div>
                 <div class="MyFollowing_list">
-                    <div class="MyFollowing_item">
-                        <a href="#">
+                    <foreach name="myFollows" item="f">
+                    <div class="MyFollowing_item Following_item">
+                        <a href="{:U('User/personalCenter/',['id'=>$f['concerns_cuid']])}">
                             <div class="MyFollowing_content">
                                 <div class="MyFollowing_img">
-                                    <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
+                                    <img src="<if condition='$f["user_icon"]'>./Uploads/{$f['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
                                 </div>
                                 <div class="MyFollowing_details">
-                                    <div class="content_name">
-                                        Kendall J.
+                                    <div class="content_name  Follow_name">
+                                        <if condition="$f['concerns_name']">{$f['concerns_name']}<else/>{$f['user_name']}</if>
                                     </div>
                                     <div class="content_name">
-                                        signature ： 
+                                        signature ： {$f['user_signature']}
                                     </div>
                                 </div>
                             </div>
+                        </a>
                             <div class="Group_btn">
-                                <div class="GroupBtn">
+                                <div class="GroupBtn" data-id="{$f['concerns_id']}"  data-toggle="modal" data-target="#box3">
                                     ChangeName 
                                 </div>
-                                <div class="GroupBtn">
-                                    Delete 
+                                <div class="GroupBtn Friend_Follow" data-Id="{$f['concerns_cuid']}" data-Ison="false">
+                                    Followed
                                 </div>
                             </div>
-
-                        </a>
                     </div>
+                    </foreach>
 
-                     <div class="MyFollowing_item">
-                         <a href="#">
-                             <div class="MyFollowing_content">
-                                 <div class="MyFollowing_img">
-                                     <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
-                                 </div>
-                                 <div class="MyFollowing_details">
-                                     <div class="content_name">
-                                         Kendall J.
-                                     </div>
-                                     <div class="content_name">
-                                         signature ： 
-                                     </div>
-                                 </div>
-                             </div>
-                             <div class="Group_btn">
-                                 <div class="GroupBtn">
-                                     ChangeName 
-                                 </div>
-                                 <div class="GroupBtn">
-                                     Delete 
-                                 </div>
-                             </div>
-                         </a>
+                    <!-- 修改 -->
+                    <div id="box3" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                        <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                        <span class="modal-title">
+                                                Reminder
+                                            </span>
+                                    <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                                                <span aria-hidden="true">&times;
+                                    </a>
+                                </div>
+                                <div class="modal-body">
+                                    <span>name :</span>
+                                    <input type="text" placeholder="Please enter your name" class="box3_input">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-change-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-Follow-primary " data-dismiss="modal">confirm</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
 
 
             </div>
 
             <div class="container" id="NumberOfPagesContainer">
-                    <div id="NumberOfPages"></div>
-
-
+                {$page}
         </div>
 </div>
 
         <!-- foot start 底部信息 -->
         <footer class="container-fluid FooterBg">
-                <div class="row FooterContainer">
-                    <div class="col-xs-6 col-md-4">
-                        <dl>
-                            <dt>ABOUT</dt>
-                            <dd>
-                                NewWorld.net is a comprehensive website that provides an efficient source of resources and convenience for our every -day lives. We can easily discover, share and create a new world.
-                            </dd>
-                        </dl>
-                    </div>
-                    <div class="col-xs-6 col-md-4">
-                        <dl>
-                            <dt>SUPPORT</dt>
-                            <dd>Premium Support</dd>
-                            <dd>Get Started</dd>
-                            <dd>Partners</dd>
-                        </dl>
-                    </div>
-                    <div class="col-xs-6 col-md-4">
-                        <dl>
-                            <dt>Help Center</dt>
-                            <dd><a href="HelpCenter.html">Help Center</a></dd>
-                            <dd><a href="ContactUs.html">Contact Us</a></dd>
-                        </dl>
-                    </div>
-                </div>
-                <div class="row copyright">
-                    <div class="col-md-12">
-                        <p class="text-center">&copy; 2018 NewWorld. All rights reserved.</p>
-                    </div>
-                </div>
-            </footer>
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
             <!-- foot end 底部信息 -->
 
     </body>
@@ -198,9 +188,75 @@
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
-    <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
     <script>
+        $(".Friend_Follow").on("click", function () {
+            var id = $(this).data('id');
+            var obj = $(this);
+            $.post(
+                '{:U("User/FollowFriend")}',
+                {id:id},
+                function(data){
+                    if(data.status == 0){
+                        alert(data.msg);
+                    }else{
+                        alert(data.msg);
+                        if ($(obj).attr("data-ison") === "true") {
+                            $(obj).text("Followed")
+                            $(obj).attr("data-Ison", "false")
+                        } else {
+                            $(obj).text("Follow")
+                            $(obj).attr("data-ison", "true")
+                        }
+                    }
+                },'json'
+            );
+        })
 
+        $(function(){
+            (function(){
+                var num2;
+                $(".MyFollowing_box .MyFollowing_list").on('click', ".Group_My_item" , function(event) {
+                    event.preventDefault();
+                    num2 = $(this).index();
+                });
+                $(".btn-change-primary").on('click', function(event) {
+                    if($(".box2_input").val()){
+                        $(".MyFollowing_box .MyFollowing_list .Group_My_item .Group_name").eq(num2).html($(".box2_input").val())
+                        $(".box2_input").val("")
+                    }else{
+                        alert("不能为空")
+                    }
+                });
+            })();
+
+            (function(){
+                var num3;
+                $(".MyFollowing_box .MyFollowing_list").on('click', ".Following_item" , function(event) {
+                    event.preventDefault();
+                    num3 = $(this).index();
+                });
+                $(".btn-Follow-primary").on('click', function(event) {
+                    var concerns_id = $(".MyFollowing_box .MyFollowing_list .Following_item .Group_btn .GroupBtn").eq(0).data('id')
+                    if($(".box3_input").val()){
+                        $.post(
+                            '{:U("User/ChangeConcernsName")}',
+                            {concerns_name:$(".box3_input").val(),concerns_id:concerns_id},
+                            function(data){
+                                if(data.status == 0){
+                                    alert(data.msg);
+                                }else{
+                                    alert(data.msg);
+                                    $(".MyFollowing_box .MyFollowing_list .MyFollowing_content .MyFollowing_details .Follow_name").eq(num3).html($(".box3_input").val())
+                                    $(".box3_input").val("")
+                                }
+                            },'json'
+                        );
+                    }else{
+                        alert("不能为空")
+                    }
+                });
+            })();
+        });
     </script>
 </html>
