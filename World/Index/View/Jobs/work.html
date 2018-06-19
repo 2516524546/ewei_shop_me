@@ -150,7 +150,7 @@
                                             <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_sy_icon_07.png"></span>
                                         </label>
                                         <div class="layui-input-block">
-                                            <input type="text" name="title" lay-verify="title" autocomplete="off" id="schooltime" placeholder="Graduation time  xx/xx/xxxx" class="layui-input">
+                                            <input type="text" name="title" lay-verify="title" autocomplete="off" id="schooltime" placeholder="Graduation time  xx/xx/xxxx" class="layui-input Wtime">
                                         </div>
                                     </div>
                                     <div class="SelectionTypeContainer" style="margin-left: -10px;">
@@ -265,7 +265,15 @@
 </body>
 
 <script>
-
+        layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        
+        //执行一个laydate实例
+        laydate.render({
+            elem: '.Wtime', //指定元素
+            lang:'en',
+        });
+        });
     function gocreate() {
         var aa = "{$userid}";
         if(aa){
@@ -763,7 +771,7 @@
                                 message += '<div class="col-xs-8 col-sm-6"><div class="UserBox">';
                                 var url = "{:U('Index/Jobs/groupDetails')}&cid=" + list.msg[i].crowd_id;
                                 message += '<a href="' + url + '" class="UserLink">';
-                                message += '<img src="./Uploads/' + list.msg[i].crowd_icon + '" class="img-circle userimg">';
+                                message += '<div class="UserBox_img"><img src="./Uploads/' + list.msg[i].crowd_icon + '" class="img-circle userimg"></div>';
                                 message += '<h4 class="UserTitle">' + list.msg[i].crowd_name + '</h4>'
                                 message += '<p class="UserFollow"><img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">&nbsp;&nbsp;';
                                 message += list.msg[i].crowd_peoplenum + '</p>';

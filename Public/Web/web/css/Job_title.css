@@ -1,0 +1,18 @@
+.Job_title_icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Job_title_icon .icon{
+    width: 21px;
+    height: 21px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.Job_title_icon .icon img{
+    width: 100%;
+}
+
+.Job_title_icon .layui-tab-title{
+    border: none;
+}
