@@ -249,13 +249,14 @@
                         <b>Can provide help  :</b>
                         <div class="textp"> {$crowone['crowd_help']}</div>
                     </div>
+                    </if>
                 <p><img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">&nbsp;&nbsp;<b>{$crowone['crowd_peoplenum']}</b></p>
                 
                 <p class="text-center Followtbut">
                     <if condition='$join_in != 1'>
-                    <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" id="GroupBtn" onclick="follow()">
-                        To join the group
-                    </a>
+                        <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" id="GroupBtn" onclick="follow()">
+                            To join the group
+                        </a>
                         <else />
                         <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" style="background:#bdbdbd;" id="GroupBtn">
                             Have joined the group
@@ -321,17 +322,7 @@
 </body>
 
 <script>
-    $(".join_btn").on("click",function(){
-        layer.msg('你确定你很帅么？', {
-            time: 0 //不自动关闭
-            ,btn: ['必须啊', '丑到爆']
-            ,yes: function(index){
-                layer.close(index);
 
-            }
-            });
-
-        })
     function release() {
 
         var aa = "{$userid}";
@@ -368,7 +359,7 @@
         var cid = "{$crowone['crowd_id']}"
 
         if(aa){
-            if ({$crowone['crowd_id']} == 1) {
+            if ({$crowone['crowd_type']} == 1) {
 
                 $.ajax({
                     type: "post",
@@ -415,6 +406,61 @@
                     }
 
                 })
+            }else {
+
+                layer.msg('进入该群需要支付{$conditionone["crowd_condition_joinmoney"]}虚拟币', {
+                    time: 0 //不自动关闭
+                    ,btn: ['确定', '取消']
+                    ,yes: function(index){
+                        layer.close(index);
+                        $.ajax({
+                            type: "post",
+                            url: "{:U('Index/Ajax/ajax_followcrowdtwo')}",
+                            data: {
+                                cid: cid,
+                            },
+                            dataType: "json",
+                            async: false,
+                            success: function (data) {
+                                if (data != null && data != "") {
+                                    if (data.str == 1) {
+                                        layer.msg(data.msg, {
+                                                time: 1500,
+                                                icon: 1,
+                                            }, function () {
+                                                location.reload();
+                                            }
+                                        );
+                                    } else {
+                                        layer.msg(data.msg, {
+                                                time: 1500,
+                                                icon: 2,
+                                            }
+                                        );
+                                    }
+
+                                } else {
+                                    layer.msg('请求错误!', {
+                                            time: 1500,
+                                            icon: 2,
+                                        }
+                                    );
+                                }
+
+                            },
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                                layer.msg('请求失败!', {
+                                        time: 1500,
+                                        icon: 2,
+                                    }
+                                );
+                            }
+
+                        })
+                    }
+                });
+
             }
 
         }else{
