@@ -186,7 +186,8 @@
 }
 #ListContainer .layui-tab-title li {
   color: #b3b3b3;
-  padding: 0 42px;
+  width: 30%;
+  /* padding: 0 42px; */
 }
 #ListContainer .layui-tab-title .More {
   position: absolute;

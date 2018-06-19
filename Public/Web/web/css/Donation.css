@@ -128,4 +128,14 @@
 .PasswordContainer .RefreshCode {
   text-decoration: none;
   color: #53c8bd;
+  display: flex;
+  align-items: center;
 }
+.PasswordContainer .RefreshCode .img_code{
+  width: 70%;
+  margin-right: 10px;
+}
+.PasswordContainer .RefreshCode .img_code img{
+  width: 100%;
+}
+
