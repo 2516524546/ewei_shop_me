@@ -34,7 +34,7 @@
 
     <!-- Product details -->
     <div class="Product_box container">
-        <div class="row">
+        <div class="row justify-content-between">
             <div class="col-md-9">
                 <div class="product_title">
                     <div class="product_img">
@@ -79,7 +79,7 @@
                 </div>
             </div>
             <!-- Product details right -->
-            <div class="col-md-3 product_right">
+            <div class="col-md-3 product_right" style="  max-height: 430px;">
                <div class="product_right_title">
                    Personal Information
                </div>
@@ -205,34 +205,44 @@
                 </foreach>-->
                 </div>
             </div>
+            <!-- NumberOfPagesContainer -->
+            <div class="container NumberOfPagesContainer">
+                <div id="NumberOfPages"></div>
+            </div>
         </div>
     </div>
     
 </div>
    
-    <!-- NumberOfPagesContainer -->
-    <div class="container NumberOfPagesContainer">
-        <div id="NumberOfPages"></div>
-    </div>
 
-    <!-- form -->
-    <div class="container">
-        <form class="layui-form" action="" autocomplete="off">
-            <p style="color: #999; margin-bottom: 10px;">
-                Tips: think this article how? Evaluation helps other readers understand this article.
-            </p>
-            <div class="ReturnBox">
-                <div class="layui-form-item layui-form-text">
-                    <span class="ReturnBoxicon">
-                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_pj.png">
-                        &nbsp;
-                        Comments
-                    </span>
-                    <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea"></textarea>
-                    <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut">Posted</button>
+<!-- form -->
+<div class="container">
+    <div class="col-md-9">
+            <form class="layui-form" onsubmit="return false">
+                <p style="color: #999; margin-bottom: 10px;">
+                    Tips: think this article how? Evaluation helps other readers understand this article.
+                </p>
+                <div class="ReturnBox">
+                    <div class="layui-form-text">
+                        <span class="ReturnBoxicon">
+                            <img src="/Public/Web/web/img/02_interest/interest_xq_icon_pj.png">
+                            &nbsp;
+                            Comments
+                        </span>
+                        <div class="RepllyBox">
+                            <!-- <div class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</div> -->
+                        </div>
+                        <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea" id="content"></textarea>
+                        <div class="bottom_btn">
+                            <div class="refresh_btn">
+                                <img src="/Public/Web/web/img/refresh.png" alt="">
+                            </div>
+                            <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut" onclick="createcomment()">Posted</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
    
 
