@@ -12,6 +12,7 @@ use Index\Model\ResourceModel;
 use Index\Model\SecondMarkModel;
 use Index\Model\TutorShipIssueCommentModel;
 use Index\Model\TutorShipIssueModel;
+use Index\Model\TutorShipNeedCommentModel;
 use Index\Model\TutorShipNeedModel;
 use Index\Model\UserModel;
 use Think\Controller;
@@ -604,6 +605,82 @@ class AcademicController extends CommonController {
         $this->display();
 
     }
+
+    /*
+    寻求辅导详情
+     */
+    public function counselingDetails(){
+
+        if (!$this->userid){
+            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
+            Header("Location:".U('Index/Login/login'));
+            exit();
+        }
+
+        if (!isset($_GET['cid'])||$_GET['cid']==''){
+            Header("Location:".U('Index/Academic/academic'));
+            exit();
+        }
+        if (!isset($_GET['tid'])||$_GET['tid']==''){
+            Header("Location:".U('Index/Academic/academicGroups')."&cid=".$_GET['cid']);
+            exit();
+        }
+        $crowdmodel = new CrowdModel();
+        $crowdmembermodel = new CrowdMemberModel();
+        $tutorneedmodel = new TutorShipNeedModel();
+        $needcommentmodel = new TutorshipNeedCommentModel();
+        $usermodel = new UserModel();
+
+        $crowdone = $crowdmodel->findone('crowd_id = '.$_GET['cid']);
+
+        $crowdmemberone = $crowdmembermodel->findone('crowd_member_cid = '.$_GET['cid'].' and crowd_member_uid = '.$this->userid.' and crowd_member_status != -1');
+        $needone = $tutorneedmodel->findone('tutorship_need_id = '.$_GET['tid']);
+        if ($needone['tutorship_need_cid']!=$_GET['cid']){
+            Header("Location:".U('Index/Academic/academicGroups')."&cid=".$_GET['cid']);
+            exit();
+        }
+
+        $commentlist = $needcommentmodel->joinonelist('tutorship_need_comment_tid = '.$_GET['tid'],'u_user u on u_tutorship_need_comment.tutorship_need_comment_uid = u.user_id','tutorship_need_comment_zans desc,tutorship_need_comment_createtime desc',0,10);
+        foreach ($commentlist as $key => $comment){
+            $uidlist = explode(',',$comment['tutorship_need_comment_zaner']);
+            if (in_array($this->userid,$uidlist)){
+
+                $commentlist[$key]['iszan'] = 1;
+            }else{
+
+                $commentlist[$key]['iszan'] = 0;
+            }
+        }
+        $commentcount = $needcommentmodel->joinone('tutorship_need_comment_tid = '.$_GET['tid'],'u_user u on u_tutorship_need_comment.tutorship_need_comment_uid = u.user_id','tutorship_need_comment_zans desc,tutorship_need_comment_createtime desc','INNER','count(*) num')['num'];
+        $needuser = $usermodel->findone('user_id = '.$needone['tutorship_need_uid']);
+
+        $isjoin = 0;
+        $ishave = 0;
+        if ($crowdmemberone){
+            $isjoin = 1;
+        }
+        if ($needone['tutorship_need_uid']==$this->userid){
+            $ishave = 1;
+        }
+
+        $this->assign(array(
+            'crowdone' => $crowdone,
+            'isjoin' => $isjoin,
+            'crowdmemberone' => $crowdmemberone,
+            'needone' => $needone,
+            'cid' => $_GET['cid'],
+            'needuser' => $needuser,
+            'ishave' => $ishave,
+            'commentlist' => $commentlist,
+            'commentcount' => $commentcount
+
+        ));
+
+        $this->display();
+
+    }
+
+
 
 
 

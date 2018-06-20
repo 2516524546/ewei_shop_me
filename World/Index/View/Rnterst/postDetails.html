@@ -228,10 +228,7 @@
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 </body>
 <script>
-    $(".ReturnBox .refresh_btn").on("click",function(){
-        $('.ReturnBox .ReplyUser').remove();
-        $(".ReturnBox .Returntextarea").val("")
-    })
+
     /*$(".item_con_title .item_user_det .det_zan .det_zan_box .zan_box_img").on("click",function(){
     console.log()
     if($(this).attr('data-Click')!="true"){
@@ -243,9 +240,7 @@
     }
 })*/
     function zan(comid,obj) {
-        /*console.log(comid)
-        console.log(obj)*/
-        //console.log(obj.parentNode.getElementsByClassName("zan_box_num")[0])
+
         $.ajax({
             type: "post",
             url: "{:U('Index/Ajax/ajax_noteCommentZan')}",
@@ -287,8 +282,7 @@
 
     }
     function unzan(comid,obj) {
-        /*console.log(comid)
-        console.log(obj)*/
+
         $.ajax({
             type: "post",
             url: "{:U('Index/Ajax/ajax_noteCommentUnzan')}",
@@ -299,7 +293,7 @@
             dataType: "json",
             async: false,
             success: function (list) {
-                console.log(list)
+
                 if (list.str == 1){
                     $(obj).html("<img src='__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png'>")
                     $(obj).attr('data-Click','false')
@@ -352,18 +346,8 @@
 
         // console.log($(".layui-form-item .ReplyUser").remove())
     })*/
-    function reply(comid,obj) {
-
-        var name = $(obj).parent().parent().parent().children(".item_user_name").children(".User_name").text();
-        var Cspan = "<span class='ReplyUser'>reply @ <span class='ReplyUser_name'>"+name+"</span> ：</span>"
-        $(".ReplyUser").remove()
-        $(".RepllyBox").append(Cspan);
-
-    }
 
 
-</script>
-<script>
 
     layui.use(['laypage', 'layer'], function() {
         var laypage = layui.laypage,
@@ -466,53 +450,116 @@
 
         })
     }
-    
+
+    var replyid = 0
+    function reply(comid,obj) {
+
+        var name = $(obj).parent().parent().parent().children(".item_user_name").children(".User_name").text();
+        var Cspan = "<span class='ReplyUser'>reply @ <span class='ReplyUser_name'>"+name+"</span> ：</span>"
+        $(".ReplyUser").remove()
+        $(".RepllyBox").append(Cspan);
+        replyid = comid
+
+    }
+    $(".ReturnBox .refresh_btn").on("click",function(){
+        $('.ReturnBox .ReplyUser').remove();
+        $(".ReturnBox .Returntextarea").val("")
+        replyid = 0
+    })
+
     function createcomment() {
         var userid = "{$userid}"
   
         if (userid) {
 
-            $.ajax({
-                type: "post",
-                url: "{:U('Index/Ajax/ajax_createNoteComment')}",
-                data: {
-                    content: $("#content").val(),
-                    nid: '{$noteone["note_id"]}'
+            if (replyid != 0 ){
 
-                },
-                dataType: "json",
-                async: false,
-                success: function (list) {
-                    //console.log(interest)
-                    if (list.str == 1){
-                    layer.msg(list.msg,{
-                            time:1500,
-                            icon:1,
-                        },function () {
-                        location.reload();
+                $.ajax({
+                    type: "post",
+                    url: "{:U('Index/Ajax/ajax_replyNoteComment')}",
+                    data: {
+                        content: $("#content").val(),
+                        replyid: replyid,
+
+                    },
+                    dataType: "json",
+                    async: false,
+                    success: function (list) {
+                        //console.log(interest)
+                        if (list.str == 1) {
+                            layer.msg(list.msg, {
+                                    time: 1500,
+                                    icon: 1,
+                                }, function () {
+                                    location.reload();
+                                }
+                            );
+
+                        } else {
+                            layer.msg(list.msg, {
+                                    time: 1500,
+                                    icon: 2,
+                                }
+                            );
+
                         }
-                    );
 
-                }else{
-                    layer.msg(list.msg,{
-                            time:1500,
-                            icon:2,
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                        layer.msg('请求失败!', {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }
+
+                })
+
+            }else {
+
+                $.ajax({
+                    type: "post",
+                    url: "{:U('Index/Ajax/ajax_createNoteComment')}",
+                    data: {
+                        content: $("#content").val(),
+                        nid: '{$noteone["note_id"]}'
+
+                    },
+                    dataType: "json",
+                    async: false,
+                    success: function (list) {
+                        //console.log(interest)
+                        if (list.str == 1) {
+                            layer.msg(list.msg, {
+                                    time: 1500,
+                                    icon: 1,
+                                }, function () {
+                                    location.reload();
+                                }
+                            );
+
+                        } else {
+                            layer.msg(list.msg, {
+                                    time: 1500,
+                                    icon: 2,
+                                }
+                            );
+
                         }
-                    );
 
-                }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
 
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        layer.msg('请求失败!', {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }
 
-                    layer.msg('请求失败!', {
-                            time: 1500,
-                            icon: 2,
-                        }
-                    );
-                }
-
-            })
+                })
+            }
         }else {
             layer.msg("请先登录",{
                     time:1500,

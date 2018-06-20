@@ -43,7 +43,7 @@
             <div class="title_back_img">
                 <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/paint.png" alt="">
             </div>
-            <div class="P_title_pic">
+            <div class="P_title_pic" data-toggle="modal" data-target="#box2">
                 <img src="<if condition='$userone["user_icon"]'>./Uploads/{$userone['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
             </div>
             <div class="P_title_name">
@@ -107,7 +107,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                                 <span class="modal-title">
-                                        Reminder
+                                        Tips
                                     </span>
                             <a class="close" data-dismiss="modal" aria-label="Close"
                                style="position: absolute;right: 10px;top: 16px;">
@@ -118,7 +118,7 @@
                             <p class="text-center">Do you add friend?</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                             <button type="button" class="btn btn-primary btn-addfriend" data-dismiss="modal">confirm
                             </button>
                         </div>
@@ -126,6 +126,7 @@
                 </div>
             </div>
         </div>
+        
 
         <!-- personal Center details -->
         <div class="personal_details">
@@ -219,6 +220,46 @@
         </div>
     </div>
 </div>
+
+<!-- Upload the picture -->
+<div id="box2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="container1">
+                    <div class="imageBox">
+                        <!--<div class="tig">请上传图片</div>-->
+                        <div class="thumbBox"></div>
+                        <div class="spinner" style="display: none">请上传图片</div>
+                    </div>
+                    <div class="action">
+                        <input type="file" accept="image/jpeg,image/png" id="file">
+                        <input type="button" id="btnZoomIn" value="+">
+                        <input type="button" id="btnZoomOut" value="-">
+                        <input type="button" id="btnCrop" value="Crop" data-dismiss="modal">
+                    </div>
+                    <div class="cropped" style="display: none;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- change background -->
+    <!-- <div id="box3" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="container1">
+                    <div class="action">
+                        <input type="file" accept="image/jpeg,image/png" class="bg_img">
+                        <input type="button" id="btnCrop" value="Crop" data-dismiss="modal">
+                    </div>
+                    <div class="imgBox">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
 
 <!-- Group list 群列表 sater -->
 <div class="container">
@@ -1362,7 +1403,6 @@
 <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
-<script src="__PUBLIC__/Web/web/js/index.js"></script>
 <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 
 <script>
@@ -1411,56 +1451,58 @@
         );
     })
 </script>
-
+<script src="__PUBLIC__/Web/web/js/jquery-1.11.1.min.js"></script>
+<script src="__PUBLIC__/Web/web/js/cropbox.js"></script>
+// <script>
+//     $(".bg_img").change(function(e){
+//         console.log($(this))
+//     })    
+// </script>
+    <script type="text/javascript">
+        $(window).load(function() {
+            var options =
+            {
+                thumbBox: '.thumbBox',
+                spinner: '.spinner',
+                imgSrc: ''
+            }
+            var cropper = $('.imageBox').cropbox(options);
+            $('#file').on('change', function(){
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    options.imgSrc = e.target.result;
+                    cropper = $('.imageBox').cropbox(options);
+                }
+                reader.readAsDataURL(this.files[0]);
+    //          this.files = [];
+            })
+            $('#btnCrop').on('click', function(){
+                var img = cropper.getDataURL();
+                var Cdiv = document.createElement("div");
+                Cdiv.className = "cropped_img";
+                Cspan = '<img src="'+img+'">'
+                Cdiv.innerHTML = Cspan
+                $('.cropped').prepend(Cdiv);
+                $('#file').val("");
+                $('.imageBox').removeAttr("style");
+                var Userimg = $('.cropped_img').children('img')[0];
+                C_Userimg(Userimg)
+            })
+            $('#btnZoomIn').on('click', function(){
+                cropper.zoomIn();
+            })
+            $('#btnZoomOut').on('click', function(){
+                cropper.zoomOut();
+            })
+            function C_Userimg(img){
+                $('.personal_content .personal_title .P_title_pic').html(img)
+            }
+            //$('.personal_content .personal_title .P_title_pic').children('img').remove()
+        });
+    </script>
 <script>
 
-    function loginout() {
 
-        $.ajax({
-            type: "post",
-            url: "{:U('Index/Ajax/ajax_loginout')}",
-            data: {},
-            dataType: "json",
-            async: false,
-            success: function (data) {
-                if (data != null && data != "") {
-                    if (data.str == 1) {
-                        layer.msg(data.msg, {
-                                time: 1500,
-                                icon: 1,
-                            }, function () {
-                                location.reload();
-                            }
-                        );
-                    } else {
-                        layer.msg(data.msg, {
-                                time: 1500,
-                                icon: 2,
-                            }
-                        );
-                    }
-
-                } else {
-                    layer.msg('请求错误!', {
-                            time: 1500,
-                            icon: 2,
-                        }
-                    );
-                }
-
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                layer.msg('请求失败!', {
-                        time: 1500,
-                        icon: 2,
-                    }
-                );
-            }
-
-        })
-
-    }
 
 </script>
 </body>

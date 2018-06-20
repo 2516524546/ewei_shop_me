@@ -8,13 +8,15 @@ class IndexController extends CommonController {
         $this->display('frame');
     }
     public function top(){
+
     	$this->display();
     }
     public function right(){
+
     	$this->display('user_list');
     }
     public function left(){
-    	
+
     	$m_pids = explode(',',$_SESSION['piano_user']['m_pid']);  //session里存有用户的父级权限字段
         $m_cid = $_SESSION['piano_user']['m_cid'];   //全部权限字段
         
@@ -22,8 +24,7 @@ class IndexController extends CommonController {
     		$menus[$k]['m_name'] = M('piano_admin_menu')->where("mid='{$val}'")->find()['m_name'];	//找出字段的名字
     		$menus[$k]['child'] = M('piano_admin_menu')->where("m_parentid='{$val}' and mid in ({$m_cid})")->select();
     	}
-    	
-    	
+
     	$this->assign('menus',$menus);
     	
     	$this->display();
