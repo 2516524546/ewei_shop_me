@@ -37,7 +37,8 @@ return array(
     'User_user_list_edit' => '编辑',
     'User_user_list_del' => '删除',
     'User_user_list_detail' => '查看',
-    //user_add strat
+    'User_user_list_code' => '邀请码',
+    //user_list end
 
     /*
 	 * User end
