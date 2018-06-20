@@ -137,6 +137,15 @@ class JobsController extends CommonController {
         $this->display();
     }
 
+    /* 
+    我发布的工作
+    */
+    public function postDeliveryRecord(){
+
+
+        $this->display();
+    }
+
     /*
     创建工作群
      */
