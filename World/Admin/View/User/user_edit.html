@@ -1,0 +1,295 @@
+<head>
+    <meta charset="utf-8"/>
+    <title>象而是后台管理系统</title>
+    <meta name="keywords" content="象而是后台管理系统"/>
+    <meta name="description" content="象而是后台管理系统"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- basic styles -->
+    <link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css"/>
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css"/>
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css"/>
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css"/>
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
+    <!--[if !IE]> -->
+
+    <script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+
+    <!-- <![endif]-->
+    <!-- ace settings handler -->
+
+    <script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+    <script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style='background:#fff;'>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            用户管理
+            <small><i class="icon-double-angle-right"></i>
+                用户编辑
+            </small>
+
+        </h1>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <form class="form-horizontal" action="{:U('Admin/User/user_edit')}" method="POST" role="form"
+                  enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">昵称</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="user_name" value="<?php echo $user['user_name']?>" placeholder="昵称"
+                               style="width:300px;" />
+                    </div>
+                </div>
+               <!-- <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">头像</label>
+                    <div class="col-sm-9">
+                        <img src="<?php echo  './Uploads/'.$user['user_icon'];?>" style="width:100px;height:100px;" name="user_icon"/>
+                    </div>
+                </div>-->
+                <div class="form-group" id="user-profile-3" >
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">头像</label>
+                    <div class="col-sm-9">
+                        <div class="col-xs-12 col-sm-4">
+                            <input type="file" id='upload_picture' accept=".png,.gif,.jpeg,.jpg"/>
+                            <div id='img'>
+                                <img width="100px" height="100px" src="<?php echo './Uploads/'.$user['user_icon']?>"/>
+                            </div>
+                        </div>
+                        <input type='hidden' name='user_icon' value="<?php echo $user['user_icon']?>">
+
+                    </div>
+
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
+                    <label class="col-sm-3 control-label no-padding-right" for="admin">性别</label>
+                    <div class="col-sm-9">
+                        <div class="radio1">
+                            <label>
+                                <if condition="$user['user_sex']=='1'">
+                                    <input name="user_sex" type="radio" value="1" class='ace' checked/>
+                                    <else />
+                                    <input name="user_sex" type="radio" value="1" class='ace'/>
+                                </if>
+                                <span class="lbl">男</span>
+                            </label>
+                            <label>
+                                <if condition="$user['user_sex']=='2'">
+                                    <input name="user_sex" type="radio" value="2" class='ace'  checked/>
+                                    <else />
+                                    <input name="user_sex" type="radio" value="2" class='ace'  />
+                                </if>
+                                <span class="lbl">女</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">出生日期</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control date-picker" name="user_birth" value="<?php echo $user['user_birth']?>"
+                               placeholder="出生日期" style="width: 35%;"  id="id-date-picker-1"  data-date-format="yyyy-mm-dd" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">邮箱</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="user_mail" value="<?php echo $user['user_mail']?>" placeholder="邮箱"
+                               style="width:300px;" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">国家</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="user_country" value="<?php echo $user['user_country']?>"
+                               placeholder="国家" style="width:300px;" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">城市</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="user_city" value="<?php echo $user['user_city']?>" placeholder="城市"
+                               style="width:300px;" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">签名</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="user_signature" value="<?php echo $user['user_signature']?>"
+                               placeholder="签名" style="width:300px;" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">用户标签</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="user_tag" value="<?php echo $user['user_tag']?>" placeholder="用户标签"
+                               style="width:300px;" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">兴趣小组</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="user_grouptag" value="<?php echo $user['user_grouptag']?>"
+                               placeholder="兴趣小组" style="width:300px;" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">虚拟币</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="user_havecoin" value="<?php echo $user['user_havecoin']?>"
+                               placeholder="虚拟币" style="width:300px;" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">邀请码</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="user_code" value="<?php echo $user['user_code']?>" placeholder="邀请码"
+                               style="width:300px;" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">创建日期</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="user_logintime" value="<?php echo $user['user_logintime']?>"
+                               placeholder="创建日期" style="width:300px;" readonly />
+                    </div>
+                </div>
+                <input type="hidden" name="user_id" value="<?php echo $user['user_id']?>"/>
+
+                </fieldset>
+
+                <div class="form-actions center">
+                    <a class="btn btn-sm btn-success" id='tianjia'>
+                        <i class="icon-edit bigger-110"></i>
+                        确认修改
+                    </a>
+                    <a class="btn btn-sm btn-warning" href="javascript:history.back(-1)" class="myButton">
+                        <i class="icon-arrow-left icon-on-left bigger-110"></i>
+                        返回列表
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+    .btn-xs {
+        margin-right: 10px !important;
+    }
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script type="text/javascript">
+
+    $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
+        $(this).prev().focus();
+    });
+</script>
+<script>
+    function showStart() {
+        return true;
+    }
+    function showSuccess(data) {
+
+        if (data == 1) {
+            alert('修改成功')
+            location.href = "{:U('Admin/User/user_list')}"
+        } else {
+            alert(data)
+            return false
+        }
+
+    }
+    $(function () {
+        var options = {
+            beforeSubmit: showStart,
+            success: showSuccess,
+        };
+        $('#tianjia').click(function () {
+            $('.form-horizontal').ajaxSubmit(options);
+            //return false;
+        })
+    })
+</script>
+<script type="text/javascript">
+    //上传图片
+    var userid ="100001";
+    $("#upload_picture").change(function(e){
+        var formData = new FormData();
+        formData.append("download", document.getElementById("upload_picture").files[0]);
+        $.ajax({
+            url: "{:U('Admin/File/uploadBanner2',array('sessionid'=>'" + userid + "'))}",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType:'json',
+            success: function (data) {
+                console.log(data)
+                if(data.status == 1) {
+                    $("#img").html('<img style="width:200px;height:200px;" src="./Uploads/' + data.msg + '"/>');
+                    $("input[name='user_icon']").val(data.msg)
+                }else {
+                    alert(data.msg);
+                }
+            },
+            error: function () {
+                alert("上传失败！");
+            }
+        });
+    });
+
+</script>
+
+
+
+
+
+
+
+

@@ -17,16 +17,17 @@ class FileController extends Controller {
 			$info   =   $upload->uploadOne($_FILES['download']);
 	
 			if(!$info) {// 上传错误提示错误信息
-				echo $upload->getError();exit;
-	
+				//echo $upload->getError();exit;
+                die(json_encode(array('status' => 0, 'msg' => $upload->getError())));
 			}else{// 上传成功 获取上传文件信息
 				$file_name= $upload->rootPath.$info['savepath'].$info['savename'];
 					
-				echo $file_name;exit;
-					
+				//echo $file_name;exit;
+                die(json_encode(array('status' => 1, 'msg' => $file_name)));
 			}
 		}else{
-			echo 1;exit;
+			//echo 1;exit;
+            die(json_encode(array('status' => 0, 'msg' => '用户未登录')));
 		}
 	
 	}
@@ -118,7 +119,7 @@ class FileController extends Controller {
 	    		mkdir($upload->rootPath, 0777, true);
 	    	}
 			$info   =   $upload->uploadOne($_FILES['download']);
-				
+
 			/* //获取图片的信息
 			 $img =  getimagesize ('./Public/Uploads/'.$info['myphoto']['savepath'].$info['myphoto']['savename']);
 			list($a,$width,$b,$height) = preg_split('/["]+/is',$img[3]);
@@ -127,23 +128,25 @@ class FileController extends Controller {
 			//要设置宽高比
 			echo 5;exit;
 			} */
-				
-		    
+
+
 			//var_dump($info);exit;
 			if(!$info) {// 上传错误提示错误信息
 				echo $upload->getError();exit;
-				
+
 			}else{// 上传成功 获取上传文件信息
 				$file_name= $upload->rootPath.$info['savepath'].$info['savename'];
-					
+
 				echo $file_name;exit;
-					
+
 			}
 		}else{
 			echo 1;exit;
 		}
-	
+
 	}
+
+
 	/**
 	 * 上基乐理材料
 	 * @author huajie <banhuajie@163.com>
@@ -151,16 +154,16 @@ class FileController extends Controller {
 	public function uploadMusicCaiLiao(){
 		if($_REQUEST['sessionid']){//判断用户是否登录
 			$upload = new \Think\Upload();// 实例化上传类
-			$upload->maxSize   =     1024*1024*20;// 设置附件上传大小
+			$upload->maxSize   =     1024*1024*100;// 设置附件上传大小
 			$upload->exts      =     array('jpg', 'gif', 'png', 'jpeg','mp4','mp3');// 设置附件上传类型
 			$upload->saveName = time().'_'.mt_rand(10000,99999);;
-			$upload->rootPath  =     './Public/Uploads/m_cailiao/'; // 设置附件上传根目录
+			$upload->rootPath  =     './Public/Uploads/cailiao/'; // 设置附件上传根目录
 	
 			if(!is_dir($upload->rootPath)) {
 				mkdir($upload->rootPath, 0777, true);
 			}
 			$info   =   $upload->uploadOne($_FILES['download']);
-	
+
 			/* //获取图片的信息
 			 $img =  getimagesize ('./Public/Uploads/'.$info['myphoto']['savepath'].$info['myphoto']['savename']);
 			list($a,$width,$b,$height) = preg_split('/["]+/is',$img[3]);
@@ -173,12 +176,17 @@ class FileController extends Controller {
 	
 			//var_dump($info);exit;
 			if(!$info) {// 上传错误提示错误信息
-				echo $upload->getError();exit;
+                $data = array();
+                $data['status']= 0;
+                $data['message'] = $upload->getError();
+				echo json_encode($data);exit;
 	
 			}else{// 上传成功 获取上传文件信息
 				$file_name= $upload->rootPath.$info['savepath'].$info['savename'];
-					
-				echo $file_name;exit;
+                $data = array();
+                $data['status']= 1;
+                $data['message'] = $file_name;
+				echo json_encode($data);exit;
 					
 			}
 		}else{
@@ -216,19 +224,62 @@ class FileController extends Controller {
 	
 			//var_dump($info);exit;
 			if(!$info) {// 上传错误提示错误信息
-				echo $upload->getError();exit;
-	
+				//echo $upload->getError();exit;
+                die(json_encode(array('status' => 0, 'msg' => $upload->getError())));
 			}else{// 上传成功 获取上传文件信息
 				$file_name= $upload->rootPath.$info['savepath'].$info['savename'];
-					
-				echo $file_name;exit;
-					
+				//echo $file_name;exit;
+                die(json_encode(array('status' => 1, 'msg' => $file_name)));
 			}
 		}else{
-			echo 1;exit;
-		}
+            die(json_encode(array('status' => 0, 'msg' => '用户未登录')));
+        }
 	
 	}
+
+
+
+    /**
+     * 上传轮播图片
+     * @author huajie <banhuajie@163.com>
+     */
+    public function uploadBanner2(){
+        if($_REQUEST['sessionid']){//判断用户是否登录
+            $upload = new \Think\Upload();// 实例化上传类
+            $upload->maxSize   =     1024*1024*5;// 设置附件上传大小
+            $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+            $upload->saveName = time().'_'.mt_rand(10000,99999);;
+            $upload->rootPath  =     './Uploads/'; // 设置附件上传根目录
+
+            if(!is_dir($upload->rootPath)) {
+                mkdir($upload->rootPath, 0777, true);
+            }
+            $info   =   $upload->uploadOne($_FILES['download']);
+
+            /* //获取图片的信息
+             $img =  getimagesize ('./Public/Uploads/'.$info['myphoto']['savepath'].$info['myphoto']['savename']);
+            list($a,$width,$b,$height) = preg_split('/["]+/is',$img[3]);
+            //像素
+            if(!($width == WDH && $height==HGT)){
+            //要设置宽高比
+            echo 5;exit;
+            } */
+
+
+            //var_dump($info);exit;
+            if(!$info) {// 上传错误提示错误信息
+                //echo $upload->getError();exit;
+                die(json_encode(array('status' => 0, 'msg' => $upload->getError())));
+            }else{// 上传成功 获取上传文件信息
+                $file_name= $info['savepath'].$info['savename'];
+                //echo $file_name;exit;
+                die(json_encode(array('status' => 1, 'msg' => $file_name)));
+            }
+        }else{
+            die(json_encode(array('status' => 0, 'msg' => '用户未登录')));
+        }
+
+    }
 	
 
 	/**
@@ -261,7 +312,7 @@ class FileController extends Controller {
 			//var_dump($info);exit;
 			if(!$info) {// 上传错误提示错误信息
 				echo $upload->getError();exit;
-	
+
 			}else{// 上传成功 获取上传文件信息
 
 				
