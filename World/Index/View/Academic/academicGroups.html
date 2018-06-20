@@ -219,19 +219,19 @@
                                 </div>
                                 <div class="layui-tab-item">
                                     <table class="layui-table PostTable" lay-skin="line">
-                                        <tbody id="providecontent">
+                                        <tbody id="issuecontent">
                                         <foreach name="issuelist" item="issue" key="issuekey">
                                         <tr>
                                             <td>
-                                                <a href="ProvideCounsellingDetails.html" style="text-decoration: none;">
+                                                <a href="{:U('Index/Academic/provideCounsellingDetails')}&cid={$cid}&tid={$issue['tutorship_issue_id']}" style="text-decoration: none;">
 
-                                                    <span>
+                                                    <span class="ImgBox">
                                                                 <img src="<if condition='$issue["user_icon"]'>./Uploads/{$issue['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
                                                             </span>
                                                 </a>
                                             </td>
                                             <td class="NameBox">
-                                                <a href="ProvideCounsellingDetails.html" style="text-decoration: none;">
+                                                <a href="{:U('Index/Academic/provideCounsellingDetails')}&cid={$cid}&tid={$issue['tutorship_issue_id']}" style="text-decoration: none;">
                                                     {$issue["tutorship_issue_name"]}
                                                 </a>
                                             </td>
@@ -256,19 +256,19 @@
                                 </div>
                                 <div class="layui-tab-item">
                                     <table class="layui-table PostTable" lay-skin="line">
-                                        <tbody id="seekingcontent">
+                                        <tbody id="needcontent">
                                         <foreach name="needlist" item="need" key="needkey">
                                         <tr>
                                             <td>
-                                                <a href="CounselingDetails.html" style="text-decoration: none;">
+                                                <a href="{:U('Index/Academic/counselingDetails')}&cid={$cid}&tid={$need['tutorship_need_id']}" style="text-decoration: none;">
 
-                                                    <span>
+                                                    <span class="ImgBox">
                                                                 <img src="<if condition='$need["user_icon"]'>./Uploads/{$need['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
                                                             </span>
                                                 </a>
                                             </td>
                                             <td class="NameBox">
-                                                <a href="CounselingDetails.html" style="text-decoration: none;">
+                                                <a href="{:U('Index/Academic/counselingDetails')}&cid={$cid}&tid={$need['tutorship_need_id']}" style="text-decoration: none;">
                                                     {$need["tutorship_need_name"]}
                                                 </a>
                                             </td>
@@ -417,9 +417,13 @@
     var notepage = 1;
     var questionpage = 1;
     var resourcepage = 1;
+    var issuepage = 1;
+    var needpage = 1;
     var notecount = {$notecount};
     var questioncount = {$questioncount};
     var resourcecount = {$resourcecount};
+    var issuecount = {$issuecount};
+    var needcount = {$needcount};
     var c = 1;
     var a = 1;
     var noteorder = 'note_istop desc,note_iswally desc,note_createtime desc'
@@ -634,6 +638,42 @@
                         );*/
                     }
                 }
+            }else if (type == 4){
+
+                if (c==a){
+
+                    var limit1 = issuepage*20;
+
+                    if (limit1<issuecount){
+                        c = 2;
+                        haveissue(2,'tutorship_issue_istop desc,tutorship_issue_iswally desc,tutorship_issue_createtime desc',issuepage,20)
+                        issuepage += 1;
+                    }else{
+                        /*layer.msg('已没数据!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );*/
+                    }
+                }
+            }else if (type == 5){
+
+                if (c==a){
+
+                    var limit1 = needpage*20;
+
+                    if (limit1<needcount){
+                        c = 2;
+                        haveneed(2,'tutorship_need_istop desc,tutorship_need_iswally desc,tutorship_need_createtime desc',needpage,20)
+                        needpage += 1;
+                    }else{
+                        /*layer.msg('已没数据!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );*/
+                    }
+                }
             }
         }
     })
@@ -652,6 +692,14 @@
             resourcepage = 0
             havepost(1,noteorder,resourcepage,20,type)
             //haveresource(1,resourceorder,resourcepage,20)
+        } else if (type == 4){
+            issuepage = 0
+            haveissue(1,'tutorship_issue_istop desc,tutorship_issue_iswally desc,tutorship_issue_createtime desc',issuepage,20)
+
+        } else if (type == 5){
+            needpage = 0
+            haveneed(1,'tutorship_need_istop desc,tutorship_need_iswally desc,tutorship_need_createtime desc',needpage,20)
+
         }
     }
 
@@ -766,6 +814,219 @@
                                 $("#resourcecontent").html('');
                             }
 
+
+                        }else{
+                            c=1;
+
+                        }
+                    }else{
+                        layer.msg(list.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+
+                    }
+                }else{
+                    layer.msg('请求错误!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                layer.msg('请求失败!',{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+
+        })
+    }
+    
+    function haveissue(type,order,limit1,limit2) {
+        $.ajax({
+            type:"post",
+            url:"{:U('Index/Ajax/ajax_haveissue')}",
+            data:{
+                name:$("#Selectionform").val(),
+                order:order,
+                limit1:limit1,
+                limit2:limit2,
+                cid:'{$cid}',
+
+            },
+            dataType:"json",
+            async:false,
+            success: function(list){
+
+                if(list!=null&&list!=""){
+
+                    if (list.str == 1){
+
+                        var message = '';
+                        for (var i = 0; i < list.msg.length; i++) {
+
+                            message += '<tr><td>';
+                            var url = '{:U("Index/Academic/provideCounsellingDetails")}&cid={$cid}&tid='+list.msg[i].tutorship_issue_id;
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
+                            message += '<span class="ImgBox">'
+                            var src = '__PUBLIC__/Web/web/img/01_shouye/UserPic.png'
+                            if (list.msg[i].user_icon&&list.msg[i].user_icon!=''&&list.msg[i].user_icon!=null){
+                                src = 'Uploads/'+list.msg[i].user_icon;
+                            }
+                            message += '<img src="'+src+'">';
+                            message += '</span></a></td><td class="NameBox">'
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
+                            message += list.msg[i].tutorship_issue_name
+                            message += '</a></td><td class="NameIcom">'
+                            if(list.msg[i].tutorship_issue_istop==1){
+                                message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">'
+                            }
+                            if(list.msg[i].tutorship_issue_iswally==1){
+                                message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">'
+                            }
+                            message += '</td><td class="text-right">'
+                            message += '<p>'+list.msg[i].tutorship_issue_createtime+'</p>'
+                            message += '<p>'
+
+                            message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">'+list.msg[i].tutorship_issue_comments+'</p>'
+                            message += '</td></tr>'
+
+                        }
+
+                        if (type==1){
+
+                            c = 1;
+                            issuepage = 1;
+                            issuecount = list.count;
+                            $("#issuecontent").html(message);
+
+                        }else{
+
+                            c=1;
+                            var issuecontenthtml = $("#issuecontent").html()+message
+                            $("#issuecontent").html(issuecontenthtml);
+
+                        }
+                    }else if (list.str == 2){
+                        if (type==1){
+
+                            issuepage = 1;
+                            c=1;
+                            issuecount = list.count;
+                            $("#issuecontent").html('');
+
+                        }else{
+                            c=1;
+
+                        }
+                    }else{
+                        layer.msg(list.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+
+                    }
+                }else{
+                    layer.msg('请求错误!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                layer.msg('请求失败!',{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+
+        })
+    }
+
+    function haveneed(type,order,limit1,limit2) {
+        $.ajax({
+            type:"post",
+            url:"{:U('Index/Ajax/ajax_haveneed')}",
+            data:{
+                name:$("#Selectionform").val(),
+                order:order,
+                limit1:limit1,
+                limit2:limit2,
+                cid:'{$cid}',
+
+            },
+            dataType:"json",
+            async:false,
+            success: function(list){
+
+                if(list!=null&&list!=""){
+
+                    if (list.str == 1){
+
+                        var message = '';
+                        for (var i = 0; i < list.msg.length; i++) {
+
+                            message += '<tr><td>';
+                            var url = '{:U("Index/Academic/counselingDetails")}&cid={$cid}&tid='+list.msg[i].tutorship_need_id;
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
+                            message += '<span class="ImgBox">'
+                            var src = '__PUBLIC__/Web/web/img/01_shouye/UserPic.png'
+                            if (list.msg[i].user_icon&&list.msg[i].user_icon!=''&&list.msg[i].user_icon!=null){
+                                src = 'Uploads/'+list.msg[i].user_icon;
+                            }
+                            message += '<img src="'+src+'">';
+                            message += '</span></a></td><td class="NameBox">'
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
+                            message += list.msg[i].tutorship_need_name
+                            message += '</a></td><td class="NameIcom">'
+                            if(list.msg[i].tutorship_need_istop==1){
+                                message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">'
+                            }
+                            if(list.msg[i].tutorship_need_iswally==1){
+                                message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">'
+                            }
+                            message += '</td><td class="text-right">'
+                            message += '<p>'+list.msg[i].tutorship_need_createtime+'</p>'
+                            message += '<p>'
+
+                            message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">'+list.msg[i].tutorship_need_comments+'</p>'
+                            message += '</td></tr>'
+
+                        }
+
+                        if (type==1){
+
+                            c = 1;
+                            needpage = 1;
+                            needcount = list.count;
+                            $("#needcontent").html(message);
+
+                        }else{
+
+                            c=1;
+                            var needcontenthtml = $("#needcontent").html()+message
+                            $("#needcontent").html(needcontenthtml);
+
+
+                        }
+                    }else if (list.str == 2){
+                        if (type==1){
+
+                            needpage = 1;
+                            c=1;
+                            needcount = list.count;
+                            $("#needcontent").html('');
 
                         }else{
                             c=1;

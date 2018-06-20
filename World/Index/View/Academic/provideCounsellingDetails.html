@@ -28,7 +28,7 @@
     <div class="container crumbs">
         <a href="{:U('Index/Academic/academic')}" class="crumbsa">Academic</a>
         <cite class="Icon"></cite>
-        <a href="{:U('Index/Academic/academicGroups')}" class="crumbsa">Group name</a>
+        <a href="{:U('Index/Academic/academicGroups')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
         <cite class="Icon"></cite>
         <span class="crumbsTitle">Provide counseling details</span>
     </div>
@@ -39,20 +39,20 @@
             <div class="col-md-9">
                 <div class="product_title">
                     <div class="product_img">
-                        <img src="__PUBLIC__/Web/web/img/01_shouye/pic3.png" alt="">
+                        <img src="./Uploads/{$issueone['tutorship_issue_picture']}" alt="">
                     </div>
-                    <h2>Product Name</h2>
+                    <h2>{$issueone['tutorship_issue_name']}</h2>
                     <div class="Product_time">
-                        01-20-2018 20:18:58
+                        {$issueone['tutorship_issue_createtime']}
                     </div>
                     <div class="counseling_title">
                         <div class="counseling_name">
                             <span class="counseling_name_title">Contact :</span>
-                            <span>xxxxx@xxx.com</span>
+                            <span>{$issueone['tutorship_issue_contact']}</span>
                         </div>
                         <div class="counseling_name">
                                 <span class="counseling_name_title">Counseling Price :</span>
-                                <span>$ 135</span>
+                                <span>$ {$issueone['tutorship_issue_price']}</span>
                             </div>
                     </div>
                 </div>
@@ -60,23 +60,15 @@
                   <ul class="products_title">
                     <li>
                         <span class="products_title_name">Counseling Time :</span>
-                        <span class="products_title_content">01-15-2018 16:00am~20：pm</span>
+                        <span class="products_title_content">{$issueone['tutorship_issue_time']}</span>
                     </li>
                     <li>
                         <span class="products_title_name">Counseling Content :</span>
-                        <span class="products_title_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenei
-                                smod bibendum laoreet. Proin gravida dolor sit amet lacusacc
-                                commodo. Proin sodales pulvinar tempor. Cumsnatoque pena
-                                dis parturient montes, nascetulus muspor. Cumsnatoque peni
-                                commodo. Proin sodales pulvinar tempor. </span>
+                        <span class="products_title_content">{$issueone['tutorship_issue_content']}</span>
                     </li>
                     <li>
                         <span class="products_title_name">Remarks :</span>
-                        <span class="products_title_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenei
-                                smod bibendum laoreet. Proin gravida dolor sit amet lacusacc
-                                commodo. Proin sodales pulvinar tempor. Cumsnatoque pena
-                                dis parturient montes, nascetulus muspor. Cumsnatoque peni
-                                commodo. Proin sodales pulvinar tempor. </span>
+                        <span class="products_title_content">{$issueone['tutorship_issue_explain']}</span>
                     </li>
                   </ul>
                 </div>
@@ -90,36 +82,25 @@
                    <ul>
                        <li>
                            <p>Avatar :</p>
-                           <span class="right_details_userimg"><img src="__PUBLIC__/Web/web/img/02_interest/Todoist.png"></span>
+                           <span class="right_details_userimg"><img src="<if condition='$issueuser["user_icon"]'>./Uploads/{$issueuser['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>"></span>
                        </li>
                        <li>
                            <p>Nickname :</p>
-                           <span>Xiao Li</span>
+                           <span>{$issueuser['user_name']}</span>
                        </li>
                        <li>
                            <p>sex :</p>
-                           <span>male</span>
+                           <span><if condition='$issueuser["user_sex"] == 1'>male<else />female</if></span>
                        </li>
                        <li>
                            <p>Viewing Count :</p>
-                           <span>6666</span>
+                           <span>{$issueuser['user_havecoin']}</span>
                        </li>
                        <li>
                             <p>Posts  :</p>
-                            <span>6666</span>
+                            <span>{$issueuser['user_notes']}</span>
                         </li>
-                        <li>
-                            <p>Contact  :</p>
-                            <span>11@gmail.com</span>
-                        </li>
-                        <li>
-                            <p>Counseling prices :</p>
-                            <span>$118</span>
-                        </li>
-                        <li>
-                            <p>May be counseling time :</p>
-                            <span> 2018-1-27 18: 00 ~ 22: 00</span> 
-                        </li>
+
                    </ul>
                </div>
                <!-- Seller_Info -->
@@ -130,14 +111,22 @@
                <div class="right_details">
                 <ul>
                     <li>
-                        <p>Contact :</p>
-                        <span>11@gmail.com</span>
+                        <p>Contact  :</p>
+                        <span>{$issueone['tutorship_issue_contact']}</span>
+                    </li>
+                    <li>
+                        <p>Counseling prices :</p>
+                        <span>${$issueone['tutorship_issue_price']}</span>
+                    </li>
+                    <li>
+                        <p>May be counseling time :</p>
+                        <span> {$issueone['tutorship_issue_time']}</span>
                     </li>
                     
                 </ul>
             </div>
             <div class="right_btn">
-                <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
+                <a href="{:U('Index/User/personalCenter')}&id={$issueuser['user_id']}" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
                     Homepage
                     </a>
             </div>
@@ -153,12 +142,13 @@
     <!-- PostReply -->
     <div class="container StickSonDetailsContainer">
         <div class="col-md-9">
-                <div class="PostReply">
-                        <P>
-                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">&nbsp;&nbsp;
-                            <b>Comment</b>
-                        </P>
-                        <div class="box">
+            <P>
+                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">&nbsp;&nbsp;
+                <b>Comment</b>
+            </P>
+                <div class="PostReply" id="commentlist">
+
+                        <!--<div class="box">
                             <p class="GuestBookUserImg">
                                 <img src="__PUBLIC__/Web/web/img/02_interest/user.png" class="imgs img-circle">
                             </p>
@@ -238,7 +228,7 @@
                             <div class="ReplyContainer">
                                 @Tom 回复 Jack ： xxxxxxxxxxxx
                             </div>
-                        </div>
+                        </div>-->
                     </div>
         </div>
     </div>
@@ -288,4 +278,70 @@
     <script src="../js/lib/layui/dist/layui.all.js"></script>
     <script src="../web/js/StickSonDetails.js"></script>
     <script src="../web/js/loginQuit.js"></script>
+
+<script>
+
+    function createcomment() {
+        var userid = "{$userid}"
+
+        if (userid) {
+
+            $.ajax({
+                type: "post",
+                url: "{:U('Index/Ajax/ajax_createIssueComment')}",
+                data: {
+                    content: $("#content").val(),
+                    tid: '{$issueone["tutorship_issue_id"]}'
+
+                },
+                dataType: "json",
+                async: false,
+                success: function (list) {
+                    //console.log(interest)
+                    if (list.str == 1){
+                        layer.msg(list.msg,{
+                                time:1500,
+                                icon:1,
+                            },function () {
+                                location.reload();
+                            }
+                        );
+
+                    }else{
+                        layer.msg(list.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    layer.msg('请求失败!', {
+                            time: 1500,
+                            icon: 2,
+                        }
+                    );
+                }
+
+            })
+        }else {
+            layer.msg("请先登录",{
+                    time:1500,
+                },function(){
+
+                    window.location.href="{:U('Index/Login/login')}";
+                }
+            );
+        }
+
+
+    }
+
+
+</script>
+
+
 </html>

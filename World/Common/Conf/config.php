@@ -3,8 +3,8 @@ return array(
 	//'配置项'=>'配置值'
 		
 	//设置前后台模块
-	'MODULE_ALLOW_LIST'      =>  array('Home','Admin'),
-	'DEFAULT_MODULE'        =>  'Admin',  // 默认模块
+	'MODULE_ALLOW_LIST'      =>  array('Home','Index'),
+	'DEFAULT_MODULE'        =>  'Index',  // 默认模块
 	'DEFAULT_CONTROLLER'    =>  'index', // 默认控制器名称
 	'DEFAULT_ACTION'        =>  'index', // 默认操作名称
 	'URL_MODEL'             =>  0,       // URL访问模式,可选参数0、1、2、3,代表以下四种模式：
@@ -15,7 +15,7 @@ return array(
     'DB_HOST'               =>  '127.0.0.1', // 服务器地址
     'DB_NAME'               =>  'newworld',          // 数据库名
     'DB_USER'               =>  'root',      // 用户名
-    'DB_PWD'                =>  '123456',          // 密码
+    'DB_PWD'                =>  'root',          // 密码
     'DB_PORT'               =>  '3306',        // 端口
     'DB_PREFIX'             =>  '',    // 数据库表前缀
     'UPLOAD_MAX_FILESIZE'=>'10M',//设置上传文件的大小
