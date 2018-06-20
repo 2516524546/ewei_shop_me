@@ -53,7 +53,7 @@
 							<div class="layui-input-block" id="layui-input-block">
 								<input type="hidden" value="" id="in{$first['first_mark_id']}">
 								<select name="second" lay-verify="required" lay-filter="firstselect" title="0">
-									<option value="" selected="selected">Choose a <if condition='$firstkey == 0'>year<elseif condition='$firstkey == 1'/>school<elseif condition='$firstkey == 2'/>college<else />profession</if></option>
+									<option value="" selected="selected"><if condition='$firstkey == 0'>Choose a year<elseif condition='$firstkey == 1'/>Choose a school<elseif condition='$firstkey == 2'/>College & Department<else />Major in</if></option>
 									<foreach name="first['message']" item = "second" key="secondkey">
 										<option value="{$second['second_mark_id']}">{$second['second_mark_name']}</option>
 									</foreach>
