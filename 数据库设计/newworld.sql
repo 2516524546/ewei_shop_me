@@ -90,6 +90,11 @@ MODIFY COLUMN `tutorship_need_explain`  text CHARACTER SET utf8 COLLATE utf8_gen
 ALTER TABLE `u_tutorship_need`
 ADD COLUMN `tutorship_need_istop`  smallint(1) NOT NULL DEFAULT 0 COMMENT '是否置顶，0为不置顶，1为置顶' AFTER `tutorship_need_explain`;
 
+ALTER TABLE `u_tutorship_need`
+ADD COLUMN `tutorship_need_iswally`  smallint(1) NOT NULL DEFAULT 0 COMMENT '是否为精品，0为否，1为是' AFTER `tutorship_need_istop`;
+
+ALTER TABLE `u_tutorship_need`
+ADD COLUMN `tutorship_need_ishide`  smallint(1) NOT NULL DEFAULT 1 COMMENT '是否屏蔽，0为已屏蔽，1为未屏蔽' AFTER `tutorship_need_iswally`;
 
 
 /*

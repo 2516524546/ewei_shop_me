@@ -11,6 +11,7 @@ use Index\Model\QuestionModel;
 use Index\Model\ResourceModel;
 use Index\Model\SecondMarkModel;
 use Index\Model\TutorShipIssueModel;
+use Index\Model\TutorShipNeedModel;
 use Index\Model\UserModel;
 use Think\Controller;
 class AcademicController extends CommonController {
@@ -160,9 +161,14 @@ class AcademicController extends CommonController {
         $resourcecount = $notemodel->joinone('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 3','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
 
         $tutorissuemodel = new TutorShipIssueModel();
-        $issuelist = $tutorissuemodel->joinonelist('tutorship_issue_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 3','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+        $issuelist = $tutorissuemodel->joinonelist('tutorship_issue_cid = '.$_GET['cid'].' and tutorship_issue_ishide = 1','u_user u on u_tutorship_issue.tutorship_issue_uid = u.user_id','tutorship_issue_istop desc,tutorship_issue_iswally desc,tutorship_issue_createtime desc',0,20);
 
-        $issuecount = $notemodel->joinone('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 3','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+        $issuecount = $tutorissuemodel->joinone('tutorship_issue_cid = '.$_GET['cid'].' and tutorship_issue_ishide = 1','u_user u on u_tutorship_issue.tutorship_issue_uid = u.user_id','tutorship_issue_istop desc,tutorship_issue_iswally desc,tutorship_issue_createtime desc','INNER','count(*) num')['num'];
+
+        $tutorneedmodel = new TutorShipNeedModel();
+        $needlist = $tutorneedmodel->joinonelist('tutorship_need_cid = '.$_GET['cid'].' and tutorship_need_ishide = 1','u_user u on u_tutorship_need.tutorship_need_uid = u.user_id','tutorship_need_istop desc,tutorship_need_iswally desc,tutorship_need_createtime desc',0,20);
+
+        $needcount = $tutorneedmodel->joinone('tutorship_need_cid = '.$_GET['cid'].' and tutorship_need_ishide = 1','u_user u on u_tutorship_need.tutorship_need_uid = u.user_id','tutorship_need_istop desc,tutorship_need_iswally desc,tutorship_need_createtime desc','INNER','count(*) num')['num'];
 
 
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
@@ -178,6 +184,10 @@ class AcademicController extends CommonController {
             'questioncount' => $questioncount,
             'resourcelist' => $resourcelist,
             'resourcecount' => $resourcecount,
+            'issuelist' => $issuelist,
+            'issuecount' => $issuecount,
+            'needlist' => $needlist,
+            'needcount' => $needcount,
 
         ));
 
