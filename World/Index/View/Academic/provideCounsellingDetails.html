@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=0 user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/register.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Donation.css">
+
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/lifeProductDetails.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/StickSonDetails.css">
@@ -14,6 +15,10 @@
         <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/CreateInterest.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/GroupDetailsRelease.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/StickSonDetails.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/PostVideoDetails.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
     </head>
@@ -140,106 +145,92 @@
     </div>
 
     <!-- PostReply -->
-    <div class="container StickSonDetailsContainer">
-        <div class="col-md-9">
-            <P>
-                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">&nbsp;&nbsp;
-                <b>Comment</b>
-            </P>
-                <div class="PostReply" id="commentlist">
-
-                        <!--<div class="box">
-                            <p class="GuestBookUserImg">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/user.png" class="imgs img-circle">
-                            </p>
-                            <div class="GuestBookContainer">
-                                <div class="GuestBookUserTitleContainer">
-                                    <p class="GuestBookUserName">David J.</p>
-                                    <p class="TimeFabulousContainer">
-                                        <span class="GuestBookUserTime">
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                            01/12/2018
-                                        </span>
-                                        <span class="GuestBookUserFabulous">
-                                            Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png" class="greatIcon">
-                                            <span class="like_num">333</span>
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="GuestBookUserMessage">
-                                coocommentcoocommentcoocommentcocoocommentcoocommentcoocommentcocoocommen
-                            </div>
-                            <div class="ReplyContainer">
-                                @Tom 回复 Jack ： xxxxxxxxxxxx
-                            </div>
+        <div class="container">
+            <div class="col-md-9">
+                <div class="PostReply_box">
+                    <div class="PostReply_box_title">
+                        <div class="title_pic">
+                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
                         </div>
-                        <div class="box">
-                            <p class="GuestBookUserImg">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/user.png" class="imgs img-circle">
-                            </p>
-                            <div class="GuestBookContainer">
-                                <div class="GuestBookUserTitleContainer">
-                                    <p class="GuestBookUserName">David J.</p>
-                                    <p class="TimeFabulousContainer">
-                                        <span class="GuestBookUserTime">
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                            01/12/2018
-                                        </span>
-                                        <span class="GuestBookUserFabulous">
-                                            Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png"  class="greatIcon">
-                                            <span class="like_num">333</span>
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="GuestBookUserMessage">
-                                coocommentcoocommentcoocommentcocoocommentcoocommentcoocommentcocoocommen
-                            </div>
-                            <div class="ReplyContainer">
-                                @Tom 回复 Jack ： xxxxxxxxxxxx
-                            </div>
+                        <div class="title_content">
+                            Comment
                         </div>
-                        <div class="box">
-                            <p class="GuestBookUserImg">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/user.png" class="imgs img-circle">
-                            </p>
-                            <div class="GuestBookContainer">
-                                <div class="GuestBookUserTitleContainer">
-                                    <p class="GuestBookUserName">David J.</p>
-                                    <p class="TimeFabulousContainer">
-                                        <span class="GuestBookUserTime">
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                            01/12/2018
-                                        </span>
-                                        <span class="GuestBookUserFabulous">
-                                            Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png"   class="greatIcon">
-                                            <span class="like_num">333</span>
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="GuestBookUserMessage">
-                                coocommentcoocommentcoocommentcocoocommentcoocommentcoocommentcocoocommen
-                            </div>
-                            <div class="ReplyContainer">
-                                @Tom 回复 Jack ： xxxxxxxxxxxx
-                            </div>
-                        </div>-->
                     </div>
+                    <div class="PostReply_box_content" id="commentlist">
+                        <!--<foreach name="commentlist" item="comment" key="commentkey">
+                            <div class="PostReply_box_content_item">
+                                <div class="item_pic">
+                                    <img src="<if condition='$comment["user_icon"]'>./Uploads/{$comment['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
+                                </div>
+                                <div class="item_con">
+                                    <div class="item_con_title">
+                                        <div class="item_user_name">
+                                            <span class="User_name">{$comment['user_name']}</span>
+                                            <div class="item_Top">
+                                                <img src="__PUBLIC__/Web/web/img/Top.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="item_user_det">
+                                            <div class="det_time">
+                                                <div class="det_time_img">
+                                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
+                                                </div>
+                                                <div class="det_timed">
+                                                    {$comment['note_comment_createtime']}
+                                                </div>
+                                            </div>
+                                            <div class="det_zan">
+                                                <if condition='$comment["note_comment_isreply"]!=1'>
+                                                <div class="det_reply" onclick="reply({$comment['note_comment_id']},this)">Reply</div>
+                                                </if>
+                                                <div class="line"></div>
+                                                <div class="det_zan_box">
+                                                    <if condition='$comment["iszan"] == 0'>
+                                                    <div class="zan_box_img" onclick="zan({$comment['note_comment_id']},this)">
+                                                        <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png" alt="">
+                                                    </div>
+                                                        <else />
+                                                        <div class="zan_box_img" onclick="unzan({$comment['note_comment_id']},this)">
+                                                            <img src='__PUBLIC__/Web/web/img/greated.png'>
+                                                        </div>
+                                                    </if>
+                                                    <div class="zan_box_num">
+                                                        {$comment['note_comment_zans']}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="item_con_det">
+                                        {$comment['note_comment_content']}
+                                    </div>
+
+                                    <div class="item_con_reply">
+                                        <div class="reply_person">
+                                        <if condition='$comment["note_comment_isreply"]==1'>
+                                            {$noteuser['user_name']} 回复 {$comment['user_name']} ： <span class="reply_c">{$comment['note_comment_reply']}</span>
+                                        </if>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </foreach>-->
+                    </div>
+                </div>
+            </div>
+            </div>
         </div>
-    </div>
-   
+
     <!-- NumberOfPagesContainer -->
     <div class="container NumberOfPagesContainer">
         <div id="NumberOfPages"></div>
     </div>
 
     <!-- form -->
+
     <div class="container">
+        <div class="col-md-9">
         <form class="layui-form" onsubmit="return false">
             <p style="color: #999; margin-bottom: 10px;">
                     Tips: How do you think of this article? Post a comment to help others understanding this article.
@@ -264,6 +255,7 @@
                 </div>
             </div>
         </form>
+        </div>
     </div>
    
 
@@ -272,14 +264,126 @@
         <include file = "./World/Index/View/Public/footer.html"/>
     </footer>
     </body>
-    <script src="../js/lib/jquery/dist/jquery.min.js"></script>
-    <script src="../js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../js/lib/layui/dist/layui.all.js"></script>
-    <script src="../web/js/StickSonDetails.js"></script>
-    <script src="../web/js/loginQuit.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+    <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
+    <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 
 <script>
+
+    layui.use(['laypage', 'layer'], function() {
+        var laypage = layui.laypage,
+            layer = layui.layer;
+
+        //完整功能
+        laypage.render({
+            elem: 'NumberOfPages',
+            count: {$commentcount},
+            layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+            jump: function(obj) {
+                setcommentlist({$issueone['tutorship_issue_id']},obj.curr,obj.limit)
+            }
+        });
+
+    });
+
+    function setcommentlist(tid,limit1,limit2) {
+        $.ajax({
+            type:"post",
+            url:"{:U('Index/Ajax/ajax_issuecommentlist')}",
+            data:{
+                tid:tid,
+                limit1:limit1,
+                limit2:limit2,
+
+            },
+            dataType:"json",
+            success: function(data){
+                console.log(data);
+                if (data!=null&&data!="") {
+                    if (data.str == 1) {
+                        var message = '';
+                        for (var i = 0; i < data.msg.length; i++) {
+                            message += '<div class="PostReply_box_content_item"><div class="item_pic">'
+                            var img = '__PUBLIC__/Web/web/img/01_shouye/UserPic.png';
+                            if (data.msg[i].user_icon){
+                                img = './Uploads/'+data.msg[i].user_icon
+                            }
+                            message += '<img src="'+img+'">'
+                            message += '</div><div class="item_con"><div class="item_con_title"><div class="item_user_name">'
+                            message += '<span class="User_name">'+data.msg[i].user_name+'</span>'
+                            message += '<div class="item_Top">'
+                            message += '</div></div><div class="item_user_det"><div class="det_time"><div class="det_time_img"><img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png"></div>'
+                            message += '<div class="det_timed">'+data.msg[i].tutorship_issue_comment_createtime+'</div>'
+                            message += '</div><div class="det_zan">'
+
+                            if (data.msg[i].tutorship_issue_comment_isreply != 1 && {$ishave}==1){
+                                message += '<div class="det_reply" onclick="reply('+data.msg[i].tutorship_issue_comment_id+',this)">Reply</div>'
+                            }
+                            message += '<div class="line"></div><div class="det_zan_box">'
+                            if (data.msg[i].iszan == 0){
+                                message += '<div class="zan_box_img" onclick="zan('+data.msg[i].tutorship_issue_comment_id+',this)"><img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png" alt=""></div>'
+                            }else{
+                                message += '<div class="zan_box_img" onclick="unzan('+data.msg[i].tutorship_issue_comment_id+',this)"><img src="__PUBLIC__/Web/web/img/greated.png"></div>'
+                            }
+                            message += '<div class="zan_box_num">'+data.msg[i].tutorship_issue_comment_zans+'</div>'
+                            message += '</div></div></div></div>'
+                            message += '<div class="item_con_det">'+data.msg[i].tutorship_issue_comment_content+'</div>'
+                            message += '<div class="item_con_reply"><div class="reply_person">'
+                            if (data.msg[i].tutorship_issue_comment_isreply == 1){
+                                message += '{$issueuser["user_name"]} 回复 '+data.msg[i].user_name+' ：<span class="reply_c">'+data.msg[i].tutorship_issue_comment_reply+'</span>'
+                            }
+                            message += '</div></div></div></div>'
+
+                        }
+
+                        $('#commentlist').html(message);
+
+                    }else{
+                        layer.msg(data.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+
+                }else{
+                    layer.msg('请求错误!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                layer.msg('请求失败!',{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+
+        })
+    }
+
+    function reply(comid,obj) {
+
+        var name = $(obj).parent().parent().parent().children(".item_user_name").children(".User_name").text();
+        var Cspan = "<span class='ReplyUser'>reply @ <span class='ReplyUser_name'>"+name+"</span> ：</span>"
+        $(".ReplyUser").remove()
+        $(".RepllyBox").append(Cspan);
+
+    }
+
+    $(".ReturnBox .refresh_btn").on("click",function(){
+        $('.ReturnBox .ReplyUser').remove();
+        $(".ReturnBox .Returntextarea").val("")
+    })
+
 
     function createcomment() {
         var userid = "{$userid}"
@@ -336,8 +440,90 @@
                 }
             );
         }
+    }
 
+    function zan(comid,obj) {
 
+        $.ajax({
+            type: "post",
+            url: "{:U('Index/Ajax/ajax_issueCommentZan')}",
+            data: {
+                commemtid:comid
+
+            },
+            dataType: "json",
+            async: false,
+            success: function (list) {
+
+                if (list.str == 1){
+
+                    $(obj).html("<img src='__PUBLIC__/Web/web/img/greated.png'>")
+                    $(obj).attr('data-Click','true')
+                    $(obj).attr('onclick','unzan('+comid+',this)')
+                    var num = obj.parentNode.getElementsByClassName("zan_box_num")[0]
+                    $(num).html(list.msg)
+
+                }else{
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+
+                }
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                layer.msg('请求失败!', {
+                        time: 1500,
+                        icon: 2,
+                    }
+                );
+            }
+        })
+
+    }
+    function unzan(comid,obj) {
+
+        $.ajax({
+            type: "post",
+            url: "{:U('Index/Ajax/ajax_issueCommentUnzan')}",
+            data: {
+                commemtid: comid
+
+            },
+            dataType: "json",
+            async: false,
+            success: function (list) {
+
+                if (list.str == 1) {
+                    $(obj).html("<img src='__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png'>")
+                    $(obj).attr('data-Click', 'false')
+                    $(obj).attr('onclick', 'zan(' + comid + ',this)')
+                    var num = obj.parentNode.getElementsByClassName("zan_box_num")[0]
+                    $(num).html(list.msg)
+
+                } else {
+                    layer.msg(list.msg, {
+                            time: 1500,
+                            icon: 2,
+                        }
+                    );
+
+                }
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                layer.msg('请求失败!', {
+                        time: 1500,
+                        icon: 2,
+                    }
+                );
+            }
+
+        })
     }
 
 

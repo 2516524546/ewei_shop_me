@@ -28,7 +28,7 @@
     <div class="container crumbs">
         <a href="{:U('Index/Academic/academic')}" class="crumbsa">Academic</a>
         <cite class="Icon"></cite>
-        <a href="AcademicGroups.html" class="crumbsa">Group name</a>
+        <a href="{:U('Index/Academic/academicGroups')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
         <cite class="Icon"></cite>
         <span class="crumbsTitle">Counseling Details</span>
     </div>
@@ -38,18 +38,18 @@
         <div class="row justify-content-between">
             <div class="col-md-9">
                 <div class="product_title">
-                    <h2>Product Name</h2>
+                    <h2>{$needone['tutorship_need_name']}</h2>
                     <div class="Product_time">
-                        01-20-2018 20:18:58
+                        {$needone['tutorship_need_createtime']}
                     </div>
                     <div class="counseling_title">
                         <div class="counseling_name">
                             <span class="counseling_name_title">Contact :</span>
-                            <span>xxxxx@xxx.com</span>
+                            <span>{$needone['tutorship_need_contact']}</span>
                         </div>
                         <div class="counseling_name">
                                 <span class="counseling_name_title">Username :</span>
-                                <span>Jess J</span>
+                                <span>{$needuser['user_name']}</span>
                             </div>
                     </div>
                 </div>
@@ -57,28 +57,20 @@
                   <ul class="products_title">
                     <li>
                         <span class="products_title_name">Time :</span>
-                        <span class="products_title_content">01-15-2018 16:00am~20：pm</span>
+                        <span class="products_title_content">{$needone['tutorship_need_time']}</span>
                     </li>
                     <li>
                         <span class="products_title_name">Requirements :</span>
-                        <span class="products_title_content">xxxxxxxxxxxxxxxxxxxxxxxxx </span>
+                        <span class="products_title_content">{$needone['tutorship_need_demand']} </span>
                     </li>
                     <li>
                         <span class="products_title_name">Content :</span>
-                        <span class="products_title_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenei
-                                smod bibendum laoreet. Proin gravida dolor sit amet lacusacc
-                                commodo. Proin sodales pulvinar tempor. Cumsnatoque pena
-                                dis parturient montes, nascetulus muspor. Cumsnatoque peni
-                                commodo. Proin sodales pulvinar tempor.</span>
+                        <span class="products_title_content">{$needone['tutorship_need_content']}</span>
     
                     </li>
                     <li>
                         <span class="products_title_name">Remarks :</span>
-                        <span class="products_title_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenei
-                                smod bibendum laoreet. Proin gravida dolor sit amet lacusacc
-                                commodo. Proin sodales pulvinar tempor. Cumsnatoque pena
-                                dis parturient montes, nascetulus muspor. Cumsnatoque peni
-                                commodo. Proin sodales pulvinar tempor.</span>
+                        <span class="products_title_content">{$needone['tutorship_need_explain']}</span>
 
                     </li>
                   </ul>
@@ -93,54 +85,51 @@
                    <ul>
                        <li>
                            <p>Avatar :</p>
-                           <span class="right_details_userimg"><img src="__PUBLIC__/Web/web/img/02_interest/Todoist.png"></span>
+                           <span class="right_details_userimg"><img src="<if condition='$needuser["user_icon"]'>./Uploads/{$needuser['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>"></span>
                        </li>
                        <li>
                            <p>Nickname :</p>
-                           <span>Xiao Li</span>
+                           <span>{$needuser['user_name']}</span>
                        </li>
                        <li>
                            <p>sex :</p>
-                           <span>male</span>
+                           <span><if condition='$needuser["user_sex"] == 1'>male<else />female</if></span>
                        </li>
                        <li>
                            <p>Viewing Count :</p>
-                           <span>6666</span>
+                           <span>{$needuser['user_havecoin']}</span>
                        </li>
                        <li>
                             <p>Posts  :</p>
-                            <span>6666</span>
+                            <span>{$needuser['user_notes']}</span>
                         </li>
-                        <li>
-                            <p>Contact  :</p>
-                            <span>11@gmail.com</span>
-                        </li>
-                        <li>
-                            <p>Counseling prices :</p>
-                            <span>$118</span>
-                        </li>
-                        <li>
-                            <p>May be counseling time :</p>
-                            <span> 2018-1-27 18: 00 ~ 22: 00</span> 
-                        </li>
+
                    </ul>
                </div>
                <!-- Seller_Info -->
                <div class="Seller_Info_title">
-                    Seller Info
+                    Counseling Information
                </div>
 
                <div class="right_details">
                 <ul>
                     <li>
-                        <p>Contact :</p>
-                        <span>11@gmail.com</span>
+                        <p>Contact  :</p>
+                        <span>{$needone['tutorship_need_contact']}</span>
+                    </li>
+                    <li>
+                        <p>Requirements  :</p>
+                        <span>{$needone['tutorship_need_demand']}</span>
+                    </li>
+                    <li>
+                        <p>Time :</p>
+                        <span> {$needone['tutorship_need_time']}</span>
                     </li>
                     
                 </ul>
             </div>
             <div class="right_btn">
-                <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
+                <a href="{:U('Index/User/personalCenter')}&id={$needuser['user_id']}" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
                     Homepage
                     </a>
             </div>
@@ -154,95 +143,22 @@
     </div>
 
     <!-- PostReply -->
-    <div class="container StickSonDetailsContainer">
+    <div class="container">
         <div class="col-md-9">
-            <div class="PostReply">
-                        <P>
-                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">&nbsp;&nbsp;
-                            <b>Comment</b>
-                        </P>
-                        <div class="box">
-                            <p class="GuestBookUserImg">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/user.png" class="imgs img-circle">
-                            </p>
-                            <div class="GuestBookContainer">
-                                <div class="GuestBookUserTitleContainer">
-                                    <p class="GuestBookUserName">David J.</p>
-                                    <p class="TimeFabulousContainer">
-                                        <span class="GuestBookUserTime">
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                            01/12/2018
-                                        </span>
-                                        <span class="GuestBookUserFabulous">
-                                            Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png" class="greatIcon">
-                                            <span class="like_num">333</span>
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="GuestBookUserMessage">
-                                coocommentcoocommentcoocommentcocoocommentcoocommentcoocommentcocoocommen
-                            </div>
-                            <div class="ReplyContainer">
-                                @Tom 回复 Jack ： xxxxxxxxxxxx
-                            </div>
-                        </div>
-                        <div class="box">
-                            <p class="GuestBookUserImg">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/user.png" class="imgs img-circle">
-                            </p>
-                            <div class="GuestBookContainer">
-                                <div class="GuestBookUserTitleContainer">
-                                    <p class="GuestBookUserName">David J.</p>
-                                    <p class="TimeFabulousContainer">
-                                        <span class="GuestBookUserTime">
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                            01/12/2018
-                                        </span>
-                                        <span class="GuestBookUserFabulous">
-                                            Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png"  class="greatIcon">
-                                            <span class="like_num">333</span>
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="GuestBookUserMessage">
-                                coocommentcoocommentcoocommentcocoocommentcoocommentcoocommentcocoocommen
-                            </div>
-                            <div class="ReplyContainer">
-                                @Tom 回复 Jack ： xxxxxxxxxxxx
-                            </div>
-                        </div>
-                        <div class="box">
-                            <p class="GuestBookUserImg">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/user.png" class="imgs img-circle">
-                            </p>
-                            <div class="GuestBookContainer">
-                                <div class="GuestBookUserTitleContainer">
-                                    <p class="GuestBookUserName">David J.</p>
-                                    <p class="TimeFabulousContainer">
-                                        <span class="GuestBookUserTime">
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                            01/12/2018
-                                        </span>
-                                        <span class="GuestBookUserFabulous">
-                                            Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png"   class="greatIcon">
-                                            <span class="like_num">333</span>
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="GuestBookUserMessage">
-                                coocommentcoocommentcoocommentcocoocommentcoocommentcoocommentcocoocommen
-                            </div>
-                            <div class="ReplyContainer">
-                                @Tom 回复 Jack ： xxxxxxxxxxxx
-                            </div>
-                        </div>
+            <div class="PostReply_box">
+                <div class="PostReply_box_title">
+                    <div class="title_pic">
+                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
                     </div>
+                    <div class="title_content">
+                        Comment
+                    </div>
+                </div>
+
+            <div class="PostReply_box_content" id="commentlist">
+            </div>
+            </div>
+
         </div>
     </div>
    
@@ -253,22 +169,32 @@
 
     <!-- form -->
     <div class="container">
-        <form class="layui-form" action="" autocomplete="off">
+        <div class="col-md-9">
+        <form class="layui-form" onsubmit="return false">
             <p style="color: #999; margin-bottom: 10px;">
                 Tips: think this article how? Evaluation helps other readers understand this article.
             </p>
             <div class="ReturnBox">
-                <div class="layui-form-item layui-form-text">
+                <div class="layui-form-text">
                     <span class="ReturnBoxicon">
                         <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_pj.png">
                         &nbsp;
-                        Comments
+                        Comment
                     </span>
-                    <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea"></textarea>
-                    <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut">Posted</button>
+                    <div class="RepllyBox">
+                        <!-- <div class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</div> -->
+                    </div>
+                    <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea" id="content"></textarea>
+                    <div class="bottom_btn">
+                        <div class="refresh_btn">
+                            <img src="__PUBLIC__/Web/web/img/refresh.png" alt="">
+                        </div>
+                        <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut" onclick="createcomment()">Post</button>
+                    </div>
                 </div>
             </div>
         </form>
+        </div>
     </div>
    
 
@@ -283,4 +209,265 @@
     <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
     <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
+
+
+    <script>
+
+        layui.use(['laypage', 'layer'], function() {
+            var laypage = layui.laypage,
+                layer = layui.layer;
+
+            //完整功能
+            laypage.render({
+                elem: 'NumberOfPages',
+                count: {$commentcount},
+                layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+                jump: function(obj) {
+                    setcommentlist({$needone['tutorship_need_id']},obj.curr,obj.limit)
+                }
+            });
+
+        });
+
+        function setcommentlist(tid,limit1,limit2) {
+            $.ajax({
+                type:"post",
+                url:"{:U('Index/Ajax/ajax_needcommentlist')}",
+                data:{
+                    tid:tid,
+                    limit1:limit1,
+                    limit2:limit2,
+
+                },
+                dataType:"json",
+                success: function(data){
+                    console.log(data);
+                    if (data!=null&&data!="") {
+                        if (data.str == 1) {
+                            var message = '';
+                            for (var i = 0; i < data.msg.length; i++) {
+                                message += '<div class="PostReply_box_content_item"><div class="item_pic">'
+                                var img = '__PUBLIC__/Web/web/img/01_shouye/UserPic.png';
+                                if (data.msg[i].user_icon){
+                                    img = './Uploads/'+data.msg[i].user_icon
+                                }
+                                message += '<img src="'+img+'">'
+                                message += '</div><div class="item_con"><div class="item_con_title"><div class="item_user_name">'
+                                message += '<span class="User_name">'+data.msg[i].user_name+'</span>'
+                                message += '<div class="item_Top">'
+                                message += '</div></div><div class="item_user_det"><div class="det_time"><div class="det_time_img"><img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png"></div>'
+                                message += '<div class="det_timed">'+data.msg[i].tutorship_need_comment_createtime+'</div>'
+                                message += '</div><div class="det_zan">'
+
+                                if (data.msg[i].tutorship_need_comment_isreply != 1 && {$ishave}==1){
+                                    message += '<div class="det_reply" onclick="reply('+data.msg[i].tutorship_need_comment_id+',this)">Reply</div>'
+                                }
+                                message += '<div class="line"></div><div class="det_zan_box">'
+                                if (data.msg[i].iszan == 0){
+                                    message += '<div class="zan_box_img" onclick="zan('+data.msg[i].tutorship_need_comment_id+',this)"><img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png" alt=""></div>'
+                                }else{
+                                    message += '<div class="zan_box_img" onclick="unzan('+data.msg[i].tutorship_need_comment_id+',this)"><img src="__PUBLIC__/Web/web/img/greated.png"></div>'
+                                }
+                                message += '<div class="zan_box_num">'+data.msg[i].tutorship_need_comment_zans+'</div>'
+                                message += '</div></div></div></div>'
+                                message += '<div class="item_con_det">'+data.msg[i].tutorship_need_comment_content+'</div>'
+                                message += '<div class="item_con_reply"><div class="reply_person">'
+                                if (data.msg[i].tutorship_need_comment_isreply == 1){
+                                    message += '{$needuser["user_name"]} 回复 '+data.msg[i].user_name+' ：<span class="reply_c">'+data.msg[i].tutorship_need_comment_reply+'</span>'
+                                }
+                                message += '</div></div></div></div>'
+
+                            }
+
+                            $('#commentlist').html(message);
+
+                        }else{
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+                        }
+
+                    }else{
+                        layer.msg('请求错误!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                    layer.msg('请求失败!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            })
+        }
+
+        function reply(comid,obj) {
+
+            var name = $(obj).parent().parent().parent().children(".item_user_name").children(".User_name").text();
+            var Cspan = "<span class='ReplyUser'>reply @ <span class='ReplyUser_name'>"+name+"</span> ：</span>"
+            $(".ReplyUser").remove()
+            $(".RepllyBox").append(Cspan);
+
+        }
+
+        $(".ReturnBox .refresh_btn").on("click",function(){
+            $('.ReturnBox .ReplyUser').remove();
+            $(".ReturnBox .Returntextarea").val("")
+        })
+
+
+        function createcomment() {
+            var userid = "{$userid}"
+
+            if (userid) {
+
+                $.ajax({
+                    type: "post",
+                    url: "{:U('Index/Ajax/ajax_createNeedComment')}",
+                    data: {
+                        content: $("#content").val(),
+                        tid: '{$needone["tutorship_need_id"]}'
+
+                    },
+                    dataType: "json",
+                    async: false,
+                    success: function (list) {
+                        //console.log(interest)
+                        if (list.str == 1){
+                            layer.msg(list.msg,{
+                                    time:1500,
+                                    icon:1,
+                                },function () {
+                                    location.reload();
+                                }
+                            );
+
+                        }else{
+                            layer.msg(list.msg,{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+
+                        }
+
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                        layer.msg('请求失败!', {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }
+
+                })
+            }else {
+                layer.msg("请先登录",{
+                        time:1500,
+                    },function(){
+
+                        window.location.href="{:U('Index/Login/login')}";
+                    }
+                );
+            }
+        }
+
+        function zan(comid,obj) {
+
+            $.ajax({
+                type: "post",
+                url: "{:U('Index/Ajax/ajax_needCommentZan')}",
+                data: {
+                    commemtid:comid
+
+                },
+                dataType: "json",
+                async: false,
+                success: function (list) {
+
+                    if (list.str == 1){
+
+                        $(obj).html("<img src='__PUBLIC__/Web/web/img/greated.png'>")
+                        $(obj).attr('data-Click','true')
+                        $(obj).attr('onclick','unzan('+comid+',this)')
+                        var num = obj.parentNode.getElementsByClassName("zan_box_num")[0]
+                        $(num).html(list.msg)
+
+                    }else{
+                        layer.msg(list.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    layer.msg('请求失败!', {
+                            time: 1500,
+                            icon: 2,
+                        }
+                    );
+                }
+            })
+
+        }
+        function unzan(comid,obj) {
+
+            $.ajax({
+                type: "post",
+                url: "{:U('Index/Ajax/ajax_needCommentUnzan')}",
+                data: {
+                    commemtid: comid
+
+                },
+                dataType: "json",
+                async: false,
+                success: function (list) {
+
+                    if (list.str == 1) {
+                        $(obj).html("<img src='__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png'>")
+                        $(obj).attr('data-Click', 'false')
+                        $(obj).attr('onclick', 'zan(' + comid + ',this)')
+                        var num = obj.parentNode.getElementsByClassName("zan_box_num")[0]
+                        $(num).html(list.msg)
+
+                    } else {
+                        layer.msg(list.msg, {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    layer.msg('请求失败!', {
+                            time: 1500,
+                            icon: 2,
+                        }
+                    );
+                }
+
+            })
+        }
+
+
+    </script>
+
+
 </html>

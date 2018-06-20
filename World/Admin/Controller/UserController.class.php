@@ -4,8 +4,7 @@
 namespace Admin\Controller;
 use Think\Controller;
 class UserController extends CommonController {
-	
-	//用户详情
+
     //用户详情
     public function user_xiang(){
         $id = I('id');
