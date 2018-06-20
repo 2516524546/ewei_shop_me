@@ -63,7 +63,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="position" id="position" lay-verify="title" autocomplete="off" placeholder="Enter a job title" class="layui-input">
+                            <input type="text" name="position" id="position" lay-verify="title" autocomplete="off" placeholder="Enter the position" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -89,7 +89,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="years" id="years" lay-verify="title" autocomplete="off" placeholder="Enter the number of years of service" class="layui-input">
+                            <input type="text" name="years" id="years" lay-verify="title" autocomplete="off" placeholder="Enter requirements for working seniority" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -109,7 +109,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="degree" id="degree" lay-verify="title" autocomplete="off" placeholder="Enter your degree" class="layui-input">
+                            <input type="text" name="degree" id="degree" lay-verify="title" autocomplete="off" placeholder="Enter requirements for degree" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -119,7 +119,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="specialty" id="specialty" lay-verify="title" autocomplete="off" placeholder="Enter professional" class="layui-input">
+                            <input type="text" name="specialty" id="specialty" lay-verify="title" autocomplete="off" placeholder="Enter the major you require" class="layui-input">
                         </div>
                     </div>
                     <!--<p class="h6">Matching circle reordering : </p>
@@ -199,7 +199,7 @@
                         </label>
                         <div class="layui-input-block" id="layui-input-block">
                             <select name="company_nature" id="company_nature" lay-verify="required">
-                                <option value="">Please choose the nature of the company</option>
+                                <option value="">Select the type of the company</option>
                                 <option value="1">Private</option>
                                 <option value="2">state-owned</option>
                             </select>
@@ -213,7 +213,7 @@
                         </label>
                         <div class="layui-input-block" id="layui-input-block">
                             <select name="company_type" id="company_type" lay-verify="required">
-                                <option value="">Please select company type</option>
+                                <option value="">Select the scope of business</option>
                                 <foreach name="companytypelist" item="c" key="k">
                                 <option value="{$c['works_company_type_id']}">{$c['works_company_type_name']}</option>
                                 </foreach>
@@ -237,10 +237,10 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="company_mail" id="company_mail" lay-verify="title" autocomplete="off" placeholder="Enter the resume mailbox" class="layui-input">
+                            <input type="text" name="company_mail" id="company_mail" lay-verify="title" autocomplete="off" placeholder=" Enter E-Mail" class="layui-input">
                         </div>
                     </div>
-                    <div class="layui-form-item layui-form-text">
+                    <div class="layui-form-item">
                         <label class="layui-form-label">
                             <div class="label_img">
                                 <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">

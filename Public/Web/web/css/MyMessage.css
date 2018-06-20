@@ -57,6 +57,7 @@
 }
 .Message_box .Message_details .Message_details_item .item_time .item_time_img img{
     width: 100%;
+    height: 100%;
 }
 .Message_box .Message_details .Message_details_item .item_time span{
     font-size: 10px;

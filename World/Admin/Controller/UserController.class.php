@@ -8,69 +8,68 @@ class UserController extends CommonController {
     //用户详情
     public function user_xiang(){
         $id = I('id');
-        
-        $user = M('Users')->where("id = '{$id}'")->find();
-        $user['fans'] = M('Focus')->where("f_status ='2' and f_userid = '$id'")->count(); 
-        $user['guanzhu'] = M('Focus')->where("f_status ='2' and f_fansid = '$id'")->count(); 
-        $user['count']= M('Homework_stu')->where("w_userid = '$id'")->sum('w_long');
-
-        $join = "piano_homework on piano_homework.hid = piano_homework_stu.hid";
-        $join1 = "piano_songs_list on piano_songs_list.lid = piano_homework.lid";
-
-        $count = M('Homework_stu')->where("w_userid = '$id'")
-                                  ->join($join)
-                                  ->join($join1)
-                                  ->count();
-        //实例化分页类
-        $Page = new \Think\Page($count,$this->pagenum);
-        //设置上一页与下一页
-        $Page->setConfig('prev', '上一页');
-        $Page->setConfig('next', '下一页');
-        $Page->setConfig('theme', '%HEADER% %FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%');
-        //显示分页信息
-        $show = $Page->show();// 分页显示输出 ->limit($Page->firstRow.','.$Page->listRows)
-
-       
-        $list = M('Homework_stu')->where("w_userid = '$id'")
-                                 ->join($join)
-                                 ->join($join1)
-                                 ->field('list_name,list_url')
-                                 ->limit($Page->firstRow.','.$Page->listRows)
-                                 ->select();
-
-      
-        $this->assign('list',$list);
+        $user = M('u_user')->where("user_id = '{$id}'")->find();
         $this->assign('user',$user);
-        $this->assign('page',$show);
         $this->display();
+    }
+
+    public function user_del(){
+        $id = I('id');
+        $user = M('u_user')->where("user_id = '{$id}'")->find();
+        $res=M('u_user')->where("user_id = '{$id}'")->delete();
+        if ($res){
+            //删除图片
+            unlink("./Uploads/".$user['user_icon']);
+            echo 1;
+        }else{
+            echo "删除失败".$res;
+        }
+    }
+
+    public function user_edit(){
+        if (IS_POST){
+              $post=$_POST;
+            $where['user_id'] = $post['user_id'];
+            if (!preg_match_all("/([a-z0-9_\-\.]+)@(([a-z0-9]+[_\-]?)\.)+[a-z]{2,3}/i",$post['user_mail'])){
+                echo '邮箱格式不正确';
+                exit;
+            }
+            $result = M("u_user")->where($where)->save($post);
+            if($result != false){
+                echo 1;
+            }else{
+                echo '操作失败,请联系管理员'.$result;
+            }
+        }else{
+            $id = I('id');
+            $user = M('u_user')->where("user_id = '{$id}'")->find();
+            $this->assign('user',$user);
+            $this->display();
+        }
     }
 	//搜用户
 	public function user_list_sou(){
-		$where = "add_time > '0'";
+		$where = "user_logintime > '0'";
 		
-		$name = trim($_POST['name']);
-		if($name){
-			$where .= " and nickname like '%$name%'";
-			$this->assign('name',$name);
+		$nickname = trim($_POST['nickname']);
+		if($nickname){
+			$where .= " and user_name like '%$nickname%'";
+			$this->assign('nickname',$nickname);
 		}
 		
-		$phone = trim($_POST['phone']);
-		if($phone){
-			$where .= " and username like '%$phone%'";
-			$this->assign('phone',$phone);
+		$id = trim($_POST['id']);
+		if($id){
+			$where .= " and user_id like '%$id%'";
+			$this->assign('id',$id);
 		}
 		
-		$status = trim($_POST['status']);
-		if($status){
-			if($status == 1){
-				$where .=" and rz_status = 1 ";
-			}else{
-                $where .=" and rz_status = 2 ";
-            }	
-			$this->assign('status',$status);
+		$email= trim($_POST['email']);
+		if($email){
+            $where .= " and user_mail like '%$email%'";
+			$this->assign('email',$email);
 		}
 		
-	   $stime = trim($_POST['stime']);
+	   /*$stime = trim($_POST['stime']);
 	   if($stime){
      		$where .= " and UNIX_TIMESTAMP(add_time) >= UNIX_TIMESTAMP('$stime 00:00:00')";
      		$this->assign('stime',$stime);
@@ -81,9 +80,9 @@ class UserController extends CommonController {
      		$where .= " and UNIX_TIMESTAMP(add_time) <= UNIX_TIMESTAMP('$etime 23:59:59')";
      		$this->assign('etime',$etime);
      	}
-		
+		*/
      	$button = $_POST['button'];
-     	if(empty($name) && empty($phone) && empty($status) && empty($stime) && empty($etime)){
+     	if(empty($nickname) && empty($id) && empty($email)){
      		//如果是点击页码发起的请求，则按只保存的条件搜索
      		if(!$button){
      			if($_SESSION['user_list_sou']){
@@ -93,7 +92,7 @@ class UserController extends CommonController {
      	}
      	$_SESSION['user_list_sou'] = $where;
 
-		$count = M("Users")->where($where)->count();
+		$count = M("u_user")->where($where)->count();
         // dump(M("Users")->getLastSql());exit;
 		//实例化分页类
 		$Page = new \Think\Page($count,$this->pagenum);
@@ -104,7 +103,7 @@ class UserController extends CommonController {
 		//显示分页信息
 		$show = $Page->show();// 分页显示输出 ->limit($Page->firstRow.','.$Page->listRows)
 		
-		$list = M("Users")->where($where)->limit($Page->firstRow.','.$Page->listRows)->order("id DESC")->select();
+		$list = M("u_user")->where($where)->limit($Page->firstRow.','.$Page->listRows)->order("user_id DESC")->select();
 
 		$this->assign('list',$list);
 		$this->assign('page',$show);
@@ -137,9 +136,7 @@ class UserController extends CommonController {
                 }
             }
 		}*/
-        foreach ($list as $k => $v){
-            $courseList[$k]['user_icon'] = 'Uploads/'.$v['user_icon'];
-        }
+
   
 		$this->assign('list',$list);
 		$this->assign('page',$show);

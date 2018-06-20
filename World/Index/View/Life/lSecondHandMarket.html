@@ -133,12 +133,12 @@
                         </div>
                         <div class="S_btn">
                                 <a href="{:U('Index/Life/mineProduct')}" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
-                                        My product
+                                    My goods
                                 </a>
                         </div>
                         <div class="S_btn">
                                 <a href="{:U('Index/Life/postProduct')}" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
-                                        Post product
+                                    Sell
                                 </a>
                         </div>
                 </div>
@@ -150,7 +150,7 @@
         <!-- Second-Hand Market start 二手市场-->
         <div class="container S_Market">
             <h4 class="text-center S_Market_title">
-                    New Products
+                    New in
                 </h4>
             <div class="row S_Market_detail" id="marketlist">
                 <foreach name="commoditylist" item = "c" key="key">
@@ -171,7 +171,7 @@
                                                     <p><small>$</small>{$c['commodity_price']}</p>
                                                 </div>
                                                 <div class="pro_Description">
-                                                    Product Description:
+                                                        Description:
                                                     <p>{$c['commodity_content']}</p>
                                                 </div>
                                             </div>
