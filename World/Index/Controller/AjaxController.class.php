@@ -2982,10 +2982,10 @@ public function ajax_donationpay()
                     'tutorship_need_content' => $this->post('content'),
                     'tutorship_need_createtime' => date("Y-m-d H:i:s", time()),
                 );
-                if (!isset($_POST['demand'])||$this->post('demand')==''){
+                if (isset($_POST['demand'])&&$this->post('demand')!=''){
                     $data['tutorship_need_demand'] = $this->post('demand');
                 }
-                if (!isset($_POST['explain'])||$this->post('explain')==''){
+                if (isset($_POST['explain'])&&$this->post('explain')!=''){
                     $data['tutorship_need_explain'] = $this->post('explain');
                 }
 
@@ -3059,7 +3059,7 @@ public function ajax_donationpay()
                     'tutorship_issue_content' => $this->post('content'),
                     'tutorship_issue_createtime' => date("Y-m-d H:i:s", time()),
                 );
-                if (!isset($_POST['explain'])||$this->post('explain')==''){
+                if (isset($_POST['explain'])&&$this->post('explain')!=''){
                     $data['tutorship_issue_explain'] = $this->post('explain');
                 }
 
@@ -3076,6 +3076,60 @@ public function ajax_donationpay()
             die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
         }
 
+    }
+
+    //获取提供辅导
+    public function ajax_haveissue(){
+
+        if (IS_POST){
+
+            $where = 'tutorship_issue_cid = '.$this->post('cid').' and tutorship_issue_ishide = 1';
+
+            if (isset($_POST['name'])&&$this->post('name')!=''){
+                $where .= ' and tutorship_issue_name like "%'.$this->post('name').'%"';
+            }
+
+            $tutorissuemodel = new TutorShipIssueModel();
+            $limit1 = $this->post('limit1')*$this->post('limit2');
+            $limit2 = $this->post('limit2');
+            $issuelist = $tutorissuemodel->joinonelist($where,'u_user u on u_tutorship_issue.tutorship_issue_uid = u.user_id',$this->post('order'),$limit1,$limit2);
+            $issuecount = $tutorissuemodel->joinone($where,'u_user u on u_tutorship_issue.tutorship_issue_uid = u.user_id',$this->post('order'),'INNER','count(*) num')['num'];
+            if ($issuelist){
+                die(json_encode(array('str' => 1,'msg'=>$issuelist,'count'=>$issuecount)));
+            }else{
+                die(json_encode(array('str' => 2,'msg'=>$issuelist,'count'=>$issuecount)));
+            }
+
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
+    //获取寻求辅导
+    public function ajax_haveneed(){
+        if (IS_POST){
+
+            $where = 'tutorship_need_cid = '.$this->post('cid').' and tutorship_need_ishide = 1';
+
+            if (isset($_POST['name'])&&$this->post('name')!=''){
+                $where .= ' and tutorship_need_name like "%'.$this->post('name').'%"';
+            }
+
+            $tutorneedmodel = new TutorShipNeedModel();
+            $limit1 = $this->post('limit1')*$this->post('limit2');
+            $limit2 = $this->post('limit2');
+            $needlist = $tutorneedmodel->joinonelist($where,'u_user u on u_tutorship_need.tutorship_need_uid = u.user_id',$this->post('order'),$limit1,$limit2);
+            $needcount = $tutorneedmodel->joinone($where,'u_user u on u_tutorship_need.tutorship_need_uid = u.user_id',$this->post('order'),'INNER','count(*) num')['num'];
+            if ($needlist){
+                die(json_encode(array('str' => 1,'msg'=>$needlist,'count'=>$needcount)));
+            }else{
+                die(json_encode(array('str' => 2,'msg'=>$needlist,'count'=>$needcount)));
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
     }
 
 }
