@@ -215,7 +215,7 @@
 }
 .BannerContainer {
   margin-top: 50px;
-  width: 174px;
+  width: 100%;
   border-radius: 4px;
   box-shadow: 2px 2px 14px #cecece;
 }
@@ -229,9 +229,13 @@
 .BannerContainer .Container1 .Font {
   padding: 4px 6px;
 }
+
 .BannerContainer .Container1 .img {
-  width: 174px;
+  width: 100%;
   height: auto;
+}
+.BannerContainer .Container2 .img{
+  width: 100%;
 }
 .BannerContainer .Container2 .Font {
   padding: 4px 6px;

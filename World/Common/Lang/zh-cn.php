@@ -34,6 +34,9 @@ return array(
     'User_user_list_operation' => '操作',
     'User_user_list_man' => '男',
     'User_user_list_woman' => '女',
+    'User_user_list_edit' => '编辑',
+    'User_user_list_del' => '删除',
+    'User_user_list_detail' => '查看',
     //user_add strat
 
     /*
