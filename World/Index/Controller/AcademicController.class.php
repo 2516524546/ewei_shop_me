@@ -10,6 +10,7 @@ use Index\Model\NoteVIModel;
 use Index\Model\QuestionModel;
 use Index\Model\ResourceModel;
 use Index\Model\SecondMarkModel;
+use Index\Model\TutorShipIssueCommentModel;
 use Index\Model\TutorShipIssueModel;
 use Index\Model\TutorShipNeedModel;
 use Index\Model\UserModel;
@@ -528,6 +529,82 @@ class AcademicController extends CommonController {
 
         $this->display();
     }
+
+
+    /*
+    提供辅导详情
+     */
+    public function provideCounsellingDetails(){
+
+        if (!$this->userid){
+            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
+            Header("Location:".U('Index/Login/login'));
+            exit();
+        }
+
+        if (!isset($_GET['cid'])||$_GET['cid']==''){
+            Header("Location:".U('Index/Academic/academic'));
+            exit();
+        }
+        if (!isset($_GET['tid'])||$_GET['tid']==''){
+            Header("Location:".U('Index/Academic/academicGroups')."&cid=".$_GET['cid']);
+            exit();
+        }
+        $crowdmodel = new CrowdModel();
+        $crowdmembermodel = new CrowdMemberModel();
+        $tutorissuemodel = new TutorShipIssueModel();
+        $issuecommentmodel = new TutorShipIssueCommentModel();
+        $usermodel = new UserModel();
+
+        $crowdone = $crowdmodel->findone('crowd_id = '.$_GET['cid']);
+
+        $crowdmemberone = $crowdmembermodel->findone('crowd_member_cid = '.$_GET['cid'].' and crowd_member_uid = '.$this->userid.' and crowd_member_status != -1');
+        $issueone = $tutorissuemodel->findone('tutorship_issue_id = '.$_GET['tid']);
+        if ($issueone['tutorship_issue_cid']!=$_GET['cid']){
+            Header("Location:".U('Index/Academic/academicGroups')."&cid=".$_GET['cid']);
+            exit();
+        }
+
+        $commentlist = $issuecommentmodel->joinonelist('tutorship_issue_comment_tid = '.$_GET['tid'],'u_user u on u_tutorship_issue_comment.tutorship_issue_comment_uid = u.user_id','tutorship_issue_comment_zans desc,tutorship_issue_comment_createtime desc',0,10);
+        foreach ($commentlist as $key => $comment){
+            $uidlist = explode(',',$comment['tutorship_issue_comment_zaner']);
+            if (in_array($this->userid,$uidlist)){
+
+                $commentlist[$key]['iszan'] = 1;
+            }else{
+
+                $commentlist[$key]['iszan'] = 0;
+            }
+        }
+        $commentcount = $issuecommentmodel->joinone('tutorship_issue_comment_tid = '.$_GET['tid'],'u_user u on u_tutorship_issue_comment.tutorship_issue_comment_uid = u.user_id','tutorship_issue_comment_zans desc,tutorship_issue_comment_createtime desc','INNER','count(*) num')['num'];
+        $issueuser = $usermodel->findone('user_id = '.$issueone['tutorship_issue_uid']);
+
+        $isjoin = 0;
+        $ishave = 0;
+        if ($crowdmemberone){
+            $isjoin = 1;
+        }
+        if ($issueone['tutorship_issue_uid']==$this->userid){
+            $ishave = 1;
+        }
+
+        $this->assign(array(
+            'crowdone' => $crowdone,
+            'isjoin' => $isjoin,
+            'crowdmemberone' => $crowdmemberone,
+            'issueone' => $issueone,
+            'cid' => $_GET['cid'],
+            'issueuser' => $issueuser,
+            'ishave' => $ishave,
+            'commentlist' => $commentlist,
+            'commentcount' => $commentcount
+
+        ));
+
+        $this->display();
+
+    }
+
 
 
     /*
