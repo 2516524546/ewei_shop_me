@@ -1403,7 +1403,6 @@
 <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
-<script src="__PUBLIC__/Web/web/js/index.js"></script>
 <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 
 <script>
@@ -1503,53 +1502,7 @@
     </script>
 <script>
 
-    function loginout() {
 
-        $.ajax({
-            type: "post",
-            url: "{:U('Index/Ajax/ajax_loginout')}",
-            data: {},
-            dataType: "json",
-            async: false,
-            success: function (data) {
-                if (data != null && data != "") {
-                    if (data.str == 1) {
-                        layer.msg(data.msg, {
-                                time: 1500,
-                                icon: 1,
-                            }, function () {
-                                location.reload();
-                            }
-                        );
-                    } else {
-                        layer.msg(data.msg, {
-                                time: 1500,
-                                icon: 2,
-                            }
-                        );
-                    }
-
-                } else {
-                    layer.msg('请求错误!', {
-                            time: 1500,
-                            icon: 2,
-                        }
-                    );
-                }
-
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                layer.msg('请求失败!', {
-                        time: 1500,
-                        icon: 2,
-                    }
-                );
-            }
-
-        })
-
-    }
 
 </script>
 </body>
