@@ -70,9 +70,9 @@
 <div class="page-content">
 	<div class="page-header">
 		<h1>
-			用户管理
+			模块简介管理
 			<small> <i class="icon-double-angle-right"></i>
-				用户列表
+				模块简介列表
 			</small>
 			 
 		</h1>
@@ -84,43 +84,6 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-			 <div class="row" style="padding-bottom: 10px;">
-							<div class="col-sm-12">
-								<div id="sample-table-2_filter">
-									<form class="form-horizontal" action="{:U('Admin/User/user_list_sou')}" method="POST" role="form" enctype="multipart/form-data">
-									<div class="btn-group" style='margin-top:5px;'>
-										<span>{:L('User_user_list_id')}:</span>
-										<input type="text" name="id" value="<?php if($id){echo $id;}?>" placeholder="{:L('User_user_list_id')}">
-									</div>
-									<input type='hidden' name='button' value='1'/>
-									<div class="btn-group" style='margin-top:5px;'>
-										<span>{:L('User_user_list_nickname')}:</span>
-										<input type="text" name="nickname" value="<?php if($nickname){echo $nickname;}?>" placeholder="{:L('User_user_list_nickname')}">
-									</div>
-										<div class="btn-group" style='margin-top:5px;'>
-											<span>{:L('User_user_list_email')}:</span>
-											<input type="text" name="email" value="<?php if($email){echo $email;}?>" placeholder="{:L('User_user_list_email')}">
-										</div>
-
-										<div class="btn-group" style='margin-top:5px;'>
-												<span class="input-group-btn">
-													<button type="submit" style="padding:0" class="btn btn-purple btn-sm">
-														{:L('User_user_list_search')}<i class="icon-search icon-on-right bigger-110"></i>
-													</button>
-												</span>
-											
-										</div>
-								
-									</form>
-		
-			<!--<a href="index.php?m=Admin&c=User&a=user_daochu" class="btn btn-xs btn-success">导出文件</a>-->
-								<!-- <div style=' width:100%; height:40px; '>
-								   <a href="{:U('Daili/index/student_add')}" target="rightFrame"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>添加学员</span></a>
-								
-								</div> -->
-								</div>
-							</div>
-						</div>
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="table-responsive">
@@ -128,20 +91,9 @@
 							<thead>
 								<tr style=' font-size: 13px;'>
 								    <!-- <th><input type='checkbox' name='' value=''></th> -->
-									<th>{:L('User_user_list_id')}</th>
-									<th>{:L('User_user_list_nickname')}</th>
-									<th>{:L('User_user_list_headicon')}</th>
-									<th>{:L('User_user_list_sex')}</th>
-									<th>{:L('User_user_list_birthday')}</th>
-									<th>{:L('User_user_list_email')}</th>
-									<th>{:L('User_user_list_country')}</th>
-									<th>{:L('User_user_list_city')}</th>
-									<th>{:L('User_user_list_signature')}</th>
-									<th>{:L('User_user_list_grouptag')}</th>
-									<th>{:L('User_user_list_havecoin')}</th>
-									<th>{:L('User_user_list_code')}</th>
-									<th>{:L('User_user_list_create_date')}</th>
-									<th>{:L('User_user_list_operation')}</th>
+									<th>{:L('Module_module_list_module_name')}</th>
+									<th>{:L('Module_module_list_module_content')}</th>
+									<th>{:L('Module_module_list_module_operation')}</th>
 								</tr>
 							</thead>
 
@@ -149,24 +101,12 @@
 							<?php foreach($list as $k=>$v){?>
 								<tr>
 								   <!--  <td><input type='checkbox' name='' value=''></td> -->
-									<td><?php echo $v['user_id'];?></td>
-									<td><?php echo $v['user_name'];?></td>
-									<td><img style="width:50px;height:50px;" src="<?php echo './Uploads/'.$v['user_icon'];?>"></td>
-									<td><?php echo $v['user_sex']==1?L('User_user_list_man'):L('User_user_list_woman');?></td>
-									<td><?php echo $v['user_birth'];?></td>
-									<td><?php echo $v['user_mail'];?></td>
-									<td><?php echo $v['user_country'];?></td>
-									<td><?php echo $v['user_city'];?></td>
-									<td><?php echo $v['user_signature'];?></td>
-									<td><?php echo $v['user_grouptag'];?></td>
-									<td><?php echo $v['user_havecoin'];?></td>
-									<td><?php echo $v['user_code'];?></td>
-									<td><?php echo $v['user_logintime'];?></td>
+									<td><?php echo $v['module_name'];?></td>
+									<td><?php echo $v['module_content'];?></td>
 									<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-												<a href="index.php?m=Admin&c=User&a=user_edit&id=<?php echo $v['user_id']?>" class="btn btn-xs btn-success"><?php echo L('User_user_list_edit');?></a>
-												<a href="#" onClick="batchDelete(<?php echo $v['user_id']?>)" class="btn btn-xs btn-success"><?php echo L('User_user_list_del');?></a>
-												<a href="index.php?m=Admin&c=User&a=user_xiang&id=<?php echo $v['user_id']?>" class="btn btn-xs btn-success"><?php echo L('User_user_list_detail');?></a>
+												<a href="#" onClick="batchDelete(<?php echo $v['module_id']?>)" class="btn btn-xs btn-success"><?php echo L('Module_module_list_module_del');?></a>
+												<a href="index.php?m=Admin&c=Module&a=module_edit&id=<?php echo $v['module_id']?>" class="btn btn-xs btn-success"><?php echo L('Module_module_list_module_edit');?></a>
 											</div>
 									</td>
 								</tr>
@@ -259,7 +199,7 @@ $(function(){
         if(confirm("此操作不可逆,确认删除吗?")) {
             //var uid = {$jxid};
             $.ajax({
-                url: 'index.php?m=Admin&c=User&a=user_del',
+                url: 'index.php?m=Admin&c=Module&a=module_del',
                 data: 'id=' + id,
                 type: 'post',
                 success: function (msg) {

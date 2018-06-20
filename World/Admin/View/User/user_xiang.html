@@ -63,81 +63,81 @@
 	<div class="row">
 		<div class="col-xs-12 form-horizontal">
 				<div class="form-group">
-					<label class="col-sm-3 control-label no-padding-right" for="form-field-1">昵称</label>
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('User_user_list_nickname')}</label>
 					<div class="col-sm-9">
-						<input type="text" name="q_users_name" value="<?php echo $user['user_name']?>" placeholder="昵称" style="width:300px;" readonly/>
+						<input type="text" name="q_users_name" value="<?php echo $user['user_name']?>" placeholder="{:L('User_user_list_nickname')}" style="width:300px;" readonly/>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label no-padding-right" for="form-field-1">头像</label>
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('User_user_list_headicon')}</label>
 					<div class="col-sm-9">
 						<img src="<?php echo  './Uploads/'.$user['user_icon'];?>" style="width:100px;height:100px;" />
 					</div>
 				</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">性别</label>
+				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('User_user_list_sex')}</label>
 				<div class="col-sm-9">
-					<input type="text" name="q_users_name" value="<?php echo $user['user_sex']==1?'男':'女'?>" placeholder="性别" style="width:300px;" readonly/>
+					<input type="text" name="q_users_name" value="<?php echo $user['user_sex']==1?L('User_user_list_man'):L('User_user_list_woman')?>" placeholder="{:L('User_user_list_sex')}" style="width:300px;" readonly/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">出生日期</label>
+				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('User_user_list_birthday')}</label>
 				<div class="col-sm-9">
-					<input type="text" name="q_users_name" value="<?php echo $user['user_birth']?>" placeholder="出生日期" style="width:300px;" readonly/>
+					<input type="text" name="q_users_name" value="<?php echo $user['user_birth']?>" placeholder="{:L('User_user_list_birthday')}" style="width:300px;" readonly/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">邮箱</label>
+				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('User_user_list_email')}</label>
 				<div class="col-sm-9">
-					<input type="text" name="q_users_name" value="<?php echo $user['user_mail']?>" placeholder="邮箱" style="width:300px;" readonly/>
+					<input type="text" name="q_users_name" value="<?php echo $user['user_mail']?>" placeholder="{:L('User_user_list_email')}" style="width:300px;" readonly/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">国家</label>
+				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('User_user_list_country')}</label>
 				<div class="col-sm-9">
-					<input type="text" name="q_users_name" value="<?php echo $user['user_country']?>" placeholder="邮箱" style="width:300px;" readonly/>
+					<input type="text" name="q_users_name" value="<?php echo $user['user_country']?>" placeholder="{:L('User_user_list_country')}" style="width:300px;" readonly/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">城市</label>
+				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('User_user_list_city')}</label>
 				<div class="col-sm-9">
-					<input type="text" name="q_users_name" value="<?php echo $user['user_city']?>" placeholder="邮箱" style="width:300px;" readonly/>
+					<input type="text" name="q_users_name" value="<?php echo $user['user_city']?>" placeholder="{:L('User_user_list_city')}" style="width:300px;" readonly/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">签名</label>
+				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('User_user_list_signature')}</label>
 				<div class="col-sm-9">
-					<input type="text" name="q_users_name" value="<?php echo $user['user_signature']?>" placeholder="邮箱" style="width:300px;" readonly/>
+					<input type="text" name="q_users_name" value="<?php echo $user['user_signature']?>" placeholder="{:L('User_user_list_signature')}" style="width:300px;" readonly/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">用户标签</label>
+				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('User_user_list_user_tag')}</label>
 				<div class="col-sm-9">
-					<input type="text" name="q_users_name" value="<?php echo $user['user_tag']?>" placeholder="暂无" style="width:300px;" readonly/>
+					<input type="text" name="q_users_name" value="<?php echo $user['user_tag']?>" placeholder="{:L('User_user_list_user_tag')}" style="width:300px;" readonly/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">兴趣小组</label>
+				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('User_user_list_grouptag')}</label>
 				<div class="col-sm-9">
 					<input type="text" name="q_users_name" value="<?php echo $user['user_grouptag']?>" placeholder="暂无" style="width:300px;" readonly/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">虚拟币</label>
+				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('User_user_list_havecoin')}</label>
 				<div class="col-sm-9">
 					<input type="text" name="q_users_name" value="<?php echo $user['user_havecoin']?>" placeholder="暂无" style="width:300px;" readonly/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">邀请码</label>
+				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('User_user_list_code')}</label>
 				<div class="col-sm-9">
 					<input type="text" name="q_users_name" value="<?php echo $user['user_code']?>" placeholder="暂无" style="width:300px;" readonly/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">创建日期</label>
+				<label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('User_user_list_create_date')}</label>
 				<div class="col-sm-9">
-					<input type="text" name="q_users_name" value="<?php echo $user['user_logintime']?>" placeholder="创建日期" style="width:300px;" readonly/>
+					<input type="text" name="q_users_name" value="<?php echo $user['user_logintime']?>" placeholder="{:L('User_user_list_create_date')}" style="width:300px;" readonly/>
 				</div>
 			</div>
 		</div>
