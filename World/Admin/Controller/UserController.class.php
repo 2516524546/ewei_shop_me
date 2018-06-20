@@ -31,6 +31,10 @@ class UserController extends CommonController {
         if (IS_POST){
               $post=$_POST;
             $where['user_id'] = $post['user_id'];
+            if (!preg_match_all("/([a-z0-9_\-\.]+)@(([a-z0-9]+[_\-]?)\.)+[a-z]{2,3}/i",$post['user_mail'])){
+                echo '邮箱格式不正确';
+                exit;
+            }
             $result = M("u_user")->where($where)->save($post);
             if($result != false){
                 echo 1;

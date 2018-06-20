@@ -75,6 +75,10 @@ class CommonController extends Controller {
 		echo $html;
 		exit;
 	}
+
+
+
+
 	//转码
 	public function json_encode_ex($value){
 		if (version_compare(PHP_VERSION,'5.4.0','<')){
