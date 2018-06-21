@@ -3444,6 +3444,7 @@ public function ajax_donationpay()
         }
     }
 
+    //回复帖子评论
     public function ajax_replyNoteComment(){
         if (IS_POST){
 
@@ -3472,6 +3473,71 @@ public function ajax_donationpay()
         }else{
             die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
         }
+    }
+
+    //提供辅导评论回复
+    public function ajax_replyIssueComment(){
+
+        if (IS_POST){
+
+            if (!isset($_POST['content'])||$this->post('content')==''){
+
+                die(json_encode(array('str' => 3, 'msg' => '请输入内容')));
+            }else if (!isset($_POST['replyid'])||$this->post('replyid')==''){
+
+                die(json_encode(array('str' => 5, 'msg' => '没有这个评论')));
+            }else {
+
+                $issuecommentmodel = new TutorShipIssueCommentModel();
+                $data = array(
+                    'tutorship_issue_comment_isreply'=>1,
+                    'tutorship_issue_comment_reply'=>$this->post('content'),
+                    'tutorship_issue_comment_replytime'=>date("Y-m-d H:i:s", time()),
+                );
+                $res = $issuecommentmodel->updataone('tutorship_issue_comment_id = '.$this->post('replyid'),$data);
+                if ($res){
+                    die(json_encode(array('str' => 1,'msg'=>'回复成功')));
+                }else{
+                    die(json_encode(array('str' => 2,'msg'=>'回复失败')));
+                }
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
+    //寻求辅导评论回复
+    public function ajax_replyneedComment(){
+
+        if (IS_POST){
+
+            if (!isset($_POST['content'])||$this->post('content')==''){
+
+                die(json_encode(array('str' => 3, 'msg' => '请输入内容')));
+            }else if (!isset($_POST['replyid'])||$this->post('replyid')==''){
+
+                die(json_encode(array('str' => 5, 'msg' => '没有这个评论')));
+            }else {
+
+                $needcommentmodel = new TutorShipNeedCommentModel();
+                $data = array(
+                    'tutorship_need_comment_isreply'=>1,
+                    'tutorship_need_comment_reply'=>$this->post('content'),
+                    'tutorship_need_comment_replytime'=>date("Y-m-d H:i:s", time()),
+                );
+                $res = $needcommentmodel->updataone('tutorship_need_comment_id = '.$this->post('replyid'),$data);
+                if ($res){
+                    die(json_encode(array('str' => 1,'msg'=>'回复成功')));
+                }else{
+                    die(json_encode(array('str' => 2,'msg'=>'回复失败')));
+                }
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+
     }
 
 

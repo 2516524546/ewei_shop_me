@@ -3,6 +3,7 @@ namespace Index\Controller;
 use Index\Model\ConcernsModel;
 use Index\Model\FirendsModel;
 use Index\Model\FriendsModel;
+use Index\Model\NoteModel;
 use Index\Model\ResumeModel;
 use Index\Model\UserCountryModel;
 use Index\Model\UserModel;
@@ -58,12 +59,38 @@ class UserController extends CommonController {
         //好友请求
         $fir_message = D('Message')->where('(message_sid='.$this->userid.' AND message_uid='.$id.') OR (message_sid='.$id.' AND message_uid='.$this->userid.')')->getField('message_id'); //对方申请成为我的好友或我申请成为对方的好友
 
+        $isme = 0;
+        if ($id == $this->userid){
+            $isme = 1;
+        }
+
+        $notemodel = new NoteModel();
+        $alllist = $notemodel->joinonelist('note_ishide = 1 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+        $allcount = $notemodel->joinone('note_ishide = 1 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+
+        $postlist = $notemodel->joinonelist('note_ishide = 1 and note_type = 1 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+        $postcount = $notemodel->joinone('note_ishide = 1 and note_type = 1 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+
+        $questionlist = $notemodel->joinonelist('note_ishide = 1 and note_type = 2 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+        $questioncount = $notemodel->joinone('note_ishide = 1 and note_type = 2 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+
+        $resourcelist = $notemodel->joinonelist('note_ishide = 1 and note_type = 3 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+        $resourcecount = $notemodel->joinone('note_ishide = 1 and note_type = 3 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
 
         $this->assign(array(
             'userone' => $userone,
+            'isme' => $isme,
             'firendone' => $firendone,
             'concernsone' => $concernsone,
-            'fir_message' => $fir_message
+            'fir_message' => $fir_message,
+            'alllist' => $alllist,
+            'allcount' => $allcount,
+            'postlist' => $postlist,
+            'postcount' => $postcount,
+            'questionlist' => $questionlist,
+            'questioncount' => $questioncount,
+            'resourcelist' => $resourcelist,
+            'resourcecount' => $resourcecount,
         ));
         $this->display();
 
