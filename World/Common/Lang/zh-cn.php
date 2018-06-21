@@ -116,7 +116,12 @@ return array(
     /******************************************************************
      * Proposal start
      */
-
+      //proposal__list start
+    'Proposal_proposal__list_phone' => '联系电话',
+    'Proposal_proposal__list_content' => '建议内容',
+    'Proposal_proposal__list_type' => '建议类型',
+    'Proposal_proposal__list_time' => '时间',
+    //proposal__list end
 
     /*
 	 * Proposal end
