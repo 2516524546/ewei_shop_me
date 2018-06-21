@@ -9,14 +9,14 @@ layui.use(['carousel', 'form'], function() {
         interval: 1800,
         anim: 'fade',
         width: '100%',
-        // height: '500px'
+        height: '350px'
     });
 });
 
 // layui-carousel
-window.onload = function () {
-    var bannerW = $('.Carousel_img img')[0].width;
-    var bannerH = (bannerW*500)/1920;
-    $('.layui-carousel').css('height',bannerH+'px');
+// window.onload = function () {
+//     var bannerW = $('.Carousel_img img')[0].width;
+//     var bannerH = (bannerW*500)/1920;
+//     $('.layui-carousel').css('height',bannerH+'px');
 
-}
+// }
