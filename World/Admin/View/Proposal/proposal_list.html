@@ -70,9 +70,9 @@
 <div class="page-content">
 	<div class="page-header">
 		<h1>
-			捐款记录
+			建议管理
 			<small> <i class="icon-double-angle-right"></i>
-				捐款记录列表
+				建议列表
 			</small>
 			 
 		</h1>
@@ -87,23 +87,12 @@
 			 <div class="row" style="padding-bottom: 10px;">
 							<div class="col-sm-12">
 								<div id="sample-table-2_filter">
-									<form class="form-horizontal" action="{:U('Admin/Donation/donation_list_sou')}" method="POST" role="form" enctype="multipart/form-data">
+									<form class="form-horizontal" action="{:U('Admin/Proposal/proposal_list_sou')}" method="POST" role="form" enctype="multipart/form-data">
 									<div class="btn-group" style='margin-top:5px;'>
-										<span>{:L('User_user_list_nickname')}:</span>
-										<input type="text" name="nickname" value="<?php if($nickname){echo $nickname;}?>" placeholder="{:L('User_user_list_nickname')}">
+										<span>{:L('Proposal_proposal__list_phone')}:</span>
+										<input type="text" name="phone" value="<?php if($phone){echo $phone;}?>" placeholder="{:L('Proposal_proposal__list_phone')}">
 									</div>
-										<div class="btn-group" style='margin-top:5px;'>
-											<span>{:L('User_user_list_email')}:</span>
-											<input type="text" name="email" value="<?php if($email){echo $email;}?>" placeholder="{:L('User_user_list_email')}">
-										</div>
-										<div class="btn-group" style="margin-right:10px;margin-top:5px;">
-											<div class="input-group">
-												<span>{:L("Donation_donation_list_donation_date")}：</span>
-												<input class="form-control date-picker" value="<?php if($stime){echo $stime;}?>" name="stime" id="id-date-picker-1" style="width: 35%" type="text" data-date-format="yyyy-mm-dd" />
-												-
-												<input class="form-control date-picker" value="<?php if($etime){echo $etime;}?>" name="etime" id="id-date-picker-1" style="width: 35%" type="text" data-date-format="yyyy-mm-dd" />
-											</div>
-										</div>
+
 										<div class="btn-group" style='margin-top:5px;'>
 												<span class="input-group-btn">
 													<button type="submit" style="padding:0" class="btn btn-purple btn-sm">
@@ -130,13 +119,11 @@
 							<thead>
 								<tr style=' font-size: 13px;'>
 								    <!-- <th><input type='checkbox' name='' value=''></th> -->
-									<th>{:L("Donation_donation_list_serial_number")}</th>
-									<th>{:L("Donation_donation_list_donor")}</th>
-									<th>{:L("Donation_donation_list_donation_amount")}</th>
-									<th>{:L("User_user_list_headicon")}</th>
-									<th>{:L("User_user_list_email")}</th>
-									<th>{:L("Donation_donation_list_virtual_currency")}</th>
-									<th>{:L("Donation_donation_list_donation_date")}</th>
+									<th>{:L('Donation_donation_list_serial_number')}</th>
+									<th>{:L('Proposal_proposal__list_phone')}</th>
+									<th>{:L('Proposal_proposal__list_content')}</th>
+									<th>{:L('Proposal_proposal__list_type')}</th>
+									<th>{:L('Proposal_proposal__list_time')}</th>
 									<th>{:L('User_user_list_operation')}</th>
 								</tr>
 							</thead>
@@ -145,16 +132,14 @@
 							<?php foreach($list as $k=>$v){?>
 								<tr>
 								   <!--  <td><input type='checkbox' name='' value=''></td> -->
-									<td><?php echo $v['donation_id'];?></td>
-									<td><?php echo $v['user_name'];?></td>
-									<td><?php echo $v['donation_money'];?></td>
-									<td><img width="50px" height="50px"src="<?php echo './Uploads/'.$v['user_icon'];?>" /></td>
-									<td><?php echo $v['user_mail'];?></td>
-									<td><?php echo $v['donation_coin'];?></td>
-									<td><?php echo $v['donation_paytime'];?></td>
+									<td><?php echo $v['proposal_id'];?></td>
+									<td><?php echo $v['proposal_phone'];?></td>
+									<td><?php echo $v['proposal_content'];?></td>
+									<td><?php echo $v['proposal_type_content'];?></td>
+									<td><?php echo $v['proposal_time'];?></td>
 									<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-												<a href="index.php?m=Admin&c=Donation&a=donation_detail&id=<?php echo $v['donation_id']?>" class="btn btn-xs btn-success"><?php echo L('User_user_list_detail');?></a>
+												<a href="#" onClick="batchDelete(<?php echo $v['proposal_id']?>)" class="btn btn-xs btn-success"><?php echo L('User_user_list_del');?></a>
 											</div>
 									</td>
 								</tr>
@@ -247,7 +232,7 @@ $(function(){
         if(confirm("此操作不可逆,确认删除吗?")) {
             //var uid = {$jxid};
             $.ajax({
-                url: 'index.php?m=Admin&c=User&a=user_del',
+                url: 'index.php?m=Admin&c=Proposal&a=proposal_del',
                 data: 'id=' + id,
                 type: 'post',
                 success: function (msg) {
