@@ -276,33 +276,31 @@
                         <div class="layui-row layui-col-space10">
                             <div class=" layui-col-md8 layui-col-space10 btnlist">
                                 <ul class="layui-tab-title layui-col-space10">
-                                    <li class="layui-this" style="line-height: 14px;">All</li>
-                                    <li style="line-height: 14px;">Post</li>
-                                    <li style="line-height: 14px;">Q&A</li>
-                                    <li style="line-height: 14px;">Resources</li>
+                                    <li class="layui-this" style="line-height: 14px;" onclick="settype(0)">All</li>
+                                    <li style="line-height: 14px;" onclick="settype(1)">Post</li>
+                                    <li style="line-height: 14px;" onclick="settype(2)">Q&A</li>
+                                    <li style="line-height: 14px;" onclick="settype(3)">Resources</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="layui-tab-content">
                             <div class="layui-tab-item layui-show">
                                 <table class="layui-table PostTable" lay-skin="line">
-                                    <tbody>
+                                    <tbody id="allcontent">
                                     <foreach name="alllist" item="all" key="allkey">
                                     <tr>
                                         <td>
-                                            <a href="homepagePost.html" style="text-decoration: none;">
-                                                        <span class="WithNumber">
 
+                                            <a href="<if condition='$all["crowd_mid"] == 2'>{:U('Index/Rnterst/postDetails')}&cid={$all['note_cid']}&nid={$all['note_id']}<elseif condition='$all["crowd_mid"] == 3'/>{:U('Index/Academic/postDetails')}&cid={$all['note_cid']}&nid={$all['note_id']}<elseif condition='$all["crowd_mid"] == 4'/>{:U('Index/Jobs/postDetails')}&cid={$all['note_cid']}&nid={$all['note_id']}<elseif condition='$all["crowd_mid"] == 5'/>{:U('Index/Life/postDetails')}&cid={$all['note_cid']}&nid={$all['note_id']}<else />#</if>" style="text-decoration: none;">
 
-                                                        </span>
-                                                <span>
+                                            <span class="ImgBox">
                                                             <img src="<if condition='$all["user_icon"]'>./Uploads/{$all['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
                                                         </span>
                                             </a>
                                         </td>
                                         <td class="NameBox">
 
-                                            <a href="homepagePost.html" style="text-decoration: none;">
+                                            <a href="<if condition='$all["crowd_mid"] == 2'>{:U('Index/Rnterst/postDetails')}&cid={$all['note_cid']}&nid={$all['note_id']}<elseif condition='$all["crowd_mid"] == 3'/>{:U('Index/Academic/postDetails')}&cid={$all['note_cid']}&nid={$all['note_id']}<elseif condition='$all["crowd_mid"] == 4'/>{:U('Index/Jobs/postDetails')}&cid={$all['note_cid']}&nid={$all['note_id']}<elseif condition='$all["crowd_mid"] == 5'/>{:U('Index/Life/postDetails')}&cid={$all['note_cid']}&nid={$all['note_id']}<else />#</if>" style="text-decoration: none;">
                                                 {$all['note_name']}
                                             </a>
                                         </td>
@@ -317,6 +315,12 @@
                                         <td class="text-right">
                                             <p>{$all['note_createtime']}</p>
                                             <p>
+                                                <if condition='$all["note_type"] == 2'>
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_xs.png">{$all['note_reward']}
+                                                </if>
+                                                <if condition='$all["note_type"] == 3'>
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_download.png">{$all['note_reward']}
+                                                </if>
                                                 <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$all['note_comments']}
                                             </p>
                                         </td>
@@ -328,829 +332,114 @@
                             </div>
                             <div class="layui-tab-item">
                                 <table class="layui-table PostTable" lay-skin="line">
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            <a href="homepagePost.html" style="text-decoration: none;">
-                                                        <span class="WithNumber">
-                                                            <span class="WithNumbers">18</span>
-                                                            <img class="WithNumberImg"
-                                                                 src="img/02_interest/interest_qxx_pic_ups.png">
+                                    <tbody id="postcontent">
+                                    <foreach name="postlist" item="post" key="postkey">
+                                        <tr>
+                                            <td>
+                                                <a href="<if condition='$post["crowd_mid"] == 2'>{:U('Index/Rnterst/postDetails')}&cid={$post['note_cid']}&nid={$post['note_id']}<elseif condition='$post["crowd_mid"] == 3'/>{:U('Index/Academic/postDetails')}&cid={$post['note_cid']}&nid={$post['note_id']}<elseif condition='$post["crowd_mid"] == 4'/>{:U('Index/Jobs/postDetails')}&cid={$post['note_cid']}&nid={$post['note_id']}<elseif condition='$post["crowd_mid"] == 5'/>{:U('Index/Life/postDetails')}&cid={$post['note_cid']}&nid={$post['note_id']}<else />#</if>" style="text-decoration: none;">
+                                                <span class="ImgBox">
+                                                            <img src="<if condition='$post["user_icon"]'>./Uploads/{$post['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
                                                         </span>
-                                                <span>
-                                                            <img src="img/02_interest/Todoist.png">
-                                                        </span>
-                                            </a>
-                                        </td>
-                                        <td class="NameBox">
-                                            <a href="homepagePost.html" style="text-decoration: none;">
-                                                Topic Title
-                                            </a>
-                                        </td>
-                                        <td class="NameIcom">
-                                            <img src="img/02_interest/interest_qxx_icon_top.png">
-                                            <img src="img/02_interest/interest_qxx_icon_jing.png">
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_xs.png">888
-                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_xs.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_xs.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_xs.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_xs.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_xs.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_xs.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_xs.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_xs.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_xs.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_xs.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_xs.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_xs.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
+                                                </a>
+                                            </td>
+                                            <td class="NameBox">
+
+                                                <a href="<if condition='$post["crowd_mid"] == 2'>{:U('Index/Rnterst/postDetails')}&cid={$post['note_cid']}&nid={$post['note_id']}<elseif condition='$post["crowd_mid"] == 3'/>{:U('Index/Academic/postDetails')}&cid={$post['note_cid']}&nid={$post['note_id']}<elseif condition='$post["crowd_mid"] == 4'/>{:U('Index/Jobs/postDetails')}&cid={$post['note_cid']}&nid={$post['note_id']}<elseif condition='$post["crowd_mid"] == 5'/>{:U('Index/Life/postDetails')}&cid={$post['note_cid']}&nid={$post['note_id']}<else />#</if>" style="text-decoration: none;">
+                                                    {$post['note_name']}
+                                                </a>
+                                            </td>
+                                            <td class="NameIcom">
+                                                <if condition='$post["note_istop"] == 1'>
+                                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
+                                                </if>
+                                                <if condition='$post["note_iswally"] == 1'>
+                                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
+                                                </if>
+                                            </td>
+                                            <td class="text-right">
+                                                <p>{$post['note_createtime']}</p>
+                                                <p>
+                                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$post['note_comments']}
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </foreach>
+
                                     </tbody>
                                 </table>
                             </div>
                             <div class="layui-tab-item">
                                 <table class="layui-table PostTable" lay-skin="line">
-                                    <tbody>
+                                    <tbody id="questioncontent">
+                                    <foreach name="questionlist" item="question" key="questionkey">
                                     <tr>
                                         <td>
-                                            <a href="homepageQADetails.html" style="text-decoration: none;">
-                                                        <span class="WithNumber">
-                                                            <span class="WithNumbers">18</span>
-                                                            <img class="WithNumberImg"
-                                                                 src="img/02_interest/interest_qxx_pic_ups.png">
-                                                        </span>
-                                                <span>
-                                                            <img src="img/02_interest/Todoist.png">
+                                            <a href="<if condition='$question["crowd_mid"] == 2'>{:U('Index/Rnterst/postDetails')}&cid={$question['note_cid']}&nid={$question['note_id']}<elseif condition='$question["crowd_mid"] == 3'/>{:U('Index/Academic/postDetails')}&cid={$question['note_cid']}&nid={$question['note_id']}<elseif condition='$question["crowd_mid"] == 4'/>{:U('Index/Jobs/postDetails')}&cid={$question['note_cid']}&nid={$question['note_id']}<elseif condition='$question["crowd_mid"] == 5'/>{:U('Index/Life/postDetails')}&cid={$question['note_cid']}&nid={$question['note_id']}<else />#</if>" style="text-decoration: none;">
+                                            <span class="ImgBox">
+                                                            <img src="<if condition='$question["user_icon"]'>./Uploads/{$question['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
                                                         </span>
                                             </a>
                                         </td>
                                         <td class="NameBox">
-                                            <a href="homepageQADetails.html" style="text-decoration: none;">
-                                                Topic Title
+                                            <a href="<if condition='$question["crowd_mid"] == 2'>{:U('Index/Rnterst/postDetails')}&cid={$question['note_cid']}&nid={$question['note_id']}<elseif condition='$question["crowd_mid"] == 3'/>{:U('Index/Academic/postDetails')}&cid={$question['note_cid']}&nid={$question['note_id']}<elseif condition='$question["crowd_mid"] == 4'/>{:U('Index/Jobs/postDetails')}&cid={$question['note_cid']}&nid={$question['note_id']}<elseif condition='$question["crowd_mid"] == 5'/>{:U('Index/Life/postDetails')}&cid={$question['note_cid']}&nid={$question['note_id']}<else />#</if>" style="text-decoration: none;">
+                                                {$question['note_name']}
                                             </a>
                                         </td>
                                         <td class="NameIcom">
-                                            <img src="img/02_interest/interest_qxx_icon_top.png">
-                                            <img src="img/02_interest/interest_qxx_icon_jing.png">
+                                            <if condition='$question["note_istop"] == 1'>
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
+                                            </if>
+                                            <if condition='$question["note_iswally"] == 1'>
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
+                                            </if>
                                         </td>
                                         <td class="text-right">
-                                            <p>1 min</p>
+                                            <p>{$question['note_createtime']}</p>
                                             <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_xs.png">{$question['note_reward']}
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$question['note_comments']}
                                             </p>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                    <span class="WithNumber">
-                                                        <span class="WithNumbers">18</span>
-                                                    <img class="WithNumberImg"
-                                                         src="img/02_interest/interest_qxx_pic_ups.png">
-                                                    </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
+                                    </foreach>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="layui-tab-item">
                                 <table class="layui-table PostTable" lay-skin="line">
-                                    <tbody>
+                                    <tbody id="resourcecontent">
+                                    <foreach name="resourcelist" item="resource" key="resourcekey">
                                     <tr>
                                         <td>
-                                            <a href="homepageResourceDetails.html" style="text-decoration: none;">
-                                                            <span class="WithNumber">
-                                                                <span class="WithNumbers">18</span>
-                                                                <img class="WithNumberImg"
-                                                                     src="img/02_interest/interest_qxx_pic_ups.png">
-                                                            </span>
-                                                <span>
-                                                                <img src="img/02_interest/Todoist.png">
+                                            <a href="<if condition='$resource["crowd_mid"] == 2'>{:U('Index/Rnterst/postDetails')}&cid={$resource['note_cid']}&nid={$resource['note_id']}<elseif condition='$resource["crowd_mid"] == 3'/>{:U('Index/Academic/postDetails')}&cid={$resource['note_cid']}&nid={$resource['note_id']}<elseif condition='$resource["crowd_mid"] == 4'/>{:U('Index/Jobs/postDetails')}&cid={$resource['note_cid']}&nid={$resource['note_id']}<elseif condition='$resource["crowd_mid"] == 5'/>{:U('Index/Life/postDetails')}&cid={$resource['note_cid']}&nid={$resource['note_id']}<else />#</if>" style="text-decoration: none;">
+
+                                            <span class="ImgBox">
+                                                                <img src="<if condition='$resource["user_icon"]'>./Uploads/{$resource['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
                                                             </span>
                                             </a>
                                         </td>
                                         <td class="NameBox">
-                                            <a href="homepageResourceDetails.html" style="text-decoration: none;">
-                                                Topic Title
+                                            <a href="<if condition='$resource["crowd_mid"] == 2'>{:U('Index/Rnterst/postDetails')}&cid={$resource['note_cid']}&nid={$resource['note_id']}<elseif condition='$resource["crowd_mid"] == 3'/>{:U('Index/Academic/postDetails')}&cid={$resource['note_cid']}&nid={$resource['note_id']}<elseif condition='$resource["crowd_mid"] == 4'/>{:U('Index/Jobs/postDetails')}&cid={$resource['note_cid']}&nid={$resource['note_id']}<elseif condition='$resource["crowd_mid"] == 5'/>{:U('Index/Life/postDetails')}&cid={$resource['note_cid']}&nid={$resource['note_id']}<else />#</if>" style="text-decoration: none;">
+                                                {$resource['note_name']}
                                             </a>
                                         </td>
                                         <td class="NameIcom">
-                                            <img src="img/02_interest/interest_qxx_icon_top.png">
-                                            <img src="img/02_interest/interest_qxx_icon_jing.png">
+                                            <if condition='$resource["note_istop"] == 1'>
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
+                                            </if>
+                                            <if condition='$resource["note_iswally"] == 1'>
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
+                                            </if>
                                         </td>
                                         <td class="text-right">
-                                            <p>1 min</p>
+                                            <p>{$resource['note_createtime']}</p>
                                             <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_download.png">{$resource['note_reward']}
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$resource['note_comments']}
                                             </p>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                                        <span class="WithNumber">
-                                                            <span class="WithNumbers">18</span>
-                                                        <img class="WithNumberImg"
-                                                             src="img/02_interest/interest_qxx_pic_ups.png">
-                                                        </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                        <span class="WithNumber">
-                                                            <span class="WithNumbers">18</span>
-                                                        <img class="WithNumberImg"
-                                                             src="img/02_interest/interest_qxx_pic_ups.png">
-                                                        </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                        <span class="WithNumber">
-                                                            <span class="WithNumbers">18</span>
-                                                        <img class="WithNumberImg"
-                                                             src="img/02_interest/interest_qxx_pic_ups.png">
-                                                        </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                        <span class="WithNumber">
-                                                            <span class="WithNumbers">18</span>
-                                                        <img class="WithNumberImg"
-                                                             src="img/02_interest/interest_qxx_pic_ups.png">
-                                                        </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                        <span class="WithNumber">
-                                                            <span class="WithNumbers">18</span>
-                                                        <img class="WithNumberImg"
-                                                             src="img/02_interest/interest_qxx_pic_ups.png">
-                                                        </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                        <span class="WithNumber">
-                                                            <span class="WithNumbers">18</span>
-                                                        <img class="WithNumberImg"
-                                                             src="img/02_interest/interest_qxx_pic_ups.png">
-                                                        </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                        <span class="WithNumber">
-                                                            <span class="WithNumbers">18</span>
-                                                        <img class="WithNumberImg"
-                                                             src="img/02_interest/interest_qxx_pic_ups.png">
-                                                        </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                        <span class="WithNumber">
-                                                            <span class="WithNumbers">18</span>
-                                                        <img class="WithNumberImg"
-                                                             src="img/02_interest/interest_qxx_pic_ups.png">
-                                                        </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                        <span class="WithNumber">
-                                                            <span class="WithNumbers">18</span>
-                                                        <img class="WithNumberImg"
-                                                             src="img/02_interest/interest_qxx_pic_ups.png">
-                                                        </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                        <span class="WithNumber">
-                                                            <span class="WithNumbers">18</span>
-                                                        <img class="WithNumberImg"
-                                                             src="img/02_interest/interest_qxx_pic_ups.png">
-                                                        </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                        <span class="WithNumber">
-                                                            <span class="WithNumbers">18</span>
-                                                        <img class="WithNumberImg"
-                                                             src="img/02_interest/interest_qxx_pic_ups.png">
-                                                        </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                                        <span class="WithNumber">
-                                                            <span class="WithNumbers">18</span>
-                                                        <img class="WithNumberImg"
-                                                             src="img/02_interest/interest_qxx_pic_ups.png">
-                                                        </span>
-                                            <span><img src="img/02_interest/Todoist.png"></span>
-                                        </td>
-                                        <td colspan="2">
-                                            Topic Title
-                                        </td>
-                                        <td class="text-right">
-                                            <p>1 min</p>
-                                            <p>
-                                                <img src="img/02_interest/interest_qxx_icon_download.png">888
-                                                <img src="img/02_interest/interest_qxx_icon_pl.png">888
-                                            </p>
-                                        </td>
-                                    </tr>
+                                    </foreach>
                                     </tbody>
                                 </table>
                             </div>
@@ -1269,6 +558,252 @@
         });
     </script>
 <script>
+
+
+    var type = 0;
+    var allpage = 1;
+    var postpage = 1;
+    var questionpage = 1;
+    var resourcepage = 1;
+    var allcount = {$allcount};
+    var postcount = {$postcount};
+    var questioncount = {$questioncount};
+    var resourcecount = {$resourcecount};
+    var c = 1;
+    var a = 1;
+    var noteorder = 'note_istop desc,note_iswally desc,note_createtime desc'
+
+    function settype(num) {
+        type = num
+    }
+
+    $(window).scroll(function () {
+        var scrollTop = $(document).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        var gocheng =parseInt(scrollTop)+parseInt(windowHeight);
+
+        if (gocheng>(scrollHeight-200)) {
+
+            if (type == 0){
+                if (c==a){
+                    var limit1 = allpage*20;
+                    if (limit1<allcount){
+                        c = 2;
+                        havepost(2,noteorder,allpage,20,type)
+                        allpage += 1;
+                    }else{
+
+                    }
+                }
+            }else if (type == 1){
+                if (c==a){
+                    var limit1 = postpage*20;
+                    if (limit1<postcount){
+                        c = 2;
+                        havepost(2,noteorder,postpage,20,type)
+                        postpage += 1;
+                    }else{
+
+                    }
+                }
+            }else if (type == 2){
+
+                if (c==a){
+
+                    var limit1 = questionpage*20;
+
+                    if (limit1<questioncount){
+                        c = 2;
+                        havepost(2,noteorder,questionpage,20,type)
+                        questionpage += 1;
+                    }else{
+
+                    }
+                }
+            }else if (type == 3){
+
+                if (c==a){
+
+                    var limit1 = resourcepage*20;
+
+                    if (limit1<resourcecount){
+                        c = 2;
+                        havepost(2,noteorder,resourcepage,20,type)
+                        resourcepage += 1;
+                    }else{
+
+                    }
+                }
+            }
+        }
+    })
+
+    function havepost(type,order,limit1,limit2,seltype) {
+
+        $.ajax({
+            type:"post",
+            url:"{:U('Index/Ajax/ajax_haveuserpost')}",
+            data:{
+                name:$("#Selectionform").val(),
+                order:order,
+                limit1:limit1,
+                limit2:limit2,
+                uid:'{$userone["user_id"]}',
+                type:seltype,
+
+            },
+            dataType:"json",
+            async:false,
+            success: function(list){
+
+                if(list!=null&&list!=""){
+
+                    if (list.str == 1){
+
+                        var message = '';
+                        for (var i = 0; i < list.msg.length; i++) {
+
+                            message += '<tr><td>';
+                            var url = '#';
+                            if (list.msg[i].crowd_mid==2){
+                                var url = '{:U("Index/Rnterst/postDetails")}&cid='+list.msg[i].note_cid+'&nid='+list.msg[i].note_id;
+                            }else if (list.msg[i].crowd_mid==3){
+                                var url = '{:U("Index/Academic/postDetails")}&cid='+list.msg[i].note_cid+'&nid='+list.msg[i].note_id;
+                            }else if (list.msg[i].crowd_mid==4){
+                                var url = '{:U("Index/Jobs/postDetails")}&cid='+list.msg[i].note_cid+'&nid='+list.msg[i].note_id;
+                            }else if (list.msg[i].crowd_mid==5){
+                                var url = '{:U("Index/Life/postDetails")}&cid='+list.msg[i].note_cid+'&nid='+list.msg[i].note_id;
+                            }
+
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
+                            message += '<span class="ImgBox">'
+                            var src = '__PUBLIC__/Web/web/img/01_shouye/UserPic.png'
+                            if (list.msg[i].user_icon&&list.msg[i].user_icon!=''&&list.msg[i].user_icon!=null){
+                                src = 'Uploads/'+list.msg[i].user_icon;
+                            }
+                            message += '<img src="'+src+'">';
+                            message += '</span></a></td><td class="NameBox">'
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
+                            message += list.msg[i].note_name
+                            message += '</a></td><td class="NameIcom">'
+                            if(list.msg[i].note_istop==1){
+                                message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">'
+                            }
+                            if(list.msg[i].note_iswally==1){
+                                message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">'
+                            }
+                            message += '</td><td class="text-right">'
+                            message += '<p>'+list.msg[i].note_createtime+'</p>'
+                            message += '<p>'
+                            if (list.msg[i].note_type == 2){
+                                message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_xs.png">'+list.msg[i].note_reward
+                            }
+                            if (list.msg[i].note_type == 3){
+                                message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_download.png">'+list.msg[i].note_reward
+                            }
+                            message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">'+list.msg[i].note_comments+'</p>'
+                            message += '</td></tr>'
+
+                        }
+
+                        if (type==1){
+                            if (seltype==1){
+                                c = 1;
+                                notepage = 1;
+                                notecount = list.count;
+                                $("#postcontent").html(message);
+                            }else if (seltype==2){
+                                c = 1;
+                                questionpage = 1;
+                                questioncount = list.count;
+                                $("#questioncontent").html(message);
+                            }else if (seltype==3){
+                                c = 1;
+                                resourcepage = 1;
+                                resourcecount = list.count;
+                                $("#resourcecontent").html(message);
+                            }
+
+                        }else{
+                            if (seltype==0){
+                                c=1;
+                                var allcontenthtml = $("#allcontent").html()+message
+                                $("#allcontent").html(allcontenthtml);
+                            }else if (seltype==1){
+                                c=1;
+                                var postcontenthtml = $("#postcontent").html()+message
+                                $("#postcontent").html(postcontenthtml);
+                            }else if (seltype==2){
+                                c=1;
+                                var questioncontenthtml = $("#questioncontent").html()+message
+                                $("#questioncontent").html(questioncontenthtml);
+                            }else if (seltype==3){
+                                c=1;
+                                var resourcecontenthtml = $("#resourcecontent").html()+message
+                                $("#resourcecontent").html(resourcecontenthtml);
+                            }
+
+                        }
+                    }else if (list.str == 2){
+                        if (type==1){
+                            if (seltype==0){
+                                allpage = 1;
+                                c=1;
+                                allcount = list.count;
+                                $("#allcontent").html('');
+                            }else if (seltype==1){
+                                postpage = 1;
+                                c=1;
+                                postcount = list.count;
+                                $("#postcontent").html('');
+                            }else if (seltype==2){
+                                questionpage = 1;
+                                c=1;
+                                questioncount = list.count;
+                                $("#questioncontent").html('');
+                            }else if (seltype==3){
+                                resourcepage = 1;
+                                c=1;
+                                resourcecount = list.count;
+                                $("#resourcecontent").html('');
+                            }
+
+
+                        }else{
+                            c=1;
+
+                        }
+                    }else{
+                        layer.msg(list.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+
+                    }
+                }else{
+                    layer.msg('请求错误!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                layer.msg('请求失败!',{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+
+        })
+    }
+
+
 
 
 

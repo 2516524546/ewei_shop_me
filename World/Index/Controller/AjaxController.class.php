@@ -2573,6 +2573,32 @@ public function ajax_donationpay()
         }
     }
 
+    //用户主页post懒加载
+    public function ajax_haveuserpost(){
+        if (IS_POST){
+
+            $where = 'note_uid = '.$this->post('uid').' and note_ishide = 1';
+
+            if ($this->post('type')!=0){
+                $where .= ' and note_type = '.$this->post('type');
+            }
+
+            $notemodel = new NoteModel();
+            $limit1 = $this->post('limit1')*$this->post('limit2');
+            $limit2 = $this->post('limit2');
+            $notelist = $notemodel->jointwolist($where,'u_user u on u_note.note_uid = u.user_id','u_crowd c on u_note.note_cid = c.crowd_id',$this->post('order'),$limit1,$limit2);
+            $notecount = $notemodel->jointwoone($where,'u_user u on u_note.note_uid = u.user_id','u_crowd c on u_note.note_cid = c.crowd_id',$this->post('order'),'INNER','INNER','count(*) num')['num'];
+            if ($notelist){
+                die(json_encode(array('str' => 1,'msg'=>$notelist,'count'=>$notecount)));
+            }else{
+                die(json_encode(array('str' => 2,'msg'=>$notelist,'count'=>$notecount)));
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
     //加入普通群
     public function ajax_followcrowd(){
 
@@ -2704,19 +2730,34 @@ public function ajax_donationpay()
                 die(json_encode(array('str' => 4, 'msg' => '没有该帖子')));
             }else {
 
-                $data = array(
-                    'note_comment_uid' => $this->userid,
-                    'note_comment_nid' => $this->post('nid'),
-                    'note_comment_content' => $this->post('content'),
-                    'note_comment_createtime' => date("Y-m-d H:i:s", time()),
-                );
-                $notecommentmodel = new NoteCommentModel();
-                $res = $notecommentmodel->add($data);
-                if ($res){
+                $notemodel = new NoteModel();
+                $noteone = $notemodel->findone('note_id = '.$this->post('nid'));
+                $notemodel->startTrans();
+                try{
+                    $data = array(
+                        'note_comment_uid' => $this->userid,
+                        'note_comment_nid' => $this->post('nid'),
+                        'note_comment_content' => $this->post('content'),
+                        'note_comment_createtime' => date("Y-m-d H:i:s", time()),
+                    );
 
-                    die(json_encode(array('str' => 1,'msg'=>'发表成功')));
-                }else{
-                    die(json_encode(array('str' => 2,'msg'=>'发表失败')));
+                    $notedata = array(
+                        'note_comments'=>$noteone['note_comments']+1,
+                    );
+
+                    $notecommentmodel = new NoteCommentModel();
+                    $res = $notecommentmodel->add($data);
+                    $noteres = $notemodel->updataone('note_id = '.$this->post('nid'),$notedata);
+                    if ($res&&$noteres) {
+                        $notemodel->commit();
+                        die(json_encode(array('str' => 1, 'msg' => '发表成功')));
+                    } else {
+                        $notemodel->rollback();
+                        die(json_encode(array('str' => 2, 'msg' => '发表失败')));
+                    }
+                }catch (Exception $e) {
+                    $notemodel->rollback();
+                    die(json_encode(array('str' => 2, 'msg' => '发表失败')));
                 }
 
             }

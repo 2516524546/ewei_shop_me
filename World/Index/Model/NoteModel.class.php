@@ -38,7 +38,15 @@ class NoteModel extends Model{
         return $this->join($join1,$jointype1)->field($field)->where($where)->order($order)->limit($limit1,$limit2)->select();
     }
 
+    public function jointwolist($where,$join1,$join2,$order,$limit1,$limit2,$jointype1='INNER',$jointype2='INNER',$field=false){
 
+        return $this->join($join1,$jointype1)->join($join2,$jointype2)->field($field)->where($where)->order($order)->limit($limit1,$limit2)->select();
+    }
+
+    public function jointwoone($where,$join1,$join2,$order,$jointype1='INNER',$jointype2='INNER',$field=false){
+
+        return $this->join($join1,$jointype1)->join($join2,$jointype2)->field($field)->where($where)->order($order)->find();
+    }
 
 
 }

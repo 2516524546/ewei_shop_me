@@ -65,17 +65,19 @@ class UserController extends CommonController {
         }
 
         $notemodel = new NoteModel();
-        $alllist = $notemodel->joinonelist('note_ishide = 1 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
-        $allcount = $notemodel->joinone('note_ishide = 1 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+        //$alllist = $notemodel->join('u_user u on u_note.note_uid = u.user_id','INNER')->join('u_crowd c on u_note.note_cid = c.crowd_id','INNER')->field(false)->where('note_ishide = 1 and note_uid = '.$_GET['id'])->order('note_istop desc,note_iswally desc,note_createtime desc')->limit(0,20)->select();
+        $alllist = $notemodel->jointwolist('note_ishide = 1 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','u_crowd c on u_note.note_cid = c.crowd_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+        $allcount = $notemodel->jointwoone('note_ishide = 1 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','u_crowd c on u_note.note_cid = c.crowd_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','INNER','count(*) num')['num'];
 
-        $postlist = $notemodel->joinonelist('note_ishide = 1 and note_type = 1 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
-        $postcount = $notemodel->joinone('note_ishide = 1 and note_type = 1 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
 
-        $questionlist = $notemodel->joinonelist('note_ishide = 1 and note_type = 2 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
-        $questioncount = $notemodel->joinone('note_ishide = 1 and note_type = 2 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+        $postlist = $notemodel->jointwolist('note_ishide = 1 and note_type = 1 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','u_crowd c on u_note.note_cid = c.crowd_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+        $postcount = $notemodel->jointwoone('note_ishide = 1 and note_type = 1 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','u_crowd c on u_note.note_cid = c.crowd_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','INNER','count(*) num')['num'];
 
-        $resourcelist = $notemodel->joinonelist('note_ishide = 1 and note_type = 3 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
-        $resourcecount = $notemodel->joinone('note_ishide = 1 and note_type = 3 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+        $questionlist = $notemodel->jointwolist('note_ishide = 1 and note_type = 2 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','u_crowd c on u_note.note_cid = c.crowd_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+        $questioncount = $notemodel->jointwoone('note_ishide = 1 and note_type = 2 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','u_crowd c on u_note.note_cid = c.crowd_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','INNER','count(*) num')['num'];
+
+        $resourcelist = $notemodel->jointwolist('note_ishide = 1 and note_type = 3 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','u_crowd c on u_note.note_cid = c.crowd_id','note_istop desc,note_iswally desc,note_createtime desc',0,20);
+        $resourcecount = $notemodel->jointwoone('note_ishide = 1 and note_type = 3 and note_uid = '.$_GET['id'],'u_user u on u_note.note_uid = u.user_id','u_crowd c on u_note.note_cid = c.crowd_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','INNER','count(*) num')['num'];
 
         $this->assign(array(
             'userone' => $userone,
@@ -130,10 +132,8 @@ class UserController extends CommonController {
     }
 
     public function myPosts(){
+        
         $this->assign(array(
-            'userid' => $this->userid,
-            'usercontent' =>$this->usercontent,
-            'havemessage' => $this->havemessage,
 
         ));
         $this->assign('title','My Posts');
