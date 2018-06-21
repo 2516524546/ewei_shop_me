@@ -370,18 +370,21 @@
         })
     }
 
+    var replyid = 0
     function reply(comid,obj) {
 
         var name = $(obj).parent().parent().parent().children(".item_user_name").children(".User_name").text();
         var Cspan = "<span class='ReplyUser'>reply @ <span class='ReplyUser_name'>"+name+"</span> ：</span>"
         $(".ReplyUser").remove()
         $(".RepllyBox").append(Cspan);
+        replyid = comid
 
     }
 
     $(".ReturnBox .refresh_btn").on("click",function(){
         $('.ReturnBox .ReplyUser').remove();
         $(".ReturnBox .Returntextarea").val("")
+        replyid = 0
     })
 
 
@@ -390,47 +393,94 @@
 
         if (userid) {
 
-            $.ajax({
-                type: "post",
-                url: "{:U('Index/Ajax/ajax_createIssueComment')}",
-                data: {
-                    content: $("#content").val(),
-                    tid: '{$issueone["tutorship_issue_id"]}'
+            if (replyid != 0 ){
 
-                },
-                dataType: "json",
-                async: false,
-                success: function (list) {
-                    //console.log(interest)
-                    if (list.str == 1){
-                        layer.msg(list.msg,{
-                                time:1500,
-                                icon:1,
-                            },function () {
-                                location.reload();
+                $.ajax({
+                    type: "post",
+                    url: "{:U('Index/Ajax/ajax_replyIssueComment')}",
+                    data: {
+                        content: $("#content").val(),
+                        replyid: replyid,
+
+                    },
+                    dataType: "json",
+                    async: false,
+                    success: function (list) {
+                        //console.log(interest)
+                        if (list.str == 1) {
+                            layer.msg(list.msg, {
+                                    time: 1500,
+                                    icon: 1,
+                                }, function () {
+                                    location.reload();
+                                }
+                            );
+
+                        } else {
+                            layer.msg(list.msg, {
+                                    time: 1500,
+                                    icon: 2,
+                                }
+                            );
+
+                        }
+
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                        layer.msg('请求失败!', {
+                                time: 1500,
+                                icon: 2,
                             }
                         );
-
-                    }else{
-                        layer.msg(list.msg,{
-                                time:1500,
-                                icon:2,
-                            }
-                        );
-
                     }
 
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                })
 
-                    layer.msg('请求失败!', {
-                            time: 1500,
-                            icon: 2,
+            }else {
+
+                $.ajax({
+                    type: "post",
+                    url: "{:U('Index/Ajax/ajax_createIssueComment')}",
+                    data: {
+                        content: $("#content").val(),
+                        tid: '{$issueone["tutorship_issue_id"]}'
+
+                    },
+                    dataType: "json",
+                    async: false,
+                    success: function (list) {
+                        //console.log(interest)
+                        if (list.str == 1) {
+                            layer.msg(list.msg, {
+                                    time: 1500,
+                                    icon: 1,
+                                }, function () {
+                                    location.reload();
+                                }
+                            );
+
+                        } else {
+                            layer.msg(list.msg, {
+                                    time: 1500,
+                                    icon: 2,
+                                }
+                            );
+
                         }
-                    );
-                }
 
-            })
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                        layer.msg('请求失败!', {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }
+
+                })
+            }
         }else {
             layer.msg("请先登录",{
                     time:1500,
