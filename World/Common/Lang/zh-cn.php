@@ -38,6 +38,7 @@ return array(
     'User_user_list_del' => '删除',
     'User_user_list_detail' => '查看',
     'User_user_list_code' => '邀请码',
+    'User_user_list_address' => '地址',
     'User_user_list_search' => '搜索',
     //user_list end
 
@@ -79,7 +80,13 @@ return array(
     /******************************************************************
      * Donation start
      */
-
+    //donation_list start
+    'Donation_donation_list_serial_number' => '序号',
+    'Donation_donation_list_donor' => '捐款人',
+    'Donation_donation_list_donation_amount' => '捐款金额(元)',
+    'Donation_donation_list_virtual_currency' => '奖励虚拟币',
+    'Donation_donation_list_donation_date' => '捐款日期',
+    //donation_list end
 
     /*
 	 * Donation end

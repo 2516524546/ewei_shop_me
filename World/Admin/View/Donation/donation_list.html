@@ -87,12 +87,7 @@
 			 <div class="row" style="padding-bottom: 10px;">
 							<div class="col-sm-12">
 								<div id="sample-table-2_filter">
-									<form class="form-horizontal" action="{:U('Admin/User/user_list_sou')}" method="POST" role="form" enctype="multipart/form-data">
-									<div class="btn-group" style='margin-top:5px;'>
-										<span>{:L('User_user_list_id')}:</span>
-										<input type="text" name="id" value="<?php if($id){echo $id;}?>" placeholder="{:L('User_user_list_id')}">
-									</div>
-									<input type='hidden' name='button' value='1'/>
+									<form class="form-horizontal" action="{:U('Admin/Donation/donation_list_sou')}" method="POST" role="form" enctype="multipart/form-data">
 									<div class="btn-group" style='margin-top:5px;'>
 										<span>{:L('User_user_list_nickname')}:</span>
 										<input type="text" name="nickname" value="<?php if($nickname){echo $nickname;}?>" placeholder="{:L('User_user_list_nickname')}">
@@ -101,7 +96,14 @@
 											<span>{:L('User_user_list_email')}:</span>
 											<input type="text" name="email" value="<?php if($email){echo $email;}?>" placeholder="{:L('User_user_list_email')}">
 										</div>
-
+										<div class="btn-group" style="margin-right:10px;margin-top:5px;">
+											<div class="input-group">
+												<span>{:L("Donation_donation_list_donation_date")}：</span>
+												<input class="form-control date-picker" value="<?php if($stime){echo $stime;}?>" name="stime" id="id-date-picker-1" style="width: 35%" type="text" data-date-format="yyyy-mm-dd" />
+												-
+												<input class="form-control date-picker" value="<?php if($etime){echo $etime;}?>" name="etime" id="id-date-picker-1" style="width: 35%" type="text" data-date-format="yyyy-mm-dd" />
+											</div>
+										</div>
 										<div class="btn-group" style='margin-top:5px;'>
 												<span class="input-group-btn">
 													<button type="submit" style="padding:0" class="btn btn-purple btn-sm">
@@ -128,13 +130,13 @@
 							<thead>
 								<tr style=' font-size: 13px;'>
 								    <!-- <th><input type='checkbox' name='' value=''></th> -->
-									<th>序号</th>
-									<th>捐款人</th>
-									<th>捐款金额(元)</th>
-									<th>头像</th>
-									<th>邮箱</th>
-									<th>奖励虚拟币</th>
-									<th>捐款日期</th>
+									<th>{:L("Donation_donation_list_serial_number")}</th>
+									<th>{:L("Donation_donation_list_donor")}</th>
+									<th>{:L("Donation_donation_list_donation_amount")}</th>
+									<th>{:L("User_user_list_headicon")}</th>
+									<th>{:L("User_user_list_email")}</th>
+									<th>{:L("Donation_donation_list_virtual_currency")}</th>
+									<th>{:L("Donation_donation_list_donation_date")}</th>
 									<th>{:L('User_user_list_operation')}</th>
 								</tr>
 							</thead>
@@ -144,15 +146,15 @@
 								<tr>
 								   <!--  <td><input type='checkbox' name='' value=''></td> -->
 									<td><?php echo $v['donation_id'];?></td>
-									<td><?php echo $v['donation_uid'];?></td>
+									<td><?php echo $v['user_name'];?></td>
 									<td><?php echo $v['donation_money'];?></td>
-									<td><?php echo $v['donation_uid'];?></td>
-									<td><?php echo $v['donation_uid'];?></td>
+									<td><img width="50px" height="50px"src="<?php echo './Uploads/'.$v['user_icon'];?>" /></td>
+									<td><?php echo $v['user_mail'];?></td>
 									<td><?php echo $v['donation_coin'];?></td>
 									<td><?php echo $v['donation_paytime'];?></td>
 									<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-												<a href="index.php?m=Admin&c=User&a=user_xiang&id=<?php echo $v['user_id']?>" class="btn btn-xs btn-success"><?php echo L('User_user_list_detail');?></a>
+												<a href="index.php?m=Admin&c=Donation&a=donation_detail&id=<?php echo $v['donation_id']?>" class="btn btn-xs btn-success"><?php echo L('User_user_list_detail');?></a>
 											</div>
 									</td>
 								</tr>
