@@ -108,7 +108,7 @@
                                             <foreach name="notelist" item="note" key="notekey">
                                             <tr>
                                                 <td>
-                                                    <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
+                                                    <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
 
                                                         <span class="ImgBox">
                                                             <img src="<if condition='$note["user_icon"]'>./Uploads/{$note['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
@@ -116,7 +116,7 @@
                                                     </a>
                                                 </td>
                                                 <td class="NameBox">
-                                                    <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
+                                                    <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
                                                        <!-- <span class="TopicNames">{$note['note_name']}</span>-->
                                                         {$note['note_name']}
                                                     </a>
@@ -147,7 +147,7 @@
                                         <foreach name="questionlist" item="question" key="questionkey">
                                             <tr>
                                                 <td>
-                                                    <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$question['note_id']}" style="text-decoration: none;">
+                                                    <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$question['note_id']}" style="text-decoration: none;">
                                                         <!--<span class="WithNumber">
                                                             <span class="WithNumbers">18</span>
                                                             <img class="WithNumberImg" src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_pic_ups.png">
@@ -158,7 +158,7 @@
                                                     </a>
                                                 </td>
                                                 <td class="NameBox">
-                                                    <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$question['note_id']}" style="text-decoration: none;">
+                                                    <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$question['note_id']}" style="text-decoration: none;">
                                                         {$question['note_name']}
                                                     </a>
                                                 </td>
@@ -189,7 +189,7 @@
                                         <foreach name="resourcelist" item="resource" key="resourcekey">
                                             <tr>
                                                 <td>
-                                                    <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$resource['note_id']}" style="text-decoration: none;">
+                                                    <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$resource['note_id']}" style="text-decoration: none;">
 
                                                         <span class="ImgBox">
                                                             <img src="<if condition='$resource["user_icon"]'>./Uploads/{$resource['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
@@ -197,7 +197,7 @@
                                                     </a>
                                                 </td>
                                                 <td class="NameBox">
-                                                    <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$resource['note_id']}" style="text-decoration: none;">
+                                                    <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$resource['note_id']}" style="text-decoration: none;">
                                                         {$resource["note_name"]}
                                                     </a>
                                                 </td>
