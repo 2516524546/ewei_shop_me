@@ -406,5 +406,52 @@ class MarkController extends CommonController {
         }
     }
 
+    //删除第四标识
+    public function ajax_fourthdel(){
+        if (IS_POST) {
+
+            $fid = $_POST['fid'];
+
+            $fourthmarkmodel = new FourthMarkModel();
+
+            $data = array('fourth_mark_id'=>$fid);
+            $res = $fourthmarkmodel->where($data)->delete();
+            if ($res){
+                die(json_encode(array('str' => 1, 'msg' => L('Mark_second_list_delok'))));
+            }else{
+                die(json_encode(array('str' => 2, 'msg' => L('Mark_second_list_delno'))));
+            }
+
+        } else {
+
+            die(json_encode(array('str' => 0, 'msg' => L('newworld_ajax_havenoing'))));
+        }
+    }
+
+    //修改第三标签
+    public function ajax_fourthedit(){
+
+        if (IS_POST) {
+
+            $fid = $_POST['fid'];
+            $name = $_POST['name'];
+            $data = array(
+                'fourth_mark_name'=>$name,
+            );
+            $fourthmarkmodel = new FourthMarkModel();
+
+            $res = $fourthmarkmodel->updataone('fourth_mark_id = '.$fid,$data);
+            if ($res){
+                die(json_encode(array('str' => 1, 'msg' => L('Mark_ajax_firstedit_ok'))));
+            }else{
+                die(json_encode(array('str' => 2, 'msg' => L('Mark_ajax_firstedit_no'))));
+            }
+
+        } else {
+
+            die(json_encode(array('str' => 0, 'msg' => L('newworld_ajax_havenoing'))));
+        }
+
+    }
 	
 }

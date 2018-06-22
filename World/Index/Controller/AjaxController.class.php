@@ -656,8 +656,8 @@ public function ajax_donationpay()
             ->setInvoiceNumber($donationone['donation_orderid']);
 
         $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl('http://web.newworld.com/index.php?m=Index&c=Ajax&a=paypalexec&success=true')
-            ->setCancelUrl('http://web.newworld.com/index.php?m=Index&c=Ajax&a=paypalcancel&success=false&orderid='.$donationone['donation_orderid']);
+        $redirectUrls->setReturnUrl('http://manyun.newworld.com/index.php?m=Index&c=Ajax&a=paypalexec&success=true')
+            ->setCancelUrl('http://manyun.newworld.com/index.php?m=Index&c=Ajax&a=paypalcancel&success=false&orderid='.$donationone['donation_orderid']);
 
         $payment = new Payment();
         $payment->setIntent('sale')
