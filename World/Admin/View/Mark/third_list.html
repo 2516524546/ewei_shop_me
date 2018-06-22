@@ -104,6 +104,11 @@
 				</if>
 
 			</small>
+			<small>
+				<a class="icon-double-angle-right" href="{:U('Admin/Mark/second_list')}&fid={$firstone['first_mark_id']}">
+					{$firstone['firsth_mark_name']}
+				</a>
+			</small>
 			 
 		</h1>
 
@@ -117,7 +122,7 @@
 
 							<div class='anniu'>
 								<ul>
-									<li role="presentation" class="current" >{$firstone['firsth_mark_name']}</li>
+									<li role="presentation" class="current" >{$secondone['second_mark_name']}</li>
 
 								</ul>
 							</div>
@@ -126,7 +131,7 @@
 								<ul style="border: 0px">
 									<li role="presentation" data-toggle="modal" data-target="#add-auth" class="current" >{:L('Mark_second_list_add')}</li>
 
-									<if condition='$secondlist[0]["second_mark_isextend"] != 1'>
+									<if condition='$thirdlist[0]["third_mark_isextend"] != 1'>
 										<li role="presentation"  class="current" style="margin-left: 50px;" onclick="extend()">{:L('Mark_second_list_extend')}</li>
 									<else />
 										<li role="presentation" style="margin-left: 50px;border: 1px solid #080808">{:L('Mark_second_list_isextend')}</li>
@@ -155,17 +160,17 @@
 							</thead>
 
 							<tbody>
-							<foreach name="secondlist" item="second" key="secondkey">
+							<foreach name="thirdlist" item="third" key="thirdkey">
 								<tr>
 
-									<td>{$second['second_mark_name']}</td>
+									<td>{$third['third_mark_name']}</td>
 
 									<td>
 										<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-											<a class="btn btn-xs btn-success" onclick="del({$second['second_mark_id']})">{:L('Module_module_list_module_del')}</a>
-											<a class="btn btn-xs btn-success" data-toggle="modal" data-target="#edit-auth" onclick="havesecmark('{$second["second_mark_name"]}',{$second['second_mark_id']})">{:L('Mark_mark_list_edit')}</a>
-											<if condition='$second["second_mark_isextend"] == 1'>
-											<a href="javascript:void(0)" class="btn btn-xs btn-success" onclick="gothird({$second['second_mark_id']})">{:L('Mark_mark_list_mamage')}</a>
+											<a class="btn btn-xs btn-success" onclick="del({$third['third_mark_id']})">{:L('Module_module_list_module_del')}</a>
+											<a class="btn btn-xs btn-success" data-toggle="modal" data-target="#edit-auth" onclick="havethrmark('{$third["third_mark_name"]}',{$third['third_mark_id']})">{:L('Mark_mark_list_edit')}</a>
+											<if condition='$third["third_mark_isextend"] == 1'>
+											<a href="javascript:void(0)" class="btn btn-xs btn-success" onclick="gofourth({$third['third_mark_id']})">{:L('Mark_mark_list_mamage')}</a>
 											</if>
 
 										</div>
@@ -237,7 +242,7 @@
 						<div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
 							<label class="col-sm-3 control-label">{:L('Mark_mark_list_name')}:</label>
 							<div class="col-sm-8">
-								<input type="text" name="name" id="secondname" value="" class="form-control">
+								<input type="text" name="name" id="thirdname" value="" class="form-control">
 							</div>
 						</div>
 					</div>
@@ -278,20 +283,19 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
 
 
     var saveid = 0;
-    function havesecmark(name,fid) {
+    function havethrmark(name,tid) {
 
-		saveid = fid;
-
-        $("#secondname").val(name)
+		saveid = tid;
+        $("#thirdname").val(name)
     }
     
     function save() {
         $.ajax({
             type:"post",
-            url:"{:U('Admin/Mark/ajax_secondedit')}",
+            url:"{:U('Admin/Mark/ajax_thirdedit')}",
             data:{
-                name:$("#secondname").val(),
-				sid:saveid,
+                name:$("#thirdname").val(),
+				tid:saveid,
             },
             dataType:"json",
             success: function(list){
@@ -320,9 +324,9 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
                 layer.close(index);
                 $.ajax({
                     type: "post",
-                    url: "{:U('Admin/Mark/ajax_secondextend')}",
+                    url: "{:U('Admin/Mark/ajax_thirdextend')}",
                     data: {
-                        fid: {$firstone['first_mark_id']},
+                        sid: {$secondone['second_mark_id']},
                     },
                     dataType: "json",
                     success: function (list) {
@@ -346,19 +350,18 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
         });
     }
 
-    function gothird(sid) {
-        location.href = "{:U('Admin/Mark/third_list')}&sid="+sid
+    function gofourth(tid) {
+        location.href = "{:U('Admin/Mark/fourth_list')}&tid="+tid
     }
-
 
     function add(){
 
         $.ajax({
             type:"post",
-            url:"{:U('Admin/Mark/ajax_secondadd')}",
+            url:"{:U('Admin/Mark/ajax_thirdadd')}",
             data:{
                 name:$("#name").val(),
-                fid:{$firstone['first_mark_id']},
+                sid:{$secondone['second_mark_id']},
             },
             dataType:"json",
             success: function(list){
@@ -380,18 +383,18 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
 
 	}
 
-	function del(sid) {
+	function del(tid) {
 
         layer.msg("{:L('Mark_second_list_if')}", {
-            time: 0 //不自动关闭
+            time: 0
             ,btn: ["{:L('Mark_second_list_ok')}", "{:L('Mark_second_list_no')}"]
             ,yes: function(index){
                 layer.close(index);
                 $.ajax({
                     type: "post",
-                    url: "{:U('Admin/Mark/ajax_seconddel')}",
+                    url: "{:U('Admin/Mark/ajax_thirddel')}",
                     data: {
-                        sid: sid,
+                        tid: tid,
                     },
                     dataType: "json",
                     success: function (list) {

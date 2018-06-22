@@ -7,6 +7,7 @@
 		<!-- basic styles -->
 		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
 
 		<!--[if IE 7]>
 		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
@@ -80,7 +81,39 @@
 			<small> <i class="icon-double-angle-right"></i>
 				{:L('Mark_mark_list')}
 			</small>
+			<small>
+				<if condition='$firstone["first_mark_mid"] == 2'>
+					<a class="icon-double-angle-right" href="{:U('Admin/Mark/mark_list')}&mid=2&type=1">
+					{:L('Mark_mark_list_interst')}
+					</a>
+				</if>
+				<if condition='$firstone["first_mark_mid"] == 3'>
+					<a class="icon-double-angle-right" href="{:U('Admin/Mark/mark_list')}&mid=3&type=1">
+					{:L('Mark_mark_list_academic')}
+					</a>
+				</if>
+				<if condition='$firstone["first_mark_mid"] == 4'>
+					<a class="icon-double-angle-right" href="{:U('Admin/Mark/mark_list')}&mid=4&type=1">
+					{:L('Mark_mark_list_jobs')}
+					</a>
+				</if>
+				<if condition='$firstone["first_mark_mid"] == 5'>
+					<a class="icon-double-angle-right" href="{:U('Admin/Mark/mark_list')}&mid=5&type=1">
+					{:L('Mark_mark_list_life')}
+					</a>
+				</if>
 
+			</small>
+			<small>
+				<a class="icon-double-angle-right" href="{:U('Admin/Mark/second_list')}&fid={$firstone['first_mark_id']}">
+					{$firstone['firsth_mark_name']}
+				</a>
+			</small>
+			<small>
+				<a class="icon-double-angle-right" href="{:U('Admin/Mark/third_list')}&sid={$secondone['second_mark_id']}">
+					{$secondone['second_mark_name']}
+				</a>
+			</small>
 			 
 		</h1>
 
@@ -92,34 +125,22 @@
 					<div id="sample-table-2_filter">
 						<form class="form-horizontal" action="{:U('Admin/Author/user_book_list_sou')}" method="POST" role="form" enctype="multipart/form-data">
 
-
-
-
 							<div class='anniu'>
 								<ul>
-									<li role="presentation" class="<if condition='$mid == 2'>current</if>" onclick="jump(2,1)">{:L('Mark_mark_list_interst')}</li>
-									<li role="presentation" class="<if condition='$mid == 3'>current</if>" onclick="jump(3,1)">{:L('Mark_mark_list_academic')}</li>
-									<li role="presentation" class="<if condition='$mid == 4'>current</if>" onclick="jump(4,1)">{:L('Mark_mark_list_jobs')}</li>
-									<li role="presentation" class="<if condition='$mid == 5'>current</if>" onclick="jump(5,1)">{:L('Mark_mark_list_life')}</li>
+									<li role="presentation" class="current" >{$thirdone['third_mark_name']}</li>
+
 								</ul>
 							</div>
-							<if condition='$mid == 4'>
+
 							<div class='anniu'>
-								<ul>
-									<li role="presentation" class="<if condition='$type == 1'>current</if>" onclick="jump(4,1)">{:L('Mark_mark_list_Normal')}</li>
-									<li role="presentation" class="<if condition='$type == 2'>current</if>" onclick="jump(4,2)">{:L('Mark_mark_list_network')}</li>
-									<li role="presentation" class="<if condition='$type == 3'>current</if>" onclick="jump(4,3)">{:L('Mark_mark_list_entrepreneur')}</li>
+								<ul style="border: 0px">
+									<li role="presentation" data-toggle="modal" data-target="#add-auth" class="current" >{:L('Mark_second_list_add')}</li>
+
+
 								</ul>
+
 							</div>
-							</if>
-							<if condition='$mid == 5'>
-								<div class='anniu'>
-									<ul>
-										<li role="presentation" class="<if condition='$type == 1'>current</if>" onclick="jump(5,1)">{:L('Mark_mark_list_Normal')}</li>
-										<li role="presentation" class="<if condition='$type == 4'>current</if>" onclick="jump(5,4)">{:L('Mark_mark_list_shop')}</li>
-									</ul>
-								</div>
-							</if>
+
 						</form>
 
 					</div>
@@ -139,23 +160,31 @@
 							</thead>
 
 							<tbody>
-							<foreach name="marklist" item="mark" key="markkey">
+							<foreach name="fourthlist" item="fourth" key="fourthkey">
 								<tr>
 
-									<td>{$mark['firsth_mark_name']}</td>
+									<td>{$fourth['fourth_mark_name']}</td>
 
 									<td>
-											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-												<a class="btn btn-xs btn-success" data-toggle="modal" data-target="#add-auth" onclick="havefirmark('{$mark["firsth_mark_name"]}','{$mark["first_mark_id"]}')">{:L('Mark_mark_list_edit')}</a>
-												<a href="javascript:void(0)" class="btn btn-xs btn-success" onclick="gosecond({$mark['first_mark_id']})">{:L('Mark_mark_list_mamage')}</a>
+										<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+											<a class="btn btn-xs btn-success" onclick="del({$fourth['fourth_mark_id']})">{:L('Module_module_list_module_del')}</a>
+											<a class="btn btn-xs btn-success" data-toggle="modal" data-target="#edit-auth" onclick="havefoumark('{$fourth["fourth_mark_name"]}',{$fourth['fourth_mark_id']})">{:L('Mark_mark_list_edit')}</a>
+											<if condition='$fourth["fourth_mark_isextend"] == 1'>
+											<a href="javascript:void(0)" class="btn btn-xs btn-success" onclick="gofifth{$fourth['fourth_mark_id']})">{:L('Mark_mark_list_mamage')}</a>
+											</if>
 
-											</div>
+										</div>
 									</td>
 								</tr>
 							</foreach>
 							</tbody>
 						</table>
-
+						<div class="dataTables_paginate paging_bootstrap"
+							 style="border-top: 1px solid #DDD;padding-top: 12px;padding-bottom: 12px;background-color: #eff3f8;border-bottom: 1px solid #DDD;">
+							<div style='margin-right:56px;'>
+								<?php echo $page;?>
+							</div>
+						</div>
 					</div>
 					<!-- /.table-responsive -->
 				</div>
@@ -177,7 +206,7 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"><span
 								aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-						<h4 class="modal-title" id="myModalLabel">{:L('Mark_mark_list_edit')}</h4>
+						<h4 class="modal-title" id="myModalLabel">{:L('Mark_second_list_add')}</h4>
 					</div>
 					<div class="modal-body" style="overflow: hidden">
 
@@ -191,12 +220,40 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<a class="btn btn-primary" id="submit-ed" onclick="save()">{:L('Mark_mark_list_save')}</a>
+						<a class="btn btn-primary" id="submit-ed" onclick="add()">{:L('Mark_mark_list_save')}</a>
 						<a class="btn btn-default" data-dismiss="modal" id="quxiao">{:L('Mark_mark_list_cancel')}</a>
 					</div>
 				</div>
 			</div>
 		</div>
+
+	<div class="modal fade bs-example-modal-lg" id="edit-auth" role="dialog" aria-labelledby="myModalLabel"
+		 aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span
+							aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">{:L('Mark_mark_list_edit')}</h4>
+				</div>
+				<div class="modal-body" style="overflow: hidden">
+
+					<div class="content" >
+						<div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
+							<label class="col-sm-3 control-label">{:L('Mark_mark_list_name')}:</label>
+							<div class="col-sm-8">
+								<input type="text" name="name" id="thirdname" value="" class="form-control">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<a class="btn btn-primary" onclick="save()">{:L('Mark_mark_list_save')}</a>
+					<a class="btn btn-default" data-dismiss="modal">{:L('Mark_mark_list_cancel')}</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 </body>
@@ -220,35 +277,30 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
 
 <script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
 <script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
 
 <script>
-	
-	function jump(mid,type) {
 
-        location.href = "{:U('Admin/Mark/mark_list')}&mid="+mid+"&type="+type
-
-    }
 
     var saveid = 0;
-    function havefirmark(name,fid) {
+    function havethrmark(name,tid) {
 
-		saveid = fid;
-
-        $("#name").val(name)
+		saveid = tid;
+        $("#thirdname").val(name)
     }
     
     function save() {
         $.ajax({
             type:"post",
-            url:"{:U('Admin/Mark/ajax_firstedit')}",
+            url:"{:U('Admin/Mark/ajax_thirdedit')}",
             data:{
-                name:$("#name").val(),
-				fid:saveid,
+                name:$("#thirdname").val(),
+				tid:saveid,
             },
             dataType:"json",
             success: function(list){
 
-                if (list.str == 1){
+                if (list.str = 1){
                     alert(list.msg)
                     location.reload()
 				}else{
@@ -263,9 +315,108 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
 
         })
     }
+    
+    function extend() {
+        layer.msg("{:L('Mark_second_list_if')}", {
+            time: 0
+            ,btn: ["{:L('Mark_second_list_ok')}", "{:L('Mark_second_list_no')}"]
+            ,yes: function(index){
+                layer.close(index);
+                $.ajax({
+                    type: "post",
+                    url: "{:U('Admin/Mark/ajax_thirdextend')}",
+                    data: {
+                        sid: {$secondone['second_mark_id']},
+                    },
+                    dataType: "json",
+                    success: function (list) {
 
-    function gosecond(fid) {
-        location.href = "{:U('Admin/Mark/second_list')}&fid="+fid
+                        if (list.str == 1){
+
+                            alert(list.msg)
+                            location.reload()
+                        }else{
+
+                            alert(list.msg)
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("{:L('Mark_mark_list_error')}")
+
+                    }
+
+                })
+            }
+        });
+    }
+
+    function gofourth(tid) {
+        location.href = "{:U('Admin/Mark/fourth_list')}&tid="+tid
+    }
+
+    function add(){
+
+        $.ajax({
+            type:"post",
+            url:"{:U('Admin/Mark/ajax_fourthadd')}",
+            data:{
+                name:$("#name").val(),
+                tid:{$thirdone['third_mark_id']},
+            },
+            dataType:"json",
+            success: function(list){
+
+                if (list.str == 1){
+                    alert(list.msg)
+                    location.reload()
+                }else{
+                    alert(list.msg)
+                }
+
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                alert("{:L('Mark_mark_list_error')}")
+            }
+
+        })
+
+	}
+
+	function del(tid) {
+
+        layer.msg("{:L('Mark_second_list_if')}", {
+            time: 0
+            ,btn: ["{:L('Mark_second_list_ok')}", "{:L('Mark_second_list_no')}"]
+            ,yes: function(index){
+                layer.close(index);
+                $.ajax({
+                    type: "post",
+                    url: "{:U('Admin/Mark/ajax_thirddel')}",
+                    data: {
+                        tid: tid,
+                    },
+                    dataType: "json",
+                    success: function (list) {
+
+                        if (list.str == 1){
+
+                            alert(list.msg)
+                            location.reload()
+                        }else{
+
+                            alert(list.msg)
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("{:L('Mark_mark_list_error')}")
+
+                    }
+
+                })
+            }
+        });
+
     }
 	
 </script>

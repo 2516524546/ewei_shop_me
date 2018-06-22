@@ -24,7 +24,10 @@ class ThirdMarkModel extends Model{
         return $this->where($where)->field($field)->order($order)->select();
     }
 
+    public function findlimit($where,$limit1,$limit2,$order='',$field=false){
 
+        return $this->where($where)->field($field)->order($order)->limit($limit1,$limit2)->select();
+    }
 
 
 }
