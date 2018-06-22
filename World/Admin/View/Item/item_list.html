@@ -196,8 +196,8 @@
 											<td><?php echo $v['professional_explain']?></td>
 											<td>
 												<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-													<a onclick ="delete_product(<?php echo $v['id'];?>)" class="btn btn-xs btn-success" style="margin-top: 5px;">删除</a>
-													<a href="index.php?m=Admin&c=Product&a=products_edit&id=<?php echo $v['id']?>" class="btn btn-xs btn-success" style="margin-top:5px;">查看</a>
+													<a onclick ="delete_professional(<?php echo $v['professional_id'];?>)" class="btn btn-xs btn-success" style="margin-top: 5px;">删除</a>
+													<a href="index.php?m=Admin&c=Item&a=professional_detail&id=<?php echo $v['professional_id']?>" class="btn btn-xs btn-success" style="margin-top:5px;">查看</a>
 												</div>
 											</td>
 										<else/>
@@ -216,9 +216,9 @@
 											<td>
 												<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
 													<a onClick="changestatus(<?php echo $v['item_id']?>,<?php echo $v['item_status']?>)"  class="btn btn-xs btn-success" style="margin-top: 5px;"><eq name="v.item_status" value="1">结束<else/>开始</eq></a>
-													<a href="index.php?m=Admin&c=Product&a=products_edit&id=<?php echo $v['id']?>" class="btn btn-xs btn-success" style="margin-top:5px;">编辑</a>
-													<a onclick ="delete_product(<?php echo $v['id'];?>)" class="btn btn-xs btn-success" style="margin-top: 5px;">删除</a>
-													<a onclick ="delete_product(<?php echo $v['id'];?>)" class="btn btn-xs btn-success" style="margin-top: 5px;">查看</a>
+													<a href="index.php?m=Admin&c=Item&a=item_edit&id=<?php echo $v['item_id']?>" class="btn btn-xs btn-success" style="margin-top:5px;">编辑</a>
+													<a onclick ="delete_item(<?php echo $v['item_id'];?>)" class="btn btn-xs btn-success" style="margin-top: 5px;">删除</a>
+													<a href="index.php?m=Admin&c=Item&a=item_detail&id=<?php echo $v['item_id']?>" class="btn btn-xs btn-success" style="margin-top: 5px;">查看</a>
 												</div>
 											</td>
 									</eq>
@@ -296,14 +296,14 @@
         })
     }
 
-function delete_product(id){
+function delete_professional(id){
 	var statu = confirm("确定执行删除操作吗?");
 	if(!statu){
 	   return false;
 	}
 	
 	$.ajax({
-		url:"index.php?m=Admin&c=Product&a=products_del",
+		url:"index.php?m=Admin&c=Item&a=professional_del",
 		data:'id='+id,
 		type:'post',
 		success:function(msg){
@@ -318,6 +318,28 @@ function delete_product(id){
 		}
 	})
 }
+    function delete_item(id){
+        var statu = confirm("确定执行删除操作吗?");
+        if(!statu){
+            return false;
+        }
+
+        $.ajax({
+            url:"index.php?m=Admin&c=Item&a=item_del",
+            data:'id='+id,
+            type:'post',
+            success:function(msg){
+                if(msg == 1){
+                    alert('删除成功');
+                    window.location.reload();
+                }else{
+                    alert(msg);
+                    return false;
+                }
+
+            }
+        })
+    }
 	</script>
 <script type="text/javascript">
 	

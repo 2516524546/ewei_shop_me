@@ -126,7 +126,7 @@ class ItemController extends CommonController
         }
         $this->display("item_list");
     }
-
+//项目状态更新
     public function item_update()
     {    $status=I("status");
           $id=I("id");
@@ -145,7 +145,63 @@ class ItemController extends CommonController
                  echo "操作失败";
              }
          }
-
-
     }
+
+    //项目详情
+    public function item_detail(){
+        $id=I("id");
+        $item=M("j_item")->where("item_id={$id}")->find();
+        $this->assign("item",$item);
+        $this->display();
+    }
+    //项目编辑
+    public function item_edit(){
+        if (IS_POST){
+            //修改表记录
+            $post=$_POST;
+            $res=M("j_item")->where("item_id={$post['item_id']}")->save($post);
+            if ($res){
+               echo 1;
+            }else{
+                echo "修改失败!";
+            }
+        }else{
+            ////获取某一条记录
+            $id=I("id");
+            $item=M("j_item")->where("item_id={$id}")->find();
+            $this->assign("item",$item);
+            $this->display();
+        }
+    }
+//删除某一条项目记录
+    public function item_del(){
+        if (IS_POST){
+            $id=I("id");
+            $res=M("j_item")->where("item_id={$id}")->setField("item_isdel",0);
+            if ($res){
+                echo 1;
+            }else{
+                echo "删除失败!";
+            }
+        }
+    }
+
+    //人才详情
+    public function professional_detail(){
+         $professional_id=I("id");
+         $professional=M("j_professional")->where("professional_id={$professional_id}")->find();
+        $this->assign("professional",$professional);
+        $this->display();
+    }
+
+    public function professional_del(){
+        $id=$_POST['id'];
+        $res=M("j_professional")->where("professional_id={$id}")->delete();
+        if ($res){
+            echo 1;
+        }else{
+            echo "删除失败!";
+        }
+    }
+
 }
