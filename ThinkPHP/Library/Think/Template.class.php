@@ -359,7 +359,7 @@ class  Template {
 
     /**
      * 搜索模板页面中包含的TagLib库
-     * 并返回列表
+     * 并{:L('User_user_list_back_list')}
      * @access public
      * @param string $content  模板内容
      * @return string|false

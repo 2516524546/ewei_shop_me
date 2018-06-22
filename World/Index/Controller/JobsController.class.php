@@ -32,7 +32,7 @@ class JobsController extends CommonController {
     }
 
 	/*
-	工作首页
+	工作{:L('newworld_home')}
 	 */
     public function work(){
 

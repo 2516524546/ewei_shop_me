@@ -19,7 +19,7 @@ use Think\Controller;
 class IndexController extends CommonController {
 
 	/*
-	首页
+	{:L('newworld_home')}
 	 */
     public function index(){
 
