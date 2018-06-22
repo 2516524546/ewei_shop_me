@@ -1,0 +1,175 @@
+<head>
+    <meta charset="utf-8"/>
+    <title>象而是后台管理系统</title>
+    <meta name="keywords" content="象而是后台管理系统"/>
+    <meta name="description" content="象而是后台管理系统"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- basic styles -->
+    <link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css"/>
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css"/>
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css"/>
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css"/>
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
+    <!--[if !IE]> -->
+
+    <script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+
+    <!-- <![endif]-->
+    <!-- ace settings handler -->
+
+    <script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+    <script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style='background:#fff;'>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            项目管理
+            <small><i class="icon-double-angle-right"></i>
+                人才详情
+            </small>
+
+        </h1>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12 form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">姓名</label>
+                <div class="col-sm-9">
+                    <input type="text" name="q_users_name" value="<?php echo $professional['professional_uname'];?>"
+                           placeholder="" style="width:300px;" readonly/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">照片</label>
+                <div class="col-sm-9">
+                    <img src="<?php echo  './Uploads/'.$donation['user_icon'];?>" style="width:100px;height:100px;"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">联系方式</label>
+                <div class="col-sm-9">
+                    <input type="text" name="q_users_name" value="<?php echo $professional['professional_contact'];?>"
+                           placeholder="" style="width:300px;" readonly/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">索引标识</label>
+                <div class="col-sm-9">
+                    <input type="text" name="q_users_name" value="<?php echo $professional['professional_firstmarks'].','.$professional['professional_secondmarks'].','.$professional['professional_thirdmarks'];?>"
+                           placeholder="" style="width:300px;" readonly/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">简介</label>
+                <div class="col-sm-9">
+                    <input type="text" name="q_users_name" value="<?php echo $professional['professional_content'];?>"
+                           placeholder="" style="width:300px;" readonly/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">专业技能</label>
+                <div class="col-sm-9">
+                    <input type="text" name="q_users_name" value="<?php echo $professional['professional_trait'];?>"
+                           placeholder="" style="width:300px;" readonly/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">备注</label>
+                <div class="col-sm-9">
+                    <input type="text" name="q_users_name" value="<?php echo $professional['professional_explain'];?>"
+                           placeholder="" style="width:300px;" readonly/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">发布时间</label>
+                <div class="col-sm-9">
+                    <input type="text" name="q_users_name" value="<?php echo $professional['professional_createtime'];?>"
+                           placeholder="" style="width:300px;" readonly/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+    .btn-xs {
+        margin-right: 10px !important;
+    }
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+<script>
+    function showStart() {
+        return true;
+    }
+    function showSuccess(data) {
+
+        if (data == 1) {
+            alert('修改成功')
+            location.href = "{:U('Admin/User/user_list')}"
+        } else {
+            alert(data)
+            return false
+        }
+
+    }
+    $(function () {
+        var options = {
+            beforeSubmit: showStart,
+            success: showSuccess,
+        };
+        $('#tianjia').click(function () {
+            $('.form-horizontal').ajaxSubmit(options);
+            //return false;
+        })
+    })
+</script>
+
+
+
+
+
+
+
+
