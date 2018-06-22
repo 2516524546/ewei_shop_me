@@ -1,6 +1,20 @@
 <?php
 return array(
 
+    /******************************************************************
+     * Public start
+     */
+    'newworld_admin' => 'Newworld',
+    'newworld_home' => '首页',
+    'newworld_console' => '控制台',
+    'newworld_ajax_havenoing' => '存在非法字符',
+
+
+    /*
+	 * Public end
+	 *******************************************************************/
+
+
 
     /******************************************************************
      * Conf start
@@ -60,7 +74,9 @@ return array(
     'Module_module_list_module_content' => '模块简介',
     'Module_module_list_module_operation' => '操作',
     'Module_module_list_module_edit' => '编辑',
-    'Module_module_list_module_del' => '清除',
+    'Module_module_list_module_del' => '删除',
+    'Module_module_list_module_add' => '添加',
+    'Module_module_list_module_extend' => '扩充',
     //module_list end
     /*
 	 * Module end
@@ -70,6 +86,32 @@ return array(
     /******************************************************************
      * Mark start
      */
+
+    //public
+    'Mark' => '搜索标识管理',
+    'Mark_mark_list' => '搜索标识管理',
+    'Mark_mark_list_interst' => '兴趣',
+    'Mark_mark_list_academic' => '学术',
+    'Mark_mark_list_jobs' => '工作',
+    'Mark_mark_list_life' => '生活',
+    'Mark_mark_list_Normal' => '普通群标识',
+    'Mark_mark_list_network' => '社交群标识',
+    'Mark_mark_list_entrepreneur' => '企业家标识',
+    'Mark_mark_list_shop' => '二手市场标识',
+    'Mark_mark_list_save' => '保存',
+    'Mark_mark_list_cancel' => '取消',
+
+    //mark_list start
+    'Mark_mark_list_name' => '标识',
+    'Mark_mark_list_operation' => '操作',
+    'Mark_mark_list_del' => '删除',
+    'Mark_mark_list_edit' => '修改',
+    'Mark_mark_list_mamage' => '管理',
+
+    //ajax_firstedit start
+    'Mark_ajax_firstedit_ok' => '保存成功',
+    'Mark_ajax_firstedit_no' => '保存失败',
+
 
 
     /*
