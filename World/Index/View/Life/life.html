@@ -144,7 +144,7 @@
                         <div class="col-md-6">
                             <div class="SelectionContainer">
                                 <input type="text" class="layui-input" id="Selectionform">
-                                <a href="javascript:void(0)" id="SelectionIcon"><img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png" onclick="updata_life_list(5,'crowd_creattime',0,10,1)"></a>
+                                <a href="javascript:void(0)" id="SelectionIcon"><img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png" onclick="updata_life_list(5,'crowd_creattime desc',0,10,1)"></a>
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -399,9 +399,9 @@
         $("select[name='second']").each(function(j,item){
             if (item.value!=''){
                 if(second == ''){
-                    second+=item.value //输出input 中的 value 值到{:L('newworld_console')}
+                    second+=item.value
                 }else{
-                    second+=','+item.value //输出input 中的 value 值到{:L('newworld_console')}
+                    second+=','+item.value
                 }
             }
         });
@@ -409,9 +409,9 @@
         $("select[name='third']").each(function(j,item){
             if (item.value!='') {
                 if (third == '') {
-                    third += item.value //输出input 中的 value 值到{:L('newworld_console')}
+                    third += item.value
                 } else {
-                    third += ',' + item.value //输出input 中的 value 值到{:L('newworld_console')}
+                    third += ',' + item.value
                 }
             }
         });
@@ -419,9 +419,9 @@
         $("select[name='four']").each(function(j,item){
             if (item.value!='') {
                 if (four == '') {
-                    four += item.value //输出input 中的 value 值到{:L('newworld_console')}
+                    four += item.value
                 } else {
-                    four += ',' + item.value //输出input 中的 value 值到{:L('newworld_console')}
+                    four += ',' + item.value
                 }
             }
         });

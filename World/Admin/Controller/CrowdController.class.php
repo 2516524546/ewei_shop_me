@@ -1,11 +1,16 @@
 <?php
 namespace Admin\Controller;
 
+use Index\Model\CrowdConditionModel;
+use Index\Model\CrowdMemberModel;
 use Index\Model\CrowdModel;
 use Index\Model\FirstMarkModel;
 use Index\Model\FourthMarkModel;
+use Index\Model\NoteModel;
 use Index\Model\SecondMarkModel;
 use Index\Model\ThirdMarkModel;
+use Index\Model\TutorShipIssueModel;
+use Index\Model\TutorshipNeedModel;
 use Think\Controller;
 class CrowdController extends CommonController {
 
@@ -74,6 +79,35 @@ class CrowdController extends CommonController {
 
         ));
         $this->display();
+    }
+
+    //解散群组
+    public function ajax_crowddel(){
+
+        if (IS_POST) {
+
+            $cid = $_POST['cid'];
+
+            $crowdmodel = new CrowdModel();
+            $crowdconditionmodel = new CrowdConditionModel();
+            $crowdmembermodel = new CrowdMemberModel();
+            $notemodel = new NoteModel();
+            $tutorissue = new TutorShipIssueModel();
+            $tutorneed = new TutorshipNeedModel();
+
+
+            if ($res){
+                die(json_encode(array('str' => 1, 'msg' => L('Mark_second_list_delok'))));
+            }else{
+                die(json_encode(array('str' => 2, 'msg' => L('Mark_second_list_delno'))));
+            }
+
+        } else {
+
+            die(json_encode(array('str' => 0, 'msg' => L('newworld_ajax_havenoing'))));
+        }
+
+
     }
 	
 }

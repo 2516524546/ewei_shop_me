@@ -205,7 +205,50 @@
 
 	function del(cid) {
 
-		
+        layer.msg("{:L('Crowd_crowd_list_if')}", {
+            time: 0 //不自动关闭
+            ,btn: ["{:L('Crowd_crowd_list_ok')}", "{:L('Crowd_crowd_list_no')}"]
+            ,yes: function(index){
+                layer.close(index);
+                $.ajax({
+                    type: "post",
+                    url: "{:U('Admin/Crowd/ajax_crowddel')}",
+                    data: {
+                        cid: cid,
+                    },
+                    dataType: "json",
+                    success: function (list) {
+
+                        if (list.str == 1){
+
+                            layer.msg(list.msg,{
+                                    time:1500,
+                                    icon:1,
+                                },function () {
+                                    location.reload()
+                                }
+                            );
+                        }else{
+
+                            layer.msg(list.msg,{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        layer.msg("{:L('Mark_mark_list_error')}",{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+
+                    }
+
+                })
+            }
+        });
 
     }
 

@@ -185,6 +185,9 @@ return array(
     'Crowd_crowd_list_del' => '解散',
     'Crowd_crowd_list_message' => '群信息',
     'Crowd_crowd_list_member' => '群成员',
+    'Crowd_crowd_list_if' => '该操作不可逆，确认继续吗？',
+    'Crowd_crowd_list_ok' => '确定',
+    'Crowd_crowd_list_no' => '取消',
 
 
     /*
