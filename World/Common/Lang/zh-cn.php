@@ -165,6 +165,29 @@ return array(
     /******************************************************************
      * Crowd start
      */
+    //public
+    'Crowd' => '群组管理',
+    'Crowd_crowd_list' => '群组管理',
+
+
+    //crowd_list
+    'Crowd_crowd_list_crowdid' => 'ID',
+    'Crowd_crowd_list_crowdname' => '群名称',
+    'Crowd_crowd_list_crowdicon' => '群头像',
+    'Crowd_crowd_list_peoplename' => '创建人名称',
+    'Crowd_crowd_list_peopleicon' => '创建人头像',
+    'Crowd_crowd_list_peoplephone' => '创建人邮箱',
+    'Crowd_crowd_list_crowdtype' => '群类型',
+    'Crowd_crowd_list_crowdcontent' => '简介',
+    'Crowd_crowd_list_crowdcreatetime' => '创建时间',
+    'Crowd_crowd_list_operation' => '操作',
+    'Crowd_crowd_list_edit' => '编辑',
+    'Crowd_crowd_list_del' => '解散',
+    'Crowd_crowd_list_message' => '群信息',
+    'Crowd_crowd_list_member' => '群成员',
+    'Crowd_crowd_list_if' => '该操作不可逆，确认继续吗？',
+    'Crowd_crowd_list_ok' => '确定',
+    'Crowd_crowd_list_no' => '取消',
 
 
     /*
