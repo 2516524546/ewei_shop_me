@@ -242,7 +242,7 @@
 						<div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
 							<label class="col-sm-3 control-label">{:L('Mark_mark_list_name')}:</label>
 							<div class="col-sm-8">
-								<input type="text" name="name" id="thirdname" value="" class="form-control">
+								<input type="text" name="name" id="fourthname" value="" class="form-control">
 							</div>
 						</div>
 					</div>
@@ -283,19 +283,19 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
 
 
     var saveid = 0;
-    function havethrmark(name,tid) {
+    function havefoumark(name,fid) {
 
-		saveid = tid;
-        $("#thirdname").val(name)
+		saveid = fid;
+        $("#fourthname").val(name)
     }
     
     function save() {
         $.ajax({
             type:"post",
-            url:"{:U('Admin/Mark/ajax_thirdedit')}",
+            url:"{:U('Admin/Mark/ajax_fourthedit')}",
             data:{
-                name:$("#thirdname").val(),
-				tid:saveid,
+                name:$("#fourthname").val(),
+				fid:saveid,
             },
             dataType:"json",
             success: function(list){
@@ -383,7 +383,7 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
 
 	}
 
-	function del(tid) {
+	function del(fid) {
 
         layer.msg("{:L('Mark_second_list_if')}", {
             time: 0
@@ -392,9 +392,9 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
                 layer.close(index);
                 $.ajax({
                     type: "post",
-                    url: "{:U('Admin/Mark/ajax_thirddel')}",
+                    url: "{:U('Admin/Mark/ajax_fourthdel')}",
                     data: {
-                        tid: tid,
+                        fid: fid,
                     },
                     dataType: "json",
                     success: function (list) {
