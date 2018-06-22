@@ -301,16 +301,29 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
             success: function(list){
 
                 if (list.str = 1){
-                    alert(list.msg)
-                    location.reload()
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:1,
+                        },function () {
+                            location.reload()
+                        }
+                    );
 				}else{
-                    alert(list.msg)
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
 				}
 
             },
             error:function(XMLHttpRequest, textStatus, errorThrown){
 
-                alert("{:L('Mark_mark_list_error')}")
+                layer.msg("{:L('Mark_mark_list_error')}",{
+                        time:1500,
+                        icon:2,
+                    }
+                );
             }
 
         })
@@ -333,15 +346,28 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
 
                         if (list.str == 1){
 
-                            alert(list.msg)
-                            location.reload()
+                            layer.msg(list.msg,{
+                                    time:1500,
+                                    icon:1,
+                                },function () {
+                                    location.reload()
+                                }
+                            );
                         }else{
 
-                            alert(list.msg)
+                            layer.msg(list.msg,{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        alert("{:L('Mark_mark_list_error')}")
+                        layer.msg("{:L('Mark_mark_list_error')}",{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
 
                     }
 
@@ -367,16 +393,29 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
             success: function(list){
 
                 if (list.str == 1){
-                    alert(list.msg)
-                    location.reload()
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:1,
+                        },function () {
+                            location.reload()
+                        }
+                    );
                 }else{
-                    alert(list.msg)
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
                 }
 
             },
             error:function(XMLHttpRequest, textStatus, errorThrown){
 
-                alert("{:L('Mark_mark_list_error')}")
+                layer.msg("{:L('Mark_mark_list_error')}",{
+                        time:1500,
+                        icon:2,
+                    }
+                );
             }
 
         })
@@ -401,15 +440,28 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
 
                         if (list.str == 1){
 
-                            alert(list.msg)
-                            location.reload()
+                            layer.msg(list.msg,{
+                                    time:1500,
+                                    icon:1,
+                                },function () {
+                                    location.reload()
+                                }
+                            );
                         }else{
 
-                            alert(list.msg)
+                            layer.msg(list.msg,{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        alert("{:L('Mark_mark_list_error')}")
+                        layer.msg("{:L('Mark_mark_list_error')}",{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
 
                     }
 

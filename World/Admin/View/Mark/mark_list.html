@@ -7,6 +7,7 @@
 		<!-- basic styles -->
 		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
 
 		<!--[if IE 7]>
 		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
@@ -220,6 +221,7 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
 
 <script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
 <script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
 
 <script>
 	
@@ -249,16 +251,29 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
             success: function(list){
 
                 if (list.str == 1){
-                    alert(list.msg)
-                    location.reload()
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:1,
+                        },function () {
+                            location.reload()
+                        }
+                    );
 				}else{
-                    alert(list.msg)
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
 				}
 
             },
             error:function(XMLHttpRequest, textStatus, errorThrown){
 
-                alert("{:L('Mark_mark_list_error')}")
+                layer.msg("{:L('Mark_mark_list_error')}",{
+                        time:1500,
+                        icon:2,
+                    }
+                );
             }
 
         })

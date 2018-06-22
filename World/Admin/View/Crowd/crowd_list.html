@@ -1,0 +1,213 @@
+<head>
+		<meta charset="utf-8" />
+		<title>{:L('newworld_admin')}</title>
+		<meta name="keywords" content="{:L('newworld_admin')}" />
+		<meta name="description" content="{:L('newworld_admin')}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
+		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+			<!--[if !IE]> -->
+
+		<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+		
+		<!-- <![endif]-->
+		<!-- ace settings handler -->
+
+		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+		<script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body style='background:#fff;'>
+	<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">{:L('newworld_home')}</a>
+							</li>
+							<li class="active">{:L('newworld_console')}</li>
+						</ul><!-- .breadcrumb -->
+					</div>
+
+				
+				</div><!-- /.main-content -->
+	
+	
+<div class="page-content">
+	<div class="page-header">
+		<h1>
+			{:L('Crowd')}
+			<small> <i class="icon-double-angle-right"></i>
+				{:L('Crowd_crowd_list')}
+			</small>
+			 
+		</h1>
+		
+	<!-- 	 <form class="daoru" action="{:U('Daili/Index/upload_execl')}" method="POST" enctype="multipart/form-data" style="margin-top:20px;">
+         <input type='file' name='execl' style=" width:150px; height:30px; display:inline-block; margin-right:30px;"/>
+		 <span style='width:85px; height:30px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:30px;text-align:center; borde-radius:4px;' id='daoru'>导入数据</span>
+		</form> 	 -->	
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			 <div class="row" style="padding-bottom: 10px;">
+							<div class="col-sm-12">
+								<div id="sample-table-2_filter">
+									<form class="form-horizontal" action="{:U('Admin/Crowd/crowd_list')}" method="POST" role="form" enctype="multipart/form-data">
+									<div class="btn-group" style='margin-top:5px;'>
+										<span>{:L('Crowd_crowd_list_crowdid')}:</span>
+										<input type="text" name="id" value="{$id}" placeholder="{:L('Crowd_crowd_list_crowdid')}">
+									</div>
+									<div class="btn-group" style='margin-top:5px;'>
+										<span>{:L('Crowd_crowd_list_crowdname')}:</span>
+										<input type="text" name="crowdname" value="{$crowdname}" placeholder="{:L('Crowd_crowd_list_crowdname')}">
+									</div>
+										<div class="btn-group" style='margin-top:5px;'>
+											<span>{:L('Crowd_crowd_list_peoplename')}:</span>
+											<input type="text" name="peoplename" value="{$peoplename}" placeholder="{:L('Crowd_crowd_list_peoplename')}">
+										</div>
+										<div class="btn-group" style='margin-top:5px;'>
+											<span>{:L('Crowd_crowd_list_peoplephone')}:</span>
+											<input type="text" name="peoplephone" value="{$peoplephone}" placeholder="{:L('Crowd_crowd_list_peoplephone')}">
+										</div>
+										<input type="hidden" name="button" value="1">
+
+										<div class="btn-group" style='margin-top:5px;'>
+												<span class="input-group-btn">
+													<button type="submit" style="padding:0" class="btn btn-purple btn-sm">
+														{:L('User_user_list_search')}<i class="icon-search icon-on-right bigger-110"></i>
+													</button>
+												</span>
+											
+										</div>
+								
+									</form>
+
+								</div>
+							</div>
+						</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="table-responsive">
+						<table id="sample-table-1" class="table table-striped table-bordered table-hover" style="margin-bottom: 0px;font-size:13px;">
+							<thead>
+								<tr style=' font-size: 13px;'>
+								    <!-- <th><input type='checkbox' name='' value=''></th> -->
+									<th>{:L('Crowd_crowd_list_crowdid')}</th>
+									<th>{:L('Crowd_crowd_list_crowdname')}</th>
+									<th>{:L('Crowd_crowd_list_crowdicon')}</th>
+									<th>{:L('Crowd_crowd_list_peoplename')}</th>
+									<th>{:L('Crowd_crowd_list_peopleicon')}</th>
+									<th>{:L('Crowd_crowd_list_peoplephone')}</th>
+									<th>{:L('Crowd_crowd_list_crowdtype')}</th>
+									<th>{:L('Crowd_crowd_list_crowdcontent')}</th>
+									<th>{:L('Crowd_crowd_list_crowdcreatetime')}</th>
+									<th>{:L('Crowd_crowd_list_operation')}</th>
+
+								</tr>
+							</thead>
+
+							<tbody>
+							<foreach name="crowdlist" item="crowd" key="crowdkey">
+								<tr>
+
+									<td>{$crowd['crowd_id']}</td>
+									<td>{$crowd['crowd_name']}</td>
+									<td><img style="width:50px;height:50px;" src="./Uploads/{crowd_icon['second_mark_name']}"></td>
+									<td>{$crowd['user_name']}</td>
+									<td><img style="width:50px;height:50px;" src="./Uploads/{$crowd['user_icon']}"></td>
+									<td>{$crowd['user_mail']}</td>
+									<td>{$crowd['crowd_type']}</td>
+									<td>{$crowd['crowd_intro']}</td>
+									<td>{$crowd['crowd_creattime']}</td>
+									<td>
+											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+												<a class="btn btn-xs btn-success" onclick="">{:L('Crowd_crowd_list_edit')}</a>
+												<a class="btn btn-xs btn-success" onclick="del({$crowd['crowd_id']})">{:L('Crowd_crowd_list_del')}</a>
+												<a class="btn btn-xs btn-success" onclick="">{:L('Crowd_crowd_list_message')}</a>
+												<a class="btn btn-xs btn-success" onclick="">{:L('Crowd_crowd_list_member')}</a>
+											</div>
+									</td>
+								</tr>
+							</foreach>
+							</tbody>
+						</table>
+						<div class="dataTables_paginate paging_bootstrap" style="border-top: 1px solid #DDD;padding-top: 12px;padding-bottom: 12px;background-color: #eff3f8;border-bottom: 1px solid #DDD;">
+							<div style='margin-right:56px;'>
+							  <?php echo $page;?>
+							</div>
+						</div>
+					</div>
+					<!-- /.table-responsive -->
+				</div>
+				<!-- /span -->
+			</div>
+			<!-- /row -->
+			<div class="hr hr-18 dotted hr-double"></div>
+
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+	.btn-xs {
+		margin-right: 10px!important;
+	}
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+
+<script>
+
+	function del(cid) {
+
+		
+
+    }
+
+
+</script>
