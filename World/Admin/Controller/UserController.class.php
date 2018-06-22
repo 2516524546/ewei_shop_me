@@ -95,6 +95,7 @@ class UserController extends CommonController {
 		$count = M("u_user")->where($where)->count();
         // dump(M("Users")->getLastSql());exit;
 		//实例化分页类
+
 		$Page = new \Think\Page($count,$this->pagenum);
 		//设置上一页与下一页
 		$Page->setConfig('prev', '上一页');
@@ -113,6 +114,7 @@ class UserController extends CommonController {
 	public function user_list(){
 		$count = M("u_user")->count();
 		//实例化分页类
+
 		$Page = new \Think\Page($count,$this->pagenum);
       //  $Page = new \Think\Page($count,20);
 		//设置上一页与下一页
