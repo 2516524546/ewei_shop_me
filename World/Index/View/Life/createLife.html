@@ -151,7 +151,7 @@
 
                             if ( $("#second"+data.firstid).length > 0 ) {
 
-                                var message = '<div class="layui-input-block" id="layui-input-block" style="margin-bottom: 8px;"><select name="third" lay-verify="required" lay-filter="secondselect"><option value="">choose</option>';
+                                var message = '<div class="layui-input-block" id="layui-input-block" style="margin-bottom: 8px;"><select name="third" lay-filter="secondselect"><option value="">choose</option>';
 
                                 for (var i = 0; i < data.msg.length; i++) {
 
@@ -163,7 +163,7 @@
                                 $("#second"+data.firstid).html(message)
                             }else{
 
-                                var message = '<div id="second'+data.firstid+'" class="FormContainer" pane><div class="layui-input-block" id="layui-input-block" style="margin-bottom: 8px;"><select name="third" lay-verify="required" lay-filter="secondselect"><option value="">choose</option>';
+                                var message = '<div id="second'+data.firstid+'" class="FormContainer" pane><div class="layui-input-block" id="layui-input-block" style="margin-bottom: 8px;"><select name="third" lay-filter="secondselect"><option value="">choose</option>';
                                 for (var i = 0; i < data.msg.length; i++) {
 
                                     message +='<option value="'+data.msg[i]['third_mark_id']+'">';
@@ -325,7 +325,7 @@
                         if (data.str == 1) {
                             if ($("#third" + data.secondid).length > 0) {
 
-                                var message = '<div class="layui-input-block"  id="layui-input-block"><select name="four" lay-verify="required" lay-filter="thirdselect"><option value="">choose</option>';
+                                var message = '<div class="layui-input-block"  id="layui-input-block"><select name="four" lay-filter="thirdselect"><option value="">choose</option>';
 
                                 for (var i = 0; i < data.msg.length; i++) {
 
@@ -337,7 +337,7 @@
                                 $("#third" + data.secondid).html(message)
                             } else {
 
-                                var message = '<div id="third' + data.secondid + '" class="FormContainer" style="margin-bottom: 8px;" pane><div class="layui-input-block" id="layui-input-block"><select name="four" lay-verify="required" lay-filter="thirdselect"><option value="">choose</option>';
+                                var message = '<div id="third' + data.secondid + '" class="FormContainer" style="margin-bottom: 8px;" pane><div class="layui-input-block" id="layui-input-block"><select name="four" lay-filter="thirdselect"><option value="">choose</option>';
                                 for (var i = 0; i < data.msg.length; i++) {
 
                                     message += '<option value="' + data.msg[i]['fourth_mark_id'] + '">';

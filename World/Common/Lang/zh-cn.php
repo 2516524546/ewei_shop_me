@@ -100,6 +100,9 @@ return array(
     'Mark_mark_list_shop' => '二手市场标识',
     'Mark_mark_list_save' => '保存',
     'Mark_mark_list_cancel' => '取消',
+    'Mark_mark_list_error' => '请求失败!',
+
+
 
     //mark_list start
     'Mark_mark_list_name' => '标识',
@@ -111,6 +114,20 @@ return array(
     //ajax_firstedit start
     'Mark_ajax_firstedit_ok' => '保存成功',
     'Mark_ajax_firstedit_no' => '保存失败',
+
+    //second_list
+    'Mark_second_list_extend' => '扩充',
+    'Mark_second_list_isextend' => '已扩充',
+    'Mark_second_list_add' => '添加',
+    'Mark_second_list_addok' => '添加成功',
+    'Mark_second_list_addno' => '添加失败',
+    'Mark_second_list_if' => '此操作不可逆,确认继续吗?',
+    'Mark_second_list_ok' => '确认',
+    'Mark_second_list_no' => '取消',
+    'Mark_second_list_delok' => '删除成功',
+    'Mark_second_list_delno' => '删除失败',
+    'Mark_second_list_extendok' => '扩充完成',
+    'Mark_second_list_extendno' => '扩充失败',
 
 
 
