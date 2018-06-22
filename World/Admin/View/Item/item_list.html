@@ -188,7 +188,9 @@
 									<eq name="type" value="2">
 											<td><?php echo $v['professional_id'];?></td>
 											<td><?php echo $v['professional_uname'];?></td>
-											<td><?php echo $v['professional_id'];?></td>
+											<td>
+												<img src="<?php echo  './Uploads/'.$v['professional_vi_url'];?>" style="width:50px;height:50px;"/>
+											</td>
 											<td><?php echo $v['professional_contact'];?></td>
 											<td><?php echo $v['professional_firstmarks'].','.$v['professional_secondmarks'].','.$v['professional_thirdmarks'];?></td>
 											<td><?php echo $v['professional_content']?></td>

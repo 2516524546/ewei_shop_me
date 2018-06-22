@@ -43,6 +43,7 @@ class ItemController extends CommonController
             $this->assign('status', -1);
             $this->assign('type', 1);
         } elseif ($_GET['type'] == 2) {
+            $join="j_professional_vi as v on v.professional_vi_pid=professional_id";
             $count = M("j_professional")->count();
             //实例化分页类
             $Page = new \Think\Page($count, $this->pagenum);
@@ -54,7 +55,7 @@ class ItemController extends CommonController
             //显示分页信息
             $show = $Page->show();// 分页显示输出 ->limit($Page->firstRow.','.$Page->listRows)
             //$field = "u_donation.*,";
-            $list = M("j_professional")->limit($Page->firstRow . ',' . $Page->listRows)->order("professional_id DESC")->select();
+            $list = M("j_professional")->join($join)->limit($Page->firstRow . ',' . $Page->listRows)->order("professional_id DESC")->select();
             $this->assign('list', $list);
             $this->assign('page', $show);
             $this->assign('type', 2);
@@ -97,6 +98,7 @@ class ItemController extends CommonController
             $this->assign('page', $show);
             $this->assign('type', 1);
         } elseif ($post['type'] == 2) {
+            $join="j_professional_vi as v on v.professional_vi_pid=professional_id";
             $where = "professional_createtime>'0'";
             $username = trim($_POST['username']);
             if ($username) {
@@ -119,7 +121,7 @@ class ItemController extends CommonController
             //显示分页信息
             $show = $Page->show();// 分页显示输出 ->limit($Page->firstRow.','.$Page->listRows)
             //$field = "u_donation.*,";
-            $list = M("j_professional")->where($where)->limit($Page->firstRow . ',' . $Page->listRows)->order("professional_id DESC")->select();
+            $list = M("j_professional")->join($join)->where($where)->limit($Page->firstRow . ',' . $Page->listRows)->order("professional_id DESC")->select();
             $this->assign('list', $list);
             $this->assign('page', $show);
             $this->assign('type', 2);
@@ -188,8 +190,9 @@ class ItemController extends CommonController
 
     //人才详情
     public function professional_detail(){
+         $join="j_professional_vi as v on v.professional_vi_pid=professional_id";
          $professional_id=I("id");
-         $professional=M("j_professional")->where("professional_id={$professional_id}")->find();
+         $professional=M("j_professional")->join($join)->where("professional_id={$professional_id}")->find();
         $this->assign("professional",$professional);
         $this->display();
     }
