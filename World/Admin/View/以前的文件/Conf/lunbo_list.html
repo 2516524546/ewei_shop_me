@@ -57,9 +57,9 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="icon-home home-icon"></i>
-								<a href="#">首页</a>
+								<a href="#">{:L('newworld_home')}</a>
 							</li>
-							<li class="active">控制台</li>
+							<li class="active">{:L('newworld_console')}</li>
 						</ul><!-- .breadcrumb -->
 					</div>
 
@@ -183,7 +183,7 @@ $(function(){
                                       <img class="datu" src="<?php echo $v['b_url1']?>"  height="30px;">
                                     </td>
 									<td><?php echo $v['b_link']?></td>
-									<td><?php  if($v['b_set']==1){echo '首页';}elseif($v['b_set'] == 2){echo '直播室';}else{echo '琴行';}?></td>
+									<td><?php  if($v['b_set']==1){echo '{:L('newworld_home')}';}elseif($v['b_set'] == 2){echo '直播室';}else{echo '琴行';}?></td>
 									<td>
 										<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
 											<a href="index.php?m=Admin&c=Conf&a=banner_edit&bid=<?php echo $v['bid']?>" class="btn btn-xs btn-success" >修改</a>		

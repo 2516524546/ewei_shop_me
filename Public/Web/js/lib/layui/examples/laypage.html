@@ -16,8 +16,8 @@ body{padding: 10px;}
 总页数低于页码总数：<div id="demo0"></div>
 总页数大于页码总数：<div id="demo1"></div>
 自定义主题：<div id="demo2"></div>
-自定义首页、尾页、上一页、下一页文本：<div id="demo3"></div>
-不显示首页尾页：<div id="demo4"></div>
+自定义{:L('newworld_home')}、尾页、上一页、下一页文本：<div id="demo3"></div>
+不显示{:L('newworld_home')}尾页：<div id="demo4"></div>
 开启HASH：<div id="demo5"></div>
 只显示上一页、下一页：<div id="demo6"></div>
 显示完整功能：<div id="demo7"></div>
@@ -62,17 +62,17 @@ layui.use(['laypage', 'layer'], function(){
     ,theme: '#1E9FFF'
   });
   
-  //自定义首页、尾页、上一页、下一页文本
+  //自定义{:L('newworld_home')}、尾页、上一页、下一页文本
   laypage.render({
     elem: 'demo3'
     ,count: 100
-    ,first: '首页'
+    ,first: '{:L('newworld_home')}'
     ,last: '尾页'
     ,prev: '<em>←</em>'
     ,next: '<em>→</em>'
   });
   
-  //不显示首页尾页
+  //不显示{:L('newworld_home')}尾页
   laypage.render({
     elem: 'demo4'
     ,count: 100

@@ -1,8 +1,8 @@
 <head>
     <meta charset="utf-8"/>
-    <title>象而是后台管理系统</title>
-    <meta name="keywords" content="象而是后台管理系统"/>
-    <meta name="description" content="象而是后台管理系统"/>
+    <title>{:L('newworld_admin')}</title>
+    <meta name="keywords" content="{:L('newworld_admin')}"/>
+    <meta name="description" content="{:L('newworld_admin')}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- basic styles -->
     <link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet"/>
@@ -51,9 +51,9 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            项目管理
+            {:L('Item_item_list_item_manager')}
             <small><i class="icon-double-angle-right"></i>
-                项目详情
+                 {:L('Item_detail')}
             </small>
 
         </h1>
@@ -63,84 +63,84 @@
     <div class="row">
         <div class="col-xs-12 form-horizontal">
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">项目名称:</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_item_list_item_name')}:</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $item['item_name']?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">项目简介:</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_item_list_item_content')}:</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $item['item_content'];?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">项目类型:</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_item_list_item_type')}:</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $item['item_type'];?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">项目预算:</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_item_list_item_budget')}:</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $item['item_budget'];?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">发起者:</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_item_list_item_sponsor')}:</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $item['item_uname'];?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">联系方式:</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_item_list_item_contact')}:</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $item['item_contact'];?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">索引标识:</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_item_list_index_tag')}:</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $item['item_firstmarks'].','.$item['item_secondmarks'].','.$item['item_thirdmarks'];?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">公司:</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_item_list_item_company')}:</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $item['item_company'];?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">邮箱:</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('User_user_list_email')}:</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $item['item_mail'];?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">状态:</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_item_list_item_status')}:</label>
                 <div class="col-sm-9">
-                    <input type="text" name="q_users_name" value="<?php echo $item['item_status']==1?'进行中':'已结束';?>"
+                    <input type="text" name="q_users_name" value="<?php echo $item['item_status']==1?L('Item_item_list_item_progressing'):L('Item_item_list_item_finished');?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">项目时间:</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_item_list_item_time')}:</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $item['item_time'];?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">专业需求:</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_item_list_professional_needs')}:</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $item['item_needspecialty'];?>"
                            placeholder="" style="width:300px;" readonly/>

@@ -16,7 +16,7 @@ use Think\Controller;
 class LifeController extends CommonController {
     public $modeleid = 5;
 
-    //生活首页
+    //生活{:L('newworld_home')}
     public function life(){
 
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);

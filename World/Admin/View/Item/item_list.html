@@ -1,8 +1,8 @@
 <head>
 		<meta charset="utf-8" />
-		<title>象而是后台管理系统</title>
-		<meta name="keywords" content="象而是后台管理系统" />
-		<meta name="description" content="象而是后台管理系统" />
+		<title>{:L('newworld_admin')}</title>
+		<meta name="keywords" content="{:L('newworld_admin')}" />
+		<meta name="description" content="{:L('newworld_admin')}" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- basic styles -->
 		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
@@ -57,9 +57,9 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="icon-home home-icon"></i>
-								<a href="#">首页</a>
+								<a href="#">{:L('newworld_home')}</a>
 							</li>
-							<li class="active">控制台</li>
+							<li class="active">{:L('newworld_console')}</li>
 						</ul><!-- .breadcrumb -->
 					</div>
 
@@ -70,9 +70,9 @@
 <div class="page-content">
 	<div class="page-header">
 		<h1>
-			项目管理
+			{:L('Item_item_list_item_manager')}
 			<small> <i class="icon-double-angle-right"></i>
-				项目管理列表
+				{:L('Item_item_list_manager_list')}
 			</small>
 			 
 		</h1>
@@ -98,8 +98,8 @@
 									<div class='anniu'>
 										<ul>
 											<!--<li role="presentation" class="current" onclick="jump()">全部</li>-->
-											<li role="presentation" class="current" id="li1" onclick="jump1()">项目</li>
-											<li role="presentation" id="li2" onclick="jump2()">人才</li>
+											<li role="presentation" class="current" id="li1" onclick="jump1()">{:L('Item_item_list_item')}</li>
+											<li role="presentation" id="li2" onclick="jump2()">{:L('Item_professional_list_professional')}</li>
 										</ul>
 									</div>
 									<form class="form-horizontal" action="{:U('Admin/Item/item_list_sou')}" method="POST" role="form" enctype="multipart/form-data">
@@ -108,24 +108,24 @@
 										<input type='hidden' name='type' value='<?php if($type){echo $type;}else{echo 1;}?>'/>
 										<eq name="type" value="2">
 											<div class="btn-group" style='margin-top:5px;'>
-												<span>姓名:</span>
+												<span>{:L('Item_professional_list_professional_username')}:</span>
 												<input type="text" name="username" value="<?php if($username){echo $username;}?>">
 											</div>
 											<div class="btn-group" style='margin-top:5px;'>
-												<span>电话:</span>
+												<span>{:L('Item_professional_list_phone')}:</span>
 												<input type="text" name="phone" value="<?php if($phone){echo $phone;}?>">
 											</div>
 											<else/>
 											<div class="btn-group" style='margin-top:5px;'>
-												<span>项目名:</span>
+												<span>{:L('Item_item_list_item_name')}:</span>
 												<input type="text" name="name" value="<?php if($name){echo $name;}?>">
 											</div>
 											<div class="btn-group" style='margin-top:5px;'>
-												<span>状态:</span>
+												<span>{:L('Item_item_list_item_status')}:</span>
 												<select name="status">
-													<option value="-1" <?php if($status == -1){echo selected;}?>>请选择状态</option>
-													<option value="1" <?php if($status == 1){echo selected;}?>>进行中</option>
-													<option value="0" <?php if($status == 0){echo selected;}?>>已结束</option>
+													<option value="-1" <?php if($status == -1){echo selected;}?>>{:L('Item_item_list_item_choose_status')}</option>
+													<option value="1" <?php if($status == 1){echo selected;}?>>{:L('Item_item_list_item_progressing')}</option>
+													<option value="0" <?php if($status == 0){echo selected;}?>>{:L('Item_item_list_item_finished')}</option>
 												</select>
 											</div>
 										</eq>
@@ -138,7 +138,7 @@
 										<div class="btn-group" style='margin-top:5px;'>
 												<span class="input-group-btn">
 													<button type="submit" style="padding:0" class="btn btn-purple btn-sm">
-														搜索<i class="icon-search icon-on-right bigger-110"></i>
+														{:L('User_user_list_search')}<i class="icon-search icon-on-right bigger-110"></i>
 													</button>
 												</span>
 											
@@ -156,27 +156,27 @@
 								<tr style=' font-size: 13px;'>
 								    <!--<th><input type='checkbox' name='' value=''></th> -->
 									<eq name="type" value="2">
-											<th>序号</th>
-											<th>姓名</th>
-											<th>照片</th>
-											<th>联系方式</th>
-											<th>索引标识</th>
-											<th>简介</th>
-											<th>专业技能</th>
-											<th>备注</th>
-											<th>操作</th>
+											<th>{:L('Item_professional_list_professional_number')}</th>
+											<th>{:L('Item_professional_list_professional_username')}</th>
+											<th>{:L('Item_professional_list_professional_picture')}</th>
+											<th>{:L('Item_item_list_item_contact')}</th>
+											<th>{:L('Item_item_list_index_tag')}</th>
+											<th>{:L('Item_professional_list_professional_content')}</th>
+											<th>{:L('Item_professional_list_professional_skill')}</th>
+											<th>{:L('Item_professional_list_professional_remark')}</th>
+											<th>{:L('User_user_list_operation')}</th>
 										<else/>
-											<th>序号</th>
-											<th>项目名称</th>
-											<th>项目简介</th>
-											<th>项目类型</th>
-											<th>项目预算</th>
-											<th>发起者</th>
-											<th>联系方式</th>
-											<th>索引标识</th>
-											<th>邮箱</th>
-											<th>状态</th>
-											<th>操作</th>
+											<th>{:L('Item_item_list_item_number')}</th>
+											<th>{:L('Item_item_list_item_name')}</th>
+											<th>{:L('Item_item_list_item_content')}</th>
+											<th>{:L('Item_item_list_item_type')}</th>
+											<th>{:L('Item_item_list_item_budget')}</th>
+											<th>{:L('Item_item_list_item_sponsor')}</th>
+											<th>{:L('Item_item_list_item_contact')}</th>
+											<th>{:L('Item_item_list_index_tag')}</th>
+											<th>{:L('User_user_list_email')}</th>
+											<th>{:L('Item_item_list_item_status')}</th>
+											<th>{:L('User_user_list_operation')}</th>
 									</eq>
 								</tr>
 							</thead>
@@ -198,8 +198,8 @@
 											<td><?php echo $v['professional_explain']?></td>
 											<td>
 												<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-													<a onclick ="delete_professional(<?php echo $v['professional_id'];?>)" class="btn btn-xs btn-success" style="margin-top: 5px;">删除</a>
-													<a href="index.php?m=Admin&c=Item&a=professional_detail&id=<?php echo $v['professional_id']?>" class="btn btn-xs btn-success" style="margin-top:5px;">查看</a>
+													<a onclick ="delete_professional(<?php echo $v['professional_id'];?>)" class="btn btn-xs btn-success" style="margin-top: 5px;"><?php echo L('User_user_list_del');?></a>
+													<a href="index.php?m=Admin&c=Item&a=professional_detail&id=<?php echo $v['professional_id']?>" class="btn btn-xs btn-success" style="margin-top:5px;"><?php echo L('User_user_list_detail');?></a>
 												</div>
 											</td>
 										<else/>
@@ -213,14 +213,14 @@
 											<td><?php echo $v['item_firstmarks'].','.$v['item_secondmarks'].','.$v['item_thirdmarks']?></td>
 											<td><?php echo $v['item_mail']?></td>
 											<td>
-												<eq name="v.item_status" value="1">进行中<else/>已结束</eq>
+												<eq name="v.item_status" value="1"><?php echo L('Item_item_list_item_progressing');?><else/><?php echo L('Item_item_list_item_finished');?></eq>
 											</td>
 											<td>
 												<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-													<a onClick="changestatus(<?php echo $v['item_id']?>,<?php echo $v['item_status']?>)"  class="btn btn-xs btn-success" style="margin-top: 5px;"><eq name="v.item_status" value="1">结束<else/>开始</eq></a>
-													<a href="index.php?m=Admin&c=Item&a=item_edit&id=<?php echo $v['item_id']?>" class="btn btn-xs btn-success" style="margin-top:5px;">编辑</a>
-													<a onclick ="delete_item(<?php echo $v['item_id'];?>)" class="btn btn-xs btn-success" style="margin-top: 5px;">删除</a>
-													<a href="index.php?m=Admin&c=Item&a=item_detail&id=<?php echo $v['item_id']?>" class="btn btn-xs btn-success" style="margin-top: 5px;">查看</a>
+													<a onClick="changestatus(<?php echo $v['item_id']?>,<?php echo $v['item_status']?>)"  class="btn btn-xs btn-success" style="margin-top: 5px;"><eq name="v.item_status" value="1"><?php echo L('Item_item_list_item_finish');?><else/><?php echo L('Item_item_list_item_begin');?></eq></a>
+													<a href="index.php?m=Admin&c=Item&a=item_edit&id=<?php echo $v['item_id']?>" class="btn btn-xs btn-success" style="margin-top:5px;"><?php echo L('User_user_list_edit');?></a>
+													<a onclick ="delete_item(<?php echo $v['item_id'];?>)" class="btn btn-xs btn-success" style="margin-top: 5px;"><?php echo L('User_user_list_del');?></a>
+													<a href="index.php?m=Admin&c=Item&a=item_detail&id=<?php echo $v['item_id']?>" class="btn btn-xs btn-success" style="margin-top: 5px;"><?php echo L('User_user_list_detail');?></a>
 												</div>
 											</td>
 									</eq>

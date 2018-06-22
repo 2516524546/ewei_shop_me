@@ -4057,7 +4057,7 @@ $response = $client->schedule()->createSingleSchedule("指定时间点的定时�
 
 
 	
-	//首页搜索
+	//{:L('newworld_home')}搜索
 	public function index_sousou(){
 		$type = (int)$_REQUEST['type'];//曲谱:1，帖子:2，视频:3，活动:4
 	    $key = trim($_REQUEST['key']);

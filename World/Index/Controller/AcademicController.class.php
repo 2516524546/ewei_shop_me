@@ -20,7 +20,7 @@ class AcademicController extends CommonController {
     public $modeleid = 3;
 
 	/*
-	学术首页
+	学术{:L('newworld_home')}
 	 */
     public function academic(){
 

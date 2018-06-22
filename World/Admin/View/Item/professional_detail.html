@@ -1,8 +1,8 @@
 <head>
     <meta charset="utf-8"/>
-    <title>象而是后台管理系统</title>
-    <meta name="keywords" content="象而是后台管理系统"/>
-    <meta name="description" content="象而是后台管理系统"/>
+    <title>{:L('newworld_admin')}</title>
+    <meta name="keywords" content="{:L('newworld_admin')}"/>
+    <meta name="description" content="{:L('newworld_admin')}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- basic styles -->
     <link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet"/>
@@ -51,9 +51,9 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            项目管理
+            {:L('Item_item_list_item_manager')}
             <small><i class="icon-double-angle-right"></i>
-                人才详情
+                {:L('Item_professionfal_detail')}
             </small>
 
         </h1>
@@ -63,55 +63,55 @@
     <div class="row">
         <div class="col-xs-12 form-horizontal">
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">姓名</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_professional_list_professional_username')}</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $professional['professional_uname'];?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">照片</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_professional_list_professional_picture')}</label>
                 <div class="col-sm-9">
                     <img src="<?php echo  './Uploads/'.$professional['professional_vi_url'];?>" style="width:100px;height:100px;"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">联系方式</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_item_list_item_contact')}</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $professional['professional_contact'];?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">索引标识</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_item_list_index_tag')}</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $professional['professional_firstmarks'].','.$professional['professional_secondmarks'].','.$professional['professional_thirdmarks'];?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">简介</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_professional_list_professional_content')}</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $professional['professional_content'];?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">专业技能</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_professional_list_professional_skill')}</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $professional['professional_trait'];?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">备注</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_professional_list_professional_remark')}</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $professional['professional_explain'];?>"
                            placeholder="" style="width:300px;" readonly/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">发布时间</label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Item_professional_list_publish_time')}</label>
                 <div class="col-sm-9">
                     <input type="text" name="q_users_name" value="<?php echo $professional['professional_createtime'];?>"
                            placeholder="" style="width:300px;" readonly/>

@@ -260,7 +260,48 @@ return array(
     /******************************************************************
      * Item start
      */
+    //item_list_start
+    'Item_item_list_item_number' => '序号',
+    'Item_item_list_item_name' => '项目名称',
+    'Item_item_list_item_content' => '项目简介',
+    'Item_item_list_item_type' => '项目类型',
+    'Item_item_list_item_budget' => '项目预算',
+    'Item_item_list_item_sponsor' => '发起者',
+    'Item_item_list_item_contact' => '联系方式',
+    'Item_item_list_index_tag' => '索引标识',
+    'Item_item_list_item_status' => '状态',
+    'Item_item_list_item_company' => '公司',
+    'Item_item_list_item_time' => '项目时间',
+    'Item_item_list_professional_needs' => '专业需求',
+    'Item_item_list_item_progressing' => '进行中',
+    'Item_item_list_item_finished' => '已结束',
+    'Item_item_list_item_choose_status' => '请选择状态',
+    'Item_item_list_item' => '项目',
+    'Item_item_list_item_finish' => '结束',
+    'Item_item_list_item_begin' => '开始',
+    'Item_item_list_item' => '项目',
+    'Item_item_list_item_manager' => '项目管理',
+    'Item_item_list_manager_list' => '项目管理列表',
+    //item_list_end
+    //item_edit_start
+       'Item_item_edit' => '项目编辑',
+    //item_edit_end
+    //item_detail_start
+    'Item_detail' => '项目详情',
+    'Item_professionfal_detail'=>'人才详情',
+    //item_detail_end
 
+    //professional_list_start
+    'Item_professional_list_professional_number' => '序号',
+    'Item_professional_list_professional_username' => '姓名',
+    'Item_professional_list_professional_picture' => '照片',
+    'Item_professional_list_professional_content' => '简介',
+    'Item_professional_list_professional_skill' => '专业技能',
+    'Item_professional_list_professional_remark' => '备注',
+    'Item_professional_list_publish_time' => '发布时间',
+    'Item_professional_list_phone' => '电话',
+    'Item_professional_list_professional' => '人才',
+    //professional_list_end
 
     /*
 	 * Item end

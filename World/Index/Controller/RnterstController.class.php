@@ -16,7 +16,7 @@ class RnterstController extends CommonController {
     public $modeleid = 2;
 
 	/*
-	兴趣首页
+	兴趣{:L('newworld_home')}
 	 */
     public function interest(){
 
