@@ -37,56 +37,44 @@
                         My group
                 </div>
                 <div class="MyFollowing_list">
+                    <foreach name="groups" item="g">
                     <div class="MyFollowing_item Group_My_item">
                         <div class="Group_name">
-                            Group Name
+                            {$g['concerns_group_name']}
                         </div>
                         <div class="Group_btn">
-                            <div class="GroupBtn" data-toggle="modal" data-target="#box2">
+                            <div class="GroupBtn" data-id="{$g['concerns_group_id']}"   data-toggle="modal" data-target="#box2">
                                 ChangeName 
                             </div>
-                            <div class="GroupBtn" data-toggle="modal" data-target="#box1">
+                            <div class="GroupBtn" data-id="{$g['concerns_group_id']}"   data-toggle="modal" data-target="#box1">
                                 Delete 
                             </div>
                         </div>
-                        <!-- 删除 -->
-                        <div id="box1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                            <div class="modal-dialog modal-sm" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
+                    </div>
+                    </foreach>
+
+                    <!-- 删除 -->
+                    <div id="box1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                        <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
                                         <span class="modal-title">
                                                 Reminder
                                             </span>
-                                        <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: -226px;top: 16px;">
-                                                <span aria-hidden="true">&times;</span>
-                                            </a>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p class="text-center">Do you delete the occupation?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">confirm</button>
-                                    </div>
+                                    <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: -226px;top: 16px;">
+                                        <span aria-hidden="true">&times;</span>
+                                    </a>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="text-center">Do you delete the occupation?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">confirm</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                     <div class="MyFollowing_item Group_My_item">
-                        <div class="Group_name">
-                            Group Name
-                        </div>
-                        <div class="Group_btn">
-                            <div class="GroupBtn" data-toggle="modal" data-target="#box2">
-                                ChangeName 
-                            </div>
-                            <div class="GroupBtn" >
-                                Delete 
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- 修改 -->
                     <div id="box2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                         <div class="modal-dialog modal-sm" role="document">
@@ -215,15 +203,45 @@
 
         $(function(){
             (function(){
+
                 var num2;
                 $(".MyFollowing_box .MyFollowing_list").on('click', ".Group_My_item" , function(event) {
                     event.preventDefault();
                     num2 = $(this).index();
                 });
+
+                $('#box1 .btn-primary').on('click',function(){
+                    var concerns_group_id = $(".MyFollowing_box .MyFollowing_list .Group_My_item .Group_btn .GroupBtn").eq(2*num2).data('id')
+                    $.post(
+                        '{:U("User/DeleteConcernsGroup")}',
+                        {concerns_group_id:concerns_group_id},
+                        function(data){
+                            if(data.status == 0){
+                                alert(data.msg);
+                            }else{
+                                alert(data.msg);
+                                window.location.reload();
+                            }
+                        },'json'
+                    );
+                })
+
                 $(".btn-change-primary").on('click', function(event) {
+                    var concerns_group_id = $(".MyFollowing_box .MyFollowing_list .Group_My_item .Group_btn .GroupBtn").eq(2*num2).data('id')
                     if($(".box2_input").val()){
-                        $(".MyFollowing_box .MyFollowing_list .Group_My_item .Group_name").eq(num2).html($(".box2_input").val())
-                        $(".box2_input").val("")
+                        $.post(
+                            '{:U("User/ChangeConcernsGroupName")}',
+                            {concerns_group_name:$(".box2_input").val(),concerns_group_id:concerns_group_id},
+                            function(data){
+                                if(data.status == 0){
+                                    alert(data.msg);
+                                }else{
+                                    alert(data.msg);
+                                    $(".MyFollowing_box .MyFollowing_list .Group_My_item .Group_name").eq(num2).html($(".box2_input").val())
+                                    $(".box2_input").val("")
+                                }
+                            },'json'
+                        );
                     }else{
                         alert("不能为空")
                     }

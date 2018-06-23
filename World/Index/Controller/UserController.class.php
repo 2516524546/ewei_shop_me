@@ -14,7 +14,7 @@ class UserController extends CommonController {
 
     protected $_checkAction = ['FollowList','personalCenter','acountSetting','resumeDetails','myPosts','myMessage','myFollowing','addressBook'
                                     ,'myGroup','feedback','virtualCurrencyRecharge','FansList','DeliveryRecord','ResumeTemplateList'
-                                    ,'FollowFriend','RefuseAddFirend','AgreeAddFirend','AddFriend','ChangeConcernsName'];//需要做登录验证的action
+                                    ,'FollowFriend','RefuseAddFirend','AgreeAddFirend','AddFriend','ChangeConcernsName','AddGroup','SetGroup','ChangeConcernsGroupName','SetFriendAlias','DeleteFriend','mineResume','createResume'];//需要做登录验证的action
 
     public function _initialize()
     {
@@ -54,11 +54,14 @@ class UserController extends CommonController {
         $firendone = $firendsmodel->findone('firends_uid = '.$id.' and firends_aid = '.$this->userid.' and firends_type IN('. FriendsModel::TYPE_FRIEND.','. FriendsModel::TYPE_BLACKLISTED.','. FriendsModel::TYPE_BEDELETED .')');
 
         $concernsmodel = new ConcernsModel();
-        $concernsone = $concernsmodel->where('concerns_uid = '.$this->userid.' and concerns_cuid = '.$id)->getField('concerns_status');
+        $concernsone = $concernsmodel->findone('concerns_uid = '.$this->userid.' and concerns_cuid = '.$id . ' and concerns_status=1');
 
         //好友请求
         $fir_message = D('Message')->where('(message_sid='.$this->userid.' AND message_uid='.$id.') OR (message_sid='.$id.' AND message_uid='.$this->userid.')')->getField('message_id'); //对方申请成为我的好友或我申请成为对方的好友
 
+        //查找当前用户的好友分组
+        $concerns_groups = D('ConcernsGroup')->where('concerns_group_uid='.$this->userid)->select();
+        $this->assign('concerns_groups',$concerns_groups);
         $isme = 0;
         if ($id == $this->userid){
             $isme = 1;
@@ -161,6 +164,11 @@ class UserController extends CommonController {
     }
 
     public function myFollowing(){
+        //My group
+        $groups = D('ConcernsGroup')->where('concerns_group_uid='.$this->userid )->select();
+        $this->assign('groups',$groups);
+
+
         $count      = D('Concerns')->where('concerns_uid='.$this->userid .' AND concerns_status=1')->count();
         $Page       = new \Think\Page($count,2);
         $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
@@ -172,6 +180,20 @@ class UserController extends CommonController {
     }
 
     public function addressBook(){
+        $where = 'firends_uid='.$this->userid .' AND firends_type IN('.FriendsModel::TYPE_FRIEND.','. FriendsModel::TYPE_BLACKLISTED.','. FriendsModel::TYPE_BEDELETED.')';
+
+        $k = I('get.k','','trim');
+        if($k){
+            $where .= ' AND (firends_mark LIKE "%'.$k.'%" OR u.user_name LIKE "%'.$k.'%")';
+        }
+
+        $count      = D('Friends')->alias('f')->join('u_user u ON u.user_id = f.firends_aid','LEFT')->where($where)->count();
+        $Page       = new \Think\Page($count,2);
+        $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        $show       = $Page->show();
+        $myFirends = D('Friends')->alias('f')->field('f.*,u.user_name,u.user_icon,u.user_signature')->join('u_user u ON u.user_id = f.firends_aid','LEFT')->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('myFirends',$myFirends);
+        $this->assign('page',$show);
 
         $this->display();
     }
@@ -316,8 +338,8 @@ class UserController extends CommonController {
     }
 
     public function AgreeAddFirend(){
-        $id = I('post.id','intval');
-        $uid = I('post.uid','intval');
+        $id = I('post.id',0,'intval');
+        $uid = I('post.uid',0,'intval');
         if($id <= 0 || $uid <= 0){
             $this->error('Parameter error！');
         }
@@ -334,7 +356,7 @@ class UserController extends CommonController {
     }
 
     public function RefuseAddFirend(){
-        $id = I('post.id','intval');
+        $id = I('post.id',0,'intval');
         if($id <= 0 && IS_AJAX){
             die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
         }elseif($id <= 0){
@@ -349,7 +371,7 @@ class UserController extends CommonController {
     }
 
     public function FollowFriend(){
-        $id = I('post.id','intval');
+        $id = I('post.id',0,'intval');
         if($id <= 0 && IS_AJAX){
             die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
         }elseif($id <= 0){
@@ -372,8 +394,8 @@ class UserController extends CommonController {
     }
 
     public function ChangeConcernsName(){
-        $concerns_id = I('post.concerns_id','intval');
-        $concerns_name = I('post.concerns_name','trim');
+        $concerns_id = I('post.concerns_id',0,'intval');
+        $concerns_name = I('post.concerns_name','','trim');
         if(($concerns_id <= 0 || empty($concerns_name)) && IS_AJAX){
             die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
         }elseif($concerns_id <= 0 || empty($concerns_name)){
@@ -388,6 +410,118 @@ class UserController extends CommonController {
             die(json_encode(['status'=>1,'msg'=>'ChangName success!']));
         }else{
             die(json_encode(['status'=>0,'msg'=>'ChangName failed!']));
+        }
+    }
+
+    public function ChangeConcernsGroupName(){
+        $concerns_group_id = I('post.concerns_group_id',0,'intval');
+        $concerns_group_name = I('post.concerns_group_name','','trim');
+        if(($concerns_group_id <= 0 || empty($concerns_group_name)) && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif($concerns_group_id <= 0 || empty($concerns_group_name)){
+            $this->error('Parameter error！');
+        }
+
+        if(strlen($concerns_group_name)>80){
+            $this->error('concerns_group_name can\'t exceed 80 characters！');
+        }
+
+        if(D('ConcernsGroup')->where('concerns_group_id = '.$concerns_group_id)->setField(['concerns_group_name'=>$concerns_group_name])){
+            die(json_encode(['status'=>1,'msg'=>'ChangName success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'ChangName failed!']));
+        }
+    }
+
+
+    public function DeleteConcernsGroup(){
+        $concerns_group_id = I('post.concerns_group_id',0,'intval');
+        if($concerns_group_id <= 0 && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif($concerns_group_id <= 0){
+            $this->error('Parameter error！');
+        }
+
+        if(D('ConcernsGroup')->where('concerns_group_id='.$concerns_group_id)->delete()){
+            die(json_encode(['status'=>1,'msg'=>'Delete success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Delete failed!']));
+        }
+    }
+
+    public function AddGroup(){
+        $group_name = I('post.group_name','','trim');
+
+        if(empty($group_name) && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif(empty($group_name)){
+            $this->error('Parameter error！');
+        }
+
+        if(strlen($group_name)>80){
+            $this->error('concerns_group_name can\'t exceed 80 characters！');
+        }
+
+        if(D('ConcernsGroup')->add(['concerns_group_uid'=>$this->userid,'concerns_group_name'=>$group_name])){
+            die(json_encode(['status'=>1,'msg'=>'Create group success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Create group failed!']));
+        }
+    }
+
+    public function SetGroup(){
+        $concerns_group_id = I('post.group_id',0,'intval');
+        $concerns_group_uid = I('post.uid',0,'intval');
+        if(($concerns_group_id <= 0 || $concerns_group_uid <= 0) && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif(($concerns_group_id <= 0 || $concerns_group_uid <= 0)){
+            $this->error('Parameter error！');
+        }
+
+        if(D('Concerns')->updataone('concerns_uid = '.$this->userid.' and concerns_cuid='.$concerns_group_uid,['concerns_gid'=>$concerns_group_id])){
+            die(json_encode(['status'=>1,'msg'=>'ChangName success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'ChangName failed!']));
+        }
+    }
+
+    public function SetFriendAlias(){
+        $friends_id = I('post.friends_id',0,'intval');
+        $firends_mark = I('post.firends_mark','','trim');
+        if(($friends_id <= 0 || empty($firends_mark)) && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif(($friends_id <= 0 || empty($firends_mark))){
+            $this->error('Parameter error！');
+        }
+
+        if(strlen($firends_mark)>80){
+            $this->error('firends_mark can\'t exceed 80 characters！');
+        }
+
+        if(D('Friends')->updataone('friends_id = '.$friends_id,['firends_mark'=>$firends_mark])){
+            die(json_encode(['status'=>1,'msg'=>'Set Alias success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Set Alias failed!']));
+        }
+    }
+
+    public function DeleteFriend(){
+        $firends_uid = I('post.firends_uid',0,'intval');
+        $firends_aid = I('post.firends_aid',0,'intval');
+        if(($firends_uid <= 0 || $firends_aid <= 0) && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif(($firends_uid <= 0 || $firends_aid <= 0)){
+            $this->error('Parameter error！');
+        }
+        if($firends_uid != $this->userid){
+            $this->error('Parameter error！');
+        }
+
+        $firends_type = D('Friends')->getFriendType(3,['firends_uid'=>$firends_uid,'firends_aid'=>$firends_aid]);
+        if(D('Friends')->updataone('firends_uid = '.$firends_uid . ' AND firends_aid=' . $firends_aid,['firends_type'=>$firends_type])){
+            die(json_encode(['status'=>1,'msg'=>'Delete success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Delete failed!']));
         }
     }
 }

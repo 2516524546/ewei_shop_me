@@ -41,9 +41,9 @@
                         <div class="col-md-6">
                             <div class="SelectionContainer">
                                 <input type="text" class="layui-input" id="Selectionform">
-                                <a href="#" id="SelectionIcon">
+                                <span id="SelectionIcon">
                                 <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
-                                </a>
+                                </span>
                             </div>
                         </div>
                 </div>
@@ -54,78 +54,33 @@
             <!-- AddressBook content -->
             <div class="container">
                 <div class="AddressBook_box">
+                    <foreach name="myFirends" item="m">
                     <div class="AddressBook_item">
                         <div class="AddressBook_left">
                             <a href="PersonalCenter.html">
                                 <div class="AddressBook_left_img">
-                                    <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
+                                    <img src="<if condition='$m["user_icon"]'>./Uploads/{$m['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
                                 </div>
                                 <div class="AddressBook_left_user">
-                                    Kendall J.
+                                    <if condition="$m['firends_mark']">{$m['firends_mark']}<else/>{$m['user_name']}</if>
                                 </div>
                         </a>
                             </div>
         
                             <div class="AddressBook_right">
-                                <div class="AddressBook_btn AddressBook_ChangeName" data-toggle="modal" data-target="#box2">
+                                <div class="AddressBook_btn AddressBook_ChangeName" data-id="{$m['friends_id']}" data-toggle="modal" data-target="#box2">
                                         Set Alias
                                 </div>
-                                <div class="AddressBook_btn AddressBook_Delete" data-toggle="modal" data-target="#box1">
+                                <div class="AddressBook_btn AddressBook_Delete" data-uid="{$m['firends_uid']}"  data-aid="{$m['firends_aid']}"  data-toggle="modal" data-target="#box1">
                                         Delete
                                 </div>
                             </div>
 
                     </div>
-
-                    <div class="AddressBook_item">
-                        <div class="AddressBook_left">
-                            <a href="PersonalCenter.html">
-                                <div class="AddressBook_left_img">
-                                    <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
-                                </div>
-                                <div class="AddressBook_left_user">
-                                    Kendall J.
-                                </div>
-                        </a>
-                    </div>
-        
-                            <div class="AddressBook_right">
-                                <div class="AddressBook_btn AddressBook_ChangeName" data-toggle="modal" data-target="#box2">
-                                        Set Alias
-                                </div>
-                                <div class="AddressBook_btn AddressBook_Delete" data-toggle="modal" data-target="#box1">
-                                        Delete
-                                </div>
-                            </div>
-
-                    </div>
-
-                    <div class="AddressBook_item">
-                        <div class="AddressBook_left">
-                            <a href="PersonalCenter.html">
-                                <div class="AddressBook_left_img">
-                                    <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
-                                </div>
-                                <div class="AddressBook_left_user">
-                                    Kendall J.
-                                </div>
-                        </a>
-                    </div>
-        
-                            <div class="AddressBook_right">
-                                <div class="AddressBook_btn AddressBook_ChangeName" data-toggle="modal" data-target="#box2">
-                                        Set Alias
-                                </div>
-                                <div class="AddressBook_btn AddressBook_Delete" data-toggle="modal" data-target="#box1">
-                                        Delete
-                                </div>
-                            </div>
-
-                    </div>
-
+                    </foreach>
                 </div>
                 <div class="container" id="NumberOfPagesContainer">
-                        <div id="NumberOfPages"></div>
+                    {$page}
                 </div>
 
                 <!-- 删除 -->
@@ -187,7 +142,6 @@
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
-    <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
     <script>
             $(function(){
@@ -198,7 +152,20 @@
                         num = $(this).index();
                     });
                     $(".btn-primary").on('click', function(event) {
-                            $(".AddressBook_box .AddressBook_item").eq(num).remove();
+                        var firends_uid = $(".AddressBook_box .AddressBook_item .AddressBook_right .AddressBook_Delete").eq(num).data('uid')
+                        var firends_aid = $(".AddressBook_box .AddressBook_item .AddressBook_right .AddressBook_Delete").eq(num).data('aid')
+                        $.post(
+                            '{:U("User/DeleteFriend")}',
+                            {firends_uid:firends_uid,firends_aid:firends_aid},
+                            function(data){
+                                if(data.status == 0){
+                                    alert(data.msg);
+                                }else{
+                                    //alert(data.msg);
+                                    $(".AddressBook_box .AddressBook_item").eq(num).remove();
+                                }
+                            },'json'
+                        );
                     });
                 })();
                 
@@ -209,6 +176,11 @@
         <script>
                 $(function(){
                     (function(){
+
+                        $('#SelectionIcon').on('click',function(){
+                            window.location.href = '{:U('Index/User/addressBook')}'+ '&k=' + $('#Selectionform').val();
+                        })
+
                         var num2;
                         $(".AddressBook_box").on('click', ".AddressBook_item" , function(event) {
                             event.preventDefault();
@@ -216,8 +188,20 @@
                         });
                         $(".btn-change-primary").on('click', function(event) {
                             if($(".box2_input").val()){
-                                $(".AddressBook_box .AddressBook_item .AddressBook_left .AddressBook_left_user").eq(num2).html($(".box2_input").val())
-                                $(".box2_input").val("")
+                                var friends_id = $(".AddressBook_box .AddressBook_item .AddressBook_right .AddressBook_ChangeName").eq(num2).data('id')
+                                $.post(
+                                    '{:U("User/SetFriendAlias")}',
+                                    {friends_id:friends_id,firends_mark:$(".box2_input").val()},
+                                    function(data){
+                                        if(data.status == 0){
+                                            alert(data.msg);
+                                        }else{
+                                            alert(data.msg);
+                                            $(".AddressBook_box .AddressBook_item .AddressBook_left .AddressBook_left_user").eq(num2).html($(".box2_input").val())
+                                            $(".box2_input").val("")
+                                        }
+                                    },'json'
+                                );
                             }else{
                                 alert("不能为空")
                             }

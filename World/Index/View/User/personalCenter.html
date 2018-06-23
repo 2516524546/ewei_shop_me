@@ -95,9 +95,21 @@
                     <div class="friend_item Friend_Follow" data-Ison="true">
                         Follow
                     </div>
-                <else/>
+                    <div class="Friend_Follow_box">
+                        <ul>
+                            <li class="Friend_UnFollow">UnFollow</li>
+                            <li class="Friend_Grouping" data-toggle="modal" data-target="#box3">grouping</li>
+                        </ul>
+                    </div>
+                <elseif condition="$userid != $userone[user_id] && isset($concernsone)"/>
                     <div class="friend_item Friend_Follow" data-Ison="false">
                         Followed
+                    </div>
+                    <div class="Friend_Follow_box">
+                        <ul>
+                            <li class="Friend_UnFollow">UnFollow</li>
+                            <li class="Friend_Grouping" data-toggle="modal" data-target="#box3">grouping</li>
+                        </ul>
                     </div>
                 </if>
             </div>
@@ -128,7 +140,50 @@
                 </div>
             </div>
         </div>
-        
+
+        <!-- create Group -->
+        <!-- add friend -->
+        <div id="box3" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                            <span class="modal-title">
+                                    Reminder
+                                </span>
+                        <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                                    <span aria-hidden="true">&times;
+                        </a>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-body-title">Select the following group :</div>
+                        <div class="modal-body-list">
+                            <div class="modal-body-item-box">
+                                <if condition="!empty($concerns_groups)">
+                                    <foreach name="concerns_groups" item="g">
+                                        <div class="modal-body-item">
+                                            <input type="radio" value="{$g['concerns_group_id']}" <if condition="$concernsone && $concernsone['concerns_gid'] === $g['concerns_group_id']">checked="checked"</if> name="GroupName">{$g['concerns_group_name']}
+                                        </div>
+                                    </foreach>>
+                                </if>
+                            </div>
+                            <div class="modal-body-addGroup">
+                                <div class="modal-body-addIcon">+</div>
+                                <span>Create a group</span>
+                            </div>
+                            <div class="modal-body-addName">
+                                <input type="text" class="addName_input">
+                                <button class="addName_Create">Create</button>
+                                <button class="addName_Cancel">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- personal Center details -->
         <div class="personal_details">
@@ -471,7 +526,7 @@
     });
 </script>
 <script>
-    $(".personal_content .personal_title .P_title_friend .Friend_Follow").on("click", function () {
+    function follow(){
         $.post(
             '{:U("User/FollowFriend")}',
             {id:{$userone['user_id']}},
@@ -481,15 +536,27 @@
                 }else{
                     alert(data.msg);
                     if ($(".personal_content .personal_title .P_title_friend .Friend_Follow").attr("data-ison") === "true") {
-                        $(".personal_content .personal_title .P_title_friend .Friend_Follow").text("Followed")
-                        $(".personal_content .personal_title .P_title_friend .Friend_Follow").attr("data-Ison", "false")
+                        $(".personal_content .personal_title .P_title_friend .Friend_Follow").text("Followed");
                     } else {
                         $(".personal_content .personal_title .P_title_friend .Friend_Follow").text("Follow")
-                        $(".personal_content .personal_title .P_title_friend .Friend_Follow").attr("data-ison", "true")
                     }
                 }
             },'json'
         );
+    }
+    $(".personal_content .personal_title .P_title_friend .Friend_Follow").on("click", function () {
+        if($(this).attr('data-Ison')=="true"){
+            $('.personal_content .personal_title .P_title_friend .Friend_Follow_box').css("display","none")
+            $(this).attr("data-Ison","false")
+        }else{
+            $(this).attr("data-Ison","true")
+            $('.personal_content .personal_title .P_title_friend .Friend_Follow_box').css("display","block")
+        }
+        if($.trim($(this).text()) === "Followed"){
+            return ;
+        }else{
+            follow();
+        }
     })
 
     //add friend
@@ -506,6 +573,63 @@
                 }
             },'json'
         );
+    })
+
+    $(".personal_content .personal_title .P_title_friend .Friend_Follow_box ul .Friend_UnFollow").on("click",function(){
+        follow();
+        $(".personal_content .personal_title .P_title_friend .Friend_Follow").removeAttr("data-Ison")
+        $('.personal_content .personal_title .P_title_friend .Friend_Follow_box').css("display","none")
+    })
+
+    //创建分组
+    $('.modal-body-list .modal-body-addGroup').on('click',function(){
+        $(this).css('display','none');
+        $('.modal-body-list .modal-body-addName').css("display","block");
+    })
+    $(".modal-body-list .modal-body-addName .addName_Cancel").on("click",function(){
+        $('.modal-body-list .modal-body-addName').css("display","none");
+        $('.modal-body-list .modal-body-addGroup').css("display","flex");
+        $(".modal-body-list .modal-body-addName .addName_input").val("")
+    })
+    //添加分组
+    $(".modal-body-list .modal-body-addName .addName_Create").on("click",function(){
+        var input_val = $(".modal-body-list .modal-body-addName .addName_input").val();
+        if(input_val!=""){
+            $.post(
+                '{:U("User/AddGroup")}',
+                {group_name:input_val},
+                function(data){
+                    if(data.status == 0){
+                        alert(data.msg);
+                    }else{
+                        alert(data.msg);
+                        var Cdiv = "<div class='modal-body-item'><input type='radio' value='1' name='GroupName'>"+ input_val+"</div>"
+                        $(".modal-body-list .modal-body-item-box").append(Cdiv)
+                    }
+                },'json'
+            )
+        }else{
+            alert("Please enter group name")
+        }
+    })
+
+    //关闭
+    $('.btn-default').on("click",function(){
+        $('.personal_content .personal_title .P_title_friend .Friend_Follow_box').css('display','none')
+    })
+    //确定
+    $('#box3 .btn-primary').on("click",function(){
+        $.post(
+            '{:U("User/SetGroup")}',
+            {group_id:$("input[name='GroupName']:checked").val(),uid:{$userone['user_id']}},
+            function(data){
+                if(data.status == 0){
+                    alert(data.msg);
+                }else{
+                    $('.personal_content .personal_title .P_title_friend .Friend_Follow_box').css('display','none')
+                }
+            },'json'
+        )
     })
 </script>
 <script src="__PUBLIC__/Web/web/js/jquery-1.11.1.min.js"></script>
