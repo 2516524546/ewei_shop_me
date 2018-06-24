@@ -10,8 +10,10 @@ use Index\Model\NoteModel;
 use Index\Model\SecondMarkModel;
 use Index\Model\ThirdMarkModel;
 use Index\Model\TutorShipIssueModel;
-use Index\Model\TutorshipNeedModel;
+use Index\Model\TutorShipNeedModel;
 use Think\Controller;
+use Think\Exception;
+
 class CrowdController extends CommonController {
 
 
@@ -92,14 +94,29 @@ class CrowdController extends CommonController {
             $crowdconditionmodel = new CrowdConditionModel();
             $crowdmembermodel = new CrowdMemberModel();
             $notemodel = new NoteModel();
-            $tutorissue = new TutorShipIssueModel();
-            $tutorneed = new TutorshipNeedModel();
+            $tutorissuemodel = new TutorShipIssueModel();
+            $tutorneedmodel = new TutorShipNeedModel();
+
+            $crowdmodel->startTrans();
+            try {
+                $crowdres = $crowdmodel->where('crowd_id = ' . $cid)->delete();
+                $crowdconditionmodel->where('crowd_condition_cid = ' . $cid)->delete();
+                $crowdmembermodel->where('crowd_member_cid = ' . $cid)->delete();
+                $notemodel->where('note_cid = ' . $cid)->delete();
+                $tutorissuemodel->where('tutorship_issue_cid = ' . $cid)->delete();
+                $tutorneedmodel->where('tutorship_need_cid = ' . $cid)->delete();
 
 
-            if ($res){
-                die(json_encode(array('str' => 1, 'msg' => L('Mark_second_list_delok'))));
-            }else{
-                die(json_encode(array('str' => 2, 'msg' => L('Mark_second_list_delno'))));
+                if ($crowdres) {
+                    $crowdmodel->commit();
+                    die(json_encode(array('str' => 1, 'msg' => L('Crowd_crowd_list_delyes'))));
+                } else {
+                    $crowdmodel->rollback();
+                    die(json_encode(array('str' => 2, 'msg' => L('Crowd_crowd_list_delno'))));
+                }
+            }catch (Exception $e){
+                $crowdmodel->rollback();
+                die(json_encode(array('str' => 2, 'msg' => L('Crowd_crowd_list_delno'))));
             }
 
         } else {

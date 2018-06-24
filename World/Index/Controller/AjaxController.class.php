@@ -2622,18 +2622,33 @@ public function ajax_donationpay()
                     die(json_encode(array('str' => 6, 'msg' => '你已是该群成员')));
                 }else {
 
-                    $data=array(
-                        'crowd_member_cid'=>$this->post('cid'),
-                        'crowd_member_uid'=>$this->userid,
-                        'crowd_member_status'=>0,
-                        'crowd_member_logintime'=>date("Y-m-d H:i:s", time()),
-                    );
+                    $crowdmodel = new CrowdModel();
+                    $crowdone = $crowdmodel->where('crowd_id = '.$this->post('cid'))->find();
+                    $crowdmembermodel->startTrans();
+                    try {
 
-                    $res = $crowdmembermodel->add($data);
+                        $data = array(
+                            'crowd_member_cid' => $this->post('cid'),
+                            'crowd_member_uid' => $this->userid,
+                            'crowd_member_status' => 0,
+                            'crowd_member_logintime' => date("Y-m-d H:i:s", time()),
+                        );
+                        $crowddata = array(
+                            'crowd_peoplenum' => $crowdone['crowd_peoplenum']+1,
+                        );
 
-                    if ($res) {
-                        die(json_encode(array('str' => 1, 'msg' => '加入成功')));
-                    } else {
+                        $crowdres = $crowdmodel->updataone('crowd_id = '.$this->post('cid'),$crowddata);
+                        $res = $crowdmembermodel->add($data);
+
+                        if ($res&&$crowdres) {
+                            $crowdmembermodel->commit();
+                            die(json_encode(array('str' => 1, 'msg' => '加入成功')));
+                        } else {
+                            $crowdmembermodel->rollback();
+                            die(json_encode(array('str' => 2, 'msg' => '加入失败')));
+                        }
+                    }catch (Exception $e){
+                        $crowdmembermodel->rollback();
                         die(json_encode(array('str' => 2, 'msg' => '加入失败')));
                     }
                 }
@@ -2676,6 +2691,8 @@ public function ajax_donationpay()
                     if ($userone['user_havecoin']<$conditionone['crowd_condition_joinmoney']){
                         die(json_encode(array('str' => 7, 'msg' => '您的虚拟币数量不足')));
                     }
+                    $crowdmodel = new CrowdModel();
+                    $crowdone = $crowdmodel->where('crowd_id = '.$this->post('cid'))->find();
                     $crowdmembermodel->startTrans();
                     try{
 

@@ -188,6 +188,9 @@ return array(
     'Crowd_crowd_list_if' => '该操作不可逆，确认继续吗？',
     'Crowd_crowd_list_ok' => '确定',
     'Crowd_crowd_list_no' => '取消',
+    'Crowd_crowd_list_delyes' => '解散成功',
+    'Crowd_crowd_list_delno' => '解散失败',
+
 
 
     /*
