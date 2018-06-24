@@ -116,4 +116,5 @@ lyx
 2018.06.21 end
 */
 
-
+ALTER TABLE `newworld`.`u_concerns_group`
+ADD COLUMN `concerns_group_uid` bigint(20) UNSIGNED NOT NULL COMMENT '创建分组的用户id' AFTER `concerns_group_name`;

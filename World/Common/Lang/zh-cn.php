@@ -317,8 +317,9 @@ return array(
     /******************************************************************
      * Professional start
      */
-
-
+    'Professional_professional_manager' => '专业人士管理',
+    'Professional_professional_list' => '专业人士列表',
+    'Professional_professional_detail' => '专业人士详情',
     /*
 	 * Professional end
 	 *******************************************************************/

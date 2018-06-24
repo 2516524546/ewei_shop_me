@@ -52,6 +52,69 @@ class FriendsModel extends Model{
     }
 
     /**
+     * 获取好友类型
+     * @param int   $type
+     * @param array $data
+     * @return const
+     */
+    public function getFriendType($type,array $data){
+        $firends_type = self::TYPE_FRIEND;
+        $friend = $this->findone(['firends_uid'=>$data['firends_aid'],'firends_aid'=>$data['firends_uid']],'firends_type');
+        if($friend){
+            $firends_type = $friend['firends_type'];
+        }
+        switch ($firends_type){
+            case self::TYPE_FRIEND:         //firend是我的好友
+            case self::TYPE_BLACKLISTED:
+            case self::TYPE_BEDELETED:
+                switch ($type){
+                    case 2:                 //拉黑
+                        $uid_type = self::TYPE_DEFRIEND;
+                        break;
+                    case 3:                 //删除
+                        $uid_type = self::TYPE_DELETED;
+                        break;
+                    default:                //添加好友
+                        $uid_type = self::TYPE_FRIEND;
+                        break;
+                }
+                break;
+            case self::TYPE_DEFRIEND:       //firend拉黑了我
+            case self::TYPE_MUTUALBLACK:
+            case self::TYPE_BLACKANDDELETED:
+                switch ($type){
+                    case 2:                 //拉黑
+                        $uid_type = self::TYPE_MUTUALBLACK;
+                        break;
+                    case 3:                 //删除
+                        $uid_type = self::TYPE_DELETEDANDBLACK;
+                        break;
+                    default:                //添加好友
+                        $uid_type = self::TYPE_BLACKLISTED;
+                        break;
+                }
+                break;
+            case self::TYPE_DELETED:        //firend删除了我
+            case self::TYPE_DELETEDANDBLACK:
+            case self::TYPE_MUTUALDELETING:
+                switch ($type){
+                    case 2:                 //拉黑
+                        $uid_type = self::TYPE_BLACKANDDELETED;
+                        break;
+                    case 3:                 //删除
+                        $uid_type = self::TYPE_MUTUALDELETING;
+                        break;
+                    default:                //添加好友
+                        $uid_type = self::TYPE_BEDELETED;
+                        break;
+                }
+                break;
+        }
+
+        return $uid_type;
+    }
+
+    /**
      * 检查好友类型
      * @param int   $type
      * @param array $data
