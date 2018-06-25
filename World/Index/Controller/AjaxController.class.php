@@ -923,6 +923,9 @@ public function ajax_donationpay()
         if (IS_POST) {
 
             $file = $_FILES['img'];
+            if(!$_FILES){
+                die(json_encode(array('str' => 0,'msg'=>'请选择一张图片')));
+            }
 
             $upload = new \Think\Upload();// 实例化上传类
             $upload->maxSize = 3072000 ;// 设置附件上传大小
@@ -931,7 +934,7 @@ public function ajax_donationpay()
 // 上传单个文件
             $info = $upload->uploadOne($file);
             if(!$info) {// 上传错误提示错误信息
-                die(json_encode(array('str' => 0)));
+                die(json_encode(array('str' => 0,'msg'=>$upload->getError())));
             }else{// 上传成功 获取上传文件信息
                 die(json_encode(array('str' => 1,'msg'=>$info['savepath'].$info['savename'])));
             }
@@ -3625,6 +3628,33 @@ public function ajax_donationpay()
                 $res = $needcommentmodel->updataone('tutorship_need_comment_id = '.$this->post('replyid'),$data);
                 if ($res){
                     die(json_encode(array('str' => 1,'msg'=>'回复成功')));
+                }else{
+                    die(json_encode(array('str' => 2,'msg'=>'回复失败')));
+                }
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+
+    }
+
+    //我的发布
+    public function ajax_setpost(){
+
+        if (IS_POST){
+
+            if (!isset($_POST['type'])||$this->post('type')==''){
+
+                die(json_encode(array('str' => 3, 'msg' => '不存在这个类型')));
+            }else {
+
+                $notemodel = new NoteModel();
+                $limit1 = ($this->post('limit1')-1)*$this->post('limit2');
+                $notelist = $notemodel->joinonelist('note_ishide = 1 and note_type = '.$this->post('type').' and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',$limit1,$this->post('limit2'));
+
+                if ($notelist){
+                    die(json_encode(array('str' => 1,'msg'=>$notelist)));
                 }else{
                     die(json_encode(array('str' => 2,'msg'=>'回复失败')));
                 }

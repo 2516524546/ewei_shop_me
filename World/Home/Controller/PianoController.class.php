@@ -5093,7 +5093,7 @@ $response = $client->schedule()->createSingleSchedule("指定时间点的定时�
 				$verify .= mt_rand(0,9);
 			}
 			
-			$msg = "您好！您的验证码为：".$verify."【快乐琴行平台】";
+			$msg = "您好！您的验证码为：".$verify."【Newworld平台】";
 			$result = $this ->sendMessage($phone,$msg);
 			
 			if($result->respcode==0){

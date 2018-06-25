@@ -1,4 +1,4 @@
-
+﻿
 /*
 lyx
 2018.06.10
@@ -118,3 +118,20 @@ lyx
 
 ALTER TABLE `newworld`.`u_concerns_group`
 ADD COLUMN `concerns_group_uid` bigint(20) UNSIGNED NOT NULL COMMENT '创建分组的用户id' AFTER `concerns_group_name`;
+
+
+
+/*
+lyx
+2018.06.25 start
+*/
+
+ALTER TABLE `u_message`
+MODIFY COLUMN `message_sendtime`  datetime NOT NULL COMMENT '信息发送时间' AFTER `message_content`,
+MODIFY COLUMN `message_delivertime`  datetime NOT NULL COMMENT '信息送达时间' AFTER `message_sendtime`;
+
+/*
+lyx
+2018.06.25 end
+*/
+

@@ -103,7 +103,7 @@ class JinxiaoController extends CommonController {
 						$url = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 						$contetn = "您好:您的资料已提交平台审核，请等待回复";
 						//发送短信
-						$msg = $contetn."【快乐琴行】";
+						$msg = $contetn."【Newworld】";
 						$this ->sendMessage($mobile,$msg);
 						echo 1;exit;
 					}
@@ -113,7 +113,7 @@ class JinxiaoController extends CommonController {
 						$contetn = "您好,子昊钢琴给您启用了后台管理账号:".$username.",初始密码：123456。
 						登陆地址：".$url;
 						//发送短信
-						$msg = $contetn."【快乐琴行】";
+						$msg = $contetn."【Newworld】";
 						$this ->sendMessage($mobile,$msg);
 						echo 1;exit;
 					}
@@ -444,9 +444,9 @@ class JinxiaoController extends CommonController {
 				if($add && $add1){
 					M("Dealers")->commit();
 					$url = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
-					$contetn = $fzr_name."您好,快乐琴行给您创建了后台管理账号:".$username.",初始密码：123456。登陆地址：".$url;
+					$contetn = $fzr_name."您好,Newworld给您创建了后台管理账号:".$username.",初始密码：123456。登陆地址：".$url;
 					//发送短信
-					$msg = $contetn."【快乐琴行】";
+					$msg = $contetn."【Newworld】";
 					$this ->sendMessage($mobile,$msg);
 					echo 1;exit;
 				}else{

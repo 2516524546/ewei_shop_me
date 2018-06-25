@@ -135,8 +135,24 @@ class UserController extends CommonController {
     }
 
     public function myPosts(){
+
+
+        $notemodel = new NoteModel();
+        $notelist = $notemodel->joinonelist('note_ishide = 1 and note_type = 1 and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,10);
+        $notecount = $notemodel->joinone('note_ishide = 1 and note_type = 1 and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+        $questionlist = $notemodel->joinonelist('note_ishide = 1 and note_type = 2 and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,10);
+        $questioncount = $notemodel->joinone('note_ishide = 1 and note_type = 2 and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+        $resourcelist = $notemodel->joinonelist('note_ishide = 1 and note_type = 3 and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,10);
+        $resourcecount = $notemodel->joinone('note_ishide = 1 and note_type = 3 and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+
         
         $this->assign(array(
+            'notelist'=>$notelist,
+            'notecount'=>$notecount,
+            'questionlist'=>$questionlist,
+            'questioncount'=>$questioncount,
+            'resourcelist'=>$resourcelist,
+            'resourcecount'=>$resourcecount,
 
         ));
         $this->assign('title','My Posts');
