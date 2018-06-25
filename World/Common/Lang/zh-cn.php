@@ -191,6 +191,21 @@ return array(
     'Crowd_crowd_list_delyes' => '解散成功',
     'Crowd_crowd_list_delno' => '解散失败',
 
+    //crowd_detail
+    'Crowd_crowd_detail_name' => '群名称',
+    'Crowd_crowd_detail_icon' => '群头像',
+    'Crowd_crowd_detail_uname' => '创建人',
+    'Crowd_crowd_detail_uicon' => '创建人头像',
+    'Crowd_crowd_detail_umail' => '创建人邮箱',
+    'Crowd_crowd_detail_type' => '群类型',
+    'Crowd_crowd_detail_typeone' => '普通群',
+    'Crowd_crowd_detail_typetwo' => '社交群',
+    'Crowd_crowd_detail_intro' => '简介',
+    'Crowd_crowd_detail_createtime' => '创建时间',
+    'Crowd_crowd_detail_if' => '确认修改',
+    'Crowd_crowd_detail_back' => '返回列表',
+    'Crowd_crowd_detail_yes' => '修改成功',
+    'Crowd_crowd_detail_no' => '修改失败',
 
 
     /*
