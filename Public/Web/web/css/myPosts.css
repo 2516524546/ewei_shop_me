@@ -48,6 +48,7 @@
 }
 .MyPosts_content .box_item .box_top .box_left .box_left_img img{
     width: 100%;
+    height: 100%;
 }
 
 .MyPosts_content .box_item .box_top .box_left .box_left_details .left_details_title{

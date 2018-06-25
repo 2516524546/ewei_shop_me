@@ -243,7 +243,7 @@
 
             layui.use('form', function(){
                 var form = layui.form;
-                var values=[];
+                // var values=[];
 
 
                 /*form.on('submit(demo1)', function(data){
@@ -444,16 +444,20 @@
                 //  $("#file_input").bind("change",function(){
                 //         console.log(file_files)
                 //     })
-                file_input.addEventListener("change",function(){
-                    for(let key in file_input.files){
-                         	//只遍历对象自身的属性，而不包含继承于原型链上的属性。  
-                        if (file_input.files.hasOwnProperty(key) === true){
-                            values.push(file_input.files[key]);   
-                        }  
-                    }
-                    console.log(values)
-                })
-                // $("#file_input").bind("change",function(){
+                // file_input.addEventListener("change",function(){
+                //     for(let key in file_input.files){
+                //          	//只遍历对象自身的属性，而不包含继承于原型链上的属性。  
+                //         if (file_input.files.hasOwnProperty(key) === true){
+                //             values.push(file_input.files[key]);   
+                //         }  
+                //     }
+                //     // console.log(values)
+                // })
+                form.on('submit(demo1)', function(data){
+                    $(".loading_box").css("display","block")
+                    // $("body").css("overflow", "hidden");
+                    var file_input = document.getElementById("file_input");
+                //     $("#file_input").bind("change",function(){
                 //     // console.log($(this).prop('files'))
                 //     for(let key in file_input.files){
                 //         // console.log($(this).prop('files')[key])
@@ -462,23 +466,7 @@
                 //             values.push(file_input.files[key]);   
                 //         }  
                 //     }
-                //     console.log(values)   
                 // })
-                // console.log(values)
-                form.on('submit(demo1)', function(data){
-                    $(".loading_box").css("display","block")
-                    // $("body").css("overflow", "hidden");
-                    var file_input = document.getElementById("file_input");
-                    $("#file_input").bind("change",function(){
-                    // console.log($(this).prop('files'))
-                    for(let key in file_input.files){
-                        // console.log($(this).prop('files')[key])
-                        // 	//只遍历对象自身的属性，而不包含继承于原型链上的属性。  
-                        if (file_input.files.hasOwnProperty(key) === true){
-                            values.push(file_input.files[key]);   
-                        }  
-                    }
-                })
                     if (selectedValue ==1 ) {
                         var file_files = document.getElementById('file_input').files;
                         var file_obj = document.getElementById('formdata');
