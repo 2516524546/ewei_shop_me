@@ -138,20 +138,17 @@ class UserController extends CommonController {
 
 
         $notemodel = new NoteModel();
-        $notelist = $notemodel->joinonelist('note_ishide = 1 and note_type = 1 and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,10);
-        $notecount = $notemodel->joinone('note_ishide = 1 and note_type = 1 and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
-        $questionlist = $notemodel->joinonelist('note_ishide = 1 and note_type = 2 and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,10);
-        $questioncount = $notemodel->joinone('note_ishide = 1 and note_type = 2 and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
-        $resourcelist = $notemodel->joinonelist('note_ishide = 1 and note_type = 3 and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',0,10);
-        $resourcecount = $notemodel->joinone('note_ishide = 1 and note_type = 3 and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
+
+        $notecount = $notemodel->jointwoone('note_ishide = 1 and note_type = 1 and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','u_crowd c on u_note.note_cid = c.crowd_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','INNER','count(*) num')['num'];
+
+        $questioncount = $notemodel->jointwoone('note_ishide = 1 and note_type = 2 and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','u_crowd c on u_note.note_cid = c.crowd_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','INNER','count(*) num')['num'];
+
+        $resourcecount = $notemodel->jointwoone('note_ishide = 1 and note_type = 3 and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','u_crowd c on u_note.note_cid = c.crowd_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','INNER','count(*) num')['num'];
 
         
         $this->assign(array(
-            'notelist'=>$notelist,
             'notecount'=>$notecount,
-            'questionlist'=>$questionlist,
             'questioncount'=>$questioncount,
-            'resourcelist'=>$resourcelist,
             'resourcecount'=>$resourcecount,
 
         ));

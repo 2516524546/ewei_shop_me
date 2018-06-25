@@ -13,7 +13,7 @@
 
         <!-- Crumbs nav -->
         <div class="container crumbs">
-            <a href="index.html" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+            <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
             <cite class="Icon"></cite>
             <span class="crumbsTitle">My posts</span>
         </div>
@@ -159,14 +159,15 @@
                             message +='</div>'
                             message +='</div>'
                             message +='<div class="box_right">'
-                            message +='<a href="EditThePost.html">'
+                            var gourl = "{:U('Index/User/editPost')}&nid="+data.msg[i].note_id
+                            message +='<a href="'+gourl+'">'
                             message +='<div class="right_btn">'
-                            message +='Delete'
+                            message +='Edit'
                             message +='</div>'
                             message +='</a>'
                             message +='<a href="#">'
                             message +='<div class="right_btn delete">'
-                            message +='Edit'
+                            message +='Delete'
                             message +='</div>'
                             message +='</a>'
                             message +='</div>'
