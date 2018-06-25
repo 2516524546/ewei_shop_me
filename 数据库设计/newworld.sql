@@ -144,6 +144,15 @@ CREATE TABLE IF NOT EXISTS `s_search_mark_type`(
 	,INDEX `idx_search` (`mark_type_mid`,`mark_type_tid`,`mark_type_sort`,`mark_type_show`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='搜索标识类型表';
 
+CREATE TABLE IF NOT EXISTS `u_resume_delivery`(
+	`delivery_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
+	,`resume_id` BIGINT UNSIGNED NOT NULL COMMENT '简历ID'
+	,`user_id` BIGINT UNSIGNED NOT NULL COMMENT '投递用户ID'
+	,`works_id` BIGINT UNSIGNED NOT NULL  COMMENT '职位ID'
+	,`delivery_status` TINYINT NOT NULL DEFAULT 0 COMMENT '投递状态 0:待处理 1:同意 2：拒绝'
+	,`delivery_createtime` datetime NOT NULL COMMENT '投递时间'
+	,PRIMARY KEY(`delivery_id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='简历投递记录表';
 
 /*
 lyx

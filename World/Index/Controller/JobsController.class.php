@@ -18,7 +18,7 @@ use Think\Controller;
 class JobsController extends CommonController {
     public $modeleid = 4;
 
-    protected $_checkAction = ['MyProject','releasePosition','releaseMyPosition','ReleaseProfessional'];//需要做登录验证的action
+    protected $_checkAction = ['MyProject','releasePosition','releaseMyPosition','ReleaseProfessional','DeleteWork'];//需要做登录验证的action
 
     public function _initialize()
     {
@@ -81,6 +81,16 @@ class JobsController extends CommonController {
         if($k){
             $where .= ' AND (w.works_position LIKE "%'.$k.'%" OR w.works_position LIKE "%'.$k.'%")';
         }
+        $major = I('get.major','','trim');
+        if($major){
+            $where .= ' AND (w.works_specialty LIKE "%'.$major.'%" OR w.works_specialty LIKE "%'.$major.'%")';
+        }
+
+        $work_type = I('get.work_type','','intval');
+        if($work_type){
+            $where .= ' AND w.works_type='.$work_type;
+        }
+
 
         $count      = D('Works')->alias('w')->join('u_user u ON u.user_id = w.works_uid','LEFT')->where($where)->count();
         $Page       = new \Think\Page($count,8);
@@ -110,18 +120,14 @@ class JobsController extends CommonController {
     我发布的工作
      */
     public function releaseMyPosition(){
+        $count      = D('Works')->where('works_uid = '.$this->userid)->count();
+        $Page       = new \Think\Page($count,10);
+        $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        $show       = $Page->show();
+        $worklist = D('Works')->where('works_uid = '.$this->userid)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('worklist',$worklist);
+        $this->assign('page',$show);
 
-        $workmodel = new WorksModel();
-        $worklist = $workmodel->limitlist('works_uid = '.$this->userid.' and works_isdel = 1',0,10);
-
-        $listnum = $workmodel->findone('works_uid = '.$this->userid.' and works_isdel = 1','count(*) num')['num'];
-
-
-        $this->assign(array(
-            'worklist' => $worklist,
-            'listnum' => $listnum,
-
-        ));
         $this->display();
     }
 
@@ -129,6 +135,19 @@ class JobsController extends CommonController {
     工作详情
      */
     public function jobdetails(){
+
+        $works_id = I('get.works_id','0','intval');
+        $jobDetails = D('Works')->findone('works_id='.$works_id);
+        $this->assign('jobDetails',$jobDetails);
+
+        //获取用户的简历列表
+        if($this->userid){
+            $myResume = D('Resume')->field('resume_id,resume_name')->where('resume_uid='.$this->userid)->select();
+            $this->assign('myResume',$myResume);
+        }
+
+        //增加浏览量
+        D('Works')->updataone('works_id='.$works_id,['works_views'=>$jobDetails['works_views'] + 1]);
 
     	$this->display();
     }
@@ -145,7 +164,19 @@ class JobsController extends CommonController {
     发布项目
      */
     public function releaseProject(){
-
+        if(IS_POST){
+            $rules = array(
+                array('city','require','Choose a city！'),
+                array('industry','require','Choose industry！'),
+                array('school','require','Choose a school！'),
+                array('item_name','require','Enter the project name！'),
+                array('item_uname','require','Enter your real name！'),
+                array('item_content','require',' Enter the project’s introduction！'),
+                array('value',array(1,2,3),'值的范围不正确！',2,'in'),
+                array('repassword','password','确认密码不正确',0,'confirm'),
+                array('password','checkPwd','密码格式不正确',0,'function'),
+            );
+        }
 
         $this->display();
     }
@@ -545,5 +576,38 @@ class JobsController extends CommonController {
         $css = addCss(['lifeProductDetails','StickSonDetails']);
         $this->assign('CSS',$css);
         $this->display();
+    }
+
+    public function DeleteWork(){
+        $works_id = I('post.works_id',0,'intval');
+        if($works_id <= 0 && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif($works_id <= 0){
+            $this->error('Parameter error！');
+        }
+
+
+        if(D('Works')->updataone('works_id='.$works_id,['works_isdel'=>'0'])){//拒绝好友
+            die(json_encode(['status'=>1,'msg'=>'Delete success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Delete failed!']));
+        }
+    }
+
+
+    public function CloseWork(){
+        $works_id = I('post.works_id',0,'intval');
+        if($works_id <= 0 && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif($works_id <= 0){
+            $this->error('Parameter error！');
+        }
+
+
+        if(D('Works')->updataone('works_id='.$works_id,['works_isclose'=>'0'])){//拒绝好友
+            die(json_encode(['status'=>1,'msg'=>'Close success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Close failed!']));
+        }
     }
 }
