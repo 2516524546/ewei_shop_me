@@ -11,6 +11,7 @@ use Index\Model\SecondMarkModel;
 use Index\Model\ThirdMarkModel;
 use Index\Model\TutorShipIssueModel;
 use Index\Model\TutorShipNeedModel;
+use Index\Model\UserModel;
 use Think\Controller;
 use Think\Exception;
 
@@ -124,6 +125,80 @@ class CrowdController extends CommonController {
             die(json_encode(array('str' => 0, 'msg' => L('newworld_ajax_havenoing'))));
         }
 
+    }
+
+
+    public function crowd_detail(){
+
+        $crowdmodel = new CrowdModel();
+        $crowdone = $crowdmodel->findone('crowd_id = '.$_GET['cid'],'u_user u on u_crowd.crowd_uid = u.user_id');
+
+        $this->assign(array(
+            'crowdone'=>$crowdone,
+
+        ));
+
+        $this->display();
+    }
+
+    public function crowd_edit(){
+        if (IS_POST) {
+
+            $crowddata = array(
+                'crowd_name' => $_POST['name'],
+                'crowd_type' => $_POST['type'],
+                'crowd_intro' => $_POST['intro'],
+            );
+            $userdata = array(
+                'user_name' => $_POST['uname'],
+                'user_mail' => $_POST['umail'],
+            );
+
+            $file1 = $_FILES['icon'];
+            if($file1){
+                $upload1 = new \Think\Upload();
+                $upload1->maxSize = 3072000;
+                $upload1->exts = array('jpg', 'gif', 'png', 'jpeg');
+                $upload1->rootPath = './Uploads/';
+                $info1 = $upload1->uploadOne($file1);
+                if(!$info1) {
+                    die(json_encode(array('str' => 0,'msg'=>$upload1->getError())));
+                }else{
+                    $crowddata['crowd_icon'] = $info1['savepath'].$info1['savename'];
+                }
+            }
+            $file2 = $_FILES['uicon'];
+            if($file2){
+                $upload2 = new \Think\Upload();
+                $upload2->maxSize = 3072000;
+                $upload2->exts = array('jpg', 'gif', 'png', 'jpeg');
+                $upload2->rootPath = './Uploads/';
+                $info2 = $upload2->uploadOne($file1);
+                if(!$info2) {
+                    die(json_encode(array('str' => 0,'msg'=>$upload2->getError())));
+                }else{
+                    $userdata['user_icon'] = $info2['savepath'].$info2['savename'];
+                }
+            }
+
+            $crowdmodel = new CrowdModel();
+            $usermodel = new UserModel();
+            $crowdmodel->startTrans();
+            try{
+
+                $crowdres = $crowdmodel->updataone('crowd_id = '.$_POST['cid'],$crowddata);
+                $userres = $usermodel->updataone('user_id = '.$_POST['uid'],$userdata);
+                $crowdmodel->commit();
+                die(json_encode(array('str' => 1, 'msg' => L('Crowd_crowd_detail_yes'))));
+            }catch (Exception $e){
+                $crowdmodel->rollback();
+                die(json_encode(array('str' => 0, 'msg' => L('Crowd_crowd_detail_no'))));
+            }
+
+        } else {
+
+            die(json_encode(array('str' => 0, 'msg' => L('newworld_ajax_havenoing'))));
+        }
 
     }
 	
