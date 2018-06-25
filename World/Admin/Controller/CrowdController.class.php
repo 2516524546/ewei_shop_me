@@ -127,7 +127,7 @@ class CrowdController extends CommonController {
 
     }
 
-
+    //群修改页面
     public function crowd_detail(){
 
         $crowdmodel = new CrowdModel();
@@ -141,6 +141,7 @@ class CrowdController extends CommonController {
         $this->display();
     }
 
+    //群编辑ajax
     public function crowd_edit(){
         if (IS_POST) {
 
@@ -201,5 +202,110 @@ class CrowdController extends CommonController {
         }
 
     }
+
+    //群成员列表
+    public function member_list(){
+
+        $cid = $_GET['cid'];
+        $where = 'crowd_member_cid = '.$_GET['cid'];
+        $uname = '';
+        $umail = '';
+
+        if (isset($_POST['uname'])){
+            $where .= ' and user_name like "%'.$_POST['uname'].'%"';
+            $uname = $_POST['uname'];
+            $_SESSION['member_list_uname'] = $_POST['uname'];
+        }
+        if (isset($_POST['umail'])){
+            $where .= ' and user_mail like "%'.$_POST['umail'].'%"';
+            $umail = $_POST['umail'];
+            $_SESSION['member_list_umail'] = $_POST['umail'];
+        }
+
+        if (isset($_POST['button'])){
+            $_SESSION['member_list_where'] = $where;
+        }else{
+            if (isset($_GET['p'])) {
+                $where = $_SESSION['member_list_where'];
+                $uname = $_SESSION['member_list_uname'];
+                $umail = $_SESSION['member_list_umail'];
+
+            }
+        }
+
+        $membermodel = new CrowdMemberModel();
+        $membercount = $membermodel->findonejoin($where,'u_user u on u_crowd_member.crowd_member_uid = u.user_id','INNER','crowd_member_status desc,crowd_member_logintime desc','count(*) num')['num'];
+
+        $Page = new \Think\Page($membercount,$this->pagenum);
+        $Page->setConfig('prev', '上一页');
+        $Page->setConfig('next', '下一页');
+        $Page->setConfig('theme', '%HEADER% %FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%');
+        $show = $Page->show();
+
+        $memberlist = $membermodel->findlistlimit($where,'u_user u on u_crowd_member.crowd_member_uid = u.user_id',$Page->firstRow,$Page->listRows,'INNER','crowd_member_status desc,crowd_member_logintime desc');
+
+        $this->assign(array(
+            'page' => $show,
+            'memberlist' => $memberlist,
+            'uname' => $uname,
+            'umail' => $umail,
+            'cid' => $cid,
+
+        ));
+        $this->display();
+
+    }
+
+    //删除群成员
+    public function ajax_memberdel(){
+
+        if (IS_POST) {
+
+            $mid = $_POST['mid'];
+
+            $crowdmembermodel = new CrowdMemberModel();
+            $crowdmodel = new CrowdModel();
+            $memberone = $crowdmembermodel->findone('crowd_member_id = ' . $mid);
+            $crowdone = $crowdmodel->findone('crowd_id = '.$memberone['crowd_member_cid'],'');
+            $crowdmembermodel->startTrans();
+            try {
+                $data = array(
+                    'crowd_peoplenum' => $crowdone['crowd_peoplenum'] - 1,
+                );
+                $res = $crowdmembermodel->where('crowd_member_id = ' . $mid)->delete();
+                $crowdres = $crowdmodel->updataone('crowd_id = '.$memberone['crowd_member_cid'],$data);
+
+                if ($res&&$crowdres) {
+                    $crowdmembermodel->commit();
+                    die(json_encode(array('str' => 1, 'msg' => L('Crowd_member_list_delyes'))));
+                } else {
+                    $crowdmembermodel->rollback();
+                    die(json_encode(array('str' => 2, 'msg' => L('Crowd_member_list_delno'))));
+                }
+            }catch (Exception $e){
+                $crowdmembermodel->rollback();
+                die(json_encode(array('str' => 2, 'msg' => L('Crowd_member_list_delno'))));
+            }
+
+        } else {
+
+            die(json_encode(array('str' => 0, 'msg' => L('newworld_ajax_havenoing'))));
+        }
+
+    }
+
+    //查看成员
+    public function member_detail(){
+
+        $membermodel = new CrowdMemberModel();
+        $memberone = $membermodel->findonejoin('crowd_member_id = '.$_GET['mid'],'u_user u on u_crowd_member.crowd_member_uid = u.user_id');
+
+        $this->assign(array(
+            'memberone' => $memberone,
+
+        ));
+        $this->display();
+    }
+
 	
 }
