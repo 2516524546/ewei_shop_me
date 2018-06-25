@@ -1,0 +1,230 @@
+<head>
+    <meta charset="utf-8"/>
+    <title>{:L('newworld_admin')}</title>
+    <meta name="keywords" content="{:L('newworld_admin')}"/>
+    <meta name="description" content="{:L('newworld_admin')}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- basic styles -->
+    <link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css"/>
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css"/>
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css"/>
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
+    <!--[if !IE]> -->
+
+    <script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+
+    <!-- <![endif]-->
+    <!-- ace settings handler -->
+
+    <script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+    <script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style='background:#fff;'>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            {:L('Crowd')}
+            <small><i class="icon-double-angle-right"></i>
+                {:L('Crowd_crowd_list')}
+            </small>
+
+        </h1>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <form class="form-horizontal" method="POST" >
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right">{:L('Crowd_member_detail_icon')}</label>
+                    <div class="col-sm-9">
+                        <img width="100px" height="100px" id='img1' src="./Uploads/{$memberone['user_icon']}"/>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" >{:L('Crowd_member_detail_name')}</label>
+                    <div class="col-sm-9">
+
+                            <input type="text" name="user_logintime" value="{$crowdone['crowd_creattime']}" style="width:300px;" readonly />
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right">{:L('Crowd_member_detail_mail')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="user_logintime" value="{$crowdone['crowd_creattime']}" style="width:300px;" readonly />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" >{:L('Crowd_member_detail_sex')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="user_logintime" value="{$crowdone['crowd_creattime']}" style="width:300px;" readonly />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right">{:L('Crowd_member_detail_age')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="user_logintime" value="{$crowdone['crowd_creattime']}" style="width:300px;" readonly />
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
+                    <label class="col-sm-3 control-label no-padding-right" >{:L('Crowd_member_detail_coin')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="user_logintime" value="{$crowdone['crowd_creattime']}" style="width:300px;" readonly />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right">{:L('Crowd_member_detail_content')}</label>
+                    <div class="col-sm-9">
+                        <textarea style="width: 300px;height: 100px;" readonly></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions center">
+                    <a class="btn btn-sm btn-success" onclick="edit()">
+                        <i class="icon-edit bigger-110"></i>
+                        {:L('Crowd_crowd_detail_if')}
+                    </a>
+                    <a class="btn btn-sm btn-warning" href="javascript:history.back(-1)" class="myButton">
+                        <i class="icon-arrow-left icon-on-left bigger-110"></i>
+                        {:L('Crowd_crowd_detail_back')}
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+    .btn-xs {
+        margin-right: 10px !important;
+    }
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+
+<script type="text/javascript">
+
+    $("#upload_picture1").change(function(e){
+
+        $("#img1")[0].src = window.URL.createObjectURL(document.getElementById("upload_picture1").files[0])
+    });
+
+    $("#upload_picture2").change(function(e){
+
+        $("#img2")[0].src = window.URL.createObjectURL(document.getElementById("upload_picture2").files[0])
+    });
+
+    function edit() {
+
+        var formData = new FormData();
+        formData.append('name',$("#name").val())
+        if(document.getElementById("upload_picture1").files[0]){
+            formData.append('icon',document.getElementById("upload_picture1").files[0])
+        }
+        formData.append('uname',$("#uname").val())
+        if(document.getElementById("upload_picture2").files[0]){
+            formData.append('uicon',document.getElementById("upload_picture2").files[0])
+        }
+        formData.append('umail',$("#umail").val())
+        formData.append('type',$("input[name='crowdtype']:checked").val())
+        formData.append('intro',$("#intro").val())
+        formData.append('cid',{$crowdone['crowd_id']})
+        formData.append('uid',{$crowdone['user_id']})
+
+        $.ajax({
+            url: "{:U('Admin/Crowd/crowd_edit')}",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType:'json',
+            success: function (data) {
+
+                if(data.str == 1) {
+                    layer.msg(data.msg,{
+                            time:1500,
+                            icon:1,
+                        },function () {
+                            location.reload()
+                        }
+                    );
+
+                }else {
+                    layer.msg(data.msg,{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+
+                }
+            },
+            error: function () {
+                layer.msg("{:L('Mark_mark_list_error')}",{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+        });
+    }
+    
+
+</script>
+
+
+
+
+
+
+
+
