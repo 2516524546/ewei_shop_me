@@ -2448,18 +2448,56 @@ public function ajax_donationpay()
                                 $notemodel->commit();
                                 die(json_encode(array('str' => 1, 'id' => $noteid,'cid' => $this->post('cid'))));
                             }else{
-                                $notevimodel->rollback();
+                                $notemodel->rollback();
                                 die(json_encode(array('str' => 2, 'msg' => '发布失败')));
                             }
                         }catch (Exception $e){
-                            $notevimodel->rollback();
+                            $notemodel->rollback();
                             die(json_encode(array('str' => 2, 'msg' => '发布失败')));
                         }
 
                     }
                 }else{
 
-                    die(json_encode(array('str' => 5,'msg'=>'请上传相应的图片或视频')));
+                    $notemodel = new NoteModel();
+                    $usermodel = new UserModel();
+                    $notemodel->startTrans();
+                    try{
+                        $notedata = array(
+                            'note_cid' => $this->post('cid'),
+                            'note_uid' => $this->userid,
+                            'note_name' => $this->post('name'),
+                            'note_content' => $this->post('content'),
+                            'note_type' => $this->post('posttype'),
+                            'note_createtime' => date("Y-m-d H:i:s", time()),
+                        );
+                        if ($this->post('posttype')==2){
+                            $notedata['note_reward'] = $this->post('reward');
+                        }
+                        if ($this->post('posttype')==3){
+                            $notedata['note_reward'] = $this->post('reward');
+                            $notedata['note_url'] = $this->post('resourcefile');
+                        }
+
+                        $noteid = $notemodel->add($notedata);
+                        $userone = $usermodel->findone('user_id = '.$this->userid);
+                        $userdata = array(
+                            'user_notes' => $userone['user_notes']+1,
+                        );
+                        $userres = $usermodel->updataone('user_id = '.$this->userid,$userdata);
+                        if ($noteid&&$userres){
+                            $notemodel->commit();
+                            die(json_encode(array('str' => 1, 'id' => $noteid,'cid' => $this->post('cid'))));
+                        }else{
+                            $notemodel->rollback();
+                            die(json_encode(array('str' => 2, 'msg' => '发布失败')));
+                        }
+                    }catch (Exception $e){
+                        $notemodel->rollback();
+                        die(json_encode(array('str' => 2, 'msg' => '发布失败')));
+                    }
+
+
                 }
             }
         }else{
