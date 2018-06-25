@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit the resource</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0 user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="../web/css/register.css">
+    <link rel="stylesheet" href="../web/css/Donation.css">
+    <link rel="stylesheet" href="../web/css/CreateInterest.css">
+    <link rel="stylesheet" href="../web/css/GroupDetailsRelease.css">
+    <link rel="stylesheet" href="../web/css/Crumbsnav.css">
+    <link rel="stylesheet" href="../js/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="../js/lib/layui/dist/css/layui.css">
+    <link rel="stylesheet" href="../web/css/Crumbsnav.css">
+    <link rel="stylesheet" href="../web/css/success_index.css">
+    <link rel="stylesheet" href="../web/css/EditResource.css">
+    <link rel="stylesheet" href="../web/css/changeimg.css">
+</head>
+
+<body>
+    <!-- logo -->
+    <header class="container">
+            <div class="logreg">
+                <a href="login.html" class="Login">
+                    <span class="LoginIcon"></span>
+                    <span>Login</span>
+                </a>
+                <a href="register.html" class="SignUp">
+                    <span class="SignUpIcon"></span>
+                    <span>Sign Up</span>
+                </a>
+            </div>
+            <div class="login_success">
+                            
+                    <div class="success_index">
+                            <a href="index.html">
+                                <img src="img/common_dh_icon_home.png" alt="">
+                            </a>
+                        </div>
+                        <div class="success_setting">
+                                <img src="img/setting.png" alt="">
+                                <div class="dot"></div>
+                                <div class="setting_usage">
+                                    <ul>
+                                        <li>
+                                            <a href="AcountSetting.html">
+                                                <div class="usage_img">
+                                                    <img src="img/person.png"">
+                                                </div>
+                                                Account Settings
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="ResumeDetails.html">
+                                                <div class="usage_img">
+                                                    <img src="img/resume.png"">
+                                                </div>
+                                                My Resume
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="MyPosts.html">
+                                                    <div class="usage_img">
+                                                            <img src="img/release.png"">
+                                                        </div>
+                                                My Release
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="MyMessage.html">
+                                                    <div class="usage_img">
+                                                            <img src="img/message.png"">
+                                                        </div>
+                                                Message
+                                                <div class="dot1"></div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="MyFollowing.html">
+                                                    <div class="usage_img">
+                                                            <img src="img/focus.png"">
+                                                        </div>
+                                                My Focus
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="AddressBook.html">
+                                                    <div class="usage_img">
+                                                            <img src="img/contacts.png"">
+                                                        </div>
+                                                Contacts
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="MyGroup.html">
+                                                    <div class="usage_img">
+                                                            <img src="img/group.png"">
+                                                        </div>
+                                                My Group
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="feedback.html">
+                                                    <div class="usage_img">
+                                                            <img src="img/feedback.png"">
+                                                        </div>
+                                                Feedback
+                                            </a>
+                                        </li>
+                                        <li class="quit">
+                                            <a href="#">
+                                                <div class="usage_img">
+                                                    <img src="img/sign_out.png"">
+                                                </div>
+                                                Sign Out
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                        </div>
+                        <div class="success_user">
+                            <a href="PersonalCenter.html">
+                                <img src="img/01_shouye/UserPic.png" alt="">
+                            </a>
+                        </div>
+                        <div class="success_name">
+                            <a href="PersonalCenter.html">Davie</a>
+                        </div>
+                        <div class="success_line"></div>
+                        <div class="success_money">
+                            <a href="VirtualCurrencyRecharge.html">
+                                <div class="money_img">
+                                    <img src="img/money.png" alt="">
+                                </div>
+                                <div class="money_num">
+                                    1280
+                                </div>
+                            </a>
+                        </div>
+                        
+        </div>
+        </header>
+        <hr>
+   <!-- Crumbs nav -->
+   <div class="container crumbs">
+        <a href="index.html" class="crumbsa"><img src="./img/common_dh_icon_home.png" alt=""></a>
+        <cite class="Icon"></cite>
+        <a href="MyPosts.html" class="crumbsa">My posts</a>
+        <cite class="Icon"></cite>
+        <span class="crumbsTitle">Edit resources</span>
+    </div>
+    <!-- Forget the password form -->
+    <form class="layui-form layui-form-pane" action="">
+        <div class="PasswordContainer">
+            <div class="StepContainer">
+                <div class="StepContainerOne">
+                    <div class="InterestTitle">
+                        <h3 class="text-center Interesth3">
+                            Post basic information
+                        </h3>
+                    </div>
+                    <div class="FormContainer" pane>
+                        <label class="layui-form-label label-spacing">
+                            <span class="TitlesIcon"></span>
+                        </label>
+                        <div class="layui-input-block input-spacing">
+                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the title" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="FormContainer" pane>
+                        <label class="layui-form-label label-spacing">
+                            <span class="NumberIcon"></span>
+                        </label>
+                        <div class="layui-input-block input-spacing">
+                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter numbers of virtual currency to download" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="FormContainer" pane>
+                        <label class="layui-form-label label-spacing">
+                            <span class="ContentsIcon"></span>
+                        </label>
+                        <div class="layui-input-block input-spacing">
+                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the resource description" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="FormContainer-one" pane>
+                        <label class="HeadPortraitbox-one">
+                            <span class="filesIcon">Upload resources</span>
+                        </label>
+                        <div class="picDiv-one">
+                            <div class="addImages">
+                                    <div class="files_name"><span>Choose to upload the resume file</span></div>
+                                    <button type="button" class="layui-btn layui-btn-normal" id="testList">Browse</button> 
+                            </div>
+                        </div>
+                        <div class="msg" style="display: none;"></div>
+                    </div>
+                    <div class="FormContainer" pane>
+                        <label class="HeadPortraitbox">
+                            <span class="HeadPortraitIcon"></span>
+                        </label>
+                        <div class="picDiv">
+                            <div id="video" class="w50" style="display: none;"></div>
+                            <div id="result">
+                                <div class="add_btn" data-isNew="false">
+                                    <input type="file" id="file_input" multiple onchange="xmTanUploadImg(this)" />
+                                    <span>+</span>
+                                </div>
+                                <div class="shadow_video">
+                                    </div>
+                                            <div class="video_box">
+                                                <div class="video_shut">x</div>
+                                                <div class="video_area">
+                                                <!-- <video width="100%" height="100%">
+                                                        <source src="../web/img/video.mp4" type="video/mp4"></source>
+                                                    </video>
+                                                </div> -->
+                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="msg" style="display: none;"></div>
+                    </div>
+                    <div class="FormContainer from-but">
+                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="" lay-filter="">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- foot start 底部信息 -->
+    <footer class="container-fluid FooterBg">
+        <div class="row FooterContainer">
+            <div class="col-xs-6 col-md-4">
+                <dl>
+                    <dt>ABOUT</dt>
+                    <dd>
+                        NewWorld.net is a comprehensive website that provides an efficient source of resources and convenience for our every -day lives. We can easily discover, share and create a new world.
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <dl>
+                    <dt>SUPPORT</dt>
+                    <dd>Premium Support</dd>
+                    <dd>Get Started</dd>
+                    <dd>Partners</dd>
+                </dl>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <dl>
+                    <dt>Help Center</dt>
+                    <dd><a href="HelpCenter.html">Help Center</a></dd>
+                    <dd><a href="ContactUs.html">Contact Us</a></dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row copyright">
+            <div class="col-md-12">
+                <p class="text-center">&copy; 2018 NewWorld. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- foot end 底部信息 -->
+    <script src="../js/lib/jquery/dist/jquery.min.js"></script>
+    <script src="../js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../js/lib/layui/dist/layui.all.js"></script>
+    <script src="../web/js/GroupDetailsRelease.js"></script>
+    <script src="../web/js/loginQuit.js"></script>
+    <script src="../web/js/changeimg.js"></script>
+    <script>
+    var $ = layui.jquery,upload = layui.upload;
+    var demoListView = $('.FormContainer-one .picDiv-one .addImages .files_name'),
+    uploadListIns = upload.render({
+         elem: '#testList'
+            ,url: 'yourUrl'
+            ,accept: 'file'
+            ,data:{}   //可放扩展数据  key-value
+            ,multiple: true
+            ,auto: false
+            ,bindAction: '#testListAction',elem: '#testList'
+            ,url: 'yourUrl'
+            ,accept: 'file'
+            ,data:{}   //可放扩展数据  key-value
+            ,multiple: true
+            ,auto: false
+            ,bindAction: '#testListAction',
+            choose:function(obj){
+                obj.preview(function(index, file, result){
+                    var tr = $(['<span>'+file.name+'</span>'].join(''));
+                    demoListView.eq(0)[0].childNodes[0].remove();
+                    demoListView.append(tr);
+                }) 
+            }
+    })
+    </script>
+</body>
+
+</html>
