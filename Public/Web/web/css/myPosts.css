@@ -78,17 +78,19 @@
 }
 
 .MyPosts_content .box_item .box_top .box_right .right_btn{
-    width: 45%;
+    width: 100%;
     text-align: center;
     padding: 10px 0;
     border: 1px solid #46c4b8;
     border-radius: 23px;
-    margin-right: 10px;
 }
-.MyPosts_content .box_item .box_top .box_right .right_btn:last-child{
+.MyPosts_content .box_item .box_top .box_right a:last-child{
     margin-right: 0;
 } 
-.MyPosts_content .box_item .box_top .box_right .right_btn a{
+.MyPosts_content .box_item .box_top .box_right a{
+    width: 45%;
+    margin-right: 10px;
+    display: block;
     text-decoration: none;
 }
 .MyPosts_content .box_item .box_bottom{
@@ -101,10 +103,10 @@
     box-shadow: 0 2px 18px 2px #46c4b8;
     border: 2px solid #46c4b8;
 }
-.MyPosts_content .box_item .box_top .box_right .right_btn:hover{
+.MyPosts_content .box_item .box_top .box_right a:hover .right_btn{
     background: #46c4b8;
 }
-.MyPosts_content .box_item .box_top .box_right .right_btn:hover a{
+.MyPosts_content .box_item .box_top .box_right a:hover{
     color: #fff;
 
 }
