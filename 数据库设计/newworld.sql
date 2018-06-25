@@ -118,3 +118,27 @@ lyx
 
 ALTER TABLE `newworld`.`u_concerns_group`
 ADD COLUMN `concerns_group_uid` bigint(20) UNSIGNED NOT NULL COMMENT '创建分组的用户id' AFTER `concerns_group_name`;
+
+
+CREATE TABLE IF NOT EXISTS `s_search_mark`(
+	`mark_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
+	,`mark_type_id` SMALLINT UNSIGNED NOT NULL COMMENT '搜索标识类型ID'
+	,`mark_pid` BIGINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '搜索标识父ID'
+	,`mark_name` VARCHAR(255) NOT NULL COMMENT '标识名'
+	,`mark_createtime` datetime NOT NULL COMMENT '创建时间'
+	,`mark_sort` SMALLINT NOT NULL DEFAULT 0 COMMENT '排序'
+	,PRIMARY KEY(`mark_id`)
+	,INDEX `idx_search` (`mark_pid`,`mark_sort`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='搜索标识表';
+
+CREATE TABLE IF NOT EXISTS `s_search_mark_type`(
+	`mark_type_id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT
+	,`mark_type_mid` SMALLINT UNSIGNED NOT NULL COMMENT '模型ID 1：兴趣 2：学习 3：工作 4：生活'
+	,`mark_type_tid` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '类型ID 0：无 1：【工作=普通群，生活=群】 2：【工作=社交群，生活=二手市场】 3：企业家'
+	,`mark_type_name` VARCHAR(90) NOT NULL COMMENT '标识名'
+	,`mark_type_createtime` datetime NOT NULL COMMENT '创建时间'
+	,`mark_type_sort` SMALLINT NOT NULL DEFAULT 0 COMMENT '排序'
+	,`mark_type_show` TINYINT UNSIGNED NOT NULL DEFAULT 1 COMMENT '是否显示 1：显示 0 不显示'
+	,PRIMARY KEY(`mark_type_id`)
+	,INDEX `idx_search` (`mark_type_mid`,`mark_type_tid`,`mark_type_sort`,`mark_type_show`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='搜索标识类型表';

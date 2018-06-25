@@ -66,9 +66,9 @@
                                     </div>
                                 </div>
                                 <div class="layui-input-block">
-                                    <input type="radio" name="JobTime" value="1" title="Full Time" <if condition='!$resumeone["resume_tid"]||$resumeone["resume_tid"]==1'>checked</if>>
-                                    <input type="radio" name="JobTime" value="2" title="Part Time" <if condition='$resumeone["resume_tid"]==2'>checked</if>>
-                                    <input type="radio" name="JobTime" value="3" title="Practice" <if condition='$resumeone["resume_tid"]==3'>checked</if>>
+                                    <input type="radio" name="resume_tid" value="1" title="Full Time" <if condition='!$resumeone["resume_tid"]||$resumeone["resume_tid"]==1'>checked</if>>
+                                    <input type="radio" name="resume_tid" value="2" title="Part Time" <if condition='$resumeone["resume_tid"]==2'>checked</if>>
+                                    <input type="radio" name="resume_tid" value="3" title="Practice" <if condition='$resumeone["resume_tid"]==3'>checked</if>>
                                 </div>
                             </div>
 
@@ -83,8 +83,8 @@
                                         <!--style="width: 25%;float: left;margin: 0 0;"-->
                                         <select name="second" lay-verify="required" lay-filter="firstselect">
                                             <option value="" selected="selected"><if condition='$firstkey == 0'>Please select the position information<elseif condition='$firstkey == 1'/>Choose a school<else />Choose interest</if></option>
-                                            <foreach name="first['message']" item = "second" key="secondkey">
-                                            <option value="{$second['second_mark_id']}">{$second['second_mark_name']}</option>
+                                            <foreach name="positions" item = "p">
+                                            <option value="{$p['mark_id']}">{$p['mark_name']}</option>
                                             </foreach>
                                         </select>
                                     </div>
@@ -98,7 +98,7 @@
                                             </div>
                                         </div>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" id="workyear" required  lay-verify="required" placeholder="Please enter the number of years of work" autocomplete="off" <if condition='$resumeone["resume_workyear"]'>value="{$resumeone['resume_workyear']}"</if> class="layui-input">
+                                        <input type="text" name="resume_workyear" id="workyear" required  lay-verify="required" placeholder="Please enter the number of years of work" autocomplete="off" <if condition='$resumeone["resume_workyear"]'>value="{$resumeone['resume_workyear']}"</if> class="layui-input">
                                     </div>
                             </div>
 
@@ -109,7 +109,7 @@
                                             </div>
                                         </div>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" id="university" required  lay-verify="required" placeholder="Please enter a graduate school" autocomplete="off" <if condition='$resumeone["resume_university"]'>value="{$resumeone['resume_university']}"</if> class="layui-input">
+                                        <input type="text" name="resume_university" id="university" required  lay-verify="required" placeholder="Please enter a graduate school" autocomplete="off" <if condition='$resumeone["resume_university"]'>value="{$resumeone['resume_university']}"</if> class="layui-input">
                                     </div>
                             </div>
 
@@ -120,7 +120,7 @@
                                             </div>
                                         </div>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" id="degree" required  lay-verify="required" placeholder="Please enter a degree" autocomplete="off" <if condition='$resumeone["resume_degree"]'>value="{$resumeone['resume_degree']}"</if> class="layui-input">
+                                        <input type="text" name="resume_degree" id="degree" required  lay-verify="required" placeholder="Please enter a degree" autocomplete="off" <if condition='$resumeone["resume_degree"]'>value="{$resumeone['resume_degree']}"</if> class="layui-input">
                                     </div>
                             </div>
 
@@ -131,7 +131,7 @@
                                             </div>
                                         </div>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" id="specialty" required  lay-verify="required" placeholder="Please enter a major" autocomplete="off" <if condition='$resumeone["resume_specialty"]'>value="{$resumeone['resume_specialty']}"</if> class="layui-input">
+                                        <input type="text" name="resume_specialty" id="specialty" required  lay-verify="required" placeholder="Please enter a major" autocomplete="off" <if condition='$resumeone["resume_specialty"]'>value="{$resumeone['resume_specialty']}"</if> class="layui-input">
                                     </div>
                             </div>
 

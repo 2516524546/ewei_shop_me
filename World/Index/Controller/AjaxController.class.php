@@ -1721,10 +1721,8 @@ public function ajax_donationpay()
 
                 die(json_encode(array('str' => 7, 'msg' => '请选择是否接受薪资面议')));
             } else {
-
-
                 $resumemodel = new ResumeModel();
-                $resumeone = $resumemodel->findone();
+                $resumeone = isset($_POST['resume_id']) ? $resumemodel->findone('resume_id='.$_POST['resume_id']) : 0;
 
                 if ($resumeone){
                     $data = array(
