@@ -3651,7 +3651,7 @@ public function ajax_donationpay()
 
                 $notemodel = new NoteModel();
                 $limit1 = ($this->post('limit1')-1)*$this->post('limit2');
-                $notelist = $notemodel->joinonelist('note_ishide = 1 and note_type = '.$this->post('type').' and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc',$limit1,$this->post('limit2'));
+                $notelist = $notemodel->jointwolist('note_ishide = 1 and note_type = '.$this->post('type').' and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','u_crowd c on u_note.note_cid = c.crowd_id','note_istop desc,note_iswally desc,note_createtime desc',$limit1,$this->post('limit2'));
 
                 if ($notelist){
                     die(json_encode(array('str' => 1,'msg'=>$notelist)));
