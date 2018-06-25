@@ -75,7 +75,20 @@ class JobsController extends CommonController {
     工作列表
      */
     public function jobList(){
+        $where = 'w.works_isdel=1';
 
+        $k = I('get.k','','trim');
+        if($k){
+            $where .= ' AND (w.works_position LIKE "%'.$k.'%" OR w.works_position LIKE "%'.$k.'%")';
+        }
+
+        $count      = D('Works')->alias('w')->join('u_user u ON u.user_id = w.works_uid','LEFT')->where($where)->count();
+        $Page       = new \Think\Page($count,8);
+        $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        $show       = $Page->show();
+        $works = D('Works')->alias('w')->field('w.*,u.user_name,u.user_icon,u.user_signature')->join('u_user u ON u.user_id = w.works_uid','LEFT')->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('works',$works);
+        $this->assign('page',$show);
     	$this->display();
     }
 

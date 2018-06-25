@@ -368,6 +368,10 @@ return array(
     /******************************************************************
      * New start
      */
+     //new_list_start
+    'New_new_list_news_manager'=>'新闻管理',
+    'New_new_list'=>'新闻轮播列表',
+    //new_list_end
 
 
     /*

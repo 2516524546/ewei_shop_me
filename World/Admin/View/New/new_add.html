@@ -1,0 +1,277 @@
+<head>
+    <meta charset="utf-8"/>
+    <title>象而是后台管理系统</title>
+    <meta name="keywords" content="象而是后台管理系统"/>
+    <meta name="description" content="象而是后台管理系统"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- basic styles -->
+    <link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css"/>
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css"/>
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css"/>
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css"/>
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
+    <!--[if !IE]> -->
+
+    <script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+
+    <!-- <![endif]-->
+    <!-- ace settings handler -->
+
+    <script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+    <script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+
+    <![endif]-->
+</head>
+<body style='background:#fff;'>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            新闻管理
+            <small><i class="icon-double-angle-right"></i>
+                新增新闻
+            </small>
+
+        </h1>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <form class="form-horizontal" action="{:U('Admin/New/new_add')}" method="POST" role="form"
+                  enctype="multipart/form-data">
+
+                <eq name="type" value="2">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">群ID</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="news_crowdid" value="" placeholder="" style="width:300px;"/></div>
+                    </div>
+                    <else/>
+                </eq>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">标题</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="news_title" value="" placeholder="" style="width:300px;"/></div>
+                </div>
+
+                <div class="form-group" id="user-profile-3">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">图片</label>
+                    <div class="col-sm-9">
+                        <div class="col-xs-12 col-sm-4">
+                            <input type="file" id='upload_picture' accept=".png,.gif,.jpeg,.jpg"/>
+                            <div id='img'>
+                            </div>
+                        </div>
+                        <input type='hidden' name='news_img' value="">
+
+                    </div>
+
+                </div>
+                <script type="text/javascript" src="__PUBLIC__/Tools/uploadify/jquery.uploadify.min.js"></script>
+                <link rel="stylesheet" type="text/css" href="__PUBLIC__/Tools/uploadify/uploadify.css">
+                <script type="text/javascript">
+                    //上传图片
+                    /* 初始化上传插件 */
+                    var userid ="100001";
+                    $("#upload_picture").change(function(e){
+                        var formData = new FormData();
+                        formData.append("download", document.getElementById("upload_picture").files[0]);
+                        $.ajax({
+                            url: "{:U('Admin/File/uploadBanner2',array('sessionid'=>'" + userid + "'))}",
+                            type: "POST",
+                            data: formData,
+                            contentType: false,
+                            processData: false,
+                            dataType:'json',
+                            success: function (data) {
+                                console.log(data)
+                                if(data.status == 1) {
+                                    $("#img").html('<img style="width:200px;height:200px;" src="./Uploads/' + data.msg + '"/>');
+                                    $("input[name='news_img']").val(data.msg)
+                                }else {
+                                    alert(data.msg);
+                                }
+                            },
+                            error: function () {
+                                alert("上传失败！");
+                            }
+                        });
+                    });
+                </script>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">所属分类</label>
+                    <div class="col-sm-9">
+                        <select name="news_mid">
+                            <option value="0">请选择分类</option>
+                            <volist  name="modules" id="vo">
+                                <option value="{$vo.module_id}">{$vo.module_name}</option>
+                            </volist>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
+                    <label class="col-sm-3 control-label no-padding-right" for="admin">新闻来源</label>
+                    <div class="col-sm-9">
+                        <div class="radio1">
+                            <label>
+                                <input name="news_type" type="radio" value="0" class='ace' checked/>
+                                <span class="lbl">新闻链接</span>
+                            </label>
+                            <label>
+                                <input name="news_type" type="radio" value="1" class='ace' />
+                                <span class="lbl">新闻编辑</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 in-txt">
+                        <input type="text" name="news_url" value="" placeholder="" style="width:300px;"/>
+                    </div>
+                    <div class="col-sm-6 editor hidden">
+                        <textarea id="content" placeholder="" name="news_content"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">轮播顺序</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="news_sort" value="" placeholder="" style="width:300px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">创建时间</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control date-picker" name="news_createtime" value="<?php echo $user['user_birth']?>"
+                               placeholder="" style="width: 35%;"  id="id-date-picker-1"  data-date-format="yyyy-mm-dd" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">结束时间</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control date-picker" name="news_endtime" value="<?php echo $user['user_birth']?>"
+                               placeholder="" style="width: 35%;"  id="id-date-picker-1"  data-date-format="yyyy-mm-dd" />
+                    </div>
+                </div>
+
+                </fieldset>
+
+                <div class="form-actions center">
+                    <a class="btn btn-sm btn-success" id='tianjia'>
+                        <i class="icon-edit bigger-110"></i>
+                        添加
+                    </a>
+                    <a class="btn btn-sm btn-warning" href="javascript:history.back(-1)" class="myButton">
+                        <i class="icon-arrow-left icon-on-left bigger-110"></i>
+                        返回列表
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+    .btn-xs {
+        margin-right: 10px !important;
+    }
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $('.date-picker').datepicker({autoclose: true}).next().on(ace.click_event, function () {
+        $(this).prev().focus();
+    });
+</script>
+
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+<script>
+    function showStart() {
+        return true;
+    }
+    function showSuccess(data) {
+
+        if (data == 1) {
+            alert('添加成功')
+            location.href = "{:U('Admin/New/new_list')}"
+        } else {
+            alert(data)
+            return false
+        }
+
+    }
+    $(function () {
+        var options = {
+            beforeSubmit: showStart,
+            success: showSuccess,
+
+        };
+        $('#tianjia').click(function () {
+
+            $('.form-horizontal').ajaxSubmit(options);
+        })
+
+
+    });
+    $(function(){
+        $(":radio").click(function(){
+            if($(this).val()==0){
+                $(".in-txt").removeClass("hidden");
+                $(".editor").addClass("hidden");
+            }else if($(this).val()==1){
+                $(".editor").removeClass("hidden");
+                $(".in-txt").addClass("hidden");
+            }
+        });
+    });
+</script>
+<script  src="__PUBLIC__/Admin/admin/ueditor/ueditor.config.js"></script>
+<script  src="__PUBLIC__/Admin/admin/ueditor/ueditor.all.min.js"></script>
+<script  src="__PUBLIC__/Admin/admin/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    UE.getEditor('content',{initialFrameWidth:800,initialFrameHeight:400,});
+
+</script>
+
+
+
+
+
+
+
