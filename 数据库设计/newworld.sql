@@ -154,6 +154,14 @@ ALTER TABLE `u_message`
 MODIFY COLUMN `message_sendtime`  datetime NOT NULL COMMENT '信息发送时间' AFTER `message_content`,
 MODIFY COLUMN `message_delivertime`  datetime NOT NULL COMMENT '信息送达时间' AFTER `message_sendtime`;
 
+ALTER TABLE `l_commodity`
+MODIFY COLUMN `commodity_status`  int(10) NOT NULL DEFAULT 1 COMMENT '状态，0为已删除，1为正常，2为已完成,3为已下架' AFTER `commodity_explain`;
+
+ALTER TABLE `l_commodity`
+ADD COLUMN `commodity_views`  bigint(20) NOT NULL DEFAULT 0 COMMENT '浏览量' AFTER `commodity_fifthmark`;
+
+
+
 /*
 lyx
 2018.06.25 end
