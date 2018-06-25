@@ -923,6 +923,9 @@ public function ajax_donationpay()
         if (IS_POST) {
 
             $file = $_FILES['img'];
+            if(!$_FILES){
+                die(json_encode(array('str' => 0,'msg'=>'请选择一张图片')));
+            }
 
             $upload = new \Think\Upload();// 实例化上传类
             $upload->maxSize = 3072000 ;// 设置附件上传大小
@@ -931,7 +934,7 @@ public function ajax_donationpay()
 // 上传单个文件
             $info = $upload->uploadOne($file);
             if(!$info) {// 上传错误提示错误信息
-                die(json_encode(array('str' => 0)));
+                die(json_encode(array('str' => 0,'msg'=>$upload->getError())));
             }else{// 上传成功 获取上传文件信息
                 die(json_encode(array('str' => 1,'msg'=>$info['savepath'].$info['savename'])));
             }
@@ -2446,18 +2449,56 @@ public function ajax_donationpay()
                                 $notemodel->commit();
                                 die(json_encode(array('str' => 1, 'id' => $noteid,'cid' => $this->post('cid'))));
                             }else{
-                                $notevimodel->rollback();
+                                $notemodel->rollback();
                                 die(json_encode(array('str' => 2, 'msg' => '发布失败')));
                             }
                         }catch (Exception $e){
-                            $notevimodel->rollback();
+                            $notemodel->rollback();
                             die(json_encode(array('str' => 2, 'msg' => '发布失败')));
                         }
 
                     }
                 }else{
 
-                    die(json_encode(array('str' => 5,'msg'=>'请上传相应的图片或视频')));
+                    $notemodel = new NoteModel();
+                    $usermodel = new UserModel();
+                    $notemodel->startTrans();
+                    try{
+                        $notedata = array(
+                            'note_cid' => $this->post('cid'),
+                            'note_uid' => $this->userid,
+                            'note_name' => $this->post('name'),
+                            'note_content' => $this->post('content'),
+                            'note_type' => $this->post('posttype'),
+                            'note_createtime' => date("Y-m-d H:i:s", time()),
+                        );
+                        if ($this->post('posttype')==2){
+                            $notedata['note_reward'] = $this->post('reward');
+                        }
+                        if ($this->post('posttype')==3){
+                            $notedata['note_reward'] = $this->post('reward');
+                            $notedata['note_url'] = $this->post('resourcefile');
+                        }
+
+                        $noteid = $notemodel->add($notedata);
+                        $userone = $usermodel->findone('user_id = '.$this->userid);
+                        $userdata = array(
+                            'user_notes' => $userone['user_notes']+1,
+                        );
+                        $userres = $usermodel->updataone('user_id = '.$this->userid,$userdata);
+                        if ($noteid&&$userres){
+                            $notemodel->commit();
+                            die(json_encode(array('str' => 1, 'id' => $noteid,'cid' => $this->post('cid'))));
+                        }else{
+                            $notemodel->rollback();
+                            die(json_encode(array('str' => 2, 'msg' => '发布失败')));
+                        }
+                    }catch (Exception $e){
+                        $notemodel->rollback();
+                        die(json_encode(array('str' => 2, 'msg' => '发布失败')));
+                    }
+
+
                 }
             }
         }else{
@@ -3585,6 +3626,33 @@ public function ajax_donationpay()
                 $res = $needcommentmodel->updataone('tutorship_need_comment_id = '.$this->post('replyid'),$data);
                 if ($res){
                     die(json_encode(array('str' => 1,'msg'=>'回复成功')));
+                }else{
+                    die(json_encode(array('str' => 2,'msg'=>'回复失败')));
+                }
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+
+    }
+
+    //我的发布
+    public function ajax_setpost(){
+
+        if (IS_POST){
+
+            if (!isset($_POST['type'])||$this->post('type')==''){
+
+                die(json_encode(array('str' => 3, 'msg' => '不存在这个类型')));
+            }else {
+
+                $notemodel = new NoteModel();
+                $limit1 = ($this->post('limit1')-1)*$this->post('limit2');
+                $notelist = $notemodel->jointwolist('note_ishide = 1 and note_type = '.$this->post('type').' and note_uid = '.$this->userid,'u_user u on u_note.note_uid = u.user_id','u_crowd c on u_note.note_cid = c.crowd_id','note_istop desc,note_iswally desc,note_createtime desc',$limit1,$this->post('limit2'));
+
+                if ($notelist){
+                    die(json_encode(array('str' => 1,'msg'=>$notelist)));
                 }else{
                     die(json_encode(array('str' => 2,'msg'=>'回复失败')));
                 }

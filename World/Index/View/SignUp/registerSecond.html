@@ -45,7 +45,7 @@
                                 <span class="mailbox-icon2"></span>
                             </label>
                             <div class="layui-input-block input-spacing">
-                                <input type="text" name="number" id="birth" lay-verify="required" autocomplete="off" <if condition='$register_birth'>value="{$register_birth}"</if> placeholder="Date of birth(xx/xx/xxxx)" class="layui-input">
+                                <input type="text" name="number" id="birth" lay-verify="required" autocomplete="off" <if condition='$register_birth'>value="{$register_birth}"</if> placeholder="Date of birth(xx/xx/xxxx)" class="layui-input Wtime">
                             </div>
                         </div>
                         <div class="FormContainer" pane>
@@ -96,7 +96,7 @@
                                 <span class="mailbox-icon6"></span>
                             </label>
                             <div class="layui-input-block input-spacing">
-                                <input type="text" name="number" id="city" lay-verify="required" autocomplete="off" <if condition='$register_city'>value="{$register_city}"</if> placeholder="Enter the city" class="layui-input">
+                                <input type="text" name="number" id="city" autocomplete="off" <if condition='$register_city'>value="{$register_city}"</if> placeholder="Enter the city" class="layui-input">
                             </div>
                         </div>
 
@@ -106,7 +106,7 @@
                             </label>
                             <div class="layui-input-block input-spacing">
                                     <!-- <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the signature" class="layui-input"> -->
-                                    <textarea name="" required lay-verify="required" id="signature" placeholder="Enter the signature" class="layui-textarea"><if condition='$register_signature'>{$register_signature}</if></textarea>
+                                    <textarea name="" id="signature" placeholder="Enter the signature" class="layui-textarea"><if condition='$register_signature'>{$register_signature}</if></textarea>
                             </div>
                         </div>
 
@@ -151,6 +151,15 @@
     <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
 
 <script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        
+        //执行一个laydate实例
+        laydate.render({
+            elem: '.Wtime', //指定元素
+            lang:'en',
+        });
+        });
 
     layui.use('form', function(){
         var form = layui.form;

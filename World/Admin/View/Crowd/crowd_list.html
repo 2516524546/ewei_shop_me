@@ -145,7 +145,7 @@
 
 									<td>{$crowd['crowd_id']}</td>
 									<td>{$crowd['crowd_name']}</td>
-									<td><img style="width:50px;height:50px;" src="./Uploads/{crowd_icon['second_mark_name']}"></td>
+									<td><img style="width:50px;height:50px;" src="./Uploads/{$crowd['crowd_icon']}"></td>
 									<td>{$crowd['user_name']}</td>
 									<td><img style="width:50px;height:50px;" src="./Uploads/{$crowd['user_icon']}"></td>
 									<td>{$crowd['user_mail']}</td>
@@ -154,7 +154,7 @@
 									<td>{$crowd['crowd_creattime']}</td>
 									<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-												<a class="btn btn-xs btn-success" onclick="">{:L('Crowd_crowd_list_edit')}</a>
+												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/crowd_detail')}&cid={$crowd['crowd_id']}">{:L('Crowd_crowd_list_edit')}</a>
 												<a class="btn btn-xs btn-success" onclick="del({$crowd['crowd_id']})">{:L('Crowd_crowd_list_del')}</a>
 												<a class="btn btn-xs btn-success" onclick="">{:L('Crowd_crowd_list_message')}</a>
 												<a class="btn btn-xs btn-success" onclick="">{:L('Crowd_crowd_list_member')}</a>

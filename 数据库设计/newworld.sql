@@ -1,4 +1,4 @@
-
+﻿
 /*
 lyx
 2018.06.10
@@ -120,6 +120,7 @@ ALTER TABLE `newworld`.`u_concerns_group`
 ADD COLUMN `concerns_group_uid` bigint(20) UNSIGNED NOT NULL COMMENT '创建分组的用户id' AFTER `concerns_group_name`;
 
 
+
 CREATE TABLE IF NOT EXISTS `s_search_mark`(
 	`mark_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
 	,`mark_type_id` SMALLINT UNSIGNED NOT NULL COMMENT '搜索标识类型ID'
@@ -142,3 +143,18 @@ CREATE TABLE IF NOT EXISTS `s_search_mark_type`(
 	,PRIMARY KEY(`mark_type_id`)
 	,INDEX `idx_search` (`mark_type_mid`,`mark_type_tid`,`mark_type_sort`,`mark_type_show`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='搜索标识类型表';
+
+
+/*
+lyx
+2018.06.25 start
+*/
+
+ALTER TABLE `u_message`
+MODIFY COLUMN `message_sendtime`  datetime NOT NULL COMMENT '信息发送时间' AFTER `message_content`,
+MODIFY COLUMN `message_delivertime`  datetime NOT NULL COMMENT '信息送达时间' AFTER `message_sendtime`;
+
+/*
+lyx
+2018.06.25 end
+*/
