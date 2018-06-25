@@ -1,9 +1,19 @@
 var result = document.getElementById("result");
 			var input = document.getElementById("file_input");
 
+			// var values=[];   
 
 			function xmTanUploadImg(obj) {
 				var result = document.getElementById("result");
+				var file_input = document.getElementById("file_input");
+					// for(let key in obj.files){
+					// 	//只遍历对象自身的属性，而不包含继承于原型链上的属性。  
+					// 	if (obj.files.hasOwnProperty(key) === true){
+					// 		values.push(obj.files[key]);   
+					// 		}  
+					// 	}
+					// 	console.log(values)
+
 				var fl = obj.files.length;
 				for(var i = 0; i < fl; i++) {
 					var file = obj.files[i];
@@ -31,7 +41,6 @@ var result = document.getElementById("result");
 							Cdiv.innerHTML = Cspan; // 遮罩层拼接
 							Cdiv.className = "covers"; //遮罩层的类名
 							ndiv.appendChild(Cdiv); //遮罩层拼接进去
-
                             result.prepend(ndiv); //将拼接进去最前面
                             // *删除功能*/
                         $(".covers").click(function() {
