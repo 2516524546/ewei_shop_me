@@ -307,7 +307,25 @@ return array(
     /******************************************************************
      * Note start
      */
+    //public
+    'Note' => '帖子管理',
+    'Note_crowd_list' => '帖子管理',
 
+    //crowd_list
+    'Note_crowd_list_interst' => '兴趣',
+    'Note_crowd_list_academic' => '学术',
+    'Note_crowd_list_jobs' => '工作',
+    'Note_crowd_list_life' => '生活',
+    'Note_crowd_list_id' => 'id',
+    'Note_crowd_list_name' => '群名称',
+    'Note_crowd_list_icon' => '群头像',
+    'Note_crowd_list_posts' => '帖子数',
+    'Note_crowd_list_operation' => '操作',
+    'Note_crowd_list_del' => '解散',
+    'Note_crowd_list_look' => '查看',
+    'Note_crowd_list_if' => '该操作不可逆，确认继续吗？',
+    'Note_crowd_list_ok' => '确定',
+    'Note_crowd_list_no' => '取消',
 
     /*
 	 * Note end

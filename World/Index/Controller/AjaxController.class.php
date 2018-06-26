@@ -2400,6 +2400,7 @@ public function ajax_donationpay()
                         $notemodel = new NoteModel();
                         $notevimodel = new NoteVIModel();
                         $usermodel = new UserModel();
+                        $crowdmodel = new CrowdModel();
 
                         $notemodel->startTrans();
                         try{
@@ -2425,6 +2426,12 @@ public function ajax_donationpay()
                                 'user_notes' => $userone['user_notes']+1,
                             );
                             $usermodel->updataone('user_id = '.$this->userid,$userdata);
+
+                            $crowdone = $crowdmodel->findone('crowd_id='.$this->post('cid'),'','');
+                            $crowddata = array(
+                                'crowd_posts'=>$crowdone['crowd_posts']+1,
+                            );
+                            $crowdres = $crowdmodel->updataone('crowd_id='.$this->post('cid'),$crowddata);
 
                             if ($noteid){
 
@@ -2924,7 +2931,7 @@ public function ajax_donationpay()
 
                 $notecommentmodel = new NoteCommentModel();
                 $limit1 = ($this->post('limit1')-1)*$this->post('limit2');
-                $commentlist = $notecommentmodel->joinonelist('note_comment_nid = '.$this->post('nid'),'u_user u on u_note_comment.note_comment_uid = u.user_id','note_comment_isanswer desc,note_comment_zans desc,note_comment_createtime desc',$limit1,$this->post('limit2'));
+                $commentlist = $notecommentmodel->joinonelist('note_comment_ishide = 1 and note_comment_nid = '.$this->post('nid'),'u_user u on u_note_comment.note_comment_uid = u.user_id','note_comment_isanswer desc,note_comment_zans desc,note_comment_createtime desc',$limit1,$this->post('limit2'));
                 foreach ($commentlist as $key => $comment){
                     $uidlist = explode(',',$comment['note_comment_zaner']);
                     if (in_array($this->userid,$uidlist)){

@@ -201,6 +201,9 @@ ADD COLUMN `message_cid`  bigint(20) NULL COMMENT '群id' AFTER `message_sid`;
 ALTER TABLE `u_message`
 MODIFY COLUMN `message_title`  varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '信息标题' AFTER `message_id`;
 
+ALTER TABLE `u_crowd`
+ADD COLUMN `crowd_posts`  int(10) NOT NULL DEFAULT 0 COMMENT '帖子数' AFTER `crowd_fourthmarks`;
+
 
 
 /*

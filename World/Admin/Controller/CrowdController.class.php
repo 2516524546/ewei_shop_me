@@ -58,6 +58,11 @@ class CrowdController extends CommonController {
                 $crowdname = $_SESSION['crowd_list_crowdname'];
                 $peoplename = $_SESSION['crowd_list_peoplename'];
                 $peoplephone = $_SESSION['crowd_list_peoplephone'];
+            }else{
+                $_SESSION['crowd_list_where'] = '';
+                $_SESSION['crowd_list_crowdname'] = '';
+                $_SESSION['crowd_list_peoplename'] = '';
+                $_SESSION['crowd_list_peoplephone'] = '';
             }
         }
 
@@ -231,6 +236,10 @@ class CrowdController extends CommonController {
                 $uname = $_SESSION['member_list_uname'];
                 $umail = $_SESSION['member_list_umail'];
 
+            }else{
+                $_SESSION['member_list_where'] = '';
+                $_SESSION['member_list_uname'] = '';
+                $_SESSION['member_list_umail'] = '';
             }
         }
 
