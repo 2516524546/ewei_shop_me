@@ -52,13 +52,9 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            {:L('Crowd')}
-            <small> <a class="icon-double-angle-right" href="{:U('Admin/Crowd/crowd_list')}">
-                {:L('Crowd_crowd_list')}
-            </a>
-            </small>
-            <small> <a class="icon-double-angle-right" href="{:U('Admin/Crowd/message_list')}&cid={$cid}">
-                {:L('Crowd_message_list')}
+            {:L('Message')}
+            <small> <a class="icon-double-angle-right" href="{:U('Admin/Message/message_list')}">
+                {:L('Message_message_list')}
             </a>
             </small>
 
@@ -71,57 +67,33 @@
             <form class="form-horizontal" method="POST" >
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right">{:L('Crowd_message_list_title')}</label>
+                    <label class="col-sm-3 control-label no-padding-right">{:L('Message_set_one_uid')}</label>
                     <div class="col-sm-9">
-                        <input type="text" id="title" placeholder="{:L('Crowd_message_list_title')}" style="width:300px;" />
+                        <input type="text" id="uid" placeholder="{:L('Message_set_one_uid')}" style="width:300px;" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right">{:L('Message_message_list_title')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="title" placeholder="{:L('Message_message_list_title')}" style="width:300px;" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right">{:L('Crowd_message_list_content')}</label>
+                    <label class="col-sm-3 control-label no-padding-right">{:L('Message_message_list_content')}</label>
                     <div class="col-sm-9">
                         <textarea style="width: 300px;height: 100px;" id="content"></textarea>
                     </div>
                 </div>
 
-                <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
-                    <label class="col-sm-3 control-label no-padding-right" >{:L('Crowd_message_set_type')}</label>
-                    <div class="col-sm-9">
-                        <div class="radio1">
-                            <label>
-                                <input name="type" type="radio" value="1" class='ace' checked/>
-                                <span class="lbl">{:L('Crowd_message_set_typeone')}</span>
-                            </label>
-                            <label>
-                                <input name="type" type="radio" value="2" class='ace'/>
-                                <span class="lbl">{:L('Crowd_message_set_typetwo')}</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right">{:L('Crowd_message_set_people')}</label>
-                    <div class="col-sm-9">
-                        <input type="button" value="{:L('Crowd_message_set_setpeople')}" role="presentation" data-toggle="modal" data-target="#add-auth">
-                        <input type="text" id="names" value="{$memberone['user_birth']}" style="width:300px;" readonly/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right"></label>
-                    <div class="col-sm-9" style="color: red">
-                        {:L('Crowd_message_set_tip')}
-                    </div>
-                </div>
-
                 <div class="form-actions center">
-                    <a class="btn btn-sm btn-success" onclick="edit()">
+                    <a class="btn btn-sm btn-success" onclick="set()">
                         <i class="icon-edit bigger-110"></i>
-                        {:L('Crowd_crowd_detail_if')}
+                        {:L('Message_set_list_if')}
                     </a>
                     <a class="btn btn-sm btn-warning" href="javascript:history.back(-1)" class="myButton">
                         <i class="icon-arrow-left icon-on-left bigger-110"></i>
-                        {:L('Crowd_crowd_detail_back')}
+                        {:L('Message_set_list_back')}
                     </a>
                 </div>
             </form>
@@ -129,31 +101,6 @@
     </div>
 </div>
 
-<div class="modal fade bs-example-modal-lg" id="add-auth" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="width: 350px; ">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span
-                        aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">{:L('Mark_second_list_add')}</h4>
-            </div>
-            <div class="modal-body" style="height: 500px;overflow-y: scroll;">
-
-                <div class="content" id='bianji_content'>
-                    <foreach name="memberlist" item="member" key="memberkey">
-
-                    <input type="checkbox" value="{$member['user_id']}" title="{$member['user_name']}" name="ber">{$member['user_name']}<br>
-
-                    </foreach>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <a class="btn btn-primary" data-dismiss="modal" onclick="save()">{:L('Mark_mark_list_save')}</a>
-                <a class="btn btn-default" data-dismiss="modal" id="quxiao">{:L('Mark_mark_list_cancel')}</a>
-            </div>
-        </div>
-    </div>
-</div>
 </body>
 <!-- /.page-content -->
 <style type="text/css" media="screen">
@@ -179,44 +126,17 @@
 
 <script type="text/javascript">
     
-    var uid = ''
-    function save() {
 
-        var member = document.getElementsByName("ber");
-        var ids = ''
-        var names = ''
-        for(var k in member){
-            console.log(member[k])
-            if(member[k].checked){
-                if(ids==''){
-                    ids += member[k].value
-                }else{
-                    ids += ','+member[k].value
-                }
-                if(names==''){
-                    names += member[k].title
-                }else{
-                    names += ','+member[k].title
-                }
-            }
-        }
-        uid = ids
-        $("#names").val(names)
 
-    }
-
-    function edit() {
+    function set() {
 
         var formData = new FormData();
-
         formData.append('title',$("#title").val())
+        formData.append('uid',$("#uid").val())
         formData.append('content',$("#content").val())
-        formData.append('type',$("input[name='type']:checked").val())
-        formData.append('cid','{$cid}')
-        formData.append('uid',uid)
 
         $.ajax({
-            url: "{:U('Admin/Crowd/message_ajax_set')}",
+            url: "{:U('Admin/Message/message_ajax_setone')}",
             type: "POST",
             data: formData,
             contentType: false,

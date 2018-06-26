@@ -368,6 +368,7 @@ class CrowdController extends CommonController {
     public function message_list(){
 
         $messagemodel = new MessageModel();
+
         $messagecount = $messagemodel->joinfind('message_type = 2 and message_cid = '.$_GET['cid'],'u_user u on u_message.message_uid = u.user_id','','INNER','count(*) num')['num'];
 
         $Page = new \Think\Page($messagecount,$this->pagenum);
@@ -376,7 +377,7 @@ class CrowdController extends CommonController {
         $Page->setConfig('theme', '%HEADER% %FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%');
         $show = $Page->show();
 
-        $messagelist = $messagemodel->joinlist('message_type = 2 and message_cid = '.$_GET['cid'],'u_user u on u_message.message_uid = u.user_id','message_sendtime desc,message_delivertime desc',$Page->firstRow,$Page->listRows);
+        $messagelist = $messagemodel->joinlist('message_type = 2 and message_cid = '.$_GET['cid'],'u_user u on u_message.message_uid = u.user_id','message_sendtime desc,message_delivertime desc,message_id desc',$Page->firstRow,$Page->listRows);
 
         $this->assign(array(
             'page' => $show,
@@ -387,6 +388,7 @@ class CrowdController extends CommonController {
         $this->display();
     }
 
+    //群信息发布页面
     public function message_set(){
 
         $membermodel = new CrowdMemberModel();
@@ -401,13 +403,13 @@ class CrowdController extends CommonController {
         $this->display();
     }
 
+    //发布群信息
     public function message_ajax_set(){
 
         if (IS_POST) {
 
             $messagemodel = new MessageModel();
-            $membermodel = new CrowdMemberModel();
-            $
+
             if ($_POST['type']==1){
 
                 $uids = $_POST['uid'];
@@ -416,26 +418,47 @@ class CrowdController extends CommonController {
                 try {
 
                     foreach ($uidlist as $uid) {
+
                         $messagedata = array();
                         $messagedata['message_title'] = $_POST['title'];
                         $messagedata['message_content'] = $_POST['content'];
-                        $messagedata['message_sendtime'] = $_POST['content'];
-                        $messagedata['message_delivertime'] = $_POST['content'];
+                        $messagedata['message_sendtime'] = date("Y-m-d H:i:s", time());
+                        $messagedata['message_delivertime'] = date("Y-m-d H:i:s", time());
                         $messagedata['message_uid'] = $uid;
                         $messagedata['message_cid'] = $_POST['cid'];
                         $messagedata['message_type'] = 2;
                         $messagemodel->add($messagedata);
-                        die(json_encode(array('str' => 1,'msg'=>L('Crowd_message_set_yes'))));
                     }
                     $messagemodel->commit();
-
+                    die(json_encode(array('str' => 1,'msg'=>L('Crowd_message_set_yes'))));
                 }catch (Exception $e){
                     $messagemodel->rollback();
                     die(json_encode(array('str' => 0,'msg'=>L('Crowd_message_set_no'))));
                 }
             }else{
+                $membermodel = new CrowdMemberModel();
+                $memberlist = $membermodel->findlist('crowd_member_cid = '.$_POST['cid'],'u_user u on u_crowd_member.crowd_member_uid = u.user_id','INNER','crowd_member_status desc,crowd_member_logintime desc');
+                $messagemodel->startTrans();
+                try {
 
+                    foreach ($memberlist as $member) {
+                        $messagedata = array();
+                        $messagedata['message_title'] = $_POST['title'];
+                        $messagedata['message_content'] = $_POST['content'];
+                        $messagedata['message_sendtime'] = date("Y-m-d H:i:s", time());
+                        $messagedata['message_delivertime'] = date("Y-m-d H:i:s", time());
+                        $messagedata['message_uid'] = $member['crowd_member_uid'];
+                        $messagedata['message_cid'] = $_POST['cid'];
+                        $messagedata['message_type'] = 2;
+                        $messagemodel->add($messagedata);
 
+                    }
+                    $messagemodel->commit();
+                    die(json_encode(array('str' => 1,'msg'=>L('Crowd_message_set_yes'))));
+                }catch (Exception $e){
+                    $messagemodel->rollback();
+                    die(json_encode(array('str' => 0,'msg'=>L('Crowd_message_set_no'))));
+                }
             }
 
         } else {
@@ -445,5 +468,41 @@ class CrowdController extends CommonController {
 
     }
 
+    //信息详情
+    public function message_detail(){
+
+        $messagemodel = new MessageModel();
+        $messageone = $messagemodel->joinfind('message_id = '.$_GET['mid'],'u_user u on u_message.message_uid = u.user_id');
+
+        $this->assign(array(
+            'messageone' => $messageone,
+            'cid' => $_GET['cid'],
+
+        ));
+        $this->display();
+    }
+
+    //信息删除
+    public function ajax_messagedel(){
+        if (IS_POST) {
+
+            $mid = $_POST['mid'];
+
+            $messagemodel = new MessageModel();
+
+            $res = $messagemodel->where('message_id = ' . $mid)->delete();
+            if ($res) {
+
+                die(json_encode(array('str' => 1, 'msg' => L('Crowd_member_list_delyes'))));
+            } else {
+
+                die(json_encode(array('str' => 2, 'msg' => L('Crowd_member_list_delno'))));
+            }
+
+        } else {
+
+            die(json_encode(array('str' => 0, 'msg' => L('newworld_ajax_havenoing'))));
+        }
+    }
 	
 }

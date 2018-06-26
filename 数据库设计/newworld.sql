@@ -198,6 +198,11 @@ ALTER TABLE `u_message`
 MODIFY COLUMN `message_sid`  bigint(20) NULL DEFAULT 0 COMMENT '发送用户id，0为admin' AFTER `message_uid`,
 ADD COLUMN `message_cid`  bigint(20) NULL COMMENT '群id' AFTER `message_sid`;
 
+ALTER TABLE `u_message`
+MODIFY COLUMN `message_title`  varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '信息标题' AFTER `message_id`;
+
+
+
 /*
 lyx
 2018.06.26 end
