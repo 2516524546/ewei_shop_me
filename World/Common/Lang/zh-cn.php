@@ -234,6 +234,27 @@ return array(
     'Crowd_member_detail_coin' => '虚拟币',
     'Crowd_member_detail_content' => '简介',
 
+    //message_list
+    'Crowd_message_list' => '群信息',
+    'Crowd_message_list_set' => '发布',
+    'Crowd_message_list_id' => 'id',
+    'Crowd_message_list_title' => '标题',
+    'Crowd_message_list_content' => '内容',
+    'Crowd_message_list_sendtime' => '发送时间',
+    'Crowd_message_list_delivertime' => '送达时间',
+    'Crowd_message_list_icon' => '用户头像',
+    'Crowd_message_list_name' => '用户昵称',
+
+    //message_set
+    'Crowd_message_set_type' => '用户对象',
+    'Crowd_message_set_typeone' => '个人',
+    'Crowd_message_set_typetwo' => '群发',
+    'Crowd_message_set_people' => '指定成员',
+    'Crowd_message_set_setpeople' => '选择成员',
+    'Crowd_message_set_tip' => '选择群发将会发送给全部成员，选择个人将会发送给指定用户',
+    'Crowd_message_set_yes' => '发送成功',
+    'Crowd_message_set_yes' => '发送失败',
+
     /*
 	 * Crowd end
 	 *******************************************************************/

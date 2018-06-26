@@ -30,6 +30,7 @@
     /* background-image: url(../img/banner.png);  
     background-repeat: no-repeat;  
     background-size: 100% 100%; */
+    background-size: 100% 100%;
     border: 1px solid #a2e1db;
     text-align: center;
     padding: 30px 0;
@@ -80,18 +81,19 @@
     font-weight: bold;
     margin: 0 auto;
     margin-bottom: 20px;
-    width: 29%;
+    width: 22%;
     overflow: hidden;
     display: flex;
     justify-content: flex-start;
 }
 .personal_content .personal_title .P_title_lifeMaxim .liftMaxim_title{
-    width: 26%;
+    width: 34%;
     display: inline-block;
     vertical-align: top;
 }
 .personal_content .personal_title .P_title_lifeMaxim .liftMaxim_content{
-    width: 70%;
+    width: 50%;
+    text-align: left;
     /* display: inline-block; */
     overflow: hidden;
     display: -webkit-box;
@@ -106,6 +108,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-right: 18px;
     margin-bottom: 25px;
 }
 .personal_content .personal_title .P_title_FaA .FaA_line{
@@ -234,7 +237,7 @@
 {
     position: relative;
     height: 400px;
-    width: 400px;
+    width: 100%;
     border:1px solid #aaa;
     background: #fff;
     overflow: hidden;
@@ -244,14 +247,9 @@
 
 .imageBox .thumbBox
 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    margin-top: -100px;
-    margin-left: -100px;
+    width: 90%;
+    height: 40%;
+    margin: 16% auto;
     box-sizing: border-box;
     border: 1px solid rgb(102, 102, 102);
     box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
@@ -274,7 +272,7 @@
 }
 
 #btnZoomIn,#btnZoomOut{
-    width: 7%;
+    width: 4%;
 }
 #btnCrop{
     width: 15%;
@@ -339,6 +337,14 @@ button:focus {
 }
 .modal-body-list .modal-body-addName .addName_input{
     padding: 5px 10px;
+}
+.modal.show .modal-dialog{
+    /* text-align: center; */
+    /* max-width: 100%; */
+    max-width: 70%;
+}
+.modal-content{
+    width: 100%;
 }
 .layui-tab-title{
     height: auto;

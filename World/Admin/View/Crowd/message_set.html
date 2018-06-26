@@ -1,0 +1,263 @@
+<head>
+    <meta charset="utf-8"/>
+    <title>{:L('newworld_admin')}</title>
+    <meta name="keywords" content="{:L('newworld_admin')}"/>
+    <meta name="description" content="{:L('newworld_admin')}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- basic styles -->
+    <link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css"/>
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css"/>
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css"/>
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
+    <!--[if !IE]> -->
+
+    <script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+
+    <!-- <![endif]-->
+    <!-- ace settings handler -->
+
+    <script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+    <script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style='background:#fff;'>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            {:L('Crowd')}
+            <small> <a class="icon-double-angle-right" href="{:U('Admin/Crowd/crowd_list')}">
+                {:L('Crowd_crowd_list')}
+            </a>
+            </small>
+            <small> <a class="icon-double-angle-right" href="{:U('Admin/Crowd/member_list')}&cid={$memberone['crowd_member_cid']}">
+                {:L('Crowd_member_list')}
+            </a>
+            </small>
+
+        </h1>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <form class="form-horizontal" method="POST" >
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right">{:L('Crowd_message_list_title')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="title" value="{$memberone['user_name']}" placeholder="{:L('Crowd_message_list_title')}" style="width:300px;" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right">{:L('Crowd_message_list_content')}</label>
+                    <div class="col-sm-9">
+                        <textarea style="width: 300px;height: 100px;" id="content"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
+                    <label class="col-sm-3 control-label no-padding-right" >{:L('Crowd_message_set_type')}</label>
+                    <div class="col-sm-9">
+                        <div class="radio1">
+                            <label>
+                                <input name="type" type="radio" value="1" class='ace' checked/>
+                                <span class="lbl">{:L('Crowd_message_set_typeone')}</span>
+                            </label>
+                            <label>
+                                <input name="type" type="radio" value="2" class='ace'/>
+                                <span class="lbl">{:L('Crowd_message_set_typetwo')}</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right">{:L('Crowd_message_set_people')}</label>
+                    <div class="col-sm-9">
+                        <input type="button" value="{:L('Crowd_message_set_setpeople')}" role="presentation" data-toggle="modal" data-target="#add-auth">
+                        <input type="text" id="names" value="{$memberone['user_birth']}" style="width:300px;" readonly/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right"></label>
+                    <div class="col-sm-9" style="color: red">
+                        {:L('Crowd_message_set_tip')}
+                    </div>
+                </div>
+
+                <div class="form-actions center">
+                    <a class="btn btn-sm btn-success" onclick="edit()">
+                        <i class="icon-edit bigger-110"></i>
+                        {:L('Crowd_crowd_detail_if')}
+                    </a>
+                    <a class="btn btn-sm btn-warning" href="javascript:history.back(-1)" class="myButton">
+                        <i class="icon-arrow-left icon-on-left bigger-110"></i>
+                        {:L('Crowd_crowd_detail_back')}
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" id="add-auth" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 350px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span
+                        aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">{:L('Mark_second_list_add')}</h4>
+            </div>
+            <div class="modal-body" style="height: 500px;overflow-y: scroll;">
+
+                <div class="content" id='bianji_content'>
+                    <foreach name="memberlist" item="member" key="memberkey">
+
+                    <input type="checkbox" value="{$member['user_id']}" title="{$member['user_name']}" name="ber">{$member['user_name']}<br>
+
+                    </foreach>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" data-dismiss="modal" onclick="save()">{:L('Mark_mark_list_save')}</a>
+                <a class="btn btn-default" data-dismiss="modal" id="quxiao">{:L('Mark_mark_list_cancel')}</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+    .btn-xs {
+        margin-right: 10px !important;
+    }
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/bootstrap.min.js"></script>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+
+<script type="text/javascript">
+    
+    var uid = ''
+    function save() {
+
+        var member = document.getElementsByName("ber");
+        var ids = ''
+        var names = ''
+        for(var k in member){
+            console.log(member[k])
+            if(member[k].checked){
+                if(ids==''){
+                    ids += member[k].value
+                }else{
+                    ids += ','+member[k].value
+                }
+                if(names==''){
+                    names += member[k].title
+                }else{
+                    names += ','+member[k].title
+                }
+            }
+        }
+        uid = ids
+        $("#names").val(names)
+
+    }
+
+    function edit() {
+
+        var formData = new FormData();
+        formData.append('title',$("#name").val())
+        formData.append('content',$("#content").val())
+        formData.append('type',$("input[name='type']:checked").val())
+        formData.append('cid',{$cid})
+        formData.append('uid',uid)
+
+        $.ajax({
+            url: "{:U('Admin/Crowd/message_ajax_set')}",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType:'json',
+            success: function (data) {
+
+                if(data.str == 1) {
+                    layer.msg(data.msg,{
+                            time:1500,
+                            icon:1,
+                        },function () {
+                            location.reload()
+                        }
+                    );
+
+                }else {
+                    layer.msg(data.msg,{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+
+                }
+            },
+            error: function () {
+                layer.msg("{:L('Mark_mark_list_error')}",{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+        });
+    }
+    
+
+</script>
+
+
+
+
+
+
+
+
