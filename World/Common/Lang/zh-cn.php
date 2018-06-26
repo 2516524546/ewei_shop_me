@@ -59,6 +59,7 @@ return array(
     //user_edit_start
     'User_user_list_comfirm_update' => '确认修改',
     'User_user_list_back_list' => '返回列表',
+    'User_user_list_comfirm_add' => '添加',
     //user_edit_end
 
     /*

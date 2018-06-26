@@ -52,12 +52,12 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            新闻管理
+            广告管理
             <small><i class="icon-double-angle-right"></i>
-                <eq name="type" value="2">
-                    新增群新闻
+                <eq name="advertising['advertising_for']" value="2">
+                    编辑群广告
                     <else/>
-                    新增新闻
+                    编辑广告
                 </eq>
             </small>
 
@@ -67,21 +67,21 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <form class="form-horizontal" action="{:U('Admin/New/new_add')}" method="POST" role="form"
+            <form class="form-horizontal" action="{:U('Admin/Advertising/advertising_edit')}" method="POST" role="form"
                   enctype="multipart/form-data">
 
-                <eq name="type" value="2">
+                <eq name="advertising['advertising_for']" value="2">
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1">群ID</label>
                         <div class="col-sm-9">
-                            <input type="text" name="news_crowdid" value="" placeholder="" style="width:300px;"/></div>
+                            <input type="text" name="advertising_crowdid" value="{$advertising['advertising_crowdid']}" placeholder="" style="width:300px;"/></div>
                     </div>
                     <else/>
                 </eq>
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">标题</label>
                     <div class="col-sm-9">
-                        <input type="text" name="news_title" value="" placeholder="" style="width:300px;"/></div>
+                        <input type="text" name="advertising_title" value="{$advertising['advertising_title']}" placeholder="" style="width:300px;"/></div>
                 </div>
                 <input type="hidden" name="news_for" value="<?php echo $type;?>"/>
                 <div class="form-group" id="user-profile-3">
@@ -90,9 +90,10 @@
                         <div class="col-xs-12 col-sm-4">
                             <input type="file" id='upload_picture' accept=".png,.gif,.jpeg,.jpg"/>
                             <div id='img'>
+                                <img width="100px" height="100px" src="<?php echo './Uploads/'.$advertising['advertising_img']?>"/>
                             </div>
                         </div>
-                        <input type='hidden' name='news_img' value="">
+                        <input type='hidden' name='advertising_img' value="{$advertising['advertising_img']}">
 
                     </div>
 
@@ -117,7 +118,7 @@
                                 console.log(data)
                                 if(data.status == 1) {
                                     $("#img").html('<img style="width:200px;height:200px;" src="./Uploads/' + data.msg + '"/>');
-                                    $("input[name='news_img']").val(data.msg)
+                                    $("input[name='advertising_img']").val(data.msg)
                                 }else {
                                     alert(data.msg);
                                 }
@@ -129,65 +130,17 @@
                     });
                 </script>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">所属分类</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">链接</label>
                     <div class="col-sm-9">
-                        <select name="news_mid">
-                            <option value="0">请选择分类</option>
-                            <volist  name="modules" id="vo">
-                                <option value="{$vo.module_id}">{$vo.module_name}</option>
-                            </volist>
-                        </select>
-                    </div>
+                        <input type="text" name="advertising_url" value="{$advertising['advertising_url']}" placeholder="" style="width:300px;"/></div>
                 </div>
-                <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
-                    <label class="col-sm-3 control-label no-padding-right" for="admin">新闻来源</label>
-                    <div class="col-sm-9">
-                        <div class="radio1">
-                            <label>
-                                <input name="news_type" type="radio" value="0" class='ace' checked/>
-                                <span class="lbl">新闻链接</span>
-                            </label>
-                            <label>
-                                <input name="news_type" type="radio" value="1" class='ace' />
-                                <span class="lbl">新闻编辑</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-9 in-txt">
-                        <input type="text" name="news_url" value="" placeholder="" style="width:300px;"/>
-                    </div>
-                    <div class="col-sm-6 editor hidden">
-                        <textarea id="content" placeholder="" name="news_content"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">轮播顺序</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="news_sort" value="" placeholder="" style="width:300px;"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">创建时间</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control date-picker" name="news_createtime" value="<?php echo $user['user_birth']?>"
-                               placeholder="" style="width: 35%;"  id="id-date-picker-1"  data-date-format="yyyy-mm-dd" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">结束时间</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control date-picker" name="news_endtime" value="<?php echo $user['user_birth']?>"
-                               placeholder="" style="width: 35%;"  id="id-date-picker-1"  data-date-format="yyyy-mm-dd" />
-                    </div>
-                </div>
-
+                <input type="hidden" value="{$advertising['advertising_id']}" name="advertising_id"/>
                 </fieldset>
 
                 <div class="form-actions center">
                     <a class="btn btn-sm btn-success" id='tianjia'>
                         <i class="icon-edit bigger-110"></i>
-                        {:L('User_user_list_comfirm_add')}
+                        {:L('User_user_list_comfirm_update')}
                     </a>
                     <a class="btn btn-sm btn-warning" href="javascript:history.back(-1)" class="myButton">
                         <i class="icon-arrow-left icon-on-left bigger-110"></i>
@@ -229,8 +182,8 @@
     function showSuccess(data) {
 
         if (data == 1) {
-            alert('添加成功')
-            location.href = "{:U('Admin/New/new_list')}"
+            alert('修改成功')
+            location.href = "{:U('Admin/Advertising/advertising_list')}"
         } else {
             alert(data)
             return false
@@ -250,6 +203,8 @@
 
 
     });
+
+
     $(function(){
         $(":radio").click(function(){
             if($(this).val()==0){
@@ -260,6 +215,18 @@
                 $(".in-txt").addClass("hidden");
             }
         });
+    });
+    $(function(){
+        var type = $("#type").val();
+        if (type != "") {
+            if (type == 0) {
+                $(".editor").addClass('hidden');
+                $(".in-txt").removeClass('hidden');
+            } else if (type == 1) {
+                $(".in-txt").addClass('hidden');
+                $(".editor").removeClass('hidden');
+            }
+        }
     });
 </script>
 <script  src="__PUBLIC__/Admin/admin/ueditor/ueditor.config.js"></script>

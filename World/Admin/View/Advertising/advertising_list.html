@@ -73,9 +73,9 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            {:L('New_new_list_news_manager')}
+            广告管理
             <small><i class="icon-double-angle-right"></i>
-                {:L('New_new_list')}
+                侧栏广告列表
             </small>
 
         </h1>
@@ -186,8 +186,8 @@
                                 <a href="#" target="rightFrame"><span
                                         style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>新增</span></a>
                                 <div class="dropdown-content">
-                                    <p><a href="{:U('Admin/New/new_add?type=1')}" target="rightFrame">新增新闻</a></p>
-                                    <p><a href="{:U('Admin/New/new_add?type=2')}" target="rightFrame">新增群新闻</a></p>
+                                    <p><a href="{:U('Admin/Advertising/advertising_add?type=1')}" target="rightFrame">新增广告</a></p>
+                                    <p><a href="{:U('Admin/Advertising/advertising_add?type=2')}" target="rightFrame">新增群广告</a></p>
                                 </div>
                             </div>
                         </div>
@@ -233,11 +233,9 @@
                                 </eq>
                                 <th>标题</th>
                                 <th>图片</th>
-                                <th>轮播顺序</th>
-                                <th>新闻来源</th>
+                                <th>链接</th>
                                 <th>创建时间</th>
                                 <th>结束时间</th>
-                                <th>状态</th>
                                 <th>{:L('User_user_list_operation')}</th>
                             </tr>
                             </thead>
@@ -247,38 +245,25 @@
                             <tr>
                                 <!--<td><input type='checkbox' name='' value=''></td>-->
 
-                                <td><?php echo $v['news_id'];?></td>
+                                <td><?php echo $v['advertising_id'];?></td>
                                 <eq name="flag" value="2">
-                                    <td><?php echo $v['news_crowdid'];?></td>
+                                    <td><?php echo $v['advertising_crowdid'];?></td>
                                 </eq>
 
-                                <td><?php echo $v['news_title'];?></td>
+                                <td><?php echo $v['advertising_title'];?></td>
                                 <td>
-                                    <img src="<?php echo  './Uploads/'.$v['news_img'];?>"
+                                    <img src="<?php echo  './Uploads/'.$v['advertising_img'];?>"
                                          style="width:50px;height:50px;"/>
                                 </td>
-                                <td><?php echo $v['news_sort'];?></td>
-                                <td><?php echo $v['news_type']==0?'新闻链接':'新闻编辑';?></td>
-                                <td><?php echo $v['news_createtime']?></td>
-                                <td><?php echo $v['news_endtime']?></td>
-                                <td>
-                                    <if condition="$v['news_static'] eq 0"> 未发布
-                                        <elseif condition="$v['news_static'] eq 1"/>
-                                        已发布
-                                        <else/>
-                                        已结束
-                                    </if>
-                                </td>
+                                <td><?php echo $v['advertising_url'];?></td>
+                                <td><?php echo $v['advertising_starttime']?></td>
+                                <td><?php echo $v['advertising_finishtime']?></td>
                                 <td>
                                     <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-                                        <eq name="v.news_static" value="0">
-                                            <a onClick="changestatus(<?php echo $v['news_id']?>,<?php echo $v['news_static']?>)"  class="btn btn-xs btn-success" style="margin-top: 5px;">发布</a>
-                                            <else/>
-                                        </eq>
-                                        <a href="index.php?m=Admin&c=New&a=new_edit&id=<?php echo $v['news_id']?>"
+                                        <a href="index.php?m=Admin&c=Advertising&a=advertising_edit&id=<?php echo $v['advertising_id']?>"
                                            class="btn btn-xs btn-success"
                                            style="margin-top:5px;"><?php echo L('User_user_list_edit');?></a>
-                                        <a onclick="delete_professional(<?php echo $v['news_id'];?>)"
+                                        <a onclick="delete_professional(<?php echo $v['advertising_id'];?>)"
                                            class="btn btn-xs btn-success"
                                            style="margin-top: 5px;"><?php echo L('User_user_list_del');?></a>
                                     </div>
@@ -344,10 +329,10 @@
         }
     })
     function jump(type) {
-        location.href = "index.php?m=Admin&c=New&a=new_list&type=" + type
+        location.href = "index.php?m=Admin&c=Advertising&a=advertising_list&type=" + type
     }
     function jumpwithtwo(type, flag) {
-        location.href = "index.php?m=Admin&c=New&a=new_list&type=" + type + "&flag=" + flag;
+        location.href = "index.php?m=Admin&c=Advertising&a=advertising_list&type=" + type + "&flag=" + flag;
     }
     function jump1() {
         location.href = "index.php?m=Admin&c=New&a=new_list&type=1"
@@ -391,7 +376,7 @@
         }
 
         $.ajax({
-            url: "index.php?m=Admin&c=New&a=new_del",
+            url: "index.php?m=Admin&c=Advertising&a=advertising_del",
             data: 'id=' + id,
             type: 'post',
             success: function (msg) {

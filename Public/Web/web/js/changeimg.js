@@ -69,16 +69,22 @@ var result = document.getElementById("result");
 							// 	num = $(this).index();
 							// 	// console.log(num)
 							// });
-							$(".covers").click(function() {
-								event.stopPropagation()
+							
+							$(".covers").click(function(event) {
+								event.stopPropagation();
 								var _this = $(this);
 								$("#file_input").val("");
-								var num = $("#result .img-div .covers").index(this)
-								values.splice(num,1)
-								_this.parents(".img-div").remove();
+								var num = $(this).parents(".img-div").index(this)
+								console.log($(this).parent().index())
+								// console.log($(this).parents(".img-div").index())
+								// console.log($("#result").index($(".img-div")))
+								// console.log($("#result .img-div .covers").index())
+								// values.splice(num,1)
+								// _this.parents(".img-div").remove();
+								console.log(values)
 							});
-
 						}
+							
 					} else if(/video\/\w+/.test(file.type)) {
 						console.log(file)
 						var video = $('#video').find('video');

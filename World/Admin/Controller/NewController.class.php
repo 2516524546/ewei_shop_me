@@ -1,5 +1,7 @@
 <?php
 namespace Admin\Controller;
+use Think\Verify;
+
 class NewController extends CommonController{
     public function new_list(){
         $type=I("type");
@@ -35,24 +37,67 @@ class NewController extends CommonController{
 
 
     public function new_add(){
+
         if (IS_POST){
+             $this->verifyData($_POST);
             $res=M("s_news")->add($_POST);
             if ($res){
                 echo 1;
             }else{
-                echo "添加失败";
+                echo $res;
             }
         }else{
             $modules=M("s_module")->select();
             $this->assign('modules',$modules);
             $this->assign("type",I('type'));
+            $this->display();
         }
-        $this->display();
+
+    }
+//提交数据验证
+    public function verifyData($post){
+        if (empty($post['news_crowdid'])&&$post['news_for']==2){
+            echo "群id不能为空";
+            exit;
+        }
+        if (empty($post['news_title'])){
+            echo "新闻标题不能空";
+            exit;
+        }
+        if (empty($post['news_img'])){
+            echo "图片不能空";
+            exit;
+        }
+        if (empty($post['news_mid'])||$post['news_mid']==0){
+            echo "请选择所属分类";
+            exit;
+        }
+
+        if ($post['news_type']==0&&empty($post['news_url'])){
+            echo "新闻链接不能为空";
+            exit;
+        }
+        if ($post['news_type']==1&&empty($post['news_content'])){
+            echo "新闻编辑内容不能为空";
+            exit;
+        }
+        if (empty($post['news_sort'])){
+            echo "轮播顺序不能为空";
+            exit;
+        }
+        if (empty($post['news_createtime'])){
+            echo "创建时间不能为空";
+            exit;
+        }
+        if (empty($post['news_endtime'])){
+            echo "结束时间不能为空";
+            exit;
+        }
+
     }
 
     public function new_del(){
         $id=$_POST['id'];
-        //更新状态,改为已发布
         $res=M('s_news')->where("news_id={$id}")->delete();
         if ($res){
             echo 1;
@@ -72,6 +117,64 @@ class NewController extends CommonController{
             }else{
                 echo "更新失败";
             }
+        }
+
+    }
+
+    public function new_edit(){
+        if (IS_POST){
+            //修改数据
+            $this->verifyData2($_POST);
+            $news_id=$_POST['news_id'];
+            $res=M("s_news")->where("news_id={$news_id}")->save($_POST);
+            if ($res){
+                echo 1;
+            }else{
+                echo "修改失败";
+            }
+        }else{
+            //查询数据
+            $id=$_GET['id'];
+            $new=M("s_news")->where("news_id={$id}")->find();
+            $this->assign("new",$new);
+            $this->display();
+        }
+    }
+    //提交数据验证
+    public function verifyData2($post){
+        if (empty($post['news_crowdid'])&&$post['news_for']==2){
+            echo "群id不能为空";
+            exit;
+        }
+        if (empty($post['news_title'])){
+            echo "新闻标题不能空";
+            exit;
+        }
+        if (empty($post['news_img'])){
+            echo "图片不能空";
+            exit;
+        }
+
+
+        if ($post['news_type']==0&&empty($post['news_url'])){
+            echo "新闻链接不能为空";
+            exit;
+        }
+        if ($post['news_type']==1&&empty($post['news_content'])){
+            echo "新闻编辑内容不能为空";
+            exit;
+        }
+        if (empty($post['news_sort'])){
+            echo "轮播顺序不能为空";
+            exit;
+        }
+        if (empty($post['news_createtime'])){
+            echo "创建时间不能为空";
+            exit;
+        }
+        if (empty($post['news_endtime'])){
+            echo "结束时间不能为空";
+            exit;
         }
 
     }

@@ -52,12 +52,12 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            新闻管理
+            广告管理
             <small><i class="icon-double-angle-right"></i>
                 <eq name="type" value="2">
-                    新增群新闻
+                    新增群广告
                     <else/>
-                    新增新闻
+                    新增广告
                 </eq>
             </small>
 
@@ -67,23 +67,23 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <form class="form-horizontal" action="{:U('Admin/New/new_add')}" method="POST" role="form"
+            <form class="form-horizontal" action="{:U('Admin/Advertising/advertising_add')}" method="POST" role="form"
                   enctype="multipart/form-data">
 
                 <eq name="type" value="2">
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1">群ID</label>
                         <div class="col-sm-9">
-                            <input type="text" name="news_crowdid" value="" placeholder="" style="width:300px;"/></div>
+                            <input type="text" name="advertising_crowdid" value="" placeholder="" style="width:300px;"/></div>
                     </div>
                     <else/>
                 </eq>
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">标题</label>
                     <div class="col-sm-9">
-                        <input type="text" name="news_title" value="" placeholder="" style="width:300px;"/></div>
+                        <input type="text" name="advertising_title" value="" placeholder="" style="width:300px;"/></div>
                 </div>
-                <input type="hidden" name="news_for" value="<?php echo $type;?>"/>
+                <input type="hidden" name="advertising_for" value="<?php echo $type;?>"/>
                 <div class="form-group" id="user-profile-3">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">图片</label>
                     <div class="col-sm-9">
@@ -92,7 +92,7 @@
                             <div id='img'>
                             </div>
                         </div>
-                        <input type='hidden' name='news_img' value="">
+                        <input type='hidden' name='advertising_img' value="">
 
                     </div>
 
@@ -117,7 +117,7 @@
                                 console.log(data)
                                 if(data.status == 1) {
                                     $("#img").html('<img style="width:200px;height:200px;" src="./Uploads/' + data.msg + '"/>');
-                                    $("input[name='news_img']").val(data.msg)
+                                    $("input[name='advertising_img']").val(data.msg)
                                 }else {
                                     alert(data.msg);
                                 }
@@ -131,7 +131,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">所属分类</label>
                     <div class="col-sm-9">
-                        <select name="news_mid">
+                        <select name="advertising_mid">
                             <option value="0">请选择分类</option>
                             <volist  name="modules" id="vo">
                                 <option value="{$vo.module_id}">{$vo.module_name}</option>
@@ -139,6 +139,7 @@
                         </select>
                     </div>
                 </div>
+<!--
                 <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
                     <label class="col-sm-3 control-label no-padding-right" for="admin">新闻来源</label>
                     <div class="col-sm-9">
@@ -160,16 +161,17 @@
                         <textarea id="content" placeholder="" name="news_content"></textarea>
                     </div>
                 </div>
+-->
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">轮播顺序</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">链接</label>
                     <div class="col-sm-9">
-                        <input type="text" name="news_sort" value="" placeholder="" style="width:300px;"/>
+                        <input type="text" name="advertising_url" value="" placeholder="" style="width:300px;"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">创建时间</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control date-picker" name="news_createtime" value="<?php echo $user['user_birth']?>"
+                        <input type="text" class="form-control date-picker" name="advertising_starttime" value=""
                                placeholder="" style="width: 35%;"  id="id-date-picker-1"  data-date-format="yyyy-mm-dd" />
                     </div>
                 </div>
@@ -177,7 +179,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">结束时间</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control date-picker" name="news_endtime" value="<?php echo $user['user_birth']?>"
+                        <input type="text" class="form-control date-picker" name="advertising_finishtime" value=""
                                placeholder="" style="width: 35%;"  id="id-date-picker-1"  data-date-format="yyyy-mm-dd" />
                     </div>
                 </div>
@@ -230,7 +232,7 @@
 
         if (data == 1) {
             alert('添加成功')
-            location.href = "{:U('Admin/New/new_list')}"
+            location.href = "{:U('Admin/Advertising/advertising_list')}"
         } else {
             alert(data)
             return false
