@@ -98,7 +98,6 @@ class NewController extends CommonController{
 
     public function new_del(){
         $id=$_POST['id'];
-        //更新状态,改为已发布
         $res=M('s_news')->where("news_id={$id}")->delete();
         if ($res){
             echo 1;
