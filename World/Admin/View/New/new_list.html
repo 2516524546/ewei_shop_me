@@ -143,7 +143,7 @@
                             <ul>
                                 <!--<li role="presentation" class="current" onclick="jump()">全部</li>-->
                                 <volist name="modules" id="vo">
-                                    <li role="presentation" class="current" id="{$vo.module_id}"
+                                    <li role="presentation"  id="{$vo.module_id}"
                                         onclick="jump({$vo.module_id})">{$vo.module_name}
                                     </li>
                                 </volist>
@@ -275,7 +275,7 @@
                                             <a onClick="changestatus(<?php echo $v['news_id']?>,<?php echo $v['news_static']?>)"  class="btn btn-xs btn-success" style="margin-top: 5px;">发布</a>
                                             <else/>
                                         </eq>
-                                        <a href="index.php?m=Admin&c=Item&a=professional_detail&id=<?php echo $v['professional_id']?>"
+                                        <a href="index.php?m=Admin&c=New&a=new_edit&id=<?php echo $v['news_id']?>"
                                            class="btn btn-xs btn-success"
                                            style="margin-top:5px;"><?php echo L('User_user_list_edit');?></a>
                                         <a onclick="delete_professional(<?php echo $v['news_id'];?>)"
