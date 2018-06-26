@@ -148,6 +148,7 @@
 .SearchContainer .Help {
   margin-top: 12px;
   margin-right: 6px;
+  position: relative;
 }
 .GroupList {
   margin-top: 68px;
@@ -230,4 +231,43 @@
 }
 .BannerContainer .Container2 .Font {
   padding: 4px 6px;
+}
+
+.tooltip_box {
+  position: absolute;
+  top: 67%;
+  /* left: 100px; */
+  right: -10%;
+  width: 350px;
+  height: 100px;
+  /* background: #088cb7; */
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 14px #cecece;
+  padding: 15px;
+  display: none;
+}
+.tooltip_box:before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  left: 67%;
+  bottom: 100%;
+  /* background: #80fff3; */
+  border-left: 25px solid transparent;
+  border-bottom: 17px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.tooltip_box span{
+  height: 100%;
+  width: 100%;
+  line-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }

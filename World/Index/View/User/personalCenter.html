@@ -40,12 +40,12 @@
     <div class="personal_content">
         <!-- personal Center title -->
         <div class="personal_title">
-            <div class="title_back_img">
+            <div class="title_back_img" data-toggle="modal" data-target="#box2">
                 <if condition='$isme == 1'>
                 <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/paint.png" alt="">
                 </if>
             </div>
-            <div class="P_title_pic" data-toggle="modal" data-target="#box2">
+            <div class="P_title_pic">
                 <img src="<if condition='$userone["user_icon"]'>./Uploads/{$userone['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
             </div>
             <div class="P_title_name">
@@ -237,7 +237,7 @@
                     </div>
                     <div class="list_content">
                         <div class="list_content_title">
-                            Mailbox :
+                            E-mail :
                         </div>
                         <div class="list_content_details">
                             {$userone['user_mail']}
