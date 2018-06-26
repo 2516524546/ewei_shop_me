@@ -32,6 +32,7 @@
 }
 .AddressBook_box .AddressBook_item .AddressBook_left .AddressBook_left_img img{
     width: 100%;
+    height: 100%;
 }
 .AddressBook_box .AddressBook_item .AddressBook_left .AddressBook_left_user{
     font-size: 10px;
