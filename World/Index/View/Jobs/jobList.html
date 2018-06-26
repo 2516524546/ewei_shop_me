@@ -35,126 +35,84 @@
             <a href="{:U('Index/User/mineResume')}&gourl=0" class="layui-btn layui-btn-normal layui-btn-radius fontcss">View my resume</a>
         </div>
         <div class="frombox">
-            <div class="SelectionTypeContainer">
-                <label class="layui-form-label">
-                    <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png"></span>
-                </label>
-                <div class="fromboxxiala">
-                    <select name="city" lay-verify="required">
-                        <option>Choose work type</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
-                </div>
-            </div>
-            <div class="SelectionTypeContainer">
-                <label class="layui-form-label">
-                    <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_major.png"></span>
-                </label>
-                <div class="fromboxxiala">
-                    <select name="city" lay-verify="required">
-                        <option>Major in</option>
-                        <option>1</option>
-                    </select>
-                </div>
-            </div>
-            <div class="SelectionTypeContainer">
-                <label class="layui-form-label" style="display: inline;">
-                    <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_jobtitle.png"></span>
-                </label>
-                <div class="fromboxxiala">
-                    <input type="text" name="title" required  lay-verify="required" placeholder="Enter position" autocomplete="off">
-                </div>
-            </div>
-            <div class="SelectionTypeContainer">
-                <label class="layui-form-label" style="display: inline;">
-                </label>
-                <div class="fromboxxiala">
-                    <div class="from_img">
-                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png" alt="">
+            <form action="{:U('Jobs/jobList')}" method="get" id="searchJobs">
+                <input type="hidden" name="c" value="Jobs"/>
+                <input type="hidden" name="a" value="jobList"/>
+                <div class="SelectionTypeContainer">
+                    <label class="layui-form-label">
+                        <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png"></span>
+                    </label>
+                    <div class="fromboxxiala">
+                        <select name="work_type" lay-verify="required">
+                            <option  value="0" <if condition="empty($_GET['work_type'])">selected="selected"</if>>Choose work type</option>
+                            <option value="1" <if condition="$_GET['work_type'] == 1">selected="selected"</if>>Full Time</option>
+                            <option value="2" <if condition="$_GET['work_type'] == 2">selected="selected"</if>>Part Time</option>
+                            <option value="3" <if condition="$_GET['work_type'] == 3">selected="selected"</if>>Practice</option>
+                        </select>
                     </div>
                 </div>
-            </div>
+                <div class="SelectionTypeContainer">
+                    <label class="layui-form-label">
+                        <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_major.png"></span>
+                    </label>
+                    <div class="fromboxxiala">
+                        <input type="text" name="major" value="{$_GET['major']}" placeholder="Enter major" autocomplete="off">
+                    </div>
+                </div>
+                <div class="SelectionTypeContainer">
+                    <label class="layui-form-label" style="display: inline;">
+                        <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_jobtitle.png"></span>
+                    </label>
+                    <div class="fromboxxiala">
+                        <input type="text" name="k"  value="{$_GET['k']}" placeholder="Enter position" autocomplete="off">
+                    </div>
+                </div>
+                <input type="hidden" name="p" value="{$_GET[p]}"/>
+                <div class="SelectionTypeContainer">
+                    <label class="layui-form-label" style="display: inline;">
+                    </label>
+                    <div class="fromboxxiala">
+                        <button class="from_img" style="border: none;background: none;">
+                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png" alt="">
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <div class="container ContributionContainer">
         <div class="row">
             <div class="col-md-12 UserBox_list">
-                <div class="UserBox">
-                    <a href="{:U('Index/Jobs/jobDetails')}" class="UserLink">
-                        <p class="lintpheight">
-                            Job Title :   Mobile development engineer
-                        </p>
-                        <p class="lintpheight">
-                            Company Name :    Apple
-                        </p>
-                        <p class="lintpheight">
-                            Working seniority :   3 years
-                            <span class="picon">
+                <foreach name="works" item="w">
+                    <div class="UserBox">
+                        <a href="{:U('Index/Jobs/jobDetails',['works_id'=>$w['works_id']])}" class="UserLink">
+                            <p class="lintpheight">
+                                Job Title :   {$w['works_position']}
+                            </p>
+                            <p class="lintpheight">
+                                Company Name :    {$w['works_company_name']}
+                            </p>
+                            <p class="lintpheight">
+                                Working seniority :   {$w['works_years']} years
+                                <span class="picon">
                                 1 min
                             </span>
-                        </p>
-                        <p class="lintpheight">
-                            Salary :   $ 1000 ~ $ 2000
-                            <span class="picon">
+                            </p>
+                            <p class="lintpheight">
+                                Salary :   $ {$w['works_minmoney']} ~ $ {$w['works_maxmoney']}
+                                <span class="picon">
                                 <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_icon_zj.png"">
-                                1280
+                                {$w['works_views']}
                             </span>
-                        </p>
-                    </a>
-                </div>
-                <div class="UserBox">
-                    <a href="#" class="UserLink">
-                        <p class="lintpheight">
-                            Job Title :   Mobile development engineer
-                        </p>
-                        <p class="lintpheight">
-                            Company Name :    Apple
-                        </p>
-                        <p class="lintpheight">
-                            Working seniority :   3 years
-                            <span class="picon">
-                                1 min
-                            </span>
-                        </p>
-                        <p class="lintpheight">
-                            Salary :   $ 1000 ~ $ 2000
-                            <span class="picon">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_icon_zj.png"">
-                                1280
-                            </span>
-                        </p>
-                    </a>
-                </div>
-                <div class="UserBox">
-                    <a href="#" class="UserLink">
-                        <p class="lintpheight">
-                            Job Title :   Mobile development engineer
-                        </p>
-                        <p class="lintpheight">
-                            Company Name :    Apple
-                        </p>
-                        <p class="lintpheight">
-                            Working seniority :   3 years
-                            <span class="picon">
-                                1 min
-                            </span>
-                        </p>
-                        <p class="lintpheight">
-                            Salary :   $ 1000 ~ $ 2000
-                            <span class="picon">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_icon_zj.png"">
-                                1280
-                            </span>
-                        </p>
-                    </a>
-                </div>
+                            </p>
+                        </a>
+                    </div>
+                </foreach>
             </div>
         </div>
     </div>
     <div class="container" id="NumberOfPagesContainer">
-        <div id="NumberOfPages"></div>
+        {$page}
     </div>
     <!-- footer -->
     <footer>
@@ -219,6 +177,10 @@
         })
 
     }
+
+    $('#search').on('click',function(){
+
+    })
 </script>
 
 </html>

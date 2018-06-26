@@ -14,7 +14,7 @@ class UserController extends CommonController {
 
     protected $_checkAction = ['FollowList','personalCenter','acountSetting','resumeDetails','myPosts','myMessage','myFollowing','addressBook'
                                     ,'myGroup','feedback','virtualCurrencyRecharge','FansList','DeliveryRecord','ResumeTemplateList'
-                                    ,'FollowFriend','RefuseAddFirend','AgreeAddFirend','AddFriend','ChangeConcernsName','AddGroup','SetGroup','ChangeConcernsGroupName','SetFriendAlias','DeleteFriend','mineResume','createResume'];//需要做登录验证的action
+                                    ,'FollowFriend','RefuseAddFirend','AgreeAddFirend','AddFriend','ChangeConcernsName','AddGroup','SetGroup','ChangeConcernsGroupName','SetFriendAlias','DeleteFriend','mineResume','createResume','DeleteResume','DeliveryResume'];//需要做登录验证的action
 
     public function _initialize()
     {
@@ -119,9 +119,14 @@ class UserController extends CommonController {
         if (isset($_GET['gourl'])){
             $goindex = 0;
         }
+        $resume_id = I('get.resume_id','0','intval');
 
         $resumemodel = new ResumeModel();
-        $resumeone = $resumemodel->findone('resume_uid = '.$this->userid);
+        $resumeone = $resumemodel->findone('resume_id = '.$resume_id . ' AND resume_uid = '.$this->userid);
+
+        if(!$resumeone){
+            $this->error('The resume does not exist!');
+        }
 
 
         $this->assign(array(
@@ -281,14 +286,40 @@ class UserController extends CommonController {
 
      //我的简历
      public function mineResume(){
-
+         $count      = D('Resume')->alias('r')->join('u_user u ON u.user_id = r.resume_uid','LEFT')->where('resume_uid='.$this->userid)->count();
+         $Page       = new \Think\Page($count,10);
+         $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+         $show       = $Page->show();
+         $myResumes = D('Resume')->alias('r')->field('r.*,u.user_name,u.user_icon,u.user_signature')->join('u_user u ON u.user_id = r.resume_uid','LEFT')->where('resume_uid='.$this->userid)->limit($Page->firstRow.','.$Page->listRows)->select();
+         $this->assign('myResumes',$myResumes);
+         $this->assign('page',$show);
         $this->display();
     }
 
      //我的简历
      public function createResume(){
+        if(IS_POST){
+            $rules = array(
+                array('resume_tid',array(1,2,3),'The scope of the value is not correct！',1,'in'),
+                array('resume_position','require','Please select the position information！'),
+                array('resume_workyear','number','Please enter the number of years of work！'),
+                array('resume_id','number','Parameter error！',2),
+                array('resume_workyear','require','Please enter a graduate school！'),
+                array('resume_degree','require','Please enter a degree！'),
+                array('resume_specialty','require','Please enter a major！'),
+            );
+            $Resume = D("Resume"); // 实例化User对象
+            if (!$Resume->create($_POST)){ // 登录验证数据
+                // 验证没有通过 输出错误提示信息
+                exit($Resume->getError());
+            }else{
+                // 验证通过 执行登录操作
+            }
+        }
+         $positions = D('SearchMark')->alias('sm')->join('s_search_mark_type smt ON smt.mark_type_id=sm.mark_type_id','left')->where("smt.mark_type_mid=3 AND smt.mark_type_tid=1 AND smt.mark_type_name='Position'")->order('sm.mark_sort')->select();
+        $this->assign('positions',$positions);
 
-        $this->display();
+        $this->display('resumeDetails');
     }
     /**
      * 我的投递记录
@@ -535,6 +566,43 @@ class UserController extends CommonController {
             die(json_encode(['status'=>1,'msg'=>'Delete success!']));
         }else{
             die(json_encode(['status'=>0,'msg'=>'Delete failed!']));
+        }
+    }
+
+    public function DeleteResume(){
+        $resume_id = I('post.resume_id',0,'intval');
+        if($resume_id <= 0 && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif($resume_id <= 0){
+            $this->error('Parameter error！');
+        }
+
+        if(D('Resume')->where('resume_id='.$resume_id . ' AND resume_uid='.$this->userid)->delete()){
+            die(json_encode(['status'=>1,'msg'=>'Delete success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Delete failed!']));
+        }
+    }
+
+    public function DeliveryResume(){
+        $interest = I('post.interest',0,'intval');
+        $works_id = I('post.works_id',0,'intval');
+        if(($interest <= 0 || $works_id <= 0) && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif(($interest <= 0 || $works_id <= 0)){
+            $this->error('Parameter error！');
+        }
+
+        //查询该简历是否已经投递到职位下
+        $myDelivery = D('ResumeDelivery')->where('resume_id='.$interest.' AND user_id='.$this->userid.' AND works_id='.$works_id)->find();
+        if($myDelivery){
+            die(json_encode(['status'=>0,'msg'=>'Please do not repeat delivery！']));
+        }
+
+        if(D('ResumeDelivery')->add(['resume_id'=>$interest,'user_id'=>$this->userid,'works_id'=>$works_id,'delivery_createtime'=>date('Y-m-d H:i:s',time())])){
+            die(json_encode(['status'=>1,'msg'=>'Delivery success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Delivery failed!']));
         }
     }
 }

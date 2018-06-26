@@ -51,28 +51,22 @@
                         <th>Last Modified time</th>
                         <th>Operation</th>
                     </tr>
-                    <tr class="mineResume_table_tr">
-                        <td>My resume 1</td>
-                        <td>2018.6.6</td>
-                        <td class="btn_choose">
-                            <span class="minResume_btn btn_Edit"><a href="{:U('Index/User/resumeDetails')}">Edit</a></span>
-                            <span class="line"></span>
-                            <span class="minResume_btn btn_Delete" data-toggle="modal" data-target="#box1">Delete</span>
-                        </td>
-                    </tr>
-
-                    <tr class="mineResume_table_tr">
-                            <td>My resume 1</td>
-                            <td>2018.6.6</td>
+                    <foreach name="myResumes" item="r">
+                        <tr class="mineResume_table_tr">
+                            <td>{$r['resume_name']}</td>
+                            <td>{$r['resume_updatetime']}</td>
                             <td class="btn_choose">
-                                <span class="minResume_btn btn_Edit"><a href="{:U('Index/User/resumeDetails')}">Edit</a></span>
+                                <span class="minResume_btn btn_Edit"><a href="{:U('Index/User/resumeDetails',['resume_id'=>$r['resume_id']])}">Edit</a></span>
                                 <span class="line"></span>
-                                <span class="minResume_btn btn_Delete" data-toggle="modal" data-target="#box1">Delete</span>
+                                <span class="minResume_btn btn_Delete" data-resume_id="{$r['resume_id']}" data-toggle="modal" data-target="#box1">Delete</span>
                             </td>
                         </tr>
+                    </foreach>
 
                 </table>
             </div>
+
+            <div class="container" id="NumberOfPagesContainer">{$page}</div>
 
             <!-- 关闭 -->
             <div id="box1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -120,11 +114,20 @@
                 var num;
                 $(".mineResume_content .mineResume_table").on('click',".mineResume_table_tr", function(event) {
                     num = $(this).index()-1;
-                    console.log($(this).index())
                 });
                 $(".btn-primary").on('click', function(event) {
-                    console.log($(".mineResume_content .mineResume_table tr").eq(num))
-                        $(".mineResume_content .mineResume_table .mineResume_table_tr").eq(num).remove();
+                    var resume_id = $(".mineResume_content .mineResume_table .mineResume_table_tr .minResume_btn").eq(num+1).data('resume_id')
+                    $.post(
+                        '{:U("User/DeleteResume")}',
+                        {resume_id:resume_id},
+                        function(data){
+                            if(data.status == 0){
+                                alert(data.msg);
+                            }else{
+                                $(".mineResume_content .mineResume_table .mineResume_table_tr").eq(num).remove();
+                            }
+                        },'json'
+                    );
                 });
             })();
             

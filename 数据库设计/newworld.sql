@@ -121,6 +121,39 @@ ADD COLUMN `concerns_group_uid` bigint(20) UNSIGNED NOT NULL COMMENT '创建分�
 
 
 
+CREATE TABLE IF NOT EXISTS `s_search_mark`(
+	`mark_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
+	,`mark_type_id` SMALLINT UNSIGNED NOT NULL COMMENT '搜索标识类型ID'
+	,`mark_pid` BIGINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '搜索标识父ID'
+	,`mark_name` VARCHAR(255) NOT NULL COMMENT '标识名'
+	,`mark_createtime` datetime NOT NULL COMMENT '创建时间'
+	,`mark_sort` SMALLINT NOT NULL DEFAULT 0 COMMENT '排序'
+	,PRIMARY KEY(`mark_id`)
+	,INDEX `idx_search` (`mark_pid`,`mark_sort`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='搜索标识表';
+
+CREATE TABLE IF NOT EXISTS `s_search_mark_type`(
+	`mark_type_id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT
+	,`mark_type_mid` SMALLINT UNSIGNED NOT NULL COMMENT '模型ID 1：兴趣 2：学习 3：工作 4：生活'
+	,`mark_type_tid` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '类型ID 0：无 1：【工作=普通群，生活=群】 2：【工作=社交群，生活=二手市场】 3：企业家'
+	,`mark_type_name` VARCHAR(90) NOT NULL COMMENT '标识名'
+	,`mark_type_createtime` datetime NOT NULL COMMENT '创建时间'
+	,`mark_type_sort` SMALLINT NOT NULL DEFAULT 0 COMMENT '排序'
+	,`mark_type_show` TINYINT UNSIGNED NOT NULL DEFAULT 1 COMMENT '是否显示 1：显示 0 不显示'
+	,PRIMARY KEY(`mark_type_id`)
+	,INDEX `idx_search` (`mark_type_mid`,`mark_type_tid`,`mark_type_sort`,`mark_type_show`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='搜索标识类型表';
+
+CREATE TABLE IF NOT EXISTS `u_resume_delivery`(
+	`delivery_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
+	,`resume_id` BIGINT UNSIGNED NOT NULL COMMENT '简历ID'
+	,`user_id` BIGINT UNSIGNED NOT NULL COMMENT '投递用户ID'
+	,`works_id` BIGINT UNSIGNED NOT NULL  COMMENT '职位ID'
+	,`delivery_status` TINYINT NOT NULL DEFAULT 0 COMMENT '投递状态 0:待处理 1:同意 2：拒绝'
+	,`delivery_createtime` datetime NOT NULL COMMENT '投递时间'
+	,PRIMARY KEY(`delivery_id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='简历投递记录表';
+
 /*
 lyx
 2018.06.25 start
@@ -130,8 +163,15 @@ ALTER TABLE `u_message`
 MODIFY COLUMN `message_sendtime`  datetime NOT NULL COMMENT '信息发送时间' AFTER `message_content`,
 MODIFY COLUMN `message_delivertime`  datetime NOT NULL COMMENT '信息送达时间' AFTER `message_sendtime`;
 
+ALTER TABLE `l_commodity`
+MODIFY COLUMN `commodity_status`  int(10) NOT NULL DEFAULT 1 COMMENT '状态，0为已删除，1为正常，2为已完成,3为已下架' AFTER `commodity_explain`;
+
+ALTER TABLE `l_commodity`
+ADD COLUMN `commodity_views`  bigint(20) NOT NULL DEFAULT 0 COMMENT '浏览量' AFTER `commodity_fifthmark`;
+
+
+
 /*
 lyx
 2018.06.25 end
 */
-

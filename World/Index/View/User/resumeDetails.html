@@ -289,6 +289,7 @@
                                 specialty: $("#specialty").val(),
                                 fileurl: '{$resumeone["resume_fileurl"]}',
                                 isnegotiable: $("input[name='isnegotiable']:checked").val(),
+                                resume_id: "{$resumeone['resume_id']}",
 
                             },
                             dataType: "json",
@@ -363,6 +364,7 @@
                                             specialty: $("#specialty").val(),
                                             fileurl: data.msg,
                                             isnegotiable: $("input[name='isnegotiable']:checked").val(),
+                                            resume_id: "{$resumeone['resume_id']}",
 
                                         },
                                         dataType: "json",

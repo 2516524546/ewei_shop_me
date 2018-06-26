@@ -207,6 +207,31 @@ return array(
     'Crowd_crowd_detail_yes' => '修改成功',
     'Crowd_crowd_detail_no' => '修改失败',
 
+    //member_list
+    'Crowd_member_list' => '群成员',
+    'Crowd_member_list_id' => '成员id',
+    'Crowd_member_list_name' => '昵称',
+    'Crowd_member_list_mail' => '邮箱',
+    'Crowd_member_list_icon' => '头像',
+    'Crowd_member_list_sex' => '性别',
+    'Crowd_member_list_sexone' => '男',
+    'Crowd_member_list_sextwo' => '女',
+    'Crowd_member_list_age' => '出生年月',
+    'Crowd_member_list_content' => '简介',
+    'Crowd_member_list_edit' => '编辑',
+    'Crowd_member_list_del' => '删除',
+    'Crowd_member_list_detail' => '查看',
+    'Crowd_member_list_delyes' => '删除成功',
+    'Crowd_member_list_delno' => '删除失败',
+
+    //member_detail
+    'Crowd_member_detail_icon' => '头像',
+    'Crowd_member_detail_name' => '昵称',
+    'Crowd_member_detail_mail' => '邮箱',
+    'Crowd_member_detail_sex' => '性别',
+    'Crowd_member_detail_age' => '出生年月',
+    'Crowd_member_detail_coin' => '虚拟币',
+    'Crowd_member_detail_content' => '简介',
 
     /*
 	 * Crowd end
@@ -343,6 +368,10 @@ return array(
     /******************************************************************
      * New start
      */
+     //new_list_start
+    'New_new_list_news_manager'=>'新闻管理',
+    'New_new_list'=>'新闻轮播列表',
+    //new_list_end
 
 
     /*
