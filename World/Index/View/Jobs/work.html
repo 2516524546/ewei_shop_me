@@ -191,9 +191,12 @@
 						Create A Group
 					</a>
                     <p class="text-right Help">
-                        <a href="#" title="Functional introduction">
-							<img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_question.png">
-						</a>
+                        <a class="Help_tip">
+                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_question.png">
+                        </a>
+                        <div class="tooltip_box" style="top:75%;">
+                            <span>function Introduction</span>
+                        </div>
                     </p>
                 </div>
             </div>
@@ -265,6 +268,12 @@
 </body>
 
 <script>
+    $(".Help_tip").on("mouseover",function(){
+        $(".tooltip_box").css("display","block")
+    })
+    $(".Help_tip").on("mouseout",function(){
+        $(".tooltip_box").css("display","none")
+    })
     layui.use('laydate', function(){
         var laydate = layui.laydate;
         
