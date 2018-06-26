@@ -51,7 +51,7 @@
     border: 1px solid #a2e1db;
     margin: 0 auto;
     margin-bottom: 14px;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 .personal_content .personal_title .P_title_pic img{
     width: 100%;

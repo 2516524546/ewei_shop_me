@@ -3,6 +3,7 @@
 			var values=[];
 			var file_input = document.getElementById("file_input");
 			file_input.addEventListener("change",function(){
+				console.log(file_input.files[0].type)
 					for(let key in file_input.files){
 							//只遍历对象自身的属性，而不包含继承于原型链上的属性。 && file_input.files[0].type == ""
 						if (file_input.files.hasOwnProperty(key) === true && file_input.files[0].type == "image/jpeg"){
@@ -159,6 +160,7 @@
 var num;
 $("#result").on("click",".img-div .covers",function(){
 	num = $(this).parent().index()
+	console.log(num)
 	var _this = $(this);
 	values.splice(num,1);
 	_this.parents(".img-div").remove();
