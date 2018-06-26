@@ -40,7 +40,7 @@
     position: absolute;
     top: 2%;
     right: 1%;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 .personal_content .personal_title .P_title_pic{
     width: 52px;
