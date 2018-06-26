@@ -71,86 +71,88 @@
             <form class="form-horizontal" method="POST" >
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right">{:L('Crowd_message_list_title')}</label>
+                    <label class="col-sm-3 control-label no-padding-right" >{:L('Crowd_message_list_title')}</label>
                     <div class="col-sm-9">
-                        <input type="text" id="title" placeholder="{:L('Crowd_message_list_title')}" style="width:300px;" />
+
+                        <input type="text" name="user_logintime" value="{$messageone['message_title']}" style="width:300px;" readonly />
+
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right">{:L('Crowd_message_list_content')}</label>
+                    <label class="col-sm-3 control-label no-padding-right" >{:L('Crowd_message_list_content')}</label>
                     <div class="col-sm-9">
-                        <textarea style="width: 300px;height: 100px;" id="content"></textarea>
-                    </div>
-                </div>
 
-                <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
-                    <label class="col-sm-3 control-label no-padding-right" >{:L('Crowd_message_set_type')}</label>
-                    <div class="col-sm-9">
-                        <div class="radio1">
-                            <label>
-                                <input name="type" type="radio" value="1" class='ace' checked/>
-                                <span class="lbl">{:L('Crowd_message_set_typeone')}</span>
-                            </label>
-                            <label>
-                                <input name="type" type="radio" value="2" class='ace'/>
-                                <span class="lbl">{:L('Crowd_message_set_typetwo')}</span>
-                            </label>
-                        </div>
+                        <textarea style="width: 300px;height: 100px;" readonly>{$messageone['message_content']}</textarea>
+
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right">{:L('Crowd_message_set_people')}</label>
+                    <label class="col-sm-3 control-label no-padding-right" >{:L('Crowd_message_list_sendtime')}</label>
                     <div class="col-sm-9">
-                        <input type="button" value="{:L('Crowd_message_set_setpeople')}" role="presentation" data-toggle="modal" data-target="#add-auth">
-                        <input type="text" id="names" value="{$memberone['user_birth']}" style="width:300px;" readonly/>
+
+                        <input type="text" name="user_logintime" value="{$messageone['message_sendtime']}" style="width:300px;" readonly />
+
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right"></label>
-                    <div class="col-sm-9" style="color: red">
-                        {:L('Crowd_message_set_tip')}
+                    <label class="col-sm-3 control-label no-padding-right" >{:L('Crowd_message_list_delivertime')}</label>
+                    <div class="col-sm-9">
+
+                        <input type="text" name="user_logintime" value="{$messageone['message_delivertime']}" style="width:300px;" readonly />
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" >{:L('Crowd_message_list_icon')}</label>
+                    <div class="col-sm-9">
+
+                        <img width="100px" height="100px" id='img1' src="./Uploads/{$messageone['user_icon']}"/>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" >{:L('Crowd_message_list_name')}</label>
+                    <div class="col-sm-9">
+
+                        <input type="text" name="user_logintime" value="{$messageone['user_name']}" style="width:300px;" readonly />
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" >{:L('Crowd_member_detail_sex')}</label>
+                    <div class="col-sm-9">
+
+                        <input type="text" name="user_logintime" value="<if condition='$messageone["user_sex"] == 1'>{:L('Crowd_member_list_sexone')}<else />{:L('Crowd_member_list_sextwo')}</if>" style="width:300px;" readonly />
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" >{:L('Crowd_member_detail_age')}</label>
+                    <div class="col-sm-9">
+
+                        <input type="text" name="user_logintime" value="{$messageone['user_birth']}" style="width:300px;" readonly />
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" >{:L('Crowd_member_detail_mail')}</label>
+                    <div class="col-sm-9">
+
+                        <input type="text" name="user_logintime" value="{$messageone['user_mail']}" style="width:300px;" readonly />
+
                     </div>
                 </div>
 
                 <div class="form-actions center">
-                    <a class="btn btn-sm btn-success" onclick="edit()">
-                        <i class="icon-edit bigger-110"></i>
-                        {:L('Crowd_crowd_detail_if')}
-                    </a>
+
                     <a class="btn btn-sm btn-warning" href="javascript:history.back(-1)" class="myButton">
                         <i class="icon-arrow-left icon-on-left bigger-110"></i>
                         {:L('Crowd_crowd_detail_back')}
                     </a>
                 </div>
             </form>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade bs-example-modal-lg" id="add-auth" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="width: 350px; ">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span
-                        aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">{:L('Mark_second_list_add')}</h4>
-            </div>
-            <div class="modal-body" style="height: 500px;overflow-y: scroll;">
-
-                <div class="content" id='bianji_content'>
-                    <foreach name="memberlist" item="member" key="memberkey">
-
-                    <input type="checkbox" value="{$member['user_id']}" title="{$member['user_name']}" name="ber">{$member['user_name']}<br>
-
-                    </foreach>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <a class="btn btn-primary" data-dismiss="modal" onclick="save()">{:L('Mark_mark_list_save')}</a>
-                <a class="btn btn-default" data-dismiss="modal" id="quxiao">{:L('Mark_mark_list_cancel')}</a>
-            </div>
         </div>
     </div>
 </div>
@@ -161,8 +163,6 @@
         margin-right: 10px !important;
     }
 </style>
-
-<script src="__PUBLIC__/Admin/admin/js/bootstrap.min.js"></script>
 
 <script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
@@ -178,45 +178,36 @@
 <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
 
 <script type="text/javascript">
-    
-    var uid = ''
-    function save() {
 
-        var member = document.getElementsByName("ber");
-        var ids = ''
-        var names = ''
-        for(var k in member){
-            console.log(member[k])
-            if(member[k].checked){
-                if(ids==''){
-                    ids += member[k].value
-                }else{
-                    ids += ','+member[k].value
-                }
-                if(names==''){
-                    names += member[k].title
-                }else{
-                    names += ','+member[k].title
-                }
-            }
-        }
-        uid = ids
-        $("#names").val(names)
+    $("#upload_picture1").change(function(e){
 
-    }
+        $("#img1")[0].src = window.URL.createObjectURL(document.getElementById("upload_picture1").files[0])
+    });
+
+    $("#upload_picture2").change(function(e){
+
+        $("#img2")[0].src = window.URL.createObjectURL(document.getElementById("upload_picture2").files[0])
+    });
 
     function edit() {
 
         var formData = new FormData();
-
-        formData.append('title',$("#title").val())
-        formData.append('content',$("#content").val())
-        formData.append('type',$("input[name='type']:checked").val())
-        formData.append('cid','{$cid}')
-        formData.append('uid',uid)
+        formData.append('name',$("#name").val())
+        if(document.getElementById("upload_picture1").files[0]){
+            formData.append('icon',document.getElementById("upload_picture1").files[0])
+        }
+        formData.append('uname',$("#uname").val())
+        if(document.getElementById("upload_picture2").files[0]){
+            formData.append('uicon',document.getElementById("upload_picture2").files[0])
+        }
+        formData.append('umail',$("#umail").val())
+        formData.append('type',$("input[name='crowdtype']:checked").val())
+        formData.append('intro',$("#intro").val())
+        formData.append('cid',{$crowdone['crowd_id']})
+        formData.append('uid',{$crowdone['user_id']})
 
         $.ajax({
-            url: "{:U('Admin/Crowd/message_ajax_set')}",
+            url: "{:U('Admin/Crowd/crowd_edit')}",
             type: "POST",
             data: formData,
             contentType: false,

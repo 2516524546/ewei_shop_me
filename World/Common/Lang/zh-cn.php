@@ -253,7 +253,7 @@ return array(
     'Crowd_message_set_setpeople' => '选择成员',
     'Crowd_message_set_tip' => '选择群发将会发送给全部成员，选择个人将会发送给指定用户',
     'Crowd_message_set_yes' => '发送成功',
-    'Crowd_message_set_yes' => '发送失败',
+    'Crowd_message_set_no' => '发送失败',
 
     /*
 	 * Crowd end

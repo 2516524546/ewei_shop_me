@@ -139,8 +139,8 @@
 									<td>{$message['user_name']}</td>
 									<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-												<a class="btn btn-xs btn-success" onclick="del({$member['crowd_member_id']})">{:L('Crowd_member_list_del')}</a>
-												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/member_detail')}&mid={$member['crowd_member_id']}">{:L('Crowd_member_list_detail')}</a>
+												<a class="btn btn-xs btn-success" onclick="del({$message['message_id']})">{:L('Crowd_member_list_del')}</a>
+												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/message_detail',array('mid'=>$message['message_id'],'cid'=>$message['message_cid']))}">{:L('Crowd_member_list_detail')}</a>
 
 											</div>
 									</td>
@@ -193,7 +193,7 @@
                 layer.close(index);
                 $.ajax({
                     type: "post",
-                    url: "{:U('Admin/Crowd/ajax_memberdel')}",
+                    url: "{:U('Admin/Crowd/ajax_messagedel')}",
                     data: {
                         mid: mid,
                     },
