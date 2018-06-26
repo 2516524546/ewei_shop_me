@@ -1,0 +1,475 @@
+<head>
+    <meta charset="utf-8"/>
+    <title>{:L('newworld_admin')}</title>
+    <meta name="keywords" content="{:L('newworld_admin')}"/>
+    <meta name="description" content="{:L('newworld_admin')}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- basic styles -->
+    <link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css"/>
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css"/>
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css"/>
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css"/>
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
+    <!--[if !IE]> -->
+
+    <script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+
+    <!-- <![endif]-->
+    <!-- ace settings handler -->
+
+    <script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+    <script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style='background:#fff;'>
+<div class="main-content">
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try {
+                ace.settings.check('breadcrumbs', 'fixed')
+            } catch (e) {
+            }
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="icon-home home-icon"></i>
+                <a href="#">{:L('newworld_home')}</a>
+            </li>
+            <li class="active">{:L('newworld_console')}</li>
+        </ul><!-- .breadcrumb -->
+    </div>
+
+
+</div><!-- /.main-content -->
+
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            广告管理
+            <small><i class="icon-double-angle-right"></i>
+                侧栏广告列表
+            </small>
+
+        </h1>
+
+        <!-- 	 <form class="daoru" action="{:U('Daili/Index/upload_execl')}" method="POST" enctype="multipart/form-data" style="margin-top:20px;">
+             <input type='file' name='execl' style=" width:150px; height:30px; display:inline-block; margin-right:30px;"/>
+             <span style='width:85px; height:30px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:30px;text-align:center; borde-radius:4px;' id='daoru'>导入数据</span>
+            </form> 	 -->
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row" style="padding-bottom: 10px;">
+                <div class="col-sm-12">
+                    <div id="sample-table-2_filter">
+                        <!-- 按钮样式 -->
+                        <style type='text/css'>
+                            .anniu {
+                                width: 100%;
+                                height: 40px;
+                                position: relative;
+                                margin-left: -26px;
+                                margin-bottom: -11px;
+                                margin-top: 11px;
+                            }
+
+                            .anniu ul {
+                                width: auto;
+                                height: 30px;
+                                border: 1px solid #ccc;
+                                overflow: hidden;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                list-style: none;
+                                color: #333;
+                                box-sizing: border-box;
+                                font-size: 13px;
+                                cursor: pointer;
+                            }
+
+                            .anniu ul li.current {
+                                background: #2679b5;
+                                color: #fff;
+                                width: 100px;
+                                height: 30px;
+                                float: left;
+                                border-right: 1px solid #ccc;
+                                line-height: 30px;
+                                text-align: center;
+                                box-sizing: border-box;
+                            }
+
+                            .anniu ul li {
+                                width: 100px;
+                                height: 30px;
+                                float: left;
+                                border-right: 1px solid #ccc;
+                                line-height: 30px;
+                                text-align: center;
+                                box-sizing: border-box;
+                            }
+                        </style>
+
+                        <div class='anniu'>
+                            <ul>
+                                <!--<li role="presentation" class="current" onclick="jump()">全部</li>-->
+                                <volist name="modules" id="vo">
+                                    <li role="presentation"  id="{$vo.module_id}"
+                                        onclick="jump({$vo.module_id})">{$vo.module_name}
+                                    </li>
+                                </volist>
+                                <!--<li role="presentation" class="current" id="li1" onclick="jump1()">首页</li>
+                                <li role="presentation" id="li2" onclick="jump2()">兴趣</li>
+                                <li role="presentation"  id="li3" onclick="jump3()">学术</li>
+                                <li role="presentation" id="li4" onclick="jump4()">工作</li>
+                                <li role="presentation"  id="li5" onclick="jump5()">生活</li>-->
+                            </ul>
+                        </div>
+                        <input type="hidden" name="type" value="<?php echo $type;?>">
+
+                       <!-- <div class="btn-group" style='margin-top:10px;'>
+                            <div style=' width:50%; height:40px; '>
+                                <a href="{:U('Admin/New/new_add')}" target="rightFrame"><span
+                                        style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>新增</span></a>
+                            </div>
+                        </div>-->
+                        <style>
+                            .dropdown {
+                                position: relative;
+                                display: inline-block;
+
+                            }
+                            .dropdown-content {
+                                display: none;
+                                position: absolute;
+                                background-color: #f9f9f9;
+                                min-width: 100px;
+                                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                                padding: 12px 16px;
+                                z-index: 1;
+                            }
+                            .dropdown:hover .dropdown-content {
+                                display: block;
+                            }
+                        </style>
+                        <div class="btn-group dropdown" style='margin-top:10px;'>
+                            <div style=' width:50%; height:40px; '>
+                                <a href="#" target="rightFrame"><span
+                                        style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>新增</span></a>
+                                <div class="dropdown-content">
+                                    <p><a href="{:U('Admin/Advertising/advertising_add?type=1')}" target="rightFrame">新增广告</a></p>
+                                    <p><a href="{:U('Admin/Advertising/advertising_add?type=2')}" target="rightFrame">新增群广告</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='anniu'>
+                            <ul>
+                                <if condition="$type eq 1">
+                                    <li role="presentation" id="module" class="current"
+                                        onclick="jumpwithtwo(<?php echo $type;?>,1)"><?php echo $modules[0]['module_name'];?></li>
+                                    <elseif condition="$type eq 2"/>
+                                    <li role="presentation" id="module" class="current"
+                                        onclick="jumpwithtwo(<?php echo $type;?>,1)"><?php echo $modules[1]['module_name'];?></li>
+                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">群</li>
+                                    <elseif condition="$type eq 3"/>
+                                    <li role="presentation" id="module" class="current"
+                                        onclick="jumpwithtwo(<?php echo $type;?>,1)"><?php echo $modules[2]['module_name'];?></li>
+                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">群</li>
+                                    <elseif condition="$type eq 4"/>
+                                    <li role="presentation" id="module" class="current"
+                                        onclick="jumpwithtwo(<?php echo $type;?>,1)"><?php echo $modules[3]['module_name'];?></li>
+                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">群</li>
+                                    <else/>
+                                    <li role="presentation" id="module" class="current"
+                                        onclick="jumpwithtwo(<?php echo $type;?>,1)"><?php echo $modules[4]['module_name'];?></li>
+                                </if>
+
+                            </ul>
+                        </div>
+                        <input type="hidden" name="flag" value="<?php echo $flag;?>">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="table-responsive">
+                        <table id="sample-table-1" class="table table-striped table-bordered table-hover"
+                               style="margin-bottom: 0px;font-size:13px;">
+                            <thead>
+                            <tr style=' font-size: 13px;'>
+                                <!--<th><input type='checkbox' name='' value=''></th> -->
+                                <th>序号</th>
+                                <eq name="flag" value="2">
+                                    <th>群ID</th>
+                                </eq>
+                                <th>标题</th>
+                                <th>图片</th>
+                                <th>链接</th>
+                                <th>创建时间</th>
+                                <th>结束时间</th>
+                                <th>{:L('User_user_list_operation')}</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <?php foreach($list as $k=>$v){?>
+                            <tr>
+                                <!--<td><input type='checkbox' name='' value=''></td>-->
+
+                                <td><?php echo $v['advertising_id'];?></td>
+                                <eq name="flag" value="2">
+                                    <td><?php echo $v['advertising_crowdid'];?></td>
+                                </eq>
+
+                                <td><?php echo $v['advertising_title'];?></td>
+                                <td>
+                                    <img src="<?php echo  './Uploads/'.$v['advertising_img'];?>"
+                                         style="width:50px;height:50px;"/>
+                                </td>
+                                <td><?php echo $v['advertising_url'];?></td>
+                                <td><?php echo $v['advertising_starttime']?></td>
+                                <td><?php echo $v['advertising_finishtime']?></td>
+                                <td>
+                                    <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                        <a href="index.php?m=Admin&c=Advertising&a=advertising_edit&id=<?php echo $v['advertising_id']?>"
+                                           class="btn btn-xs btn-success"
+                                           style="margin-top:5px;"><?php echo L('User_user_list_edit');?></a>
+                                        <a onclick="delete_professional(<?php echo $v['advertising_id'];?>)"
+                                           class="btn btn-xs btn-success"
+                                           style="margin-top: 5px;"><?php echo L('User_user_list_del');?></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php }?>
+                            </tbody>
+                        </table>
+                        <div class="dataTables_paginate paging_bootstrap"
+                             style="border-top: 1px solid #DDD;padding-top: 12px;padding-bottom: 12px;background-color: #eff3f8;border-bottom: 1px solid #DDD;">
+                            <div style='margin-right:56px;'>
+                                <?php echo $page;?>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /span -->
+            </div>
+            <!-- /row -->
+            <div class="hr hr-18 dotted hr-double"></div>
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+    .btn-xs {
+        margin-right: 10px !important;
+    }
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script language="javascript">
+    $(function () {
+        var type = $("input[name='type']").val();
+        if (type != "") {
+            if (type == 1) {
+                $("#1").addClass('current').siblings().removeClass('current');
+            } else if (type == 2) {
+                $("#2").addClass('current').siblings().removeClass('current');
+            } else if (type == 3) {
+                $("#3").addClass('current').siblings().removeClass('current');
+            } else if (type == 4) {
+                $("#4").addClass('current').siblings().removeClass('current');
+            } else if (type == 5) {
+                $("#5").addClass('current').siblings().removeClass('current');
+            }
+        }
+        var flag = $("input[name='flag']").val();
+        if (flag != "") {
+            if (flag == 1) {
+                $("#module").addClass('current').siblings().removeClass('current');
+            } else if (flag == 2) {
+                $("#qun").addClass('current').siblings().removeClass('current');
+            }
+        }
+    })
+    function jump(type) {
+        location.href = "index.php?m=Admin&c=Advertising&a=advertising_list&type=" + type
+    }
+    function jumpwithtwo(type, flag) {
+        location.href = "index.php?m=Admin&c=Advertising&a=advertising_list&type=" + type + "&flag=" + flag;
+    }
+    function jump1() {
+        location.href = "index.php?m=Admin&c=New&a=new_list&type=1"
+    }
+    function jump2() {
+        location.href = "index.php?m=Admin&c=New&a=new_list&type=2"
+    }
+    function jump3() {
+        location.href = "index.php?m=Admin&c=New&a=new_list&type=3"
+    }
+    function jump4() {
+        location.href = "index.php?m=Admin&c=New&a=new_list&type=4"
+    }
+    function jump5() {
+        location.href = "index.php?m=Admin&c=New&a=new_list&type=5"
+    }
+
+    function changestatus(id, status) {
+
+        $.ajax({
+            url: 'index.php?m=Admin&c=New&a=status_update',
+            data: 'id=' + id + '&status=' + status,
+            type: 'post',
+            success: function (msg) {
+                if (msg == 1) {
+                    alert('操作成功')
+                    //location.href="{:U('Admin/jinxiao/fenxiao_did')}";
+                    window.location.reload();
+                } else {
+                    alert(msg)
+                }
+
+            }
+        })
+    }
+
+    function delete_professional(id) {
+        var statu = confirm("确定执行删除操作吗?");
+        if (!statu) {
+            return false;
+        }
+
+        $.ajax({
+            url: "index.php?m=Admin&c=Advertising&a=advertising_del",
+            data: 'id=' + id,
+            type: 'post',
+            success: function (msg) {
+                if (msg == 1) {
+                    alert('删除成功');
+                    window.location.reload();
+                } else {
+                    alert(msg);
+                    return false;
+                }
+
+            }
+        })
+    }
+    function delete_item(id) {
+        var statu = confirm("确定执行删除操作吗?");
+        if (!statu) {
+            return false;
+        }
+
+        $.ajax({
+            url: "index.php?m=Admin&c=Item&a=item_del",
+            data: 'id=' + id,
+            type: 'post',
+            success: function (msg) {
+                if (msg == 1) {
+                    alert('删除成功');
+                    window.location.reload();
+                } else {
+                    alert(msg);
+                    return false;
+                }
+
+            }
+        })
+    }
+</script>
+<script type="text/javascript">
+
+    $('.date-picker').datepicker({autoclose: true}).next().on(ace.click_event, function () {
+        $(this).prev().focus();
+    });
+</script>
+
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+<script>
+    function showStart() {
+        return true;
+    }
+    function showSuccess(data) {
+        if (data == 1) {
+            alert('导入成功')
+            location.href = "{:U('Daili/Index/student_list')}"
+        } else {
+            alert(data)
+            return
+        }
+
+    }
+    $(function () {
+        var options = {
+            beforeSubmit: showStart,
+            success: showSuccess,
+
+        };
+        $('#daoru').click(function () {
+            //alert('a')
+            //return false
+            $('.daoru').ajaxSubmit(options);
+        })
+
+
+        //选择教材
+        $(".xuan_songs").change(function () {
+            var jxid = $(this).prev().val()
+            var catid = $(this).val()
+            $.ajax({
+                url: 'index.php?m=Admin&c=Jinxiao&a=xuan_songs',
+                data: 'jxid=' + jxid + '&catid=' + catid + '&type=2',
+                type: 'post',
+                success: function (msg) {
+
+                    return false
+                }
+            })
+        })
+
+    })
+
+
+</script>
