@@ -377,7 +377,7 @@ class CrowdController extends CommonController {
         $Page->setConfig('theme', '%HEADER% %FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%');
         $show = $Page->show();
 
-        $messagelist = $messagemodel->joinlist('message_type = 2 and message_cid = '.$_GET['cid'],'u_user u on u_message.message_uid = u.user_id','message_sendtime desc,message_delivertime desc',$Page->firstRow,$Page->listRows);
+        $messagelist = $messagemodel->joinlist('message_type = 2 and message_cid = '.$_GET['cid'],'u_user u on u_message.message_uid = u.user_id','message_sendtime desc,message_delivertime desc,message_id desc',$Page->firstRow,$Page->listRows);
 
         $this->assign(array(
             'page' => $show,
