@@ -414,8 +414,31 @@ return array(
     /******************************************************************
      * Commodity start
      */
-
-
+     //commodity_list start
+    'Commodity_commodity_manager'=>'商品管理',
+    'Commodity_commodity_list'=>'商品列表',
+    'Commodity_commodity_list_input_contact'=>'请输入联系人',
+    'Commodity_commodity_list_input_phone'=>'请输入电话',
+    'Commodity_commodity_list_publish_date'=>'发布日期',
+    'Commodity_commodity_list_input_name'=>'请输入商品名称',
+    'Commodity_commodity_list_publish_date'=>'发布日期',
+    'Commodity_commodity_list_choice_status'=>'选择状态',
+    'Commodity_commodity_list_all'=>'全部',
+    'Commodity_commodity_list_shangjia'=>'上架',
+    'Commodity_commodity_list_xiajia'=>'下架',
+    'Commodity_commodity_list_finished'=>'已完成',
+    'Commodity_commodity_list_picture'=>'商品图片',
+    'Commodity_commodity_list_name'=>'商品名称',
+    'Commodity_commodity_list_views'=>'浏览量',
+    'Commodity_commodity_list_price'=>'商品价格',
+    'Commodity_commodity_list_flag'=>'索引标识',
+    'Commodity_commodity_list_contact_icon'=>'联系人头像',
+    'Commodity_commodity_list_contact_phone'=>'联系方式',
+    'Commodity_commodity_list_classify'=>'商品分类',
+    'Commodity_commodity_list_status'=>'状态',
+    'Commodity_commodity_list_contact'=>'联系人',
+    'Commodity_commodity_list_add'=>'新增',
+    //commodity_list end
     /*
 	 * Commodity end
 	 *******************************************************************/
