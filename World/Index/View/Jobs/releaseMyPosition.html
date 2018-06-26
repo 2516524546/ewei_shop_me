@@ -34,107 +34,48 @@
     <div class="container ContributionContainer">
         <div class="row">
             <div class="col-md-12 UserBox_list">
+                <foreach name="worklist" item="w">
                 <div class="UserBox">
-                    <a href="JobDetails.html" class="UserLink">
+                    <a href="{:U('Jobs/jobDetails',['works_id'=>$w['works_id']])}" class="UserLink">
                         <p class="lintpheight">
-                            Position : Mobile development engineer
+                            Position : {$w['works_position']}
                         </p>
                         <p class="lintpheight">
-                            Company Name : Apple
+                            Company Name : {$w['works_company_name']}
                         </p>
                         <p class="lintpheight">
-                            Working seniority : 3 years
+                            Working seniority : {$w['works_years']} years
                         </p>
                         <div class="lintpheight_box">
-                            Salary : $ 1000 ~ $ 2000
+                            Salary : $ {$w['works_minmoney']} ~ $ {$w['works_maxmoney']}
                         
                             <!-- {:U('Index/Jobs/postDeliveryRecord')} -->
                             <div class="lintpheight_icon_box">
-                                <a href="{:U('Index/Jobs/postDeliveryRecord')}" class="lintpheight_icon">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_jl_icon_deliveryrecord.png"">
-                                </a>
-                                <a href="#" data-toggle="modal" data-target="#box3" class="lintpheight_icon">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png"">
-                                </a>
-                                <a href="#" data-toggle="modal" data-target="#box2" class="lintpheight_icon">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_close.png"">
-                                </a>
-                                <a href="#" data-toggle="modal" data-target="#box1" class="lintpheight_icon">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png"">
-                                </a>
-                            </div>
 
-                           
+                                <if condition="$w['works_isclose'] == 0">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_closed.png">
+                                <elseif condition="$w['works_isdel'] == 0"/>
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_deleted.png">
+                                <else/>
+                                    <a href="{:U('Index/Jobs/postDeliveryRecord',['works_id'=>$w['works_id']])}" class="lintpheight_icon">
+                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_jl_icon_deliveryrecord.png">
+                                    </a>
+                                    <a href="javascript:void()" data-toggle="modal" data-target="#box3" class="lintpheight_icon">
+                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png"">
+                                    </a>
+                                    <a href="javascript:void()"  class="closeWork" data-works_id="{$w['works_id']}" data-toggle="modal" data-target="#box2" class="lintpheight_icon">
+                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_close.png"">
+                                    </a>
+                                    <a href="javascript:void()"  class="deleteWork" data-works_id="{$w['works_id']}" data-toggle="modal" data-target="#box1" class="lintpheight_icon">
+                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png"">
+                                    </a>
+                                </if>
+
+                            </div>
                         </div>
                     </a>  
                 </div>
-                <div class="UserBox">
-                    <a href="JobDetails.html" class="UserLink">
-                        <p class="lintpheight">
-                            Position : Mobile development engineer
-                        </p>
-                        <p class="lintpheight">
-                            Company Name : Apple
-                        </p>
-                        <p class="lintpheight">
-                            Working seniority : 3 years
-                        </p>
-                        <div class="lintpheight_box">
-                            Salary : $ 1000 ~ $ 2000
-                        
-                            <div class="lintpheight_icon_box">
-                                <a href="{:U('Index/Jobs/postDeliveryRecord')}" class="lintpheight_icon">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_jl_icon_deliveryrecord.png"">
-                                </a>
-                                <a href="#" data-toggle="modal" data-target="#box3" class="lintpheight_icon">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png"">
-                                </a>
-                                <a href="#" data-toggle="modal" data-target="#box2" class="lintpheight_icon">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_close.png"">
-                                </a>
-                                <a href="#" data-toggle="modal" data-target="#box1" class="lintpheight_icon">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png"">
-                                </a>
-                            </div>
-
-                           
-                        </div>
-                          </a>  
-                </div>
-                <div class="UserBox">
-                    <a href="JobDetails.html" class="UserLink">
-                        <p class="lintpheight">
-                            Position : Mobile development engineer
-                        </p>
-                        <p class="lintpheight">
-                            Company Name : Apple
-                        </p>
-                        <p class="lintpheight">
-                            Working seniority : 3 years
-                        </p>
-                        <div class="lintpheight_box">
-                            Salary : $ 1000 ~ $ 2000
-                        
-                                
-                            <div class="lintpheight_icon_box">
-                                <a href="{:U('Index/Jobs/postDeliveryRecord')}" class="lintpheight_icon">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_jl_icon_deliveryrecord.png"">
-                                </a>
-                                <a href="#" data-toggle="modal" data-target="#box3" class="lintpheight_icon">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png"">
-                                </a>
-                                <a href="#" data-toggle="modal" data-target="#box2" class="lintpheight_icon">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_close.png"">
-                                </a>
-                                <a href="#" data-toggle="modal" data-target="#box1" class="lintpheight_icon">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png"">
-                                </a>
-                            </div>
-
-                           
-                        </div>
-                          </a>  
-                </div>
+                </foreach>
             </div>
             <!-- 删除 -->
             <div id="box1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -444,8 +385,8 @@
             </div>
         </div>
     </div>
-    <div class="container" id="NumberOfPagesContainer">
-        <div id="NumberOfPages"></div>
+    <div class="container">
+        {$page}
     </div>
     <!-- foot start 底部信息 -->
     <footer>
@@ -467,16 +408,37 @@
                 });
                 // Delete
                 $(".btn-Delete-primary").on('click', function(event) {
-                        var D_pic = "<img src='__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_deleted.png'>"
-                        // console.log($(".lintpheight_icon_box").eq(num).html())
-                        $(".lintpheight_icon_box").eq(num).html(D_pic)
+                    var works_id = $('.deleteWork').eq(num).data('works_id');
+                    $.post(
+                        '{:U("Jobs/DeleteWork")}',
+                        {works_id:works_id},
+                        function(data){
+                            if(data.status == 0){
+                                alert(data.msg);
+                            }else{
+                                //alert(data.msg);
+                                var D_pic = "<img src='__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_deleted.png'>"
+                                $(".lintpheight_icon_box").eq(num).html(D_pic)
+                            }
+                        },'json'
+                    );
                 });
                 // Close
                 $(".btn-Close-primary").on('click', function(event) {
-                    // <a href='javascript:void(0)' class='lintpheight_icon'></a>
-                        var C_pic = "<img src='__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_closed.png'>"
-                        // console.log($(".lintpheight_icon_box").eq(num).html())
-                        $(".lintpheight_icon_box").eq(num).html(C_pic)
+                    var works_id = $('.deleteWork').eq(num).data('works_id');
+                    $.post(
+                        '{:U("Jobs/CloseWork")}',
+                        {works_id:works_id},
+                        function(data){
+                            if(data.status == 0){
+                                alert(data.msg);
+                            }else{
+                                //alert(data.msg);
+                                var C_pic = "<img src='__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_closed.png'>"
+                                $(".lintpheight_icon_box").eq(num).html(C_pic)
+                            }
+                        },'json'
+                    );
                 });
             })();
             

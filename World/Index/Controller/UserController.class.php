@@ -14,7 +14,7 @@ class UserController extends CommonController {
 
     protected $_checkAction = ['FollowList','personalCenter','acountSetting','resumeDetails','myPosts','myMessage','myFollowing','addressBook'
                                     ,'myGroup','feedback','virtualCurrencyRecharge','FansList','DeliveryRecord','ResumeTemplateList'
-                                    ,'FollowFriend','RefuseAddFirend','AgreeAddFirend','AddFriend','ChangeConcernsName','AddGroup','SetGroup','ChangeConcernsGroupName','SetFriendAlias','DeleteFriend','mineResume','createResume','DeleteResume'];//需要做登录验证的action
+                                    ,'FollowFriend','RefuseAddFirend','AgreeAddFirend','AddFriend','ChangeConcernsName','AddGroup','SetGroup','ChangeConcernsGroupName','SetFriendAlias','DeleteFriend','mineResume','createResume','DeleteResume','DeliveryResume'];//需要做登录验证的action
 
     public function _initialize()
     {
@@ -581,6 +581,28 @@ class UserController extends CommonController {
             die(json_encode(['status'=>1,'msg'=>'Delete success!']));
         }else{
             die(json_encode(['status'=>0,'msg'=>'Delete failed!']));
+        }
+    }
+
+    public function DeliveryResume(){
+        $interest = I('post.interest',0,'intval');
+        $works_id = I('post.works_id',0,'intval');
+        if(($interest <= 0 || $works_id <= 0) && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif(($interest <= 0 || $works_id <= 0)){
+            $this->error('Parameter error！');
+        }
+
+        //查询该简历是否已经投递到职位下
+        $myDelivery = D('ResumeDelivery')->where('resume_id='.$interest.' AND user_id='.$this->userid.' AND works_id='.$works_id)->find();
+        if($myDelivery){
+            die(json_encode(['status'=>0,'msg'=>'Please do not repeat delivery！']));
+        }
+
+        if(D('ResumeDelivery')->add(['resume_id'=>$interest,'user_id'=>$this->userid,'works_id'=>$works_id,'delivery_createtime'=>date('Y-m-d H:i:s',time())])){
+            die(json_encode(['status'=>1,'msg'=>'Delivery success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Delivery failed!']));
         }
     }
 }

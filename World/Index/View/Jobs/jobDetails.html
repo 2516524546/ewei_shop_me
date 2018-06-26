@@ -44,22 +44,22 @@
                     </div>
                     <div class="boxp" style="margin-left: 80px;">
                         <div class="FormContainer" style="margin-left: 84px;margin-bottom: 10px;">
-                            <p class="">Employment type : Full Time</p>
+                            <p class="">Employment type : <if condition="$jobDetails['works_type'] == 1">Full Time<elseif condition="$jobDetails['works_type'] == 2"/>Part Time<else/>Practice</if></p>
                         </div>
                         <div class="FormContainer" style="margin-left: 87px;margin-bottom: 10px;">
-                            <p class="">Position : Mobile development engineer</p>
+                            <p class="">Position : {$jobDetails['works_position']}</p>
                         </div>
                         <div class="FormContainer" style="margin-left: 97px;margin-bottom: 10px;">
-                            <p class="">Salary : $ 1000 ~ $ 2000</p>
+                            <p class="">Salary : $ {$jobDetails['works_minmoney']} ~ $ {$jobDetails['works_maxmoney']}</p>
                         </div>
                         <div class="FormContainer" style="margin-left: 38px;margin-bottom: 10px;">
-                            <p class="">Working seniority : 3 years</p>
+                            <p class="">Working seniority : {$jobDetails['works_years']} years</p>
                         </div>
                         <div class="FormContainer" style="margin-left: 14px;margin-bottom: 10px;">
-                            <p class="">Academic degree : Dr.</p>
+                            <p class="">Academic degree : {$jobDetails['works_degree']}</p>
                         </div>
                         <div class="FormContainer" style="margin-left: 73px;margin-bottom: 10px;">
-                            <p class="">Major : Computer Mobile Development</p>
+                            <p class="">Major : {$jobDetails['works_specialty']}</p>
                         </div>
                     </div>
                     <div class="InterestTitle" style="margin-top: 45px;">
@@ -69,30 +69,32 @@
                     </div>
                     <div class="boxp" style="margin-left: 80px;">
                         <div class="FormContainer" style="margin-left: 84px;margin-bottom: 10px;">
-                            <p class="">Company name : xxxxxx</p>
+                            <p class="">Company name : {$jobDetails['works_company_name']}</p>
                         </div>
                         <div class="FormContainer" style="margin-left: 87px;margin-bottom: 10px;">
-                            <p class="">Company Type : State-owned company</p>
+                            <p class="">Company Type : <if condition="$jobDetails['works_company_nature'] == 1">Private<else/>state-owned</if></p>
                         </div>
                         <div class="FormContainer" style="margin-left: 69px;margin-bottom: 10px;">
-                            <p class=""> Scope of  business : the Internet</p>
+                            <p class=""> Work type :  <if condition="$jobDetails['works_company_nature'] == 1">Internet<elseif condition="$jobDetails['works_company_nature'] == 2"/>Finance<else/>Education</if></p>
                         </div>
                         <div class="FormContainer" style="margin-left: 91px;margin-bottom: 10px;">
-                            <p class="">Company Size : 1000 ~ 2000 people</p>
+                            <p class="">Company Size : {$jobDetails['works_company_size']} people</p>
                         </div>
                         <div class="FormContainer" style="margin-left: 37px;margin-bottom: 10px;">
-                            <p class="">Receive Resume Email : xxxxx@xxx.com</p>
+                            <p class="">Receive Resume Email : {$jobDetails['works_company_mail']}</p>
                         </div>
                         <div class="FormContainer" style="margin-left: 49px;margin-bottom: 10px;">
-                            <p class="">Company Information : xxxxxxxxxxxxxxxxxxxxxxxxx</p>
+                            <p class="">Company Information : {$jobDetails['works_company_content']}</p>
                         </div>
                         <div class="FormContainer" style="margin-left: 73px;margin-bottom: 10px;">
-                            <p class="">Salary Negotiable : no</p>
+                            <p class="">Salary Negotiable : <if condition="$jobDetails['works_isnegotiable'] == 0">No<else/>Yes</if></p>
                         </div>
                     </div>
+                    <if condition="$jobDetails['works_uid'] != $userid && $myResume">
                     <div class="but" style="margin: 30px auto 0;width: 32%;">
                         <button type="button" class="btn btn-primary btn_Delivery" data-toggle="modal" data-target=".bs-example-modal-sm" style="font-size: 15px;">Immediate Delivery</button>
                     </div>
+                    </if>
                     <!-- 弹窗 -->
                     <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                         <div class="modal-dialog modal-sm" role="document">
@@ -105,9 +107,9 @@
                                     <p>Please select the resume to be delivered</p>
                                     <div class="layui-input-block" style="margin: 18px 66px 10px 0;">
                                         <select name="interest" lay-filter="aihao">
-                                            <option value="" selected="">Resume 1</option>
-                                            <option value="0">1</option>
-                                            <option value="1">2</option>
+                                            <foreach name="myResume" item="s">
+                                            <option value="{$s['resume_id']}">{$s['resume_name']}</option>
+                                            </foreach>
                                         </select>
                                     </div>
                                     <p style="line-height: 20px;">
@@ -118,7 +120,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary"  data-dismiss="modal">Delivery</button>
+                                    <button type="button" class="btn btn-primary" id="Delivery"  data-dismiss="modal">Delivery</button>
                                 </div>
                             </div>
                         </div>
@@ -137,6 +139,22 @@
     <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
     <script src="__PUBLIC__/Web/web/js/CreateInterest.js"></script>
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
+    <script type="application/javascript">
+        $('#Delivery').on('click',function(){
+            var interest = $('select[name="interest"] option:selected').val();
+            $.post(
+                '{:U("User/DeliveryResume")}',
+                {interest:interest,works_id:{$_GET['works_id']}},
+                function(data){
+                    if(data.status == 0){
+                        alert(data.msg);
+                    }else{
+                        alert(data.msg);
+                    }
+                },'json'
+            );
+        })
+    </script>
 </body>
 
 </html>
