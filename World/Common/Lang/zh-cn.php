@@ -156,7 +156,36 @@ return array(
     /******************************************************************
      * Message start
      */
+    //pulic
+    'Message'=>'信息管理',
 
+    //message_list
+    'Message_message_list'=>'信息管理',
+    'Message_message_list_id'=>'id',
+    'Message_message_list_title'=>'标题',
+    'Message_message_list_content'=>'内容',
+    'Message_message_list_sendtime'=>'发送时间',
+    'Message_message_list_delivertime'=>'送达时间',
+    'Message_message_list_icon'=>'用户头像',
+    'Message_message_list_name'=>'用户姓名',
+    'Message_message_list_setlist'=>'群发',
+    'Message_message_list_setone'=>'私发',
+    'Message_message_list_operation'=>'操作',
+    'Message_message_list_del'=>'删除',
+    'Message_message_list_if' => '该操作不可逆，确认继续吗？',
+    'Message_message_list_ok' => '确定',
+    'Message_message_no' => '取消',
+    'Message_message_list_delyes'=>'删除成功',
+    'Message_message_list_delno'=>'删除失败',
+
+    //set_list
+    'Message_set_list_if' => '确认发送',
+    'Message_set_list_back' => '返回列表',
+    'Message_set_list_yes'=>'发送成功',
+    'Message_set_list_no'=>'发送失败',
+
+    //set_one
+    'Message_set_one_uid'=>'用户id',
 
     /*
 	 * Message end
@@ -253,7 +282,7 @@ return array(
     'Crowd_message_set_setpeople' => '选择成员',
     'Crowd_message_set_tip' => '选择群发将会发送给全部成员，选择个人将会发送给指定用户',
     'Crowd_message_set_yes' => '发送成功',
-    'Crowd_message_set_yes' => '发送失败',
+    'Crowd_message_set_no' => '发送失败',
 
     /*
 	 * Crowd end

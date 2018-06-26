@@ -24,5 +24,10 @@ class UserModel extends Model{
         return $this->field($field)->where($where)->order($order)->limit($limit1,$limit2)->select();
     }
 
+    public function findlist($where,$field=false){
+
+        return $this->where($where)->field($field)->select();
+    }
+
 
 }

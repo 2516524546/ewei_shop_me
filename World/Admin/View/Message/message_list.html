@@ -77,13 +77,9 @@
 <div class="page-content">
 	<div class="page-header">
 		<h1>
-			{:L('Crowd')}
-			<small> <a class="icon-double-angle-right" href="{:U('Admin/Crowd/crowd_list')}">
-				{:L('Crowd_crowd_list')}
-			</a>
-			</small>
+			{:L('Message')}
 			<small> <i class="icon-double-angle-right"></i>
-				{:L('Crowd_message_list')}
+				{:L('Message_message_list')}
 			</small>
 			 
 		</h1>
@@ -97,7 +93,8 @@
 									<form class="form-horizontal" action="{:U('Admin/Crowd/member_list')}&cid={$cid}" method="POST" role="form" enctype="multipart/form-data">
 										<div class='anniu'>
 											<ul>
-												<li class="current" onclick="goset()" >{:L('Crowd_message_list_set')}</li>
+												<li class="current" onclick="gosetlist()" >{:L('Message_message_list_setlist')}</li>
+												<li class="current" onclick="gosetone()" >{:L('Message_message_list_setone')}</li>
 
 											</ul>
 										</div>
@@ -114,14 +111,14 @@
 							<thead>
 								<tr style=' font-size: 13px;'>
 
-									<th>{:L('Crowd_message_list_id')}</th>
-									<th>{:L('Crowd_message_list_title')}</th>
-									<th>{:L('Crowd_message_list_content')}</th>
-									<th>{:L('Crowd_message_list_sendtime')}</th>
-									<th>{:L('Crowd_message_list_delivertime')}</th>
-									<th>{:L('Crowd_message_list_icon')}</th>
-									<th>{:L('Crowd_message_list_name')}</th>
-									<th>{:L('Crowd_crowd_list_operation')}</th>
+									<th>{:L('Message_message_list_id')}</th>
+									<th>{:L('Message_message_list_title')}</th>
+									<th>{:L('Message_message_list_content')}</th>
+									<th>{:L('Message_message_list_sendtime')}</th>
+									<th>{:L('Message_message_list_delivertime')}</th>
+									<th>{:L('Message_message_list_icon')}</th>
+									<th>{:L('Message_message_list_name')}</th>
+									<th>{:L('Message_message_list_operation')}</th>
 
 								</tr>
 							</thead>
@@ -139,8 +136,7 @@
 									<td>{$message['user_name']}</td>
 									<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-												<a class="btn btn-xs btn-success" onclick="del({$message['message_id']})">{:L('Crowd_member_list_del')}</a>
-												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/message_detail',array('mid'=>$message['message_id'],'cid'=>$message['message_cid']))}">{:L('Crowd_member_list_detail')}</a>
+												<a class="btn btn-xs btn-success" onclick="del({$message['message_id']})">{:L('Message_message_list_del')}</a>
 
 											</div>
 									</td>
@@ -186,14 +182,14 @@
 
 	function del(mid) {
 
-        layer.msg("{:L('Crowd_crowd_list_if')}", {
+        layer.msg("{:L('Message_message_list_if')}", {
             time: 0 //不自动关闭
-            ,btn: ["{:L('Crowd_crowd_list_ok')}", "{:L('Crowd_crowd_list_no')}"]
+            ,btn: ["{:L('Message_message_list_ok')}", "{:L('Message_message_no')}"]
             ,yes: function(index){
                 layer.close(index);
                 $.ajax({
                     type: "post",
-                    url: "{:U('Admin/Crowd/ajax_messagedel')}",
+                    url: "{:U('Admin/Message/ajax_messagedel')}",
                     data: {
                         mid: mid,
                     },
@@ -234,8 +230,11 @@
     }
 
 
-    function goset() {
-        location.href = "{:U('Admin/Crowd/message_set',array('cid'=>$cid))}"
+    function gosetlist() {
+        location.href = "{:U('Admin/Message/set_list')}"
+    }
+    function gosetone() {
+        location.href = "{:U('Admin/Message/set_one')}"
     }
 
 </script>

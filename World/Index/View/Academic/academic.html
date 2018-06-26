@@ -111,9 +111,12 @@
 							Create A Group
 						</a>
 						<p class="text-right Help">
-							<a href="#" title="Functional introduction">
+							<a class="Help_tip">
 								<img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_question.png">
-							</a>
+                            </a>
+                            <div class="tooltip_box">
+                                <span>function Introduction</span>
+                            </div>
 						</p>
 					</div>
 				</div>
@@ -183,7 +186,12 @@
 	</body>
 
 <script>
-
+    $(".Help_tip").on("mouseover",function(){
+        $(".tooltip_box").css("display","block")
+    })
+    $(".Help_tip").on("mouseout",function(){
+        $(".tooltip_box").css("display","none")
+    })
     var page = 1;
     var count = {$crowdcount};
     var c = 1;

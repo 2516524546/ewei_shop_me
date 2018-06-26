@@ -32,7 +32,7 @@ class MessageModel extends Model{
 
     public function joinfind($where,$join,$order='',$jointype='INNER',$field=false){
 
-        return $this->join($join,$jointype)->where($where)->field($field)->order($order)->select();
+        return $this->join($join,$jointype)->where($where)->field($field)->order($order)->find();
     }
 
     public function joinlist($where,$join,$order='',$limit1,$limit2,$jointype='INNER',$field=false){
