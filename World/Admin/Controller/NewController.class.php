@@ -82,7 +82,7 @@ class NewController extends CommonController{
             exit;
         }
         if (empty($post['news_sort'])){
-            echo "轮播顺序不能为空";
+            echo "轮播顺序不能为空或者不能为0";
             exit;
         }
         if (empty($post['news_createtime'])){
@@ -165,7 +165,7 @@ class NewController extends CommonController{
             exit;
         }
         if (empty($post['news_sort'])){
-            echo "轮播顺序不能为空";
+            echo "轮播顺序不能为空或者不能为0";
             exit;
         }
         if (empty($post['news_createtime'])){

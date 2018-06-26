@@ -289,11 +289,12 @@
                         <div class="spinner" style="display: none">请上传图片</div>
                     </div>
                     <div class="action">
-                        <input type="file" accept="image/jpeg,image/png" id="file">
+                        <input type="file" accept="image/jpeg,image/png" id="file" style="width: 75%;">
                         <input type="button" id="btnZoomIn" value="+">
                         <input type="button" id="btnZoomOut" value="-">
                         <input type="button" id="btnCrop" value="Crop" data-dismiss="modal">
                     </div>
+                    <!-- style="display: none;" -->
                     <div class="cropped" style="display: none;">
                     </div>
                 </div>
@@ -666,7 +667,9 @@
                 $('.cropped').prepend(Cdiv);
                 $('#file').val("");
                 $('.imageBox').removeAttr("style");
-                var Userimg = $('.cropped_img').children('img')[0];
+                // var Userimg = $('.cropped_img').children('img')[0];
+                var Userimg =img
+                console.log(Userimg )
                 C_Userimg(Userimg)
             })
             $('#btnZoomIn').on('click', function(){
@@ -676,7 +679,9 @@
                 cropper.zoomOut();
             })
             function C_Userimg(img){
-                $('.personal_content .personal_title .P_title_pic').html(img)
+                // $('.personal_content .personal_title').html(img)
+                $('.personal_content .personal_title').css("background","url("+img+") no-repeat");
+                $('.personal_content .personal_title').css("background-size","100% 100%")
             }
             //$('.personal_content .personal_title .P_title_pic').children('img').remove()
         });
