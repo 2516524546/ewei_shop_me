@@ -126,16 +126,15 @@
 								<ul style="border: 0px">
 									<li role="presentation" data-toggle="modal" data-target="#add-auth" class="current" >{:L('Mark_second_list_add')}</li>
 
-									<if condition='$secondlist[0]["second_mark_isextend"] != 1'>
+									<if condition='$secondlist[0]["second_mark_isextend"] != 1 && $firstone["first_mark_type"]!=3'>
 										<li role="presentation"  class="current" style="margin-left: 50px;" onclick="extend()">{:L('Mark_second_list_extend')}</li>
 									<else />
+										<if condition='$firstone["first_mark_type"]!=3'>
 										<li role="presentation" style="margin-left: 50px;border: 1px solid #080808">{:L('Mark_second_list_isextend')}</li>
+										</if>
 									</if>
-
 								</ul>
-
 							</div>
-
 						</form>
 
 					</div>
@@ -281,7 +280,6 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
     function havesecmark(name,fid) {
 
 		saveid = fid;
-
         $("#secondname").val(name)
     }
     
