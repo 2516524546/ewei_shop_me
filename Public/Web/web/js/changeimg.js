@@ -63,12 +63,18 @@
                             ndiv.setAttribute("data-isNew","true") //img-div赋予自定义属性
 							Cdiv.innerHTML = Cspan; // 遮罩层拼接
 							Cdiv.className = "covers"; //遮罩层的类名
-							console.log(values)
-							for(var i=0;i<values.length;i++){
-								console.log(values[i].type)
-							}
+							console.log(values[values.length-1].type)
 							ndiv.appendChild(Cdiv); //遮罩层拼接进去
+							if(values[values.length-1].type == values[values.length-1].type.match(/video\/(swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb|mp4)(\?.*)?$/)[0]){
+								$(".img-div").remove();
+								values.splice(values.length-1,1);
+							}
 							result.prepend(ndiv); //将拼接进去最前面
+							// console.log(values[values.length-1].type.match(/video\/(swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb|mp4)(\?.*)?$/))
+							
+							// if(values[values.length-1].type.match(/image\/(png|jpe?g|gif|svg)(\?.*)?$/)!= null && values[values.length-1].type == values[values.length-1].type.match(/image\/(png|jpe?g|gif|svg)(\?.*)?$/)[0]){
+							// 	alert(2)
+							// }
 							// *删除功能*/
 							// var num;
 							// $("#result").on('click',".img-div", function(event) {

@@ -227,7 +227,6 @@
   }
   .BannerContainer {
     margin-top: 50px;
-    width: 174px;
     border-radius: 4px;
     box-shadow: 2px 2px 14px #cecece;
   }
@@ -242,8 +241,12 @@
     padding: 4px 6px;
   }
   .BannerContainer .Container1 .img {
-    width: 174px;
-    height: auto;
+    width: 100%;
+    height: 104px;
+  }
+  .BannerContainer .Container2 .img {
+    width: 100%;
+    height: 104px;
   }
   .BannerContainer .Container2 .Font {
     padding: 4px 6px;
