@@ -33,30 +33,13 @@
     <!-- Carousel advertising start 轮播广告 -->
     <div class="layui-carousel Banner" id="test2">
         <div carousel-item="">
-            <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div>
-            <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div>
-            <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div><div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div>
-            <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div>
+            <foreach name="newslist" item="new" key="newkey">
+                <div class="Carousel_img">
+                    <a href="<if condition='$new["news_type"] == 1'>{:U('Index/Rnterst/crowdnews',array('nid'=>$new['news_id'],'cid'=>$cid))}<else />{$new['news_url']}</if>">
+                    <img src="./Uploads/{$new['news_img']}">
+                    </a>
+                </div>
+            </foreach>
         </div>
     </div>
     <!-- Carousel advertising end 轮播广告 -->
@@ -280,8 +263,15 @@
                 <div class="BannerContainer">
                     <h4 class="text-center FontColor">Advertising</h4>
                     <div class="Container1">
-                        <img src="__PUBLIC__/Web/web/img/01_shouye/pic2.png" class="img">
-                        <p class="text-center Font">University</p>
+                        <foreach name="advertisinglist" item="advertising" key="advertisingkey">
+
+                            <div class="Container1">
+                                <a href="{$advertising['advertising_url']}" style="text-decoration: none;display: block;">
+                                    <img src="./Uploads/{$advertising['advertising_img']}" class="img">
+                                    <p class="text-center Font">{$advertising['advertising_title']}</p>
+                                </a>
+                            </div>
+                        </foreach>
                     </div>
                 </div>
             </div>
