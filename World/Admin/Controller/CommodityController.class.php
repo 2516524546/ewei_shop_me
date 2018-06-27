@@ -116,12 +116,92 @@ class CommodityController extends CommonController{
     }
     public function commodity_add(){
         if (IS_POST){
-            var_dump($_POST);
+            $this->verifyData($_POST);
+            $res=M('l_commodity')->add($_POST);
+            if($res){
+                echo 1;exit;
+            }else{
+                echo L('newworld_ajax_operation_fail');exit;
+            }
         }else{
             $cate=M('s_second_mark')->select();
             $this->assign('cate',$cate);
             $this->display();
         }
 
+    }
+
+    public function verifyData($post){
+
+        if (empty($post['commodity_name'])){
+            echo L('Commodity_commodity_name_not_empty');
+            exit;
+        }
+        if (empty($post['commodity_img'])){
+            echo L('Commodity_commodity_img_not_empty');
+            exit;
+        }
+        if (empty($post['commodity_category'])||$post['commodity_category']==0){
+            echo L('Commodity_commodity_category_not_empty');
+            exit;
+        }
+        if (empty($post['commodity_price'])){
+            echo L('Commodity_commodity_price_not_empty');
+            exit;
+        }
+        if (empty($post['commodity_uname'])){
+            echo  L('Commodity_commodity_uname_not_empty');
+            exit;
+        }
+        if (empty($post['commodity_contact'])){
+            echo  L('Commodity_commodity_contact_not_empty');
+            exit;
+        }
+
+        if (empty($post['commodity_content'])){
+            echo L('Commodity_commodity_content_not_empty');
+            exit;
+        }
+        if (empty($post['commodity_createtime'])){
+            echo L('Commodity_commodity_createtime_not_empty');
+            exit;
+        }
+    }
+    //商品编辑
+    public function commodity_edit(){
+        if (IS_POST){
+            $post=$_POST;
+            $this->verifyData($post);
+            if (empty($post['commodity_views'])||!isset($post['commodity_views'])){
+                $post['commodity_views']=0;
+            }
+            if (!is_numeric($post['commodity_views'])){
+               echo L('newworld_input_number');
+               exit;
+            }
+            $id=$post['commodity_id'];
+            $res=M('l_commodity')->where("commodity_id={$id}")->save($post);
+            if($res){
+                echo 1;exit;
+            }else{
+                echo L('newworld_ajax_operation_fail');exit;
+            }
+
+        }else{
+            $id=$_GET['id'];
+            $commodity=M('l_commodity')->where("commodity_id={$id}")->find();
+            $cate=M('s_second_mark')->select();
+            $this->assign('cate',$cate);
+            $this->assign("commodity",$commodity);
+            $this->display();
+        }
+    }
+    public function commodity_detail(){
+        $id=$_GET['id'];
+        $commodity=M('l_commodity')->where("commodity_id={$id}")->find();
+        $cate=M('s_second_mark')->select();
+        $this->assign('cate',$cate);
+        $this->assign("commodity",$commodity);
+        $this->display();
     }
 }

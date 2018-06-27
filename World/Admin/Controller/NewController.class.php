@@ -44,6 +44,7 @@ class NewController extends CommonController{
             if (empty($post['news_crowdid'])&&$post['news_for']==2){
                 unset($post["news_crowdid"]);
             }
+            $post['news_static']=0;
             $res=M("s_news")->add($post);
             if ($res){
                 echo 1;

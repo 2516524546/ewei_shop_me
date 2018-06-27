@@ -16,6 +16,7 @@ return array(
     'newworld_ajax_upload_fail' => '上传失败！',
     'newworld_ajax_add_fail' => '添加失败！',
     'newworld_ajax_add_success' => '添加成功！',
+    'newworld_input_number'=>'请输入数字',
     /*
 	 * Public end
 	 *******************************************************************/
@@ -507,9 +508,20 @@ return array(
     'Commodity_commodity_list_add'=>'新增',
     'Commodity_commodity_manager'=>'商品管理',
     'Commodity_commodity_add'=>'新增商品',
+    'Commodity_commodity_edit'=>'商品编辑',
+    'Commodity_commodity_detail'=>'商品详情',
     'Commodity_commodity_remark' => '备注',
     'Commodity_commodity_introduce' => '介绍',
     'Commodity_commodity_add_select_classify'=>'选择商品分类',
+    'Commodity_commodity_name_not_empty'=>'商品名称不能为空',
+    'Commodity_commodity_price_not_empty'=>'商品价格不能为空',
+    'Commodity_commodity_img_not_empty'=>'图片不能为空',
+    'Commodity_commodity_category_not_empty'=>'请选择商品分类',
+    'Commodity_commodity_uname_not_empty'=>'联系人不能为空',
+    'Commodity_commodity_contact_not_empty'=>'联系方式不能为空',
+    'Commodity_commodity_content_not_empty'=>'介绍不能为空',
+    'Commodity_commodity_createtime_not_empty'=>'发布时间不能为空',
+
     /*
 	 * Commodity end
 	 *******************************************************************/
