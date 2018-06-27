@@ -4,6 +4,8 @@ use Index\Model\CrowdMemberModel;
 use Index\Model\CrowdModel;
 use Index\Model\CrowdTabModel;
 use Index\Model\FirstMarkModel;
+use Index\Model\ModuleModel;
+use Index\Model\NewsModel;
 use Index\Model\NoteCommentModel;
 use Index\Model\NoteModel;
 use Index\Model\NoteVIModel;
@@ -41,14 +43,36 @@ class AcademicController extends CommonController {
 
         $crowdcount = $crodmodel->findone('crowd_mid = '.$this->modeleid,'','','count(*) num')['num'];
 
+        $modulemodel = new ModuleModel();
+        $moduleone = $modulemodel->findone('module_id = '.$this->modeleid);
+
+        $now = date("Y-m-d H:i:s", time());
+        $newsmodel = new NewsModel();
+        $newslist = $newsmodel->findlist('news_static = 1 and news_for = 1 and news_mid = '.$this->modeleid.' and news_endtime > "'.$now.'"','news_sort desc');
+
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
         $this->assign(array(
+            'newslist' => $newslist,
+            'moduleone' => $moduleone,
             'userid' => $this->userid,
             'usercontent' => $this->usercontent,
             'havemessage' => $this->havemessage,
             'data' =>$data,
             'crodlist'=>$crodlist,
             'crowdcount' => $crowdcount,
+        ));
+        $this->display();
+    }
+
+    //新闻详情
+    public function newsDetails(){
+
+        $newsmodel = new NewsModel();
+        $newsone = $newsmodel->findone('news_id = '.$_GET['nid']);
+
+        $this->assign(array(
+            'newsone' => $newsone,
+
         ));
         $this->display();
     }

@@ -52,13 +52,9 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            广告管理
+            {:L('Commodity_commodity_manager')}
             <small><i class="icon-double-angle-right"></i>
-                <eq name="type" value="2">
-                    新增群广告
-                    <else/>
-                    新增广告
-                </eq>
+                {:L('Commodity_commodity_add')}
             </small>
 
         </h1>
@@ -67,32 +63,23 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <form class="form-horizontal" action="{:U('Admin/Advertising/advertising_add')}" method="POST" role="form"
+            <form class="form-horizontal" action="{:U('Admin/Commodity/commodity_add')}" method="POST" role="form"
                   enctype="multipart/form-data">
-
-                <eq name="type" value="2">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">群ID</label>
-                        <div class="col-sm-9">
-                            <input type="text" onkeyup="value=value.replace(/[^\d]/g,'') " ng-pattern="/[^a-zA-Z]/" name="advertising_crowdid" value="" placeholder="" style="width:300px;"/></div>
-                    </div>
-                    <else/>
-                </eq>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">标题</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Commodity_commodity_list_name')}</label>
                     <div class="col-sm-9">
-                        <input type="text" name="advertising_title" value="" placeholder="" style="width:300px;"/></div>
+                        <input type="text" name="commodity_name" value="" placeholder="" style="width:300px;"/></div>
                 </div>
                 <input type="hidden" name="advertising_for" value="<?php echo $type;?>"/>
                 <div class="form-group" id="user-profile-3">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">图片</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Commodity_commodity_list_picture')}</label>
                     <div class="col-sm-9">
                         <div class="col-xs-12 col-sm-4">
                             <input type="file" id='upload_picture' accept=".png,.gif,.jpeg,.jpg"/>
                             <div id='img'>
                             </div>
                         </div>
-                        <input type='hidden' name='advertising_img' value="">
+                        <input type='hidden' name='commodity_img' value="">
 
                     </div>
 
@@ -117,70 +104,93 @@
                                 console.log(data)
                                 if(data.status == 1) {
                                     $("#img").html('<img style="width:200px;height:200px;" src="./Uploads/' + data.msg + '"/>');
-                                    $("input[name='advertising_img']").val(data.msg)
+                                    $("input[name='commodity_img']").val(data.msg)
                                 }else {
-                                    alert(data.msg);
+                                    showMessage(data.msg,2);
                                 }
                             },
                             error: function () {
-                                alert("上传失败！");
+                                showMessage("{:L('newworld_ajax_upload_fail')}",2);
                             }
                         });
                     });
+                    function showMessage(msg,status) {
+                        layer.msg(msg,{
+                                time:500,
+                                icon:status,
+                            },function () {
+                                location.reload()
+                            }
+                        );
+                    }
                 </script>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">所属分类</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Commodity_commodity_list_classify')}</label>
                     <div class="col-sm-9">
-                        <select name="advertising_mid">
-                            <option value="0">请选择分类</option>
-                            <volist  name="modules" id="vo">
-                                <option value="{$vo.module_id}">{$vo.module_name}</option>
+                        <select name="commodity_category">
+                            <option value="0">{:L('Commodity_commodity_add_select_classify')}</option>
+                            <volist  name="cate" id="vo">
+                                <option value="{$vo.second_mark_id}">{$vo.second_mark_name}</option>
                             </volist>
                         </select>
                     </div>
                 </div>
-<!--
-                <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
-                    <label class="col-sm-3 control-label no-padding-right" for="admin">新闻来源</label>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Commodity_commodity_list_price')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="commodity_price" value="" placeholder="" style="width:300px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Commodity_commodity_list_flag')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="commodity_firstmark" value="" placeholder="" style="width:300px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Commodity_commodity_list_contact')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="commodity_uname" value="" placeholder="" style="width:300px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Commodity_commodity_list_contact_phone')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="commodity_contact" value="" placeholder="" style="width:300px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Commodity_commodity_introduce')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="commodity_content" value="" placeholder="" style="width:300px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Commodity_commodity_list_status')}</label>
                     <div class="col-sm-9">
                         <div class="radio1">
                             <label>
-                                <input name="news_type" type="radio" value="0" class='ace' checked/>
-                                <span class="lbl">新闻链接</span>
+                                <input name="commodity_status" type="radio" value="1" class='ace' checked/>
+                                <span class="lbl">{:L('Commodity_commodity_list_shangjia')}</span>
                             </label>
                             <label>
-                                <input name="news_type" type="radio" value="1" class='ace' />
-                                <span class="lbl">新闻编辑</span>
+                                <input name="commodity_status" type="radio" value="3" class='ace' />
+                                <span class="lbl">{:L('Commodity_commodity_list_xiajia')}</span>
                             </label>
                         </div>
                     </div>
-                    <div class="col-sm-9 in-txt">
-                        <input type="text" name="news_url" value="" placeholder="" style="width:300px;"/>
-                    </div>
-                    <div class="col-sm-6 editor hidden">
-                        <textarea id="content" placeholder="" name="news_content"></textarea>
-                    </div>
-                </div>
--->
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">链接</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="advertising_url" value="" placeholder="" style="width:300px;"/>
-                        <span>{:L('New_new_list_tip')}</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">创建时间</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control date-picker" name="advertising_starttime" value=""
-                               placeholder="" style="width: 35%;"  id="id-date-picker-1"  data-date-format="yyyy-mm-dd" />
-                    </div>
-                </div>
 
+                </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">结束时间</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Commodity_commodity_remark')}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control date-picker" name="advertising_finishtime" value=""
+                        <input type="text" name="commodity_explain" value="" placeholder="" style="width:300px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Commodity_commodity_list_publish_date')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control date-picker" name="commodity_createtime" value=""
                                placeholder="" style="width: 35%;"  id="id-date-picker-1"  data-date-format="yyyy-mm-dd" />
                     </div>
                 </div>
@@ -232,10 +242,10 @@
     function showSuccess(data) {
 
         if (data == 1) {
-            alert('添加成功')
+            showMessage("{:L('newworld_ajax_add_success')}",1);
             location.href = "{:U('Admin/Advertising/advertising_list')}"
         } else {
-            alert(data)
+            showMessage(data,2);
             return false
         }
 
