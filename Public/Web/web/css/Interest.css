@@ -224,17 +224,25 @@
 }
 .BannerContainer .Container1 .Font {
   padding: 4px 6px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
 }
 .BannerContainer .Container1 .img {
   width: 100%;
-  height: auto;
+  height: 104px;
 }
 .BannerContainer .Container2 .img {
   width: 100%;
-  height: auto;
+  height: 104px;
 }
 .BannerContainer .Container2 .Font {
   padding: 4px 6px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
 }
 
 .tooltip_box {

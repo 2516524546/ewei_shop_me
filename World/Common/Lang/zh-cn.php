@@ -462,6 +462,7 @@ return array(
      //new_list_start
     'New_new_list_news_manager'=>'新闻管理',
     'New_new_list'=>'新闻轮播列表',
+    'New_new_list_tip'=>'请输入时携带http://或https://,如http://www.baidu.com',
     //new_list_end
 
 

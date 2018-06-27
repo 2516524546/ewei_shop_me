@@ -5,6 +5,8 @@ use Index\Model\CrowdMemberModel;
 use Index\Model\CrowdModel;
 use Index\Model\CrowdTabModel;
 use Index\Model\FirstMarkModel;
+use Index\Model\ModuleModel;
+use Index\Model\NewsModel;
 use Index\Model\NoteCommentModel;
 use Index\Model\NoteModel;
 use Index\Model\NoteVIModel;
@@ -61,12 +63,34 @@ class JobsController extends CommonController {
         $crodlist = $crodmodel->findlist('crowd_mid = '.$this->modeleid.' and crowd_type = 1','u_user u on u_crowd.crowd_uid = u.user_id','INNER','crowd_creattime desc','u.user_name,u_crowd.*');
 
         $crowdcount = $crodmodel->findone('crowd_mid = '.$this->modeleid.' and crowd_type = 1','u_user u on u_crowd.crowd_uid = u.user_id','INNER','count(*) num')['num'];
+        $modulemodel = new ModuleModel();
+        $moduleone = $modulemodel->findone('module_id = '.$this->modeleid);
+
+        $now = date("Y-m-d H:i:s", time());
+        $newsmodel = new NewsModel();
+        $newslist = $newsmodel->findlist('news_static = 1 and news_for = 1 and news_mid = '.$this->modeleid.' and news_endtime > "'.$now.'"','news_sort desc');
+
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
         $this->assign(array(
+            'newslist' => $newslist,
+            'moduleone' => $moduleone,
             'data1' =>$data1,
             'data2' =>$data2,
             'crodlist'=>$crodlist,
             'crowdcount' => $crowdcount,
+        ));
+        $this->display();
+    }
+
+    //新闻详情
+    public function newsDetails(){
+
+        $newsmodel = new NewsModel();
+        $newsone = $newsmodel->findone('news_id = '.$_GET['nid']);
+
+        $this->assign(array(
+            'newsone' => $newsone,
+
         ));
         $this->display();
     }

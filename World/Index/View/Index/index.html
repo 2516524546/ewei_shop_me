@@ -42,30 +42,14 @@
     <!-- Carousel advertising start 轮播广告 -->
     <div class="layui-carousel Banner" id="test2">
         <div carousel-item="">
+            <foreach name="newslist" item="new" key="newkey">
             <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
+                <a href="<if condition='$new["news_type"] == 1'>{:U('Index/Index/newsDetails',array('nid'=>$new['news_id']))}<else />{$new['news_url']}</if>">
+                    <img src="./Uploads/{$new['news_img']}">
                 </a> 
             </div>
-            <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div>
-            <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div><div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div>
-            <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div>
+            </foreach>
+
         </div>
     </div>
     <!-- Carousel advertising end 轮播广告 -->
@@ -124,17 +108,7 @@
                                             <td>{$w['user_havecoin']} virtual currency</td>
                                         </tr>
                                     </foreach>
-                                        <!--<tr>
-                                            <td>
-                                                <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_02.png"> &nbsp;&nbsp;2st
-                                            </td>
-                                            <td>
-                                                <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" class="img-circle"> &nbsp;&nbsp;Kendall J
-                                            </td>
-                                            <td>800 virtual currency</td>
-                                        </tr>-->
-
-                                    </tbody>
+                                                                            </tbody>
                                 </table>
                             </div>
                         </div>
@@ -163,15 +137,6 @@
                                             <td>{$d['user_outcoin']} virtual currency</td>
                                         </tr>
                                     </foreach>
-                                        <!--<tr>
-                                            <td>
-                                                <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_02.png"> &nbsp;&nbsp;2st
-                                            </td>
-                                            <td>
-                                                <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" class="img-circle"> &nbsp;&nbsp;Kendall J
-                                            </td>
-                                            <td>800 virtual currency</td>
-                                        </tr>-->
 
                                     </tbody>
                                 </table>
@@ -202,15 +167,6 @@
                                             <td>$ {$e['user_outmoney']}</td>
                                         </tr>
                                     </foreach>
-                                        <!--<tr>
-                                            <td>
-                                                <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_02.png"> &nbsp;&nbsp;2st
-                                            </td>
-                                            <td>
-                                                <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" class="img-circle"> &nbsp;&nbsp;Kendall J
-                                            </td>
-                                            <td>$ 1000</td>
-                                        </tr>-->
 
                                     </tbody>
                                 </table>
@@ -266,12 +222,6 @@
                             <td class="TimeColor">{$d['donation_paytime']}</td>
                         </tr>
                         </foreach>
-                        <!--<tr>
-                            <td class="FontOverflow">
-                                Tom donated $ 10 to the platform and earned 100 virtual coins
-                            </td>
-                            <td class="TimeColor">1920-09-30</td>
-                        </tr>-->
 
                     </tbody>
                 </table>
@@ -289,14 +239,16 @@
             <div class="col-xs-6 col-md-2">
                 <div class="BannerContainer">
                     <h4 class="text-center FontColor">Advertising</h4>
+                    <foreach name="advertisinglist" item="advertising" key="advertisingkey">
+
                     <div class="Container1">
-                        <img src="__PUBLIC__/Web/web/img/01_shouye/pic2.png" class="img">
-                        <p class="text-center Font">University</p>
+                        <a href="{$advertising['advertising_url']}" style="text-decoration: none;display: block;">
+                            <img src="./Uploads/{$advertising['advertising_img']}" class="img">
+                            <p class="text-center Font">{$advertising['advertising_title']}</p>
+                        </a>
                     </div>
-                    <div class="Container2">
-                        <img src="__PUBLIC__/Web/web/img/01_shouye/pic3.png" class="img">
-                        <p class="text-center Font">University</p>
-                    </div>
+                    </foreach>
+
                 </div>
             </div>
         </div>
