@@ -141,14 +141,15 @@
 				<div class="col-md-2">
 					<div class="BannerContainer">
 						<h4 class="text-center FontColor">Advertising</h4>
-						<div class="Container1">
-							<img src="__PUBLIC__/Web/web/img/01_shouye/pic2.png" class="img">
-							<p class="text-center Font">University</p>
-						</div>
-						<div class="Container2">
-							<img src="__PUBLIC__/Web/web/img/01_shouye/pic3.png" class="img">
-							<p class="text-center Font">University</p>
-						</div>
+						<foreach name="advertisinglist" item="advertising" key="advertisingkey">
+
+							<div class="Container1">
+								<a href="{$advertising['advertising_url']}" style="text-decoration: none;display: block;">
+									<img src="./Uploads/{$advertising['advertising_img']}" class="img">
+									<p class="text-center Font">{$advertising['advertising_title']}</p>
+								</a>
+							</div>
+						</foreach>
 					</div>
 				</div>
 			</div>

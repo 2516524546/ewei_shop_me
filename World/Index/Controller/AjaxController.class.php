@@ -3069,9 +3069,6 @@ public function ajax_donationpay()
             }else if (!isset($_POST['time'])||$this->post('time')==''){
 
                 die(json_encode(array('str' => 7, 'msg' => '请输入辅导时间')));
-            }else if (!isset($_POST['demand'])||$this->post('demand')==''){
-
-                die(json_encode(array('str' => 8, 'msg' => '请输入需求条件')));
             }else if (!isset($_POST['content'])||$this->post('content')==''){
 
                 die(json_encode(array('str' => 9, 'msg' => '请输入内容')));
