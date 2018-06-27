@@ -3,10 +3,13 @@
 			var values=[];
 			var file_input = document.getElementById("file_input");
 			file_input.addEventListener("change",function(){
-				console.log(file_input.files[0].type)
+				// console.log(file_input.files[0].type)
+				var type = file_input.files[0].type;
+				type = type.match(/image\/(png|jpe?g|gif|svg)(\?.*)?$/)[0]
+				// console.log(type.match(/image\/(png|jpe?g|gif|svg)(\?.*)?$/)[0])
 					for(let key in file_input.files){
 							//只遍历对象自身的属性，而不包含继承于原型链上的属性。 && file_input.files[0].type == ""
-						if (file_input.files.hasOwnProperty(key) === true && file_input.files[0].type == "image/jpeg"){
+						if (file_input.files.hasOwnProperty(key) === true && file_input.files[0].type == type){
 							values.unshift(file_input.files[key]);   
 						}  
 					}
