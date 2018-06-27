@@ -17,8 +17,12 @@
 }
 .layui-form-item .layui-input-inline {
     float: left;
+    width: 45%;
     width: auto;
     margin-right: 10px;
+}
+.layui-form-mid {
+    width: 50%;
 }
 .layui-form-item {
     display: flex;
