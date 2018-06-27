@@ -228,6 +228,10 @@
 }
 .BannerContainer .Container1 .Font {
   padding: 4px 6px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
 }
 
 .BannerContainer .Container1 .img {
@@ -240,6 +244,10 @@
 }
 .BannerContainer .Container2 .Font {
   padding: 4px 6px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
 }
 
 .tooltip_box {
