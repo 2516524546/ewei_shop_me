@@ -139,12 +139,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Commodity_commodity_list_classify')}</label>
                     <div class="col-sm-9">
-                        <select name="commodity_category" >
-                            <option value="0">{:L('Commodity_commodity_add_select_classify')}</option>
-                            <volist  name="cate" id="vo">
-                                <option value="{$vo.second_mark_id}" <if condition="$commodity['commodity_category']==$vo['second_mark_id']">selected</if>>{$vo.second_mark_name}</option>
-                            </volist>
-                        </select>
+                        <input type="text" readonly name="commodity_price" value="{$commodity['second_mark_name']}" placeholder="" style="width:300px;"/>
                     </div>
                 </div>
 

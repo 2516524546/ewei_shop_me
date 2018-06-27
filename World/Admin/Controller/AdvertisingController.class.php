@@ -1,5 +1,7 @@
 <?php
 namespace Admin\Controller;
+use Think\Controller;
+//广告控制器
 class AdvertisingController extends CommonController
 {
     public function advertising_list()
@@ -93,6 +95,24 @@ class AdvertisingController extends CommonController
         if (empty($post['advertising_finishtime'])){
             echo "结束时间不能为空";
             exit;
+        }
+        //模块广告
+        if ($post['advertising_for']==1){
+            //判断记录数是否大于等于2
+            $now = date("Y-m-d H:i:s", time());
+            $count=M("s_advertising")->where("advertising_for = 1 and advertising_mid=".$post['advertising_mid']." and advertising_finishtime > '".$now."'")->count();
+            if ($count>=2){
+                echo "该模块广告数最多为2";
+                exit;
+            }
+        }elseif ($post['advertising_for']==2){ //群广告
+            //advertising_crowdid
+            $now = date("Y-m-d H:i:s", time());
+            $count=M("s_advertising")->where("advertising_for = 2 and advertising_crowdid=".$post['advertising_crowdid']." and advertising_finishtime > '".$now."'")->count();
+            if ($count>=1){
+                echo "该群广告数最多为1";
+                exit;
+            }
         }
 
     }
