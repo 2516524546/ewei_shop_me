@@ -8,8 +8,14 @@ return array(
     'newworld_home' => '首页',
     'newworld_console' => '控制台',
     'newworld_ajax_havenoing' => '存在非法字符',
-
-
+    'newworld_ajax_operation_fail' => '操作失败',
+    'newworld_ajax_operation_success' => '操作成功',
+    'newworld_ajax_confirm_del' => ' 此操作不可逆,确认删除吗',
+    'newworld_ajax_select_record' => '请选择需要操作的记录',
+    'newworld_ajax_upload_success' => '上传成功！',
+    'newworld_ajax_upload_fail' => '上传失败！',
+    'newworld_ajax_add_fail' => '添加失败！',
+    'newworld_ajax_add_success' => '添加成功！',
     /*
 	 * Public end
 	 *******************************************************************/
@@ -477,7 +483,6 @@ return array(
     /******************************************************************
      * Commodity start
      */
-     //commodity_list start
     'Commodity_commodity_manager'=>'商品管理',
     'Commodity_commodity_list'=>'商品列表',
     'Commodity_commodity_list_input_contact'=>'请输入联系人',
@@ -501,7 +506,11 @@ return array(
     'Commodity_commodity_list_status'=>'状态',
     'Commodity_commodity_list_contact'=>'联系人',
     'Commodity_commodity_list_add'=>'新增',
-    //commodity_list end
+    'Commodity_commodity_manager'=>'商品管理',
+    'Commodity_commodity_add'=>'新增商品',
+    'Commodity_commodity_remark' => '备注',
+    'Commodity_commodity_introduce' => '介绍',
+    'Commodity_commodity_add_select_classify'=>'选择商品分类',
     /*
 	 * Commodity end
 	 *******************************************************************/

@@ -93,4 +93,35 @@ class CommodityController extends CommonController{
         $this->assign('page',$show);
         $this->display('commodity_list');
     }
+
+    public function commodity_updateStatus(){
+        $ids = explode(',',$_POST['id']);
+        foreach ($ids as $key=>$v){
+            $res=M('l_commodity')->where("commodity_id={$v}")->setField("commodity_status",$_POST['status']);
+        }
+        if($res){
+            echo 1;exit;
+        }else{
+            echo L('newworld_ajax_operation_fail');exit;
+        }
+    }
+
+    public function commodity_del(){
+        $res=M('l_commodity')->where("commodity_id={$_POST['id']}")->setField("commodity_status",0);
+        if($res){
+            echo 1;exit;
+        }else{
+            echo L('newworld_ajax_operation_fail');exit;
+        }
+    }
+    public function commodity_add(){
+        if (IS_POST){
+            var_dump($_POST);
+        }else{
+            $cate=M('s_second_mark')->select();
+            $this->assign('cate',$cate);
+            $this->display();
+        }
+
+    }
 }

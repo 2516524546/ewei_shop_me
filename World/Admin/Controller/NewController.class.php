@@ -40,14 +40,23 @@ class NewController extends CommonController{
 
         if (IS_POST){
              $this->verifyData($_POST);
-            $res=M("s_news")->add($_POST);
+             $post=$_POST;
+            if (empty($post['news_crowdid'])&&$post['news_for']==2){
+                unset($post["news_crowdid"]);
+            }
+            $res=M("s_news")->add($post);
             if ($res){
                 echo 1;
             }else{
                 echo $res;
             }
         }else{
-            $modules=M("s_module")->select();
+            if (I('type')==1){
+                $where="module_id !=5";
+            }elseif(I('type')==2){
+                $where="module_id !=1";
+            }
+            $modules=M("s_module")->where($where)->select();
             $this->assign('modules',$modules);
             $this->assign("type",I('type'));
             $this->display();
@@ -56,10 +65,7 @@ class NewController extends CommonController{
     }
 //提交数据验证
     public function verifyData($post){
-        if (empty($post['news_crowdid'])&&$post['news_for']==2){
-            echo "群id不能为空";
-            exit;
-        }
+
         if (empty($post['news_title'])){
             echo "新闻标题不能空";
             exit;
@@ -142,10 +148,10 @@ class NewController extends CommonController{
     }
     //提交数据验证
     public function verifyData2($post){
-        if (empty($post['news_crowdid'])&&$post['news_for']==2){
+       /* if (empty($post['news_crowdid'])&&$post['news_for']==2){
             echo "群id不能为空";
             exit;
-        }
+        }*/
         if (empty($post['news_title'])){
             echo "新闻标题不能空";
             exit;

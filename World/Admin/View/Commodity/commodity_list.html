@@ -7,7 +7,7 @@
 		<!-- basic styles -->
 		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
-
+	    <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
 		<!--[if IE 7]>
 		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
 		<![endif]-->
@@ -39,7 +39,7 @@
 		<!-- ace settings handler -->
 
 		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
-
+	    <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
 		<!--[if lt IE 9]>
@@ -127,7 +127,7 @@
 										<div class="btn-group" style='margin-top:5px;'>
 												<span class="input-group-btn">
 													<button type="submit" style="padding:0" class="btn btn-purple btn-sm">
-														搜索<i class="icon-search icon-on-right bigger-110"></i>
+														{:L('User_user_list_search')}<i class="icon-search icon-on-right bigger-110"></i>
 													</button>
 												</span>
 											
@@ -137,11 +137,11 @@
 		
 		<!-- 	<a href="index.php?m=Admin&c=User&a=user_daochu" class="btn btn-xs btn-success">导出文件</a>-->
 									<div style=' width:100%; height:40px; '>
-										<a href="{:U('Admin/User/recharge_record_list')}" target="rightFrame"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>{:L('Commodity_commodity_list_add')}</span></a>
+										<a href="{:U('Admin/Commodity/commodity_add')}" target="rightFrame"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>{:L('Commodity_commodity_list_add')}</span></a>
 									</div>
 									<div style=' width:100%; height:40px; '>
-								   		<a href="{:U('Admin/User/recharge_record_list')}" target="rightFrame"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>{:L('Commodity_commodity_list_shangjia')}</span></a>
-										<a href="#" onClick="batchDelete()"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>{:L('Commodity_commodity_list_xiajia')}</span></a>
+								   		<a href="#" target="rightFrame" onClick="changeStatus(1)"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>{:L('Commodity_commodity_list_shangjia')}</span></a>
+										<a href="#" onClick="changeStatus(3)"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>{:L('Commodity_commodity_list_xiajia')}</span></a>
 									</div>
 								</div>
 							</div>
@@ -198,9 +198,9 @@
 								
 									<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-												<a href="index.php?m=Admin&c=User&a=member_edit&id=<?php echo $v['q_users_id']?>" class="btn btn-xs btn-success"><?php echo L('User_user_list_edit');?></a>
-												<a href="index.php?m=Admin&c=User&a=member_edit&id=<?php echo $v['q_users_id']?>" class="btn btn-xs btn-success"><?php echo L('User_user_list_del');?></a>
-												<a href="index.php?m=Admin&c=User&a=member_edit&id=<?php echo $v['q_users_id']?>" class="btn btn-xs btn-success"><?php echo L('User_user_list_detail');?></a>
+												<a href="index.php?m=Admin&c=Commodity&a=commodity_edit&id=<?php echo $v['commodity_id']?>" class="btn btn-xs btn-success"><?php echo L('User_user_list_edit');?></a>
+												<a href="#" onClick="commodityDel(<?php echo $v['commodity_id']?>)" class="btn btn-xs btn-success"><?php echo L('User_user_list_del');?></a>
+												<a href="index.php?m=Admin&c=Commodity&a=commodity_detail&id=<?php echo $v['commodity_id']?>" class="btn btn-xs btn-success"><?php echo L('User_user_list_detail');?></a>
 											</div>
 									</td>
 								</tr>
@@ -242,7 +242,7 @@
 		var checked = event.checked;
 		$(".table-hover tbody input[type = 'checkbox']").prop("checked",checked);
 	}
-	function batchDelete() {
+	function changeStatus(status) {
 		var goods_ids= new Array();
 
 		$(".table-hover tbody input[type='checkbox']:checked").each(function() {
@@ -252,36 +252,65 @@
 			}
 		});
 		if(goods_ids.length ==0){
-
-			alert("请选择需要操作的记录");
+            showMessage("{:L('newworld_ajax_select_record')}",2)
 			return false;
 		}
 
-		member_dels(goods_ids);
+		member_change(status,goods_ids);
 	}
 
-	//删除
-	function member_dels(id){
+	function commodityDel(id) {
+        layer.msg("{:L('Note_crowd_list_if')}", {
+            time: 0 //不自动关闭
+            ,btn: ["{:L('Note_crowd_list_ok')}", "{:L('Note_crowd_list_no')}"]
+            ,yes: function(index){
+                layer.close(index);
+                $.ajax({
+                    url: '  index.php?m=Admin&c=Commodity&a=commodity_del',
+                    data: 'id=' + id,
+                    type: 'post',
+                    success: function (msg) {
+                        if (msg == 1) {
+                            showMessage("{:L('newworld_ajax_operation_success')}",1)
+                            //location.href="{:U('Admin/jinxiao/fenxiao_did')}";
+                        } else {
+                            showMessage(msg,2)
+                        }
 
-		if(confirm("此操作不可逆,确认删除吗?")) {
-			//var uid = {$jxid};
-			$.ajax({
-				url: 'index.php?m=Admin&c=User&a=member_del',
-				data: 'id=' + id.toString(),
-				type: 'post',
-				success: function (msg) {
-					if (msg == 1) {
-						alert('操作成功')
-						//location.href="{:U('Admin/jinxiao/fenxiao_did')}";
-						window.location.reload();
-					} else {
-						alert(msg)
-					}
+                    }
+                })
+            }
+        });
 
-				}
-			})
-		}
+
+    }
+
+	function member_change(status,id){
+        $.ajax({
+            url: 'index.php?m=Admin&c=Commodity&a=commodity_updateStatus',
+            data: 'id=' + id.toString()+"&status="+status,
+            type: 'post',
+            success: function (msg) {
+                if (msg == 1) {
+                    showMessage("{:L('newworld_ajax_operation_success')}",1)
+                    //location.href="{:U('Admin/jinxiao/fenxiao_did')}";
+                } else {
+                    showMessage(msg,2)
+                }
+
+            }
+        })
 	}
+
+	function showMessage(msg,status) {
+        layer.msg(msg,{
+                time:500,
+                icon:status,
+            },function () {
+                location.reload()
+            }
+        );
+    }
 	</script>
 <script type="text/javascript">
 	
