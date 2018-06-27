@@ -1,5 +1,6 @@
 <?php
 namespace Admin\Controller;
+use Think\Controller;
 class CommodityController extends CommonController{
     public function commodity_list(){
         $where = "commodity_status != 0";
@@ -198,9 +199,8 @@ class CommodityController extends CommonController{
     }
     public function commodity_detail(){
         $id=$_GET['id'];
-        $commodity=M('l_commodity')->where("commodity_id={$id}")->find();
-        $cate=M('s_second_mark')->select();
-        $this->assign('cate',$cate);
+        $join="s_second_mark as s on s.second_mark_id=l_commodity.commodity_category";
+        $commodity=M('l_commodity')->join($join)->where("commodity_id={$id}")->find();
         $this->assign("commodity",$commodity);
         $this->display();
     }
