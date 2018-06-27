@@ -180,7 +180,7 @@ class CrowdController extends CommonController {
                 $upload2->maxSize = 3072000;
                 $upload2->exts = array('jpg', 'gif', 'png', 'jpeg');
                 $upload2->rootPath = './Uploads/';
-                $info2 = $upload2->uploadOne($file1);
+                $info2 = $upload2->uploadOne($file2);
                 if(!$info2) {
                     die(json_encode(array('str' => 0,'msg'=>$upload2->getError())));
                 }else{
