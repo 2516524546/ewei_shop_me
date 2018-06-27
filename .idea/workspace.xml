@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/World/Index/Controller/JobsController.class.php" line="229" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9ce3527-1f80-4327-bfa4-07f13a0bfb6f" name="Default" comment="">
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php" afterPath="$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php" />
-      <change beforePath="$PROJECT_DIR$/World/Index/View/Rnterst/groupDetails.html" afterPath="$PROJECT_DIR$/World/Index/View/Rnterst/groupDetails.html" />
-      <change beforePath="$PROJECT_DIR$/World/Index/View/Rnterst/stickSonDetails.html" afterPath="" />
-=======
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/World/Index/Controller/AjaxController.class.php" afterPath="$PROJECT_DIR$/World/Index/Controller/AjaxController.class.php" />
-      <change beforePath="$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php" afterPath="$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php" />
-      <change beforePath="$PROJECT_DIR$/World/Index/Model/QuestionModel.class.php" afterPath="$PROJECT_DIR$/World/Index/Model/QuestionModel.class.php" />
-      <change beforePath="$PROJECT_DIR$/World/Index/Model/ResourceModel.class.php" afterPath="$PROJECT_DIR$/World/Index/Model/ResourceModel.class.php" />
-      <change beforePath="$PROJECT_DIR$/World/Index/View/Rnterst/groupDetails.html" afterPath="$PROJECT_DIR$/World/Index/View/Rnterst/groupDetails.html" />
-      <change beforePath="$PROJECT_DIR$/World/Index/View/SignUp/register.html" afterPath="$PROJECT_DIR$/World/Index/View/SignUp/register.html" />
-      <change beforePath="$PROJECT_DIR$/World/Runtime/Cache/Index/60d7779fe48f1ac5af24b02434a04332.php" afterPath="$PROJECT_DIR$/World/Runtime/Cache/Index/60d7779fe48f1ac5af24b02434a04332.php" />
-      <change beforePath="$PROJECT_DIR$/World/Runtime/Cache/Index/788c52b27b164c0c1068af9d47ada7e6.php" afterPath="$PROJECT_DIR$/World/Runtime/Cache/Index/788c52b27b164c0c1068af9d47ada7e6.php" />
-      <change beforePath="$PROJECT_DIR$/World/Runtime/Temp/e37d827da3d75f8682520385b0385603.php" afterPath="$PROJECT_DIR$/World/Runtime/Temp/e37d827da3d75f8682520385b0385603.php" />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
+    <list default="true" id="9816259b-8685-4c64-b7b6-bdcedf5f031b" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/World/Index/Model/ItemModel.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/World/Index/Model/ProfessionalCommentModel.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/World/Index/Model/ProfessionalModel.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/World/Index/Controller/JobsController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/World/Index/Controller/JobsController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/World/Index/View/Jobs/MyProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/World/Index/View/Jobs/MyProject.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/World/Index/View/Jobs/ProfessionalDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/World/Index/View/Jobs/ProfessionalDetails.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/World/Index/View/Jobs/ProjectDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/World/Index/View/Jobs/ProjectDetails.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/World/Index/View/Jobs/ReleaseProfessional.html" beforeDir="false" afterPath="$PROJECT_DIR$/World/Index/View/Jobs/ReleaseProfessional.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/World/Index/View/Jobs/projectsProfessionals.html" beforeDir="false" afterPath="$PROJECT_DIR$/World/Index/View/Jobs/projectsProfessionals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/World/Index/View/Jobs/releaseProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/World/Index/View/Jobs/releaseProject.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/数据库设计/newworld.sql" beforeDir="false" afterPath="$PROJECT_DIR$/数据库设计/newworld.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,196 +25,83 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="newworld.hbbzy.me" />
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="AjaxController.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/World/Index/Controller/AjaxController.class.php">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="UserController.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/World/Index/Controller/UserController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="226">
-              <caret line="1695" column="38" lean-forward="false" selection-start-line="1695" selection-start-column="38" selection-end-line="1695" selection-end-column="38" />
-=======
-            <state relative-caret-position="724">
-              <caret line="2035" column="96" lean-forward="false" selection-start-line="2035" selection-start-column="96" selection-end-line="2035" selection-end-column="96" />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
+            <state>
+              <caret line="583" column="9" selection-start-line="572" selection-start-column="8" selection-end-line="583" selection-end-column="9" />
               <folding>
-                <element signature="e#17107#18754#0#PHP" expanded="false" />
-                <element signature="e#18773#20674#0#PHP" expanded="false" />
-                <element signature="e#20787#22915#0#PHP" expanded="false" />
-                <element signature="e#22934#26315#0#PHP" expanded="false" />
-                <element signature="e#26334#26653#0#PHP" expanded="false" />
-                <element signature="e#26670#28059#0#PHP" expanded="false" />
-                <element signature="e#28162#29923#0#PHP" expanded="false" />
-                <element signature="e#29946#30962#0#PHP" expanded="false" />
-                <element signature="e#30984#31985#0#PHP" expanded="false" />
-                <element signature="e#32002#32713#0#PHP" expanded="false" />
-                <element signature="e#32730#33370#0#PHP" expanded="false" />
-                <element signature="e#33388#36403#0#PHP" expanded="false" />
-                <element signature="e#36421#39436#0#PHP" expanded="false" />
-                <element signature="e#39454#41745#0#PHP" expanded="false" />
-                <element signature="e#41762#45989#0#PHP" expanded="false" />
-                <element signature="e#46006#47887#0#PHP" expanded="false" />
-                <element signature="e#47904#52721#0#PHP" expanded="false" />
-                <element signature="e#52738#53651#0#PHP" expanded="false" />
-                <element signature="e#53668#56864#0#PHP" expanded="false" />
-                <element signature="e#56881#59527#0#PHP" expanded="false" />
-                <element signature="e#59545#61633#0#PHP" expanded="false" />
-<<<<<<< HEAD
-                <element signature="e#61650#65470#0#PHP" expanded="false" />
-                <element signature="e#65487#69326#0#PHP" expanded="false" />
-                <element signature="e#69343#73433#0#PHP" expanded="false" />
-                <element signature="e#73451#74516#0#PHP" expanded="false" />
-                <element signature="e#74534#75676#0#PHP" expanded="false" />
-                <element signature="e#75694#76837#0#PHP" expanded="false" />
-                <element signature="e#76855#78397#0#PHP" expanded="false" />
-=======
-                <element signature="e#61650#65089#0#PHP" expanded="false" />
-                <element signature="e#65106#68945#0#PHP" expanded="false" />
-                <element signature="e#68962#73052#0#PHP" expanded="false" />
-                <element signature="e#73070#73979#0#PHP" expanded="false" />
-                <element signature="e#73997#74972#0#PHP" expanded="false" />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
+                <element signature="e#34#64#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
-      <file leaf-file-name="RnterstController.class.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php">
+      <file leaf-file-name="JobsController.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/World/Index/Controller/JobsController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="160" column="8" lean-forward="false" selection-start-line="160" selection-start-column="8" selection-end-line="160" selection-end-column="8" />
-              <folding>
-                <element signature="e#400#1517#0#PHP" expanded="false" />
-                <element signature="e#1548#2404#0#PHP" expanded="false" />
-                <element signature="e#2435#5889#0#PHP" expanded="false" />
-              </folding>
-=======
-      <file leaf-file-name="RnterstController.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1512">
-              <caret line="107" column="42" lean-forward="false" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="42" />
-              <folding />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
+            <state relative-caret-position="128">
+              <caret line="825" column="71" selection-start-line="825" selection-start-column="71" selection-end-line="825" selection-end-column="71" />
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
-      <file leaf-file-name="groupDetails.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/groupDetails.html">
+      <file leaf-file-name="ProfessionalCommentModel.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/World/Index/Model/ProfessionalCommentModel.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="85" column="91" lean-forward="false" selection-start-line="85" selection-start-column="91" selection-end-line="85" selection-end-column="91" />
-              <folding>
-                <element signature="n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="e#14011#14017#0" expanded="true" />
-                <element signature="e#14017#14023#0" expanded="true" />
-                <element signature="e#14546#14552#0" expanded="true" />
-                <element signature="e#14552#14558#0" expanded="true" />
-                <element signature="e#17808#17814#0" expanded="true" />
-                <element signature="e#18425#19101#0" expanded="false" />
-                <element signature="e#19129#20920#0" expanded="false" />
-                <element signature="e#21456#21482#0" expanded="false" />
-                <element signature="e#21517#23447#0" expanded="false" />
-                <element signature="e#23470#23818#0" expanded="false" />
-                <element signature="e#23868#27734#0" expanded="false" />
-                <element signature="e#27792#31773#0" expanded="false" />
-                <element signature="e#31827#35818#0" expanded="false" />
-                <marker date="1528684884662" expanded="true" signature="28542:28564" ph="..." />
-                <marker date="1528684884662" expanded="true" signature="29136:29158" ph="..." />
-                <marker date="1528684884662" expanded="true" signature="32577:32599" ph="..." />
-                <marker date="1528684884662" expanded="true" signature="33171:33193" ph="..." />
-=======
-      <file leaf-file-name="groupDetails.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/groupDetails.html">
+            <state relative-caret-position="152">
+              <caret line="9" column="57" lean-forward="true" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProfessionalDetails.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/World/Index/View/Jobs/ProfessionalDetails.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="681" column="64" lean-forward="false" selection-start-line="681" selection-start-column="64" selection-end-line="681" selection-end-column="64" />
+            <state relative-caret-position="95">
+              <caret line="136" column="49" selection-start-line="136" selection-start-column="49" selection-end-line="136" selection-end-column="49" />
               <folding>
-                <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="e#18329#18762#0" expanded="false" />
-                <element signature="e#21710#25576#0" expanded="false" />
-                <element signature="e#25634#29653#0" expanded="false" />
-                <marker date="1528629722399" expanded="true" signature="22456:22478" ph="..." />
-                <marker date="1528629722399" expanded="true" signature="23050:23072" ph="..." />
-                <marker date="1528629722399" expanded="true" signature="26384:26406" ph="..." />
-                <marker date="1528629722399" expanded="true" signature="26978:27000" ph="..." />
-                <marker date="1528629722399" expanded="true" signature="31883:31905" ph="..." />
-                <marker date="1528629722399" expanded="true" signature="32477:32499" ph="..." />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
+                <element signature="e#5317#5323#0" expanded="true" />
+                <element signature="e#5323#5329#0" expanded="true" />
+                <element signature="e#7048#7054#0" expanded="true" />
+                <element signature="e#7054#7060#0" expanded="true" />
+                <element signature="e#7061#7067#0" expanded="true" />
+                <element signature="e#7067#7073#0" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#form#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#10880#10886#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="head.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/World/Index/View/Public/head.html">
+      <file leaf-file-name="newworld.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/数据库设计/newworld.sql">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="3852">
-=======
-            <state relative-caret-position="216">
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-              <caret line="107" column="178" lean-forward="false" selection-start-line="107" selection-start-column="42" selection-end-line="107" selection-end-column="178" />
-              <folding />
+            <state relative-caret-position="181">
+              <caret line="184" column="382" selection-start-line="184" selection-start-column="382" selection-end-line="184" selection-end-column="382" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="postVideoDetails.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/postVideoDetails.html">
+      <file leaf-file-name="addressBook.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/World/Index/View/User/addressBook.html">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="1008">
-=======
-            <state relative-caret-position="-1344">
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-              <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-              <folding />
+            <state relative-caret-position="19">
+              <caret line="153" column="67" selection-start-line="153" selection-start-column="67" selection-end-line="167" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="interest.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/interest.html">
+      <file leaf-file-name="MyProject.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/World/Index/View/Jobs/MyProject.html">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="2573">
-              <caret line="484" column="0" lean-forward="false" selection-start-line="484" selection-start-column="0" selection-end-line="484" selection-end-column="0" />
-=======
-            <state relative-caret-position="266">
-              <caret line="77" column="51" lean-forward="false" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-              <folding>
-                <element signature="e#9186#9604#0" expanded="false" />
-                <element signature="e#9638#12392#0" expanded="false" />
-                <element signature="e#12427#14873#0" expanded="false" />
-                <element signature="e#14904#15164#0" expanded="false" />
-<<<<<<< HEAD
-                <marker date="1528680217652" expanded="true" signature="17702:17708" ph=" " />
-                <marker date="1528680217652" expanded="true" signature="17708:17714" ph=" " />
-=======
-                <marker date="1528599804726" expanded="true" signature="17702:17708" ph=" " />
-                <marker date="1528599804726" expanded="true" signature="17708:17714" ph=" " />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="createAcademic.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/World/Index/View/Academic/createAcademic.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="49" column="113" lean-forward="false" selection-start-line="49" selection-start-column="82" selection-end-line="49" selection-end-column="113" />
-              <folding>
-                <marker date="1528533913665" expanded="true" signature="14733:14752" ph="..." />
-              </folding>
+            <state relative-caret-position="76">
+              <caret line="196" column="67" lean-forward="true" selection-start-line="196" selection-start-column="67" selection-end-line="207" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -224,32 +110,37 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>img</find>
-      <find>ajax_honorlist</find>
-      <find>&lt;img</find>
-      <find>dealFiles</find>
-      <find>name</find>
-      <find>post</find>
-      <find>NumberOfPagesContainer</find>
-      <find>页</find>
-      <find>jave</find>
-      <find>sendCode</find>
-      <find>count</find>
-      <find>page</find>
-      <find>order</find>
-      <find>questionorder</find>
-<<<<<<< HEAD
-      <find>Foll</find>
-      <find>Re</find>
-=======
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
+      <find>myFollowing</find>
+      <find>addressBook</find>
+      <find>ChangeConcernsGroupName</find>
+      <find>SelectionIcon</find>
+      <find>TYPE_FRIEND</find>
+      <find>createResume</find>
+      <find>ajax_resumedetails</find>
+      <find>first</find>
+      <find>resumeDetails</find>
+      <find>DeleteResume</find>
+      <find>delete</find>
+      <find>releasePosition</find>
+      <find>jobList</find>
+      <find>w.works_uid</find>
+      <find>jobDetails</find>
+      <find>btn-primary</find>
+      <find>JobDetails</find>
+      <find>mineResume</find>
+      <find>where</find>
+      <find>releaseMyPosition</find>
+      <find>MyProject</find>
+      <find>dele</find>
+      <find>IS_PO</find>
+      <find>city</find>
+      <find>ReleaseProfessional</find>
+      <find>$where</find>
+      <find>获取城市</find>
+      <find>file</find>
+      <find>projectsProfessionals</find>
+      <find>ProfessionalDetails</find>
     </findStrings>
-    <replaceStrings>
-      <replace />
-    </replaceStrings>
-    <dirStrings>
-      <dir>D:\project\mayun_web_newworld\Public</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -257,71 +148,39 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-<<<<<<< HEAD
-=======
-        <option value="$PROJECT_DIR$/World/Index/View/Index/listOfDonations.html" />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-        <option value="$PROJECT_DIR$/World/Index/View/Jobs/groupDetails.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Jobs/groupDetailsRelease.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Jobs/jobDetails.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Jobs/jobList.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Jobs/moreMembers.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Jobs/postSharing.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Jobs/postVideoDetails.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Jobs/projectsProfessionals.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Jobs/questionAnswerDetails.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Jobs/releaseMyPosition.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Jobs/releasePosition.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Jobs/resourceDetails.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Jobs/stickSonDetails.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Jobs/videoFen.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Rnterst/postSharing.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Rnterst/questionAnswerDetails.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Rnterst/resourceDetails.html" />
-<<<<<<< HEAD
-=======
-        <option value="$PROJECT_DIR$/World/Index/View/Rnterst/stickSonDetails.html" />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-        <option value="$PROJECT_DIR$/World/Index/View/Rnterst/videoFen.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/User/acountSetting.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/User/feedback.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/User/myGroup.html" />
+        <option value="$PROJECT_DIR$/World/Index/View/User/FansList.html" />
         <option value="$PROJECT_DIR$/World/Index/View/User/myMessage.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/User/myPosts.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/User/personalCenter.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/User/resumeDetails.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/User/virtualCurrencyRecharge.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/User/addressBook.html" />
+        <option value="$PROJECT_DIR$/World/Admin/View/Index/frame.html" />
+        <option value="$PROJECT_DIR$/World/Index/Model/ConcernsGroupModel.class.php" />
         <option value="$PROJECT_DIR$/World/Index/View/User/myFollowing.html" />
-        <option value="$PROJECT_DIR$/Public/Web/web/css/success_index.css" />
-        <option value="$PROJECT_DIR$/World/Index/Model/CrowdMemberModel.class.php" />
-        <option value="$PROJECT_DIR$/World/Index/View/Index/honoraryEdition.html" />
+        <option value="$PROJECT_DIR$/World/Index/View/User/personalCenter.html" />
         <option value="$PROJECT_DIR$/World/Index/Model/FriendsModel.class.php" />
-        <option value="$PROJECT_DIR$/Public/Web/web/js/Added.js" />
-        <option value="$PROJECT_DIR$/World/Index/View/Rnterst/moreMembers.html" />
-        <option value="$PROJECT_DIR$/Public/Web/web/js/changeimg.js" />
-        <option value="$PROJECT_DIR$/World/Index/View/Academic/createAcademic.html" />
-        <option value="$PROJECT_DIR$/ThinkPHP/Library/Think/Upload.class.php" />
-        <option value="$PROJECT_DIR$/World/Index/Model/NoteVIModel.class.php" />
-        <option value="$PROJECT_DIR$/World/Index/View/Rnterst/postVideoDetails.html" />
-        <option value="$PROJECT_DIR$/World/Index/Model/QuestionVIModel.class.php" />
-        <option value="$PROJECT_DIR$/World/Index/Model/ResourceVIModel.class.php" />
-        <option value="$PROJECT_DIR$/World/Index/View/Rnterst/groupDetailsRelease.html" />
-        <option value="$PROJECT_DIR$/World/Index/Model/NoteModel.class.php" />
-        <option value="$PROJECT_DIR$/World/Index/View/SignUp/register.html" />
-        <option value="$PROJECT_DIR$/World/Index/Model/QuestionModel.class.php" />
-        <option value="$PROJECT_DIR$/World/Index/Model/ResourceModel.class.php" />
-<<<<<<< HEAD
-        <option value="$PROJECT_DIR$/World/Index/View/Rnterst/interest.html" />
+        <option value="$PROJECT_DIR$/World/Index/View/User/addressBook.html" />
+        <option value="$PROJECT_DIR$/World/Index/Model/ResumeModel.class.php" />
+        <option value="$PROJECT_DIR$/World/Index/Model/SearchMarkModel.class.php" />
+        <option value="$PROJECT_DIR$/World/Index/View/User/createResume.html" />
+        <option value="$PROJECT_DIR$/World/Index/View/User/mineResume.html" />
+        <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/config.php" />
+        <option value="$PROJECT_DIR$/World/Common/Conf/config.php" />
+        <option value="$PROJECT_DIR$/World/Index/View/Jobs/jobList.html" />
+        <option value="$PROJECT_DIR$/World/Index/View/User/resumeDetails.html" />
         <option value="$PROJECT_DIR$/World/Index/Controller/AjaxController.class.php" />
-        <option value="$PROJECT_DIR$/World/Index/View/Rnterst/stickSonDetails.html" />
-        <option value="$PROJECT_DIR$/World/Index/View/Rnterst/groupDetails.html" />
-        <option value="$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php" />
-=======
-        <option value="$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php" />
-        <option value="$PROJECT_DIR$/World/Index/Controller/AjaxController.class.php" />
-        <option value="$PROJECT_DIR$/World/Index/View/Rnterst/groupDetails.html" />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
+        <option value="$PROJECT_DIR$/World/Index/Model/ResumeDeliveryModel.class.php" />
+        <option value="$PROJECT_DIR$/World/Index/Controller/UserController.class.php" />
+        <option value="$PROJECT_DIR$/World/Index/View/Jobs/jobDetails.html" />
+        <option value="$PROJECT_DIR$/World/Index/View/Jobs/releaseMyPosition.html" />
+        <option value="$PROJECT_DIR$/World/Common/Common/function.php" />
+        <option value="$PROJECT_DIR$/World/Index/Model/ItemModel.class.php" />
+        <option value="$PROJECT_DIR$/World/Index/View/Jobs/releaseProject.html" />
+        <option value="$PROJECT_DIR$/World/Index/View/Jobs/ProjectDetails.html" />
+        <option value="$PROJECT_DIR$/World/Index/View/Jobs/MyProject.html" />
+        <option value="$PROJECT_DIR$/World/Index/Model/ProfessionalModel.class.php" />
+        <option value="$PROJECT_DIR$/World/Index/View/Jobs/ReleaseProfessional.html" />
+        <option value="$PROJECT_DIR$/数据库设计/newworld.sql" />
+        <option value="$PROJECT_DIR$/World/Index/View/Jobs/projectsProfessionals.html" />
+        <option value="$PROJECT_DIR$/World/Index/Model/ProfessionalCommentModel.class.php" />
+        <option value="$PROJECT_DIR$/World/Index/Controller/JobsController.class.php" />
+        <option value="$PROJECT_DIR$/World/Index/View/Jobs/ProfessionalDetails.html" />
       </list>
     </option>
   </component>
@@ -331,39 +190,27 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-<<<<<<< HEAD
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
-    <option name="x" value="252" />
-    <option name="y" value="99" />
-    <option name="width" value="1610" />
-=======
   <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/Public/Admin/build/node_modules" />
     <handled-path value="$PROJECT_DIR$/Public/Admin/mustache/js/node_modules" />
     <handled-path value="$PROJECT_DIR$/Public/Web/node_modules" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-18" />
-    <option name="y" value="28" />
-    <option name="width" value="1931" />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-    <option name="height" value="913" />
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/Public/Admin/build/node_modules/argh/package.json" />
+      <path value="$PROJECT_DIR$/Public/Admin/mustache/js/package.json" />
+      <path value="$PROJECT_DIR$/Public/Web/js/lib/bootstrap/package.json" />
+      <path value="$PROJECT_DIR$/Public/Web/js/lib/layui/package.json" />
+      <path value="$PROJECT_DIR$/Public/Web/package.json" />
+    </packageJsonPaths>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1349" />
+    <option name="height" value="688" />
+  </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -372,124 +219,104 @@
         <subPane>
           <expand>
             <path>
-              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="newworld.hbbzy.me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newworld.hbbzy.me" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Public" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="newworld.hbbzy.me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newworld.hbbzy.me" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="newworld.hbbzy.me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newworld.hbbzy.me" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Common" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="newworld.hbbzy.me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newworld.hbbzy.me" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Common" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Common" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="newworld.hbbzy.me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newworld.hbbzy.me" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Index" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="newworld.hbbzy.me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newworld.hbbzy.me" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Index" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Conf" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="newworld.hbbzy.me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newworld.hbbzy.me" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Index" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="newworld.hbbzy.me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newworld.hbbzy.me" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Index" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Model" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="newworld.hbbzy.me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newworld.hbbzy.me" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Index" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="newworld.hbbzy.me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newworld.hbbzy.me" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Index" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
-<<<<<<< HEAD
-=======
-              <item name="Academic" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Jobs" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="newworld.hbbzy.me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newworld.hbbzy.me" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Index" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Index" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Index" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
               <item name="Public" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Index" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Rnterst" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Index" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="SignUp" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="mayun_web_newworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mayun_web_newworld" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="newworld.hbbzy.me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newworld.hbbzy.me" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="World" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Index" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="User" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="newworld.hbbzy.me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newworld.hbbzy.me" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="数据库设计" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../hbbzy.me" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\project\mayun_web_newworld\World\Index\Model" />
+      <recent name="E:\www\newworld.hbbzy.me\World\Index\Model" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -504,90 +331,56 @@
       </list>
     </option>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a9ce3527-1f80-4327-bfa4-07f13a0bfb6f" name="Default" comment="" />
-      <created>1528509684872</created>
+      <changelist id="9816259b-8685-4c64-b7b6-bdcedf5f031b" name="Default" comment="" />
+      <created>1529047645095</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1528509684872</updated>
-      <workItem from="1528509686902" duration="28149000" />
-      <workItem from="1528593027793" duration="29855000" />
-<<<<<<< HEAD
-      <workItem from="1528679488987" duration="6142000" />
-=======
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
+      <updated>1529047645095</updated>
+      <workItem from="1529047651984" duration="9695000" />
+      <workItem from="1529214589408" duration="8241000" />
+      <workItem from="1529370512845" duration="8811000" />
+      <workItem from="1529664570220" duration="9812000" />
+      <workItem from="1529741425339" duration="4038000" />
+      <workItem from="1529892001730" duration="23271000" />
+      <workItem from="1530066674381" duration="10741000" />
+      <workItem from="1530095781706" duration="6536000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-<<<<<<< HEAD
-    <option name="totallyTimeSpent" value="64146000" />
+    <option name="totallyTimeSpent" value="81145000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="252" y="99" width="1610" height="913" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22145545" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-=======
-    <option name="totallyTimeSpent" value="58004000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-18" y="28" width="1931" height="913" extended-state="0" />
-    <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20417754" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-=======
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-<<<<<<< HEAD
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-=======
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.505295" side_tool="true" visible="true" weight="0.3289256" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="File Transfer" order="10" sideWeight="0.494705" visible="true" weight="0.3289256" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7955665" visible="true" weight="0.295764" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="3" sideWeight="0.2044335" side_tool="true" visible="true" weight="0.295764" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Command Line Tools Console" order="11" sideWeight="0.49924356" visible="true" weight="0.3289256" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
-    <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20396453" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -595,588 +388,373 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/World/Index/View/Rnterst/createInterest.html</url>
-          <line>175</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/World/Index/View/Rnterst/createInterest.html</url>
-          <line>434</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-<<<<<<< HEAD
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/World/Index/Controller/AjaxController.class.php</url>
-          <line>2035</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="5" />
-=======
-      </breakpoints>
-      <option name="time" value="4" />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-    </breakpoint-manager>
-    <watches-manager />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Life/life.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/MessageModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-756">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="342">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Life/lifeProductDetails.html">
+    <entry file="file://$PROJECT_DIR$/数据库设计/newworld.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-540">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="456">
+          <caret line="24" column="41" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Life/lSecondHandMarket.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/View/User/FansList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-756">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="95">
+          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Life/mineProduct.html">
+    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Model.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-756">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="859">
+          <caret line="1643" column="25" selection-start-line="1643" selection-start-column="25" selection-end-line="1643" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Life/postProduct.html">
+    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Page.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-648">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/postSharing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="19" column="63" lean-forward="false" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/questionAnswerDetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="21" column="63" lean-forward="false" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/resourceDetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="21" column="63" lean-forward="false" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-=======
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/stickSonDetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="21" column="63" lean-forward="false" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/videoFen.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="19" column="63" lean-forward="false" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/User/myGroup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="20" column="67" lean-forward="false" selection-start-line="20" selection-start-column="67" selection-end-line="20" selection-end-column="67" />
+        <state relative-caret-position="183">
+          <caret line="57" column="42" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/World/Index/View/User/myMessage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="21" column="67" lean-forward="false" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="67" />
+        <state relative-caret-position="147">
+          <caret line="50" column="190" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="190" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/User/myPosts.html">
+    <entry file="file://$PROJECT_DIR$/World/Admin/View/Index/frame.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="21" column="67" lean-forward="false" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="67" />
+        <state relative-caret-position="148">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World/Index/View/Public/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World/Admin/Controller/IndexController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1691">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThinkPHP/Common/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="266" column="30" selection-start-line="266" selection-start-column="24" selection-end-line="266" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/ConcernsModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="18" column="52" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/MessageModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="18" column="52" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/FirendsModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-285" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/World/Index/View/User/personalCenter.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="24" column="63" lean-forward="false" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
+        <state relative-caret-position="1216">
+          <caret line="479" column="45" lean-forward="true" selection-start-line="479" selection-start-column="45" selection-end-line="479" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/User/resumeDetails.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/View/User/createResume.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="23" column="66" lean-forward="false" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
+        <state relative-caret-position="1140">
+          <caret line="281" column="21" lean-forward="true" selection-start-line="281" selection-start-column="21" selection-end-line="281" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/User/virtualCurrencyRecharge.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/ResumeModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="757">
-          <caret line="19" column="21" lean-forward="false" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/User/acountSetting.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="15" column="41" lean-forward="false" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/User/addressBook.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="160" column="31" lean-forward="false" selection-start-line="160" selection-start-column="31" selection-end-line="160" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/User/feedback.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1008">
-          <caret line="23" column="67" lean-forward="false" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
+        <state relative-caret-position="76">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/World/Index/View/User/myFollowing.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="201" column="31" lean-forward="false" selection-start-line="201" selection-start-column="31" selection-end-line="201" selection-end-column="31" />
+        <state relative-caret-position="874">
+          <caret line="232" column="62" selection-start-line="232" selection-start-column="39" selection-end-line="232" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/createInterest.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/ConcernsGroupModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6844">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#8666#15896#0" expanded="false" />
-            <element signature="e#11210#15888#0" expanded="false" />
-            <marker date="1528431546258" expanded="true" signature="17340:17359" ph="..." />
-          </folding>
+        <state relative-caret-position="133">
+          <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Web/web/js/index.js">
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/WorksCompanyTypeModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="247">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Web/web/css/success_index.css">
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/SearchMarkModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="3" column="24" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        <state>
+          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/Model/FriendsModel.class.php">
+    <entry file="file://$PROJECT_DIR$/World/Index/View/User/mineResume.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="9" column="42" lean-forward="false" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-          <folding />
+        <state relative-caret-position="242">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Web/web/js/StickSonDetails.js">
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/config.php" />
+    <entry file="file://$PROJECT_DIR$/World/Common/Conf/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Web/web/js/Added.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="8" column="4" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/moreMembers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="199" column="48" lean-forward="false" selection-start-line="199" selection-start-column="48" selection-end-line="199" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Web/web/js/changeimg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="58" column="54" lean-forward="false" selection-start-line="58" selection-start-column="54" selection-end-line="58" selection-end-column="54" />
+        <state relative-caret-position="228">
+          <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/World/Index/Model/WorksModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-<<<<<<< HEAD
-=======
-          <folding />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
+        <state relative-caret-position="171">
+          <caret line="16" column="29" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Common/Common/function.php">
+    <entry file="file://$PROJECT_DIR$/World/Index/Controller/CommonController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="11" column="5" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="152">
+          <caret line="53" column="19" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/User/FollowList.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/View/User/resumeDetails.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10298">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="174">
+          <caret line="292" lean-forward="true" selection-start-line="292" selection-end-line="292" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/Controller/UserController.class.php">
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/FriendsModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-72">
-          <caret line="159" column="2" lean-forward="true" selection-start-line="159" selection-start-column="2" selection-end-line="159" selection-end-column="2" />
-<<<<<<< HEAD
-=======
-          <folding />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
+        <state relative-caret-position="893">
+          <caret line="48" column="131" selection-start-line="48" selection-start-column="105" selection-end-line="48" selection-end-column="131" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Public/meta.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/ResumeDeliveryModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/Model/NoteVIModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
-<<<<<<< HEAD
-=======
-          <folding />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/Model/QuestionVIModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="9" column="46" lean-forward="false" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
-<<<<<<< HEAD
-=======
-          <folding />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
+        <state relative-caret-position="152">
+          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/World/Index/Model/ResourceVIModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="9" column="36" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-<<<<<<< HEAD
-=======
-          <folding />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
+        <state relative-caret-position="95">
+          <caret line="18" column="53" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/Model/CrowdMemberModel.class.php">
+    <entry file="file://$PROJECT_DIR$/World/Index/View/Jobs/releaseMyPosition.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="31" column="33" lean-forward="false" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="33" />
-          <folding />
+        <state relative-caret-position="1387">
+          <caret line="73" column="34" selection-start-line="73" selection-start-column="34" selection-end-line="73" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Upload.class.php">
+    <entry file="file://$PROJECT_DIR$/World/Common/Common/function.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="225" column="11" lean-forward="false" selection-start-line="225" selection-start-column="11" selection-end-line="225" selection-end-column="11" />
-          <folding />
+        <state relative-caret-position="242">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/groupDetailsRelease.html">
+    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Controller.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="106" column="51" lean-forward="false" selection-start-line="106" selection-start-column="51" selection-end-line="106" selection-end-column="51" />
-<<<<<<< HEAD
-=======
-          <folding />
+        <state relative-caret-position="126">
+          <caret line="197" column="23" selection-start-line="197" selection-start-column="23" selection-end-line="197" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Academic/createAcademic.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/ItemModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="49" column="113" lean-forward="false" selection-start-line="49" selection-start-column="82" selection-end-line="49" selection-end-column="113" />
-          <folding>
-            <marker date="1528533913665" expanded="true" signature="14733:14752" ph="..." />
-          </folding>
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
+        <state relative-caret-position="171">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World/Index/View/Jobs/jobDetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="107" column="101" lean-forward="true" selection-start-line="107" selection-start-column="101" selection-end-line="112" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World/Index/View/Jobs/releasePosition.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="379" column="18" lean-forward="true" selection-start-line="379" selection-start-column="18" selection-end-line="379" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/World/Index/View/Public/head.html">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="3852">
-=======
-        <state relative-caret-position="216">
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-          <caret line="107" column="178" lean-forward="false" selection-start-line="107" selection-start-column="42" selection-end-line="107" selection-end-column="178" />
-          <folding />
+        <state relative-caret-position="114">
+          <caret line="107" column="178" selection-start-line="107" selection-start-column="42" selection-end-line="107" selection-end-column="178" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/postVideoDetails.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/View/Jobs/jobList.html">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="1008">
-=======
-        <state relative-caret-position="-1344">
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-          <folding />
+        <state relative-caret-position="-1351">
+          <caret line="49" column="119" selection-start-line="49" selection-start-column="111" selection-end-line="49" selection-end-column="119" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Index/honoraryEdition.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/FirstMarkModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="936">
-          <caret line="138" column="48" lean-forward="false" selection-start-line="138" selection-start-column="26" selection-end-line="138" selection-end-column="48" />
-<<<<<<< HEAD
-=======
+        <state relative-caret-position="-114" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World/Index/Controller/UserController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="583" column="9" selection-start-line="572" selection-start-column="8" selection-end-line="583" selection-end-column="9" />
           <folding>
-            <marker date="1528525691131" expanded="true" signature="10554:10560" ph=" " />
-            <marker date="1528525691131" expanded="true" signature="10560:10566" ph=" " />
+            <element signature="e#34#64#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/interest.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/View/Jobs/releaseProject.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="77" column="51" lean-forward="false" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
+        <state relative-caret-position="209">
+          <caret line="80" column="77" lean-forward="true" selection-start-line="80" selection-start-column="77" selection-end-line="83" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/数据库设计/newworld.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="184" column="382" selection-start-line="184" selection-start-column="382" selection-end-line="184" selection-end-column="382" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World/Index/View/Jobs/ReleaseProfessional.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="23" column="74" selection-start-line="23" selection-start-column="74" selection-end-line="23" selection-end-column="74" />
           <folding>
-            <element signature="e#9186#9604#0" expanded="false" />
-            <element signature="e#9638#12392#0" expanded="false" />
-            <element signature="e#12427#14873#0" expanded="false" />
-            <element signature="e#14904#15164#0" expanded="false" />
-            <marker date="1528599804726" expanded="true" signature="17702:17708" ph=" " />
-            <marker date="1528599804726" expanded="true" signature="17708:17714" ph=" " />
+            <element signature="n#style#0;n#label#0;n#div#10;n#div#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/SignUp/register.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/ProfessionalModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="39" column="103" lean-forward="false" selection-start-line="39" selection-start-column="103" selection-end-line="39" selection-end-column="103" />
-<<<<<<< HEAD
-=======
-          <folding>
-            <element signature="n#style#0;n#input#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/Model/QuestionModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/Model/ResourceModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/Model/NoteModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="18" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Academic/createAcademic.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="49" column="113" lean-forward="false" selection-start-line="49" selection-start-column="82" selection-end-line="49" selection-end-column="113" />
-          <folding>
-            <marker date="1528533913665" expanded="true" signature="14733:14752" ph="..." />
-          </folding>
+        <state relative-caret-position="171">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/World/Index/Controller/AjaxController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="1695" column="38" lean-forward="false" selection-start-line="1695" selection-start-column="38" selection-end-line="1695" selection-end-column="38" />
-=======
-    <entry file="file://$PROJECT_DIR$/World/Index/Controller/AjaxController.class.php">
+        <state relative-caret-position="185">
+          <caret line="2072" column="66" lean-forward="true" selection-start-line="2072" selection-start-column="66" selection-end-line="2072" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World/Index/View/Jobs/projectsProfessionals.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="724">
-          <caret line="2035" column="96" lean-forward="false" selection-start-line="2035" selection-start-column="96" selection-end-line="2035" selection-end-column="96" />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
+        <state relative-caret-position="-1539">
+          <caret line="193" column="164" selection-start-line="193" selection-start-column="50" selection-end-line="193" selection-end-column="164" />
           <folding>
-            <element signature="e#17107#18754#0#PHP" expanded="false" />
-            <element signature="e#18773#20674#0#PHP" expanded="false" />
-            <element signature="e#20787#22915#0#PHP" expanded="false" />
-            <element signature="e#22934#26315#0#PHP" expanded="false" />
-            <element signature="e#26334#26653#0#PHP" expanded="false" />
-            <element signature="e#26670#28059#0#PHP" expanded="false" />
-            <element signature="e#28162#29923#0#PHP" expanded="false" />
-            <element signature="e#29946#30962#0#PHP" expanded="false" />
-            <element signature="e#30984#31985#0#PHP" expanded="false" />
-            <element signature="e#32002#32713#0#PHP" expanded="false" />
-            <element signature="e#32730#33370#0#PHP" expanded="false" />
-            <element signature="e#33388#36403#0#PHP" expanded="false" />
-            <element signature="e#36421#39436#0#PHP" expanded="false" />
-            <element signature="e#39454#41745#0#PHP" expanded="false" />
-            <element signature="e#41762#45989#0#PHP" expanded="false" />
-            <element signature="e#46006#47887#0#PHP" expanded="false" />
-            <element signature="e#47904#52721#0#PHP" expanded="false" />
-            <element signature="e#52738#53651#0#PHP" expanded="false" />
-            <element signature="e#53668#56864#0#PHP" expanded="false" />
-            <element signature="e#56881#59527#0#PHP" expanded="false" />
-            <element signature="e#59545#61633#0#PHP" expanded="false" />
-<<<<<<< HEAD
-            <element signature="e#61650#65470#0#PHP" expanded="false" />
-            <element signature="e#65487#69326#0#PHP" expanded="false" />
-            <element signature="e#69343#73433#0#PHP" expanded="false" />
-            <element signature="e#73451#74516#0#PHP" expanded="false" />
-            <element signature="e#74534#75676#0#PHP" expanded="false" />
-            <element signature="e#75694#76837#0#PHP" expanded="false" />
-            <element signature="e#76855#78397#0#PHP" expanded="false" />
+            <element signature="n#style#0;n#img#0;n#p#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#5;n#a#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/interest.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/View/Jobs/ProjectDetails.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2573">
-          <caret line="484" column="0" lean-forward="false" selection-start-line="484" selection-start-column="0" selection-end-line="484" selection-end-column="0" />
-          <folding>
-            <element signature="e#9186#9604#0" expanded="false" />
-            <element signature="e#9638#12392#0" expanded="false" />
-            <element signature="e#12427#14873#0" expanded="false" />
-            <element signature="e#14904#15164#0" expanded="false" />
-            <marker date="1528680217652" expanded="true" signature="17702:17708" ph=" " />
-            <marker date="1528680217652" expanded="true" signature="17708:17714" ph=" " />
-=======
-            <element signature="e#61650#65089#0#PHP" expanded="false" />
-            <element signature="e#65106#68945#0#PHP" expanded="false" />
-            <element signature="e#68962#73052#0#PHP" expanded="false" />
-            <element signature="e#73070#73979#0#PHP" expanded="false" />
-            <element signature="e#73997#74972#0#PHP" expanded="false" />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-          </folding>
+        <state relative-caret-position="-252">
+          <caret line="77" column="26" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/stickSonDetails.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/View/User/addressBook.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="27" column="27" lean-forward="false" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
-=======
-    <entry file="file://$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1512">
-          <caret line="107" column="42" lean-forward="false" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="42" />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
-          <folding />
+        <state relative-caret-position="19">
+          <caret line="153" column="67" selection-start-line="153" selection-start-column="67" selection-end-line="167" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/View/Rnterst/groupDetails.html">
+    <entry file="file://$PROJECT_DIR$/World/Index/View/Jobs/MyProject.html">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="450">
-          <caret line="85" column="91" lean-forward="false" selection-start-line="85" selection-start-column="91" selection-end-line="85" selection-end-column="91" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#14011#14017#0" expanded="true" />
-            <element signature="e#14017#14023#0" expanded="true" />
-            <element signature="e#14546#14552#0" expanded="true" />
-            <element signature="e#14552#14558#0" expanded="true" />
-            <element signature="e#17808#17814#0" expanded="true" />
-            <element signature="e#18425#19101#0" expanded="false" />
-            <element signature="e#19129#20920#0" expanded="false" />
-            <element signature="e#21456#21482#0" expanded="false" />
-            <element signature="e#21517#23447#0" expanded="false" />
-            <element signature="e#23470#23818#0" expanded="false" />
-            <element signature="e#23868#27734#0" expanded="false" />
-            <element signature="e#27792#31773#0" expanded="false" />
-            <element signature="e#31827#35818#0" expanded="false" />
-            <marker date="1528684884662" expanded="true" signature="28542:28564" ph="..." />
-            <marker date="1528684884662" expanded="true" signature="29136:29158" ph="..." />
-            <marker date="1528684884662" expanded="true" signature="32577:32599" ph="..." />
-            <marker date="1528684884662" expanded="true" signature="33171:33193" ph="..." />
-          </folding>
+        <state relative-caret-position="76">
+          <caret line="196" column="67" lean-forward="true" selection-start-line="196" selection-start-column="67" selection-end-line="207" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/World/Index/Controller/RnterstController.class.php">
+    <entry file="file://$PROJECT_DIR$/World/Index/Model/ProfessionalCommentModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="160" column="8" lean-forward="false" selection-start-line="160" selection-start-column="8" selection-end-line="160" selection-end-column="8" />
+        <state relative-caret-position="152">
+          <caret line="9" column="57" lean-forward="true" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World/Index/Controller/JobsController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="825" column="71" selection-start-line="825" selection-start-column="71" selection-end-line="825" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World/Index/View/Jobs/ProfessionalDetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="136" column="49" selection-start-line="136" selection-start-column="49" selection-end-line="136" selection-end-column="49" />
           <folding>
-            <element signature="e#400#1517#0#PHP" expanded="false" />
-            <element signature="e#1548#2404#0#PHP" expanded="false" />
-            <element signature="e#2435#5889#0#PHP" expanded="false" />
-=======
-        <state relative-caret-position="576">
-          <caret line="681" column="64" lean-forward="false" selection-start-line="681" selection-start-column="64" selection-end-line="681" selection-end-column="64" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#18329#18762#0" expanded="false" />
-            <element signature="e#21710#25576#0" expanded="false" />
-            <element signature="e#25634#29653#0" expanded="false" />
-            <marker date="1528629722399" expanded="true" signature="22456:22478" ph="..." />
-            <marker date="1528629722399" expanded="true" signature="23050:23072" ph="..." />
-            <marker date="1528629722399" expanded="true" signature="26384:26406" ph="..." />
-            <marker date="1528629722399" expanded="true" signature="26978:27000" ph="..." />
-            <marker date="1528629722399" expanded="true" signature="31883:31905" ph="..." />
-            <marker date="1528629722399" expanded="true" signature="32477:32499" ph="..." />
->>>>>>> 21c33e392f938a0ad2a1a51b330765093114a198
+            <element signature="e#5317#5323#0" expanded="true" />
+            <element signature="e#5323#5329#0" expanded="true" />
+            <element signature="e#7048#7054#0" expanded="true" />
+            <element signature="e#7054#7060#0" expanded="true" />
+            <element signature="e#7061#7067#0" expanded="true" />
+            <element signature="e#7067#7073#0" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#form#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#10880#10886#0" expanded="true" />
           </folding>
         </state>
       </provider>

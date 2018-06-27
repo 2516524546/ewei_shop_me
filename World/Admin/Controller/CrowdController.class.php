@@ -6,6 +6,7 @@ use Index\Model\CrowdMemberModel;
 use Index\Model\CrowdModel;
 use Index\Model\FirstMarkModel;
 use Index\Model\FourthMarkModel;
+use Index\Model\MessageModel;
 use Index\Model\NoteModel;
 use Index\Model\SecondMarkModel;
 use Index\Model\ThirdMarkModel;
@@ -57,6 +58,11 @@ class CrowdController extends CommonController {
                 $crowdname = $_SESSION['crowd_list_crowdname'];
                 $peoplename = $_SESSION['crowd_list_peoplename'];
                 $peoplephone = $_SESSION['crowd_list_peoplephone'];
+            }else{
+                $_SESSION['crowd_list_where'] = '';
+                $_SESSION['crowd_list_crowdname'] = '';
+                $_SESSION['crowd_list_peoplename'] = '';
+                $_SESSION['crowd_list_peoplephone'] = '';
             }
         }
 
@@ -174,7 +180,7 @@ class CrowdController extends CommonController {
                 $upload2->maxSize = 3072000;
                 $upload2->exts = array('jpg', 'gif', 'png', 'jpeg');
                 $upload2->rootPath = './Uploads/';
-                $info2 = $upload2->uploadOne($file1);
+                $info2 = $upload2->uploadOne($file2);
                 if(!$info2) {
                     die(json_encode(array('str' => 0,'msg'=>$upload2->getError())));
                 }else{
@@ -230,6 +236,10 @@ class CrowdController extends CommonController {
                 $uname = $_SESSION['member_list_uname'];
                 $umail = $_SESSION['member_list_umail'];
 
+            }else{
+                $_SESSION['member_list_where'] = '';
+                $_SESSION['member_list_uname'] = '';
+                $_SESSION['member_list_umail'] = '';
             }
         }
 
@@ -307,5 +317,201 @@ class CrowdController extends CommonController {
         $this->display();
     }
 
+    //查看成员
+    public function member_edit(){
+
+        $membermodel = new CrowdMemberModel();
+        $memberone = $membermodel->findonejoin('crowd_member_id = '.$_GET['mid'],'u_user u on u_crowd_member.crowd_member_uid = u.user_id');
+
+        $this->assign(array(
+            'memberone' => $memberone,
+
+        ));
+        $this->display();
+    }
+
+    //群成员编辑ajax
+    public function member_ajax_edit(){
+        if (IS_POST) {
+
+            $userdata = array(
+                'user_name' => $_POST['name'],
+                'user_mail' => $_POST['mail'],
+                'user_sex' => $_POST['sex'],
+                'user_birth' => $_POST['birth'],
+                'user_havecoin' => $_POST['coin'],
+                'user_signature' => $_POST['signature'],
+            );
+
+            $file1 = $_FILES['icon'];
+            if($file1){
+                $upload1 = new \Think\Upload();
+                $upload1->maxSize = 3072000;
+                $upload1->exts = array('jpg', 'gif', 'png', 'jpeg');
+                $upload1->rootPath = './Uploads/';
+                $info1 = $upload1->uploadOne($file1);
+                if(!$info1) {
+                    die(json_encode(array('str' => 0,'msg'=>$upload1->getError())));
+                }else{
+                    $userdata['user_icon'] = $info1['savepath'].$info1['savename'];
+                }
+            }
+
+
+            $usermodel = new UserModel();
+            $userres = $usermodel->updataone('user_id = '.$_POST['uid'],$userdata);
+            if ($userres){
+                die(json_encode(array('str' => 1, 'msg' => L('Crowd_crowd_detail_yes'))));
+            }else{
+                die(json_encode(array('str' => 0, 'msg' => L('Crowd_crowd_detail_no'))));
+            }
+
+        } else {
+
+            die(json_encode(array('str' => 0, 'msg' => L('newworld_ajax_havenoing'))));
+        }
+
+    }
+
+    //群信息列表
+    public function message_list(){
+
+        $messagemodel = new MessageModel();
+
+        $messagecount = $messagemodel->joinfind('message_type = 2 and message_cid = '.$_GET['cid'],'u_user u on u_message.message_uid = u.user_id','','INNER','count(*) num')['num'];
+
+        $Page = new \Think\Page($messagecount,$this->pagenum);
+        $Page->setConfig('prev', '上一页');
+        $Page->setConfig('next', '下一页');
+        $Page->setConfig('theme', '%HEADER% %FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%');
+        $show = $Page->show();
+
+        $messagelist = $messagemodel->joinlist('message_type = 2 and message_cid = '.$_GET['cid'],'u_user u on u_message.message_uid = u.user_id','message_sendtime desc,message_delivertime desc,message_id desc',$Page->firstRow,$Page->listRows);
+
+        $this->assign(array(
+            'page' => $show,
+            'messagelist' => $messagelist,
+            'cid' => $_GET['cid'],
+
+        ));
+        $this->display();
+    }
+
+    //群信息发布页面
+    public function message_set(){
+
+        $membermodel = new CrowdMemberModel();
+        $memberlist = $membermodel->findlist('crowd_member_cid = '.$_GET['cid'],'u_user u on u_crowd_member.crowd_member_uid = u.user_id','INNER','crowd_member_status desc,crowd_member_logintime desc');
+
+        $this->assign(array(
+            'memberlist' => $memberlist,
+            'cid' => $_GET['cid'],
+
+        ));
+
+        $this->display();
+    }
+
+    //发布群信息
+    public function message_ajax_set(){
+
+        if (IS_POST) {
+
+            $messagemodel = new MessageModel();
+
+            if ($_POST['type']==1){
+
+                $uids = $_POST['uid'];
+                $uidlist = explode(',',$uids);
+                $messagemodel->startTrans();
+                try {
+
+                    foreach ($uidlist as $uid) {
+
+                        $messagedata = array();
+                        $messagedata['message_title'] = $_POST['title'];
+                        $messagedata['message_content'] = $_POST['content'];
+                        $messagedata['message_sendtime'] = date("Y-m-d H:i:s", time());
+                        $messagedata['message_delivertime'] = date("Y-m-d H:i:s", time());
+                        $messagedata['message_uid'] = $uid;
+                        $messagedata['message_cid'] = $_POST['cid'];
+                        $messagedata['message_type'] = 2;
+                        $messagemodel->add($messagedata);
+                    }
+                    $messagemodel->commit();
+                    die(json_encode(array('str' => 1,'msg'=>L('Crowd_message_set_yes'))));
+                }catch (Exception $e){
+                    $messagemodel->rollback();
+                    die(json_encode(array('str' => 0,'msg'=>L('Crowd_message_set_no'))));
+                }
+            }else{
+                $membermodel = new CrowdMemberModel();
+                $memberlist = $membermodel->findlist('crowd_member_cid = '.$_POST['cid'],'u_user u on u_crowd_member.crowd_member_uid = u.user_id','INNER','crowd_member_status desc,crowd_member_logintime desc');
+                $messagemodel->startTrans();
+                try {
+
+                    foreach ($memberlist as $member) {
+                        $messagedata = array();
+                        $messagedata['message_title'] = $_POST['title'];
+                        $messagedata['message_content'] = $_POST['content'];
+                        $messagedata['message_sendtime'] = date("Y-m-d H:i:s", time());
+                        $messagedata['message_delivertime'] = date("Y-m-d H:i:s", time());
+                        $messagedata['message_uid'] = $member['crowd_member_uid'];
+                        $messagedata['message_cid'] = $_POST['cid'];
+                        $messagedata['message_type'] = 2;
+                        $messagemodel->add($messagedata);
+
+                    }
+                    $messagemodel->commit();
+                    die(json_encode(array('str' => 1,'msg'=>L('Crowd_message_set_yes'))));
+                }catch (Exception $e){
+                    $messagemodel->rollback();
+                    die(json_encode(array('str' => 0,'msg'=>L('Crowd_message_set_no'))));
+                }
+            }
+
+        } else {
+
+            die(json_encode(array('str' => 0, 'msg' => L('newworld_ajax_havenoing'))));
+        }
+
+    }
+
+    //信息详情
+    public function message_detail(){
+
+        $messagemodel = new MessageModel();
+        $messageone = $messagemodel->joinfind('message_id = '.$_GET['mid'],'u_user u on u_message.message_uid = u.user_id');
+
+        $this->assign(array(
+            'messageone' => $messageone,
+            'cid' => $_GET['cid'],
+
+        ));
+        $this->display();
+    }
+
+    //信息删除
+    public function ajax_messagedel(){
+        if (IS_POST) {
+
+            $mid = $_POST['mid'];
+
+            $messagemodel = new MessageModel();
+
+            $res = $messagemodel->where('message_id = ' . $mid)->delete();
+            if ($res) {
+
+                die(json_encode(array('str' => 1, 'msg' => L('Crowd_member_list_delyes'))));
+            } else {
+
+                die(json_encode(array('str' => 2, 'msg' => L('Crowd_member_list_delno'))));
+            }
+
+        } else {
+
+            die(json_encode(array('str' => 0, 'msg' => L('newworld_ajax_havenoing'))));
+        }
+    }
 	
 }

@@ -149,14 +149,14 @@
 									<td>{$crowd['user_name']}</td>
 									<td><img style="width:50px;height:50px;" src="./Uploads/{$crowd['user_icon']}"></td>
 									<td>{$crowd['user_mail']}</td>
-									<td>{$crowd['crowd_type']}</td>
+									<td><if condition='$crowd["crowd_type"] == 1'>{:L('Crowd_crowd_detail_typeone')}<else />{:L('Crowd_crowd_detail_typetwo')}</if></td>
 									<td>{$crowd['crowd_intro']}</td>
 									<td>{$crowd['crowd_creattime']}</td>
 									<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
 												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/crowd_detail')}&cid={$crowd['crowd_id']}">{:L('Crowd_crowd_list_edit')}</a>
 												<a class="btn btn-xs btn-success" onclick="del({$crowd['crowd_id']})">{:L('Crowd_crowd_list_del')}</a>
-												<a class="btn btn-xs btn-success" onclick="">{:L('Crowd_crowd_list_message')}</a>
+												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/message_list')}&cid={$crowd['crowd_id']}">{:L('Crowd_crowd_list_message')}</a>
 												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/member_list')}&cid={$crowd['crowd_id']}">{:L('Crowd_crowd_list_member')}</a>
 											</div>
 									</td>

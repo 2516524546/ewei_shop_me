@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/EditResource.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/changeimg.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/loading.css">   
 </head>
 
 <body>
@@ -166,7 +167,12 @@
             </div>
         </div>
     </form>
-    
+    <!-- loading -->
+    <div class="loading_box">
+        <div class="loading_gif">
+            <img src="__PUBLIC__/Web/web/img/timg3.gif" alt="">
+        </div>
+    </div>
     <!-- foot start 底部信息 -->
     <footer>
         <include file = "./World/Index/View/Public/footer.html"/>
@@ -236,7 +242,6 @@
 
             layui.use('form', function(){
                 var form = layui.form;
-
                 /*form.on('submit(demo1)', function(data){
 
 
@@ -429,15 +434,16 @@
                 });*/
 
                 form.on('submit(demo1)', function(data){
+                    $(".loading_box").css("display","block")
 
-
+                    var file_input = document.getElementById("file_input");
                     if (selectedValue ==1 ) {
                         var file_files = document.getElementById('file_input').files;
                         var file_obj = document.getElementById('formdata');
                         var fd = new FormData();
-                        for (var i = 0; i < file_files.length; i++){
-                            console.log(file_files[i])
-                            fd.append('img['+i+']',file_files[i])
+                        for (var i = 0; i < values.length; i++){
+                            console.log(values[i])
+                            fd.append('img['+i+']',values[i])
                         }
                         fd.append('name',$("#name").val())
                         fd.append('content',$("#postcontent").val())
@@ -467,6 +473,8 @@
                                     layer.msg(data.msg,{
                                             time:1500,
                                             icon:2,
+                                        },function(){
+                                            $(".loading_box").css("display","none") 
                                         }
                                     );
 
@@ -477,6 +485,8 @@
                                 layer.msg('请求失败!', {
                                         time: 1500,
                                         icon: 2,
+                                    },function(){
+                                        $(".loading_box").css("display","none") 
                                     }
                                 );
                             }
@@ -518,6 +528,8 @@
                                     layer.msg(data.msg,{
                                             time:1500,
                                             icon:2,
+                                        },function(){
+                                            $(".loading_box").css("display","none") 
                                         }
                                     );
 
@@ -528,6 +540,8 @@
                                 layer.msg('请求失败!', {
                                         time: 1500,
                                         icon: 2,
+                                    },function(){
+                                        $(".loading_box").css("display","none") 
                                     }
                                 );
                             }
@@ -570,6 +584,8 @@
                                         layer.msg(data.msg,{
                                                 time:1500,
                                                 icon:2,
+                                            },function(){
+                                                $(".loading_box").css("display","none") 
                                             }
                                         );
 
@@ -580,6 +596,8 @@
                                     layer.msg('请求失败!', {
                                             time: 1500,
                                             icon: 2,
+                                        },function(){
+                                            $(".loading_box").css("display","none") 
                                         }
                                     );
                                 }
@@ -636,7 +654,9 @@
                                                 layer.msg(data.msg,{
                                                         time:1500,
                                                         icon:2,
-                                                    }
+                                                    },function(){
+                                                        $(".loading_box").css("display","none") 
+                                                }
                                                 );
 
                                             }
@@ -646,6 +666,8 @@
                                             layer.msg('请求失败!', {
                                                     time: 1500,
                                                     icon: 2,
+                                                },function(){
+                                                        $(".loading_box").css("display","none") 
                                                 }
                                             );
                                         }
@@ -656,6 +678,8 @@
                                     layer.msg('请求失败!', {
                                             time: 1500,
                                             icon: 2,
+                                        },function(){
+                                            $(".loading_box").css("display","none") 
                                         }
                                     );
                                 }

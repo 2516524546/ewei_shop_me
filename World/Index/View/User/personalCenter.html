@@ -40,12 +40,12 @@
     <div class="personal_content">
         <!-- personal Center title -->
         <div class="personal_title">
-            <div class="title_back_img">
+            <div class="title_back_img" data-toggle="modal" data-target="#box2">
                 <if condition='$isme == 1'>
                 <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/paint.png" alt="">
                 </if>
             </div>
-            <div class="P_title_pic" data-toggle="modal" data-target="#box2">
+            <div class="P_title_pic">
                 <img src="<if condition='$userone["user_icon"]'>./Uploads/{$userone['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
             </div>
             <div class="P_title_name">
@@ -237,7 +237,7 @@
                     </div>
                     <div class="list_content">
                         <div class="list_content_title">
-                            Mailbox :
+                            E-mail :
                         </div>
                         <div class="list_content_details">
                             {$userone['user_mail']}
@@ -289,11 +289,12 @@
                         <div class="spinner" style="display: none">请上传图片</div>
                     </div>
                     <div class="action">
-                        <input type="file" accept="image/jpeg,image/png" id="file">
+                        <input type="file" accept="image/jpeg,image/png" id="file" style="width: 75%;">
                         <input type="button" id="btnZoomIn" value="+">
                         <input type="button" id="btnZoomOut" value="-">
                         <input type="button" id="btnCrop" value="Crop" data-dismiss="modal">
                     </div>
+                    <!-- style="display: none;" -->
                     <div class="cropped" style="display: none;">
                     </div>
                 </div>
@@ -666,7 +667,9 @@
                 $('.cropped').prepend(Cdiv);
                 $('#file').val("");
                 $('.imageBox').removeAttr("style");
-                var Userimg = $('.cropped_img').children('img')[0];
+                // var Userimg = $('.cropped_img').children('img')[0];
+                var Userimg =img
+                console.log(Userimg )
                 C_Userimg(Userimg)
             })
             $('#btnZoomIn').on('click', function(){
@@ -676,7 +679,9 @@
                 cropper.zoomOut();
             })
             function C_Userimg(img){
-                $('.personal_content .personal_title .P_title_pic').html(img)
+                // $('.personal_content .personal_title').html(img)
+                $('.personal_content .personal_title').css("background","url("+img+") no-repeat");
+                $('.personal_content .personal_title').css("background-size","100% 100%")
             }
             //$('.personal_content .personal_title .P_title_pic').children('img').remove()
         });

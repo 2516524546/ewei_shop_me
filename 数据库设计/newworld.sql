@@ -154,6 +154,7 @@ CREATE TABLE IF NOT EXISTS `u_resume_delivery`(
 	,PRIMARY KEY(`delivery_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='简历投递记录表';
 
+
 /*
 lyx
 2018.06.25 start
@@ -168,12 +169,35 @@ MODIFY COLUMN `commodity_status`  int(10) NOT NULL DEFAULT 1 COMMENT '状态，0
 
 ALTER TABLE `l_commodity`
 ADD COLUMN `commodity_views`  bigint(20) NOT NULL DEFAULT 0 COMMENT '浏览量' AFTER `commodity_fifthmark`;
+/*
+lyx
+2018.06.26 start
+*/
+
+ALTER TABLE `s_news`
+CHANGE COLUMN `new_for` `news_for`  smallint(1) NOT NULL DEFAULT 1 COMMENT '1为模块首页新闻，2为群新闻' AFTER `news_mid`,
+ADD COLUMN `news_crowdname`  varchar(255) NULL COMMENT '群名称' AFTER `news_mid`;
+
+ALTER TABLE `j_item`
+ADD COLUMN `item_city`  varchar(255) NOT NULL COMMENT '城市' AFTER `item_uid`,
+ADD COLUMN `item_school`  varchar(255) NOT NULL COMMENT '学校' AFTER `item_city`,
+ADD COLUMN `item_specialty`  varchar(255) NOT NULL COMMENT '专业' AFTER `item_school`;
+
+ALTER TABLE `u_message`
+MODIFY COLUMN `message_sid`  bigint(20) NULL DEFAULT 0 COMMENT '发送用户id，0为admin' AFTER `message_uid`,
+ADD COLUMN `message_cid`  bigint(20) NULL COMMENT '群id' AFTER `message_sid`;
+
+ALTER TABLE `u_message`
+MODIFY COLUMN `message_title`  varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '信息标题' AFTER `message_id`;
+
+ALTER TABLE `u_crowd`
+ADD COLUMN `crowd_posts`  int(10) NOT NULL DEFAULT 0 COMMENT '帖子数' AFTER `crowd_fourthmarks`;
 
 
 
 /*
 lyx
-2018.06.25 end
+2018.06.26 end
 */
 ALTER TABLE `j_item`
 ADD COLUMN `item_city`  varchar(255) NOT NULL COMMENT '城市' AFTER `item_uid`,

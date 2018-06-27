@@ -1,6 +1,8 @@
 <?php
 namespace Index\Controller;
+use Index\Model\AdvertisingModel;
 use Index\Model\DonationModel;
+use Index\Model\NewsModel;
 use Index\Model\ProposalTypeModel;
 use Index\Model\UserModel;
 
@@ -17,7 +19,7 @@ use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Rest\ApiContext;
 use Think\Controller;
 class IndexController extends CommonController {
-
+    public $modeleid = 1;
 	/*
 	{:L('newworld_home')}
 	 */
@@ -36,9 +38,18 @@ class IndexController extends CommonController {
         $donationlist = $this->array_set_float2($donationlist,'donation_money','/',100);
         $proposaltypelist = $proposaltypemodel->findsome('');
 
+        $now = date("Y-m-d H:i:s", time());
+        $newsmodel = new NewsModel();
+        $newslist = $newsmodel->findlist('news_static = 1 and news_for = 1 and news_mid = '.$this->modeleid.' and news_endtime > "'.$now.'"','news_sort desc');
+
+        $advertisingmodel = new AdvertisingModel();
+        $advertisinglist = $advertisingmodel->findlist('advertising_for = 1 and advertising_mid = '.$this->modeleid.' and advertising_finishtime > "'.$now.'"');
+
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
 
         $this->assign(array(
+            'newslist' => $newslist,
+            'advertisinglist' => $advertisinglist,
             'userid' => $this->userid,
             'usercontent' => $this->usercontent,
             'havemessage' => $this->havemessage,
@@ -120,7 +131,18 @@ class IndexController extends CommonController {
     	$this->display();
     }
 
+    //新闻详情
+    public function newsDetails(){
 
+        $newsmodel = new NewsModel();
+        $newsone = $newsmodel->findone('news_id = '.$_GET['nid']);
+
+        $this->assign(array(
+            'newsone' => $newsone,
+
+        ));
+        $this->display();
+    }
 
 
 }

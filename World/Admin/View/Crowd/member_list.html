@@ -75,6 +75,7 @@
 			<small> <a class="icon-double-angle-right" href="{:U('Admin/Crowd/crowd_list')}">
 				{:L('Crowd_crowd_list')}
 			</a>
+			</small>
 			<small> <i class="icon-double-angle-right"></i>
 				{:L('Crowd_member_list')}
 			</small>
@@ -146,7 +147,7 @@
 									<td>{$member['user_signature']}</td>
 									<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/crowd_detail')}&cid={$crowd['crowd_id']}">{:L('Crowd_member_list_edit')}</a>
+												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/member_edit')}&mid={$member['crowd_member_id']}">{:L('Crowd_member_list_edit')}</a>
 												<a class="btn btn-xs btn-success" onclick="del({$member['crowd_member_id']})">{:L('Crowd_member_list_del')}</a>
 												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/member_detail')}&mid={$member['crowd_member_id']}">{:L('Crowd_member_list_detail')}</a>
 

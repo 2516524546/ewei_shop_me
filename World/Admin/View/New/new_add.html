@@ -1,8 +1,8 @@
 <head>
     <meta charset="utf-8"/>
-    <title>象而是后台管理系统</title>
-    <meta name="keywords" content="象而是后台管理系统"/>
-    <meta name="description" content="象而是后台管理系统"/>
+    <title>{:L('newworld_admin')}</title>
+    <meta name="keywords" content="{:L('newworld_admin')}"/>
+    <meta name="description" content="{:L('newworld_admin')}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- basic styles -->
     <link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet"/>
@@ -54,7 +54,11 @@
         <h1>
             新闻管理
             <small><i class="icon-double-angle-right"></i>
-                新增新闻
+                <eq name="type" value="2">
+                    新增群新闻
+                    <else/>
+                    新增新闻
+                </eq>
             </small>
 
         </h1>
@@ -70,7 +74,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1">群ID</label>
                         <div class="col-sm-9">
-                            <input type="text" name="news_crowdid" value="" placeholder="" style="width:300px;"/></div>
+                            <input type="text" onkeyup="value=value.replace(/[^\d]/g,'') " ng-pattern="/[^a-zA-Z]/" name="news_crowdid" value="" placeholder="" style="width:300px;"/></div>
                     </div>
                     <else/>
                 </eq>
@@ -79,7 +83,7 @@
                     <div class="col-sm-9">
                         <input type="text" name="news_title" value="" placeholder="" style="width:300px;"/></div>
                 </div>
-
+                <input type="hidden" name="news_for" value="<?php echo $type;?>"/>
                 <div class="form-group" id="user-profile-3">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">图片</label>
                     <div class="col-sm-9">
@@ -151,6 +155,7 @@
                     </div>
                     <div class="col-sm-9 in-txt">
                         <input type="text" name="news_url" value="" placeholder="" style="width:300px;"/>
+                        <span>{:L('New_new_list_tip')}</span>
                     </div>
                     <div class="col-sm-6 editor hidden">
                         <textarea id="content" placeholder="" name="news_content"></textarea>
@@ -183,11 +188,11 @@
                 <div class="form-actions center">
                     <a class="btn btn-sm btn-success" id='tianjia'>
                         <i class="icon-edit bigger-110"></i>
-                        添加
+                        {:L('User_user_list_comfirm_add')}
                     </a>
                     <a class="btn btn-sm btn-warning" href="javascript:history.back(-1)" class="myButton">
                         <i class="icon-arrow-left icon-on-left bigger-110"></i>
-                        返回列表
+                        {:L('User_user_list_back_list')}
                     </a>
                 </div>
             </form>

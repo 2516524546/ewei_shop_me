@@ -33,30 +33,13 @@
     <!-- Carousel advertising start 轮播广告 -->
     <div class="layui-carousel Banner" id="test2">
         <div carousel-item="">
-            <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div>
-            <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div>
-            <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div><div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div>
-            <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div>
+            <foreach name="newslist" item="new" key="newkey">
+                <div class="Carousel_img">
+                    <a href="<if condition='$new["news_type"] == 1'>{:U('Index/Academic/crowdnews',array('nid'=>$new['news_id'],'cid'=>$cid))}<else />{$new['news_url']}</if>">
+                    <img src="./Uploads/{$new['news_img']}">
+                    </a>
+                </div>
+            </foreach>
         </div>
     </div>
     <!-- Carousel advertising end 轮播广告 -->
@@ -77,7 +60,7 @@
                     <div class="LatestContainer">
                         <div class="layui-tab">
                         	<div class="layui-row layui-col-space10">
-	                            <div class=" layui-col-md8 layui-col-space10 btnlist">
+	                            <div class=" layui-col-md12 layui-col-space10 btnlist">
 	                            	<ul class="layui-tab-title layui-col-space10">
 	                               		<li class="layui-this layui-btn layui-btn-radius layui-btn-xs layui-btn-normal layui-col-md4 btn_normal" onclick="settype(1)">Post</li>
 										<li class="layui-btn layui-btn-radius layui-btn-xs layui-btn-normal layui-col-md4 btn_normal"onclick="settype(2)">Q&A</li>
@@ -86,12 +69,12 @@
 										<li class="layui-btn layui-btn-radius layui-btn-xs layui-btn-normal layui-col-md6 btn_normal"onclick="settype(5)">Seeking Consulting services</li>
 	                            	</ul>
 	                            </div>
-		                        <div class="layui-input-block More layui-col-md2">
+		                        <!-- <div class="layui-input-block More layui-col-md2">
 		                            <select class="form-control" name="city" lay-verify="required">
 		                                <option value="">Time sorting</option>
 		                                <option value="0">1</option>
 		                            </select>
-		                        </div>
+		                        </div> -->
                         	</div>
                             <div class="layui-tab-content">
                                 <div class="layui-tab-item layui-show">
@@ -372,8 +355,15 @@
                 <div class="BannerContainer">
                     <h4 class="text-center FontColor">Advertising</h4>
                     <div class="Container1">
-                        <img src="__PUBLIC__/Web/web/img/01_shouye/pic2.png" class="img">
-                        <p class="text-center Font">University</p>
+                        <foreach name="advertisinglist" item="advertising" key="advertisingkey">
+
+                            <div class="Container1">
+                                <a href="{$advertising['advertising_url']}" style="text-decoration: none;display: block;">
+                                    <img src="./Uploads/{$advertising['advertising_img']}" class="img">
+                                    <p class="text-center Font">{$advertising['advertising_title']}</p>
+                                </a>
+                            </div>
+                        </foreach>
                     </div>
                 </div>
             </div>

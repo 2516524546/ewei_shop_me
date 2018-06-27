@@ -96,7 +96,7 @@
                                 <span class="mailbox-icon6"></span>
                             </label>
                             <div class="layui-input-block input-spacing">
-                                <input type="text" name="number" id="city" autocomplete="off" <if condition='$register_city'>value="{$register_city}"</if> placeholder="Enter the city" class="layui-input">
+                                <input type="text" name="number" id="city" autocomplete="off" lay-verify="required" <if condition='$register_city'>value="{$register_city}"</if> placeholder="Enter the city" class="layui-input">
                             </div>
                         </div>
 
@@ -106,7 +106,7 @@
                             </label>
                             <div class="layui-input-block input-spacing">
                                     <!-- <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the signature" class="layui-input"> -->
-                                    <textarea name="" id="signature" placeholder="Enter the signature" class="layui-textarea"><if condition='$register_signature'>{$register_signature}</if></textarea>
+                                    <textarea name="" id="signature" placeholder="Enter the signature" lay-verify="required" class="layui-textarea"><if condition='$register_signature'>{$register_signature}</if></textarea>
                             </div>
                         </div>
 

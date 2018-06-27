@@ -1,28 +1,34 @@
 
 
-var values=[];
-var file_input = document.getElementById("file_input");
-file_input.addEventListener("change",function(){
-	    for(let key in file_input.files){
-	         	//只遍历对象自身的属性，而不包含继承于原型链上的属性。  
-	        if (file_input.files.hasOwnProperty(key) === true){
-	            values.unshift(file_input.files[key]);   
-	        }  
-	    }
-	    // console.log(values)
-	})
+			var values=[];
+			var file_input = document.getElementById("file_input");
+			file_input.addEventListener("change",function(){
+				var type = file_input.files[0].type;
+				if(type.match(/image\/(png|jpe?g|gif|svg)(\?.*)?$/)!=null && type ==  type.match(/image\/(png|jpe?g|gif|svg)(\?.*)?$/)[0]){
+					var typeImg = type.match(/image\/(png|jpe?g|gif|svg)(\?.*)?$/)[0]
+				}
+				if(type.match(/video\/(swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb|mp4)(\?.*)?$/)!=null && type ==  type.match(/video\/(swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb|mp4)(\?.*)?$/)[0]){
+					var typeVideo = type.match(/video\/(swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb|mp4)(\?.*)?$/)[0];
+				}
+					for(let key in file_input.files){
+							//只遍历对象自身的属性，而不包含继承于原型链上的属性。 && file_input.files[0].type == ""
+						if (file_input.files.hasOwnProperty(key) === true && file_input.files[0].type == typeImg){
+							values.unshift(file_input.files[key]);   
+						}
+						if (file_input.files.hasOwnProperty(key) === true && file_input.files[0].type == typeVideo){
+							values.unshift(file_input.files[key]);
+						}  
+					}
+					// console.log(values)
+				})
 
 
 
 
-
-
-
-var result = document.getElementById("result");
+			var result = document.getElementById("result");
 			var input = document.getElementById("file_input");
 
 			// var values=[];   
-
 			function xmTanUploadImg(obj) {
 				var result = document.getElementById("result");
 				var file_input = document.getElementById("file_input");
@@ -41,7 +47,6 @@ var result = document.getElementById("result");
 					if(/image\/\w+/.test(file.type)) {
 						var reader = new FileReader();
 						reader.readAsDataURL(file);
-
 						//读取文件过程方法
 						reader.onerror = function(e) {
 							console.log("读取异常....");
@@ -52,8 +57,6 @@ var result = document.getElementById("result");
 							var ndiv = document.createElement("div"); //创建div节点 创建外部img-div
 							var Cdiv = document.createElement("div");//创建cover遮罩层
 							var Cspan = "<img src='./Public/Web/web/img/false.png'>"; //遮罩层框的内容文字
-							
-
 
 							ndiv.innerHTML = imgstr; //img-div框架的拼接
                             ndiv.className = "img-div";	//img-div的类名
@@ -61,7 +64,24 @@ var result = document.getElementById("result");
 							Cdiv.innerHTML = Cspan; // 遮罩层拼接
 							Cdiv.className = "covers"; //遮罩层的类名
 							ndiv.appendChild(Cdiv); //遮罩层拼接进去
-                            result.prepend(ndiv); //将拼接进去最前面
+							result.prepend(ndiv); //将拼接进去最前面
+							// console.log(values[values.length-1].type == values[values.length-1].type.match(/image\/(png|jpe?g|gif|svg)(\?.*)?$/)[0])
+							// if(values[values.length-1].type.match(/image\/(png|jpe?g|gif|svg)(\?.*)?$/)!= null && values[values.length-1].type == values[values.length-1].type.match(/image\/(png|jpe?g|gif|svg)(\?.*)?$/)[0]){
+							// 		ndiv.appendChild(Cdiv);
+							// 	}
+							if(values[values.length-1].type.match(/video\/(swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb|mp4)(\?.*)?$/)!=null&&values[values.length-1].type == values[values.length-1].type.match(/video\/(swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb|mp4)(\?.*)?$/)[0]){
+								$(".img-div").remove();
+								values.splice(values.length-1,1);
+								result.prepend(ndiv);
+							}else{
+								result.prepend(ndiv);
+							}
+							
+							// console.log(values[values.length-1].type.match(/video\/(swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb|mp4)(\?.*)?$/))
+							
+							// if(values[values.length-1].type.match(/image\/(png|jpe?g|gif|svg)(\?.*)?$/)!= null && values[values.length-1].type == values[values.length-1].type.match(/image\/(png|jpe?g|gif|svg)(\?.*)?$/)[0]){
+							// 	ndiv.appendChild(Cdiv);
+							// }
 							// *删除功能*/
 							// var num;
 							// $("#result").on('click',".img-div", function(event) {
@@ -69,16 +89,23 @@ var result = document.getElementById("result");
 							// 	num = $(this).index();
 							// 	// console.log(num)
 							// });
-							$(".covers").click(function() {
-								event.stopPropagation()
-								var _this = $(this);
-								$("#file_input").val("");
-								var num = $("#result .img-div .covers").index(this)
-								values.splice(num,1)
-								_this.parents(".img-div").remove();
-							});
-
+							
+							// $(".covers").click(function(event) {
+								// event.stopPropagation();
+								// var _this = $(this);
+								// $("#file_input").val("");
+								// var num = $(this).parents(".img-div").index(this)
+								// console.log($(this).parent(".img-div").index())
+								// console.log($(this).parents(".img-div").index())
+								// console.log($("#result").index($(".img-div")))
+								// console.log($("#result .img-div .covers").index())
+								// values.splice(0,1)
+								// _this.parents(".img-div").remove();
+								// console.log(values)
+							// });
+							
 						}
+						// reader.readAsDataURL(file)
 					} else if(/video\/\w+/.test(file.type)) {
 						console.log(file)
 						var video = $('#video').find('video');
@@ -132,13 +159,20 @@ var result = document.getElementById("result");
                         ndiv.appendChild(Cdiv);
 						//console.log([result])
 						$(".img-div").remove();
-                        result.prepend(ndiv);
+						console.log(values)
+						result.prepend(ndiv);
+						if(values.length>=2){
+							// console.log(values.length-1)
+							values.splice(-(values.length-1),values.length-1);
+						}
+						// values.splice(0,1);
 						 // *删除功能*/
-                        $(".covers").click(function() {
-							var _this = $(this);
-							$("#file_input").val("");
-                            _this.parents(".img-div").remove();
-						});
+                        // $(".covers").click(function() {
+						// 	var _this = $(this);
+						// 	$("#file_input").val("");
+						// 	_this.parents(".img-div").remove();
+						// 	console.log(values)
+						// });
 						$(".Play_video").click(function(){
 							$(".video_box").show();
 							$(".shadow_video").show();
@@ -154,7 +188,23 @@ var result = document.getElementById("result");
 						})
                     }
                     
-                    
                 }
-               
-            }
+			}
+			
+var num;
+$("#result").on("click",".img-div .covers",function(){
+	num = $(this).parent().index()
+	console.log(num)
+	var _this = $(this);
+	values.splice(num,1);
+	_this.parents(".img-div").remove();
+	console.log(values)
+})
+
+// $("#result .img-div .covers").on("click",function(e){
+// 	// e.stopPropagation();
+// 	console.log(1)
+// })
+// $("#result .img-div .covers").on("click",function(){
+// 	alert(1)
+// })

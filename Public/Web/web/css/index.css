@@ -283,7 +283,6 @@
 }
 .BannerContainer {
   margin-top: 10px;
-  width: 174px;
   border-radius: 4px;
   box-shadow: 2px 2px 14px #cecece;
 }
@@ -296,13 +295,25 @@
 }
 .BannerContainer .Container1 .Font {
   padding: 4px 6px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
 }
 .BannerContainer .Container1 .img {
-  width: 174px;
-  height: auto;
+  width: 100%;
+  height: 104px;
+}
+.BannerContainer .Container2 .img {
+  width: 100%;
+  height: 104px;
 }
 .BannerContainer .Container2 .Font {
   padding: 4px 6px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
 }
 .ProposalImg {
   width: 100%;

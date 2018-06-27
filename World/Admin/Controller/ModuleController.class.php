@@ -4,7 +4,7 @@ use Think\Controller;
 class ModuleController extends CommonController{
 
     public function module_list(){
-        $list=M("s_module")->select();
+        $list=M("s_module")->where("module_id !=1")->select();
         $this->assign("list",$list);
         $this->display();
     }

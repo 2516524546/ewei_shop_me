@@ -1,10 +1,13 @@
 <?php
 namespace Index\Controller;
+use Index\Model\AdvertisingModel;
 use Index\Model\CrowdConditionModel;
 use Index\Model\CrowdMemberModel;
 use Index\Model\CrowdModel;
 use Index\Model\CrowdTabModel;
 use Index\Model\FirstMarkModel;
+use Index\Model\ModuleModel;
+use Index\Model\NewsModel;
 use Index\Model\NoteCommentModel;
 use Index\Model\NoteModel;
 use Index\Model\NoteVIModel;
@@ -61,12 +64,38 @@ class JobsController extends CommonController {
         $crodlist = $crodmodel->findlist('crowd_mid = '.$this->modeleid.' and crowd_type = 1','u_user u on u_crowd.crowd_uid = u.user_id','INNER','crowd_creattime desc','u.user_name,u_crowd.*');
 
         $crowdcount = $crodmodel->findone('crowd_mid = '.$this->modeleid.' and crowd_type = 1','u_user u on u_crowd.crowd_uid = u.user_id','INNER','count(*) num')['num'];
+        $modulemodel = new ModuleModel();
+        $moduleone = $modulemodel->findone('module_id = '.$this->modeleid);
+
+        $now = date("Y-m-d H:i:s", time());
+        $newsmodel = new NewsModel();
+        $newslist = $newsmodel->findlist('news_static = 1 and news_for = 1 and news_mid = '.$this->modeleid.' and news_endtime > "'.$now.'"','news_sort desc');
+
+        $advertisingmodel = new AdvertisingModel();
+        $advertisinglist = $advertisingmodel->findlist('advertising_for = 1 and advertising_mid = '.$this->modeleid.' and advertising_finishtime > "'.$now.'"');
+
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
         $this->assign(array(
+            'newslist' => $newslist,
+            'moduleone' => $moduleone,
+            'advertisinglist' => $advertisinglist,
             'data1' =>$data1,
             'data2' =>$data2,
             'crodlist'=>$crodlist,
             'crowdcount' => $crowdcount,
+        ));
+        $this->display();
+    }
+
+    //新闻详情
+    public function newsDetails(){
+
+        $newsmodel = new NewsModel();
+        $newsone = $newsmodel->findone('news_id = '.$_GET['nid']);
+
+        $this->assign(array(
+            'newsone' => $newsone,
+
         ));
         $this->display();
     }
@@ -433,9 +462,24 @@ class JobsController extends CommonController {
 
         $resourcecount = $notemodel->joinone('note_cid = '.$_GET['cid'].' and note_ishide = 1 and note_type = 3','u_user u on u_note.note_uid = u.user_id','note_istop desc,note_iswally desc,note_createtime desc','INNER','count(*) num')['num'];
 
+        $now = date("Y-m-d H:i:s", time());
+
+        $newsmodel = new NewsModel();
+        $newslist = $newsmodel->findlist('news_static = 1 and news_for = 2 and news_mid = '.$this->modeleid.' and news_endtime > "'.$now.'" and news_crowdid = '.$_GET['cid'],'news_sort desc');
+        if (!$newslist){
+            $newslist = $newsmodel->findlist('news_static = 1 and news_for = 2 and news_mid = '.$this->modeleid.' and news_endtime > "'.$now.'" and news_crowdid = 0','news_sort desc');
+        }
+        $advertisingmodel = new AdvertisingModel();
+        $advertisinglist = $advertisingmodel->findlist('advertising_for = 2 and advertising_mid = '.$this->modeleid.' and advertising_finishtime > "'.$now.'" and advertising_crowdid = '.$_GET['cid']);
+        if (!$advertisinglist){
+            $advertisinglist = $advertisingmodel->findlist('advertising_for = 2 and advertising_mid = '.$this->modeleid.' and advertising_finishtime > "'.$now.'" and advertising_crowdid = 0');
+        }
+
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
 
         $this->assign(array(
+            'newslist' => $newslist,
+            'advertisinglist' => $advertisinglist,
             'crowone' => $crowdone,
             'conditionone' => $conditionone,
             'join_in' => $join_in,
@@ -452,6 +496,23 @@ class JobsController extends CommonController {
         ));
 
     	$this->display();
+    }
+
+    //新闻详情
+    public function crowdnews(){
+
+        $newsmodel = new NewsModel();
+        $newsone = $newsmodel->findone('news_id = '.$_GET['nid']);
+
+        $crowdmodel = new CrowdModel();
+        $crowdone = $crowdmodel->findone('crowd_id = '.$_GET['cid']);
+
+        $this->assign(array(
+            'newsone' => $newsone,
+            'cid' => $_GET['cid'],
+            'crowdone' => $crowdone,
+        ));
+        $this->display();
     }
 
     /*

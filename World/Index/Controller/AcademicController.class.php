@@ -1,9 +1,12 @@
 <?php
 namespace Index\Controller;
+use Index\Model\AdvertisingModel;
 use Index\Model\CrowdMemberModel;
 use Index\Model\CrowdModel;
 use Index\Model\CrowdTabModel;
 use Index\Model\FirstMarkModel;
+use Index\Model\ModuleModel;
+use Index\Model\NewsModel;
 use Index\Model\NoteCommentModel;
 use Index\Model\NoteModel;
 use Index\Model\NoteVIModel;
@@ -41,14 +44,40 @@ class AcademicController extends CommonController {
 
         $crowdcount = $crodmodel->findone('crowd_mid = '.$this->modeleid,'','','count(*) num')['num'];
 
+        $modulemodel = new ModuleModel();
+        $moduleone = $modulemodel->findone('module_id = '.$this->modeleid);
+
+        $now = date("Y-m-d H:i:s", time());
+        $newsmodel = new NewsModel();
+        $newslist = $newsmodel->findlist('news_static = 1 and news_for = 1 and news_mid = '.$this->modeleid.' and news_endtime > "'.$now.'"','news_sort desc');
+
+        $advertisingmodel = new AdvertisingModel();
+        $advertisinglist = $advertisingmodel->findlist('advertising_for = 1 and advertising_mid = '.$this->modeleid.' and advertising_finishtime > "'.$now.'"');
+
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
         $this->assign(array(
+            'newslist' => $newslist,
+            'moduleone' => $moduleone,
+            'advertisinglist' => $advertisinglist,
             'userid' => $this->userid,
             'usercontent' => $this->usercontent,
             'havemessage' => $this->havemessage,
             'data' =>$data,
             'crodlist'=>$crodlist,
             'crowdcount' => $crowdcount,
+        ));
+        $this->display();
+    }
+
+    //新闻详情
+    public function newsDetails(){
+
+        $newsmodel = new NewsModel();
+        $newsone = $newsmodel->findone('news_id = '.$_GET['nid']);
+
+        $this->assign(array(
+            'newsone' => $newsone,
+
         ));
         $this->display();
     }
@@ -172,9 +201,24 @@ class AcademicController extends CommonController {
 
         $needcount = $tutorneedmodel->joinone('tutorship_need_cid = '.$_GET['cid'].' and tutorship_need_ishide = 1','u_user u on u_tutorship_need.tutorship_need_uid = u.user_id','tutorship_need_istop desc,tutorship_need_iswally desc,tutorship_need_createtime desc','INNER','count(*) num')['num'];
 
+        $now = date("Y-m-d H:i:s", time());
+
+        $newsmodel = new NewsModel();
+        $newslist = $newsmodel->findlist('news_static = 1 and news_for = 2 and news_mid = '.$this->modeleid.' and news_endtime > "'.$now.'" and news_crowdid = '.$_GET['cid'],'news_sort desc');
+        if (!$newslist){
+            $newslist = $newsmodel->findlist('news_static = 1 and news_for = 2 and news_mid = '.$this->modeleid.' and news_endtime > "'.$now.'" and news_crowdid = 0','news_sort desc');
+        }
+
+        $advertisingmodel = new AdvertisingModel();
+        $advertisinglist = $advertisingmodel->findlist('advertising_for = 2 and advertising_mid = '.$this->modeleid.' and advertising_finishtime > "'.$now.'" and advertising_crowdid = '.$_GET['cid']);
+        if (!$advertisinglist){
+            $advertisinglist = $advertisingmodel->findlist('advertising_for = 2 and advertising_mid = '.$this->modeleid.' and advertising_finishtime > "'.$now.'" and advertising_crowdid = 0');
+        }
 
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
         $this->assign(array(
+            'newslist' => $newslist,
+            'advertisinglist' => $advertisinglist,
             'crowone' => $crowdone,
             'join_in' => $join_in,
             'adminlist' => $adminlist,
@@ -194,6 +238,24 @@ class AcademicController extends CommonController {
         ));
 
     	$this->display();
+    }
+
+
+    //新闻详情
+    public function crowdnews(){
+
+        $newsmodel = new NewsModel();
+        $newsone = $newsmodel->findone('news_id = '.$_GET['nid']);
+
+        $crowdmodel = new CrowdModel();
+        $crowdone = $crowdmodel->findone('crowd_id = '.$_GET['cid']);
+
+        $this->assign(array(
+            'newsone' => $newsone,
+            'cid' => $_GET['cid'],
+            'crowdone' => $crowdone,
+        ));
+        $this->display();
     }
 
     /*

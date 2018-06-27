@@ -1,0 +1,240 @@
+<head>
+		<meta charset="utf-8" />
+		<title>{:L('newworld_admin')}</title>
+		<meta name="keywords" content="{:L('newworld_admin')}" />
+		<meta name="description" content="{:L('newworld_admin')}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
+		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css" />
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+			<!--[if !IE]> -->
+
+		<script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+		
+		<!-- <![endif]-->
+		<!-- ace settings handler -->
+
+		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+		<script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+		<![endif]-->
+	<style type='text/css'>
+		.anniu{width:100%; height:40px; position:relative;margin-left: -26px;margin-bottom: -11px;margin-top: 11px;}
+		.anniu ul{width:auto; height:30px; border:1px solid #ccc; overflow:hidden; position:absolute; top:0; left:0; list-style:none; color:#333; box-sizing:border-box; font-size:13px; cursor: pointer;}
+		.anniu ul li.current{background:#2679b5; color:#fff;width:100px; height:30px; float:left; border-right:1px solid #ccc;  line-height:30px; text-align:center; box-sizing:border-box;}
+		.anniu ul li{width:100px; height:30px; float:left; border-right:1px solid #ccc;  line-height:30px; text-align:center; box-sizing:border-box;}
+	</style>
+	</head>
+	<body style='background:#fff;'>
+	<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">{:L('newworld_home')}</a>
+							</li>
+							<li class="active">{:L('newworld_console')}</li>
+						</ul><!-- .breadcrumb -->
+					</div>
+
+				
+				</div><!-- /.main-content -->
+	
+	
+<div class="page-content">
+	<div class="page-header">
+		<h1>
+			{:L('Message')}
+			<small> <i class="icon-double-angle-right"></i>
+				{:L('Message_message_list')}
+			</small>
+			 
+		</h1>
+
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			 <div class="row" style="padding-bottom: 10px;">
+							<div class="col-sm-12">
+								<div id="sample-table-2_filter">
+									<form class="form-horizontal" action="{:U('Admin/Crowd/member_list')}&cid={$cid}" method="POST" role="form" enctype="multipart/form-data">
+										<div class='anniu'>
+											<ul>
+												<li class="current" onclick="gosetlist()" >{:L('Message_message_list_setlist')}</li>
+												<li class="current" onclick="gosetone()" >{:L('Message_message_list_setone')}</li>
+
+											</ul>
+										</div>
+								
+									</form>
+
+								</div>
+							</div>
+						</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="table-responsive">
+						<table id="sample-table-1" class="table table-striped table-bordered table-hover" style="margin-bottom: 0px;font-size:13px;">
+							<thead>
+								<tr style=' font-size: 13px;'>
+
+									<th>{:L('Message_message_list_id')}</th>
+									<th>{:L('Message_message_list_title')}</th>
+									<th>{:L('Message_message_list_content')}</th>
+									<th>{:L('Message_message_list_sendtime')}</th>
+									<th>{:L('Message_message_list_delivertime')}</th>
+									<th>{:L('Message_message_list_icon')}</th>
+									<th>{:L('Message_message_list_name')}</th>
+									<th>{:L('Message_message_list_operation')}</th>
+
+								</tr>
+							</thead>
+
+							<tbody>
+							<foreach name="messagelist" item="message" key="messagekey">
+								<tr>
+
+									<td>{$message['message_id']}</td>
+									<td>{$message['message_title']}</td>
+									<td>{$message['message_content']}</td>
+									<td>{$message['message_sendtime']}</td>
+									<td>{$message['message_delivertime']}</td>
+									<td><img style="width:50px;height:50px;" src="./Uploads/{$message['user_icon']}"></td>
+									<td>{$message['user_name']}</td>
+									<td>
+											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+												<a class="btn btn-xs btn-success" onclick="del({$message['message_id']})">{:L('Message_message_list_del')}</a>
+
+											</div>
+									</td>
+								</tr>
+							</foreach>
+							</tbody>
+						</table>
+						<div class="dataTables_paginate paging_bootstrap" style="border-top: 1px solid #DDD;padding-top: 12px;padding-bottom: 12px;background-color: #eff3f8;border-bottom: 1px solid #DDD;">
+							<div style='margin-right:56px;'>
+							  <?php echo $page;?>
+							</div>
+						</div>
+					</div>
+					<!-- /.table-responsive -->
+				</div>
+				<!-- /span -->
+			</div>
+			<!-- /row -->
+			<div class="hr hr-18 dotted hr-double"></div>
+
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+	.btn-xs {
+		margin-right: 10px!important;
+	}
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+
+<script>
+
+	function del(mid) {
+
+        layer.msg("{:L('Message_message_list_if')}", {
+            time: 0 //不自动关闭
+            ,btn: ["{:L('Message_message_list_ok')}", "{:L('Message_message_no')}"]
+            ,yes: function(index){
+                layer.close(index);
+                $.ajax({
+                    type: "post",
+                    url: "{:U('Admin/Message/ajax_messagedel')}",
+                    data: {
+                        mid: mid,
+                    },
+                    dataType: "json",
+                    success: function (list) {
+
+                        if (list.str == 1){
+
+                            layer.msg(list.msg,{
+                                    time:1500,
+                                    icon:1,
+                                },function () {
+                                    location.reload()
+                                }
+                            );
+                        }else{
+
+                            layer.msg(list.msg,{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        layer.msg("{:L('Mark_mark_list_error')}",{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+
+                    }
+
+                })
+            }
+        });
+
+    }
+
+
+    function gosetlist() {
+        location.href = "{:U('Admin/Message/set_list')}"
+    }
+    function gosetone() {
+        location.href = "{:U('Admin/Message/set_one')}"
+    }
+
+</script>
