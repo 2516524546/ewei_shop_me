@@ -54,7 +54,10 @@ class AdvertisingController extends CommonController
                 echo $res;
             }
         }else{
-            $modules=M("s_module")->select();
+            if(I('type')==2){
+                $where="module_id !=1";
+            }
+            $modules=M("s_module")->where($where)->select();
             $this->assign('modules',$modules);
             $this->assign("type",I('type'));
             $this->display();
