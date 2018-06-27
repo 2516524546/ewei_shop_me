@@ -33,7 +33,7 @@
             <span class="crumbsTitle">Publish the project</span>
         </div>
     <!-- Forget the password form -->
-    <form class="layui-form layui-form-pane" action="">
+    <form class="layui-form layui-form-pane" action="{:U('Index/Jobs/releaseProject')}" method="post">
         <div class="PasswordContainer">
             <div class="StepContainer">
                 <div class="StepContainerOne">
@@ -50,9 +50,10 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <select name="city" lay-verify="required">
-                                <option value="">Choose a city</option>
-                                <option value="0">1</option>
+                            <select name="item_city" lay-verify="required">
+                                <foreach name="city" item="c">
+                                    <option value="{$c['second_mark_name']}">{$c['second_mark_name']}</option>
+                                </foreach>
                             </select>
                         </div>
                     </div>
@@ -63,9 +64,10 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <select name="city" lay-verify="required">
-                                <option value="">Choose industry</option>
-                                <option value="0">1</option>
+                            <select name="item_specialty" lay-verify="required">
+                                <foreach name="specialty" item="c">
+                                    <option value="{$c['second_mark_name']}">{$c['second_mark_name']}</option>
+                                </foreach>
                             </select>
                         </div>
                     </div>
@@ -76,9 +78,10 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <select name="city" lay-verify="required">
-                                <option value="">Choose a school</option>
-                                <option value="0">1</option>
+                            <select name="item_school" lay-verify="required">
+                                <foreach name="school" item="c">
+                                    <option value="{$c['second_mark_name']}">{$c['second_mark_name']}</option>
+                                </foreach>
                             </select>
                         </div>
                     </div>
@@ -89,7 +92,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the project name" class="layui-input">
+                            <input type="text" name="item_name" lay-verify="title" autocomplete="off" placeholder="Enter the project name" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -99,7 +102,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter your real name" class="layui-input">
+                            <input type="text" name="item_uname" lay-verify="title" autocomplete="off" placeholder="Enter your real name" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -109,7 +112,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder=" Enter the project’s introduction" class="layui-input">
+                            <input type="text" name="item_contact" lay-verify="title" autocomplete="off" placeholder=" Enter the contact information" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -119,7 +122,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the email" class="layui-input">
+                            <input type="text" name="item_mail" lay-verify="title" autocomplete="off" placeholder="Enter the email" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -129,7 +132,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the company" class="layui-input">
+                            <input type="text" name="item_company" lay-verify="title" autocomplete="off" placeholder="Enter the company" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item layui-form-text">
@@ -139,7 +142,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <textarea placeholder="Enter the project’s type" class="layui-textarea"></textarea>
+                            <textarea name="item_type" placeholder="Enter the project’s type" class="layui-textarea"></textarea>
                         </div>
                     </div>
                     <div class="layui-form-item layui-form-text">
@@ -149,7 +152,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <textarea placeholder="Enter the company information" class="layui-textarea"></textarea>
+                            <textarea name="item_content" placeholder="Enter the company information" class="layui-textarea"></textarea>
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -159,7 +162,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the project’s budget" class="layui-input">
+                            <input type="text" name="item_budget" lay-verify="title" autocomplete="off" placeholder="Enter the project’s budget" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -169,7 +172,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the duration of the project" class="layui-input">
+                            <input type="text" name="item_time" lay-verify="title" autocomplete="off" placeholder="Enter the duration of the project" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -179,7 +182,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the major you require" class="layui-input">
+                            <input type="text" name="item_needspecialty" lay-verify="title" autocomplete="off" placeholder="Enter the major you require" class="layui-input">
                         </div>
                     </div>
                     <div class="FormContainer from-but">

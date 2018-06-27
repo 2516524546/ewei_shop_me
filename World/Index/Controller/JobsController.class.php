@@ -18,7 +18,7 @@ use Think\Controller;
 class JobsController extends CommonController {
     public $modeleid = 4;
 
-    protected $_checkAction = ['MyProject','releasePosition','releaseMyPosition','ReleaseProfessional','DeleteWork'];//需要做登录验证的action
+    protected $_checkAction = ['MyProject','releasePosition','releaseMyPosition','ReleaseProfessional','DeleteWork','DeleteItem','EditItem','PostProfessionalComment'];//需要做登录验证的action
 
     public function _initialize()
     {
@@ -156,7 +156,80 @@ class JobsController extends CommonController {
     项目列表
      */
     public function projectsProfessionals(){
+        //获取城市
+        $fid = D('FirstMark')->where('firsth_mark_name="city" AND first_mark_mid=4 AND first_mark_type=3')->getField('first_mark_id');
+        if($fid){
+            $city =  D('SecondMark')->where('second_mark_fid='.$fid)->select();
+            $this->assign('city',$city);
+        }
 
+        //获取专业
+        $fid = D('FirstMark')->where('firsth_mark_name="specialty" AND first_mark_mid=4 AND first_mark_type=3')->getField('first_mark_id');
+        if($fid){
+            $specialty =  D('SecondMark')->where('second_mark_fid='.$fid)->select();
+            $this->assign('specialty',$specialty);
+        }
+
+        //获取行业
+        $fid = D('FirstMark')->where('firsth_mark_name="industry" AND first_mark_mid=4 AND first_mark_type=3')->getField('first_mark_id');
+        if($fid){
+            $industry =  D('SecondMark')->where('second_mark_fid='.$fid)->select();
+            $this->assign('industry',$industry);
+        }
+
+        $type = I('get.type',0,'intval');
+
+        //项目
+
+        $where = 'i.item_isdel=1';
+        if($type === 0){
+            $k = I('get.k','','trim');
+            if($k){
+                $where .= ' AND (i.item_name LIKE "%'.$k.'%" OR i.item_name LIKE "%'.$k.'%")';
+            }
+            $item_city = I('get.item_city','','trim');
+            if($item_city){
+                $where .= ' AND i.item_city="'.$item_city.'"';
+            }
+
+            $item_specialty = I('get.item_specialty','','trim');
+            if($item_specialty){
+                $where .= ' AND i.item_specialty="'.$item_specialty.'"';
+            }
+        }
+        $count      = D('Item')->alias('i')->join('u_user u ON u.user_id = i.item_uid','LEFT')->where($where)->count();
+        $Page       = new \Think\Page($count,8);
+        $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        $show       = $Page->show();
+        $items = D('Item')->alias('i')->field('i.*,u.user_name,u.user_icon,u.user_signature')->join('u_user u ON u.user_id = i.item_uid','LEFT')->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('items',$items);
+        $this->assign('page',$show);
+
+        //专业人士
+        $where = '1';
+
+        if($type === 1){
+            $professional_industry = I('get.professional_industry','','trim');
+            if($professional_industry){
+                $where .= ' AND p.professional_city="'.$professional_industry.'"';
+            }
+            $professional_city = I('get.professional_city','','trim');
+            if($professional_city){
+                $where .= ' AND p.professional_city="'.$professional_city.'"';
+            }
+
+            $professional_specialty = I('get.professional_specialty','','trim');
+            if($professional_specialty){
+                $where .= ' AND p.professional_specialty="'.$professional_specialty.'"';
+            }
+        }
+        $count      = D('Professional')->alias('p')->join('u_user u ON u.user_id = p.professional_uid','LEFT')->where($where)->count();
+        $Page       = new \Think\Page($count,8);
+        $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        $professionals_show       = $Page->show();
+        $professionals = D('Professional')->alias('p')->field('p.*,u.user_name,u.user_icon,u.user_signature,count(pc.professional_comment_id) as professional_comment')->join('u_user u ON u.user_id = p.professional_uid','LEFT')->join('j_professional_comment pc ON pc.professional_comment_pid = p.professional_id','LEFT')->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('professionals',$professionals);
+        $this->assign('professionals_page',$professionals_show);
         $this->display();
     }
 
@@ -166,16 +239,63 @@ class JobsController extends CommonController {
     public function releaseProject(){
         if(IS_POST){
             $rules = array(
-                array('city','require','Choose a city！'),
-                array('industry','require','Choose industry！'),
-                array('school','require','Choose a school！'),
-                array('item_name','require','Enter the project name！'),
+                array('item_city','require','Choose a city！'),
+                array('item_specialty','require','Choose industry！'),
+                array('item_school','require','Choose a school！'),
+                array('item_name','6,80','The project name length requires 6-80 characters！',0,'length'),
                 array('item_uname','require','Enter your real name！'),
-                array('item_content','require',' Enter the project’s introduction！'),
-                array('value',array(1,2,3),'值的范围不正确！',2,'in'),
-                array('repassword','password','确认密码不正确',0,'confirm'),
-                array('password','checkPwd','密码格式不正确',0,'function'),
+                array('item_contact','require',' Enter the contact information！'),
+                array('item_mail','check_email','Enter the email！',0,'callback'),
+                array('item_company','require','Enter the company！'),
+                array('item_type','require','Enter the project’s type！'),
+                array('item_content','require','Enter the company information！'),
+                array('item_budget','require','Enter the project’s budget！'),
+                array('item_time','require','Enter the duration of the project！'),
+                array('item_needspecialty','require','Enter the major you require！'),
             );
+            $data = I('post.');
+            $data['item_uid'] = $this->userid;
+            $data['item_icon'] = '';
+            $data['item_firstmarks'] = '';
+            $data['item_secondmarks'] = '';
+            $data['item_thirdmarks'] = '';
+            $data['item_fourthmarks'] = '';
+            $data['item_createtime'] = date('Y-m-d H:i:s',time());
+            $Item = D("Item"); // 实例化User对象
+            if (!$Item->validate($rules)->create()){
+                $this->error($Item->getError());
+            }else{
+                // 验证通过 可以进行其他数据操作
+                if($Item->add($data)){
+                    $this->success('Create success!',U('Index/Jobs/projectsProfessionals'));
+                }else{
+                    $this->error('Create Faild!');
+                }
+
+                exit;
+            }
+
+        }
+
+        //获取城市
+        $fid = D('FirstMark')->where('firsth_mark_name="city" AND first_mark_mid=4 AND first_mark_type=3')->getField('first_mark_id');
+        if($fid){
+            $city =  D('SecondMark')->where('second_mark_fid='.$fid)->select();
+            $this->assign('city',$city);
+        }
+
+        //获取专业
+        $fid = D('FirstMark')->where('firsth_mark_name="specialty" AND first_mark_mid=4 AND first_mark_type=3')->getField('first_mark_id');
+        if($fid){
+            $specialty =  D('SecondMark')->where('second_mark_fid='.$fid)->select();
+            $this->assign('specialty',$specialty);
+        }
+
+        //获取学校
+        $fid = D('FirstMark')->where('firsth_mark_name="school" AND first_mark_mid=4 AND first_mark_type=3')->getField('first_mark_id');
+        if($fid){
+            $school =  D('SecondMark')->where('second_mark_fid='.$fid)->select();
+            $this->assign('school',$school);
         }
 
         $this->display();
@@ -553,18 +673,132 @@ class JobsController extends CommonController {
     }
 
     public function MyProject(){
+        //获取城市
+        $fid = D('FirstMark')->where('firsth_mark_name="city" AND first_mark_mid=4 AND first_mark_type=3')->getField('first_mark_id');
+        if($fid){
+            $city =  D('SecondMark')->where('second_mark_fid='.$fid)->select();
+            $this->assign('city',$city);
+        }
+
+        //获取专业
+        $fid = D('FirstMark')->where('firsth_mark_name="specialty" AND first_mark_mid=4 AND first_mark_type=3')->getField('first_mark_id');
+        if($fid){
+            $specialty =  D('SecondMark')->where('second_mark_fid='.$fid)->select();
+            $this->assign('specialty',$specialty);
+        }
+
+        $where = 'i.item_isdel=1 AND item_uid='.$this->userid;
+
+        $k = I('get.k','','trim');
+        if($k){
+            $where .= ' AND (i.item_name LIKE "%'.$k.'%" OR i.item_name LIKE "%'.$k.'%")';
+        }
+        $item_city = I('get.item_city','','trim');
+        if($item_city){
+            $where .= ' AND i.item_city="'.$item_city.'"';
+        }
+
+        $item_specialty = I('get.item_specialty','','trim');
+        if($item_specialty){
+            $where .= ' AND i.item_specialty="'.$item_specialty.'"';
+        }
+
+        $count      = D('Item')->alias('i')->join('u_user u ON u.user_id = i.item_uid','LEFT')->where($where)->count();
+        $Page       = new \Think\Page($count,8);
+        $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        $show       = $Page->show();
+        $items = D('Item')->alias('i')->field('i.*,u.user_name,u.user_icon,u.user_signature')->join('u_user u ON u.user_id = i.item_uid','LEFT')->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('items',$items);
+        $this->assign('page',$show);
+
         $this->assign('title','My project');
         $css = addCss('WorkList');
         $this->assign('CSS',$css);
+
         $this->display();
     }
 
     public function ProjectDetails(){
+        $item_id = I('get.item_id');
+        $item = D('Item')->where('item_id='.$item_id)->find();
+        if(!$item){
+            $this->error('The project does not exist!');
+        }
+        $this->assign('item',$item);
+
         $this->assign('title','Project details');
         $this->display();
     }
 
     public function ReleaseProfessional(){
+        if(IS_POST){
+            $rules = array(
+                array('professional_city','require','Choose a city！'),
+                array('professional_specialty','require','Choose industry！'),
+                array('professional_school','require','Choose a school！'),
+                array('professional_specialty','6,80','The major name length requires 6-80 characters！',0,'length'),
+                array('professional_uname','require','Enter your real name！'),
+                array('professional_contact','require',' Enter the contact information！'),
+                array('professional_trait','require','Enter your speciality！'),
+                array('item_company','require','Enter the company！'),
+                array('professional_content','require','Enter the company information！'),
+            );
+            $data = I('post.');
+            $data['professional_uid'] = $this->userid;
+            $data['professional_firstmarks'] = '';
+            $data['professional_secondmarks'] = '';
+            $data['professional_thirdmarks'] = '';
+            $data['professional_fourthmarks'] = '';
+            $data['professional_createtime'] = $data['professional_updatetime'] = date('Y-m-d H:i:s',time());
+            $Professional = D("Professional"); // 实例化User对象
+            if (!$Professional->validate($rules)->create()){
+                $this->error($Professional->getError());
+            }else{
+                // 验证通过 进行文件上传
+                $upload = new \Think\Upload();
+                $upload->maxSize   =     3145728 ;
+                $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');
+                $upload->rootPath  =      './Uploads/';
+                $info   =   $upload->uploadOne($_FILES['professional_pic']);
+                if(!$info) {
+                    $this->error($upload->getError());
+                }else{
+                    $data['professional_pic'] = $info['savepath'].$info['savename'];
+                }
+
+                if($Professional->add($data)){
+                    $this->success('Create success!',U('Index/Jobs/projectsProfessionals'));
+                }else{
+                    $this->error('Create Faild!');
+                }
+
+                exit;
+            }
+
+        }
+
+
+        //获取城市
+        $fid = D('FirstMark')->where('firsth_mark_name="city" AND first_mark_mid=4 AND first_mark_type=3')->getField('first_mark_id');
+        if($fid){
+            $city =  D('SecondMark')->where('second_mark_fid='.$fid)->select();
+            $this->assign('city',$city);
+        }
+
+        //获取专业
+        $fid = D('FirstMark')->where('firsth_mark_name="specialty" AND first_mark_mid=4 AND first_mark_type=3')->getField('first_mark_id');
+        if($fid){
+            $specialty =  D('SecondMark')->where('second_mark_fid='.$fid)->select();
+            $this->assign('specialty',$specialty);
+        }
+
+        //获取学校
+        $fid = D('FirstMark')->where('firsth_mark_name="school" AND first_mark_mid=4 AND first_mark_type=3')->getField('first_mark_id');
+        if($fid){
+            $school =  D('SecondMark')->where('second_mark_fid='.$fid)->select();
+            $this->assign('school',$school);
+        }
+
         $this->assign('title','I am a professional');
         $css = addCss('JobList');
         $this->assign('CSS',$css);
@@ -572,8 +806,24 @@ class JobsController extends CommonController {
     }
 
     public function ProfessionalDetails(){
+        $professional_id = I('get.professional_id');
+        $professional = D('Professional')->alias('p')->field('p.*,u.user_name,u.user_icon,u.user_signature,u.user_notes,u.user_sex,u.user_mail')->join('u_user u ON u.user_id = p.professional_uid','LEFT')->where('professional_id='.$professional_id)->find();
+        if(!$professional){
+            $this->error('The professional does not exist!');
+        }
+        $this->assign('professional',$professional);
+
+        $count      = D('ProfessionalComment')->alias('pc')->join('u_user u on pc.professional_comment_uid = u.user_id','LEFT')->where('pc.professional_comment_pid = '.$professional_id)->count();
+        $Page       = new \Think\Page($count,10);
+        $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        $show       = $Page->show();
+        $commentlist = D('ProfessionalComment')->alias('pc')->field('pc.*,u.user_name,u.user_icon,u.user_signature,u.user_notes,u.user_sex,u.user_mail')->join('u_user u on pc.professional_comment_uid = u.user_id','LEFT')->where('pc.professional_comment_pid = '.$professional_id)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('commentlist',$commentlist);
+        $this->assign('page',$show);
+
+
         $this->assign('title','Professional Details');
-        $css = addCss(['lifeProductDetails','StickSonDetails']);
+        $css = addCss(['lifeProductDetails','StickSonDetails','Donation']);
         $this->assign('CSS',$css);
         $this->display();
     }
@@ -608,6 +858,96 @@ class JobsController extends CommonController {
             die(json_encode(['status'=>1,'msg'=>'Close success!']));
         }else{
             die(json_encode(['status'=>0,'msg'=>'Close failed!']));
+        }
+    }
+
+    public function DeleteItem(){
+        $item_id = I('post.item_id',0,'intval');
+        if($item_id <= 0 && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif($item_id <= 0){
+            $this->error('Parameter error！');
+        }
+
+        if(D('Item')->where('item_id='.$item_id . ' AND item_uid='.$this->userid)->delete()){
+            die(json_encode(['status'=>1,'msg'=>'Delete success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Delete failed!']));
+        }
+    }
+
+    public function GetItem(){
+        $item_id = I('post.item_id',0,'intval');
+        if($item_id <= 0 && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif($item_id <= 0){
+            $this->error('Parameter error！');
+        }
+        $result = D('Item')->where('item_id='.$item_id . ' AND item_uid='.$this->userid)->find();
+        if($result){
+            die(json_encode($result));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Query failed!']));
+        }
+    }
+
+    public function EditItem(){
+        $rules = array(
+            array('item_city','require','Choose a city！'),
+            array('item_specialty','require','Choose industry！'),
+            array('item_school','require','Choose a school！'),
+            array('item_name','6,80','The project name length requires 6-80 characters！',0,'length'),
+            array('item_uname','require','Enter your real name！'),
+            array('item_contact','require',' Enter the contact information！'),
+            array('item_mail','check_email','Enter the email！',0,'callback'),
+            array('item_company','require','Enter the company！'),
+            array('item_type','require','Enter the project’s type！'),
+            array('item_content','require','Enter the company information！'),
+            array('item_budget','require','Enter the project’s budget！'),
+            array('item_time','require','Enter the duration of the project！'),
+            array('item_needspecialty','require','Enter the major you require！'),
+        );
+        $data = I('post.');
+        $data['item_uid'] = $this->userid;
+        $data['item_icon'] = '';
+        $data['item_firstmarks'] = '';
+        $data['item_secondmarks'] = '';
+        $data['item_thirdmarks'] = '';
+        $data['item_fourthmarks'] = '';
+        $data['item_createtime'] = date('Y-m-d H:i:s',time());
+        $Item = D("Item"); // 实例化User对象
+        if (!$Item->validate($rules)->create()){
+            exit(json_encode($Item->getError()));
+        }else{
+            // 验证通过 可以进行其他数据操作
+            if($Item->save($data)){
+                exit(json_encode(['status'=>1,'msg'=>'Edit Success!']));
+            }else{
+                exit(json_encode(['status'=>1,'msg'=>'Edit Faild!']));
+            }
+        }
+    }
+
+
+    public function PostProfessionalComment(){
+        $professional_id = I('post.professional_id',0,'intval');
+        $comment = I('post.comment',0,'htmlspecialchars');
+        if(($professional_id <= 0 || strlen($comment) < 6) && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif(($professional_id <= 0 || strlen($comment) < 6)){
+            $this->error('Parameter error！');
+        }
+        $data['professional_comment_pid'] = $professional_id;
+        $data['professional_comment_uid'] = $this->userid;
+        $data['professional_comment_content'] = $comment;
+        $data['professional_comment_zans'] = 0;
+        $data['professional_comment_createtime'] = date('Y-m-d H:i:s',time());
+        $data['professional_comment_replytime'] = date('Y-m-d H:i:s',time());
+
+        if(D('ProfessionalComment')->add($data)){
+            die(json_encode(['status'=>1,'msg'=>'Comment success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Comment failed!']));
         }
     }
 }

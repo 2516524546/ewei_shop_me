@@ -22,72 +22,31 @@
     <div class="container ContributionContainer">
         <div class="row">
             <div class="col-md-12 UserBox_list">
+
+                <foreach name="items" item="i">
                 <div class="UserBox" style="padding-bottom: 40px;">
                     <p style="float: left;margin-right: 14px;">
-                        <img src="__PUBLIC__/Web/web/img/04_jobs/UserPic.png" style="width: 84px;height: auto;margin-bottom: 54px;border-radius: 40%;">
+                        <img src="<if condition='$i[user_icon]'>./Uploads/{$i['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" style="width: 84px;height: 84px;margin-bottom: 54px;border-radius: 40%;">
                     </p>
                     <p class="lintpheight">
-                        Name : Mobile development engineer
+                        Name : {$i['item_name']}
                     </p>
                     <p class="lintpheight">
                         Introduction :
                     </p>
                     <p class="lintpheight">
-                        AppleApple Apple ApplecApple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple e
+                        {$i['item_content']}
                     </p>
                     <div class="lintpheight text-right" style="color: #ccc;">
-                        <a href="#" style="position: absolute;right: 70px;" data-toggle="modal" data-target="#box2">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png"">
+                        <a href="#" style="position: absolute;right: 70px;" class="edit_item" data-id="{$i['item_id']}"  data-toggle="modal" data-target="#box2">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png">
                         </a>
-                        <a href="#" style="position: absolute;right: 40px;" data-toggle="modal" data-target="#box1">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png"">
+                        <a href="#" style="position: absolute;right: 40px;"  class="del_item" data-id="{$i['item_id']}" data-toggle="modal" data-target="#box1">
+                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png">
                         </a>
                     </div>
                 </div>
-                <div class="UserBox" style="padding-bottom: 40px;">
-                    <p style="float: left;margin-right: 14px;">
-                        <img src="__PUBLIC__/Web/web/img/04_jobs/UserPic.png" style="width: 84px;height: auto;margin-bottom: 54px;border-radius: 40%;">
-                    </p>
-                    <p class="lintpheight">
-                        Name : Mobile development engineer
-                    </p>
-                    <p class="lintpheight">
-                        Introduction :
-                    </p>
-                    <p class="lintpheight">
-                        AppleApple Apple ApplecApple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple e
-                    </p>
-                    <div class="lintpheight text-right" style="color: #ccc;">
-                        <a href="#" style="position: absolute;right: 70px;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png"">
-                        </a>
-                        <a href="#" style="position: absolute;right: 40px;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png"">
-                        </a>
-                    </div>
-                </div>
-                <div class="UserBox" style="padding-bottom: 40px;">
-                    <p style="float: left;margin-right: 14px;">
-                        <img src="__PUBLIC__/Web/web/img/04_jobs/UserPic.png" style="width: 84px;height: auto;margin-bottom: 54px;border-radius: 40%;">
-                    </p>
-                    <p class="lintpheight">
-                        Name : Mobile development engineer
-                    </p>
-                    <p class="lintpheight">
-                        Introduction :
-                    </p>
-                    <p class="lintpheight">
-                        AppleApple Apple ApplecApple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple e
-                    </p>
-                    <div class="lintpheight text-right" style="color: #ccc;">
-                        <a href="#" style="position: absolute;right: 70px;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png"">
-                        </a>
-                        <a href="#" style="position: absolute;right: 40px;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png"">
-                        </a>
-                    </div>
-                </div>
+                </foreach>
             </div>
         </div>
     </div>
@@ -131,7 +90,7 @@
                             <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_porjetname.png">
                         </label>
                         <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the project name" class="layui-input">
+                            <input type="text" name="item_name" lay-verify="title" autocomplete="off" placeholder="Enter the project name" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -139,7 +98,7 @@
                             <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_realname.png" width="24px" height="auto">
                         </label>
                         <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the sponsor's real name" class="layui-input">
+                            <input type="text" name="item_uname" lay-verify="title" autocomplete="off" placeholder="Enter the sponsor's real name" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -147,7 +106,7 @@
                             <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_contact.png">
                         </label>
                         <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the contact information" class="layui-input">
+                            <input type="text" name="item_contact" lay-verify="title" autocomplete="off" placeholder="Enter the contact information" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -155,7 +114,7 @@
                             <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_email.png">
                         </label>
                         <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the email" class="layui-input">
+                            <input type="text" name="item_mail" lay-verify="title" autocomplete="off" placeholder="Enter the email" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -163,7 +122,7 @@
                             <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_company.png">
                         </label>
                         <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the company" class="layui-input">
+                            <input type="text" name="item_company" lay-verify="title" autocomplete="off" placeholder="Enter the company" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item layui-form-text" style="height: 100px;">
@@ -171,7 +130,7 @@
                             <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
                         </label>
                         <div class="layui-input-block" style="position: relative;left: -46px;">
-                            <textarea placeholder="Enter the company information" class="layui-textarea"></textarea>
+                            <textarea name="item_type" placeholder="Enter the project’s type" class="layui-textarea"></textarea>
                         </div>
                     </div>
                     <div class="layui-form-item layui-form-text" style="height: 100px;">
@@ -179,7 +138,7 @@
                             <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png">
                         </label>
                         <div class="layui-input-block" style="position: relative;left: -46px;">
-                            <textarea placeholder="Enter the company information" class="layui-textarea"></textarea>
+                            <textarea name="item_content" placeholder="Enter the company information" class="layui-textarea"></textarea>
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -187,7 +146,7 @@
                             <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_money.png">
                         </label>
                         <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the project budget" class="layui-input">
+                            <input type="text" name="item_budget" lay-verify="title" autocomplete="off" placeholder="Enter the project budget" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -195,7 +154,7 @@
                             <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_time.png">
                         </label>
                         <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the project time" class="layui-input">
+                            <input type="text" name="item_time" lay-verify="title" autocomplete="off" placeholder="Enter the project time" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -203,7 +162,7 @@
                             <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_need.png">
                         </label>
                         <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter professional needs" class="layui-input">
+                            <input type="text" name="item_needspecialty" lay-verify="title" autocomplete="off" placeholder="Enter professional needs" class="layui-input">
                         </div>
                     </div>
                 </div>
@@ -214,7 +173,7 @@
         </div>
     </div>
     <div class="container" id="NumberOfPagesContainer">
-        <div id="NumberOfPages"></div>
+        {$page}
     </div>
     <!-- foot start 底部信息 -->
     <footer>
@@ -234,9 +193,62 @@
                 $(".ContributionContainer .UserBox_list").on('click',".UserBox", function(event) {
                     num = $(this).index();
                 });
-                $(".btn-primary").on('click', function(event) {
-                    $(".ContributionContainer .UserBox").eq(num).remove();
+                $("#box1 .btn-primary").on('click', function(event) {
+                    var item_id = $(".del_item").eq(num).data('id')
+                    $.post(
+                        '{:U("Index/Jobs/DeleteItem")}',
+                        {item_id:item_id},
+                        function(data){
+                            if(data.status == 0){
+                                alert(data.msg);
+                            }else{
+                                window.location.reload();
+                            }
+                        },'json'
+                    );
                 });
+
+
+                $("#box2 .btn-primary").on('click', function(event) {
+                    var item_id = $(".del_item").eq(num).data('id')
+                    $.post(
+                        '{:U("Index/Jobs/EditItem")}',
+                        {item_id:item_id,item_name:$('#box2 input[name=item_name]').val(),item_uname:$('#box2 input[name=item_uname]').val(),item_contact:$('#box2 input[name=item_contact]').val(),item_mail:$('#box2 input[name=item_mail]').val(),item_company:$('#box2 input[name=item_company]').val(),item_type:$('#box2 textarea[name=item_type]').val(),item_content:$('#box2 textarea[name=item_content]').val(),item_budget:$('#box2 input[name=item_budget]').val(),item_time:$('#box2 input[name=item_time]').val(),item_needspecialty:$('#box2 input[name=item_needspecialty]').val()},
+                        function(data){
+                            if(data.status == 0){
+                                alert(data.msg);
+                            }else{
+                                alert(data.msg);
+                                window.location.reload();
+                            }
+                        },'json'
+                    );
+                });
+
+                $('.edit_item').on('click',function(){
+                    var item_id = $(this).data('id');
+                    $.post(
+                        '{:U("Index/Jobs/GetItem")}',
+                        {item_id:item_id},
+                        function(data){
+                            if(data.status == 0){
+                                alert(data.msg);
+                            }else{
+                                $('#box2 input[name=item_name]').val(data.item_name);
+                                $('#box2 input[name=item_uname]').val(data.item_uname);
+                                $('#box2 input[name=item_contact]').val(data.item_contact);
+                                $('#box2 input[name=item_mail]').val(data.item_mail);
+                                $('#box2 input[name=item_company]').val(data.item_company);
+                                $('#box2 textarea[name=item_type]').val(data.item_type);
+                                $('#box2 textarea[name=item_content]').val(data.item_content);
+                                $('#box2 input[name=item_budget]').val(data.item_budget);
+                                $('#box2 input[name=item_time]').val(data.item_time);
+                                $('#box2 input[name=item_needspecialty]').val(data.item_needspecialty);
+                            }
+                        },'json'
+                    );
+                })
+
             })();
 
         });

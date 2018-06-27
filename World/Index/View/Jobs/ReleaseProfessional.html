@@ -21,7 +21,7 @@
         <cite class="Icon"></cite>
         <span class="crumbsTitle">{$title}</span>
     </div>
-    <form class="layui-form layui-form-pane" action="">
+    <form class="layui-form layui-form-pane" enctype="multipart/form-data" action="{:U('Index/Jobs/ReleaseProfessional')}" method="post">
         <div class="PasswordContainer">
             <div class="StepContainer">
                 <div class="StepContainerOne">
@@ -38,9 +38,10 @@
                             </div>
                         </label>
                         <div class="layui-input-block" id="layui-input-block">
-                            <select name="city" lay-verify="required">
-                                <option value="">Choose a city</option>
-                                <option value="0">1</option>
+                            <select name="professional_city" lay-verify="required">
+                                <foreach name="city" item="c">
+                                    <option value="{$c['second_mark_name']}">{$c['second_mark_name']}</option>
+                                </foreach>
                             </select>
                         </div>
                     </div>
@@ -50,10 +51,11 @@
                                 <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_industry.png">
                             </div>
                         </label>
-                        <div class="layui-input-block" id="layui-input-block">
-                            <select name="city" lay-verify="required">
-                                <option value="">Choose industry</option>
-                                <option value="0">1</option>
+                        <div class="layui-input-block">
+                            <select name="professional_specialty" lay-verify="required">
+                                <foreach name="specialty" item="c">
+                                    <option value="{$c['second_mark_name']}">{$c['second_mark_name']}</option>
+                                </foreach>
                             </select>
                         </div>
                     </div>
@@ -64,7 +66,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter your major" class="layui-input">
+                            <input type="text" name="professional_specialty" lay-verify="title" autocomplete="off" placeholder="Enter your major" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -73,10 +75,11 @@
                                 <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
                             </div>
                         </label>
-                        <div class="layui-input-block" id="layui-input-block">
-                            <select name="city" lay-verify="required">
-                                <option value="">Choose a school</option>
-                                <option value="0">1</option>
+                        <div class="layui-input-block">
+                            <select name="professional_school" lay-verify="required">
+                                <foreach name="school" item="c">
+                                    <option value="{$c['second_mark_name']}">{$c['second_mark_name']}</option>
+                                </foreach>
                             </select>
                         </div>
                     </div>
@@ -87,7 +90,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder=" Enter your real name" class="layui-input">
+                            <input type="text" name="professional_uname" lay-verify="title" autocomplete="off" placeholder=" Enter your real name" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -97,7 +100,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the contact information" class="layui-input">
+                            <input type="text" name="professional_contact" lay-verify="title" autocomplete="off" placeholder="Enter the contact information" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item layui-form-text">
@@ -107,7 +110,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <textarea placeholder="Enter your introduction" class="layui-textarea"></textarea>
+                            <textarea name="professional_content" placeholder="Enter your introduction" class="layui-textarea"></textarea>
                         </div>
                     </div>
                     <div class="layui-form-item layui-form-text">
@@ -117,7 +120,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <textarea placeholder="Enter your speciality" class="layui-textarea"></textarea>
+                            <textarea name="professional_trait" placeholder="Enter your speciality" class="layui-textarea"></textarea>
                         </div>
                     </div>
                     <div class="layui-form-item layui-form-text">
@@ -127,7 +130,7 @@
                             </div>
                         </label>
                         <div class="layui-input-block">
-                            <textarea placeholder="Enter the remark" class="layui-textarea"></textarea>
+                            <textarea name="professional_explain" placeholder="Enter the remark" class="layui-textarea"></textarea>
                         </div>
                     </div>
                     <div class="FormContainer layui-form-item">
@@ -138,7 +141,7 @@
                         </label>
                         <div class="UserHeadImage">
                             <img id="pic" class="img">
-                            <input id="upload" class="but" name="file" accept="image/*" type="file">
+                            <input id="upload" class="but" name="professional_pic" accept="image/*" type="file">
                         </div>
                     </div>
                     <div class="FormContainer from-but">
@@ -164,15 +167,8 @@
     <script>
         $(function(){
             (function(){
-                var num;
-                $(".ContributionContainer .UserBox_list").on('click',".UserBox", function(event) {
-                    num = $(this).index();
-                });
-                $(".btn-primary").on('click', function(event) {
-                    $(".ContributionContainer .UserBox").eq(num).remove();
-                });
-            })();
 
+            })();
         });
     </script>
 </body>

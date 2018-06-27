@@ -41,16 +41,21 @@
                         <a href="{:U('Jobs/MyProject')}" class="layui-btn layui-btn-normal layui-btn-radius fontcss">My project</a>
                     </div>
                     <div class="frombox">
+                        <form method="get" action="">
+                            <input name="c" type="hidden" value="{$Think.CONTROLLER_NAME}"/>
+                            <input name="m" type="hidden" value="{$Think.MODULE_NAME}"/>
+                            <input name="a" type="hidden" value="{$Think.ACTION_NAME}"/>
+                            <input name="type" type="hidden" value="0"/>
                         <div class="SelectionTypeContainer">
                             <label class="layui-form-label">
                                 <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_city.png"></span>
                             </label>
                             <div class="fromboxxiala">
-                                <select name="city" lay-verify="required">
-                                    <option>Choose a city</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                                <select name="item_city" lay-verify="required">
+                                    <option value="0">Choose a city</option>
+                                    <foreach name="city" item="c">
+                                        <option value="{$c['second_mark_name']}">{$c['second_mark_name']}</option>
+                                    </foreach>
                                 </select>
                             </div>
                         </div>
@@ -59,9 +64,11 @@
                                 <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_industry.png"></span>
                             </label>
                             <div class="fromboxxiala">
-                                <select name="city" lay-verify="required">
-                                    <option>Choose industry</option>
-                                    <option>1</option>
+                                <select name="item_specialty" lay-verify="required">
+                                    <option value="0">Choose industry</option>
+                                    <foreach name="specialty" item="c">
+                                        <option value="{$c['second_mark_name']}">{$c['second_mark_name']}</option>
+                                    </foreach>
                                 </select>
                             </div>
                         </div>
@@ -70,80 +77,45 @@
                                 <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_porjetname.png"></span>
                             </label>
                             <div class="fromboxxiala">
-                                <input type="text" name="title" required lay-verify="required" placeholder="Enter the project name" autocomplete="off">
+                                <input type="text" name="k" value="{$_GET['k']}" required lay-verify="required" placeholder="Enter the project name" autocomplete="off">
                             </div>
                         </div>
                         <div class="SelectionTypeContainer">
                             <label class="layui-form-label" style="display: inline;">
                             </label>
                             <div class="fromboxxiala">
-                                <div class="from_img">
+                                <button class="from_img" style="border: none;background: none">
                                     <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png" alt="">
-                                </div>
+                                </button>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
                 <div class="container ContributionContainer">
                         <div class="row">
                             <div class="col-md-12 UserBox_list">
+                                <foreach name="items" item="i">
                                 <div class="UserBox">
-                                    <a href="{:U('Jobs/ProjectDetails')}" class="UserLink">
+                                    <a href="{:U('Jobs/ProjectDetails',['item_id'=>$i['item_id']])}" class="UserLink">
                                         <p style="float: left;margin-right: 14px;">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/UserPic.png" style="width: 84px;height: auto;margin-bottom: 54px;border-radius: 40%;">
+                                            <img src="<if condition='$i[user_icon]'>./Uploads/{$i['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" style="width: 84px;height: auto;margin-bottom: 54px;border-radius: 40%;">
                                         </p>
                                         <p class="lintpheight">
-                                            Name : Mobile development engineer
+                                            Name : {$i['item_name']}
                                         </p>
                                         <p class="lintpheight">
                                             Introduction :
                                         </p>
                                         <p class="lintpheight">
-                                            AppleApple Apple ApplecApple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple e
+                                            {$i['item_content']}
                                         </p>
                                         <p class="lintpheight text-right" style="color: #ccc;justify-content: flex-end;">
-                                            1 min
+                                            {$i['item_createtime']}
                                         </p>
                                     </a>
                                 </div>
-                                <div class="UserBox">
-                                    <a href="{:U('Jobs/ProjectDetails')}" class="UserLink">
-                                        <p style="float: left;margin-right: 14px;">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/UserPic.png" style="width: 84px;height: auto;margin-bottom: 54px;border-radius: 40%;">
-                                        </p>
-                                        <p class="lintpheight">
-                                            Name : Mobile development engineer
-                                        </p>
-                                        <p class="lintpheight">
-                                            Introduction :
-                                        </p>
-                                        <p class="lintpheight">
-                                            AppleApple Apple ApplecApple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple e
-                                        </p>
-                                        <p class="lintpheight text-right" style="color: #ccc;justify-content: flex-end;">
-                                            1 min
-                                        </p>
-                                    </a>
-                                </div>
-                                <div class="UserBox">
-                                    <a href="{:U('Jobs/ProjectDetails')}" class="UserLink">
-                                        <p style="float: left;margin-right: 14px;">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/UserPic.png" style="width: 84px;height: auto;margin-bottom: 54px;border-radius: 40%;">
-                                        </p>
-                                        <p class="lintpheight">
-                                            Name : Mobile development engineer
-                                        </p>
-                                        <p class="lintpheight">
-                                            Introduction :
-                                        </p>
-                                        <p class="lintpheight">
-                                            AppleApple Apple ApplecApple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple e
-                                        </p>
-                                        <p class="lintpheight text-right" style="color: #ccc;justify-content: flex-end;">
-                                            1 min
-                                        </p>
-                                    </a>
-                                </div>
+                                </foreach>
                             </div>
                             
                         </div>
@@ -156,16 +128,21 @@
                         <!-- <a href="MyProject.html" class="layui-btn layui-btn-normal layui-btn-radius fontcss">My project</a> -->
                     </div>
                     <div class="frombox">
+                        <form method="get" action="">
+                            <input name="c" type="hidden" value="{$Think.CONTROLLER_NAME}"/>
+                            <input name="m" type="hidden" value="{$Think.MODULE_NAME}"/>
+                            <input name="a" type="hidden" value="{$Think.ACTION_NAME}"/>
+                            <input name="type" type="hidden" value="0"/>
                         <div class="SelectionTypeContainer">
                             <label class="layui-form-label">
                                 <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_city.png"></span>
                             </label>
                             <div class="fromboxxiala">
-                                <select name="city" lay-verify="required">
-                                    <option>Choose a city</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                                <select name="professionals_city" lay-verify="required">
+                                    <option value="0">Choose a city</option>
+                                    <foreach name="city" item="c">
+                                        <option value="{$c['second_mark_name']}">{$c['second_mark_name']}</option>
+                                    </foreach>
                                 </select>
                             </div>
                         </div>
@@ -174,9 +151,11 @@
                                 <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_major.png"></span>
                             </label>
                             <div class="fromboxxiala">
-                                <select name="city" lay-verify="required">
-                                    <option>Choose specialties</option>
-                                    <option>1</option>
+                                <select name="professionals_specialties" lay-verify="required">
+                                    <option value="0">Choose a city</option>
+                                    <foreach name="specialties" item="c">
+                                        <option value="{$c['second_mark_name']}">{$c['second_mark_name']}</option>
+                                    </foreach>
                                 </select>
                             </div>
                         </div>
@@ -185,9 +164,11 @@
                                 <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_industry.png"></span>
                             </label>
                             <div class="fromboxxiala">
-                                <select name="city" lay-verify="required">
-                                    <option>Choose industry</option>
-                                    <option>1</option>
+                                <select name="professionals_industry" lay-verify="required">
+                                    <option value="0">Choose a city</option>
+                                    <foreach name="industry" item="c">
+                                        <option value="{$c['second_mark_name']}">{$c['second_mark_name']}</option>
+                                    </foreach>
                                 </select>
                             </div>
                         </div>
@@ -195,85 +176,42 @@
                             <label class="layui-form-label" style="display: inline;">
                             </label>
                             <div class="fromboxxiala">
-                                <div class="from_img">
+                                <button class="from_img" style="display: inline;">
                                     <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png" alt="">
-                                </div>
+                                </button>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
                 <div class="container ContributionContainer">
                     <div class="row">
                         <div class="col-md-12 UserBox_list">
+                            <foreach name="professionals" item="p">
                             <div class="UserBox">
-                                <a href="{:U('Jobs/ProfessionalDetails')}" class="UserLink">
+                                <a href="{:U('Jobs/ProfessionalDetails',['professional_id'=>$p['professional_id']])}" class="UserLink">
                                     <p style="float: left;margin-right: 14px;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/UserPic.png" style="width: 84px;height: auto;margin-bottom: 54px;border-radius: 40%;">
+                                        <img src="<if condition='$p[user_icon]'>./Uploads/{$p['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" style="width: 84px;height: 84px;margin-bottom: 54px;border-radius: 40%;">
                                     </p>
                                     <p class="lintpheight">
-                                        Name : Mobile development engineer
+                                        Name : {$p[professional_uname]}
                                     </p>
                                     <p class="lintpheight">
                                         Introduction :
                                     </p>
                                     <p class="lintpheight">
-                                        AppleApple Apple ApplecApple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple e
+                                        {$p[professional_content]}
                                     </p>
                                     <p class="lintpheight text-right" style="color: #ccc;">
-                                        1 min
-                                    </p>
-                                    <p class="lintpheight text-right" style="color: #ccc;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zyrslb_icon_pl.png">
-                                        111
-                                    </p>
-                                </a>
-                            </div>
-                            <div class="UserBox">
-                                <a href="{:U('Jobs/ProfessionalDetails')}" class="UserLink">
-                                    <p style="float: left;margin-right: 14px;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/UserPic.png" style="width: 84px;height: auto;margin-bottom: 54px;border-radius: 40%;">
-                                    </p>
-                                    <p class="lintpheight">
-                                        Name : Mobile development engineer
-                                    </p>
-                                    <p class="lintpheight">
-                                        Introduction :
-                                    </p>
-                                    <p class="lintpheight">
-                                        AppleApple Apple ApplecApple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple e
-                                    </p>
-                                    <p class="lintpheight text-right" style="color: #ccc;">
-                                        1 min
+                                        {$p[professional_createtime]}
                                     </p>
                                     <p class="lintpheight text-right" style="color: #ccc;">
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zyrslb_icon_pl.png">
-                                        111
+                                        {$p[professional_comment]}
                                     </p>
                                 </a>
                             </div>
-                            <div class="UserBox">
-                                <a href="{:U('Jobs/ProfessionalDetails')}" class="UserLink">
-                                    <p style="float: left;margin-right: 14px;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/UserPic.png" style="width: 84px;height: auto;margin-bottom: 54px;border-radius: 40%;">
-                                    </p>
-                                    <p class="lintpheight">
-                                        Name : Mobile development engineer
-                                    </p>
-                                    <p class="lintpheight">
-                                        Introduction :
-                                    </p>
-                                    <p class="lintpheight">
-                                        AppleApple Apple ApplecApple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple e
-                                    </p>
-                                    <p class="lintpheight text-right" style="color: #ccc;">
-                                        1 min
-                                    </p>
-                                    <p class="lintpheight text-right" style="color: #ccc;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zyrslb_icon_pl.png">
-                                        111
-                                    </p>
-                                </a>
-                            </div>
+                            </foreach>
                         </div>
                     </div>
                 </div>
@@ -281,7 +219,7 @@
         </div>
     </div>
     <div class="container" id="NumberOfPagesContainer">
-        <div id="NumberOfPages"></div>
+        {$page}
     </div>
     <!-- foot start 底部信息 -->
     <footer>

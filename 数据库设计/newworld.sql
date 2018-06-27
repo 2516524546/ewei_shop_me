@@ -175,3 +175,18 @@ ADD COLUMN `commodity_views`  bigint(20) NOT NULL DEFAULT 0 COMMENT '浏览量' 
 lyx
 2018.06.25 end
 */
+ALTER TABLE `j_item`
+ADD COLUMN `item_city`  varchar(255) NOT NULL COMMENT '城市' AFTER `item_uid`,
+ADD COLUMN `item_school`  varchar(255) NOT NULL COMMENT '学校' AFTER `item_city`,
+ADD COLUMN `item_specialty`  varchar(255) NOT NULL COMMENT '专业' AFTER `item_school`;
+
+INSERT INTO `newworld`.`s_first_mark`(`first_mark_mid`, `first_mark_type`, `firsth_mark_name`, `firsth_mark_createtime`) VALUES (4, 3, 'city', '2018-06-24 11:13:42'),(4, 3, 'school', '2018-06-24 11:13:42'),(4, 3, 'specialty', '2018-06-24 11:13:42'),(4, 3, 'industry', '2018-06-24 11:13:42');
+
+INSERT INTO `newworld`.`s_second_mark`(`second_mark_fid`, `second_mark_name`, `second_mark_createtime`) VALUES (24, 'Hawaii', '2018-06-24 21:17:06'),(24, 'Alaska', '2018-06-24 21:17:06'),(25, 'Harvard ', '2018-06-24 21:17:06'),(25, 'Oxford', '2018-06-24 21:17:06'),(26, 'IT ', '2018-06-24 21:17:06'),(26, 'sports', '2018-06-24 21:17:06'),(27, 'Test_industry', '2018-06-24 21:17:06');
+
+ALTER TABLE `newworld`.`j_professional`
+ADD COLUMN `professional_pic` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '个人照片' AFTER `professional_content`;
+
+ALTER TABLE `j_professional`
+ADD COLUMN `professional_city`  varchar(255) NOT NULL COMMENT '城市' AFTER `professional_uid`,
+ADD COLUMN `professional_school`  varchar(255) NOT NULL COMMENT '学校' AFTER `professional_city`;
