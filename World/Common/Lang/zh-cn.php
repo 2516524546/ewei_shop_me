@@ -333,6 +333,21 @@ return array(
     'Note_crowd_list_ok' => '确定',
     'Note_crowd_list_no' => '取消',
 
+
+    //note_list
+    'Note_note_list_name' => '发布人',
+    'Note_note_list_title' => '标题',
+    'Note_note_list_type' => '状态',
+    'Note_note_list_typeone' => '正常',
+    'Note_note_list_typetwo' => '屏蔽',
+    'Note_note_list_id' => 'id',
+    'Note_note_list_id' => 'id',
+    'Note_note_list_id' => 'id',
+    'Note_note_list_id' => 'id',
+
+
+
+
     /*
 	 * Note end
 	 *******************************************************************/

@@ -3,11 +3,20 @@
 			var values=[];
 			var file_input = document.getElementById("file_input");
 			file_input.addEventListener("change",function(){
-				console.log(file_input.files[0].type)
+				var type = file_input.files[0].type;
+				if(type.match(/image\/(png|jpe?g|gif|svg)(\?.*)?$/)!=null && type ==  type.match(/image\/(png|jpe?g|gif|svg)(\?.*)?$/)[0]){
+					var typeImg = type.match(/image\/(png|jpe?g|gif|svg)(\?.*)?$/)[0]
+				}
+				if(type.match(/video\/(swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb|mp4)(\?.*)?$/)!=null && type ==  type.match(/video\/(swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb|mp4)(\?.*)?$/)[0]){
+					var typeVideo = type.match(/video\/(swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb|mp4)(\?.*)?$/)[0];
+				}
 					for(let key in file_input.files){
 							//只遍历对象自身的属性，而不包含继承于原型链上的属性。 && file_input.files[0].type == ""
-						if (file_input.files.hasOwnProperty(key) === true && file_input.files[0].type == "image/jpeg"){
+						if (file_input.files.hasOwnProperty(key) === true && file_input.files[0].type == typeImg){
 							values.unshift(file_input.files[key]);   
+						}
+						if (file_input.files.hasOwnProperty(key) === true && file_input.files[0].type == typeVideo){
+							values.unshift(file_input.files[key]);
 						}  
 					}
 					// console.log(values)
@@ -54,6 +63,10 @@
                             ndiv.setAttribute("data-isNew","true") //img-div赋予自定义属性
 							Cdiv.innerHTML = Cspan; // 遮罩层拼接
 							Cdiv.className = "covers"; //遮罩层的类名
+							console.log(values)
+							for(var i=0;i<values.length;i++){
+								console.log(values[i].type)
+							}
 							ndiv.appendChild(Cdiv); //遮罩层拼接进去
 							result.prepend(ndiv); //将拼接进去最前面
 							// *删除功能*/
@@ -77,6 +90,7 @@
 								// _this.parents(".img-div").remove();
 								// console.log(values)
 							// });
+							
 						}
 						// reader.readAsDataURL(file)
 					} else if(/video\/\w+/.test(file.type)) {
@@ -132,13 +146,20 @@
                         ndiv.appendChild(Cdiv);
 						//console.log([result])
 						$(".img-div").remove();
-                        result.prepend(ndiv);
+						console.log(values)
+						result.prepend(ndiv);
+						if(values.length>=2){
+							// console.log(values.length-1)
+							values.splice(-(values.length-1),values.length-1);
+						}
+						// values.splice(0,1);
 						 // *删除功能*/
-                        $(".covers").click(function() {
-							var _this = $(this);
-							$("#file_input").val("");
-                            _this.parents(".img-div").remove();
-						});
+                        // $(".covers").click(function() {
+						// 	var _this = $(this);
+						// 	$("#file_input").val("");
+						// 	_this.parents(".img-div").remove();
+						// 	console.log(values)
+						// });
 						$(".Play_video").click(function(){
 							$(".video_box").show();
 							$(".shadow_video").show();

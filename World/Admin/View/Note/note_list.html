@@ -70,7 +70,6 @@
 						</ul><!-- .breadcrumb -->
 					</div>
 
-				
 				</div><!-- /.main-content -->
 	
 	
@@ -82,7 +81,6 @@
 				{:L('Note_crowd_list')}
 			</small>
 
-			 
 		</h1>
 
 	</div>
@@ -93,18 +91,23 @@
 					<div id="sample-table-2_filter">
 						<form class="form-horizontal" action="{:U('Admin/Note/crowd_list')}" method="POST" role="form" enctype="multipart/form-data">
 
-							<div class='anniu'>
-								<ul>
-									<li role="presentation" class="<if condition='$mid == 2'>current</if>" onclick="jump(2)">{:L('Note_crowd_list_interst')}</li>
-									<li role="presentation" class="<if condition='$mid == 3'>current</if>" onclick="jump(3)">{:L('Note_crowd_list_academic')}</li>
-									<li role="presentation" class="<if condition='$mid == 4'>current</if>" onclick="jump(4)">{:L('Note_crowd_list_jobs')}</li>
-									<li role="presentation" class="<if condition='$mid == 5'>current</if>" onclick="jump(5)">{:L('Note_crowd_list_life')}</li>
-								</ul>
+							<div class="btn-group" style='margin-top:5px;'>
+								<span>{:L('Note_crowd_list_name')}:</span>
+								<input type="text" name="name" value="{$name}" placeholder="{:L('Note_crowd_list_name')}">
 							</div>
 							<div class="btn-group" style='margin-top:5px;'>
 								<span>{:L('Note_crowd_list_name')}:</span>
 								<input type="text" name="name" value="{$name}" placeholder="{:L('Note_crowd_list_name')}">
 							</div>
+							<div class="btn-group" style='margin-top:5px;'>
+								<span>{:L('Note_crowd_list_name')}:</span>
+								<select name="type" style="width: 100px;">
+									<option value="1">18-21</option>
+									<option value="2">22-25</option>
+
+								</select>
+							</div>
+
 							<input type="hidden" name="button" value="1">
 							<input type="hidden" name="mid" value="{$mid}">
 
@@ -149,7 +152,7 @@
 									<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
 												<a class="btn btn-xs btn-success" onclick="del({$crowd['crowd_id']})">{:L('Note_crowd_list_del')}</a>
-												<a href="{:U('Admin/Note/note_list',array('cid'=>$crowd['crowd_id']))}" class="btn btn-xs btn-success">{:L('Note_crowd_list_look')}</a>
+												<a href="#" class="btn btn-xs btn-success">{:L('Note_crowd_list_look')}</a>
 
 											</div>
 									</td>
