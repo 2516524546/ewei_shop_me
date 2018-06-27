@@ -56,30 +56,13 @@
      <!-- Carousel advertising start 轮播广告 -->
     <div class="layui-carousel Banner" id="test2">
         <div carousel-item="">
-            <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div>
-            <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div>
-            <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div><div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div>
-            <div class="Carousel_img">
-                <a href="#">
-                    <img src="__PUBLIC__/Web/web/img/banner.png">
-                </a> 
-            </div>
+            <foreach name="newslist" item="new" key="newkey">
+                <div class="Carousel_img">
+                    <a href="<if condition='$new["news_type"] == 1'>{:U('Index/Jobs/newsDetails',array('nid'=>$new['news_id']))}<else />{$new['news_url']}</if>">
+                    <img src="./Uploads/{$new['news_img']}">
+                    </a>
+                </div>
+            </foreach>
         </div>
     </div>
     <!-- Carousel advertising end 轮播广告 -->
@@ -195,7 +178,7 @@
                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_question.png">
                         </a>
                         <div class="tooltip_box" style="top:75%;">
-                            <span>function Introduction</span>
+                            <span>{$moduleone['module_content']}</span>
                         </div>
                     </p>
                 </div>

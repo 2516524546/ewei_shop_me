@@ -5,6 +5,7 @@ use Index\Model\CrowdMemberModel;
 use Index\Model\CrowdModel;
 use Index\Model\CrowdTabModel;
 use Index\Model\FirstMarkModel;
+use Index\Model\ModuleModel;
 use Index\Model\NoteCommentModel;
 use Index\Model\NoteModel;
 use Index\Model\NoteVIModel;
@@ -38,8 +39,11 @@ class LifeController extends CommonController {
         $crodlist = $crodmodel->findlist('crowd_mid = '.$this->modeleid,'u_user u on u_crowd.crowd_uid = u.user_id','INNER','crowd_creattime desc','u.user_name,u_crowd.*');
 
         $crowdcount = $crodmodel->findone('crowd_mid = '.$this->modeleid,'','','count(*) num')['num'];
+        $modulemodel = new ModuleModel();
+        $moduleone = $modulemodel->findone('module_id = '.$this->modeleid);
 
         $this->assign(array(
+            'moduleone' => $moduleone,
             'commoditylist' => $commoditylist,
             'data' =>$data,
             'crodlist'=>$crodlist,
