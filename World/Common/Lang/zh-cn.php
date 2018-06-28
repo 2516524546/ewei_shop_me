@@ -153,6 +153,8 @@ return array(
     'Donation_donation_list_donation_amount' => '捐款金额(元)',
     'Donation_donation_list_virtual_currency' => '奖励虚拟币',
     'Donation_donation_list_donation_date' => '捐款日期',
+    'Donation_donation_list_record' => '捐款记录表',
+
     //donation_list end
 
     /*
