@@ -16,3 +16,25 @@
 .btn-primary.focus, .btn-primary:focus {
     box-shadow: none;
 }
+.boxp .boxp_con{
+    text-align: center;
+    font-size: 0;
+    margin-bottom: 10px;
+}
+.boxp .boxp_con .con_tip{
+    display: inline-block;
+    text-align: right;
+    width: 36%;
+    font-size: 15px;
+    margin-right: 15px;
+}
+.boxp .boxp_con .con_det{
+    display: inline-block;
+    text-align: left;
+    width: 40%;
+    font-size: 15px;
+}
+.PasswordContainer .InterestTitle{
+    justify-content: left; 
+    align-items: left; 
+}
