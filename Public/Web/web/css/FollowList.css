@@ -24,6 +24,12 @@
     align-items: center;
     margin-bottom: 17px;
 }
+.FollowList_content .FollowList_content_left .FollowList_content_left_list .FollowList_content_left_item span{
+    width: 55%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .FollowList_content .FollowList_content_left .FollowList_content_left_list .FollowList_content_left_item .item_title{
     display: flex;
     justify-content: flex-start;
@@ -32,10 +38,7 @@
 }
 
 .FollowList_content .FollowList_content_left .FollowList_content_left_list .FollowList_content_left_item .item_title span{
-    max-width: 70%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    /* max-width: 70%; */
 }
 
 .FollowList_content .FollowList_content_left .FollowList_content_left_list .FollowList_content_left_item .item_title .item_title_img{
@@ -107,6 +110,7 @@
 }
 .FollowList_content_right .right_list .right_list_item .right_list_item_right{
     padding: 17px 0;
+    width: 75%;
 }
 .FollowList_content_right .right_list .right_list_item .right_list_item_right .item_right_name{
     font-size: 14px;
@@ -142,13 +146,22 @@
 }
 .FollowList_content_right .right_list .right_list_item .right_list_item_right .right_item_btn .right_btn{
     border: 2px solid #46c4b8;
-    width: 33%;
+    width: 46%;
     height: 30px;
-    border-radius:23px; 
-    line-height: 28px;
+    border-radius: 23px;
+    line-height: 26px;
     text-align: center;
-    margin-right: 22px;
+    margin-right: 5px;
     cursor: pointer;
+    overflow: hidden;
+    padding: 0 5px;
+}
+.FollowList_content_right .right_list .right_list_item .right_list_item_right .right_item_btn .right_btn span{
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .FollowList_content_right .right_list .right_list_item .right_list_item_right .right_item_btn .right_btn:hover{
     background: #46c4b8;
@@ -159,6 +172,12 @@
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 17px;
+}
+.Following_tip span{
+    width: 55%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .Following_tip .tip_title{
     display: flex;
