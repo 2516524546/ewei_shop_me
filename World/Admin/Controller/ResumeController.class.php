@@ -48,7 +48,7 @@ class ResumeController extends CommonController {
 
     public function resume_del(){
         $id=$_POST['id'];
-        $resume=M('u_resume')->find();
+        $resume=M('u_resume')->where("resume_id={$id}")->find();
         $fileurl='./Uploads/'.$resume['resume_fileurl'];
         $res=M('u_resume')->where("resume_id={$id}")->delete();
         if ($res){
@@ -60,11 +60,65 @@ class ResumeController extends CommonController {
 
     }
     public function resume_edit(){
-
+        if (IS_POST){
+           $this->checkData($_POST);
+            $id =$_POST['resume_id'];
+            $res=M('u_resume')->where("resume_id={$id}")->save($_POST);
+            if ($res){
+                echo 1;
+            }else{
+                echo L('newworld_ajax_operation_fail');
+            }
+        }else{
+            $id=$_GET['id'];
+            $resume=M('u_resume')->where("resume_id={$id}")->find();
+            $this->assign("resume",$resume);
+            $this->display();
+        }
     }
 
     public function resume_detail(){
-          var_dump($_POST);
+        $id=$_GET['id'];
+        $resume=M('u_resume')->where("resume_id={$id}")->find();
+        $this->assign("resume",$resume);
+        $this->display();
+
     }
+
+    private function checkData($post)
+    {
+        if (empty($post['resume_name'])){
+            echo '姓名不能为空';
+            exit;
+        }
+        if (empty($post['resume_position'])){
+            echo '职位不能为空';
+            exit;
+        }
+        if (empty($post['resume_hightmoney'])){
+            echo '薪资不能为空';
+            exit;
+        }
+        if (!is_numeric($post['resume_hightmoney'])){
+            echo '薪资为数字';
+            exit;
+        }
+
+        if (empty($post['resume_workyear'])){
+            echo '工作年限不能为空';
+            exit;
+        }
+        if (!is_numeric($post['resume_workyear'])){
+            echo '工作年限为数字';
+            exit;
+        }
+
+        //resume_position
+        //resume_hightmoney
+        //resume_workyear
+
+
+    }
+
 
 }

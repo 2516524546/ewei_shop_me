@@ -56,7 +56,7 @@
         <h1>
             {:L('Resume_resume_manager')}
             <small><i class="icon-double-angle-right"></i>
-                {:L('Resume_resume_edit')}
+                {:L('Resume_resume_detail')}
             </small>
 
         </h1>
@@ -71,44 +71,29 @@
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_username')}</label>
                     <div class="col-sm-9">
                         <input type="text" name="resume_name" value="{$resume['resume_name']}" placeholder=""
-                               style="width:300px;"/></div>
+                               style="width:300px;" readonly/></div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_position')}</label>
                     <div class="col-sm-9">
-                        <input type="text" name="resume_position"  value="{$resume['resume_position']}" placeholder=""
-                               style="width:300px;"/></div>
+                        <input type="text" name="resume_position" value="{$resume['resume_position']}" placeholder=""
+                               style="width:300px;" readonly/></div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_work_type')}</label>
                     <div class="col-sm-9">
-                        <div class="radio1">
-                            <label>
-                                <eq name="resume['resume_tid']" value="1">
-                                    <input name="resume_tid" type="radio" value="1" class='ace' checked/>
-                                    <else/>
-                                    <input name="resume_tid" type="radio" value="1" class='ace'/>
-                                </eq>
-                                <span class="lbl">{:L('Resume_resume_list_type_fulltime')}</span>
-                            </label>
-                            <label>
-                                <eq name="resume['resume_tid']" value="2">
-                                    <input name="resume_tid" type="radio" value="2" class='ace' checked/>
-                                    <else/>
-                                    <input name="resume_tid" type="radio" value="2" class='ace'/>
-                                </eq>
-                                <span class="lbl">{:L('Resume_resume_list_type_parttime')}</span>
-                            </label>
-                            <label>
-                                <eq name="resume['resume_tid']" value="3">
-                                    <input name="resume_tid" type="radio" value="3" class='ace' checked/>
-                                    <else/>
-                                    <input name="resume_tid" type="radio" value="3" class='ace'/>
-                                </eq>
-                                <span class="lbl">{:L('Resume_resume_list_type_internship')}</span>
-                            </label>
-                        </div>
+                        <input name="resume_tid" type="text" value="<?php
+                        if($resume['resume_tid']==1){
+                        echo L('Resume_resume_list_type_fulltime');
+                        }elseif($resume['resume_tid']==2){
+                        echo L('Resume_resume_list_type_parttime');
+                        }elseif($resume['resume_tid']==3){
+                        echo L('Resume_resume_list_type_internship');
+                        }
+                        ;?>" readonly/>
+
                     </div>
+
 
                 </div>
 
@@ -175,99 +160,67 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_money')}</label>
                     <div class="col-sm-9">
-                        <input type="text" name="resume_hightmoney" value="{$resume['resume_hightmoney']}" placeholder=""
-                               style="width:300px;"/></div>
+                        <input type="text" name="resume_hightmoney" value="{$resume['resume_hightmoney']}"
+                               placeholder=""
+                               style="width:300px;" readonly/></div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_workyear')}</label>
                     <div class="col-sm-9">
                         <input type="text" name="resume_workyear" value="{$resume['resume_workyear']}" placeholder=""
-                               style="width:300px;"/>
+                               style="width:300px;" readonly/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_university')}</label>
                     <div class="col-sm-9">
                         <input type="text" name="resume_university" value="{$resume['resume_university']}"
-                               placeholder="" style="width:300px;"/>
+                               placeholder="" style="width:300px;" readonly/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_degree')}</label>
                     <div class="col-sm-9">
                         <input type="text" name="resume_degree" value="{$resume['resume_degree']}" placeholder=""
-                               style="width:300px;"/>
+                               style="width:300px;" readonly/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_specialty')}</label>
                     <div class="col-sm-9">
                         <input type="text" name="resume_specialty" value="{$resume['resume_specialty']}"
-                               placeholder="" style="width:300px;"/>
+                               placeholder="" style="width:300px;" readonly/>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_status')}</label>
                     <div class="col-sm-9">
-                        <div class="radio1">
-                            <label>
-                                <eq name="resume['resume_status']" value="0">
-                                    <input name="resume_status" type="radio" value="0" class='ace' checked/>
-                                    <else/>
-                                    <input name="resume_status" type="radio" value="0" class='ace'/>
-                                </eq>
-                                <span class="lbl">{:L('Resume_resume_list_status_improving')}</span>
-                            </label>
-                            <label>
-                                <eq name="resume['resume_status']" value="2">
-                                    <input name="resume_status" type="radio" value="2" class='ace' checked/>
-                                    <else/>
-                                    <input name="resume_status" type="radio" value="2" class='ace'/>
-                                </eq>
-                                <span class="lbl">{:L('Resume_resume_list_status_posted')}</span>
-                            </label>
-                            <label>
-                                <eq name="resume['resume_status']" value="1">
-                                    <input name="resume_status" type="radio" value="1" class='ace' checked/>
-                                    <else/>
-                                    <input name="resume_status" type="radio" value="1" class='ace'/>
-                                </eq>
-                                <span class="lbl">{:L('Resume_resume_list_status_bedelivered')}</span>
-                            </label>
-                            <label>
-                                <eq name="resume['resume_status']" value="3">
-                                    <input name="resume_status" type="radio" value="3" class='ace' checked/>
-                                    <else/>
-                                    <input name="resume_status" type="radio" value="3" class='ace'/>
-                                </eq>
-                                <span class="lbl">{:L('Resume_resume_list_status_autoposting')}</span>
-                            </label>
-                        </div>
-                    </div>
+                            <input name="resume_tid" type="text" value="<?php
+                        if($resume['resume_status']==0){
+                        echo L('Resume_resume_list_status_improving');
+                        }elseif($resume['resume_status']==2){
+                        echo L('Resume_resume_list_status_posted');
+                        }elseif($resume['resume_status']==1){
+                        echo L('Resume_resume_list_status_bedelivered');
+                        }elseif($resume['resume_status']==3){
+                        echo L('Resume_resume_list_status_autoposting');
+                        }
+                        ;?>" readonly/>
 
+
+                </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_isnegotiable')}</label>
                     <div class="col-sm-9">
-                        <div class="radio1">
-                            <label>
-                                <eq name="resume['resume_isnegotiable']" value="0">
-                                    <input name="resume_isnegotiable" type="radio" value="0" class='ace' checked/>
-                                    <else/>
-                                    <input name="resume_isnegotiable" type="radio" value="0" class='ace'/>
-                                </eq>
-                                <span class="lbl">{:L('Resume_resume_list_reject')}</span>
-                            </label>
-                            <label>
-                                <eq name="resume['resume_isnegotiable']" value="1">
-                                    <input name="resume_isnegotiable" type="radio" value="1" class='ace' checked/>
-                                    <else/>
-                                    <input name="resume_isnegotiable" type="radio" value="1" class='ace'/>
-                                </eq>
-                                <span class="lbl">{:L('Resume_resume_list_accept')}</span>
-                            </label>
-                        </div>
+                        <input name="resume_tid" type="text" value="<?php
+                        if($resume['resume_isnegotiable']==0){
+                        echo L('Resume_resume_list_reject');
+                        }elseif($resume['resume_isnegotiable']==1){
+                        echo L('Resume_resume_list_accept');
+                        }
+                        ;?>" readonly/>
                     </div>
 
                 </div>
@@ -275,7 +228,7 @@
 
                 </fieldset>
 
-                <div class="form-actions center">
+                <div class="form-actions center hidden">
                     <a class="btn btn-sm btn-success" id='tianjia'>
                         <i class="icon-edit bigger-110"></i>
                         {:L('User_user_list_comfirm_update')}

@@ -402,6 +402,9 @@ return array(
     'Resume_resume_list_type_fulltime' => '全职',
     'Resume_resume_list_type_parttime' => '兼职',
     'Resume_resume_list_type_internship' => '实习',
+    'Resume_resume_list_isnegotiable'=>'是否接受面议',
+    'Resume_resume_list_reject'=>'否',
+    'Resume_resume_list_accept'=>'是',
     /*
 	 * Resume end
 	 *******************************************************************/
