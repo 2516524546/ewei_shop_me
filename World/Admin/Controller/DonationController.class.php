@@ -73,7 +73,7 @@ class DonationController extends CommonController {
         $this->display("donation_detail");
     }
 
-    //导出文件
+    //导出文件123
     public function donation_daochu(){
         $join="u_user as u on u.user_id=donation_uid";
         $donation=M("u_donation")->join($join)->where("donation_static=1")->order("donation_id DESC")->select();
