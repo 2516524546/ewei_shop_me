@@ -219,9 +219,9 @@
                 </div>
                 </if>
                 <div class="GroupDetailsContainer">
-                    <h4 class="text-center FontColor">Group Details</h4>
-                    <div class="p"><b>Group icon  : </b>&nbsp;&nbsp;<div class="Group_icon"><img src="Uploads/{$crowone['crowd_icon']}"></div></div>
-                    <div class="p"><b>Group Name  :</b><div class="P_content">{$crowone['crowd_name']}</div></div>
+                    <h4 class="text-center FontColor">Community Details</h4>
+                    <div class="p"><b>Community icon  : </b>&nbsp;&nbsp;<div class="Group_icon"><img src="Uploads/{$crowone['crowd_icon']}"></div></div>
+                    <div class="p"><b style="width: 77%;">Community Name  :</b><div class="P_content">{$crowone['crowd_name']}</div></div>
                     <div class="p"><b>Creator  : </b><div class="P_content">{$crowone['user_name']}</div></div>
                     <div class="p_B">
                         <b>Introduction  :</b>
@@ -257,11 +257,11 @@
                 <p class="text-center Followtbut">
                     <if condition='$join_in != 1'>
                         <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" id="GroupBtn" onclick="follow()">
-                            To join the group
+                            To join the Community
                         </a>
                         <else />
                         <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" style="background:#bdbdbd;" id="GroupBtn">
-                            Have joined the group
+                            Have joined the Community
                         </a>
 
                     </if>
@@ -271,7 +271,7 @@
                 </p>
                 <div class="GroupDetailsContainer">
                     <h4 class="text-center FontColor MoreMembersbox">
-                        Group Member
+                        Community Member
                         <a href="{:U('Index/Rnterst/moreMembers')}&&cid={$cid}" class="MoreMembersA">
                             <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_icon_c_more_n.png">
                         </a>
