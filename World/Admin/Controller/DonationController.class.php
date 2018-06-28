@@ -86,6 +86,7 @@ class DonationController extends CommonController {
                 'donation_paytime'=>$v['donation_paytime']);
         }
 
+
         $this->exportexcel($data,array(L('Donation_donation_list_serial_number'),
             L('Donation_donation_list_donor'),L('Donation_donation_list_donation_amount'),
             L('Crowd_member_list_mail'),L('Donation_donation_list_virtual_currency'),
