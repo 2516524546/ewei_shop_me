@@ -73,6 +73,26 @@ class DonationController extends CommonController {
         $this->display("donation_detail");
     }
 
+    //导出文件123
+    public function donation_daochu(){
+        $join="u_user as u on u.user_id=donation_uid";
+        $donation=M("u_donation")->join($join)->where("donation_static=1")->order("donation_id DESC")->select();
+        foreach($donation as $k=>$v){
+            $data[$k] = array('donation_id'=>$v['donation_id'],
+                'user_name'=>$v['user_name'],
+                'donation_money'=>$v['donation_money'],
+                'user_mail'=>$v['user_mail'],
+                'donation_coin'=>$v['donation_coin'],
+                'donation_paytime'=>$v['donation_paytime']);
+        }
+
+        $this->exportexcel($data,array(L('Donation_donation_list_serial_number'),
+            L('Donation_donation_list_donor'),L('Donation_donation_list_donation_amount'),
+            L('Crowd_member_list_mail'),L('Donation_donation_list_virtual_currency'),
+            L('Donation_donation_list_donation_date')),L('Donation_donation_list_record'));
+
+    }
+
 
 
 }
