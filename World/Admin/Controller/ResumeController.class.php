@@ -64,7 +64,7 @@ class ResumeController extends CommonController {
     }
 
     public function resume_detail(){
-
+          var_dump($_POST);
     }
 
 }
