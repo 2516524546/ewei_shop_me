@@ -67,6 +67,7 @@ class NewController extends CommonController{
 //提交数据验证
     public function verifyData($post){
 
+
         if (empty($post['news_title'])){
             echo "新闻标题不能空";
             exit;

@@ -153,6 +153,8 @@ return array(
     'Donation_donation_list_donation_amount' => '捐款金额(元)',
     'Donation_donation_list_virtual_currency' => '奖励虚拟币',
     'Donation_donation_list_donation_date' => '捐款日期',
+    'Donation_donation_list_record' => '捐款记录表',
+
     //donation_list end
 
     /*
@@ -377,8 +379,32 @@ return array(
     /******************************************************************
      * Resume start
      */
-
-
+    'Resume_resume_list_number' => '序号',
+    'Resume_resume_list_username' => '姓名',
+    'Resume_resume_list_position' => '职位',
+    'Resume_resume_list_work_type' => '工作类型',
+    'Resume_resume_list_money' => '薪资',
+    'Resume_resume_list_workyear' => '工作年限',
+    'Resume_resume_list_university' => '毕业院校',
+    'Resume_resume_list_degree' => '学位',
+    'Resume_resume_list_specialty' => '专业',
+    'Resume_resume_list_status' => '简历状态',
+    'Resume_resume_list_upload_resume' => '上传简历',
+    'Resume_resume_list_manager' => '简历管理列表',
+    'Resume_resume_edit' => '简历编辑',
+    'Resume_resume_detail' => '简历详情',
+    'Resume_resume_manager' => '简历管理',
+    'Resume_resume_list_input_name' => '请输入姓名',
+    'Resume_resume_list_status_improving' => '待完善',
+    'Resume_resume_list_status_posted' => '已投递',
+    'Resume_resume_list_status_bedelivered' => '待投递',
+    'Resume_resume_list_status_autoposting' => '自动投递中',
+    'Resume_resume_list_type_fulltime' => '全职',
+    'Resume_resume_list_type_parttime' => '兼职',
+    'Resume_resume_list_type_internship' => '实习',
+    'Resume_resume_list_isnegotiable'=>'是否接受面议',
+    'Resume_resume_list_reject'=>'否',
+    'Resume_resume_list_accept'=>'是',
     /*
 	 * Resume end
 	 *******************************************************************/

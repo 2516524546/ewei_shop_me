@@ -37,7 +37,6 @@ margin-right: 6px;
 .layui-tab-title .layui-this{
     background: #c5f4f0;
     color: #46c4b8;
-
 }
 .layui-tab-title .layui-this:after{
     border: none;

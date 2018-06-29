@@ -42,7 +42,33 @@
                             Basic Information
                         </h3>
                     </div>
-                    <div class="boxp" style="margin-left: 80px;">
+                    <div class="boxp">
+                        <div class="boxp_con">
+                            <div class="con_tip">Job type  :</div>
+                            <div class="con_det"><if condition="$jobDetails['works_type'] == 1">Full Time<elseif condition="$jobDetails['works_type'] == 2"/>Part Time<else/>Practice</if></div>
+                        </div>
+                        <div class="boxp_con">
+                            <div class="con_tip">Position : </div>
+                            <div class="con_det">{$jobDetails['works_position']}</div>
+                        </div>
+                        <div class="boxp_con">
+                            <div class="con_tip">Salary : </div>
+                            <div class="con_det">$ {$jobDetails['works_minmoney']} ~ $ {$jobDetails['works_maxmoney']}</div>
+                        </div>
+                        <div class="boxp_con">
+                            <div class="con_tip">Working seniority : </div>
+                            <div class="con_det">{$jobDetails['works_years']} years</div>
+                        </div>
+                        <div class="boxp_con">
+                            <div class="con_tip">Academic degree : </div>
+                            <div class="con_det">{$jobDetails['works_degree']}</div>
+                        </div>
+                        <div class="boxp_con">
+                            <div class="con_tip">Major : </div>
+                            <div class="con_det">{$jobDetails['works_specialty']}</div>
+                        </div>
+                    </div>
+                    <!-- <div class="boxp" style="margin-left: 80px;">
                         <div class="FormContainer" style="margin-left: 84px;margin-bottom: 10px;">
                             <p class="">Employment type : <if condition="$jobDetails['works_type'] == 1">Full Time<elseif condition="$jobDetails['works_type'] == 2"/>Part Time<else/>Practice</if></p>
                         </div>
@@ -61,13 +87,45 @@
                         <div class="FormContainer" style="margin-left: 73px;margin-bottom: 10px;">
                             <p class="">Major : {$jobDetails['works_specialty']}</p>
                         </div>
-                    </div>
+                    </div> -->
+
                     <div class="InterestTitle" style="margin-top: 45px;">
                         <h3 class="Interesth3">
                             Company Information
                         </h3>
                     </div>
-                    <div class="boxp" style="margin-left: 80px;">
+
+                    <div class="boxp">
+                        <div class="boxp_con">
+                            <div class="con_tip">Company name  :</div>
+                            <div class="con_det">{$jobDetails['works_company_name']}</div>
+                        </div>
+                        <div class="boxp_con">
+                            <div class="con_tip">Company Type :  </div>
+                            <div class="con_det"><if condition="$jobDetails['works_company_nature'] == 1">Private<else/>state-owned</if></div>
+                        </div>
+                        <div class="boxp_con">
+                            <div class="con_tip">Work type : </div>
+                            <div class="con_det"><if condition="$jobDetails['works_company_nature'] == 1">Internet<elseif condition="$jobDetails['works_company_nature'] == 2"/>Finance<else/>Education</if>}</div>
+                        </div>
+                        <div class="boxp_con">
+                            <div class="con_tip">Company Size : </div>
+                            <div class="con_det">{$jobDetails['works_company_size']} people</div>
+                        </div>
+                        <div class="boxp_con">
+                            <div class="con_tip">Receive Resume Email : </div>
+                            <div class="con_det">{$jobDetails['works_company_mail']}</div>
+                        </div>
+                        <div class="boxp_con">
+                            <div class="con_tip">Company Information : </div>
+                            <div class="con_det">{$jobDetails['works_company_content']}</div>
+                        </div>
+                        <div class="boxp_con">
+                            <div class="con_tip">Salary Negotiable : </div>
+                            <div class="con_det"><if condition="$jobDetails['works_isnegotiable'] == 0">No<else/>Yes</if></div>
+                        </div>
+                    </div>
+                    <!-- <div class="boxp" style="margin-left: 80px;">
                         <div class="FormContainer" style="margin-left: 84px;margin-bottom: 10px;">
                             <p class="">Company name : {$jobDetails['works_company_name']}</p>
                         </div>
@@ -89,7 +147,9 @@
                         <div class="FormContainer" style="margin-left: 73px;margin-bottom: 10px;">
                             <p class="">Salary Negotiable : <if condition="$jobDetails['works_isnegotiable'] == 0">No<else/>Yes</if></p>
                         </div>
-                    </div>
+                    </div> -->
+
+
                     <if condition="$jobDetails['works_uid'] != $userid && $myResume">
                     <div class="but" style="margin: 30px auto 0;width: 32%;">
                         <button type="button" class="btn btn-primary btn_Delivery" data-toggle="modal" data-target=".bs-example-modal-sm" style="font-size: 15px;">Immediate Delivery</button>

@@ -1,0 +1,292 @@
+<head>
+    <meta charset="utf-8"/>
+    <title>{:L('newworld_admin')}</title>
+    <meta name="keywords" content="{:L('newworld_admin')}"/>
+    <meta name="description" content="{:L('newworld_admin')}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- basic styles -->
+    <link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css"/>
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css"/>
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css"/>
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css"/>
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
+    <!--[if !IE]> -->
+
+    <script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+
+    <!-- <![endif]-->
+    <!-- ace settings handler -->
+
+    <script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+    <script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+    <![endif]-->
+    <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
+
+</head>
+<body style='background:#fff;'>
+<div class="main-content">
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try {
+                ace.settings.check('breadcrumbs', 'fixed')
+            } catch (e) {
+            }
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="icon-home home-icon"></i>
+                <a href="#">{:L('newworld_home')}</a>
+            </li>
+            <li class="active">{:L('newworld_console')}</li>
+        </ul><!-- .breadcrumb -->
+    </div>
+
+
+</div><!-- /.main-content -->
+
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+             发布职位管理
+            <small><i class="icon-double-angle-right"></i>
+                发布职位管理列表
+            </small>
+
+        </h1>
+
+        <!-- 	 <form class="daoru" action="{:U('Daili/Index/upload_execl')}" method="POST" enctype="multipart/form-data" style="margin-top:20px;">
+             <input type='file' name='execl' style=" width:150px; height:30px; display:inline-block; margin-right:30px;"/>
+             <span style='width:85px; height:30px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:30px;text-align:center; borde-radius:4px;' id='daoru'>导入数据</span>
+            </form> 	 -->
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row" style="padding-bottom: 10px;">
+                <div class="col-sm-12">
+                    <div id="sample-table-2_filter">
+                        <form class="form-horizontal" action="{:U('Admin/Resume/resume_list_sou')}" method="POST"
+                              role="form" enctype="multipart/form-data">
+                            <div class="btn-group" style='margin-top:5px;'>
+                                <span>{:L('Resume_resume_list_input_name')}:</span>
+                                <input type="text" name="username" value="<?php if($username){echo $username;}?>"
+                                       placeholder="{:L('Resume_resume_list_input_name')}">
+                            </div>
+                            <input type='hidden' name='button' value='1'/>
+
+                            <div class="btn-group" style='margin-top:5px;'>
+												<span class="input-group-btn">
+													<button type="submit" style="padding:0"
+                                                            class="btn btn-purple btn-sm">
+														{:L('User_user_list_search')}<i
+                                                            class="icon-search icon-on-right bigger-110"></i>
+													</button>
+												</span>
+
+                            </div>
+
+                        </form>
+
+                        <!--<a href="index.php?m=Admin&c=User&a=user_daochu" class="btn btn-xs btn-success">导出文件</a>-->
+                        <!-- <div style=' width:100%; height:40px; '>
+                           <a href="{:U('Daili/index/student_add')}" target="rightFrame"><span style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>添加学员</span></a>
+
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="table-responsive">
+                        <table id="sample-table-1" class="table table-striped table-bordered table-hover"
+                               style="margin-bottom: 0px;font-size:13px;">
+                            <thead>
+                            <tr style=' font-size: 13px;'>
+                                <!-- <th><input type='checkbox' name='' value=''></th> -->
+                                <th>{:L('Resume_resume_list_number')}</th>
+                                <th>职位名称</th>
+                                <th>职位薪资</th>
+                                <th>工作类型</th>
+                                <th>工作年限</th>
+                                <th>毕业院校</th>
+                                <th>学位</th>
+                                <th>专业</th>
+                                <th>简历匹配</th>
+                                <th>{:L('User_user_list_operation')}</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <?php foreach($list as $k=>$v){?>
+                            <tr>
+                                <!--  <td><input type='checkbox' name='' value=''></td> -->
+                                <td><?php echo $v['works_id'];?></td>
+                                <td><?php echo $v['works_position'];?></td>
+                                <td><?php echo $v['works_maxmoney'];?></td>
+                                <td><?php echo $v['works_company_type'];?></td>
+                                <td><?php echo $v['works_years'];?></td>
+                                <td><?php echo $v['works_school'];?></td>
+                                <td><?php echo $v['works_degree'];?></td>
+                                <td><?php echo $v['works_specialty'];?></td>
+                                <td><?php echo $v['works_degree'];?></td>
+                                <td>
+                                    <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                        <a href="index.php?m=Admin&c=Resume&a=resume_edit&id=<?php echo $v['resume_id']?>"
+                                           class="btn btn-xs btn-success"><?php echo L('User_user_list_edit');?></a>
+                                        <a href="#" onClick="batchDelete(<?php echo $v['resume_id']?>)"
+                                           class="btn btn-xs btn-success"><?php echo L('User_user_list_del');?></a>
+                                        <a href="index.php?m=Admin&c=Resume&a=resume_detail&id=<?php echo $v['resume_id']?>"
+                                           class="btn btn-xs btn-success"><?php echo L('User_user_list_detail');?></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php }?>
+                            </tbody>
+                        </table>
+                        <div class="dataTables_paginate paging_bootstrap"
+                             style="border-top: 1px solid #DDD;padding-top: 12px;padding-bottom: 12px;background-color: #eff3f8;border-bottom: 1px solid #DDD;">
+                            <div style='margin-right:56px;'>
+                                <?php echo $page;?>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /span -->
+            </div>
+            <!-- /row -->
+            <div class="hr hr-18 dotted hr-double"></div>
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+    .btn-xs {
+        margin-right: 10px !important;
+    }
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script language="javascript">
+    <!--
+    function linkok(url) {
+        question = confirm("你确认要删除吗？");
+        if (question) {
+            window.location.href = url;
+        }
+    }
+    //-->
+</script>
+<script type="text/javascript">
+
+    $('.date-picker').datepicker({autoclose: true}).next().on(ace.click_event, function () {
+        $(this).prev().focus();
+    });
+</script>
+
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+<script>
+    function showStart() {
+        return true;
+    }
+    function showSuccess(data) {
+        if (data == 1) {
+            alert('导入成功')
+            location.href = "{:U('Daili/Index/student_list')}"
+        } else {
+            alert(data)
+            return
+        }
+    }
+    $(function () {
+        var options = {
+            beforeSubmit: showStart,
+            success: showSuccess,
+
+        };
+        $('#daoru').click(function () {
+            $('.daoru').ajaxSubmit(options);
+        })
+
+    })
+</script>
+
+<script language="javascript">
+    function batchDelete(id) {
+        layer.msg("{:L('Note_crowd_list_if')}", {
+            time: 0 //不自动关闭
+            , btn: ["{:L('Note_crowd_list_ok')}", "{:L('Note_crowd_list_no')}"]
+            , yes: function (index) {
+                layer.close(index);
+                $.ajax({
+                    url: 'index.php?m=Admin&c=Resume&a=resume_del',
+                    data: 'id=' + id,
+                    type: 'post',
+                    success: function (msg) {
+                        if (msg == 1) {
+                            showMessage("{:L('newworld_ajax_operation_success')}",1)
+                            //location.href="{:U('Admin/jinxiao/fenxiao_did')}";
+                            window.location.reload();
+                        } else {
+                            showMessage(msg,2)
+                        }
+
+                    }
+                })
+            }
+        });
+    }
+    function showMessage(msg, status) {
+        layer.msg(msg, {
+                time: 500,
+                icon: status,
+            }, function () {
+                if (status == 1) {
+                    location.reload()
+                }
+
+            }
+        );
+    }
+
+</script>

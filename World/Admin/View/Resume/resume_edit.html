@@ -1,0 +1,374 @@
+<head>
+    <meta charset="utf-8"/>
+    <title>{:L('newworld_admin')}</title>
+    <meta name="keywords" content="{:L('newworld_admin')}"/>
+    <meta name="description" content="{:L('newworld_admin')}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- basic styles -->
+    <link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css"/>
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/jquery-ui-1.10.3.custom.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/chosen.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/datepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/bootstrap-timepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/daterangepicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorpicker.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/colorbox.css"/>
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-rtl.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/admin/css/ace-skins.min.css"/>
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/ace-ie.min.css"/>
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
+    <!--[if !IE]> -->
+
+    <script src="__PUBLIC__/Admin/admin/js/jquery-2.0.3.min.js"></script>
+
+    <!-- <![endif]-->
+    <!-- ace settings handler -->
+
+    <script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/Admin//admin/js/html5shiv.js"></script>
+    <script src="__PUBLIC__/Admin//admin/js/respond.min.js"></script>
+
+    <![endif]-->
+    <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
+</head>
+<body style='background:#fff;'>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            {:L('Resume_resume_manager')}
+            <small><i class="icon-double-angle-right"></i>
+                {:L('Resume_resume_edit')}
+            </small>
+
+        </h1>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <form class="form-horizontal" action="{:U('Admin/Resume/resume_edit')}" method="POST" role="form"
+                  enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_username')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="resume_name" value="{$resume['resume_name']}" placeholder=""
+                               style="width:300px;"/></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_position')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="resume_position"  value="{$resume['resume_position']}" placeholder=""
+                               style="width:300px;"/></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_work_type')}</label>
+                    <div class="col-sm-9">
+                        <div class="radio1">
+                            <label>
+                                <eq name="resume['resume_tid']" value="1">
+                                    <input name="resume_tid" type="radio" value="1" class='ace' checked/>
+                                    <else/>
+                                    <input name="resume_tid" type="radio" value="1" class='ace'/>
+                                </eq>
+                                <span class="lbl">{:L('Resume_resume_list_type_fulltime')}</span>
+                            </label>
+                            <label>
+                                <eq name="resume['resume_tid']" value="2">
+                                    <input name="resume_tid" type="radio" value="2" class='ace' checked/>
+                                    <else/>
+                                    <input name="resume_tid" type="radio" value="2" class='ace'/>
+                                </eq>
+                                <span class="lbl">{:L('Resume_resume_list_type_parttime')}</span>
+                            </label>
+                            <label>
+                                <eq name="resume['resume_tid']" value="3">
+                                    <input name="resume_tid" type="radio" value="3" class='ace' checked/>
+                                    <else/>
+                                    <input name="resume_tid" type="radio" value="3" class='ace'/>
+                                </eq>
+                                <span class="lbl">{:L('Resume_resume_list_type_internship')}</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <input type="hidden" name="resume_id" value="{$resume['resume_id']}"/>
+                <!-- <input type="hidden" name="advertising_for" value="<?php echo $type;?>"/>-->
+                <!-- <div class="form-group" id="user-profile-3">
+                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Commodity_commodity_list_picture')}</label>
+                     <div class="col-sm-9">
+                         <div class="col-xs-12 col-sm-4">
+                             <input type="file" id='upload_picture' accept=".png,.gif,.jpeg,.jpg"/>
+                             <div id='img'>
+                                 <img width="100px" height="100px" src="<?php echo './Uploads/'.$commodity['commodity_img']?>"/>
+                             </div>
+                         </div>
+                         <input type='hidden' name='commodity_img' value="{$commodity['commodity_img']}">
+
+                     </div>
+
+                 </div>-->
+                <script type="text/javascript" src="__PUBLIC__/Tools/uploadify/jquery.uploadify.min.js"></script>
+                <link rel="stylesheet" type="text/css" href="__PUBLIC__/Tools/uploadify/uploadify.css">
+                <script type="text/javascript">
+                    //上传图片
+                    /* 初始化上传插件 */
+                    var userid = "100001";
+                    $("#upload_picture").change(function (e) {
+                        var formData = new FormData();
+                        formData.append("download", document.getElementById("upload_picture").files[0]);
+                        $.ajax({
+                            url: "{:U('Admin/File/uploadBanner2',array('sessionid'=>'" + userid + "'))}",
+                            type: "POST",
+                            data: formData,
+                            contentType: false,
+                            processData: false,
+                            dataType: 'json',
+                            success: function (data) {
+                                console.log(data)
+                                if (data.status == 1) {
+                                    $("#img").html('<img style="width:200px;height:200px;" src="./Uploads/' + data.msg + '"/>');
+                                    $("input[name='commodity_img']").val(data.msg)
+                                } else {
+                                    showMessage(data.msg, 2);
+                                }
+                            },
+                            error: function () {
+                                showMessage("{:L('newworld_ajax_upload_fail')}", 2);
+                            }
+                        });
+                    });
+
+                    function showMessage(msg, status) {
+                        layer.msg(msg, {
+                                time: 500,
+                                icon: status,
+                            }, function () {
+                                if (status == 1) {
+                                    location.reload()
+                                }
+
+                            }
+                        );
+                    }
+                </script>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_money')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="resume_hightmoney" value="{$resume['resume_hightmoney']}" placeholder=""
+                               style="width:300px;"/></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_workyear')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="resume_workyear" value="{$resume['resume_workyear']}" placeholder=""
+                               style="width:300px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_university')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="resume_university" value="{$resume['resume_university']}"
+                               placeholder="" style="width:300px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_degree')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="resume_degree" value="{$resume['resume_degree']}" placeholder=""
+                               style="width:300px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_specialty')}</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="resume_specialty" value="{$resume['resume_specialty']}"
+                               placeholder="" style="width:300px;"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_status')}</label>
+                    <div class="col-sm-9">
+                        <div class="radio1">
+                            <label>
+                                <eq name="resume['resume_status']" value="0">
+                                    <input name="resume_status" type="radio" value="0" class='ace' checked/>
+                                    <else/>
+                                    <input name="resume_status" type="radio" value="0" class='ace'/>
+                                </eq>
+                                <span class="lbl">{:L('Resume_resume_list_status_improving')}</span>
+                            </label>
+                            <label>
+                                <eq name="resume['resume_status']" value="2">
+                                    <input name="resume_status" type="radio" value="2" class='ace' checked/>
+                                    <else/>
+                                    <input name="resume_status" type="radio" value="2" class='ace'/>
+                                </eq>
+                                <span class="lbl">{:L('Resume_resume_list_status_posted')}</span>
+                            </label>
+                            <label>
+                                <eq name="resume['resume_status']" value="1">
+                                    <input name="resume_status" type="radio" value="1" class='ace' checked/>
+                                    <else/>
+                                    <input name="resume_status" type="radio" value="1" class='ace'/>
+                                </eq>
+                                <span class="lbl">{:L('Resume_resume_list_status_bedelivered')}</span>
+                            </label>
+                            <label>
+                                <eq name="resume['resume_status']" value="3">
+                                    <input name="resume_status" type="radio" value="3" class='ace' checked/>
+                                    <else/>
+                                    <input name="resume_status" type="radio" value="3" class='ace'/>
+                                </eq>
+                                <span class="lbl">{:L('Resume_resume_list_status_autoposting')}</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_isnegotiable')}</label>
+                    <div class="col-sm-9">
+                        <div class="radio1">
+                            <label>
+                                <eq name="resume['resume_isnegotiable']" value="0">
+                                    <input name="resume_isnegotiable" type="radio" value="0" class='ace' checked/>
+                                    <else/>
+                                    <input name="resume_isnegotiable" type="radio" value="0" class='ace'/>
+                                </eq>
+                                <span class="lbl">{:L('Resume_resume_list_reject')}</span>
+                            </label>
+                            <label>
+                                <eq name="resume['resume_isnegotiable']" value="1">
+                                    <input name="resume_isnegotiable" type="radio" value="1" class='ace' checked/>
+                                    <else/>
+                                    <input name="resume_isnegotiable" type="radio" value="1" class='ace'/>
+                                </eq>
+                                <span class="lbl">{:L('Resume_resume_list_accept')}</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                </fieldset>
+
+                <div class="form-actions center">
+                    <a class="btn btn-sm btn-success" id='tianjia'>
+                        <i class="icon-edit bigger-110"></i>
+                        {:L('User_user_list_comfirm_update')}
+                    </a>
+                    <a class="btn btn-sm btn-warning" href="javascript:history.back(-1)" class="myButton">
+                        <i class="icon-arrow-left icon-on-left bigger-110"></i>
+                        {:L('User_user_list_back_list')}
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<!-- /.page-content -->
+<style type="text/css" media="screen">
+    .btn-xs {
+        margin-right: 10px !important;
+    }
+</style>
+
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $('.date-picker').datepicker({autoclose: true}).next().on(ace.click_event, function () {
+        $(this).prev().focus();
+    });
+</script>
+
+
+<!-- ajax 提交表单 -->
+
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+
+<script>
+    function showStart() {
+        return true;
+    }
+
+    function showSuccess(data) {
+
+        if (data == 1) {
+            showMessage("{:L('Crowd_crowd_detail_yes')}", 1);
+            location.href = "{:U('Admin/Resume/resume_list')}"
+        } else {
+            showMessage(data, 2);
+            return false
+        }
+
+    }
+
+    $(function () {
+        var options = {
+            beforeSubmit: showStart,
+            success: showSuccess,
+
+        };
+        $('#tianjia').click(function () {
+
+            $('.form-horizontal').ajaxSubmit(options);
+        })
+
+
+    });
+    $(function () {
+        $(":radio").click(function () {
+            if ($(this).val() == 0) {
+                $(".in-txt").removeClass("hidden");
+                $(".editor").addClass("hidden");
+            } else if ($(this).val() == 1) {
+                $(".editor").removeClass("hidden");
+                $(".in-txt").addClass("hidden");
+            }
+        });
+    });
+</script>
+<script src="__PUBLIC__/Admin/admin/ueditor/ueditor.config.js"></script>
+<script src="__PUBLIC__/Admin/admin/ueditor/ueditor.all.min.js"></script>
+<script src="__PUBLIC__/Admin/admin/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    UE.getEditor('content', {initialFrameWidth: 800, initialFrameHeight: 400,});
+
+</script>
+
+
+
+
+
+
+

@@ -253,3 +253,8 @@
   overflow: hidden;
   white-space: nowrap;
 }
+
+.layui-btn-lg{
+  padding: 0;
+  font-size: 16px;
+}
