@@ -9,7 +9,7 @@ class CrowdModel extends Model{
 
     protected  $trueTableName = 'u_crowd';
 
-    public function findone($where,$join,$jointype = 'INNER',$field=false){
+    public function findone($where,$join='',$jointype = 'INNER',$field=false){
 
         return $this->join($join,$jointype)->where($where)->field($field)->find();
     }

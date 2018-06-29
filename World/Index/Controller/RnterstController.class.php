@@ -453,6 +453,7 @@ class RnterstController extends CommonController {
         $crowdmembermodel = new CrowdMemberModel();
 
         $crowdone = $crowdmodel->findone('crowd_id = '.$_GET['cid']);
+
         $list = $crowdmembermodel->findlistlimit('crowd_member_cid = '.$_GET['cid'],'u_user u on u_crowd_member.crowd_member_uid = u.user_id',0,10,'INNER','crowd_member_status desc,crowd_member_logintime desc','u_crowd_member.*,u.user_icon,u.user_name');
         $listcount =$crowdmembermodel->findonejoin('crowd_member_cid = '.$_GET['cid'],'u_user u on u_crowd_member.crowd_member_uid = u.user_id','INNER','crowd_member_status desc,crowd_member_logintime desc','count(*) num')['num'];
 
