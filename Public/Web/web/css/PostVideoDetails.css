@@ -7,3 +7,18 @@
   right: 12px;
   top: 28px;
 }
+.layui-laypage a {
+  text-decoration: none;
+  min-width: 79px;
+}
+.layui-laypage a, .layui-laypage span {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0;
+  height: 28px;
+  line-height: 28px;
+  margin: 0 -1px 5px 0;
+  background-color: #fff;
+  color: #333;
+  font-size: 12px;
+}
