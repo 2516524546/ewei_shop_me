@@ -20,7 +20,8 @@
 .Message_box .Message_details{
     box-shadow: 2px 2px 14px #cecece;
     padding: 8px 30px;
-    min-height: 654px;
+    padding-bottom: 30px;
+    /* min-height: 654px; */
 }
 .Message_box .Message_details .Message_details_item{
     display: flex;
@@ -149,6 +150,7 @@
 }
 #NumberOfPagesContainer{
     text-align: center;
+    margin-top: 20px;
 }
 .page_str{
     display: inline-block;

@@ -56,3 +56,20 @@ hr {
 .layui-btn-normal {
     background-color: #46c4b8;
 }
+html, body {
+height: 100%;
+}
+/* .wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -4em;
+} */
+    
+/* footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    clear: both;
+} */
