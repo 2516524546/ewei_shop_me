@@ -185,26 +185,27 @@
                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
                                         </div>
                                         <div class="det_timed">
-                                            {$comment['note_comment_createtime']}
+                                            {$comment['professional_comment_createtime']}
                                         </div>
                                     </div>
                                     <div class="det_zan">
-                                        <if condition='$comment["note_comment_isreply"]!=1'>
-                                            <div class="det_reply" onclick="reply(this)">Reply</div>
+                                        <if condition="$professional['professional_uid'] == $userid && empty($comment['professional_comment_reply'])">
+                                            <div class="det_reply" onclick="reply(this,{$comment['professional_comment_id']})">Reply</div>
                                         </if>
                                         <div class="line"></div>
                                         <div class="det_zan_box">
-                                            <if condition='$comment["iszan"] == 0'>
-                                                <div class="zan_box_img" onclick="zan({$comment['note_comment_id']},this)">
+                                            <?php $professional_comment_zaner = explode(',',$comment['professional_comment_zaner']);?>
+                                            <if condition='!in_array($userid,$professional_comment_zaner)'>
+                                                <div class="zan_box_img" onclick="zan({$comment['professional_comment_id']},1)">
                                                     <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png" alt="">
                                                 </div>
                                                 <else />
-                                                <div class="zan_box_img" onclick="unzan({$comment['note_comment_id']},this)">
+                                                <div class="zan_box_img" onclick="zan({$comment['professional_comment_id']},0)">
                                                     <img src='__PUBLIC__/Web/web/img/greated.png'>
                                                 </div>
                                             </if>
                                             <div class="zan_box_num">
-                                                {$comment['note_comment_zans']}
+                                                {$comment['professional_comment_zans']}
                                             </div>
                                         </div>
                                     </div>
@@ -212,13 +213,13 @@
                             </div>
 
                             <div class="item_con_det">
-                                {$comment['note_comment_content']}
+                                {$comment['professional_comment_content']}
                             </div>
 
                             <div class="item_con_reply">
                                 <div class="reply_person">
-                                    <if condition='$comment["note_comment_isreply"]==1'>
-                                        {$noteuser['user_name']} 回复 {$comment['user_name']} ： <span class="reply_c">{$comment['note_comment_reply']}</span>
+                                    <if condition='$comment["professional_comment_reply"]'>
+                                        {$professional['user_name']} 回复 {$comment['user_name']} ： <span class="reply_c">{$comment['professional_comment_reply']}</span>
                                     </if>
                                 </div>
                             </div>
@@ -283,10 +284,13 @@
 <script type="application/javascript">
     $('.Returnbut').on('click', function () {
         var comment = $('.Returntextarea').val();
-
+        var professional_comment_id = 0;
+        if($('input[name=professional_comment_id]').length>0){
+            professional_comment_id = $('input[name=professional_comment_id]').val();
+        }
         $.post(
             '{:U("Index/Jobs/PostProfessionalComment")}',
-            {professional_id: {$_GET['professional_id']}, comment: comment},
+            {professional_id: {$_GET['professional_id']}, comment: comment,professional_comment_id:professional_comment_id},
             function (data) {
                 if (data.status == 0) {
                     alert(data.msg);
@@ -297,13 +301,39 @@
             }, 'json'
         );
     })
+    function zan(id,zan){
 
-    function reply(obj) {
+        $.post(
+            '{:U("Index/Jobs/ProfessionalCommentZan")}',
+            {professional_comment_id: id,zan:zan},
+            function (data) {
+                if (data.status == 0) {
+                    layer.msg(data.msg, {
+                            time: 1500,
+                            icon: 2,
+                        }
+                    );
+                } else {
+                    layer.msg(data.msg, {
+                            time: 1500,
+                            icon: 1,
+                        },function(){
+                            window.location.reload();
+                        }
+                    );
+                }
+            }, 'json'
+        );
+    }
 
+
+    function reply(obj,id) {
         var name = $(obj).parent().parent().parent().children(".item_user_name").children(".User_name").text();
         var Cspan = "<span class='ReplyUser'>reply @ <span class='ReplyUser_name'>"+name+"</span> ：</span>"
+        var professional_comment_id_html = '<input type="hidden" value="'+ id +'" name="professional_comment_id"/>';
         $(".ReplyUser").remove()
         $(".RepllyBox").append(Cspan);
+        $(".RepllyBox").append(professional_comment_id_html);
 
 
     }
