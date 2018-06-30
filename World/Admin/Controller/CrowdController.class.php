@@ -103,12 +103,24 @@ class CrowdController extends CommonController {
             $notemodel = new NoteModel();
             $tutorissuemodel = new TutorShipIssueModel();
             $tutorneedmodel = new TutorShipNeedModel();
+            $usermodel = new UserModel();
 
             $crowdmodel->startTrans();
             try {
                 $crowdres = $crowdmodel->where('crowd_id = ' . $cid)->delete();
                 $crowdconditionmodel->where('crowd_condition_cid = ' . $cid)->delete();
                 $crowdmembermodel->where('crowd_member_cid = ' . $cid)->delete();
+                $usernotelist = $notemodel->joinlist('note_cid = ' . $cid,'u_user u on u_note.note_uid = u.user_id');
+
+                foreach ($usernotelist as $usernote){
+
+                    $data=array();
+                    $userone = $usermodel->findone('user_id = '.$usernote['user_id']);
+                    $data['user_notes'] = $userone['user_notes']-1;
+
+                    $usermodel->updataone('user_id = '.$userone['user_id'],$data);
+
+                }
                 $notemodel->where('note_cid = ' . $cid)->delete();
                 $tutorissuemodel->where('tutorship_issue_cid = ' . $cid)->delete();
                 $tutorneedmodel->where('tutorship_need_cid = ' . $cid)->delete();

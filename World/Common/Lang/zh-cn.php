@@ -341,13 +341,42 @@ return array(
     'Note_note_list_name' => '发布人',
     'Note_note_list_title' => '标题',
     'Note_note_list_type' => '状态',
+    'Note_note_list_typestatic' => '请选择',
     'Note_note_list_typeone' => '正常',
     'Note_note_list_typetwo' => '屏蔽',
     'Note_note_list_id' => 'id',
-    'Note_note_list_id' => 'id',
-    'Note_note_list_id' => 'id',
-    'Note_note_list_id' => 'id',
+    'Note_note_list_content' => '内容',
+    'Note_note_list_img' => '图片',
+    'Note_note_list_create' => '发布时间',
+    'Note_note_list_comments' => '评论量',
+    'Note_note_list_ishide' => '已屏蔽',
+    'Note_note_list_closehide' => '取消屏蔽',
+    'Note_note_list_top' => '置顶',
+    'Note_note_list_closetop' => '取消置顶',
+    'Note_note_list_swally' => '加精',
+    'Note_note_list_closeswally' => '取消加精',
+    'Note_note_list_del' => '删除',
+    'Note_note_list_delyes' => '删除成功',
+    'Note_note_list_delno' => '删除失败',
+    'Note_note_list_hideyes' => '已屏蔽',
+    'Note_note_list_hideno' => '屏蔽失败',
+    'Note_note_list_closehideyes' => '已取消屏蔽',
+    'Note_note_list_closehideno' => '取消屏蔽失败',
+    'Note_note_list_topyes' => '置顶成功',
+    'Note_note_list_topno' => '置顶失败',
+    'Note_note_list_closetopyes' => '已取消置顶',
+    'Note_note_list_closetopno' => '取消置顶失败',
+    'Note_note_list_wallyyes' => '加精成功',
+    'Note_note_list_wallyno' => '加精失败',
+    'Note_note_list_closewallyyes' => '已取消加精',
+    'Note_note_list_closewallyno' => '取消加精失败',
 
+    //note_detail
+    'Note_note_detail_icon'=>'头像',
+    'Note_note_detail_name'=>'昵称',
+    'Note_note_detail_content'=>'内容',
+    'Note_note_detail_createtime'=>'发表时间',
+    'Note_note_detail_zans'=>'点赞数',
 
 
 
@@ -360,6 +389,15 @@ return array(
      * Question start
      */
 
+    //public
+    'Question' => '问答管理',
+    'Question_crowd_list' => '问答管理',
+
+    //crowd_list
+    'Question_crowd_list_notes' => '问答数',
+
+    //nost_list
+    'Question_nost_list_money' => '悬赏金',
 
     /*
 	 * Question end
@@ -369,7 +407,15 @@ return array(
     /******************************************************************
      * Resource start
      */
+    'Resource' => '资源管理',
+    'Resource_crowd_list' => '资源管理',
 
+    //crowd_list
+    'Resource_crowd_list_notes' => '资源数',
+
+    //nost_list
+    'Resource_nost_list_downloads' => '下载量',
+    'Resource_nost_list_url' => '资源路径',
 
     /*
 	 * Resource end
