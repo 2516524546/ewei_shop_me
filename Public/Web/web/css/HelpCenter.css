@@ -21,6 +21,9 @@
 .layui-tab-title li{
     display: block;
     text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .layui-tab-content{
     width: 65%;
