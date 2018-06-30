@@ -457,7 +457,15 @@
 
                     return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
                 });*/
-
+                $("input[type='number']").on("blur",function(){
+                    var input_num = $(this).val();
+                    var patrn=/^([1-9]\d*|0)(\.\d*[1-9])?$/; 
+                    if (!patrn.exec(input_num)){
+                        $(this).val("")
+                    } else{
+                        
+                    }
+               })
                 form.on('submit(demo1)', function(data){
                     $(".loading_box").css("display","block")
 

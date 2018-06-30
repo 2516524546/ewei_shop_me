@@ -119,9 +119,9 @@
                                                         </div>
                                                     <div class="layui-input-block">
                                                             <select name="country" id="country" lay-verify="required">
-                                                                <if condition='$usercontent["user_country"]'><option value="{$usercontent['user_country']}">{$usercontent['user_country']}</option><else /><option value="">Choose a country</option></if>
+                                                                <option value="">Choose a country</option>
                                                                 <foreach name="countrylist" item="c" key="k">
-                                                                    <option value="{$c['user_country_name']}">{$c['user_country_name']}</option>
+                                                                    <option value="{$c['user_country_name']}" <if condition='$c["user_country_name"] == $usercontent["user_country"]'>selected</if>>{$c['user_country_name']}</option>
                                                                 </foreach>
                                                                   </select>
                                                     </div>
@@ -153,11 +153,6 @@
                                                 <p class="details_item_tips">Registration time :</p>
                                                 <span><if condition='$usercontent["user_logintime"]'>{$usercontent['user_logintime']}<else />00-00-0000  00:00:00</if></span>
                                             </div>
-
-                                            <!--<div class="form_details_item">
-                                                    Invitation code : 
-                                                    <span>1888</span>
-                                            </div>-->
                                            
                 
                                             <div class="form_details_item item_btn" style="cursor: pointer;" lay-submit="demo1" lay-filter="demo1">

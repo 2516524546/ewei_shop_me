@@ -69,7 +69,7 @@
                         <div class="layui-input-inline" style="width: 45%;">
                             <input type="password" name="password" required lay-verify="required" placeholder="Enter security code" autocomplete="off" class="layui-input" id="code">
                         </div>
-                        <div class="layui-form-mid layui-word-aux" style="padding: 0 0!important">
+                        <div class="layui-form-mid layui-word-aux" style="padding: 0 0!important;width: 50%;">
                             <a href="#" class="RefreshCode">
                                 <div class="img_code">
                                     <img src="{:U('Index/Common/verify')}" onclick="sendverify()" id="verifyimg">
@@ -91,7 +91,7 @@
     </form>
 
     <!-- footer -->
-    <footer>
+    <footer style="position: fixed;bottom: 0;">
         <include file = "./World/Index/View/Public/footer.html"/>
     </footer>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>

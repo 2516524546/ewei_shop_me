@@ -124,6 +124,8 @@
             laypage.render({
                 elem: 'NumberOfPages',
                 count: {$listcount},
+                prev:"Previous",
+                next:"Next",
                 layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
                 jump: function(obj) {
                     //console.log(obj)
