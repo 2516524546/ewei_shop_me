@@ -53,12 +53,16 @@
                             <div class="lintpheight_icon_box">
 
                                 <if condition="$w['works_isclose'] == 0">
+                                    <span  class="edit_item">
+                                    </span>
                                     <span  class="closeWork">
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_closed.png">
                                     </span>
                                     <span  class="deleteWork">
                                     </span>
                                 <elseif condition="$w['works_isdel'] == 0"/>
+                                    <span  class="edit_item">
+                                    </span>
                                     <span  class="closeWork">
                                     </span>
                                     <span  class="deleteWork">
@@ -68,7 +72,7 @@
                                     <a href="{:U('Index/Jobs/postDeliveryRecord',['works_id'=>$w['works_id']])}" class="lintpheight_icon">
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_jl_icon_deliveryrecord.png">
                                     </a>
-                                    <a href="javascript:void()" data-toggle="modal" data-target="#box3" class="lintpheight_icon">
+                                    <a href="javascript:void()" data-id="{$w['works_id']}" data-toggle="modal" data-target="#box3" class="lintpheight_icon edit_item">
                                         <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png">
                                     </a>
                                     <a href="javascript:void()" data-works_id="{$w['works_id']}" data-toggle="modal" data-target="#box2" class="lintpheight_icon closeWork">
@@ -151,13 +155,13 @@
                                 </label>
                                 <div class="label" style="line-height: 38px;padding-left: 64px;">
                                     <label class="radio-inline">
-                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Full Time
+                                        <input type="radio" name="works_type" value="1"> Full Time
                                     </label>
                                     <label class="radio-inline" style="margin: 0 32px;">
-                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Part Time
+                                        <input type="radio" name="works_type" value="2"> Part Time
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Practice
+                                        <input type="radio" name="works_type" value="3"> Practice
                                     </label>
                                 </div>
                             </div>
@@ -168,7 +172,7 @@
                                     </div>
                                 </label>
                                 <div class="layui-input-block" style="margin-left: 64px;">
-                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter a job title" class="layui-input">
+                                    <input type="text" name="works_position" lay-verify="title" autocomplete="off" placeholder="Enter a job title" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -179,11 +183,11 @@
                                         </div>
                                     </label>
                                     <div class="layui-input-inline" style="width: 100px;">
-                                        <input type="text" name="price_min" placeholder="￥" autocomplete="off" class="layui-input">
+                                        <input type="text" name="works_minmoney" placeholder="￥" autocomplete="off" class="layui-input">
                                     </div>
                                     <div class="layui-form-mid">-</div>
                                     <div class="layui-input-inline" style="width: 100px;">
-                                        <input type="text" name="price_max" placeholder="￥" autocomplete="off" class="layui-input">
+                                        <input type="text" name="works_maxmoney" placeholder="￥" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +198,7 @@
                                     </div>
                                 </label>
                                 <div class="layui-input-block" style="margin-left: 64px;">
-                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the number of years of service" class="layui-input">
+                                    <input type="text" name="works_years" lay-verify="title" autocomplete="off" placeholder="Enter the number of years of service" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -204,7 +208,7 @@
                                     </div>
                                 </label>
                                 <div class="layui-input-block" style="margin-left: 64px;">
-                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter a graduate school" class="layui-input">
+                                    <input type="text" name="works_school" lay-verify="title" autocomplete="off" placeholder="Enter a graduate school" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -214,7 +218,7 @@
                                     </div>
                                 </label>
                                 <div class="layui-input-block" style="margin-left: 64px;">
-                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter your degree" class="layui-input">
+                                    <input type="text" name="works_degree" lay-verify="title" autocomplete="off" placeholder="Enter your degree" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -224,78 +228,8 @@
                                     </div>
                                 </label>
                                 <div class="layui-input-block" style="margin-left: 64px;">
-                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter professional" class="layui-input">
+                                    <input type="text" name="works_specialty" lay-verify="title" autocomplete="off" placeholder="Enter professional" class="layui-input">
                                 </div>
-                            </div>
-                            <p class="h6">Matching circle reordering : </p>
-                            <div class="layui-form-item">
-                                <select class="form-control">
-                                    <option>Graduated School</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                                <p class="text-center" style="margin: 4px 0;">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
-                                </p>
-                            </div>
-                            <div class="layui-form-item">
-                                <select class="form-control">
-                                    <option> Working seniority </option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                                <p class="text-center" style="margin: 4px 0;">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
-                                </p>
-                            </div>
-                            <div class="layui-form-item">
-                                <select class="form-control">
-                                    <option>Academic degree</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                                <p class="text-center" style="margin: 4px 0;">
-                                        <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
-                                </p>
-                            </div>
-                            <div class="layui-form-item">
-                                <select class="form-control">
-                                    <option>Position</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                                <p class="text-center" style="margin: 4px 0;">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
-                                </p>
-                            </div>
-                            <div class="layui-form-item">
-                                <select class="form-control">
-                                    <option>Major</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                                <p class="text-center" style="margin: 4px 0;">
-                                    <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
-                                </p>
-                            </div>
-                            <div class="layui-form-item">
-                                <select class="form-control">
-                                    <option>Position</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
                             </div>
                             <p class="h6 text-center">Company Information</p>
                             <div class="layui-form-item">
@@ -305,7 +239,7 @@
                                     </div>
                                 </label>
                                 <div class="layui-input-block" style="margin-left: 64px;">
-                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter a job title" class="layui-input">
+                                    <input type="text" name="works_company_name" lay-verify="title" autocomplete="off" placeholder="Enter a company name" class="layui-input">
                                 </div>
                             </div>
                             <div class="FormContainer layui-form-item" pane>
@@ -315,12 +249,10 @@
                                     </div>
                                 </label>
                                 <div class="col-sm-10" style="position: absolute;left: 66px;">
-                                    <select class="form-control">
-                                        <option>Please choose the nature of the company</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <select name="works_company_nature"  class="form-control" lay-verify="required">
+                                        <option value="">Select the type of the company</option>
+                                        <option value="1">Private</option>
+                                        <option value="2">state-owned</option>
                                     </select>
                                 </div>
                             </div>
@@ -331,12 +263,11 @@
                                     </div>
                                 </label>
                                 <div class="col-sm-10" style="position: absolute;left: 66px;">
-                                    <select class="form-control">
-                                        <option>Please select company type</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <select name="works_company_type" class="form-control" lay-verify="required">
+                                        <option value="">Select the scope of business</option>
+                                        <foreach name="companytypelist" item="c" key="k">
+                                            <option value="{$c['works_company_type_id']}">{$c['works_company_type_name']}</option>
+                                        </foreach>
                                     </select>
                                 </div>
                             </div>
@@ -347,7 +278,7 @@
                                     </div>
                                 </label>
                                 <div class="layui-input-block" style="margin-left: 64px;">
-                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the company size" class="layui-input">
+                                    <input type="text" name="works_company_size" lay-verify="title" autocomplete="off" placeholder="Enter the company size" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -357,7 +288,7 @@
                                     </div>
                                 </label>
                                 <div class="layui-input-block" style="margin-left: 64px;">
-                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the resume mailbox" class="layui-input">
+                                    <input type="text" name="works_company_mail" lay-verify="title" autocomplete="off" placeholder="Enter the resume mailbox" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item layui-form-text" style="height: 100px;">
@@ -367,20 +298,21 @@
                                     </div>
                                 </label>
                                 <div class="layui-input-block" style="position: relative;left: -46px;">
-                                    <textarea placeholder="Enter the company information" class="layui-textarea"></textarea>
+                                    <textarea placeholder="Enter the company information" class="layui-textarea" name="works_company_content"></textarea>
                                 </div>
                             </div>
                             <!--  -->
+                            <input type="hidden" name="works_id" value="">
                             <div class="layui-form-item">
                                 <label class="layui-form-label" style="margin-left: -22px;width: 150px;margin-right: 28px;">
                                     Salary Negotiable
                                 </label>
                                 <div class="label" style="padding-top: 13px;padding-left: 120px;">
                                     <label class="radio-inline">
-                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> no
+                                        <input type="radio" name="works_isnegotiable" value="0"> no
                                     </label>
                                     <label class="radio-inline" style="margin: 0 32px;">
-                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> yes
+                                        <input type="radio" name="works_isnegotiable" value="1"> yes
                                     </label>
                                 </div>
                             </div>
@@ -441,13 +373,77 @@
                             if(data.status == 0){
                                 alert(data.msg);
                             }else{
-                                //alert(data.msg);
                                 var C_pic = "<img src='__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_closed.png'>"
                                 $(".lintpheight_icon_box").eq(num).html(C_pic)
                             }
                         },'json'
                     );
                 });
+
+                $("#box3 .btn-Preservation-primary").on('click', function(event) {
+                    var works_id = $('.edit_item').eq(num).data('id');
+                    $.post(
+                        '{:U("Index/Jobs/EditWork")}',
+                        {works_id:works_id,works_type:$('#box3 input[name=works_type]:checked').val(),works_position:$('#box3 input[name=works_position]').val(),works_minmoney:$('#box3 input[name=works_minmoney]').val(),works_maxmoney:$('#box3 input[name=works_maxmoney]').val(),works_years:$('#box3 input[name=works_years]').val(),works_school:$('#box3 input[name=works_school]').val(),works_degree:$('#box3 input[name=works_degree]').val(),works_specialty:$('#box3 input[name=works_specialty]').val(),works_company_name:$('#box3 input[name=works_company_name]').val(),works_company_nature:$('#box3 select[name=works_company_nature] option:selected').val(),works_company_type:$('#box3 select[name=works_company_type] option:selected').val(),works_company_size:$('#box3 works_company_name[name=works_company_size]').val(),works_company_mail:$('#box3 input[name=works_company_mail]').val(),works_company_content:$('#box3 input[name=works_company_content]').val(),works_isnegotiable:$('#box3 input[name=works_isnegotiable]:checked').val()},
+                        function(data){
+                            if(data.status == 0){
+                                alert(data.msg);
+                            }else{
+                                alert(data.msg);
+                                window.location.reload();
+                            }
+                        },'json'
+                    );
+                });
+
+                $('.edit_item').on('click',function(){
+                    var works_id = $(this).data('id');
+                    $.post(
+                        '{:U("Index/Jobs/GetWork")}',
+                        {works_id:works_id},
+                        function(data){
+                            if(data.status == 0){
+                                alert(data.msg);
+                            }else{
+                                $('#box3 input[name=works_type]').each(function(e){
+                                    if($(this).val() == data.works_type){
+                                        $(this).attr('checked','true');
+                                    }
+                                });
+                                $('#box3 input[name=works_position]').val(data.works_position);
+                                $('#box3 input[name=works_minmoney]').val(data.works_minmoney);
+                                $('#box3 input[name=works_maxmoney]').val(data.works_maxmoney);
+                                $('#box3 input[name=works_years]').val(data.works_years);
+                                $('#box3 input[name=works_school]').val(data.works_school);
+                                $('#box3 input[name=works_degree]').val(data.works_degree);
+                                $('#box3 input[name=works_specialty]').val(data.works_specialty);
+                                $('#box3 input[name=works_company_name]').val(data.works_company_name);
+
+                                $('#box3 select[name=works_company_nature] option').each(function(){
+                                    if($(this).val() == data.works_company_nature){
+                                        $(this).attr("selected",true);
+                                    }
+                                })
+
+                                $('#box3 select[name=works_company_type] option').each(function(){
+                                    if($(this).val() == data.works_company_type){
+                                        $(this).attr("selected",true);
+                                    }
+                                })
+                                $('#box3 input[name=works_id]').val(data.works_id);
+                                $('#box3 input[name=works_company_size]').val(data.works_company_size);
+                                $('#box3 input[name=works_company_mail]').val(data.works_company_mail);
+                                $('#box3 textarea[name=works_company_content]').val(data.works_company_content);
+
+                                $('#box3 input[name=works_isnegotiable]').each(function(e){
+                                    if($(this).val() == data.works_isnegotiable){
+                                        $(this).attr('checked','true');
+                                    }
+                                });
+                            }
+                        },'json'
+                    );
+                })
             })();
             
         });

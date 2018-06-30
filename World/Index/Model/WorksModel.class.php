@@ -34,7 +34,9 @@ class WorksModel extends Model{
         return $this->join($join1,$jointype1)->field($field)->where($where)->order($order)->limit($limit1,$limit2)->select();
     }
 
-
+    public function check_email($email){
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
 
 
 }
