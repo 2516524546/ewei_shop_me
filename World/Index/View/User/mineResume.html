@@ -34,6 +34,7 @@
     <!-- mineResume content -->
     <div class="container">
         <div class="mineResume_content">
+            <if condition="!$myResumes">
             <div class="mineResume_title">
                 <a href="{:U('Index/User/createResume')}">
                     <div class="title_img">
@@ -44,26 +45,30 @@
                     </div>
                 </a>
             </div>
+            </if>
             <div class="mineResume_table">
+                <if condition="$myResumes">
                 <table>
                     <tr>
                         <th>Resume name</th>
                         <th>Last Modified time</th>
                         <th>Operation</th>
                     </tr>
-                    <foreach name="myResumes" item="r">
-                        <tr class="mineResume_table_tr">
-                            <td>{$r['resume_name']}</td>
-                            <td>{$r['resume_updatetime']}</td>
-                            <td class="btn_choose">
-                                <span class="minResume_btn btn_Edit"><a href="{:U('Index/User/resumeDetails',['resume_id'=>$r['resume_id']])}">Edit</a></span>
-                                <span class="line"></span>
-                                <span class="minResume_btn btn_Delete" data-resume_id="{$r['resume_id']}" data-toggle="modal" data-target="#box1">Delete</span>
-                            </td>
-                        </tr>
-                    </foreach>
-
+                        <foreach name="myResumes" item="r">
+                            <tr class="mineResume_table_tr">
+                                <td>{$r['resume_name']}</td>
+                                <td>{$r['resume_updatetime']}</td>
+                                <td class="btn_choose">
+                                    <span class="minResume_btn btn_Edit"><a href="{:U('Index/User/resumeDetails',['resume_id'=>$r['resume_id']])}">Edit</a></span>
+                                    <span class="line"></span>
+                                    <span class="minResume_btn btn_Delete" data-resume_id="{$r['resume_id']}" data-toggle="modal" data-target="#box1">Delete</span>
+                                </td>
+                            </tr>
+                        </foreach>
                 </table>
+                <else/>
+                    <div>You have no resume!</div>
+                </if>
             </div>
 
             <div class="container" id="NumberOfPagesContainer">{$page}</div>
@@ -124,7 +129,7 @@
                             if(data.status == 0){
                                 alert(data.msg);
                             }else{
-                                $(".mineResume_content .mineResume_table .mineResume_table_tr").eq(num).remove();
+                                window.location.reload();
                             }
                         },'json'
                     );

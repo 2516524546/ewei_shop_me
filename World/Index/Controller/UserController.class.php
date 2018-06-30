@@ -14,7 +14,7 @@ class UserController extends CommonController {
 
     protected $_checkAction = ['FollowList','personalCenter','acountSetting','resumeDetails','myPosts','myMessage','myFollowing','addressBook'
                                     ,'myGroup','feedback','virtualCurrencyRecharge','FansList','DeliveryRecord','ResumeTemplateList'
-                                    ,'FollowFriend','RefuseAddFirend','AgreeAddFirend','AddFriend','ChangeConcernsName','AddGroup','SetGroup','ChangeConcernsGroupName','SetFriendAlias','DeleteFriend','mineResume','createResume','DeleteResume','DeliveryResume'];//需要做登录验证的action
+                                    ,'FollowFriend','RefuseAddFirend','AgreeAddFirend','AddFriend','ChangeConcernsName','AddGroup','SetGroup','ChangeConcernsGroupName','SetFriendAlias','DeleteFriend','mineResume','createResume','DeleteResume','DeliveryResume','ClearMessages','MessageDetails'];//需要做登录验证的action
 
     public function _initialize()
     {
@@ -171,9 +171,18 @@ class UserController extends CommonController {
             'havemessage' => $this->havemessage,
         ));
 
-        //获取消息列表
-        $messages = D('Message')->alias('m')->field('m.*,u.user_name,u.user_icon')->join('u_user u ON u.user_id = m.message_sid','LEFT')->where(['m.message_uid'=>$this->userid])->limit(10)->select();
+
+        $groups = D('ConcernsGroup')->where('concerns_group_uid='.$this->userid )->select();
+        $this->assign('groups',$groups);
+
+
+        $count      = D('Message')->alias('m')->where(['m.message_uid'=>$this->userid])->count();
+        $Page       = new \Think\Page($count,2);
+        $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        $show       = $Page->show();
+        $messages = D('Message')->alias('m')->field('m.*,u.user_name,u.user_icon')->join('u_user u ON u.user_id = m.message_sid','LEFT')->where(['m.message_uid'=>$this->userid])->limit($Page->firstRow.','.$Page->listRows)->select();
         $this->assign('messages',$messages);
+        $this->assign('page',$show);
 
         $this->assign('title','My Message');
         $css = addCss('MyMessage');
@@ -602,5 +611,27 @@ class UserController extends CommonController {
         }else{
             die(json_encode(['status'=>0,'msg'=>'Delivery failed!']));
         }
+    }
+
+    public function ClearMessages(){
+        if(D('Message')->where('message_uid='.$this->userid)->delete()){
+            die(json_encode(['status'=>1,'msg'=>'Clear Messages success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Clear Messages failed!']));
+        }
+    }
+
+    public function MessageDetails(){
+        $message_id = I('get.message_id',0,'intval');
+        $myMessage = D('Message')->findone('message_id='.$message_id);
+        $this->assign('myMessage',$myMessage);
+
+        //更新阅读时间，和是否阅读
+        $myMessage = D('Message')->updataone('message_id='.$message_id,['message_delivertime'=>date('Y-m-d',time()),'message_isread'=>1]);
+
+        $this->assign('title','Message details');
+        $css = addCss('MessageDetails');
+        $this->assign('CSS',$css);
+        $this->display();
     }
 }
