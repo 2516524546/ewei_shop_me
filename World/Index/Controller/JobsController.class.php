@@ -104,7 +104,7 @@ class JobsController extends CommonController {
     工作列表
      */
     public function jobList(){
-        $where = 'w.works_isdel=1';
+        $where = '(w.works_isdel=1 AND w.works_isclose=1)';
 
         $k = I('get.k','','trim');
         if($k){
