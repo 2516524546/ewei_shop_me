@@ -839,7 +839,7 @@ class JobsController extends CommonController {
             $data['professional_createtime'] = $data['professional_updatetime'] = date('Y-m-d H:i:s',time());
             $Professional = D("Professional"); // 实例化User对象
             if (!$Professional->validate($rules)->create()){
-                $this->error($Professional->getError());
+                die(json_encode(['status'=>0,'msg'=>$Professional->getError()]));
             }else{
                 if(!$professional){
                     // 验证通过 进行文件上传
@@ -849,26 +849,25 @@ class JobsController extends CommonController {
                     $upload->rootPath  =      './Uploads/';
                     $info   =   $upload->uploadOne($_FILES['professional_pic']);
                     if(!$info) {
-                        $this->error($upload->getError());
+                        die(json_encode(['status'=>0,'msg'=>$upload->getError()]));
                     }else{
                         $data['professional_pic'] = $info['savepath'].$info['savename'];
                     }
 
                     if($Professional->add($data)){
-                        $this->success('Create success!',U('Index/Jobs/projectsProfessionals'));
+                        die(json_encode(['status'=>1,'msg'=>'Create success!']));
                     }else{
-                        $this->error('Create Faild!');
+                        die(json_encode(['status'=>0,'msg'=>'Create Faild!']));
                     }
                 }else{
                     if($Professional->where('professional_uid='.$this->userid)->save($data)){
-                        $this->success('Edit success!',U('Index/Jobs/projectsProfessionals'));
+                        die(json_encode(['status'=>1,'msg'=>'Edit success!']));
                     }else{
-                        $this->error('Edit Faild!');
+                        die(json_encode(['status'=>0,'msg'=>'Create Faild!']));
                     }
                 }
                 exit;
             }
-
         }
         //获取城市
         $fid = D('FirstMark')->where('firsth_mark_name="city" AND first_mark_mid=4 AND first_mark_type=3')->getField('first_mark_id');

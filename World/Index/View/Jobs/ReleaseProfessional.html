@@ -21,7 +21,7 @@
         <cite class="Icon"></cite>
         <span class="crumbsTitle">{$title}</span>
     </div>
-    <form class="layui-form layui-form-pane" enctype="multipart/form-data" action="{:U('Index/Jobs/ReleaseProfessional',['professional_uid'=>$userid])}" method="post">
+    <form class="layui-form layui-form-pane" id="MyPro" onsubmit="return false;" enctype="multipart/form-data" action="" method="post">
         <div class="PasswordContainer">
             <div class="StepContainer">
                 <div class="StepContainerOne">
@@ -169,7 +169,37 @@
     <script>
         $(function(){
             (function(){
-
+                $('.Submit-but').on('click',function(){
+                    var data = new FormData($('#MyPro')[0]);
+                    $.ajax({
+                        url: "{:U('Index/Jobs/ReleaseProfessional',['professional_uid'=>$userid])}",
+                        type: 'POST',
+                        data: data,
+                        dataType: 'JSON',
+                        cache: false,
+                        processData: false,
+                        contentType: false
+                    }).done(function(data){
+                        if(data.status){
+                            layer.msg(data.msg, {
+                                    time: 1500,
+                                    icon: 1,
+                                },function(){
+                                    $(".loading_box").css("display","none");
+                                    window.location.href = '{:U("Index/Jobs/projectsProfessionals")}'
+                                }
+                            );
+                        }else{
+                            layer.msg(data.msg, {
+                                    time: 1500,
+                                    icon: 2,
+                                },function(){
+                                    $(".loading_box").css("display","none")
+                                }
+                            );
+                        }
+                    });
+                })
             })();
         });
     </script>
