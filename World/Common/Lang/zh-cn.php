@@ -17,7 +17,7 @@ return array(
     'newworld_ajax_add_fail' => '添加失败！',
     'newworld_ajax_add_success' => '添加成功！',
     'newworld_input_number' => '请输入数字',
-    'newworld_email_illegal ' => '邮箱格式不合法',
+    'newworld_email_illegal' => '邮箱格式不合法',
 
     /*
 	 * Public end
@@ -61,6 +61,11 @@ return array(
     'User_user_list_code' => '邀请码',
     'User_user_list_address' => '地址',
     'User_user_list_search' => '搜索',
+    'User_user_manager' => '用户管理',
+    'User_user_list' => '用户列表',
+    'User_user_edit' => '用户编辑',
+    'User_user_detail' => '用户详情',
+
     //user_list end
 
     //user_edit_start
@@ -79,6 +84,9 @@ return array(
      */
     //module_list start
     'Module_module_list_module_name' => '模块名称',
+    'Module_module_list_manager' => '模块简介管理',
+    'Module_module_list' => '模块简介列表',
+    'Module_module_edit' => '模块简介编辑',
     'Module_module_list_module_content' => '模块简介',
     'Module_module_list_module_operation' => '操作',
     'Module_module_list_module_edit' => '编辑',
@@ -151,8 +159,10 @@ return array(
     'Donation_donation_list_donation_amount' => '捐款金额(元)',
     'Donation_donation_list_virtual_currency' => '奖励虚拟币',
     'Donation_donation_list_donation_date' => '捐款日期',
-    'Donation_donation_list_record' => '捐款记录表',
-
+    'Donation_donation_record' => '捐款记录',
+    'Donation_donation_detail' => '捐款人明细',
+    'Donation_donation_list_record' => '捐款记录列表',
+    'Donation_donation_list_export' => '导出',
     //donation_list end
 
     /*
@@ -304,6 +314,9 @@ return array(
     'Proposal_proposal__list_content' => '建议内容',
     'Proposal_proposal__list_type' => '建议类型',
     'Proposal_proposal__list_time' => '时间',
+    'Proposal_proposal_list_manager' => '建议管理',
+    'Proposal_proposal_list' => '建议列表',
+
     //proposal__list end
 
     /*

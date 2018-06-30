@@ -137,14 +137,14 @@ class ItemController extends CommonController
              if ($res){
                  echo 1;
              }else{
-                 echo "操作失败";
+                 echo L('newworld_ajax_operation_fail');
              }
          }elseif ($status==0){
              $res=M("j_item")->where("item_id={$id}")->setField("item_status",1);
              if ($res){
                  echo 1;
              }else{
-                 echo "操作失败";
+                 echo L('newworld_ajax_operation_fail');
              }
          }
     }
@@ -165,7 +165,7 @@ class ItemController extends CommonController
             if ($res){
                echo 1;
             }else{
-                echo "修改失败!";
+                echo L('newworld_ajax_operation_fail');
             }
         }else{
             ////获取某一条记录
@@ -183,7 +183,7 @@ class ItemController extends CommonController
             if ($res){
                 echo 1;
             }else{
-                echo "删除失败!";
+                echo L('newworld_ajax_operation_fail');
             }
         }
     }
@@ -203,7 +203,7 @@ class ItemController extends CommonController
         if ($res){
             echo 1;
         }else{
-            echo "删除失败!";
+            echo L('newworld_ajax_operation_fail');
         }
     }
 

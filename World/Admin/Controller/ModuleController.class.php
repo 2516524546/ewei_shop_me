@@ -16,7 +16,7 @@ class ModuleController extends CommonController{
             if ($res){
                 echo 1;
             }else{
-                echo "修改失败";
+                echo L('newworld_ajax_operation_fail');
             }
         }else{
             $id=I("id");
@@ -31,7 +31,7 @@ class ModuleController extends CommonController{
         if ($res){
             echo 1;
         }else{
-            echo "清除失败";
+            echo L('newworld_ajax_operation_fail');
         }
     }
 

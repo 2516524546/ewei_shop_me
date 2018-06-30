@@ -51,9 +51,9 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            模块简介管理
+            {:L('Module_module_list_manager')}
             <small><i class="icon-double-angle-right"></i>
-                模块简介编辑
+                {:L('Module_module_edit')}
             </small>
 
         </h1>
@@ -65,14 +65,14 @@
             <form class="form-horizontal" action="{:U('Admin/Module/module_edit')}" method="POST" role="form"
                   enctype="multipart/form-data">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">模块名称</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Module_module_list_module_name')}</label>
                     <div class="col-sm-9">
                         <input type="text" name="module_name" value="<?php echo $module['module_name']?>" placeholder=""
                                style="width:300px;" readonly/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">模块简介</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Module_module_list_module_content')}</label>
                     <div class="col-sm-9">
                         <textarea  name="module_content" style="width:300px;height: 150px;" >
                            <?php echo $module['module_content']?>
@@ -119,6 +119,8 @@
 <script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
 <script type="text/javascript">
 
     $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
@@ -132,10 +134,10 @@
     function showSuccess(data) {
 
         if (data == 1) {
-            alert('修改成功')
+            showMessage("{:L('newworld_ajax_operation_success')}",1);
             location.href = "{:U('Admin/Module/module_list')}"
         } else {
-            alert(data)
+            showMessage(data,2);
             return false
         }
 
@@ -178,7 +180,18 @@
             }
         });
     });
+    function showMessage(msg, status) {
+        layer.msg(msg, {
+                time: 500,
+                icon: status,
+            }, function () {
+                if (status == 1) {
+                    location.reload()
+                }
 
+            }
+        );
+    }
 </script>
 
 

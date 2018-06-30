@@ -51,9 +51,9 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            用户管理
+            {:L('User_user_manager')}
             <small><i class="icon-double-angle-right"></i>
-                用户编辑
+                {:L('User_user_edit')}
             </small>
 
         </h1>
@@ -180,8 +180,9 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('User_user_list_create_date')}</label>
                     <div class="col-sm-9">
-                        <input type="text" name="user_logintime" value="<?php echo $user['user_logintime']?>"
+                        <input type="text"  class="form-control date-picker"  name="user_logintime" value="<?php echo $user['user_logintime']?>"
                                placeholder="{:L('User_user_list_create_date')}" style="width:300px;" readonly />
+
                     </div>
                 </div>
                 <input type="hidden" name="user_id" value="<?php echo $user['user_id']?>"/>
@@ -224,6 +225,8 @@
 <script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
 <script type="text/javascript">
 
     $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
@@ -237,10 +240,10 @@
     function showSuccess(data) {
 
         if (data == 1) {
-            alert('修改成功')
+            showMessage("{:L('newworld_ajax_operation_success')}",1)
             location.href = "{:U('Admin/User/user_list')}"
         } else {
-            alert(data)
+            showMessage(data,2)
             return false
         }
 
@@ -255,6 +258,18 @@
             //return false;
         })
     })
+    function showMessage(msg, status) {
+        layer.msg(msg, {
+                time: 500,
+                icon: status,
+            }, function () {
+                if (status == 1) {
+                    location.reload()
+                }
+
+            }
+        );
+    }
 </script>
 <script type="text/javascript">
     //上传图片
@@ -275,14 +290,15 @@
                     $("#img").html('<img style="width:200px;height:200px;" src="./Uploads/' + data.msg + '"/>');
                     $("input[name='user_icon']").val(data.msg)
                 }else {
-                    alert(data.msg);
+                    showMessage(data.msg,2)
                 }
             },
             error: function () {
-                alert("上传失败！");
+                showMessage("{:L('newworld_ajax_upload_fail')}",2)
             }
         });
     });
+
 
 </script>
 
