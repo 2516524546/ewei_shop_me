@@ -25,6 +25,7 @@ class ResumeController extends CommonController {
     public function resume_list_sou(){
         $username=$_POST['username'];
         $where="";
+        
         if ($username){
             $where = "resume_name like '%$username%'";
             $this->assign('username',$username);
