@@ -241,7 +241,7 @@ class UserController extends CommonController {
             $show       = $Page->show();
 
             if($count){
-                $groups = D('Crowd')->alias('c')->field('c.*,count(cm.crowd_member_id) as total')->join('u_crowd_member cm ON cm.crowd_member_cid=c.crowd_id')->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+                $groups = D('Crowd')->alias('c')->field('c.*,count(cm.crowd_member_id) as total')->join('u_crowd_member cm ON cm.crowd_member_cid=c.crowd_id')->where($where)->group('c.crowd_id')->limit($Page->firstRow.','.$Page->listRows)->select();
             }else{
                 $groups = [];
             }
@@ -259,7 +259,7 @@ class UserController extends CommonController {
             $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
             $show       = $Page->show();
             if($count){
-                $joingroups = D('Crowd')->alias('c')->join('u_crowd_member cm ON cm.crowd_member_cid=c.crowd_id')->field('c.*,count(cm.crowd_member_id) as total')->where($joinWhere)->limit($Page->firstRow.','.$Page->listRows)->select();
+                $joingroups = D('Crowd')->alias('c')->join('u_crowd_member cm ON cm.crowd_member_cid=c.crowd_id')->field('c.*,count(cm.crowd_member_id) as total')->where($joinWhere)->group('c.crowd_id')->limit($Page->firstRow.','.$Page->listRows)->select();
             }else{
                 $joingroups = [];
             }
