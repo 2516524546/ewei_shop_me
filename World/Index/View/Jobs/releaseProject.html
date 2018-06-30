@@ -33,7 +33,7 @@
             <span class="crumbsTitle">Publish the project</span>
         </div>
     <!-- Forget the password form -->
-    <form class="layui-form layui-form-pane" action="{:U('Index/Jobs/releaseProject')}" method="post">
+    <form class="layui-form layui-form-pane" onsubmit="return false;" id="MyPro" action="" method="post">
         <div class="PasswordContainer">
             <div class="StepContainer">
                 <div class="StepContainerOne">
@@ -206,5 +206,41 @@
     <script src="__PUBLIC__/Web/web/js/ListOfDonations.js"></script>
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 </body>
-
+<script>
+    $(function(){
+        (function(){
+            $('.Submit-but').on('click',function(){
+                var data = new FormData($('#MyPro')[0]);
+                $.ajax({
+                    url: "{:U('Index/Jobs/releaseProject')}",
+                    type: 'POST',
+                    data: data,
+                    dataType: 'JSON',
+                    cache: false,
+                    processData: false,
+                    contentType: false
+                }).done(function(data){
+                    if(data.status){
+                        layer.msg(data.msg, {
+                                time: 1500,
+                                icon: 1,
+                            },function(){
+                                $(".loading_box").css("display","none");
+                                window.location.href = data.href
+                            }
+                        );
+                    }else{
+                        layer.msg(data.msg, {
+                                time: 1500,
+                                icon: 2,
+                            },function(){
+                                $(".loading_box").css("display","none")
+                            }
+                        );
+                    }
+                });
+            })
+        })();
+    });
+</script>
 </html>
