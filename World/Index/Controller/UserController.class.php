@@ -8,13 +8,14 @@ use Index\Model\ResumeModel;
 use Index\Model\UserCountryModel;
 use Index\Model\UserModel;
 use Think\Controller;
+use Think\Model;
 use Think\Upload;
 
 class UserController extends CommonController {
 
     protected $_checkAction = ['FollowList','personalCenter','acountSetting','resumeDetails','myPosts','myMessage','myFollowing','addressBook'
                                     ,'myGroup','feedback','virtualCurrencyRecharge','FansList','DeliveryRecord','ResumeTemplateList'
-                                    ,'FollowFriend','RefuseAddFirend','AgreeAddFirend','AddFriend','ChangeConcernsName','AddGroup','SetGroup','ChangeConcernsGroupName','SetFriendAlias','DeleteFriend','mineResume','createResume','DeleteResume','DeliveryResume','ClearMessages','MessageDetails'];//需要做登录验证的action
+                                    ,'FollowFriend','RefuseAddFirend','AgreeAddFirend','AddFriend','ChangeConcernsName','AddGroup','SetGroup','ChangeConcernsGroupName','SetFriendAlias','DeleteFriend','mineResume','createResume','DeleteResume','DeliveryResume','ClearMessages','MessageDetails','DissolveGroup','QuitGroup'];//需要做登录验证的action
 
     public function _initialize()
     {
@@ -225,6 +226,47 @@ class UserController extends CommonController {
     }
 
     public function myGroup(){
+        $type = I('get.type',0,'intval');
+        $k = I('get.k','','trim');
+        if(empty($type)){
+            $where = 'crowd_uid='.$this->userid;
+
+            if($k){
+                $where .= ' AND crowd_name LIKE "%'.$k.'%"';
+            }
+
+            $count      = D('Crowd')->alias('c')->join('u_crowd_member cm ON cm.crowd_member_cid=c.crowd_id')->where($where)->count();
+            $Page       = new \Think\Page($count,5);
+            $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+            $show       = $Page->show();
+
+            if($count){
+                $groups = D('Crowd')->alias('c')->field('c.*,count(cm.crowd_member_id) as total')->join('u_crowd_member cm ON cm.crowd_member_cid=c.crowd_id')->where($where)->group('c.crowd_id')->limit($Page->firstRow.','.$Page->listRows)->select();
+            }else{
+                $groups = [];
+            }
+            $this->assign('groups',$groups);
+            $this->assign('page',$show);
+        }else{
+            $joinWhere = 'cm.crowd_member_uid='.$this->userid.' AND cm.crowd_member_status<>2';
+
+            if($k){
+                $joinWhere .= ' AND c.crowd_name LIKE "%'.$k.'%"';
+            }
+
+            $count      = D('Crowd')->alias('c')->join('u_crowd_member cm ON cm.crowd_member_cid=c.crowd_id')->where($joinWhere)->count();
+            $Page       = new \Think\Page($count,5);
+            $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+            $show       = $Page->show();
+            if($count){
+                $joingroups = D('Crowd')->alias('c')->join('u_crowd_member cm ON cm.crowd_member_cid=c.crowd_id')->field('c.*,count(cm.crowd_member_id) as total')->where($joinWhere)->group('c.crowd_id')->limit($Page->firstRow.','.$Page->listRows)->select();
+            }else{
+                $joingroups = [];
+            }
+
+            $this->assign('groups',$joingroups);
+            $this->assign('page',$show);
+        }
 
         $this->assign(array(
             'userid' => $this->userid,
@@ -632,5 +674,39 @@ class UserController extends CommonController {
         $css = addCss('MessageDetails');
         $this->assign('CSS',$css);
         $this->display();
+    }
+
+    public function DissolveGroup(){
+        $crowd_id = I('post.crowd_id',0,'intval');
+        if($crowd_id <= 0  && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif($crowd_id <= 0){
+            $this->error('Parameter error！');
+        }
+        $Model = new Model();
+        $Model->startTrans();
+
+        if(D('Crowd')->delete($crowd_id) && D('CrowdMember')->where('crowd_member_cid='.$crowd_id)->delete()){
+            $Model->commit();
+            die(json_encode(['status'=>1,'msg'=>'Dissolve Group success!']));
+        }else{
+            $Model->rollback();
+            die(json_encode(['status'=>0,'msg'=>'Dissolve Group failed!']));
+        }
+    }
+
+    public function QuitGroup(){
+        $crowd_id = I('post.crowd_id',0,'intval');
+        if($crowd_id <= 0  && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif($crowd_id <= 0){
+            $this->error('Parameter error！');
+        }
+
+        if(D('CrowdMember')->where('crowd_member_cid='.$crowd_id.' AND crowd_member_uid='.$this->userid)->delete()){
+            die(json_encode(['status'=>1,'msg'=>'Quit Group success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Quit Group failed!']));
+        }
     }
 }

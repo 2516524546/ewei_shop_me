@@ -256,7 +256,12 @@ class JobsController extends CommonController {
         $Page       = new \Think\Page($count,8);
         $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
         $professionals_show       = $Page->show();
-        $professionals = D('Professional')->alias('p')->field('p.*,u.user_name,u.user_icon,u.user_signature,count(pc.professional_comment_id) as professional_comment')->join('u_user u ON u.user_id = p.professional_uid','LEFT')->join('j_professional_comment pc ON pc.professional_comment_pid = p.professional_id','LEFT')->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+        if($professionals_show){
+            $professionals = D('Professional')->alias('p')->field('p.*,u.user_name,u.user_icon,u.user_signature,count(pc.professional_comment_id) as professional_comment')->join('u_user u ON u.user_id = p.professional_uid','LEFT')->join('j_professional_comment pc ON pc.professional_comment_pid = p.professional_id','LEFT')->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+        }else{
+            $professionals = null;
+        }
+
         $this->assign('professionals',$professionals);
         $this->assign('professionals_page',$professionals_show);
         $this->display();

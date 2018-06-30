@@ -190,6 +190,7 @@
                 <div class="container ContributionContainer">
                     <div class="row">
                         <div class="col-md-12 UserBox_list">
+                            <if condition="$professionals">
                             <foreach name="professionals" item="p">
                             <div class="UserBox">
                                 <a href="{:U('Jobs/ProfessionalDetails',['professional_id'=>$p['professional_id']])}" class="UserLink">
@@ -215,6 +216,7 @@
                                 </a>
                             </div>
                             </foreach>
+                            </if>
                         </div>
                     </div>
                 </div>
