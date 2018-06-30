@@ -239,7 +239,12 @@ class UserController extends CommonController {
             $Page       = new \Think\Page($count,5);
             $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
             $show       = $Page->show();
-            $groups = D('Crowd')->alias('c')->field('c.*,count(cm.crowd_member_id) as total')->join('u_crowd_member cm ON cm.crowd_member_cid=c.crowd_id')->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+
+            if($count){
+                $groups = D('Crowd')->alias('c')->field('c.*,count(cm.crowd_member_id) as total')->join('u_crowd_member cm ON cm.crowd_member_cid=c.crowd_id')->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+            }else{
+                $groups = [];
+            }
             $this->assign('groups',$groups);
             $this->assign('page',$show);
         }else{
@@ -253,7 +258,12 @@ class UserController extends CommonController {
             $Page       = new \Think\Page($count,5);
             $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
             $show       = $Page->show();
-            $joingroups = D('Crowd')->alias('c')->join('u_crowd_member cm ON cm.crowd_member_cid=c.crowd_id')->field('c.*,count(cm.crowd_member_id) as total')->where($joinWhere)->limit($Page->firstRow.','.$Page->listRows)->select();
+            if($count){
+                $joingroups = D('Crowd')->alias('c')->join('u_crowd_member cm ON cm.crowd_member_cid=c.crowd_id')->field('c.*,count(cm.crowd_member_id) as total')->where($joinWhere)->limit($Page->firstRow.','.$Page->listRows)->select();
+            }else{
+                $joingroups = [];
+            }
+
             $this->assign('groups',$joingroups);
             $this->assign('page',$show);
         }
