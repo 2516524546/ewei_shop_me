@@ -67,14 +67,15 @@
                         </if>
                     </foreach>
                     <div class="FormContainer" pane>
-                            <label class="layui-form-label label-spacing">
-                                <div class="label_img">
-                                    <img src="__PUBLIC__/Web/web/img/05_life/life_fabu_icon_productnamme.png">
-                                </div>
-                            </label>
-                            <div class="layui-input-block input-spacing inputW">
-                                <input type="text" name="number" id="name" lay-verify="required" autocomplete="off" placeholder="Enter the product name" class="layui-input">
+                        <label class="layui-form-label label-spacing">
+                            <!-- <span class="GroupNameIcon"></span> -->
+                            <div class="label_img">
+                                <img src="__PUBLIC__/Web/web/img/05_life/life_fabu_icon_productnamme.png">
                             </div>
+                        </label>
+                        <div class="layui-input-block input-spacing">
+                                <input type="text" name="number" id="name" lay-verify="required" autocomplete="off" placeholder="Enter the product name" class="layui-input">
+                        </div>
                     </div>
                     <div class="FormContainer" pane>
                             <label class="layui-form-label label-spacing">
@@ -82,7 +83,7 @@
                                     <img src="__PUBLIC__/Web/web/img/05_life/life_secondhandmarket_icon_02.png">
                                 </div>
                             </label>
-                            <div class="layui-input-block input-spacing inputW">
+                            <div class="layui-input-block input-spacing">
                                 <input type="text" name="number" id="price" lay-verify="required" autocomplete="off" placeholder="Enter the product price" class="layui-input">
                             </div>
                     </div>
@@ -92,7 +93,7 @@
                                     <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_05.png">
                                 </div>
                             </label>
-                            <div class="layui-input-block input-spacing inputW">
+                            <div class="layui-input-block input-spacing">
                                 <input type="text" name="number" id="uname" lay-verify="required" autocomplete="off" placeholder="Contact name" class="layui-input">
                             </div>
                     </div>
@@ -102,7 +103,7 @@
                                         <img src="__PUBLIC__/Web/web/img/03_academic/academic_fabu_icon_02.png">
                                     </div>
                                 </label>
-                                <div class="layui-input-block input-spacing inputW">
+                                <div class="layui-input-block input-spacing">
                                     <input type="text" name="number" id="contact" lay-verify="required" autocomplete="off" placeholder="Enter the contact number / email address" class="layui-input">
                                 </div>
                     </div>
@@ -135,15 +136,16 @@
                                 <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_06.png">
                             </div>
                         </label>
-                        <div class="layui-input-block input-spacing inputW">
+                        <div class="layui-input-block input-spacing">
                             <input type="text" name="number" id="content" lay-verify="required" autocomplete="off" placeholder="Enter the product description" class="layui-input">
                         </div>
                     </div>
                     <div class="FormContainer" pane>
-                            <label class="HeadPortraitbox">
-                                <div class="label_img">
-                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png">
-                                </div>
+                        <label class="layui-form-label label-spacing" style="background: transparent;border: none;">
+                            <!--<span class="<if condition='$firstkey == 0'>CountryIcon<elseif condition='$firstkey == 1'/>SchoolIcon<else />InterestIcon</if>"></span>-->
+                            <div class="label_img">
+                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png">
+                            </div>
                             </label>
                             <div class="UserHeadImage">
                               <img id="pic" class="img">
@@ -156,7 +158,7 @@
                                     <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_06.png">
                                 </div>
                             </label>
-                            <div class="layui-input-block input-spacing inputW">
+                            <div class="layui-input-block input-spacing">
                                 <input type="text" name="number" id="explain" lay-verify="required" autocomplete="off" placeholder="Enter the product comment" class="layui-input">
                             </div>
                         </div>

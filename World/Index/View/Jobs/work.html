@@ -20,38 +20,29 @@
 </head>
 
 <body>
-    <!-- Head information start 头信息 -->
-    <div class="container headerBox">
-        <div class="row">
-            <div class="col-md-6">
-                <a href="#" class="logo" title="logo"></a>
-            </div>
-            <div class="col-md-6">
-                <include file = "./World/Index/View/Public/head.html"/>
-                <div class="nav">
-                    <nav class="navbar NavBg">
-                        <ul class="ListInline">
-                            <li>
-                                <a href="{:U('Index/Index/index')}">Home</a>
-                            </li>
-                            <li>
-                                <a href="{:U('Index/Rnterst/interest')}">Interest</a>
-                            </li>
-                            <li>
-                                <a href="{:U('Index/Academic/academic')}">Academic</a>
-                            </li>
-                            <li>
-                                <a href="{:U('Index/Jobs/work')}" id="NavSelected">Jobs</a>
-                            </li>
-                            <li>
-                                <a href="{:U('Index/Life/life')}">Life</a>
-                            </li>
-                        </ul>
-                    </nav>
+       <!-- Head information start 头信息 -->
+        <div class="container headerBox">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="#" class="logo" title="logo"></a>
+                </div>
+    
+                <div class="col-md-6">
+                    <include file = "./World/Index/View/Public/head.html"/>
+                    <div class="nav">
+                        <nav class="navbar NavBg">
+                            <ul class="ListInline">
+                                <li><a href="{:U('Index/Index/index')}">Home</a></li>
+                                <li><a href="{:U('Index/Rnterst/interest')}" >Interest</a></li>
+                                <li><a href="{:U('Index/Academic/academic')}">Academic</a></li>
+                                <li><a href="{:U('Index/Jobs/work')}" id="NavSelected">Jobs</a></li>
+                                <li><a href="{:U('Index/Life/life')}">Life</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     <!-- Head information end 头信息 -->
      <!-- Carousel advertising start 轮播广告 -->
     <div class="layui-carousel Banner" id="test2">
