@@ -6,85 +6,88 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/releasePosition.css">
 </head>
 <body>
-<!-- logo -->
-<header class="container">
-    <include file="./World/Index/View/Public/head.html"/>
-</header>
-<hr>
-
-<!-- Crumbs nav -->
-<div class="container crumbs">
-    <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
-    <cite class="Icon"></cite>
-    <span class="crumbsTitle">Virtual Currency Recharge</span>
-</div>
-
-<!-- Forget the password form -->
-<div class="contant">
-    <form class="layui-form layui-form-pane" action="">
-        <div class="PasswordContainer">
-            <div class="StepContainer">
-                <div class="StepContainerOne">
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <span class="mailbox-icon8"></span>
-                        </label>
-                        <div class="layui-input-block input-spacing">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off"
-                                   placeholder="Input verification code" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <span class="mailbox-icon9"></span>
-                        </label>
-                        <div class="layui-input-block input-spacing">
-                            <div class="layui-input-block">
-                                <select name="city" lay-verify="required">
-                                    <option value="">Select Payment Method</option>
-                                    <option value="0">北京</option>
-                                    <option value="1">上海</option>
-                                    <option value="2">广州</option>
-                                    <option value="3">深圳</option>
-                                    <option value="4">杭州</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="layui-form-item FormContainer">
-                            <!-- id="layui-form-label" -->
-                        <label class="layui-form-label  label-spacing">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_03.png" alt="">
-                            </div>
-                        </label>
-                        <div class="layui-input-inline" style="width: 45%;">
-                            <input type="password" name="password" required lay-verify="required" placeholder="Enter security code" autocomplete="off" class="layui-input" id="code">
-                        </div>
-                        <div class="layui-form-mid layui-word-aux" style="padding: 0 0!important;width: 50%;">
-                            <a href="#" class="RefreshCode">
-                                <div class="img_code">
-                                    <img src="{:U('Index/Common/verify')}" onclick="sendverify()" id="verifyimg">
+    <div class="web">
+        <!-- logo -->
+        <header class="container">
+            <include file="./World/Index/View/Public/head.html"/>
+        </header>
+        <hr>
+        
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">Virtual Currency Recharge</span>
+        </div>
+        
+        <!-- Forget the password form -->
+        <div class="section">
+            <form class="layui-form layui-form-pane" action="">
+                <div class="PasswordContainer">
+                    <div class="StepContainer">
+                        <div class="StepContainerOne">
+                            <div class="FormContainer" pane>
+                                <label class="layui-form-label label-spacing">
+                                    <span class="mailbox-icon8"></span>
+                                </label>
+                                <div class="layui-input-block input-spacing">
+                                    <input type="text" name="number" lay-verify="required" autocomplete="off"
+                                           placeholder="Input verification code" class="layui-input">
                                 </div>
-                                <span class="RefreshFont" onclick="sendverify()">Can not see, change one！</span>
-                            </a>
+                            </div>
+                            <div class="FormContainer" pane>
+                                <label class="layui-form-label label-spacing">
+                                    <span class="mailbox-icon9"></span>
+                                </label>
+                                <div class="layui-input-block input-spacing">
+                                    <div class="layui-input-block">
+                                        <select name="city" lay-verify="required">
+                                            <option value="">Select Payment Method</option>
+                                            <option value="0">北京</option>
+                                            <option value="1">上海</option>
+                                            <option value="2">广州</option>
+                                            <option value="3">深圳</option>
+                                            <option value="4">杭州</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item FormContainer">
+                                    <!-- id="layui-form-label" -->
+                                <label class="layui-form-label  label-spacing">
+                                    <div class="label_img">
+                                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_03.png" alt="">
+                                    </div>
+                                </label>
+                                <div class="layui-input-inline" style="width: 45%;">
+                                    <input type="password" name="password" required lay-verify="required" placeholder="Enter security code" autocomplete="off" class="layui-input" id="code">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux" style="padding: 0 0!important;width: 50%;">
+                                    <a href="#" class="RefreshCode">
+                                        <div class="img_code">
+                                            <img src="{:U('Index/Common/verify')}" onclick="sendverify()" id="verifyimg">
+                                        </div>
+                                        <span class="RefreshFont" onclick="sendverify()">Can not see, change one！</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="FormContainer from-but">
+                                <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="" lay-filter="">
+                                    Confirm Payment
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="FormContainer from-but">
-                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="" lay-filter="">
-                            Confirm Payment
-                        </button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
-</div>
+        
+        <!-- footer -->
+        <footer class="footer">
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
 
-<!-- footer -->
-<footer style="position:fixed;bottom: 0;width: 100%;">
-    <include file = "./World/Index/View/Public/footer.html"/>
-</footer>
+    </div>
 
 
 </body>

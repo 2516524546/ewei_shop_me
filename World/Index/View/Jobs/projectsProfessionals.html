@@ -127,8 +127,9 @@
             <div class="layui-tab-item">
                 <div class="container">
                     <div class="butbox">
-                        <a href="{:U('Jobs/ReleaseProfessional')}" class="layui-btn layui-btn-normal layui-btn-radius fontcss">I'm an specialist</a>
-                        <!-- <a href="MyProject.html" class="layui-btn layui-btn-normal layui-btn-radius fontcss">My project</a> -->
+                        <if condition="$userid">
+                            <a href="{:U('Jobs/ReleaseProfessional',['professional_uid'=>$userid])}" class="layui-btn layui-btn-normal layui-btn-radius fontcss">I'm an specialist</a>
+                        </if>
                     </div>
                     <div class="frombox">
                         <form method="get" action="">

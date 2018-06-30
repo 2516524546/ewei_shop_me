@@ -15,152 +15,154 @@
 	</head>
 
 	<body>
-		<!-- Head information start 头信息 -->
-		<div class="container headerBox">
-			<div class="row">
-				<div class="col-md-6">
-					<a href="#" class="logo" title="logo"></a>
-				</div>
-				<div class="col-md-6">
-					<include file = "./World/Index/View/Public/head.html"/>
-					<div class="nav">
-						<nav class="navbar NavBg">
-							<ul class="ListInline">
-								<li>
-									<a href="{:U('Index/Index/index')}">Home</a>
-								</li>
-								<li>
-									<a href="{:U('Index/Rnterst/interest')}">Interest</a>
-								</li>
-								<li>
-									<a href="{:U('Index/Academic/academic')}" id="NavSelected">Academic</a>
-								</li>
-								<li>
-									<a href="{:U('Index/Jobs/work')}">Jobs</a>
-								</li>
-								<li>
-									<a href="{:U('Index/Life/life')}">Life</a>
-								</li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Head information end 头信息 -->
-		<!-- Carousel advertising start 轮播广告 -->
-        <div class="layui-carousel Banner" id="test2">
-            <div carousel-item="">
-                <foreach name="newslist" item="new" key="newkey">
-                    <div class="Carousel_img">
-                        <a href="<if condition='$new["news_type"] == 1'>{:U('Index/Academic/newsDetails',array('nid'=>$new['news_id']))}<else />{$new['news_url']}</if>">
-                        <img src="./Uploads/{$new['news_img']}">
-                        </a>
+        <div class="web">
+            <!-- Head information start 头信息 -->
+            <div class="container headerBox">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="#" class="logo" title="logo"></a>
                     </div>
-                </foreach>
+                    <div class="col-md-6">
+                        <include file = "./World/Index/View/Public/head.html"/>
+                        <div class="nav">
+                            <nav class="navbar NavBg">
+                                <ul class="ListInline">
+                                    <li>
+                                        <a href="{:U('Index/Index/index')}">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="{:U('Index/Rnterst/interest')}">Interest</a>
+                                    </li>
+                                    <li>
+                                        <a href="{:U('Index/Academic/academic')}" id="NavSelected">Academic</a>
+                                    </li>
+                                    <li>
+                                        <a href="{:U('Index/Jobs/work')}">Jobs</a>
+                                    </li>
+                                    <li>
+                                        <a href="{:U('Index/Life/life')}">Life</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <!-- Carousel advertising end 轮播广告 -->
-		<form class="layui-form" action="" autocomplete="off">
-			<div class="container SearchContainer">
-				<div class="row">
-
-					<div class="col-md-4">
-						<foreach name="data" item="first" key="firstkey">
-						<div class="SelectionTypeContainer" id="first{$first['first_mark_id']}">
-							<label class="layui-form-label">
-                            <span><img src="__PUBLIC__/Web/web/img/03_academic/academic_create_icon_0{$firstkey+1}.png"></span>
-                        </label>
-							<div class="layui-input-block">
-								<input type="hidden" value="" id="in{$first['first_mark_id']}">
-								<select name="second" lay-verify="required" lay-filter="firstselect">
-									<option value="" selected="selected">Choose a <if condition='$firstkey == 0'>year<elseif condition='$firstkey == 1'/>school<elseif condition='$firstkey == 2'/>college<else />profession</if></option>
-									<foreach name="first['message']" item = "second" key="secondkey">
-										<option value="{$second['second_mark_id']}">{$second['second_mark_name']}</option>
-									</foreach>
-								</select>
-							</div>
-						</div>
-						</foreach>
-					</div>
-					<div class="col-md-6">
-						<div class="SelectionContainer">
-							<input type="text" class="layui-input" id="Selectionform">
-							<a href="javascript:void(0)" id="SelectionIcon" onclick="updata_interest_list(3,'crowd_creattime desc',0,10,1)"><img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png"></a>
-						</div>
-					</div>
-					<div class="col-md-2">
-						<a href="javascript:void(0)" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn" onclick="gocreate()">
-							Create A Community
-						</a>
-						<p class="text-right Help">
-							<a class="Help_tip">
-								<img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_question.png">
+            <!-- Head information end 头信息 -->
+            <!-- Carousel advertising start 轮播广告 -->
+            <div class="layui-carousel Banner" id="test2">
+                <div carousel-item="">
+                    <foreach name="newslist" item="new" key="newkey">
+                        <div class="Carousel_img">
+                            <a href="<if condition='$new["news_type"] == 1'>{:U('Index/Academic/newsDetails',array('nid'=>$new['news_id']))}<else />{$new['news_url']}</if>">
+                            <img src="./Uploads/{$new['news_img']}">
                             </a>
-                            <div class="tooltip_box">
-                                <span>{$moduleone['module_content']}</span>
+                        </div>
+                    </foreach>
+                </div>
+            </div>
+            <!-- Carousel advertising end 轮播广告 -->
+            <form class="layui-form" action="" autocomplete="off">
+                <div class="container SearchContainer">
+                    <div class="row">
+    
+                        <div class="col-md-4">
+                            <foreach name="data" item="first" key="firstkey">
+                            <div class="SelectionTypeContainer" id="first{$first['first_mark_id']}">
+                                <label class="layui-form-label">
+                                <span><img src="__PUBLIC__/Web/web/img/03_academic/academic_create_icon_0{$firstkey+1}.png"></span>
+                            </label>
+                                <div class="layui-input-block">
+                                    <input type="hidden" value="" id="in{$first['first_mark_id']}">
+                                    <select name="second" lay-verify="required" lay-filter="firstselect">
+                                        <option value="" selected="selected">Choose a <if condition='$firstkey == 0'>year<elseif condition='$firstkey == 1'/>school<elseif condition='$firstkey == 2'/>college<else />profession</if></option>
+                                        <foreach name="first['message']" item = "second" key="secondkey">
+                                            <option value="{$second['second_mark_id']}">{$second['second_mark_name']}</option>
+                                        </foreach>
+                                    </select>
+                                </div>
                             </div>
-						</p>
-					</div>
-				</div>
-			</div>
-		</form>
-		<!-- search end 搜索 -->
-		<!--Group list sataer 群列表-->
-		<div class="container GroupList">
-
-			<div class="row">
-				<div class="col-md-10">
-					<h4 class="text-center GroupTitle">Community List</h4>
-					<div class="row" id="crowdlist">
-						<foreach name="crodlist" item="crod" key="crodkey">
-						<div class="col-xs-8 col-sm-6">
-							<div class="UserBox">
-                                <a href="{:U('Index/Academic/academicGroups')}&cid={$crod['crowd_id']}" class="UserLink">
-                                    <div class="UserBox_img">
-                                    <img src="./Uploads/{$crod['crowd_icon']}" alt="" class="img-circle userimg" />
-                                    </div>
-									<h4 class="UserTitle">{$crod['crowd_name']}</h4>
-									<p class="UserFollow">
-										<img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="" /> &nbsp;&nbsp;{$crod['crowd_peoplenum']}
-									</p>
-									<p class="UserName">
-										Creator : {$crod['user_name']} <span class="UserTime">{$crod['crowd_creattime']}</span>
-									</p>
-									<p class="UserContent">
-										{$crod['crowd_intro']}
-									</p>
-								</a>
-							</div>
-						</div>
-						</foreach>
-
-					</div>
-				</div>
-
-				<div class="col-md-2">
-					<div class="BannerContainer">
-						<h4 class="text-center FontColor">Advertising</h4>
-						<foreach name="advertisinglist" item="advertising" key="advertisingkey">
-
-							<div class="Container1">
-								<a href="{$advertising['advertising_url']}" style="text-decoration: none;display: block;">
-									<img src="./Uploads/{$advertising['advertising_img']}" class="img">
-									<p class="text-center Font">{$advertising['advertising_title']}</p>
-								</a>
-							</div>
-						</foreach>
-
-					</div>
-				</div>
-			</div>
-		</div>
-		</div>
-		<!--Group list end 群列表-->
-		<!-- footer -->
-        <footer>
-            <include file = "./World/Index/View/Public/footer.html"/>
-        </footer>
+                            </foreach>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="SelectionContainer">
+                                <input type="text" class="layui-input" id="Selectionform">
+                                <a href="javascript:void(0)" id="SelectionIcon" onclick="updata_interest_list(3,'crowd_creattime desc',0,10,1)"><img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png"></a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="javascript:void(0)" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn" onclick="gocreate()">
+                                Create A Community
+                            </a>
+                            <p class="text-right Help">
+                                <a class="Help_tip">
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_question.png">
+                                </a>
+                                <div class="tooltip_box">
+                                    <span>{$moduleone['module_content']}</span>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- search end 搜索 -->
+            <!--Group list sataer 群列表-->
+            <div class="container GroupList">
+    
+                <div class="row">
+                    <div class="col-md-10">
+                        <h4 class="text-center GroupTitle">Community List</h4>
+                        <div class="row" id="crowdlist">
+                            <foreach name="crodlist" item="crod" key="crodkey">
+                            <div class="col-xs-8 col-sm-6">
+                                <div class="UserBox">
+                                    <a href="{:U('Index/Academic/academicGroups')}&cid={$crod['crowd_id']}" class="UserLink">
+                                        <div class="UserBox_img">
+                                        <img src="./Uploads/{$crod['crowd_icon']}" alt="" class="img-circle userimg" />
+                                        </div>
+                                        <h4 class="UserTitle">{$crod['crowd_name']}</h4>
+                                        <p class="UserFollow">
+                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png" alt="" /> &nbsp;&nbsp;{$crod['crowd_peoplenum']}
+                                        </p>
+                                        <p class="UserName">
+                                            Creator : {$crod['user_name']} <span class="UserTime">{$crod['crowd_creattime']}</span>
+                                        </p>
+                                        <p class="UserContent">
+                                            {$crod['crowd_intro']}
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            </foreach>
+    
+                        </div>
+                    </div>
+    
+                    <div class="col-md-2">
+                        <div class="BannerContainer">
+                            <h4 class="text-center FontColor">Advertising</h4>
+                            <foreach name="advertisinglist" item="advertising" key="advertisingkey">
+    
+                                <div class="Container1">
+                                    <a href="{$advertising['advertising_url']}" style="text-decoration: none;display: block;">
+                                        <img src="./Uploads/{$advertising['advertising_img']}" class="img">
+                                        <p class="text-center Font">{$advertising['advertising_title']}</p>
+                                    </a>
+                                </div>
+                            </foreach>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!--Group list end 群列表-->
+            <!-- footer -->
+            <footer>
+                <include file = "./World/Index/View/Public/footer.html"/>
+            </footer>
+        </div>
 		<script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
 		<script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
