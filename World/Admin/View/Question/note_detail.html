@@ -70,19 +70,17 @@
 						</ul><!-- .breadcrumb -->
 					</div>
 
-				
 				</div><!-- /.main-content -->
 	
 	
 <div class="page-content">
 	<div class="page-header">
 		<h1>
-			{:L('Note')}
+			{:L('Question')}
 			<small> <i class="icon-double-angle-right"></i>
-				{:L('Note_crowd_list')}
+				{:L('Question_crowd_list')}
 			</small>
 
-			 
 		</h1>
 
 	</div>
@@ -90,36 +88,37 @@
 		<div class="col-xs-12">
 			<div class="row" style="padding-bottom: 10px;">
 				<div class="col-sm-12">
-					<div id="sample-table-2_filter">
-						<form class="form-horizontal" action="{:U('Admin/Note/crowd_list')}" method="POST" role="form" enctype="multipart/form-data">
-
-							<div class='anniu'>
-								<ul>
-									<li role="presentation" class="<if condition='$mid == 2'>current</if>" onclick="jump(2)">{:L('Note_crowd_list_interst')}</li>
-									<li role="presentation" class="<if condition='$mid == 3'>current</if>" onclick="jump(3)">{:L('Note_crowd_list_academic')}</li>
-									<li role="presentation" class="<if condition='$mid == 4'>current</if>" onclick="jump(4)">{:L('Note_crowd_list_jobs')}</li>
-									<li role="presentation" class="<if condition='$mid == 5'>current</if>" onclick="jump(5)">{:L('Note_crowd_list_life')}</li>
-								</ul>
-							</div>
-							<div class="btn-group" style='margin-top:5px;'>
-								<span>{:L('Note_crowd_list_name')}:</span>
-								<input type="text" name="name" value="{$name}" placeholder="{:L('Note_crowd_list_name')}">
-							</div>
-							<input type="hidden" name="button" value="1">
-							<input type="hidden" name="mid" value="{$mid}">
-
-							<div class="btn-group" style='margin-top:5px;'>
-								<span class="input-group-btn">
-									<button type="submit" style="padding:0" class="btn btn-purple btn-sm">
-										{:L('User_user_list_search')}<i class="icon-search icon-on-right bigger-110"></i>
-									</button>
-								</span>
-
-							</div>
-
-						</form>
+					<div class="form-group">
+						{:L('Note_note_list_title')}：
+						<input type="text" id="title" value="{$noteone['note_name']}" style="width:300px;" readonly/>
 
 					</div>
+					<div class="form-group">
+						{:L('Note_note_list_content')}：
+						<textarea style="width: 600px;height: 100px" readonly>{$noteone['note_content']}</textarea>
+
+					</div>
+					<div class="form-group">
+						{:L('Note_note_list_img')}：
+
+						<foreach name="notevilist" item="notevi" key="notevikey">
+							<if condition='$notevi["note_vi_type"] == 1'>
+								<img src="./Uploads/{$notevi['note_vi_url']}" style="height: 100px;">
+								<else />
+								<video class="imgs" controls preload="auto" style="height: 300px">
+									<source src="./Uploads/{$notevi['note_vi_url']}" type="video/mp4">
+								</video>
+							</if>
+
+						</foreach>
+
+					</div>
+					<div class="form-group">
+						{:L('Note_note_list_create')}：
+						<input type="text" id="name" value="{$noteone['note_createtime']}" style="width:600px;" readonly/>
+
+					</div>
+
 				</div>
 			</div>
 			<div class="row">
@@ -129,27 +128,30 @@
 							<thead>
 								<tr>
 
-									<th>{:L('Note_crowd_list_id')}</th>
-									<th>{:L('Note_crowd_list_name')}</th>
-									<th>{:L('Note_crowd_list_icon')}</th>
-									<th>{:L('Note_crowd_list_posts')}</th>
+									<th>{:L('Note_note_detail_icon')}</th>
+									<th>{:L('Note_note_detail_name')}</th>
+									<th>{:L('Note_note_detail_content')}</th>
+									<th>{:L('Note_note_detail_createtime')}</th>
+									<th>{:L('Note_note_detail_zans')}</th>
+									<th>{:L('Note_note_list_type')}</th>
 									<th>{:L('Note_crowd_list_operation')}</th>
 
 								</tr>
 							</thead>
 
 							<tbody>
-							<foreach name="crowdlist" item="crowd" key="crowdkey">
+							<foreach name="commentlist" item="comment" key="commentkey">
 								<tr>
-									<td>{$crowd['crowd_id']}</td>
-									<td>{$crowd['crowd_name']}</td>
-									<td><img style="width:50px;height:50px;" src="./Uploads/{$crowd['crowd_icon']}"></td>
-									<td>{$crowd['notecount']}</td>
+									<td><img style="width:50px;height:50px;" src="./Uploads/{$comment['user_icon']}"></td>
+									<td>{$comment['user_name']}</td>
+									<td>{$comment['note_comment_content']}</td>
+									<td>{$comment['note_comment_createtime']}</td>
+									<td>{$comment['note_comment_zans']}</td>
+									<td><if condition='$comment["note_comment_ishide"] == 1'>{:L('Note_note_list_typeone')}<else />{:L('Note_note_list_ishide')}</if></td>
 
 									<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-												<a class="btn btn-xs btn-success" onclick="del({$crowd['crowd_id']})">{:L('Note_crowd_list_del')}</a>
-												<a href="{:U('Admin/Note/note_list',array('cid'=>$crowd['crowd_id']))}" class="btn btn-xs btn-success">{:L('Note_crowd_list_look')}</a>
+												<if condition='$comment["note_comment_ishide"] == 1'><a href="javascript:void(0)" class="btn btn-xs btn-success" onclick="gohide({$comment['note_comment_id']},0)">{:L('Note_note_list_typetwo')}</a><else /><a href="javascript:void(0)" class="btn btn-xs" onclick="gohide({$comment['note_comment_id']},1)">{:L('Note_note_list_closehide')}</a></if>
 
 											</div>
 									</td>
@@ -202,60 +204,50 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
 
 <script>
 	
-	function jump(mid) {
 
-        location.href = "{:U('Admin/Note/crowd_list')}&mid="+mid
+    
+    function gohide(cid,type) {
+        $.ajax({
+            type: "post",
+            url: "{:U('Admin/Question/ajax_note_comment_hide')}",
+            data: {
+                cid: cid,
+                type:type
+            },
+            dataType: "json",
+            success: function (list) {
 
-    }
+                if (list.str == 1){
 
-    function del(cid) {
-
-        layer.msg("{:L('Note_crowd_list_if')}", {
-            time: 0 //不自动关闭
-            ,btn: ["{:L('Note_crowd_list_ok')}", "{:L('Note_crowd_list_no')}"]
-            ,yes: function(index){
-                layer.close(index);
-                $.ajax({
-                    type: "post",
-                    url: "{:U('Admin/Note/ajax_crowd_del')}",
-                    data: {
-                        cid: cid,
-                    },
-                    dataType: "json",
-                    success: function (list) {
-
-                        if (list.str == 1){
-
-                            layer.msg(list.msg,{
-                                    time:1500,
-                                    icon:1,
-                                },function () {
-                                    location.reload()
-                                }
-                            );
-                        }else{
-
-                            layer.msg(list.msg,{
-                                    time:1500,
-                                    icon:2,
-                                }
-                            );
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:1,
+                        },function () {
+                            location.reload()
                         }
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        layer.msg("{:L('Mark_mark_list_error')}",{
-                                time:1500,
-                                icon:2,
-                            }
-                        );
+                    );
+                }else{
 
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                layer.msg("{:L('Mark_mark_list_error')}",{
+                        time:1500,
+                        icon:2,
                     }
+                );
 
-                })
             }
-        });
+
+        })
 
     }
+
 
 	
 </script>

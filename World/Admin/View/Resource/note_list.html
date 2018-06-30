@@ -70,19 +70,17 @@
 						</ul><!-- .breadcrumb -->
 					</div>
 
-				
 				</div><!-- /.main-content -->
 	
 	
 <div class="page-content">
 	<div class="page-header">
 		<h1>
-			{:L('Note')}
+			{:L('Resource')}
 			<small> <i class="icon-double-angle-right"></i>
-				{:L('Note_crowd_list')}
+				{:L('Resource_crowd_list')}
 			</small>
 
-			 
 		</h1>
 
 	</div>
@@ -91,22 +89,28 @@
 			<div class="row" style="padding-bottom: 10px;">
 				<div class="col-sm-12">
 					<div id="sample-table-2_filter">
-						<form class="form-horizontal" action="{:U('Admin/Note/crowd_list')}" method="POST" role="form" enctype="multipart/form-data">
+						<form class="form-horizontal" action="{:U('Admin/Resource/note_list')}" method="POST" role="form" enctype="multipart/form-data">
 
-							<div class='anniu'>
-								<ul>
-									<li role="presentation" class="<if condition='$mid == 2'>current</if>" onclick="jump(2)">{:L('Note_crowd_list_interst')}</li>
-									<li role="presentation" class="<if condition='$mid == 3'>current</if>" onclick="jump(3)">{:L('Note_crowd_list_academic')}</li>
-									<li role="presentation" class="<if condition='$mid == 4'>current</if>" onclick="jump(4)">{:L('Note_crowd_list_jobs')}</li>
-									<li role="presentation" class="<if condition='$mid == 5'>current</if>" onclick="jump(5)">{:L('Note_crowd_list_life')}</li>
-								</ul>
+							<div class="btn-group" style='margin-top:5px;'>
+								<span>{:L('Note_note_list_name')}:</span>
+								<input type="text" name="uname" value="{$uname}" placeholder="{:L('Note_note_list_name')}">
 							</div>
 							<div class="btn-group" style='margin-top:5px;'>
-								<span>{:L('Note_crowd_list_name')}:</span>
-								<input type="text" name="name" value="{$name}" placeholder="{:L('Note_crowd_list_name')}">
+								<span>{:L('Note_note_list_title')}:</span>
+								<input type="text" name="title" value="{$title}" placeholder="{:L('Note_note_list_title')}">
 							</div>
+							<div class="btn-group" style='margin-top:5px;'>
+								<span>{:L('Note_note_list_type')}:</span>
+								<select name="type" style="width: 100px;">
+									<option value="" <if condition='$type == ""'>selected</if>> {:L('Note_note_list_typestatic')}</option>
+									<option value="1" <if condition='$type == 1'>selected</if>>{:L('Note_note_list_typeone')}</option>
+									<option value="0" <if condition='$type == 0&&$type != ""'>selected</if>>{:L('Note_note_list_typetwo')}</option>
+
+								</select>
+							</div>
+
 							<input type="hidden" name="button" value="1">
-							<input type="hidden" name="mid" value="{$mid}">
+							<input type="hidden" name="cid" value="{$cid}">
 
 							<div class="btn-group" style='margin-top:5px;'>
 								<span class="input-group-btn">
@@ -129,27 +133,43 @@
 							<thead>
 								<tr>
 
-									<th>{:L('Note_crowd_list_id')}</th>
-									<th>{:L('Note_crowd_list_name')}</th>
-									<th>{:L('Note_crowd_list_icon')}</th>
-									<th>{:L('Note_crowd_list_posts')}</th>
+									<th>{:L('Note_note_list_id')}</th>
+									<th>{:L('Note_note_list_name')}</th>
+									<th>{:L('Note_note_list_title')}</th>
+									<th>{:L('Note_note_list_content')}</th>
+									<th>{:L('Note_note_list_create')}</th>
+									<th>{:L('Note_note_list_comments')}</th>
+									<th>{:L('Resource_nost_list_downloads')}</th>
+									<th>{:L('Resource_nost_list_url')}</th>
+									<th>{:L('Note_note_list_type')}</th>
 									<th>{:L('Note_crowd_list_operation')}</th>
 
 								</tr>
 							</thead>
 
 							<tbody>
-							<foreach name="crowdlist" item="crowd" key="crowdkey">
+							<foreach name="notelist" item="note" key="notekey">
 								<tr>
-									<td>{$crowd['crowd_id']}</td>
-									<td>{$crowd['crowd_name']}</td>
-									<td><img style="width:50px;height:50px;" src="./Uploads/{$crowd['crowd_icon']}"></td>
-									<td>{$crowd['notecount']}</td>
+									<td>{$note['note_id']}</td>
+									<td>{$note['user_name']}</td>
+									<td>{$note['note_name']}</td>
+									<td>{$note['note_content']}</td>
+									<td>{$note['note_createtime']}</td>
+									<td>{$note['note_comments']}</td>
+									<td>{$note['note_downloads']}</td>
+									<td>{$nowurl}/Uploads/{$note['note_url']}</td>
+									<td><if condition='$note["note_ishide"] == 1'>{:L('Note_note_list_typeone')}<else />{:L('Note_note_list_ishide')}</if></td>
 
 									<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-												<a class="btn btn-xs btn-success" onclick="del({$crowd['crowd_id']})">{:L('Note_crowd_list_del')}</a>
-												<a href="{:U('Admin/Note/note_list',array('cid'=>$crowd['crowd_id']))}" class="btn btn-xs btn-success">{:L('Note_crowd_list_look')}</a>
+												<if condition='$note["note_ishide"] == 1'><a href="javascript:void(0)" class="btn btn-xs btn-success" onclick="gohide({$note['note_id']},0)">{:L('Note_note_list_typetwo')}</a><else /><a href="javascript:void(0)" class="btn btn-xs" onclick="gohide({$note['note_id']},1)">{:L('Note_note_list_closehide')}</a></if>
+
+												<if condition='$note["note_istop"] == 1'><a href="javascript:void(0)" class="btn btn-xs" onclick="gotop({$note['note_id']},0)">{:L('Note_note_list_closetop')}</a><else /><a href="javascript:void(0)" class="btn btn-xs btn-success" onclick="gotop({$note['note_id']},1)">{:L('Note_note_list_top')}</a></if>
+
+												<if condition='$note["note_iswally"] == 1'><a href="javascript:void(0)" class="btn btn-xs" onclick="gowally({$note['note_id']},0)">{:L('Note_note_list_closeswally')}</a><else /><a href="javascript:void(0)" class="btn btn-xs btn-success" onclick="gowally({$note['note_id']},1)">{:L('Note_note_list_swally')}</a></if>
+
+												<a class="btn btn-xs btn-success" onclick="del({$note['note_id']})">{:L('Note_note_list_del')}</a>
+												<a href="{:U('Admin/Resource/note_detail',array('nid'=>$note['note_id']))}" class="btn btn-xs btn-success">{:L('Note_crowd_list_look')}</a>
 
 											</div>
 									</td>
@@ -202,13 +222,7 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
 
 <script>
 	
-	function jump(mid) {
-
-        location.href = "{:U('Admin/Note/crowd_list')}&mid="+mid
-
-    }
-
-    function del(cid) {
+    function del(nid) {
 
         layer.msg("{:L('Note_crowd_list_if')}", {
             time: 0 //不自动关闭
@@ -217,9 +231,9 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
                 layer.close(index);
                 $.ajax({
                     type: "post",
-                    url: "{:U('Admin/Note/ajax_crowd_del')}",
+                    url: "{:U('Admin/Resource/ajax_note_list_del')}",
                     data: {
-                        cid: cid,
+                        nid: nid,
                     },
                     dataType: "json",
                     success: function (list) {
@@ -254,6 +268,132 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
                 })
             }
         });
+
+    }
+    
+    function gohide(nid,type) {
+        $.ajax({
+            type: "post",
+            url: "{:U('Admin/Resource/ajax_note_list_hide')}",
+            data: {
+                nid: nid,
+                type:type
+            },
+            dataType: "json",
+            success: function (list) {
+
+                if (list.str == 1){
+
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:1,
+                        },function () {
+                            location.reload()
+                        }
+                    );
+                }else{
+
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                layer.msg("{:L('Mark_mark_list_error')}",{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+
+            }
+
+        })
+
+    }
+
+    function gotop(nid,type) {
+        $.ajax({
+            type: "post",
+            url: "{:U('Admin/Resource/ajax_note_list_top')}",
+            data: {
+                nid: nid,
+                type:type
+            },
+            dataType: "json",
+            success: function (list) {
+
+                if (list.str == 1){
+
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:1,
+                        },function () {
+                            location.reload()
+                        }
+                    );
+                }else{
+
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                layer.msg("{:L('Mark_mark_list_error')}",{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+
+            }
+
+        })
+
+    }
+
+    function gowally(nid,type) {
+        $.ajax({
+            type: "post",
+            url: "{:U('Admin/Resource/ajax_note_list_wally')}",
+            data: {
+                nid: nid,
+                type:type
+            },
+            dataType: "json",
+            success: function (list) {
+
+                if (list.str == 1){
+
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:1,
+                        },function () {
+                            location.reload()
+                        }
+                    );
+                }else{
+
+                    layer.msg(list.msg,{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                layer.msg("{:L('Mark_mark_list_error')}",{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+
+            }
+
+        })
 
     }
 

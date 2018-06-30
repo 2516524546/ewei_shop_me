@@ -128,7 +128,6 @@ class UserController extends CommonController {
             $this->error('The resume does not exist!');
         }
 
-
         $this->assign(array(
             'userid' => $this->userid,
             'usercontent' =>$this->usercontent,
@@ -316,8 +315,6 @@ class UserController extends CommonController {
                 // 验证通过 执行登录操作
             }
         }
-         $positions = D('SearchMark')->alias('sm')->join('s_search_mark_type smt ON smt.mark_type_id=sm.mark_type_id','left')->where("smt.mark_type_mid=3 AND smt.mark_type_tid=1 AND smt.mark_type_name='Position'")->order('sm.mark_sort')->select();
-        $this->assign('positions',$positions);
 
         $this->display('resumeDetails');
     }

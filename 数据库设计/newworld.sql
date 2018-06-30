@@ -194,11 +194,12 @@ ALTER TABLE `u_crowd`
 ADD COLUMN `crowd_posts`  int(10) NOT NULL DEFAULT 0 COMMENT '帖子数' AFTER `crowd_fourthmarks`;
 
 
-
 /*
 lyx
 2018.06.26 end
 */
+
+
 ALTER TABLE `j_item`
 ADD COLUMN `item_city`  varchar(255) NOT NULL COMMENT '城市' AFTER `item_uid`,
 ADD COLUMN `item_school`  varchar(255) NOT NULL COMMENT '学校' AFTER `item_city`,
@@ -214,3 +215,16 @@ ADD COLUMN `professional_pic` varchar(255) CHARACTER SET utf8 COLLATE utf8_gener
 ALTER TABLE `j_professional`
 ADD COLUMN `professional_city`  varchar(255) NOT NULL COMMENT '城市' AFTER `professional_uid`,
 ADD COLUMN `professional_school`  varchar(255) NOT NULL COMMENT '学校' AFTER `professional_city`;
+
+/*
+lyx
+2018.06.29 start
+*/
+
+ALTER TABLE `u_note`
+ADD COLUMN `note_downloads`  int(10) NOT NULL DEFAULT 0 COMMENT '下载量' AFTER `note_comments`;
+
+/*
+lyx
+2018.06.29 end
+*/
