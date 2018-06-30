@@ -3691,5 +3691,32 @@ public function ajax_donationpay()
 
     }
 
+    //帖子删除
+    public function ajax_delnote(){
+
+        if (IS_POST){
+
+            if (!isset($_POST['nid'])||$this->post('nid')==''){
+
+                die(json_encode(array('str' => 3, 'msg' => '不存在这个类型')));
+            }else {
+
+                $notemodel = new NoteModel();
+                $usermodel = new UserModel();
+
+
+                if ($notelist){
+                    die(json_encode(array('str' => 1,'msg'=>$notelist)));
+                }else{
+                    die(json_encode(array('str' => 2,'msg'=>'回复失败')));
+                }
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+
+    }
+
 
 }
