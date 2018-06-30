@@ -287,3 +287,12 @@
 .ReturnBox .refresh_btn img{
   width: 100%;
 }
+
+.layui-laypage .layui-laypage-curr {
+  width: 6%;
+}
+
+p{
+  line-height: 30px;
+}
+
