@@ -18,3 +18,12 @@ if(!function_exists('addCss')){
         return $result;
     }
 }
+//公共函数，检验是否是合法的邮箱的格式
+function isEmail($email){
+    $pattern="/([a-z0-9]*[-_.]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[.][a-z]{2,3}([.][a-z]{2})?/i";
+    if(preg_match($pattern,$email)){
+        return true;
+    } else{
+        echo false;
+    }
+}

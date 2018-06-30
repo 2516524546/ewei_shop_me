@@ -2962,18 +2962,42 @@ public function ajax_donationpay()
             }else {
 
                 $usermodel = new UserModel();
+                $notemodel = new NoteModel();
+                $noteone = $notemodel->findone('note_id = '.$this->post('nid'));
                 $userone = $usermodel->findone('user_id = '.$this->userid);
                 if ($userone['user_havecoin'] < $this->post('money')){
                     die(json_encode(array('str' => 4,'msg'=>'你拥有的虚拟币不够')));
                 }
-                $userdata = array(
-                    'user_havecoin' => $userone['user_havecoin']-$this->post('money'),
-                );
-                $res = $usermodel->updataone('user_id = '.$this->userid,$userdata);
-                if ($res){
-                    die(json_encode(array('str' => 1,'msg'=>'正在下载')));
-                }else{
-                    die(json_encode(array('str' => 2,'msg'=>'扣取失败')));
+
+                $usermodel->startTrans();
+                try {
+
+                    $userdata = array(
+                        'user_havecoin' => $userone['user_havecoin'] - $this->post('money'),
+                    );
+                    $res = $usermodel->updataone('user_id = ' . $this->userid, $userdata);
+
+                    if ($noteone['note_downloadmember']&&$noteone['note_downloadmember']!=''){
+                        $downloadmember = $noteone['note_downloadmember'].','.$this->userid;
+                    }else{
+                        $downloadmember = $this->userid;
+                    }
+                    $notedata = array(
+                        'note_downloads'=>$noteone['note_downloads']+1,
+                        'note_downloadmember' => $downloadmember,
+                    );
+                    $noteres = $notemodel->updataone('note_id = '.$this->post('nid'),$notedata);
+
+                    if ($res&&$noteres) {
+                        $usermodel->commit();
+                        die(json_encode(array('str' => 1, 'msg' => '正在下载')));
+                    } else {
+                        $usermodel->rollback();
+                        die(json_encode(array('str' => 2, 'msg' => '扣取失败')));
+                    }
+                }catch (Exception $e){
+                    $usermodel->rollback();
+                    die(json_encode(array('str' => 2, 'msg' => '扣取失败')));
                 }
 
             }
