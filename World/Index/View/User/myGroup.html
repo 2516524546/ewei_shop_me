@@ -26,12 +26,18 @@
                         <span class="crumbsTitle">My Community</span>
                     </div>
                     <div class="col-md-6">
-                        <div class="SelectionContainer">
-                            <input type="text" class="layui-input" id="Selectionform">
-                            <a href="#" id="SelectionIcon">
-                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
-                            </a>
-                        </div>
+                        <form method="get" action="{:U('Index/User/myGroup')}" id="Selectionform">
+                            <div class="SelectionContainer">
+                                <input type="text" name="k" value="{$_GET['k']}" class="layui-input">
+                                <input type="hidden" name="type" value="{$_GET['type']}" class="layui-input">
+                                <input type="hidden" name="c" value="{$Think.CONTROLLER_NAME}" class="layui-input">
+                                <input type="hidden" name="m" value="{$Think.MODULE_NAME}" class="layui-input">
+                                <input type="hidden" name="a" value="{$Think.ACTION_NAME}" class="layui-input">
+                                <a href="javascript:$('#Selectionform').submit()" id="SelectionIcon">
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
+                                </a>
+                            </div>
+                        </form>
                     </div>
             </div>
         </div>
@@ -42,186 +48,80 @@
             <div class="myGroup_box">
                     <div class="layui-tab">
                             <ul class="layui-tab-title">
-                              <li class="layui-this"> I Created</li>
-                              <li>I Joined</li>
+                                <li <if condition="empty($_GET['type'])">class="layui-this"</if>> <a href="{:U('Index/User/myGroup',['type'=>0])}" <if condition="empty($_GET['type'])">style="color: #fff;text-decoration:none"<else/>style="text-decoration:none"</if>> I Created</a></li>
+                              <li <if condition="!empty($_GET['type'])">class="layui-this"</if>> <a href="{:U('Index/User/myGroup',['type'=>1])}" <if condition="!empty($_GET['type'])">style="color: #fff;text-decoration:none"<else/>style="text-decoration:none"</if>>I Joined</a></li>
                             </ul>
                             <div class="layui-tab-content">
+                              <if condition="empty($_GET['type'])">
                               <div class="layui-tab-item layui-show Created_item">
+                                  <foreach name="groups" item="g">
                                   <div class="MyGroup_list">
                                       <div class="MyGroup_item">
                                         <div class="MyGroup_left">
                                             <div class="myGroup_left_img">
-                                                <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
+                                                <img src="<if condition='$g["crowd_icon"]'>./Uploads/{$g["crowd_icon"]}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
                                             </div>
                                             <div class="MyGroup_left_details">
                                                 <div class="MyGroup_left_details_name">
-                                                        Community Name: ××××××××××
+                                                        Community Name: {$g["crowd_name"]}
                                                 </div>
                                                 <div class="MyGroup_left_details_person">
                                                     <div class="person_img">
                                                         <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_04.png" alt="">
                                                     </div>
                                                     <div class="person_num">
-                                                        66866
+                                                        {$g["total"]}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="MyGroup_right">
-                                            <div class="right_btn btn_Do" data-target="#box1" data-toggle="modal">
-                                                    Quit
-                                            </div>
-                                            <div class="right_btn btn_Dis" data-target="#box2" data-toggle="modal">
-                                                    Dissolve
-                                            </div>
-                                        </div>
-                                      </div>
-
-                                       <div class="MyGroup_item">
-                                        <div class="MyGroup_left">
-                                            <div class="myGroup_left_img">
-                                                <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
-                                            </div>
-                                            <div class="MyGroup_left_details">
-                                                <div class="MyGroup_left_details_name">
-                                                        Community Name: ××××××××××
-                                                </div>
-                                                <div class="MyGroup_left_details_person">
-                                                    <div class="person_img">
-                                                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_04.png" alt="">
-                                                    </div>
-                                                    <div class="person_num">
-                                                        66866
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="MyGroup_right">
-                                            <div class="right_btn btn_Do" data-target="#box1" data-toggle="modal">
-                                                    Quit
-                                            </div>
-                                            <div class="right_btn btn_Dis" data-target="#box2" data-toggle="modal">
-                                                    Dissolve
-                                            </div>
-                                        </div>
-                                      </div>
-
-                                       <div class="MyGroup_item">
-                                        <div class="MyGroup_left">
-                                            <div class="myGroup_left_img">
-                                                <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
-                                            </div>
-                                            <div class="MyGroup_left_details">
-                                                <div class="MyGroup_left_details_name">
-                                                        Community Name: ××××××××××
-                                                </div>
-                                                <div class="MyGroup_left_details_person">
-                                                    <div class="person_img">
-                                                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_04.png" alt="">
-                                                    </div>
-                                                    <div class="person_num">
-                                                        66866
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="MyGroup_right">
-                                            <div class="right_btn btn_Do" data-target="#box1" data-toggle="modal">
-                                                    Quit
-                                            </div>
-                                            <div class="right_btn btn_Dis" data-target="#box2" data-toggle="modal">
+                                            <div class="right_btn btn_Dis" data-id="{$g['crowd_id']}" data-target="#box2" data-toggle="modal">
                                                     Dissolve
                                             </div>
                                         </div>
                                       </div>
                                   </div>
+                                  </foreach>
                                 </div>
-                              <div class="layui-tab-item Joined_item">
+                                <else/>
+                              <div class="layui-tab-item  layui-show Joined_item">
                                    <div class="MyGroup_list">
-                                      <div class="MyGroup_item">
-                                        <div class="MyGroup_left">
-                                            <div class="myGroup_left_img">
-                                                <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
-                                            </div>
-                                            <div class="MyGroup_left_details">
-                                                <div class="MyGroup_left_details_name">
-                                                        Community Name: ××××××××××
-                                                </div>
-                                                <div class="MyGroup_left_details_person">
-                                                    <div class="person_img">
-                                                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_04.png" alt="">
-                                                    </div>
-                                                    <div class="person_num">
-                                                        66866
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="MyGroup_right">
-                                            <div class="right_btn"  data-target="#box3" data-toggle="modal">
-                                                    Quit
-                                            </div>
-                                        </div>
-                                      </div>
-
-                                       <div class="MyGroup_item">
-                                        <div class="MyGroup_left">
-                                            <div class="myGroup_left_img">
-                                                <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
-                                            </div>
-                                            <div class="MyGroup_left_details">
-                                                <div class="MyGroup_left_details_name">
-                                                        Community Name: ××××××××××
-                                                </div>
-                                                <div class="MyGroup_left_details_person">
-                                                    <div class="person_img">
-                                                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_04.png" alt="">
-                                                    </div>
-                                                    <div class="person_num">
-                                                        66866
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="MyGroup_right">
-                                            <div class="right_btn"  data-target="#box3" data-toggle="modal">
-                                                    Quit
-                                            </div>
-                                        </div>
-                                      </div>
-
-                                       <div class="MyGroup_item">
-                                        <div class="MyGroup_left">
-                                            <div class="myGroup_left_img">
-                                                <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
-                                            </div>
-                                            <div class="MyGroup_left_details">
-                                                <div class="MyGroup_left_details_name">
-                                                        Community Name: ××××××××××
-                                                </div>
-                                                <div class="MyGroup_left_details_person">
-                                                    <div class="person_img">
-                                                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_04.png" alt="">
-                                                    </div>
-                                                    <div class="person_num">
-                                                        66866
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="MyGroup_right">
-                                            <div class="right_btn"  data-target="#box3" data-toggle="modal">
-                                                    Quit
-                                            </div>
-                                        </div>
-                                      </div>
+                                       <foreach name="groups" item="g">
+                                           <div class="MyGroup_item">
+                                               <div class="MyGroup_left">
+                                                   <div class="myGroup_left_img">
+                                                       <img src="<if condition='$g["crowd_icon"]'>./Uploads/{$g["crowd_icon"]}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
+                                                   </div>
+                                                   <div class="MyGroup_left_details">
+                                                       <div class="MyGroup_left_details_name">
+                                                           Community Name: {$g["crowd_name"]}
+                                                       </div>
+                                                       <div class="MyGroup_left_details_person">
+                                                           <div class="person_img">
+                                                               <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_04.png" alt="">
+                                                           </div>
+                                                           <div class="person_num">
+                                                               {$g["total"]}
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                               <div class="MyGroup_right">
+                                                   <div class="right_btn" data-id="{$g['crowd_id']}"  data-target="#box3" data-toggle="modal">
+                                                       Quit
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </foreach>
                                   </div>
                               </div>
+                            </if>
                             </div>
                           </div>
             </div>
             <div class="container" id="NumberOfPagesContainer">
-                    <div id="NumberOfPages"></div>
+                {$page}
         </div>
 
         <!-- Create Drop out -->
@@ -310,11 +210,12 @@
         //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
         layui.use('element', function(){
             var element = layui.element;
-            
+
             //…
         });
     </script>
     <script>
+
         // I Create it
         $(function(){
             (function(){
@@ -322,16 +223,23 @@
                 $(".Created_item .MyGroup_list").on('click',".MyGroup_item", function(event) {
                     num = $(this).index();
                 });
-                // Drop Out
-                $(".btn-DropOut-primary").on('click', function(event) {
-                        $('.Created_item .MyGroup_list .MyGroup_item').eq(num).remove();
-                });
                 // Dissolve
                 $(".btn-Dissolve-primary").on('click', function(event) {
-                    $('.Created_item .MyGroup_list .MyGroup_item').eq(num).remove();
+                    var crowd_id = $(".Created_item .MyGroup_list .MyGroup_right .right_btn").eq(num).data('id');
+                    $.post(
+                        '{:U("Index/User/DissolveGroup")}'
+                        ,{crowd_id:crowd_id}
+                        ,function(data){
+                            if(data.status == 0){
+                                alert(data.msg);
+                            }else{
+                                $('.Created_item .MyGroup_list .MyGroup_item').eq(num).remove();
+                            }
+                        },'json'
+                    );
                 });
             })();
-            
+
         });
 
         // I Joined
@@ -343,10 +251,21 @@
                 });
                 // Drop Out
                 $(".btn-DropOut-primary").on('click', function(event) {
-                        $('.Joined_item .MyGroup_list .MyGroup_item').eq(num).remove();
+                    var crowd_id = $(".Joined_item  .MyGroup_list .MyGroup_right .right_btn").eq(num).data('id');
+                    $.post(
+                        '{:U("Index/User/QuitGroup")}'
+                        ,{crowd_id:crowd_id}
+                        ,function(data){
+                            if(data.status == 0){
+                                alert(data.msg);
+                            }else{
+                                window.location.reload();
+                            }
+                        },'json'
+                    );
                 });
             })();
-            
+
         });
 
     </script>
