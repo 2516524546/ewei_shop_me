@@ -77,9 +77,9 @@
 <div class="page-content">
 	<div class="page-header">
 		<h1>
-			{:L('Note')}
+			{:L('Question')}
 			<small> <i class="icon-double-angle-right"></i>
-				{:L('Note_crowd_list')}
+				{:L('Question_crowd_list')}
 			</small>
 
 			 
@@ -91,7 +91,7 @@
 			<div class="row" style="padding-bottom: 10px;">
 				<div class="col-sm-12">
 					<div id="sample-table-2_filter">
-						<form class="form-horizontal" action="{:U('Admin/Note/crowd_list')}" method="POST" role="form" enctype="multipart/form-data">
+						<form class="form-horizontal" action="{:U('Admin/Question/crowd_list')}" method="POST" role="form" enctype="multipart/form-data">
 
 							<div class='anniu'>
 								<ul>
@@ -132,7 +132,7 @@
 									<th>{:L('Note_crowd_list_id')}</th>
 									<th>{:L('Note_crowd_list_name')}</th>
 									<th>{:L('Note_crowd_list_icon')}</th>
-									<th>{:L('Note_crowd_list_posts')}</th>
+									<th>{:L('Question_crowd_list_notes')}</th>
 									<th>{:L('Note_crowd_list_operation')}</th>
 
 								</tr>
@@ -149,7 +149,7 @@
 									<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
 												<a class="btn btn-xs btn-success" onclick="del({$crowd['crowd_id']})">{:L('Note_crowd_list_del')}</a>
-												<a href="{:U('Admin/Note/note_list',array('cid'=>$crowd['crowd_id']))}" class="btn btn-xs btn-success">{:L('Note_crowd_list_look')}</a>
+												<a href="{:U('Admin/Question/note_list',array('cid'=>$crowd['crowd_id']))}" class="btn btn-xs btn-success">{:L('Note_crowd_list_look')}</a>
 
 											</div>
 									</td>
@@ -204,7 +204,7 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
 	
 	function jump(mid) {
 
-        location.href = "{:U('Admin/Note/crowd_list')}&mid="+mid
+        location.href = "{:U('Admin/Question/crowd_list')}&mid="+mid
 
     }
 
@@ -217,7 +217,7 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
                 layer.close(index);
                 $.ajax({
                     type: "post",
-                    url: "{:U('Admin/Note/ajax_crowd_del')}",
+                    url: "{:U('Admin/Question/ajax_crowd_del')}",
                     data: {
                         cid: cid,
                     },

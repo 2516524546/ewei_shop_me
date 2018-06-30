@@ -128,7 +128,6 @@ class UserController extends CommonController {
             $this->error('The resume does not exist!');
         }
 
-
         $this->assign(array(
             'userid' => $this->userid,
             'usercontent' =>$this->usercontent,

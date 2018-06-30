@@ -48,5 +48,9 @@ class NoteModel extends Model{
         return $this->join($join1,$jointype1)->join($join2,$jointype2)->field($field)->where($where)->order($order)->find();
     }
 
+    public function joinlist($where,$join1,$order='',$jointype1='INNER',$field=false){
+        return $this->join($join1,$jointype1)->field($field)->where($where)->order($order)->select();
+    }
+
 
 }
