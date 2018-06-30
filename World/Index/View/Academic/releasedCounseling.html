@@ -16,6 +16,12 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/releasePosition.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
+    <style>
+    input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
+        -webkit-appearance: none !important;
+        margin: 0; 
+    }
+    </style>
 </head>
 
 <body>
@@ -108,7 +114,7 @@
                             <!-- <span class="MoneyIcon"></span> -->
                         </label>
                         <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" id="price" placeholder="Enter the price" class="layui-input">
+                            <input type="number" name="number" lay-verify="required" autocomplete="off" id="price" placeholder="Enter the price" class="layui-input">
                         </div>
                     </div>
 
@@ -169,7 +175,15 @@
 </body>
 
 <script>
-
+    $("input[type='number']").on("blur",function(){
+        var input_num = $(this).val();
+        var patrn=/^([1-9]\d*|0)(\.\d*[1-9])?$/; 
+        if (!patrn.exec(input_num)){
+            $(this).val("")
+        } else{
+            
+        }
+    })
     layui.use('form', function(){
         var form = layui.form;
 

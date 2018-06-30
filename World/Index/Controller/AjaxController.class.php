@@ -2377,6 +2377,7 @@ public function ajax_donationpay()
                 }
 
                 if ($_FILES) {
+
                     $upload = new \Think\Upload();// 实例化上传类
                     $type = explode('/', $_FILES['img']['type'][0]);
                     if ($type[0] == 'video') {
@@ -2388,11 +2389,9 @@ public function ajax_donationpay()
                     $upload->exts = array('jpg', 'gif', 'png', 'jpeg', 'mp4', 'avi');// 设置附件上传类型
                     $upload->rootPath = './Uploads/'; // 设置附件上传根目录
 
-                    $filelist = $upload->dealFiles($_FILES);
-
                     $info = $upload->upload($_FILES);
 
-                    if (!$info || count($filelist) != count($info)) {
+                    if (!$info || count($_FILES) != count($info)) {
                         // 上传错误提示错误信息
                         die(json_encode(array('str' => 0, 'msg' => $upload->getError())));
                     } else {
@@ -2963,18 +2962,42 @@ public function ajax_donationpay()
             }else {
 
                 $usermodel = new UserModel();
+                $notemodel = new NoteModel();
+                $noteone = $notemodel->findone('note_id = '.$this->post('nid'));
                 $userone = $usermodel->findone('user_id = '.$this->userid);
                 if ($userone['user_havecoin'] < $this->post('money')){
                     die(json_encode(array('str' => 4,'msg'=>'你拥有的虚拟币不够')));
                 }
-                $userdata = array(
-                    'user_havecoin' => $userone['user_havecoin']-$this->post('money'),
-                );
-                $res = $usermodel->updataone('user_id = '.$this->userid,$userdata);
-                if ($res){
-                    die(json_encode(array('str' => 1,'msg'=>'正在下载')));
-                }else{
-                    die(json_encode(array('str' => 2,'msg'=>'扣取失败')));
+
+                $usermodel->startTrans();
+                try {
+
+                    $userdata = array(
+                        'user_havecoin' => $userone['user_havecoin'] - $this->post('money'),
+                    );
+                    $res = $usermodel->updataone('user_id = ' . $this->userid, $userdata);
+
+                    if ($noteone['note_downloadmember']&&$noteone['note_downloadmember']!=''){
+                        $downloadmember = $noteone['note_downloadmember'].','.$this->userid;
+                    }else{
+                        $downloadmember = $this->userid;
+                    }
+                    $notedata = array(
+                        'note_downloads'=>$noteone['note_downloads']+1,
+                        'note_downloadmember' => $downloadmember,
+                    );
+                    $noteres = $notemodel->updataone('note_id = '.$this->post('nid'),$notedata);
+
+                    if ($res&&$noteres) {
+                        $usermodel->commit();
+                        die(json_encode(array('str' => 1, 'msg' => '正在下载')));
+                    } else {
+                        $usermodel->rollback();
+                        die(json_encode(array('str' => 2, 'msg' => '扣取失败')));
+                    }
+                }catch (Exception $e){
+                    $usermodel->rollback();
+                    die(json_encode(array('str' => 2, 'msg' => '扣取失败')));
                 }
 
             }

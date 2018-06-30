@@ -30,7 +30,7 @@
                     <foreach name="messages" item="m">
                     <if condition="$m['message_type'] == 0">
                         <div class="Message_details_item">
-                            <a href="{:U('User/MessageDetails')}">
+                            <a href="{:U('User/MessageDetails',['message_id'=>$m['message_id']])}">
                                 <div class="item_question">
                                     {$m['message_title']}
                                 </div>
@@ -89,7 +89,8 @@
                     </foreach>
                 </div>
                 <div class="container" id="NumberOfPagesContainer">
-                        <div id="NumberOfPages"></div>
+                    <!-- <div id="NumberOfPages"></div> -->
+                       {$page}
             </div>
 
         </div>
@@ -109,7 +110,22 @@
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
     <script>
         $(".Message_box .Empty_messages").on("click",function(){
-            $(".Message_box .Message_details").children().remove()
+            <if condition="!$messages">return false;</if>
+            var r=confirm("Please confirm whether to clean up the message!");
+            if (r==true)
+            {
+                $.post(
+                    '{:U("User/ClearMessages")}'
+                    ,{}
+                    ,function(data){
+                        if(data.status == 0){
+                            alert(data.msg);
+                        }else{
+                            $(".Message_box .Message_details").children().remove()
+                        }
+                    },'json'
+                );
+            }
         })
         function AgreeAddFirend(id,uid){
             event = event ? event : window.event;

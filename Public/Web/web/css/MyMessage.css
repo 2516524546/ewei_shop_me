@@ -20,7 +20,8 @@
 .Message_box .Message_details{
     box-shadow: 2px 2px 14px #cecece;
     padding: 8px 30px;
-    min-height: 654px;
+    padding-bottom: 30px;
+    /* min-height: 654px; */
 }
 .Message_box .Message_details .Message_details_item{
     display: flex;
@@ -146,5 +147,95 @@
 
 #NumberOfPages{
     text-align: center;
-    margin-top: 174px;
+}
+#NumberOfPagesContainer{
+    text-align: center;
+    margin-top: 20px;
+}
+.page_str{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px 0;
+    text-align: center;
+    font-size: 0;
+}
+
+.prev,.next{
+    display: inline-block;
+    vertical-align: middle;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 -1px 5px 0;
+    background-color: #fff;
+    color: #333;
+    font-size: 12px;
+    min-width: 76px;
+    text-align: center;
+    border: 1px solid #e2e2e2;
+    text-decoration: none;
+}
+.prev:hover,.next:hover{
+    color: #009688;
+    text-decoration: none;
+}
+.num{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 15px;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 -1px 5px 0;
+    background-color: #fff;
+    color: #333;
+    font-size: 12px;
+    border: 1px solid #e2e2e2;
+    text-decoration: none;
+}
+.num:hover{
+    text-decoration: none;
+}
+.current{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 15px;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 -1px 5px 0;
+    color: #333;
+    font-size: 12px;
+    text-decoration: none;
+    background-color: #009688;
+    border: 1px solid #e2e2e2;
+    color: #fff;
+}
+
+.rows_Total{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 15px;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 -1px 5px 0;
+    background-color: #fff;
+    color: #333;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.first,.end{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 15px;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 -1px 5px 0;
+    background-color: #fff;
+    color: #333;
+    font-size: 12px;
+    border: 1px solid #e2e2e2;
+    text-decoration: none;
+}
+
+.first:hover,.end:hover{
+    text-decoration: none;
 }

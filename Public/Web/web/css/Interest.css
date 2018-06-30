@@ -3,7 +3,7 @@
   display: inline-block;
 }
 .headerBox {
-  margin: 12px 0 0;
+  margin-top: 12px;
 }
 .logo {
   width: 260px;
@@ -291,4 +291,24 @@
   width: 80px;
   font-weight: 400;
   text-align: center;
+}
+
+
+
+element.style {
+}
+.layui-form-select dl dd.layui-select-tips {
+    padding-left: 10px!important;
+    color: #999;
+    word-wrap: break-word;
+}
+.layui-form-select dl dd {
+    cursor: pointer;
+}
+.layui-form-select dl dd, .layui-form-select dl dt {
+    word-break: break-all;
+}
+
+.layui-form-selectup dl {
+  width: 100%;
 }

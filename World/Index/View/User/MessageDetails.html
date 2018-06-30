@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <include file="./World/Index/View/Public/meta.html"/>
+    </head>
+
+    <body>
+        <!-- logo -->
+        <header class="container">
+            <include file = "./World/Index/View/Public/head.html"/>
+            </header>
+            <hr>
+
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+            <cite class="Icon"></cite>
+            <a href="{:U('Index/User/myMessage')}" class="crumbsa">My message</a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">{$title}</span>
+        </div>
+        <!-- MessageDetails content -->
+        <div class="container">
+            <div class="MessageDetails_box">
+                <div class="MessageDetails_title">
+                    {$myMessage['message_title']}
+                </div>
+                <div class="MessageDetails_time">
+                    {$myMessage['message_sendtime']}
+                </div>
+                <div class="MessageDetails_content">
+                    {$myMessage['message_content']}
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- foot start 底部信息 -->
+        <footer>
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
+            <!-- foot end 底部信息 -->
+    </body>
+
+    <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+    <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
+    <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
+    <script>
+        $(".Message_box .Empty_messages").on("click",function(){
+            $.post(
+                '{:U("User/ClearMessages")}'
+                ,{}
+                ,function(data){
+                    if(data.status == 0){
+                        alert(data.msg);
+                    }else{
+                        $(".Message_box .Message_details").children().remove()
+                        //alert(data.msg);
+                    }
+                },'json'
+            );
+        })
+        function AgreeAddFirend(id,uid){
+            event = event ? event : window.event;
+            var obj = event.srcElement ? event.srcElement : event.target;
+            $.post(
+                '{:U("User/AgreeAddFirend")}'
+                ,{id:id,uid:uid}
+                ,function(data){
+                    if(data.status == 0){
+                        alert(data.msg);
+                    }else{
+                        $(obj).closest('.details_top_btn').html('<div class="top_btn">Agreed</div>');
+                        alert(data.msg);
+                    }
+                },'json'
+            );
+        }
+
+        function RefuseAddFirend(id){
+            event = event ? event : window.event;
+            var obj = event.srcElement ? event.srcElement : event.target;
+            $.post(
+                '{:U("User/RefuseAddFirend")}'
+                ,{id:id}
+                ,function(data){
+                    if(data.status == 0){
+                        alert(data.msg);
+                    }else{
+                        $(obj).closest('.details_top_btn').html('<div class="top_btn">Refusing</div>');
+                        alert(data.msg);
+                    }
+                },'json'
+            );
+        }
+    </script>
+
+</html>

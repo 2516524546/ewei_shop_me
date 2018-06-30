@@ -104,7 +104,7 @@ class JobsController extends CommonController {
     工作列表
      */
     public function jobList(){
-        $where = 'w.works_isdel=1';
+        $where = '(w.works_isdel=1 AND w.works_isclose=1)';
 
         $k = I('get.k','','trim');
         if($k){
@@ -256,7 +256,12 @@ class JobsController extends CommonController {
         $Page       = new \Think\Page($count,8);
         $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
         $professionals_show       = $Page->show();
-        $professionals = D('Professional')->alias('p')->field('p.*,u.user_name,u.user_icon,u.user_signature,count(pc.professional_comment_id) as professional_comment')->join('u_user u ON u.user_id = p.professional_uid','LEFT')->join('j_professional_comment pc ON pc.professional_comment_pid = p.professional_id','LEFT')->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+        if($professionals_show){
+            $professionals = D('Professional')->alias('p')->field('p.*,u.user_name,u.user_icon,u.user_signature,count(pc.professional_comment_id) as professional_comment')->join('u_user u ON u.user_id = p.professional_uid','LEFT')->join('j_professional_comment pc ON pc.professional_comment_pid = p.professional_id','LEFT')->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+        }else{
+            $professionals = null;
+        }
+
         $this->assign('professionals',$professionals);
         $this->assign('professionals_page',$professionals_show);
         $this->display();
@@ -595,6 +600,12 @@ class JobsController extends CommonController {
             $ishave = 1;
         }
 
+        $isdown = 0;
+        $downloadlist = explode(',',$noteone['note_downloadmember']);
+        if (in_array($this->userid, $downloadlist)){
+            $isdown=1;
+        }
+
         $this->assign(array(
             'crowdone' => $crowdone,
             'isjoin' => $isjoin,
@@ -604,6 +615,7 @@ class JobsController extends CommonController {
             'noteuser' => $noteuser,
             'ishave' => $ishave,
             'vilist' => $vilist,
+            'isdown' => $isdown,
             'commentlist' => $commentlist,
             'commentcount' => $commentcount
 
