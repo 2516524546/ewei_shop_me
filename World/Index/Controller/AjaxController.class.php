@@ -2377,6 +2377,7 @@ public function ajax_donationpay()
                 }
 
                 if ($_FILES) {
+
                     $upload = new \Think\Upload();// 实例化上传类
                     $type = explode('/', $_FILES['img']['type'][0]);
                     if ($type[0] == 'video') {
@@ -2388,11 +2389,9 @@ public function ajax_donationpay()
                     $upload->exts = array('jpg', 'gif', 'png', 'jpeg', 'mp4', 'avi');// 设置附件上传类型
                     $upload->rootPath = './Uploads/'; // 设置附件上传根目录
 
-                    $filelist = $upload->dealFiles($_FILES);
-
                     $info = $upload->upload($_FILES);
 
-                    if (!$info || count($filelist) != count($info)) {
+                    if (!$info || count($_FILES) != count($info)) {
                         // 上传错误提示错误信息
                         die(json_encode(array('str' => 0, 'msg' => $upload->getError())));
                     } else {
