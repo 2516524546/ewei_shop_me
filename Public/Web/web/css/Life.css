@@ -374,3 +374,12 @@
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
   }
+
+  .layui-form-label {
+    float: left;
+    display: block;
+    padding: 9px 15px;
+    width: 80px;
+    font-weight: 400;
+    text-align: center;
+}

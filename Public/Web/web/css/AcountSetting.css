@@ -23,3 +23,12 @@
     height: 38px;
     min-height: 38px;
 }
+
+.details_item_tips{
+    /* width: 22%;
+    text-align: right; */
+}
+
+.Resumetails_content .Resume_details .form_box .form_details .form_details_item {
+    height: 38px;
+}

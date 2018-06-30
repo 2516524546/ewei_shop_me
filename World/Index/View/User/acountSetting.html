@@ -72,8 +72,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="layui-input-block">
-                                                    <input type="radio" name="Sex" value="1" title="male" <if condition="!$usercontent['user_sex']||$usercontent['user_sex']==1">checked</if>>
-                                                    <input type="radio" name="Sex" value="2" title="female" <if condition="$usercontent['user_sex']==2">checked</if>>
+                                                    <input type="radio" name="Sex" value="1" title="Male" <if condition="!$usercontent['user_sex']||$usercontent['user_sex']==1">checked</if>>
+                                                    <input type="radio" name="Sex" value="2" title="Female" <if condition="$usercontent['user_sex']==2">checked</if>>
                                                 </div>
                                             </div>
 
@@ -85,18 +85,18 @@
                                                             </div>
                                                         </div>
                                                     <div class="layui-input-block">
-                                                        <input type="text" name="title" id="birth" required  lay-verify="required" placeholder="Enter the date of birth  xx/xx/xxxx" autocomplete="off" <if condition='$usercontent["user_birth"]'>value="{$usercontent['user_birth']}"</if> class="layui-input">
+                                                        <input type="text" name="title" id="birth" required  lay-verify="required" placeholder="Enter the date of birth  xx/xx/xxxx" autocomplete="off" <if condition='$usercontent["user_birth"]'>value="{$usercontent['user_birth']}"</if> class="layui-input Wtime">
                                                     </div>
                                             </div>
                 
 
                                             <div class="form_details_item">
-                                                Virtual currency : 
+                                                <p class="details_item_tips">Virtual currency :</p>
                                                 <span>{$usercontent['user_havecoin']}</span>
                                             </div>
 
                                             <div class="form_details_item">
-                                                    Post : 
+                                                    <p class="details_item_tips"> Post :</p>
                                                     <span>{$usercontent['user_notes']}</span>
                                             </div>
 
@@ -150,7 +150,7 @@
                                             </div>
                 
                                             <div class="form_details_item">
-                                                    Registration time : 
+                                                <p class="details_item_tips">Registration time :</p>
                                                 <span><if condition='$usercontent["user_logintime"]'>{$usercontent['user_logintime']}<else />00-00-0000  00:00:00</if></span>
                                             </div>
                                            
@@ -181,7 +181,15 @@
         <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 
 <script>
-
+layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        
+        //执行一个laydate实例
+        laydate.render({
+            elem: '.Wtime', //指定元素
+            lang:'en',
+        });
+        });
     var imgurl = "{$usercontent['user_icon']}"
     layui.use('form', function(){
         var form = layui.form;

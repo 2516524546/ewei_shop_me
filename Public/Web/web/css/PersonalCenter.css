@@ -192,7 +192,8 @@
 .personal_content .personal_details .Personal_details_item .Personal_details_list .list_img{
     width: 28px;
     height: 28px;
-    margin-right: 5px;
+    line-height: 28px;
+    margin-right: 10px;
 }
 .personal_content .personal_details .Personal_details_item .Personal_details_list .list_img img{
     width: 100%;
