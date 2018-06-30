@@ -600,6 +600,12 @@ class JobsController extends CommonController {
             $ishave = 1;
         }
 
+        $isdown = 0;
+        $downloadlist = explode(',',$noteone['note_downloadmember']);
+        if (in_array($this->userid, $downloadlist)){
+            $isdown=1;
+        }
+
         $this->assign(array(
             'crowdone' => $crowdone,
             'isjoin' => $isjoin,
@@ -609,6 +615,7 @@ class JobsController extends CommonController {
             'noteuser' => $noteuser,
             'ishave' => $ishave,
             'vilist' => $vilist,
+            'isdown' => $isdown,
             'commentlist' => $commentlist,
             'commentcount' => $commentcount
 
