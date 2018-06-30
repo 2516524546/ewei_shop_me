@@ -76,9 +76,9 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-             发布职位管理
+             {:L('Work_work_post_management')}
             <small><i class="icon-double-angle-right"></i>
-                发布职位管理列表
+                {:L('Work_work_list_post_management')}
             </small>
 
         </h1>
@@ -93,12 +93,12 @@
             <div class="row" style="padding-bottom: 10px;">
                 <div class="col-sm-12">
                     <div id="sample-table-2_filter">
-                        <form class="form-horizontal" action="{:U('Admin/Resume/resume_list_sou')}" method="POST"
+                        <form class="form-horizontal" action="{:U('Admin/Work/work_list_sou')}" method="POST"
                               role="form" enctype="multipart/form-data">
                             <div class="btn-group" style='margin-top:5px;'>
-                                <span>{:L('Resume_resume_list_input_name')}:</span>
-                                <input type="text" name="username" value="<?php if($username){echo $username;}?>"
-                                       placeholder="{:L('Resume_resume_list_input_name')}">
+                                <span>{:L('Work_work_list_position_name')}:</span>
+                                <input type="text" name="position" value="<?php if($position){echo $position;}?>"
+                                       placeholder="{:L('Work_work_list_position_name')}">
                             </div>
                             <input type='hidden' name='button' value='1'/>
 
@@ -132,14 +132,13 @@
                             <tr style=' font-size: 13px;'>
                                 <!-- <th><input type='checkbox' name='' value=''></th> -->
                                 <th>{:L('Resume_resume_list_number')}</th>
-                                <th>职位名称</th>
-                                <th>职位薪资</th>
-                                <th>工作类型</th>
-                                <th>工作年限</th>
-                                <th>毕业院校</th>
-                                <th>学位</th>
-                                <th>专业</th>
-                                <th>简历匹配</th>
+                                <th>{:L('Work_work_list_position_name')}</th>
+                                <th>{:L('Work_work_list_position_money')}</th>
+                                <th>{:L('Work_work_list_work_type')}</th>
+                                <th>{:L('Work_work_list_work_year')}</th>
+                                <th>{:L('Work_work_list_university')}</th>
+                                <th>{:L('Work_work_list_degree')}</th>
+                                <th>{:L('Work_work_list_major')}</th>
                                 <th>{:L('User_user_list_operation')}</th>
                             </tr>
                             </thead>
@@ -151,19 +150,24 @@
                                 <td><?php echo $v['works_id'];?></td>
                                 <td><?php echo $v['works_position'];?></td>
                                 <td><?php echo $v['works_maxmoney'];?></td>
-                                <td><?php echo $v['works_company_type'];?></td>
+                                <td><?php if($v['works_type']==1){
+									  echo L('Resume_resume_list_type_fulltime');
+									} elseif($v['works_type']==2){
+									  echo L('Resume_resume_list_type_parttime');
+									}elseif($v['works_type']==3){
+									  echo L('Resume_resume_list_type_internship');
+									};?></td>
                                 <td><?php echo $v['works_years'];?></td>
                                 <td><?php echo $v['works_school'];?></td>
                                 <td><?php echo $v['works_degree'];?></td>
                                 <td><?php echo $v['works_specialty'];?></td>
-                                <td><?php echo $v['works_degree'];?></td>
                                 <td>
                                     <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-                                        <a href="index.php?m=Admin&c=Resume&a=resume_edit&id=<?php echo $v['resume_id']?>"
+                                        <a href="index.php?m=Admin&c=Work&a=work_edit&id=<?php echo $v['works_id']?>"
                                            class="btn btn-xs btn-success"><?php echo L('User_user_list_edit');?></a>
-                                        <a href="#" onClick="batchDelete(<?php echo $v['resume_id']?>)"
+                                        <a href="#" onClick="batchDelete(<?php echo $v['works_id']?>)"
                                            class="btn btn-xs btn-success"><?php echo L('User_user_list_del');?></a>
-                                        <a href="index.php?m=Admin&c=Resume&a=resume_detail&id=<?php echo $v['resume_id']?>"
+                                        <a href="index.php?m=Admin&c=Work&a=work_detail&id=<?php echo $v['works_id']?>"
                                            class="btn btn-xs btn-success"><?php echo L('User_user_list_detail');?></a>
                                     </div>
                                 </td>
@@ -259,7 +263,7 @@
             , yes: function (index) {
                 layer.close(index);
                 $.ajax({
-                    url: 'index.php?m=Admin&c=Resume&a=resume_del',
+                    url: 'index.php?m=Admin&c=Work&a=work_del',
                     data: 'id=' + id,
                     type: 'post',
                     success: function (msg) {

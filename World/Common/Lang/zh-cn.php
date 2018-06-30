@@ -16,11 +16,12 @@ return array(
     'newworld_ajax_upload_fail' => '上传失败！',
     'newworld_ajax_add_fail' => '添加失败！',
     'newworld_ajax_add_success' => '添加成功！',
-    'newworld_input_number'=>'请输入数字',
+    'newworld_input_number' => '请输入数字',
+    'newworld_email_illegal ' => '邮箱格式不合法',
+
     /*
 	 * Public end
 	 *******************************************************************/
-
 
 
     /******************************************************************
@@ -33,13 +34,12 @@ return array(
 	 *******************************************************************/
 
 
+    /******************************************************************
+     * User start
+     */
 
-	/******************************************************************
-	 * User start
-	 */
-
-	//user_list start
-	'User_user_list_id' => 'ID',
+    //user_list start
+    'User_user_list_id' => 'ID',
     'User_user_list_nickname' => '昵称',
     'User_user_list_headicon' => '头像',
     'User_user_list_sex' => '性别',
@@ -111,7 +111,6 @@ return array(
     'Mark_mark_list_error' => '请求失败!',
 
 
-
     //mark_list start
     'Mark_mark_list_name' => '标识',
     'Mark_mark_list_operation' => '操作',
@@ -136,7 +135,6 @@ return array(
     'Mark_second_list_delno' => '删除失败',
     'Mark_second_list_extendok' => '扩充完成',
     'Mark_second_list_extendno' => '扩充失败',
-
 
 
     /*
@@ -166,35 +164,35 @@ return array(
      * Message start
      */
     //pulic
-    'Message'=>'信息管理',
+    'Message' => '信息管理',
 
     //message_list
-    'Message_message_list'=>'信息管理',
-    'Message_message_list_id'=>'id',
-    'Message_message_list_title'=>'标题',
-    'Message_message_list_content'=>'内容',
-    'Message_message_list_sendtime'=>'发送时间',
-    'Message_message_list_delivertime'=>'送达时间',
-    'Message_message_list_icon'=>'用户头像',
-    'Message_message_list_name'=>'用户姓名',
-    'Message_message_list_setlist'=>'群发',
-    'Message_message_list_setone'=>'私发',
-    'Message_message_list_operation'=>'操作',
-    'Message_message_list_del'=>'删除',
+    'Message_message_list' => '信息管理',
+    'Message_message_list_id' => 'id',
+    'Message_message_list_title' => '标题',
+    'Message_message_list_content' => '内容',
+    'Message_message_list_sendtime' => '发送时间',
+    'Message_message_list_delivertime' => '送达时间',
+    'Message_message_list_icon' => '用户头像',
+    'Message_message_list_name' => '用户姓名',
+    'Message_message_list_setlist' => '群发',
+    'Message_message_list_setone' => '私发',
+    'Message_message_list_operation' => '操作',
+    'Message_message_list_del' => '删除',
     'Message_message_list_if' => '该操作不可逆，确认继续吗？',
     'Message_message_list_ok' => '确定',
     'Message_message_no' => '取消',
-    'Message_message_list_delyes'=>'删除成功',
-    'Message_message_list_delno'=>'删除失败',
+    'Message_message_list_delyes' => '删除成功',
+    'Message_message_list_delno' => '删除失败',
 
     //set_list
     'Message_set_list_if' => '确认发送',
     'Message_set_list_back' => '返回列表',
-    'Message_set_list_yes'=>'发送成功',
-    'Message_set_list_no'=>'发送失败',
+    'Message_set_list_yes' => '发送成功',
+    'Message_set_list_no' => '发送失败',
 
     //set_one
-    'Message_set_one_uid'=>'用户id',
+    'Message_set_one_uid' => '用户id',
 
     /*
 	 * Message end
@@ -301,7 +299,7 @@ return array(
     /******************************************************************
      * Proposal start
      */
-      //proposal__list start
+    //proposal__list start
     'Proposal_proposal__list_phone' => '联系电话',
     'Proposal_proposal__list_content' => '建议内容',
     'Proposal_proposal__list_type' => '建议类型',
@@ -372,12 +370,11 @@ return array(
     'Note_note_list_closewallyno' => '取消加精失败',
 
     //note_detail
-    'Note_note_detail_icon'=>'头像',
-    'Note_note_detail_name'=>'昵称',
-    'Note_note_detail_content'=>'内容',
-    'Note_note_detail_createtime'=>'发表时间',
-    'Note_note_detail_zans'=>'点赞数',
-
+    'Note_note_detail_icon' => '头像',
+    'Note_note_detail_name' => '昵称',
+    'Note_note_detail_content' => '内容',
+    'Note_note_detail_createtime' => '发表时间',
+    'Note_note_detail_zans' => '点赞数',
 
 
     /*
@@ -448,9 +445,9 @@ return array(
     'Resume_resume_list_type_fulltime' => '全职',
     'Resume_resume_list_type_parttime' => '兼职',
     'Resume_resume_list_type_internship' => '实习',
-    'Resume_resume_list_isnegotiable'=>'是否接受面议',
-    'Resume_resume_list_reject'=>'否',
-    'Resume_resume_list_accept'=>'是',
+    'Resume_resume_list_isnegotiable' => '是否接受面议',
+    'Resume_resume_list_reject' => '否',
+    'Resume_resume_list_accept' => '是',
     /*
 	 * Resume end
 	 *******************************************************************/
@@ -459,6 +456,42 @@ return array(
     /******************************************************************
      * Work start
      */
+    'Work_work_post_management' => '发布职位管理',
+    'Work_work_list_post_management' => '发布职位管理列表',
+    'Work_work_post_management' => '发布职位管理',
+    'Work_work_post_edit' => '职位编辑',
+    'Work_work_post_detail' => '职位详情',
+    'Work_work_list_position_name' => '职位名称',
+    'Work_work_list_position_money' => '职位薪资',
+    'Work_work_list_work_year' => '工作年限',
+    'Work_work_list_work_type' => '工作类型',
+    'Work_work_list_university' => '毕业院校',
+    'Work_work_list_degree' => '学位',
+    'Work_work_list_major' => '专业',
+    'Work_work_edit_company_name' => '公司名称',
+    'Work_work_list_company_nature' => '公司性质',
+    'Work_work_list_company_type' => '公司类型',
+    'Work_work_list_company_size' => '公司规模',
+    'Work_work_list_company_mail' => '接收简历邮箱',
+    'Work_work_list_company_content' => '公司信息',
+    'Work_work_select_company_nature' => '请选择公司性质',
+    'Work_work_select_company_type' => '请选择公司类型',
+    'Work_work_company_type_privatization' => '民营',
+    'Work_work_company_type_state_operated' => '国营',
+    'Work_work_not_empty_position_name' => '职位名称不能为空',
+    'Work_work_not_empty_position_money' => '职位薪资不能为空',
+    'Work_work_must_num_position_money' => '职位薪资必须是数字',
+    'Work_work_not_empty_work_year' => '工作年限不能为空',
+    'Work_work_must_num_work_year' => '工作年限必须是数字',
+    'Work_work_not_empty_school' => '毕业院校不能为空',
+    'Work_work_not_empty_degree' => '学位不能为空',
+    'Work_work_not_empty_major' => '专业不能为空',
+    'Work_work_not_empty_company_name' => '公司名称不能为空',
+    'Work_work_not_empty_company_size' => '公司规模不能为空',
+    'Work_work_not_empty_email' => '邮箱不能为空',
+
+
+
 
 
     /*
@@ -493,11 +526,11 @@ return array(
     'Item_item_list_manager_list' => '项目管理列表',
     //item_list_end
     //item_edit_start
-       'Item_item_edit' => '项目编辑',
+    'Item_item_edit' => '项目编辑',
     //item_edit_end
     //item_detail_start
     'Item_detail' => '项目详情',
-    'Item_professionfal_detail'=>'人才详情',
+    'Item_professionfal_detail' => '人才详情',
     //item_detail_end
 
     //professional_list_start
@@ -531,10 +564,10 @@ return array(
     /******************************************************************
      * New start
      */
-     //new_list_start
-    'New_new_list_news_manager'=>'新闻管理',
-    'New_new_list'=>'新闻轮播列表',
-    'New_new_list_tip'=>'请输入时携带http://或https://,如http://www.baidu.com',
+    //new_list_start
+    'New_new_list_news_manager' => '新闻管理',
+    'New_new_list' => '新闻轮播列表',
+    'New_new_list_tip' => '请输入时携带http://或https://,如http://www.baidu.com',
     //new_list_end
 
 
@@ -556,44 +589,44 @@ return array(
     /******************************************************************
      * Commodity start
      */
-    'Commodity_commodity_manager'=>'商品管理',
-    'Commodity_commodity_list'=>'商品列表',
-    'Commodity_commodity_list_input_contact'=>'请输入联系人',
-    'Commodity_commodity_list_input_phone'=>'请输入电话',
-    'Commodity_commodity_list_publish_date'=>'发布日期',
-    'Commodity_commodity_list_input_name'=>'请输入商品名称',
-    'Commodity_commodity_list_publish_date'=>'发布日期',
-    'Commodity_commodity_list_choice_status'=>'选择状态',
-    'Commodity_commodity_list_all'=>'全部',
-    'Commodity_commodity_list_shangjia'=>'上架',
-    'Commodity_commodity_list_xiajia'=>'下架',
-    'Commodity_commodity_list_finished'=>'已完成',
-    'Commodity_commodity_list_picture'=>'商品图片',
-    'Commodity_commodity_list_name'=>'商品名称',
-    'Commodity_commodity_list_views'=>'浏览量',
-    'Commodity_commodity_list_price'=>'商品价格',
-    'Commodity_commodity_list_flag'=>'索引标识',
-    'Commodity_commodity_list_contact_icon'=>'联系人头像',
-    'Commodity_commodity_list_contact_phone'=>'联系方式',
-    'Commodity_commodity_list_classify'=>'商品分类',
-    'Commodity_commodity_list_status'=>'状态',
-    'Commodity_commodity_list_contact'=>'联系人',
-    'Commodity_commodity_list_add'=>'新增',
-    'Commodity_commodity_manager'=>'商品管理',
-    'Commodity_commodity_add'=>'新增商品',
-    'Commodity_commodity_edit'=>'商品编辑',
-    'Commodity_commodity_detail'=>'商品详情',
+    'Commodity_commodity_manager' => '商品管理',
+    'Commodity_commodity_list' => '商品列表',
+    'Commodity_commodity_list_input_contact' => '请输入联系人',
+    'Commodity_commodity_list_input_phone' => '请输入电话',
+    'Commodity_commodity_list_publish_date' => '发布日期',
+    'Commodity_commodity_list_input_name' => '请输入商品名称',
+    'Commodity_commodity_list_publish_date' => '发布日期',
+    'Commodity_commodity_list_choice_status' => '选择状态',
+    'Commodity_commodity_list_all' => '全部',
+    'Commodity_commodity_list_shangjia' => '上架',
+    'Commodity_commodity_list_xiajia' => '下架',
+    'Commodity_commodity_list_finished' => '已完成',
+    'Commodity_commodity_list_picture' => '商品图片',
+    'Commodity_commodity_list_name' => '商品名称',
+    'Commodity_commodity_list_views' => '浏览量',
+    'Commodity_commodity_list_price' => '商品价格',
+    'Commodity_commodity_list_flag' => '索引标识',
+    'Commodity_commodity_list_contact_icon' => '联系人头像',
+    'Commodity_commodity_list_contact_phone' => '联系方式',
+    'Commodity_commodity_list_classify' => '商品分类',
+    'Commodity_commodity_list_status' => '状态',
+    'Commodity_commodity_list_contact' => '联系人',
+    'Commodity_commodity_list_add' => '新增',
+    'Commodity_commodity_manager' => '商品管理',
+    'Commodity_commodity_add' => '新增商品',
+    'Commodity_commodity_edit' => '商品编辑',
+    'Commodity_commodity_detail' => '商品详情',
     'Commodity_commodity_remark' => '备注',
     'Commodity_commodity_introduce' => '介绍',
-    'Commodity_commodity_add_select_classify'=>'选择商品分类',
-    'Commodity_commodity_name_not_empty'=>'商品名称不能为空',
-    'Commodity_commodity_price_not_empty'=>'商品价格不能为空',
-    'Commodity_commodity_img_not_empty'=>'图片不能为空',
-    'Commodity_commodity_category_not_empty'=>'请选择商品分类',
-    'Commodity_commodity_uname_not_empty'=>'联系人不能为空',
-    'Commodity_commodity_contact_not_empty'=>'联系方式不能为空',
-    'Commodity_commodity_content_not_empty'=>'介绍不能为空',
-    'Commodity_commodity_createtime_not_empty'=>'发布时间不能为空',
+    'Commodity_commodity_add_select_classify' => '选择商品分类',
+    'Commodity_commodity_name_not_empty' => '商品名称不能为空',
+    'Commodity_commodity_price_not_empty' => '商品价格不能为空',
+    'Commodity_commodity_img_not_empty' => '图片不能为空',
+    'Commodity_commodity_category_not_empty' => '请选择商品分类',
+    'Commodity_commodity_uname_not_empty' => '联系人不能为空',
+    'Commodity_commodity_contact_not_empty' => '联系方式不能为空',
+    'Commodity_commodity_content_not_empty' => '介绍不能为空',
+    'Commodity_commodity_createtime_not_empty' => '发布时间不能为空',
 
     /*
 	 * Commodity end

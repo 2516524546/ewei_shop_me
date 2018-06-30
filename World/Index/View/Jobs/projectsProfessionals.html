@@ -28,8 +28,8 @@
             <cite class="Icon"></cite>
             <span class="crumbsTitle">Item Lists</span>
         </div>
-    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-        <ul class="layui-tab-title" style="border: none;width: 76%;margin: 0 auto;">
+    <div class="layui-tab layui-tab-brief " lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title container" style="border: none;padding-left: 4%;">
             <li class="layui-this">Project</li>
             <li>Specialist</li>
         </ul>
@@ -119,7 +119,10 @@
                             </div>
                             
                         </div>
-                    </div>
+                </div>
+                <div class="container" id="NumberOfPagesContainer">
+                    {$page}
+                </div>
             </div>
             <div class="layui-tab-item">
                 <div class="container">
@@ -218,11 +221,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="container" id="NumberOfPagesContainer">
+                    {$page}
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container" id="NumberOfPagesContainer">
-        {$page}
     </div>
     <!-- foot start 底部信息 -->
     <footer>
