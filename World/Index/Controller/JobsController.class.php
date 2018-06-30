@@ -21,7 +21,7 @@ use Think\Controller;
 class JobsController extends CommonController {
     public $modeleid = 4;
 
-    protected $_checkAction = ['MyProject','releasePosition','releaseMyPosition','ReleaseProfessional','DeleteWork','DeleteItem','EditItem','PostProfessionalComment','EditWork'];//需要做登录验证的action
+    protected $_checkAction = ['MyProject','releasePosition','releaseMyPosition','ReleaseProfessional','DeleteWork','DeleteItem','EditItem','PostProfessionalComment','EditWork','ProfessionalCommentZan'];//需要做登录验证的action
 
     public function _initialize()
     {
@@ -1021,23 +1021,46 @@ class JobsController extends CommonController {
 
     public function PostProfessionalComment(){
         $professional_id = I('post.professional_id',0,'intval');
+        $professional_comment_id = I('post.professional_comment_id',0,'intval');
         $comment = I('post.comment',0,'htmlspecialchars');
         if(($professional_id <= 0 || strlen($comment) < 6) && IS_AJAX){
             die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
         }elseif(($professional_id <= 0 || strlen($comment) < 6)){
             $this->error('Parameter error！');
         }
-        $data['professional_comment_pid'] = $professional_id;
-        $data['professional_comment_uid'] = $this->userid;
-        $data['professional_comment_content'] = $comment;
-        $data['professional_comment_zans'] = 0;
-        $data['professional_comment_createtime'] = date('Y-m-d H:i:s',time());
-        $data['professional_comment_replytime'] = date('Y-m-d H:i:s',time());
 
-        if(D('ProfessionalComment')->add($data)){
-            die(json_encode(['status'=>1,'msg'=>'Comment success!']));
+        if($professional_comment_id){
+            $professional_comment = D('ProfessionalComment')->alias('pc')->join('j_professional p ON p.professional_id = pc.professional_comment_pid')->field('pc.*,p.professional_uid')->where('professional_comment_id='.$professional_comment_id)->find();
+            if(!$professional_comment){
+                die(json_encode(['status'=>0,'msg'=>'The comment does not exist！']));
+            }
+            if($professional_comment['professional_uid'] != $this->userid){
+                die(json_encode(['status'=>0,'msg'=>'Your meiy rights review！']));
+            }
+
+            //回复
+            $data['professional_comment_id'] = $professional_comment_id;
+            $data['professional_comment_reply'] = $comment;
+            $data['professional_comment_replytime'] = date('Y-m-d H:i:s',time());
+
+            if(D('ProfessionalComment')->save($data)){
+                die(json_encode(['status'=>1,'msg'=>'Comment success!']));
+            }else{
+                die(json_encode(['status'=>0,'msg'=>'Comment failed!']));
+            }
         }else{
-            die(json_encode(['status'=>0,'msg'=>'Comment failed!']));
+            $data['professional_comment_pid'] = $professional_id;
+            $data['professional_comment_uid'] = $this->userid;
+            $data['professional_comment_content'] = $comment;
+            $data['professional_comment_zans'] = 0;
+            $data['professional_comment_createtime'] = date('Y-m-d H:i:s',time());
+            $data['professional_comment_replytime'] = date('Y-m-d H:i:s',time());
+
+            if(D('ProfessionalComment')->add($data)){
+                die(json_encode(['status'=>1,'msg'=>'Comment success!']));
+            }else{
+                die(json_encode(['status'=>0,'msg'=>'Comment failed!']));
+            }
         }
     }
 
@@ -1088,6 +1111,41 @@ class JobsController extends CommonController {
             }else{
                 exit(json_encode(['status'=>1,'msg'=>'Edit Faild!']));
             }
+        }
+    }
+
+    public function ProfessionalCommentZan(){
+        $professional_comment_id = I('post.professional_comment_id',0,'intval');
+        $zan = I('post.zan',0,'intval');
+        if(($professional_comment_id <= 0 || $zan < 0) && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif(($professional_comment_id <= 0 || $zan < 0)){
+            $this->error('Parameter error！');
+        }
+        $Comment = D('ProfessionalComment')->where('professional_comment_id='.$professional_comment_id )->find();
+        if(!$Comment){
+            die(json_encode(['status'=>0,'msg'=>'The comment does not exist！']));
+        }
+        if($zan === 1){
+            $professional_comment_zaner = empty($Comment['professional_comment_zaner']) ? [] : explode(',',$Comment['professional_comment_zaner']);
+            $professional_comment_zaner[] = $this->userid;
+            $professional_comment_zaner = join(',',$professional_comment_zaner);
+            $professional_comment_zans = $Comment['professional_comment_zans'] + 1;
+        }else{
+            $professional_comment_zaner = explode(',',$Comment['professional_comment_zaner']);
+            $professional_comment_zaner = array_flip($professional_comment_zaner);
+            if(isset($professional_comment_zaner[$this->userid])){
+                unset($professional_comment_zaner[$this->userid]);
+            }
+            $professional_comment_zaner = array_flip($professional_comment_zaner);
+            $professional_comment_zaner = join(',',$professional_comment_zaner);
+            $professional_comment_zans = $Comment['professional_comment_zans'] - 1;
+        }
+
+        if(D('ProfessionalComment')->where('professional_comment_id='.$professional_comment_id )->setField(['professional_comment_zaner'=>$professional_comment_zaner,'professional_comment_zans'=>$professional_comment_zans])){
+            die(json_encode(['status'=>1,'msg'=>'Praise Success!']));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Praise failed!']));
         }
     }
 }
