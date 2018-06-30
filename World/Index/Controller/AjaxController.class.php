@@ -3703,12 +3703,31 @@ public function ajax_donationpay()
 
                 $notemodel = new NoteModel();
                 $usermodel = new UserModel();
+                $noteone = $notemodel->findone('note_id = '.$this->post('nid'));
+                $userone = $usermodel->findone('user_id = '.$noteone['note_uid']);
 
+                $notemodel->startTrans();
+                try {
 
-                if ($notelist){
-                    die(json_encode(array('str' => 1,'msg'=>$notelist)));
-                }else{
-                    die(json_encode(array('str' => 2,'msg'=>'回复失败')));
+                    if ($noteone['note_type']==1) {
+                        $data = array(
+                            'user_notes' =>$userone['user_notes']-1
+                        );
+                        $userres = $usermodel->updataone('user_id = '.$noteone['note_uid'],$data);
+                    }
+
+                    $res = $notemodel->where('note_id = '.$this->post('nid'))->delete();
+
+                    if ($res) {
+                        $notemodel->commit();
+                        die(json_encode(array('str' => 1, 'msg' => '删除成功')));
+                    } else {
+                        $notemodel->rollback();
+                        die(json_encode(array('str' => 2, 'msg' => '删除失败')));
+                    }
+                }catch (Exception $e){
+                    $notemodel->rollback();
+                    die(json_encode(array('str' => 2, 'msg' => '删除失败')));
                 }
             }
 
