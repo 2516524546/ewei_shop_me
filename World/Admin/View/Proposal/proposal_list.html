@@ -70,9 +70,9 @@
 <div class="page-content">
 	<div class="page-header">
 		<h1>
-			建议管理
+			{:L('Proposal_proposal_list_manager')}
 			<small> <i class="icon-double-angle-right"></i>
-				建议列表
+				{:L('Proposal_proposal_list')}
 			</small>
 			 
 		</h1>
@@ -176,6 +176,8 @@
 <script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
 <script language="javascript">
 	<!--
 	function linkok(url){
@@ -229,23 +231,40 @@ $(function(){
 
 <script language="javascript">
     function batchDelete(id){
-        if(confirm("此操作不可逆,确认删除吗?")) {
-            //var uid = {$jxid};
-            $.ajax({
-                url: 'index.php?m=Admin&c=Proposal&a=proposal_del',
-                data: 'id=' + id,
-                type: 'post',
-                success: function (msg) {
-                    if (msg == 1) {
-                        alert('操作成功')
-                        //location.href="{:U('Admin/jinxiao/fenxiao_did')}";
-                        window.location.reload();
-                    } else {
-                        alert(msg)
-                    }
+        layer.msg("{:L('Note_crowd_list_if')}", {
+            time: 0 //不自动关闭
+            , btn: ["{:L('Note_crowd_list_ok')}", "{:L('Note_crowd_list_no')}"]
+            , yes: function (index) {
+                layer.close(index);
+                $.ajax({
+                    url: 'index.php?m=Admin&c=Proposal&a=proposal_del',
+                    data: 'id=' + id,
+                    type: 'post',
+                    success: function (msg) {
+                        if (msg == 1) {
+                            showMessage("{:L('newworld_ajax_operation_success')}",1)
+                            //location.href="{:U('Admin/jinxiao/fenxiao_did')}";
+                            window.location.reload();
+                        } else {
+                            showMessage(msg,2)
+                        }
 
+                    }
+                })
+            }
+        });
+
+    }
+    function showMessage(msg, status) {
+        layer.msg(msg, {
+                time: 500,
+                icon: status,
+            }, function () {
+                if (status == 1) {
+                    location.reload()
                 }
-            })
-        }
+
+            }
+        );
     }
 </script>

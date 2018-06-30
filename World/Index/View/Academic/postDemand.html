@@ -16,108 +16,86 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/releasePosition.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
 
 <body>
-    <!-- logo -->
-    <header class="container">
-        <include file = "./World/Index/View/Public/head.html"/>
-        </header>
-        <hr>
-    <!-- Crumbs nav -->
-    <div class="container crumbs">
-        <a href="{:U('Index/Academic/academic')}" class="crumbsa">Academic</a>
-        <cite class="Icon"></cite>
-        <a href="{:U('Index/Academic/academicGroups')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">Post Demand</span>
-    </div>
-    <!-- Forget the password form -->
-    <form class="layui-form layui-form-pane" action="">
-        <div class="PasswordContainer">
-            <div class="StepContainer">
-                <div class="StepContainerOne">
-                    <div class="InterestTitle">
-                        <h3 class="text-center Interesth3">
-                                Basic Information
-                        </h3>
-                    </div>
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/03_academic/academic_fabu_icon_01.png" alt="">
-                            </div>
-                            <!-- <span class="PersonIcon"></span> -->
-                        </label>
-                        <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" id="name" placeholder="Enter the real name" class="layui-input">
+    <div class="web">
+        <!-- logo -->
+        <header class="container">
+            <include file = "./World/Index/View/Public/head.html"/>
+            </header>
+            <hr>
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Academic/academic')}" class="crumbsa">Academic</a>
+            <cite class="Icon"></cite>
+            <a href="{:U('Index/Academic/academicGroups')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">Post Demand</span>
+        </div>
+        <!-- Forget the password form -->
+        <form class="layui-form layui-form-pane section" action="">
+            <div class="PasswordContainer">
+                <div class="StepContainer">
+                    <div class="StepContainerOne">
+                        <div class="InterestTitle">
+                            <h3 class="text-center Interesth3">
+                                    Basic Information
+                            </h3>
                         </div>
-                    </div>
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/03_academic/academic_fabu_icon_02.png" alt="">
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/03_academic/academic_fabu_icon_01.png" alt="">
+                                </div>
+                                <!-- <span class="PersonIcon"></span> -->
+                            </label>
+                            <div class="layui-input-block input-spacing inputW">
+                                <input type="text" name="number" lay-verify="required" autocomplete="off" id="name" placeholder="Enter the real name" class="layui-input">
                             </div>
-                            <!-- <span class="talkIcon"></span> -->
-                        </label>
-                        <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" id="contact" placeholder="Enter the contact number / email address" class="layui-input">
                         </div>
-                    </div>
-                    <div class="InterestTitle">
-                        <h3 class="text-center Interesth4">
-                                Demand Information
-                        </h3>
-                    </div>
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_01.png" alt="">
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/03_academic/academic_fabu_icon_02.png" alt="">
+                                </div>
+                                <!-- <span class="talkIcon"></span> -->
+                            </label>
+                            <div class="layui-input-block input-spacing inputW">
+                                <input type="text" name="number" lay-verify="required" autocomplete="off" id="contact" placeholder="Enter the contact number / email address" class="layui-input">
                             </div>
-                            <!-- <span class="TitlesIcon"></span> -->
-                        </label>
-                        <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" autocomplete="off" lay-verify="required" id="title" placeholder="Enter the title" class="layui-input">
                         </div>
-                    </div>
-
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/03_academic/academic_fabu_icon_06.png" alt="">
+                        <div class="InterestTitle">
+                            <h3 class="text-center Interesth4">
+                                    Demand Information
+                            </h3>
+                        </div>
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_01.png" alt="">
+                                </div>
+                                <!-- <span class="TitlesIcon"></span> -->
+                            </label>
+                            <div class="layui-input-block input-spacing inputW">
+                                <input type="text" name="number" autocomplete="off" lay-verify="required" id="title" placeholder="Enter the title" class="layui-input">
                             </div>
-                            <!-- <span class="TimesIcon"></span> -->
-                        </label>
-                        <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" autocomplete="off" lay-verify="required" id="time" placeholder="Enter counseling time" class="layui-input">
                         </div>
-                    </div>
-
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_03.png" alt="">
+    
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/03_academic/academic_fabu_icon_06.png" alt="">
+                                </div>
+                                <!-- <span class="TimesIcon"></span> -->
+                            </label>
+                            <div class="layui-input-block input-spacing inputW">
+                                <input type="text" name="number" autocomplete="off" lay-verify="required" id="time" placeholder="Enter counseling time" class="layui-input">
                             </div>
-                            <!-- <span class="ContentsIcon"></span> -->
-                        </label>
-                        <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" autocomplete="off" id="demand" placeholder="Enter counseling requirements  (30 words or less)" class="layui-input">
                         </div>
-                    </div>
-                    
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_03.png" alt="">
-                            </div>
-                            <!-- <span class="ContentsIcon"></span> -->
-                        </label>
-                        <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" autocomplete="off" lay-verify="required" id="content" placeholder="Enter tutorial content" class="layui-input">
-                        </div>
-                    </div>
-
-                    <div class="FormContainer" pane>
+    
+                        <div class="FormContainer" pane>
                             <label class="layui-form-label label-spacing">
                                 <div class="label_img">
                                     <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_03.png" alt="">
@@ -125,22 +103,48 @@
                                 <!-- <span class="ContentsIcon"></span> -->
                             </label>
                             <div class="layui-input-block input-spacing inputW">
-                                <input type="text" name="number" autocomplete="off" id="explain" placeholder="Enter a note" class="layui-input">
+                                <input type="text" name="number" autocomplete="off" id="demand" placeholder="Enter counseling requirements  (30 words or less)" class="layui-input">
                             </div>
                         </div>
-                    <div class="FormContainer from-but">
-                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
-                            Submit
-                        </button>
+                        
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_03.png" alt="">
+                                </div>
+                                <!-- <span class="ContentsIcon"></span> -->
+                            </label>
+                            <div class="layui-input-block input-spacing inputW">
+                                <input type="text" name="number" autocomplete="off" lay-verify="required" id="content" placeholder="Enter tutorial content" class="layui-input">
+                            </div>
+                        </div>
+    
+                        <div class="FormContainer" pane>
+                                <label class="layui-form-label label-spacing">
+                                    <div class="label_img">
+                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_03.png" alt="">
+                                    </div>
+                                    <!-- <span class="ContentsIcon"></span> -->
+                                </label>
+                                <div class="layui-input-block input-spacing inputW">
+                                    <input type="text" name="number" autocomplete="off" id="explain" placeholder="Enter a note" class="layui-input">
+                                </div>
+                            </div>
+                        <div class="FormContainer from-but">
+                            <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
+                                Submit
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
-    <!-- footer -->
-    <footer>
-        <include file = "./World/Index/View/Public/footer.html"/>
-    </footer>
+        </form>
+        <!-- footer -->
+        <footer class="footer">
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
+
+    </div>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>

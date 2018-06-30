@@ -6,7 +6,7 @@ layui.use(['carousel', 'form'], function() {
     //Change the time interval, the type of animation, the height  --改变下时间间隔、动画类型、高度
     carousel.render({
         elem: '#test2',
-        interval: 1800,
+        interval: 3000,
         anim: 'fade',
         width: '100%',
         height: '350px'

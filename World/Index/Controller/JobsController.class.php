@@ -302,15 +302,14 @@ class JobsController extends CommonController {
             $data['item_createtime'] = date('Y-m-d H:i:s',time());
             $Item = D("Item"); // 实例化User对象
             if (!$Item->validate($rules)->create()){
-                $this->error($Item->getError());
+                die(json_encode(['status'=>0,'msg'=>$Item->getError()]));
             }else{
                 // 验证通过 可以进行其他数据操作
                 if($Item->add($data)){
-                    $this->success('Create success!',U('Index/Jobs/projectsProfessionals'));
+                    die(json_encode(['status'=>1,'msg'=>'Create success!','href'=>U('Index/Jobs/projectsProfessionals')]));
                 }else{
-                    $this->error('Create Faild!');
+                    die(json_encode(['status'=>0,'msg'=>'Create Failed!']));
                 }
-
                 exit;
             }
 

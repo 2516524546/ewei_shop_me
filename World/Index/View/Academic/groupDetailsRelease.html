@@ -19,189 +19,193 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/EditResource.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/changeimg.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/loading.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
 
 <body>
-    <!-- logo -->
-    <header class="container">
-        <include file = "./World/Index/View/Public/head.html"/>
-        </header>
-        <hr>
-    <!-- Crumbs nav -->
-    <div class="container crumbs">
-        <a href="{:U('Index/Academic/academic')}" class="crumbsa">Academic</a>
-        <cite class="Icon"></cite>
-        <a href="{:U('Index/Academic/academicGroups')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">Relase</span>
-    </div>
-
-    <!-- Forget the password form -->
-    <form class="layui-form layui-form-pane" action="" autocomplete="off" id="formdata">
-        <div class="PasswordContainer">
-            <div class="StepContainer">
-                <div class="StepContainerOne">
-                    <div class="InterestTitle">
-                        <h3 class="text-center Interesth3">
-                            Post basic information
-                        </h3>
-                    </div>
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_01.png" alt="">
-                            </div>
-                            <!-- <span class="TitlesIcon"></span> -->
-                        </label>
-                        <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" id="name" lay-verify="required" autocomplete="off" placeholder="Enter the title" class="layui-input">
+    <div class="web">
+        <!-- logo -->
+        <header class="container">
+            <include file = "./World/Index/View/Public/head.html"/>
+            </header>
+            <hr>
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Academic/academic')}" class="crumbsa">Academic</a>
+            <cite class="Icon"></cite>
+            <a href="{:U('Index/Academic/academicGroups')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">Relase</span>
+        </div>
+    
+        <!-- Forget the password form -->
+        <form class="layui-form layui-form-pane section" action="" autocomplete="off" id="formdata">
+            <div class="PasswordContainer">
+                <div class="StepContainer">
+                    <div class="StepContainerOne">
+                        <div class="InterestTitle">
+                            <h3 class="text-center Interesth3">
+                                Post basic information
+                            </h3>
                         </div>
-                    </div>
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_02.png" alt="">
-                            </div>
-                            <!-- <span class="TypesIcon"></span> -->
-                        </label>
-                        <div class="layui-input-block input-spacing inputW">
-                            <select name="city" lay-verify="required" class="select_use" lay-filter="test">
-                                <foreach name="tablist" item="tab" key="tabkey">
-                                <option value="{$tab['crowd_tab_id']}">{$tab['crowd_tab_name']}</option>
-
-                                </foreach>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="Post_box">
                         <div class="FormContainer" pane>
                             <label class="layui-form-label label-spacing">
                                 <div class="label_img">
-                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_03.png" alt="">
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_01.png" alt="">
                                 </div>
-                                <!-- <span class="ContentsIcon"></span> -->
+                                <!-- <span class="TitlesIcon"></span> -->
                             </label>
                             <div class="layui-input-block input-spacing inputW">
-                                <input type="text" name="number" id="postcontent" autocomplete="off" placeholder="Enter the content" class="layui-input">
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="QaA_box">
-                        <div class="FormContainer" pane>
-                            <label class="layui-form-label label-spacing">
-                                <div class="label_img">
-                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_xs.png" alt="">
-                                </div>
-                                <!-- <span class="MoneyIcon"></span> -->
-                            </label>
-                            <div class="layui-input-block input-spacing inputW">
-                                <input type="number" name="number" id="qareward"  autocomplete="off" placeholder="Enter the amount of the reward" class="layui-input">
+                                <input type="text" name="number" id="name" lay-verify="required" autocomplete="off" placeholder="Enter the title" class="layui-input">
                             </div>
                         </div>
                         <div class="FormContainer" pane>
                             <label class="layui-form-label label-spacing">
                                 <div class="label_img">
-                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_03.png" alt="">
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_02.png" alt="">
                                 </div>
-                                <!-- <span class="ContentsIcon"></span> -->
+                                <!-- <span class="TypesIcon"></span> -->
                             </label>
                             <div class="layui-input-block input-spacing inputW">
-                                <input type="text" name="number" id="qacontent"  autocomplete="off" placeholder="Enter the content" class="layui-input">
+                                <select name="city" lay-verify="required" class="select_use" lay-filter="test">
+                                    <foreach name="tablist" item="tab" key="tabkey">
+                                    <option value="{$tab['crowd_tab_id']}">{$tab['crowd_tab_name']}</option>
+    
+                                    </foreach>
+                                </select>
                             </div>
                         </div>
-
-                    </div>
-
-                    <div class="Resource_box">
+    
+                        <div class="Post_box">
+                            <div class="FormContainer" pane>
+                                <label class="layui-form-label label-spacing">
+                                    <div class="label_img">
+                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_03.png" alt="">
+                                    </div>
+                                    <!-- <span class="ContentsIcon"></span> -->
+                                </label>
+                                <div class="layui-input-block input-spacing inputW">
+                                    <input type="text" name="number" id="postcontent" autocomplete="off" placeholder="Enter the content" class="layui-input">
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                        <div class="QaA_box">
+                            <div class="FormContainer" pane>
+                                <label class="layui-form-label label-spacing">
+                                    <div class="label_img">
+                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_xs.png" alt="">
+                                    </div>
+                                    <!-- <span class="MoneyIcon"></span> -->
+                                </label>
+                                <div class="layui-input-block input-spacing inputW">
+                                    <input type="number" name="number" id="qareward"  autocomplete="off" placeholder="Enter the amount of the reward" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="FormContainer" pane>
+                                <label class="layui-form-label label-spacing">
+                                    <div class="label_img">
+                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_03.png" alt="">
+                                    </div>
+                                    <!-- <span class="ContentsIcon"></span> -->
+                                </label>
+                                <div class="layui-input-block input-spacing inputW">
+                                    <input type="text" name="number" id="qacontent"  autocomplete="off" placeholder="Enter the content" class="layui-input">
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                        <div class="Resource_box">
+                            <div class="FormContainer" pane>
+                                <label class="layui-form-label label-spacing">
+                                    <div class="label_img">
+                                        <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/grzx_icon_con.png" alt="">
+                                    </div>
+                                    <!-- <span class="NumberIcon"></span> -->
+                                </label>
+                                <div class="layui-input-block input-spacing inputW">
+                                    <input type="number" name="number" id="resourcereward" autocomplete="off" placeholder="Enter numbers of virtual currency to download" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="FormContainer" pane>
+                                <label class="layui-form-label label-spacing">
+                                    <div class="label_img">
+                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_03.png" alt="">
+                                    </div>
+                                    <!-- <span class="ContentsIcon"></span> -->
+                                </label>
+                                <div class="layui-input-block input-spacing inputW">
+                                    <input type="text" name="number" id="resourcecontent" autocomplete="off" placeholder="Enter the resource description" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="FormContainer-one" pane>
+                                <label class="HeadPortraitbox-one">
+                                    <span class="filesIcon">Upload resources</span>
+                                </label>
+                                <div class="picDiv-one">
+                                    <div class="addImages">
+                                            <div class="files_name"><span>Choose to upload the resume file</span></div>
+                                            <button type="button" class="layui-btn layui-btn-normal" id="testList">Browse</button> 
+                                    </div>
+                                </div>
+                                <div class="msg" style="display: none;"></div>
+                            </div>
+    
+                        </div>
+    
                         <div class="FormContainer" pane>
-                            <label class="layui-form-label label-spacing">
+                            <label class="layui-form-label label-spacing" style="background: transparent;border: none;">
                                 <div class="label_img">
-                                    <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/grzx_icon_con.png" alt="">
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png" alt="">
                                 </div>
-                                <!-- <span class="NumberIcon"></span> -->
+                                <!-- <span class="HeadPortraitIcon"></span> -->
                             </label>
-                            <div class="layui-input-block input-spacing inputW">
-                                <input type="number" name="number" id="resourcereward" autocomplete="off" placeholder="Enter numbers of virtual currency to download" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="FormContainer" pane>
-                            <label class="layui-form-label label-spacing">
-                                <div class="label_img">
-                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_fb_icon_03.png" alt="">
-                                </div>
-                                <!-- <span class="ContentsIcon"></span> -->
-                            </label>
-                            <div class="layui-input-block input-spacing inputW">
-                                <input type="text" name="number" id="resourcecontent" autocomplete="off" placeholder="Enter the resource description" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="FormContainer-one" pane>
-                            <label class="HeadPortraitbox-one">
-                                <span class="filesIcon">Upload resources</span>
-                            </label>
-                            <div class="picDiv-one">
-                                <div class="addImages">
-                                        <div class="files_name"><span>Choose to upload the resume file</span></div>
-                                        <button type="button" class="layui-btn layui-btn-normal" id="testList">Browse</button> 
+                            <div class="picDiv">
+                                <div id="video" class="w50" style="display: none;"></div>
+                                <div id="result">
+                                    <div class="add_btn" data-isNew="false">
+                                        <input type="file" name="file_input[]" id="file_input" multiple onchange="xmTanUploadImg(this)" />
+                                        <span>+</span>
+                                    </div>
+                                    <div class="shadow_video">
+                                        </div>
+                                                <div class="video_box">
+                                                    <div class="video_shut">x</div>
+                                                    <div class="video_area">
+                                                    <!-- <video width="100%" height="100%">
+                                                            <source src="../web/img/video.mp4" type="video/mp4"></source>
+                                                        </video>
+                                                    </div> -->
+                                                </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="msg" style="display: none;"></div>
                         </div>
-
-                    </div>
-
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing" style="background: transparent;border: none;">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png" alt="">
-                            </div>
-                            <!-- <span class="HeadPortraitIcon"></span> -->
-                        </label>
-                        <div class="picDiv">
-                            <div id="video" class="w50" style="display: none;"></div>
-                            <div id="result">
-                                <div class="add_btn" data-isNew="false">
-                                    <input type="file" name="file_input[]" id="file_input" multiple onchange="xmTanUploadImg(this)" />
-                                    <span>+</span>
-                                </div>
-                                <div class="shadow_video">
-                                    </div>
-                                            <div class="video_box">
-                                                <div class="video_shut">x</div>
-                                                <div class="video_area">
-                                                <!-- <video width="100%" height="100%">
-                                                        <source src="../web/img/video.mp4" type="video/mp4"></source>
-                                                    </video>
-                                                </div> -->
-                                            </div>
-                                </div>
-                            </div>
+    
+                        <div class="FormContainer from-but">
+                            <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
+                                Submit
+                            </button>
                         </div>
-                        <div class="msg" style="display: none;"></div>
-                    </div>
-
-                    <div class="FormContainer from-but">
-                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
-                            Submit
-                        </button>
                     </div>
                 </div>
             </div>
+        </form>
+        <!-- loading -->
+        <div class="loading_box">
+            <div class="loading_gif">
+                <img src="__PUBLIC__/Web/web/img/timg.gif" alt="">
+            </div>
         </div>
-    </form>
-    <!-- loading -->
-    <div class="loading_box">
-        <div class="loading_gif">
-            <img src="__PUBLIC__/Web/web/img/timg.gif" alt="">
-        </div>
+        <!-- footer -->
+        <footer class="footer">
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
+
     </div>
-    <!-- footer -->
-    <footer>
-        <include file = "./World/Index/View/Public/footer.html"/>
-    </footer>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>

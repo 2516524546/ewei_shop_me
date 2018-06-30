@@ -15,325 +15,329 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/releasePosition.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
 
 <body>
-    <!-- logo -->
-		<header class="container">
-            <include file = "./World/Index/View/Public/head.html"/>
-        </header>
-        <hr>
-        <!-- Crumbs nav -->
-        <div class="container crumbs">
-            <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
-            <cite class="Icon"></cite>
-            <span class="crumbsTitle">Create a Community</span>
-        </div>
-    <!-- Forget the password form -->
-    <form class="layui-form layui-form-pane" action="">
-        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-            <div class="icon" style="position: absolute;top: 138px;left: 31%;">
-                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png">
+    <div class="web">
+        <!-- logo -->
+            <header class="container">
+                <include file = "./World/Index/View/Public/head.html"/>
+            </header>
+            <hr>
+            <!-- Crumbs nav -->
+            <div class="container crumbs">
+                <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
+                <cite class="Icon"></cite>
+                <span class="crumbsTitle">Create a Community</span>
             </div>
-            <ul class="layui-tab-title" style="border: none;margin: 0 auto;width: 30%;">
-                <li class="layui-this">Ordinary Community</li>
-                <li>Social network Community</li>
-            </ul>
-            <div class="layui-tab-content">
-                <!-- 1 -->
-                <div class="layui-tab-item layui-show">
-                    <div class="PasswordContainer">
-                        <div class="StepContainer">
-                            <div class="StepContainerOne">
-                                <div class="InterestTitle">
-                                    <div class="InterestImg">
-                                        <img src="__PUBLIC__/Web/web/img/common_icon_write.png" alt="">
-                                    </div>
-                                    <span class="InterestCon">Basic Information</span>
-                                </div>
-                                <foreach name="data1" item="first1" key="first1key">
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <!--<span class="<if condition='$firstkey == 0'>CountryIcon<elseif condition='$firstkey == 1'/>SchoolIcon<else />InterestIcon</if>"></span>-->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/<if condition='$first1key == 0'>jobs_create_icon_country.png<elseif condition='$first1key == 1'/>jobs_create_icon_location.png<elseif condition='$first1key == 2'/>jobs_create_icon_industry.png<else />jobs_create_icon_school.png</if>">
+        <!-- Forget the password form -->
+        <form class="layui-form layui-form-pane section" action="">
+            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                <div class="icon" style="position: absolute;top: 123px;left: 31%;">
+                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png">
+                </div>
+                <ul class="layui-tab-title" style="border: none;margin: 0 auto;width: 30%;">
+                    <li class="layui-this">Ordinary Community</li>
+                    <li>Social network Community</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <!-- 1 -->
+                    <div class="layui-tab-item layui-show">
+                        <div class="PasswordContainer">
+                            <div class="StepContainer">
+                                <div class="StepContainerOne">
+                                    <div class="InterestTitle">
+                                        <div class="InterestImg">
+                                            <img src="__PUBLIC__/Web/web/img/common_icon_write.png" alt="">
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block" id="layui-input-block">
-                                        <input type="hidden" value="" id="1in{$first1['first_mark_id']}">
-                                        <select name="1second" lay-filter="1firstselect" title="0">
-                                            <option value="">Choose a <if condition='$first1key == 0'>country<elseif condition='$first1key == 1'/>location<elseif condition='$first1key == 2'/>industry<else />school</if></option>
-                                            <foreach name="first1['message']" item = "second1" key="second1key">
-                                                <option value="{$second1['second_mark_id']}">{$second1['second_mark_name']}</option>
-                                            </foreach>
-                                        </select>
+                                        <span class="InterestCon">Basic Information</span>
                                     </div>
-                                </div>
-                                </foreach>
-
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing" style="background: transparent;border: none;">
-                                        <!--<span class="<if condition='$firstkey == 0'>CountryIcon<elseif condition='$firstkey == 1'/>SchoolIcon<else />InterestIcon</if>"></span>-->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png" alt="">
+                                    <foreach name="data1" item="first1" key="first1key">
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <!--<span class="<if condition='$firstkey == 0'>CountryIcon<elseif condition='$firstkey == 1'/>SchoolIcon<else />InterestIcon</if>"></span>-->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/04_jobs/<if condition='$first1key == 0'>jobs_create_icon_country.png<elseif condition='$first1key == 1'/>jobs_create_icon_location.png<elseif condition='$first1key == 2'/>jobs_create_icon_industry.png<else />jobs_create_icon_school.png</if>">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block" id="layui-input-block">
+                                            <input type="hidden" value="" id="1in{$first1['first_mark_id']}">
+                                            <select name="1second" lay-filter="1firstselect" title="0">
+                                                <option value="">Choose a <if condition='$first1key == 0'>country<elseif condition='$first1key == 1'/>location<elseif condition='$first1key == 2'/>industry<else />school</if></option>
+                                                <foreach name="first1['message']" item = "second1" key="second1key">
+                                                    <option value="{$second1['second_mark_id']}">{$second1['second_mark_name']}</option>
+                                                </foreach>
+                                            </select>
                                         </div>
-                                    </label>
-                                    <div class="UserHeadImage layui-input-block" style="margin-left: 10px;">
-                                        <img id="pic" class="img">
-                                        <input id="upload" class="but" name="file" accept="image/*" type="file">
                                     </div>
-                                </div>
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_05.png" alt="">
+                                    </foreach>
+    
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing" style="background: transparent;border: none;">
+                                            <!--<span class="<if condition='$firstkey == 0'>CountryIcon<elseif condition='$firstkey == 1'/>SchoolIcon<else />InterestIcon</if>"></span>-->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png" alt="">
+                                            </div>
+                                        </label>
+                                        <div class="UserHeadImage layui-input-block" style="margin-left: 10px;">
+                                            <img id="pic" class="img">
+                                            <input id="upload" class="but" name="file" accept="image/*" type="file">
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" id="name1" placeholder="Community name" class="layui-input">
                                     </div>
-                                </div>
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_06.png" alt="">
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_05.png" alt="">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block input-spacing">
+                                            <input type="text" name="number" autocomplete="off" id="name1" placeholder="Community name" class="layui-input">
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" id="content1" placeholder="Enter an introduction" class="layui-input">
                                     </div>
-                                </div>
-                                <div class="FormContainer from-but">
-                                    <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
-                                        Submit
-                                    </button>
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_06.png" alt="">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block input-spacing">
+                                            <input type="text" name="number" autocomplete="off" id="content1" placeholder="Enter an introduction" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="FormContainer from-but">
+                                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
+                                            Submit
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- 2 -->
-                <div class="layui-tab-item">
-                    <div class="PasswordContainer">
-                        <div class="StepContainer">
-                            <div class="StepContainerOne">
-                                <div class="InterestTitle">
-                                    <div class="InterestImg">
-                                        <img src="__PUBLIC__/Web/web/img/common_icon_write.png" alt="">
-                                    </div>
-                                    <span class="InterestCon">Basic Information</span>
-                                </div>
-                                <foreach name="data2" item="first2" key="first2key">
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <!-- <span class="CountryIcon"></span> -->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/<if condition='$first2key == 0'>jobs_create_icon_location.png<elseif condition='$first2key == 1'/>jobs_create_icon_industry.png<else />jobs_create_icon_major.png</if>">
+                    <!-- 2 -->
+                    <div class="layui-tab-item">
+                        <div class="PasswordContainer">
+                            <div class="StepContainer">
+                                <div class="StepContainerOne">
+                                    <div class="InterestTitle">
+                                        <div class="InterestImg">
+                                            <img src="__PUBLIC__/Web/web/img/common_icon_write.png" alt="">
                                         </div>
-
-                                    </label>
-                                    <div class="layui-input-block" id="layui-input-block">
-                                        <input type="hidden" value="" id="2in{$first2['first_mark_id']}">
-                                        <select name="2second" lay-filter="2firstselect" title="0">
-                                            <option value="">Choose a <if condition='$first2key == 0'>location<elseif condition='$first2key == 1'/>industry<else />major</if></option>
-
-                                            <foreach name="first2['message']" item = "second2" key="second2key">
-                                                <option value="{$second2['second_mark_id']}">{$second2['second_mark_name']}</option>
-                                            </foreach>
-                                        </select>
+                                        <span class="InterestCon">Basic Information</span>
                                     </div>
-                                </div>
-                                </foreach>
-
-                                <div class="FormContainer" pane>
-                                     <label class="layui-form-label label-spacing" style="background: transparent;border: none;">
-                                        <!--<span class="<if condition='$firstkey == 0'>CountryIcon<elseif condition='$firstkey == 1'/>SchoolIcon<else />InterestIcon</if>"></span>-->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png" alt="">
+                                    <foreach name="data2" item="first2" key="first2key">
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <!-- <span class="CountryIcon"></span> -->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/04_jobs/<if condition='$first2key == 0'>jobs_create_icon_location.png<elseif condition='$first2key == 1'/>jobs_create_icon_industry.png<else />jobs_create_icon_major.png</if>">
+                                            </div>
+    
+                                        </label>
+                                        <div class="layui-input-block" id="layui-input-block">
+                                            <input type="hidden" value="" id="2in{$first2['first_mark_id']}">
+                                            <select name="2second" lay-filter="2firstselect" title="0">
+                                                <option value="">Choose a <if condition='$first2key == 0'>location<elseif condition='$first2key == 1'/>industry<else />major</if></option>
+    
+                                                <foreach name="first2['message']" item = "second2" key="second2key">
+                                                    <option value="{$second2['second_mark_id']}">{$second2['second_mark_name']}</option>
+                                                </foreach>
+                                            </select>
                                         </div>
-                                    </label>
-                                    <div class="UserHeadImage layui-input-block" style="margin-left: 10px;">
-                                        <img id="pics" class="img">
-                                        <input id="upload2" class="but" name="file" accept="image/*" type="file">
                                     </div>
-                                </div>
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <!-- <span class="GroupNameIcon"></span> -->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_groupname.png">
+                                    </foreach>
+    
+                                    <div class="FormContainer" pane>
+                                         <label class="layui-form-label label-spacing" style="background: transparent;border: none;">
+                                            <!--<span class="<if condition='$firstkey == 0'>CountryIcon<elseif condition='$firstkey == 1'/>SchoolIcon<else />InterestIcon</if>"></span>-->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png" alt="">
+                                            </div>
+                                        </label>
+                                        <div class="UserHeadImage layui-input-block" style="margin-left: 10px;">
+                                            <img id="pics" class="img">
+                                            <input id="upload2" class="but" name="file" accept="image/*" type="file">
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" id="name2" placeholder="Community name" class="layui-input">
                                     </div>
-                                </div>
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <!-- <span class="BriefIntroductionIcon"></span> -->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <!-- <span class="GroupNameIcon"></span> -->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_groupname.png">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block input-spacing">
+                                            <input type="text" name="number" autocomplete="off" id="name2" placeholder="Community name" class="layui-input">
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" id="school2" placeholder="Enter a graduate school" class="layui-input">
                                     </div>
-                                </div>
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <!-- <span class="GroupNameIcon"></span> -->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_time.png">
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <!-- <span class="BriefIntroductionIcon"></span> -->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block input-spacing">
+                                            <input type="text" name="number" autocomplete="off" id="school2" placeholder="Enter a graduate school" class="layui-input">
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" id="schooltime2" placeholder="Enter a graduate time" class="layui-input Wtime">
                                     </div>
-                                </div>
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <!-- <span class="GroupNameIcon"></span> -->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_jobtitle.png">
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <!-- <span class="GroupNameIcon"></span> -->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_time.png">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block input-spacing">
+                                            <input type="text" name="number" autocomplete="off" id="schooltime2" placeholder="Enter a graduate time" class="layui-input Wtime">
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" id="profession2" placeholder="Enter the job title" class="layui-input">
                                     </div>
-                                </div>
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <!-- <span class="GroupNameIcon"></span> -->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_company.png">
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <!-- <span class="GroupNameIcon"></span> -->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_jobtitle.png">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block input-spacing">
+                                            <input type="text" name="number" autocomplete="off" id="profession2" placeholder="Enter the job title" class="layui-input">
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" id="company2" placeholder="Enter the working company" class="layui-input">
                                     </div>
-                                </div>
-                                <div class="layui-form-item layui-form-text" style="height: 100px;margin-bottom: 8px;">
-                                    <label class="layui-form-label label-spacing" style="background: transparent;border: none;">
-                                        <!-- <span class="GroupNameIcon"></span> -->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <!-- <span class="GroupNameIcon"></span> -->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_company.png">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block input-spacing">
+                                            <input type="text" name="number" autocomplete="off" id="company2" placeholder="Enter the working company" class="layui-input">
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block">
-                                        <textarea placeholder="What kind of assistance can you provide?" id="help2" class="layui-textarea"></textarea>
                                     </div>
-                                </div>
-                                <div class="layui-form-item layui-form-text" style="height: 100px;margin-bottom: 16px;">
-                                    <label class="layui-form-label label-spacing" style="background: transparent;border: none;">
-                                        <!-- <span class="GroupNameIcon"></span> -->
-                                        <div class="label_img">
+                                    <div class="layui-form-item layui-form-text" style="height: 100px;margin-bottom: 8px;">
+                                        <label class="layui-form-label label-spacing" style="background: transparent;border: none;">
+                                            <!-- <span class="GroupNameIcon"></span> -->
+                                            <div class="label_img">
                                                 <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block">
+                                            <textarea placeholder="What kind of assistance can you provide?" id="help2" class="layui-textarea"></textarea>
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block">
-                                        <textarea placeholder="Enter an introduction" id="content2" class="layui-textarea"></textarea>
                                     </div>
-                                </div>
-                                <p class="h4 text-center" style="margin-bottom: 18px;">Apply to join the conditions</p>
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <!-- <span class="GroupNameIcon"></span> -->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
+                                    <div class="layui-form-item layui-form-text" style="height: 100px;margin-bottom: 16px;">
+                                        <label class="layui-form-label label-spacing" style="background: transparent;border: none;">
+                                            <!-- <span class="GroupNameIcon"></span> -->
+                                            <div class="label_img">
+                                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block">
+                                            <textarea placeholder="Enter an introduction" id="content2" class="layui-textarea"></textarea>
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" id="university2" placeholder="Enter the school" class="layui-input">
                                     </div>
-                                </div>
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <!-- <span class="GroupNameIcon"></span> -->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_133333.png">
+                                    <p class="h4 text-center" style="margin-bottom: 18px;">Apply to join the conditions</p>
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <!-- <span class="GroupNameIcon"></span> -->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block input-spacing">
+                                            <input type="text" name="number" autocomplete="off" id="university2" placeholder="Enter the school" class="layui-input">
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" id="college2" placeholder="Enter college" class="layui-input">
                                     </div>
-                                </div>
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <!-- <span class="GroupNameIcon"></span> -->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_major.png">
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <!-- <span class="GroupNameIcon"></span> -->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_133333.png">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block input-spacing">
+                                            <input type="text" name="number" autocomplete="off" id="college2" placeholder="Enter college" class="layui-input">
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" id="specialty2" placeholder="Enter professional" class="layui-input">
                                     </div>
-                                </div>
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <!-- <span class="GroupNameIcon"></span> -->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_time.png">
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <!-- <span class="GroupNameIcon"></span> -->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_major.png">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block input-spacing">
+                                            <input type="text" name="number" autocomplete="off" id="specialty2" placeholder="Enter professional" class="layui-input">
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" id="graduatetime2" placeholder="Enter the graduation time" class="layui-input Wtime2">
                                     </div>
-                                </div>
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <!-- <span class="GroupNameIcon"></span> -->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/1.png">
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <!-- <span class="GroupNameIcon"></span> -->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_time.png">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block input-spacing">
+                                            <input type="text" name="number" autocomplete="off" id="graduatetime2" placeholder="Enter the graduation time" class="layui-input Wtime2">
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" id="higheducation2" placeholder="Enter the highest education level" class="layui-input">
                                     </div>
-                                </div>
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <!-- <span class="SchoolIcon"></span> -->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_renshu.png">
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <!-- <span class="GroupNameIcon"></span> -->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/04_jobs/1.png">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block input-spacing">
+                                            <input type="text" name="number" autocomplete="off" id="higheducation2" placeholder="Enter the highest education level" class="layui-input">
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block" id="layui-input-block">
-                                        <select name="maxpeople" id="maxpeople">
-                                            <option value="">The maximum number of people</option>
-                                            <foreach name="data3['message']" item = "second3" key="second3key">
-                                            <option value="{$second3['second_mark_name']}">{$second3['second_mark_name']}</option>
-                                            </foreach>
-                                        </select>
                                     </div>
-                                </div>
-                                <div class="FormContainer" pane>
-                                    <label class="layui-form-label label-spacing">
-                                        <!-- <span class="GroupNameIcon"></span> -->
-                                        <div class="label_img">
-                                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_money.png">
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <!-- <span class="SchoolIcon"></span> -->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_renshu.png">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block" id="layui-input-block">
+                                            <select name="maxpeople" id="maxpeople">
+                                                <option value="">The maximum number of people</option>
+                                                <foreach name="data3['message']" item = "second3" key="second3key">
+                                                <option value="{$second3['second_mark_name']}">{$second3['second_mark_name']}</option>
+                                                </foreach>
+                                            </select>
                                         </div>
-                                    </label>
-                                    <div class="layui-input-block input-spacing">
-                                        <input type="text" name="number" autocomplete="off" id="joinmoney2" placeholder="Enter the fee for joining" class="layui-input">
                                     </div>
-                                </div>
-                                <div class="FormContainer from-but">
-                                    <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo2" lay-filter="demo2">
-                                        Submit
-                                    </button>
+                                    <div class="FormContainer" pane>
+                                        <label class="layui-form-label label-spacing">
+                                            <!-- <span class="GroupNameIcon"></span> -->
+                                            <div class="label_img">
+                                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_money.png">
+                                            </div>
+                                        </label>
+                                        <div class="layui-input-block input-spacing">
+                                            <input type="text" name="number" autocomplete="off" id="joinmoney2" placeholder="Enter the fee for joining" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="FormContainer from-but">
+                                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo2" lay-filter="demo2">
+                                            Submit
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
-    <!-- foot start 底部信息 -->
-    <footer>
-        <include file = "./World/Index/View/Public/footer.html"/>
-    </footer>
-    <!-- foot end 底部信息 -->
+        </form>
+        <!-- foot start 底部信息 -->
+        <footer class="footer">
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
+        <!-- foot end 底部信息 -->
+
+    </div>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>

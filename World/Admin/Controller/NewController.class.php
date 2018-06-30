@@ -23,7 +23,7 @@ class NewController extends CommonController{
         $Page->setConfig('theme', '%HEADER% %FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%');
         //显示分页信息
          $show = $Page->show();// 分页显示输出 ->limit($Page->firstRow.','.$Page->listRows)
-         $list = M("s_news")->where($where)->limit($Page->firstRow.','.$Page->listRows)->order("news_id DESC")->select();
+         $list = M("s_news")->where($where)->limit($Page->firstRow.','.$Page->listRows)->order("news_sort DESC,news_createtime DESC")->select();
          $modules=M("s_module")->select();
          $this->assign('modules',$modules);
          $this->assign('type',$type);
