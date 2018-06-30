@@ -15,114 +15,118 @@
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/CreateInterest.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/releasePosition.css">
     	<link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
-		<link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 	</head>
 
 	<body>
-		<!-- logo -->
-		<header class="container">
-			<include file = "./World/Index/View/Public/head.html"/>
-			</header>
-			<hr>
-			<!-- Crumbs nav -->
-			<div class="container crumbs">
-				<a href="{:U('Index/Life/life')}" class="crumbsa">Life</a>
-				<cite class="Icon"></cite>
-				<span class="crumbsTitle">Create A Community</span>
-			</div>
-		<!--Basic Information form-->
-		<form class="layui-form layui-form-pane" action="">
-			<div class="PasswordContainer">
-				<div class="StepContainer">
-					<div class="StepContainerOne">
-						<div class="InterestTitle">
-                            <div class="InterestImg">
-                                <img src="__PUBLIC__/Web/web/img/common_icon_write.png" alt="">
+        <div class="web">
+            <!-- logo -->
+            <header class="container">
+                <include file = "./World/Index/View/Public/head.html"/>
+                </header>
+                <hr>
+                <!-- Crumbs nav -->
+                <div class="container crumbs">
+                    <a href="{:U('Index/Life/life')}" class="crumbsa">Life</a>
+                    <cite class="Icon"></cite>
+                    <span class="crumbsTitle">Create A Community</span>
+                </div>
+            <!--Basic Information form-->
+            <form class="layui-form layui-form-pane section" action="">
+                <div class="PasswordContainer">
+                    <div class="StepContainer">
+                        <div class="StepContainerOne">
+                            <div class="InterestTitle">
+                                <div class="InterestImg">
+                                    <img src="__PUBLIC__/Web/web/img/common_icon_write.png" alt="">
+                                </div>
+                                <span class="InterestCon">Basic Information</span>
                             </div>
-                            <span class="InterestCon">Basic Information</span>
-                        </div>
-
-						<foreach name="data" item="first" key="firstkey">
-							<div id="first{$first['first_mark_id']}" class="FormContainer" pane>
-
-								<label class="layui-form-label label-spacing">
-                                    <!-- <span class="<if condition='$firstkey == 0'>CountryIcon<elseif condition='$firstkey == 1'/>SchoolIcon<else />InterestIcon</if>"></span> -->
-                                    <div class="label_img">
-                                        <!-- <img src="__PUBLIC__/Web/web/img/05_life/life_secondhandmarket_icon_02.png"> -->
-                                        <img src="__PUBLIC__/Web/web/img/<if condition='$firstkey == 0'>02_interest/interest_create_icon_01.png<elseif condition='$firstkey == 1'/>02_interest/interest_create_icon_02.png<elseif condition='$firstkey == 2'/>02_interest/interest_create_icon_03.png</if>">
+    
+                            <foreach name="data" item="first" key="firstkey">
+                                <div id="first{$first['first_mark_id']}" class="FormContainer" pane>
+    
+                                    <label class="layui-form-label label-spacing">
+                                        <!-- <span class="<if condition='$firstkey == 0'>CountryIcon<elseif condition='$firstkey == 1'/>SchoolIcon<else />InterestIcon</if>"></span> -->
+                                        <div class="label_img">
+                                            <!-- <img src="__PUBLIC__/Web/web/img/05_life/life_secondhandmarket_icon_02.png"> -->
+                                            <img src="__PUBLIC__/Web/web/img/<if condition='$firstkey == 0'>02_interest/interest_create_icon_01.png<elseif condition='$firstkey == 1'/>02_interest/interest_create_icon_02.png<elseif condition='$firstkey == 2'/>02_interest/interest_create_icon_03.png</if>">
+                                        </div>
+                                    </label>
+                                    <div class="layui-input-block" id="layui-input-block" >
+                                        <input type="hidden" value="" id="in{$first['first_mark_id']}">
+                                        <!--style="width: 25%;float: left;margin: 0 0;"-->
+                                        <select name="second" lay-verify="required" lay-filter="firstselect" title="0">
+                                            <option value="" selected="selected"><if condition='$firstkey == 0'>Choose a country<elseif condition='$firstkey == 1'/>Choose a school<else />Choose interest</if></option>
+                                            <foreach name="first['message']" item = "second" key="secondkey">
+                                                <option value="{$second['second_mark_id']}">{$second['second_mark_name']}</option>
+                                            </foreach>
+                                        </select>
                                     </div>
-								</label>
-								<div class="layui-input-block" id="layui-input-block" >
-									<input type="hidden" value="" id="in{$first['first_mark_id']}">
-									<!--style="width: 25%;float: left;margin: 0 0;"-->
-									<select name="second" lay-verify="required" lay-filter="firstselect" title="0">
-										<option value="" selected="selected"><if condition='$firstkey == 0'>Choose a country<elseif condition='$firstkey == 1'/>Choose a school<else />Choose interest</if></option>
-										<foreach name="first['message']" item = "second" key="secondkey">
-											<option value="{$second['second_mark_id']}">{$second['second_mark_name']}</option>
-										</foreach>
-									</select>
-								</div>
-
-							</div>
-						</foreach>
-
-						<div class="FormContainer" pane>
-							<label class="layui-form-label label-spacing" style="border: none;background: transparent">
+    
+                                </div>
+                            </foreach>
+    
+                            <div class="FormContainer" pane>
+                                <label class="layui-form-label label-spacing" style="border: none;background: transparent">
+                                    <div class="label_img">
+                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png">
+                                    </div>
+                                </label>
+                                <div class="layui-input-block input-spacing inputW" style="width: 100%;">
+                                <div class="UserHeadImage">
+                                    <img id="pic" class="img">
+                                    <input id="upload" class="but" name="file" accept="image/*" type="file">
+                                </div>
+                                </div>
+                            </div>
+                            <div class="FormContainer" pane>
+                                <label class="layui-form-label label-spacing" v>
+                                    <div class="label_img">
+                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_05.png">
+                                    </div>
+                                </label>
+                                <div class="layui-input-block input-spacing inputW" style="width: 100%;">
+                                    <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the name of the Community" class="layui-input" id="name">
+                                </div>
+                            </div>
+                            <div class="FormContainer" pane>
+                                <label class="layui-form-label label-spacing">
+                                    <div class="label_img">
+                                        <img src="__PUBLIC__/Web/web/img/05_life/life_create_icon_adress.png">
+                                    </div>
+                                </label>
+                                <div class="layui-input-block input-spacing inputW" style="width: 100%;">
+                                    <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the address(apartment, streets, etc.)" class="layui-input" id="address">
+                                </div>
+                            </div>
+                            <div class="FormContainer" pane>
+                                <label class="layui-form-label label-spacing">
                                 <div class="label_img">
-                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png">
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_06.png">
                                 </div>
                             </label>
-                            <div class="layui-input-block input-spacing inputW" style="width: 100%;">
-							<div class="UserHeadImage">
-								<img id="pic" class="img">
-								<input id="upload" class="but" name="file" accept="image/*" type="file">
-                            </div>
-                            </div>
-						</div>
-						<div class="FormContainer" pane>
-							<label class="layui-form-label label-spacing" v>
-                                <div class="label_img">
-                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_05.png">
+                                <div class="layui-input-block input-spacing inputW" style="width: 100%;">
+                                    <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the description" class="layui-input" id="content">
                                 </div>
-                            </label>
-							<div class="layui-input-block input-spacing inputW" style="width: 100%;">
-								<input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the name of the Community" class="layui-input" id="name">
-							</div>
+                            </div>
+                            <div class="FormContainer from-but">
+                                <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
+                                Submit
+                            </button>
+                            </div>
                         </div>
-                        <div class="FormContainer" pane>
-                            <label class="layui-form-label label-spacing">
-                                <div class="label_img">
-                                    <img src="__PUBLIC__/Web/web/img/05_life/life_create_icon_adress.png">
-                                </div>
-                            </label>
-							<div class="layui-input-block input-spacing inputW" style="width: 100%;">
-								<input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the address(apartment, streets, etc.)" class="layui-input" id="address">
-							</div>
-						</div>
-						<div class="FormContainer" pane>
-							<label class="layui-form-label label-spacing">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_06.png">
-                            </div>
-                        </label>
-							<div class="layui-input-block input-spacing inputW" style="width: 100%;">
-								<input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the description" class="layui-input" id="content">
-							</div>
-						</div>
-						<div class="FormContainer from-but">
-							<button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
-                            Submit
-                        </button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</form>
-		<!-- foot start 底部信息 -->
-        <footer>
-            <include file = "./World/Index/View/Public/footer.html"/>
-        </footer>
-        <!-- foot end 底部信息 -->
+                    </div>
+                </div>
+            </form>
+            <!-- foot start 底部信息 -->
+            <footer class="footer">
+                <include file = "./World/Index/View/Public/footer.html"/>
+            </footer>
+            <!-- foot end 底部信息 -->
+
+        </div>
 		<script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
 		<script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -166,7 +170,7 @@
                                 $("#second"+data.firstid).html(message)
                             }else{
 
-                                var message = '<div id="second'+data.firstid+'" class="FormContainer" pane><div class="layui-input-block" id="layui-input-block" style="margin-bottom: 8px;"><select name="third" lay-filter="secondselect"><option value="">choose</option>';
+                                var message = '<div id="second'+data.firstid+'" class="FormContainer" pane style="margin-left:18%;"><div class="layui-input-block" id="layui-input-block" style="margin-bottom: 8px;"><select name="third" lay-filter="secondselect"><option value="">choose</option>';
                                 for (var i = 0; i < data.msg.length; i++) {
 
                                     message +='<option value="'+data.msg[i]['third_mark_id']+'">';

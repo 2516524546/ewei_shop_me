@@ -21,7 +21,7 @@ use Think\Controller;
 class JobsController extends CommonController {
     public $modeleid = 4;
 
-    protected $_checkAction = ['MyProject','releasePosition','releaseMyPosition','ReleaseProfessional','DeleteWork','DeleteItem','EditItem','PostProfessionalComment'];//需要做登录验证的action
+    protected $_checkAction = ['MyProject','releasePosition','releaseMyPosition','ReleaseProfessional','DeleteWork','DeleteItem','EditItem','PostProfessionalComment','EditWork'];//需要做登录验证的action
 
     public function _initialize()
     {
@@ -155,6 +155,11 @@ class JobsController extends CommonController {
         $show       = $Page->show();
         $worklist = D('Works')->where('works_uid = '.$this->userid)->limit($Page->firstRow.','.$Page->listRows)->select();
         $this->assign('worklist',$worklist);
+
+        $companytypemodel = new WorksCompanyTypeModel();
+        $companytypelist = $companytypemodel->findlist('','works_company_type_sort desc');
+        $this->assign('companytypelist',$companytypelist);
+
         $this->assign('page',$show);
 
         $this->display();
@@ -297,15 +302,14 @@ class JobsController extends CommonController {
             $data['item_createtime'] = date('Y-m-d H:i:s',time());
             $Item = D("Item"); // 实例化User对象
             if (!$Item->validate($rules)->create()){
-                $this->error($Item->getError());
+                die(json_encode(['status'=>0,'msg'=>$Item->getError()]));
             }else{
                 // 验证通过 可以进行其他数据操作
                 if($Item->add($data)){
-                    $this->success('Create success!',U('Index/Jobs/projectsProfessionals'));
+                    die(json_encode(['status'=>1,'msg'=>'Create success!','href'=>U('Index/Jobs/projectsProfessionals')]));
                 }else{
-                    $this->error('Create Faild!');
+                    die(json_encode(['status'=>0,'msg'=>'Create Failed!']));
                 }
-
                 exit;
             }
 
@@ -804,6 +808,15 @@ class JobsController extends CommonController {
     }
 
     public function ReleaseProfessional(){
+
+        $professional_uid = I('get.professional_uid',0,'intval');
+        if(!$professional_uid || $professional_uid != $this->userid){
+            $this->error('Parameter error！');
+        }
+        $professional = D('Professional')->where('professional_uid='.$professional_uid)->find();
+        $this->assign('professional',$professional);
+
+
         if(IS_POST){
             $rules = array(
                 array('professional_city','require','Choose a city！'),
@@ -825,32 +838,36 @@ class JobsController extends CommonController {
             $data['professional_createtime'] = $data['professional_updatetime'] = date('Y-m-d H:i:s',time());
             $Professional = D("Professional"); // 实例化User对象
             if (!$Professional->validate($rules)->create()){
-                $this->error($Professional->getError());
+                die(json_encode(['status'=>0,'msg'=>$Professional->getError()]));
             }else{
-                // 验证通过 进行文件上传
-                $upload = new \Think\Upload();
-                $upload->maxSize   =     3145728 ;
-                $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');
-                $upload->rootPath  =      './Uploads/';
-                $info   =   $upload->uploadOne($_FILES['professional_pic']);
-                if(!$info) {
-                    $this->error($upload->getError());
-                }else{
-                    $data['professional_pic'] = $info['savepath'].$info['savename'];
-                }
+                if(!$professional){
+                    // 验证通过 进行文件上传
+                    $upload = new \Think\Upload();
+                    $upload->maxSize   =     3145728 ;
+                    $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');
+                    $upload->rootPath  =      './Uploads/';
+                    $info   =   $upload->uploadOne($_FILES['professional_pic']);
+                    if(!$info) {
+                        die(json_encode(['status'=>0,'msg'=>$upload->getError()]));
+                    }else{
+                        $data['professional_pic'] = $info['savepath'].$info['savename'];
+                    }
 
-                if($Professional->add($data)){
-                    $this->success('Create success!',U('Index/Jobs/projectsProfessionals'));
+                    if($Professional->add($data)){
+                        die(json_encode(['status'=>1,'msg'=>'Create success!']));
+                    }else{
+                        die(json_encode(['status'=>0,'msg'=>'Create Faild!']));
+                    }
                 }else{
-                    $this->error('Create Faild!');
+                    if($Professional->where('professional_uid='.$this->userid)->save($data)){
+                        die(json_encode(['status'=>1,'msg'=>'Edit success!']));
+                    }else{
+                        die(json_encode(['status'=>0,'msg'=>'Create Faild!']));
+                    }
                 }
-
                 exit;
             }
-
         }
-
-
         //获取城市
         $fid = D('FirstMark')->where('firsth_mark_name="city" AND first_mark_mid=4 AND first_mark_type=3')->getField('first_mark_id');
         if($fid){
@@ -1021,6 +1038,56 @@ class JobsController extends CommonController {
             die(json_encode(['status'=>1,'msg'=>'Comment success!']));
         }else{
             die(json_encode(['status'=>0,'msg'=>'Comment failed!']));
+        }
+    }
+
+    public function GetWork(){
+        $works_id = I('post.works_id',0,'intval');
+        if($works_id <= 0 && IS_AJAX){
+            die(json_encode(['status'=>0,'msg'=>'Parameter error！']));
+        }elseif($works_id <= 0){
+            $this->error('Parameter error！');
+        }
+        $result = D('Works')->where('works_id='.$works_id . ' AND works_uid='.$this->userid)->find();
+
+        if($result){
+            die(json_encode($result));
+        }else{
+            die(json_encode(['status'=>0,'msg'=>'Query failed!']));
+        }
+    }
+
+    public function EditWork(){
+        $rules = array(
+            array('works_type',array(1,2,3),'Choose a city！',0,'in'),
+            array('works_position','require','Enter a position！'),
+            array('works_minmoney','require','Enter a numerical value！'),
+            array('works_maxmoney','require','Enter a numerical value！'),
+            array('works_years','require','Enter the number of years of service'),
+            array('works_school','require','Enter a graduate school'),
+            array('works_degree','require','Enter your degree'),
+            array('works_specialty','require','Enter the specialty！'),
+            array('works_company_name','require','Enter a job title!’s type！'),
+            array('works_company_nature','require','Choose a company nature！'),
+            array('works_company_type','require','Choose a company type！'),
+            array('works_company_size','require','Enter the company size！'),
+            array('works_company_mail','check_email','Enter the company mailbox！',0,'callback'),
+            array('works_company_content','require','Enter the company information！'),
+            array('works_isnegotiable',array(0,1),'Choose Salary Negotiable！',0,'in'),
+        );
+        $data = I('post.');
+        $data['works_uid'] = $this->userid;
+        $data['works_updatetime'] = date('Y-m-d H:i:s',time());
+        $Works = D("Works"); // 实例化User对象
+        if (!$Works->validate($rules)->create()){
+            exit(json_encode(['status'=>1,'msg'=>$Works->getError()]));
+        }else{
+            // 验证通过 可以进行其他数据操作
+            if($Works->save($data)){
+                exit(json_encode(['status'=>1,'msg'=>'Edit Success!']));
+            }else{
+                exit(json_encode(['status'=>1,'msg'=>'Edit Faild!']));
+            }
         }
     }
 }

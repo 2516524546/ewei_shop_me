@@ -2,46 +2,50 @@
 <html lang="en">
     <head>
         <include file="./World/Index/View/Public/meta.html"/>
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
     </head>
 
     <body>
-        <!-- logo -->
-        <header class="container">
-            <include file = "./World/Index/View/Public/head.html"/>
-            </header>
-            <hr>
+        <div class="web">
 
-        <!-- Crumbs nav -->
-        <div class="container crumbs">
-            <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
-            <cite class="Icon"></cite>
-            <a href="{:U('Index/User/myMessage')}" class="crumbsa">My message</a>
-            <cite class="Icon"></cite>
-            <span class="crumbsTitle">{$title}</span>
-        </div>
-        <!-- MessageDetails content -->
-        <div class="container">
-            <div class="MessageDetails_box">
-                <div class="MessageDetails_title">
-                    {$myMessage['message_title']}
-                </div>
-                <div class="MessageDetails_time">
-                    {$myMessage['message_sendtime']}
-                </div>
-                <div class="MessageDetails_content">
-                    {$myMessage['message_content']}
+            <!-- logo -->
+            <header class="container">
+                <include file = "./World/Index/View/Public/head.html"/>
+                </header>
+                <hr>
+    
+            <!-- Crumbs nav -->
+            <div class="container crumbs">
+                <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+                <cite class="Icon"></cite>
+                <a href="{:U('Index/User/myMessage')}" class="crumbsa">My message</a>
+                <cite class="Icon"></cite>
+                <span class="crumbsTitle">{$title}</span>
+            </div>
+            <!-- MessageDetails content -->
+            <div class="container section">
+                <div class="MessageDetails_box">
+                    <div class="MessageDetails_title">
+                        {$myMessage['message_title']}
+                    </div>
+                    <div class="MessageDetails_time">
+                        {$myMessage['message_sendtime']}
+                    </div>
+                    <div class="MessageDetails_content">
+                        {$myMessage['message_content']}
+                    </div>
                 </div>
             </div>
+    
+    
+    
+    
+            <!-- foot start 底部信息 -->
+            <footer class="footer">
+                <include file = "./World/Index/View/Public/footer.html"/>
+            </footer>
+                <!-- foot end 底部信息 -->
         </div>
-
-
-
-
-        <!-- foot start 底部信息 -->
-        <footer>
-            <include file = "./World/Index/View/Public/footer.html"/>
-        </footer>
-            <!-- foot end 底部信息 -->
     </body>
 
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
