@@ -210,6 +210,8 @@
 <script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
 <script language="javascript">
 	$(function(){
 		var type = $("input[name='type']").val();
@@ -251,26 +253,28 @@
     }
 
 function delete_professional(id){
-	var statu = confirm("确定执行删除操作吗?");
-	if(!statu){
-	   return false;
-	}
-	
-	$.ajax({
-		url:"index.php?m=Admin&c=Professional&a=professional_del",
-		data:'id='+id,
-		type:'post',
-		success:function(msg){
-			if(msg == 1){
-				alert('删除成功');
-				window.location.reload();
-			}else{
-				alert(msg);
-				return false;
-			}
-			
-		}
-	})
+    layer.msg("{:L('Note_crowd_list_if')}", {
+        time: 0 //不自动关闭
+        , btn: ["{:L('Note_crowd_list_ok')}", "{:L('Note_crowd_list_no')}"]
+        , yes: function (index) {
+            layer.close(index);
+            $.ajax({
+                url:"index.php?m=Admin&c=Professional&a=professional_del",
+                data:'id='+id,
+                type:'post',
+                success: function (msg) {
+                    if (msg == 1) {
+                        showMessage("{:L('newworld_ajax_operation_success')}",1)
+                        //location.href="{:U('Admin/jinxiao/fenxiao_did')}";
+                    } else {
+                        showMessage(msg,2)
+                    }
+
+                }
+            })
+        }
+    });
+
 }
     function delete_item(id){
         var statu = confirm("确定执行删除操作吗?");
