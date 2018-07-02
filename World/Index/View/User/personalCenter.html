@@ -301,7 +301,7 @@
                                     </div>
                                     <!-- <input type="button" id="btnZoomIn" value="+">
                                     <input type="button" id="btnZoomOut" value="-"> -->
-                                    <input type="button" id="btnCrop" value="Crop" data-dismiss="modal">
+                                    <input type="button" id="btnCrop" value="confirm" data-dismiss="modal">
                                 </div>
                                 <!-- style="display: none;" -->
                                 <div class="cropped" style="display: none;">
@@ -682,7 +682,7 @@
                 $('.imageBox').removeAttr("style");
                 // var Userimg = $('.cropped_img').children('img')[0];
                 var Userimg =img
-                console.log(Userimg )
+                // console.log(Userimg )
                 C_Userimg(Userimg)
             })
             // $('#btnZoomIn').on('click', function(){
@@ -696,6 +696,9 @@
                 $('.personal_content .personal_title').css("background","url("+img+") no-repeat");
                 $('.personal_content .personal_title').css("background-size","100% 100%")
             }
+            $(".title_back_img").on("click",function(){
+                console.log($(".personal_content .personal_title"))
+            })
             //$('.personal_content .personal_title .P_title_pic').children('img').remove()
         });
     </script>
