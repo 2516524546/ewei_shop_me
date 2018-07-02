@@ -5,86 +5,90 @@
     <include file="./World/Index/View/Public/meta.html"/>
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/releasePosition.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/PostDeliveryRecord.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
 
 <body>
-    <!-- logo -->
-    <header class="container">
-        <include file = "./World/Index/View/Public/head.html"/>
-    </header>
-    <hr>
-    <!-- Crumbs nav -->
-    <div class="container crumbs">
-        <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
-        <cite class="Icon"></cite>
-        <a href="{:U('Jobs/projectsProfessionals')}" class="crumbsa">Item List</a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">{$title}</span>
-    </div>
-    <form class="layui-form" action="">
-        <div class="PasswordContainer">
-            <div class="StepContainer">
-                <div class="StepContainerOne">
-                    <div class="InterestTitle">
-                        <h3 class="Interesth3">
-                            Basic Information
-                        </h3>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="text_con">
-                                    <p class="rectext_title">Project Name :</p>
-                                    <p class="rectext">{$item['item_name']}</p>
-                                </div>
-                                <div class="text_con">
-                                    <p class="rectext_title">Initiator :</p>
-                                    <p class="rectext">{$item['item_specialty']}</p>
-                                </div>
-                                <div class="text_con">
-                                    <p class="rectext_title">Contact information :</p>
-                                    <p class="rectext">{$item['item_contact']}</p>
-                                </div>
-                                <div class="text_con">
-                                    <p class="rectext_title">E-Mail :</p>
-                                    <p class="rectext">{$item['item_mail']}</p>
-                                </div>
-                                <div class="text_con">
-                                    <p class="rectext_title">The company :</p>
-                                    <p class="rectext">{$item['item_company']}</p>
-                                </div>
-                                <div class="text_con">
-                                    <p class="rectext_title">Project Description :</p>
-                                    <p class="rectext">{$item['item_content']}</p>
-                                </div>
-                                <div class="text_con">
-                                    <p class="rectext_title">Project Type :</p>
-                                    <p class="rectext">{$item['item_type']}</p>
-                                </div>
-                                <div class="text_con">
-                                    <p class="rectext_title">Project Budget :</p>
-                                    <p class="rectext">{$item['item_budget']}</p>
-                                </div>
-                                <div class="text_con">
-                                    <p class="rectext_title">Project Time :</p>
-                                    <p class="rectext">{$item['item_time']}</p>
-                                </div>
-                                <div class="text_con">
-                                    <p class="rectext_title">Required Major :</p>
-                                    <p class="rectext">{$item['item_needspecialty']}</p>
+    <div class="web">
+        <!-- logo -->
+        <header class="container">
+            <include file = "./World/Index/View/Public/head.html"/>
+        </header>
+        <hr>
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
+            <cite class="Icon"></cite>
+            <a href="{:U('Jobs/projectsProfessionals')}" class="crumbsa">Item List</a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">{$title}</span>
+        </div>
+        <form class="layui-form section" action="">
+            <div class="PasswordContainer">
+                <div class="StepContainer">
+                    <div class="StepContainerOne">
+                        <div class="InterestTitle">
+                            <h3 class="Interesth3">
+                                Basic Information
+                            </h3>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text_con">
+                                        <p class="rectext_title">Project Name :</p>
+                                        <p class="rectext">{$item['item_name']}</p>
+                                    </div>
+                                    <div class="text_con">
+                                        <p class="rectext_title">Initiator :</p>
+                                        <p class="rectext">{$item['item_specialty']}</p>
+                                    </div>
+                                    <div class="text_con">
+                                        <p class="rectext_title">Contact information :</p>
+                                        <p class="rectext">{$item['item_contact']}</p>
+                                    </div>
+                                    <div class="text_con">
+                                        <p class="rectext_title">E-Mail :</p>
+                                        <p class="rectext">{$item['item_mail']}</p>
+                                    </div>
+                                    <div class="text_con">
+                                        <p class="rectext_title">The company :</p>
+                                        <p class="rectext">{$item['item_company']}</p>
+                                    </div>
+                                    <div class="text_con">
+                                        <p class="rectext_title">Project Description :</p>
+                                        <p class="rectext">{$item['item_content']}</p>
+                                    </div>
+                                    <div class="text_con">
+                                        <p class="rectext_title">Project Type :</p>
+                                        <p class="rectext">{$item['item_type']}</p>
+                                    </div>
+                                    <div class="text_con">
+                                        <p class="rectext_title">Project Budget :</p>
+                                        <p class="rectext">{$item['item_budget']}</p>
+                                    </div>
+                                    <div class="text_con">
+                                        <p class="rectext_title">Project Time :</p>
+                                        <p class="rectext">{$item['item_time']}</p>
+                                    </div>
+                                    <div class="text_con">
+                                        <p class="rectext_title">Required Major :</p>
+                                        <p class="rectext">{$item['item_needspecialty']}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
-    <!-- foot start 底部信息 -->
-    <footer>
-        <include file = "./World/Index/View/Public/footer.html"/>
-    </footer>
-    <!-- foot end 底部信息 -->
+        </form>
+        <!-- foot start 底部信息 -->
+        <footer class="footer">
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
+        <!-- foot end 底部信息 -->
+
+    </div>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>

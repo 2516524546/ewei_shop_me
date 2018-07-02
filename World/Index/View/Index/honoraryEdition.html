@@ -14,133 +14,138 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/NewsDetails.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
-
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
 
 <body>
-    <!-- logo -->
-    <header class="container">
-        <include file = "./World/Index/View/Public/head.html"/>
-    </header>
-    <hr>
-    <!-- Crumbs nav -->
-    <div class="container crumbs">
-        <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">Honor List</span>
-    </div>
-    <div class="container ContributionContainer">
-        <div class="layui-tab layui-tab-card">
-            <ul class="layui-tab-title">
-                <li class="layui-this" onclick="set(1)">Integral</li>
-                <li onclick="set(2)">Donate</li>
-                <li onclick="set(3)">Expenditure</li>
-            </ul>
-            <div class="layui-tab-content ListContainer">
-                <div class="layui-tab-item layui-show">
-                    <table class="layui-table" id="LayuiTableBorder" lay-skin="line">
-                        <tbody id="content">
-
-
-                        </tbody>
-                    </table>
-                </div>
-                <!--<div class="layui-tab-item">
-                    <div class="layui-tab-item layui-show">
-                        <table class="layui-table" id="LayuiTableBorder" lay-skin="line">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <span>
-                                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_01.png">
-                                        &nbsp;&nbsp;1st
-                                        </span>
-                                    </td>
-                                    <td class="text-center">
-                                        &nbsp;&nbsp;Kendall J
-                                    </td>
-                                    <td class="text-right">800 integral</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>
-                                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_04.png">
-                                        &nbsp;&nbsp;8st
-                                        </span>
-                                    </td>
-                                    <td class="text-center">
-                                        &nbsp;&nbsp;Kendall J
-                                    </td>
-                                    <td class="text-right">800 integral</td>
-                                </tr>
-                            </tbody>
-                        </table>
+    <div class="web">
+        <!-- logo -->
+        <header class="container">
+            <include file = "./World/Index/View/Public/head.html"/>
+        </header>
+        <hr>
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">Honor List</span>
+        </div>
+        <div class="section">
+            <div class="container ContributionContainer">
+                <div class="layui-tab layui-tab-card">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this" onclick="set(1)">Integral</li>
+                        <li onclick="set(2)">Donate</li>
+                        <li onclick="set(3)">Expenditure</li>
+                    </ul>
+                    <div class="layui-tab-content ListContainer">
+                        <div class="layui-tab-item layui-show">
+                            <table class="layui-table" id="LayuiTableBorder" lay-skin="line">
+                                <tbody id="content">
+        
+        
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--<div class="layui-tab-item">
+                            <div class="layui-tab-item layui-show">
+                                <table class="layui-table" id="LayuiTableBorder" lay-skin="line">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span>
+                                                <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_01.png">
+                                                &nbsp;&nbsp;1st
+                                                </span>
+                                            </td>
+                                            <td class="text-center">
+                                                &nbsp;&nbsp;Kendall J
+                                            </td>
+                                            <td class="text-right">800 integral</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>
+                                                <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_04.png">
+                                                &nbsp;&nbsp;8st
+                                                </span>
+                                            </td>
+                                            <td class="text-center">
+                                                &nbsp;&nbsp;Kendall J
+                                            </td>
+                                            <td class="text-right">800 integral</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>-->
+                        <!--<div class="layui-tab-item">
+                            <table class="layui-table" id="LayuiTableBorder" lay-skin="line">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span>
+                                            <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_01.png">
+                                            &nbsp;&nbsp;1st
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            &nbsp;&nbsp;Kendall J
+                                        </td>
+                                        <td class="text-right">$ 1000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>
+                                            <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_02.png">
+                                            &nbsp;&nbsp;2st
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            &nbsp;&nbsp;Kendall J
+                                        </td>
+                                        <td class="text-right">$ 1000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>
+                                            <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_03.png">
+                                            &nbsp;&nbsp;3st
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            &nbsp;&nbsp;Kendall J
+                                        </td>
+                                        <td class="text-right">$ 1000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>
+                                            <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_04.png">
+                                            &nbsp;&nbsp;8st
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            &nbsp;&nbsp;Kendall J
+                                        </td>
+                                        <td class="text-right">$ 1000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>-->
                     </div>
-                </div>-->
-                <!--<div class="layui-tab-item">
-                    <table class="layui-table" id="LayuiTableBorder" lay-skin="line">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <span>
-                                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_01.png">
-                                    &nbsp;&nbsp;1st
-                                    </span>
-                                </td>
-                                <td class="text-center">
-                                    &nbsp;&nbsp;Kendall J
-                                </td>
-                                <td class="text-right">$ 1000</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span>
-                                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_02.png">
-                                    &nbsp;&nbsp;2st
-                                    </span>
-                                </td>
-                                <td class="text-center">
-                                    &nbsp;&nbsp;Kendall J
-                                </td>
-                                <td class="text-right">$ 1000</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span>
-                                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_03.png">
-                                    &nbsp;&nbsp;3st
-                                    </span>
-                                </td>
-                                <td class="text-center">
-                                    &nbsp;&nbsp;Kendall J
-                                </td>
-                                <td class="text-right">$ 1000</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span>
-                                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_04.png">
-                                    &nbsp;&nbsp;8st
-                                    </span>
-                                </td>
-                                <td class="text-center">
-                                    &nbsp;&nbsp;Kendall J
-                                </td>
-                                <td class="text-right">$ 1000</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>-->
+                </div>
+            </div>
+            <div class="container NumberOfPagesContainer">
+                <div id="NumberOfPages"></div>
             </div>
         </div>
+        <!-- footer -->
+        <footer class="footer">
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
+
     </div>
-    <div class="container NumberOfPagesContainer">
-        <div id="NumberOfPages"></div>
-    </div>
-    <!-- footer -->
-    <footer>
-        <include file = "./World/Index/View/Public/footer.html"/>
-    </footer>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>

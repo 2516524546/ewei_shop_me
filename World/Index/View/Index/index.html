@@ -15,327 +15,332 @@
 </head>
 
 <body>
-    <!-- Head information start 头信息 -->
-    <div class="container headerBox">
-        <div class="row">
-            <div class="col-md-6">
-                <a href="#" class="logo" title="logo"></a>
-            </div>
-
-            <div class="col-md-6">
-                <include file = "./World/Index/View/Public/head.html"/>
-                <div class="nav">
-                    <nav class="navbar NavBg">
-                        <ul class="ListInline">
-                            <li><a href="{:U('Index/Index/index')}" id="NavSelected">Home</a></li>
-                            <li><a href="{:U('Index/Rnterst/interest')}" >Interest</a></li>
-                            <li><a href="{:U('Index/Academic/academic')}">Academic</a></li>
-                            <li><a href="{:U('Index/Jobs/work')}">Jobs</a></li>
-                            <li><a href="{:U('Index/Life/life')}">Life</a></li>
-                        </ul>
-                    </nav>
+    <div class="web">
+        <!-- Head information start 头信息 -->
+        <div class="container headerBox">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="#" class="logo" title="logo"></a>
+                </div>
+    
+                <div class="col-md-6">
+                    <include file = "./World/Index/View/Public/head.html"/>
+                    <div class="nav">
+                        <nav class="navbar NavBg">
+                            <ul class="ListInline">
+                                <li><a href="{:U('Index/Index/index')}" id="NavSelected">Home</a></li>
+                                <li><a href="{:U('Index/Rnterst/interest')}" >Interest</a></li>
+                                <li><a href="{:U('Index/Academic/academic')}">Academic</a></li>
+                                <li><a href="{:U('Index/Jobs/work')}">Jobs</a></li>
+                                <li><a href="{:U('Index/Life/life')}">Life</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Head information end 头信息 -->
-    <!-- Carousel advertising start 轮播广告 -->
-    <div class="layui-carousel Banner" id="test2">
-        <div carousel-item="">
-            <foreach name="newslist" item="new" key="newkey">
-            <div class="Carousel_img">
-                <a href="<if condition='$new["news_type"] == 1'>{:U('Index/Index/newsDetails',array('nid'=>$new['news_id']))}<else />{$new['news_url']}</if>">
-                    <img src="./Uploads/{$new['news_img']}">
-                </a> 
-            </div>
-            </foreach>
-
-        </div>
-    </div>
-    <!-- Carousel advertising end 轮播广告 -->
-    <!-- Honor list start 荣誉榜 -->
-    <div class="container">
-        <div class="title_Icons">
-            <div class="title_Icons_box">
-                <div class="title_ICon_pic">
-                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_icon_01.png">
+        <!-- Head information end 头信息 -->
+        <!-- Carousel advertising start 轮播广告 -->
+        <div class="layui-carousel Banner" id="test2">
+            <div carousel-item="">
+                <foreach name="newslist" item="new" key="newkey">
+                <div class="Carousel_img">
+                    <a href="<if condition='$new["news_type"] == 1'>{:U('Index/Index/newsDetails',array('nid'=>$new['news_id']))}<else />{$new['news_url']}</if>">
+                        <img src="./Uploads/{$new['news_img']}">
+                    </a> 
                 </div>
-                <div class="title_ICon_con">
-                    HONOR LIST
-                </div>
-            </div>
-            <div class="title_Icons_line">
-                <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_fgx.png">
+                </foreach>
+    
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="layui-tab layui-tab-brief" id="ListContainer" lay-filter="docDemoTabBrief">
-                    <ul class="layui-tab-title">
-                        <li class="layui-this">Wealth</li>
-                        <li>Donation</li>
-                        <li>Contribution</li>
-                        <a href="{:U('Index/Index/honoraryEdition')}" class="More">
-                        	<img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_icon_c_more_n.png">
-                        </a>
-                    </ul>
-                    <div class="layui-tab-content">
-                        <div class="layui-tab-item layui-show">
-                            <div class="layui-form">
-                                <table class="layui-table">
-                                    <tbody>
-                                    <foreach name="wealth" item="w" key="k">
-                                        <tr>
-                                            <td>
-                                                <span>
-                                                    <switch name="k" >
-                                                       <case value="0" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_01.png"></case>
-                                                        <case value="1" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_02.png"></case>
-                                                        <case value="2" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_03.png"></case>
-                                                        <default /><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_04.png">
-
-                                                    </switch>
-
-                                            		&nbsp;&nbsp;{$k+1}st
-                                            	</span>
-                                            </td>
-                                            <td>
-                                                <div class="img-circle">
-                                                    <img src="<if condition='$w["user_icon"]'>./Uploads/{$w['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
-                                                </div>
-                                                &nbsp;&nbsp;{$w['user_name']}
-                                            </td>
-                                            <td>{$w['user_havecoin']} virtual currency</td>
-                                        </tr>
-                                    </foreach>
-                                                                            </tbody>
-                                </table>
-                            </div>
+        <!-- Carousel advertising end 轮播广告 -->
+        <div class="section">
+            <!-- Honor list start 荣誉榜 -->
+            <div class="container">
+                <div class="title_Icons">
+                    <div class="title_Icons_box">
+                        <div class="title_ICon_pic">
+                            <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_icon_01.png">
                         </div>
-                        <div class="layui-tab-item">
-                            <div class="layui-form">
-                                <table class="layui-table">
-                                    <tbody>
-                                    <foreach name="donate" item="d" key="k">
-                                        <tr>
-                                            <td>
-                                                <span>
-                        	                		<switch name="k" >
-                                                        <case value="0" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_01.png"></case>
-                                                        <case value="1" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_02.png"></case>
-                                                        <case value="2" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_03.png"></case>
-                                                        <default /><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_04.png">
-
-                                                    </switch>
-
-                                            		&nbsp;&nbsp;{$k+1}st
-                        	                	</span>
-                                            </td>
-                                            <td>
-                                                <img src="<if condition='$d["user_icon"]'>./Uploads/{$d['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" class="img-circle"> &nbsp;&nbsp;{$d['user_name']}
-                                            </td>
-                                            <td>{$d['user_outcoin']} virtual currency</td>
-                                        </tr>
-                                    </foreach>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="layui-tab-item">
-                            <div class="layui-form">
-                                <table class="layui-table">
-                                    <tbody>
-                                    <foreach name="expenditure" item="e" key="k">
-                                        <tr>
-                                            <td>
-                                                <span>
-                        	                		<switch name="k" >
-                                                        <case value="0" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_01.png"></case>
-                                                        <case value="1" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_02.png"></case>
-                                                        <case value="2" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_03.png"></case>
-                                                        <default /><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_04.png">
-
-                                                    </switch>
-
-                                            		&nbsp;&nbsp;{$k+1}st
-                        	                	</span>
-                                            </td>
-                                            <td>
-                                                <img src="<if condition='$e["user_icon"]'>./Uploads/{$e['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" class="img-circle"> &nbsp;&nbsp;{$e['user_name']}
-                                            </td>
-                                            <td>$ {$e['user_outmoney']}</td>
-                                        </tr>
-                                    </foreach>
-
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="title_ICon_con">
+                            HONOR LIST
                         </div>
                     </div>
+                    <div class="title_Icons_line">
+                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_fgx.png">
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="tile">
-                    <div class="text">
-                        <img src="__PUBLIC__/Web/web/img/01_shouye/pic1.png">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="layui-tab layui-tab-brief" id="ListContainer" lay-filter="docDemoTabBrief">
+                            <ul class="layui-tab-title">
+                                <li class="layui-this">Wealth</li>
+                                <li>Donation</li>
+                                <li>Contribution</li>
+                                <a href="{:U('Index/Index/honoraryEdition')}" class="More">
+                                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_icon_c_more_n.png">
+                                </a>
+                            </ul>
+                            <div class="layui-tab-content">
+                                <div class="layui-tab-item layui-show">
+                                    <div class="layui-form">
+                                        <table class="layui-table">
+                                            <tbody>
+                                            <foreach name="wealth" item="w" key="k">
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <switch name="k" >
+                                                               <case value="0" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_01.png"></case>
+                                                                <case value="1" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_02.png"></case>
+                                                                <case value="2" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_03.png"></case>
+                                                                <default /><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_04.png">
+        
+                                                            </switch>
+        
+                                                            &nbsp;&nbsp;{$k+1}st
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="img-circle">
+                                                            <img src="<if condition='$w["user_icon"]'>./Uploads/{$w['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
+                                                        </div>
+                                                        &nbsp;&nbsp;{$w['user_name']}
+                                                    </td>
+                                                    <td>{$w['user_havecoin']} virtual currency</td>
+                                                </tr>
+                                            </foreach>
+                                                                                    </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="layui-tab-item">
+                                    <div class="layui-form">
+                                        <table class="layui-table">
+                                            <tbody>
+                                            <foreach name="donate" item="d" key="k">
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <switch name="k" >
+                                                                <case value="0" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_01.png"></case>
+                                                                <case value="1" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_02.png"></case>
+                                                                <case value="2" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_03.png"></case>
+                                                                <default /><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_04.png">
+        
+                                                            </switch>
+        
+                                                            &nbsp;&nbsp;{$k+1}st
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <img src="<if condition='$d["user_icon"]'>./Uploads/{$d['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" class="img-circle"> &nbsp;&nbsp;{$d['user_name']}
+                                                    </td>
+                                                    <td>{$d['user_outcoin']} virtual currency</td>
+                                                </tr>
+                                            </foreach>
+        
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="layui-tab-item">
+                                    <div class="layui-form">
+                                        <table class="layui-table">
+                                            <tbody>
+                                            <foreach name="expenditure" item="e" key="k">
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <switch name="k" >
+                                                                <case value="0" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_01.png"></case>
+                                                                <case value="1" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_02.png"></case>
+                                                                <case value="2" break="1"><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_03.png"></case>
+                                                                <default /><img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_04.png">
+        
+                                                            </switch>
+        
+                                                            &nbsp;&nbsp;{$k+1}st
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <img src="<if condition='$e["user_icon"]'>./Uploads/{$e['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" class="img-circle"> &nbsp;&nbsp;{$e['user_name']}
+                                                    </td>
+                                                    <td>$ {$e['user_outmoney']}</td>
+                                                </tr>
+                                            </foreach>
+        
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tile">
+                            <div class="text">
+                                <img src="__PUBLIC__/Web/web/img/01_shouye/pic1.png">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Honor list end 荣誉榜 -->
-    <!-- donate start 捐赠 -->
-    <div class="container">
-
-        <div class="title_Icons">
-                <div class="title_Icons_box">
-                    <div class="title_ICon_pic">
-                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_icon_02.png">
+            <!-- Honor list end 荣誉榜 -->
+            <!-- donate start 捐赠 -->
+            <div class="container">
+        
+                <div class="title_Icons">
+                        <div class="title_Icons_box">
+                            <div class="title_ICon_pic">
+                                <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_icon_02.png">
+                            </div>
+                            <div class="title_ICon_con">
+                                Donate
+                            </div>
+                        </div>
+                        <div class="title_Icons_line">
+                            <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_fgx.png">
+                        </div>
                     </div>
-                    <div class="title_ICon_con">
-                        Donate
+        
+                <div class="row">
+                    <div class="col-xs-6 col-md-7">
+                        <table class="layui-table ListContainer" lay-skin="line">
+                            <tbody>
+                                <tr>
+                                    <td class="text-center FontColor" colspan="2">
+                                        Donation Information
+                                        <a href="javascript:void(0)" class="More" onclick="donationlist()">
+                                            <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_icon_c_more_n.png">
+                                        </a>
+                                    </td>
+                                </tr>
+                                <foreach name="donatelist" item="d" key="k">
+                                <tr>
+                                    <td class="FontOverflow">
+                                        {$d['user_name']} donated $ {$d['donation_money']} to the platform and earned {$d['donation_coin']} virtual coins
+                                    </td>
+                                    <td class="TimeColor">{$d['donation_paytime']}</td>
+                                </tr>
+                                </foreach>
+        
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <div class="DonateContainer">
+                            <h4 class="text-center FontColor">Donate</h4>
+                            <p class="Prompt">
+                                Prompt :
+                                <br> After the success of donation funding platform will give you a certain amount of virtual cur -rency to you!
+                            </p>
+                            <a href="javascript:void(0)" class="DonateBut layui-btn layui-btn-radius layui-btn-primary" onclick="godonation()">Donate</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-2">
+                        <div class="BannerContainer">
+                            <h4 class="text-center FontColor">Advertising</h4>
+                            <foreach name="advertisinglist" item="advertising" key="advertisingkey">
+        
+                            <div class="Container1">
+                                <a href="{$advertising['advertising_url']}" style="text-decoration: none;display: block;">
+                                    <img src="./Uploads/{$advertising['advertising_img']}" class="img">
+                                    <p class="text-center Font">{$advertising['advertising_title']}</p>
+                                </a>
+                            </div>
+                            </foreach>
+        
+                        </div>
                     </div>
                 </div>
-                <div class="title_Icons_line">
-                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_fgx.png">
-                </div>
             </div>
-
-        <div class="row">
-            <div class="col-xs-6 col-md-7">
-                <table class="layui-table ListContainer" lay-skin="line">
-                    <tbody>
-                        <tr>
-                            <td class="text-center FontColor" colspan="2">
-                                Donation Information
-                                <a href="javascript:void(0)" class="More" onclick="donationlist()">
-                    				<img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_icon_c_more_n.png">
-                    			</a>
-                            </td>
-                        </tr>
-                        <foreach name="donatelist" item="d" key="k">
-                        <tr>
-                            <td class="FontOverflow">
-                                {$d['user_name']} donated $ {$d['donation_money']} to the platform and earned {$d['donation_coin']} virtual coins
-                            </td>
-                            <td class="TimeColor">{$d['donation_paytime']}</td>
-                        </tr>
-                        </foreach>
-
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="DonateContainer">
-                    <h4 class="text-center FontColor">Donate</h4>
-                    <p class="Prompt">
-                        Prompt :
-                        <br> After the success of donation funding platform will give you a certain amount of virtual cur -rency to you!
-                    </p>
-                    <a href="javascript:void(0)" class="DonateBut layui-btn layui-btn-radius layui-btn-primary" onclick="godonation()">Donate</a>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-2">
-                <div class="BannerContainer">
-                    <h4 class="text-center FontColor">Advertising</h4>
-                    <foreach name="advertisinglist" item="advertising" key="advertisingkey">
-
-                    <div class="Container1">
-                        <a href="{$advertising['advertising_url']}" style="text-decoration: none;display: block;">
-                            <img src="./Uploads/{$advertising['advertising_img']}" class="img">
-                            <p class="text-center Font">{$advertising['advertising_title']}</p>
-                        </a>
+            <!-- donate end 捐赠 -->
+            <!-- advice start 建议 -->
+            <div class="container">
+                <div class="title_Icons">
+                    <div class="title_Icons_box">
+                        <div class="title_ICon_pic">
+                            <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_icon_03.png">
+                        </div>
+                        <div class="title_ICon_con">
+                                Advice
+                        </div>
                     </div>
-                    </foreach>
-
+                    <div class="title_Icons_line">
+                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_fgx.png">
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- donate end 捐赠 -->
-    <!-- advice start 建议 -->
-    <div class="container">
-        <div class="title_Icons">
-            <div class="title_Icons_box">
-                <div class="title_ICon_pic">
-                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_icon_03.png">
-                </div>
-                <div class="title_ICon_con">
-                        Advice
-                </div>
-            </div>
-            <div class="title_Icons_line">
-                <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_title_fgx.png">
-            </div>
-        </div>
-        <!-- Modal frame stater 模态框 -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <p class="modal-header text-center">
-              	<span class="ModalTitle" id="exampleModalLabel">New message</span>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              </p>
-              <div class="modal-body">
-                <form>
-                	<div class="form-group">
-                		<p class="text-center ModalTextColor">
-                			Please submit your questions or suggestions when you are using this website, if there are any problems or which pages need improvement.
-                		</p>
-                	</div>
-                  <div class="form-group">
-                    <label for="recipient-name" class="control-label ModalFormHints">Suggested type:</label>
-                    <select class="form-control" id="proposal-type">
-
-                      <option>Select the recommended type</option>
-                        <foreach name="proposaltypelist" item="p" key="k">
-                      <option value="{$p['proposal_type_id']}">{$p['proposal_type_content']}</option>
-                        </foreach>
-                    </select>
+                <!-- Modal frame stater 模态框 -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <p class="modal-header text-center">
+                          <span class="ModalTitle" id="exampleModalLabel">New message</span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      </p>
+                      <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <p class="text-center ModalTextColor">
+                                    Please submit your questions or suggestions when you are using this website, if there are any problems or which pages need improvement.
+                                </p>
+                            </div>
+                          <div class="form-group">
+                            <label for="recipient-name" class="control-label ModalFormHints">Suggested type:</label>
+                            <select class="form-control" id="proposal-type">
+        
+                              <option>Select the recommended type</option>
+                                <foreach name="proposaltypelist" item="p" key="k">
+                              <option value="{$p['proposal_type_id']}">{$p['proposal_type_content']}</option>
+                                </foreach>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="message-text" class="control-label ModalFormHints">Recommendations:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-info btn-block" onclick="upproposal()">Submit</button>
+                      </div>
+                    </div>
                   </div>
-                  <div class="form-group">
-                    <label for="message-text" class="control-label ModalFormHints">Recommendations:</label>
-                    <textarea class="form-control" id="message-text"></textarea>
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-info btn-block" onclick="upproposal()">Submit</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Modal frame end 模态框 -->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="ProposalImg">
-                    <img src="__PUBLIC__/Web/web/img/01_shouye/pic4.png">
+                </div>
+                <!-- Modal frame end 模态框 -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="ProposalImg">
+                            <img src="__PUBLIC__/Web/web/img/01_shouye/pic4.png">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="ProposalContainer">
+                            <div class="TitleContainer">
+                                <a href="javascript:void(0)" class="Edit" data-toggle="modl" data-target="#exampleModal" data-whatever="@mdo" onclick="exampleup()">
+                                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_icon_advice_bj_n.png">
+                                </a>
+                                <h4 class="text-center FontColor">Advice Column</h4>
+                                <!-- <a href="#" class="More">
+                                    <img src="img/01_shouye/home_sy_icon_c_more_n.png">
+                                </a> -->
+                            </div>
+                            <p class="ProposaText">
+                                In order to better serve the site,please put forward your valuable advice
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="ProposalContainer">
-                	<div class="TitleContainer">
-                		<a href="javascript:void(0)" class="Edit" data-toggle="modl" data-target="#exampleModal" data-whatever="@mdo" onclick="exampleup()">
-                			<img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_icon_advice_bj_n.png">
-                		</a>
-                		<h4 class="text-center FontColor">Advice Column</h4>
-						<!-- <a href="#" class="More">
-                			<img src="img/01_shouye/home_sy_icon_c_more_n.png">
-                		</a> -->
-                	</div>
-                    <p class="ProposaText">
-                    	In order to better serve the site,please put forward your valuable advice
-                    </p>
-                </div>
-            </div>
+            <!-- advice end 建议 -->
         </div>
+        <!-- footer -->
+        <footer class="footer">
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
+
     </div>
-    <!-- advice end 建议 -->
-    <!-- footer -->
-    <footer>
-        <include file = "./World/Index/View/Public/footer.html"/>
-    </footer>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>

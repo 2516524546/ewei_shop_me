@@ -3,183 +3,187 @@
 
 <head>
     <include file="./World/Index/View/Public/meta.html"/>
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
 
 <body>
-    <!-- logo -->
-    <header class="container">
-        <include file = "./World/Index/View/Public/head.html"/>
-    </header>
-    <hr>
-    <!-- Crumbs nav -->
-    <div class="container crumbs">
-        <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
-        <cite class="Icon"></cite>
-        <a href="{:U('Jobs/projectsProfessionals')}" class="crumbsa">Item List</a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">{$title}</span>
-    </div>
-    <div class="container ContributionContainer">
-        <div class="row">
-            <div class="col-md-12 UserBox_list">
-
-                <foreach name="items" item="i">
-                <div class="UserBox" style="padding-bottom: 40px;">
-                    <p style="float: left;margin-right: 14px;">
-                        <img src="<if condition='$i[user_icon]'>./Uploads/{$i['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" style="width: 84px;height: 84px;margin-bottom: 54px;border-radius: 40%;">
-                    </p>
-                    <p class="lintpheight">
-                        Name : {$i['item_name']}
-                    </p>
-                    <p class="lintpheight">
-                        Introduction :
-                    </p>
-                    <p class="lintpheight">
-                        {$i['item_content']}
-                    </p>
-                    <div class="lintpheight text-right" style="color: #ccc;">
-                        <a href="#" style="position: absolute;right: 70px;" class="edit_item" data-id="{$i['item_id']}"  data-toggle="modal" data-target="#box2">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png">
-                        </a>
-                        <a href="#" style="position: absolute;right: 40px;"  class="del_item" data-id="{$i['item_id']}" data-toggle="modal" data-target="#box1">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png">
-                        </a>
+    <div class="web">
+        <!-- logo -->
+        <header class="container">
+            <include file = "./World/Index/View/Public/head.html"/>
+        </header>
+        <hr>
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
+            <cite class="Icon"></cite>
+            <a href="{:U('Jobs/projectsProfessionals')}" class="crumbsa">Item List</a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">{$title}</span>
+        </div>
+        <div class="container ContributionContainer section">
+            <div class="row">
+                <div class="col-md-12 UserBox_list">
+    
+                    <foreach name="items" item="i">
+                    <div class="UserBox" style="padding-bottom: 40px;">
+                        <p style="float: left;margin-right: 14px;">
+                            <img src="<if condition='$i[user_icon]'>./Uploads/{$i['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" style="width: 84px;height: 84px;margin-bottom: 54px;border-radius: 40%;">
+                        </p>
+                        <p class="lintpheight">
+                            Name : {$i['item_name']}
+                        </p>
+                        <p class="lintpheight">
+                            Introduction :
+                        </p>
+                        <p class="lintpheight">
+                            {$i['item_content']}
+                        </p>
+                        <div class="lintpheight text-right" style="color: #ccc;">
+                            <a href="#" style="position: absolute;right: 70px;" class="edit_item" data-id="{$i['item_id']}"  data-toggle="modal" data-target="#box2">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png">
+                            </a>
+                            <a href="#" style="position: absolute;right: 40px;"  class="del_item" data-id="{$i['item_id']}" data-toggle="modal" data-target="#box1">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png">
+                            </a>
+                        </div>
                     </div>
+                    </foreach>
                 </div>
-                </foreach>
             </div>
         </div>
-    </div>
-    <!-- 删除 -->
-    <div id="box1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                                        <span class="modal-title">
-                                                Reminder
+        <!-- 删除 -->
+        <div id="box1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                                            <span class="modal-title">
+                                                    Reminder
+                                                </span>
+                        <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                                                    <span aria-hidden="true">&times;
+                        </a>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-center">Do you delete the occupation?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 编辑 -->
+        <div id="box2" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                                            <span class="modal-title">
+                                                    Editing project
                                             </span>
-                    <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                        <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
                                                 <span aria-hidden="true">&times;
-                    </a>
-                </div>
-                <div class="modal-body">
-                    <p class="text-center">Do you delete the occupation?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">confirm</button>
+                        </a>
+                    </div>
+                    <div class="modal-body">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width: 64px;">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_porjetname.png">
+                            </label>
+                            <div class="layui-input-block" style="margin-left: 64px;">
+                                <input type="text" name="item_name" lay-verify="title" autocomplete="off" placeholder="Enter the project name" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width: 64px;">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_realname.png" width="24px" height="auto">
+                            </label>
+                            <div class="layui-input-block" style="margin-left: 64px;">
+                                <input type="text" name="item_uname" lay-verify="title" autocomplete="off" placeholder="Enter the sponsor's real name" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width: 64px;">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_contact.png">
+                            </label>
+                            <div class="layui-input-block" style="margin-left: 64px;">
+                                <input type="text" name="item_contact" lay-verify="title" autocomplete="off" placeholder="Enter the contact information" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width: 64px;">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_email.png">
+                            </label>
+                            <div class="layui-input-block" style="margin-left: 64px;">
+                                <input type="text" name="item_mail" lay-verify="title" autocomplete="off" placeholder="Enter the email" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width: 64px;">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_company.png">
+                            </label>
+                            <div class="layui-input-block" style="margin-left: 64px;">
+                                <input type="text" name="item_company" lay-verify="title" autocomplete="off" placeholder="Enter the company" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text" style="height: 100px;">
+                            <label class="layui-form-label" style="z-index: 2;background: none;border: none;position: absolute;left: 0;">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                            </label>
+                            <div class="layui-input-block" style="position: relative;left: -46px;">
+                                <textarea name="item_type" placeholder="Enter the project’s type" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text" style="height: 100px;">
+                            <label class="layui-form-label" style="z-index: 2;background: none;border: none;position: absolute;left: 0;">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png">
+                            </label>
+                            <div class="layui-input-block" style="position: relative;left: -46px;">
+                                <textarea name="item_content" placeholder="Enter the company information" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width: 64px;">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_money.png">
+                            </label>
+                            <div class="layui-input-block" style="margin-left: 64px;">
+                                <input type="text" name="item_budget" lay-verify="title" autocomplete="off" placeholder="Enter the project budget" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width: 64px;">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_time.png">
+                            </label>
+                            <div class="layui-input-block" style="margin-left: 64px;">
+                                <input type="text" name="item_time" lay-verify="title" autocomplete="off" placeholder="Enter the project time" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width: 64px;">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_need.png">
+                            </label>
+                            <div class="layui-input-block" style="margin-left: 64px;">
+                                <input type="text" name="item_needspecialty" lay-verify="title" autocomplete="off" placeholder="Enter professional needs" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-preservation-primary" class="btn btn-primary" data-dismiss="modal" style="color: #fff; background-color: #0069d9; border-color: #0062cc;">Preservation</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- 编辑 -->
-    <div id="box2" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                                        <span class="modal-title">
-                                                Editing project
-                                        </span>
-                    <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
-                                            <span aria-hidden="true">&times;
-                    </a>
-                </div>
-                <div class="modal-body">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 64px;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_porjetname.png">
-                        </label>
-                        <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="item_name" lay-verify="title" autocomplete="off" placeholder="Enter the project name" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 64px;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_realname.png" width="24px" height="auto">
-                        </label>
-                        <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="item_uname" lay-verify="title" autocomplete="off" placeholder="Enter the sponsor's real name" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 64px;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_contact.png">
-                        </label>
-                        <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="item_contact" lay-verify="title" autocomplete="off" placeholder="Enter the contact information" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 64px;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_email.png">
-                        </label>
-                        <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="item_mail" lay-verify="title" autocomplete="off" placeholder="Enter the email" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 64px;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_company.png">
-                        </label>
-                        <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="item_company" lay-verify="title" autocomplete="off" placeholder="Enter the company" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item layui-form-text" style="height: 100px;">
-                        <label class="layui-form-label" style="z-index: 2;background: none;border: none;position: absolute;left: 0;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
-                        </label>
-                        <div class="layui-input-block" style="position: relative;left: -46px;">
-                            <textarea name="item_type" placeholder="Enter the project’s type" class="layui-textarea"></textarea>
-                        </div>
-                    </div>
-                    <div class="layui-form-item layui-form-text" style="height: 100px;">
-                        <label class="layui-form-label" style="z-index: 2;background: none;border: none;position: absolute;left: 0;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png">
-                        </label>
-                        <div class="layui-input-block" style="position: relative;left: -46px;">
-                            <textarea name="item_content" placeholder="Enter the company information" class="layui-textarea"></textarea>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 64px;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_money.png">
-                        </label>
-                        <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="item_budget" lay-verify="title" autocomplete="off" placeholder="Enter the project budget" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 64px;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_time.png">
-                        </label>
-                        <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="item_time" lay-verify="title" autocomplete="off" placeholder="Enter the project time" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label" style="width: 64px;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_need.png">
-                        </label>
-                        <div class="layui-input-block" style="margin-left: 64px;">
-                            <input type="text" name="item_needspecialty" lay-verify="title" autocomplete="off" placeholder="Enter professional needs" class="layui-input">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-preservation-primary" class="btn btn-primary" data-dismiss="modal" style="color: #fff; background-color: #0069d9; border-color: #0062cc;">Preservation</button>
-                </div>
-            </div>
+        <div class="container" id="NumberOfPagesContainer">
+            {$page}
         </div>
+        <!-- foot start 底部信息 -->
+        <footer class="footer">
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
+        <!-- foot end 底部信息 -->
+
     </div>
-    <div class="container" id="NumberOfPagesContainer">
-        {$page}
-    </div>
-    <!-- foot start 底部信息 -->
-    <footer>
-        <include file = "./World/Index/View/Public/footer.html"/>
-    </footer>
-    <!-- foot end 底部信息 -->
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>

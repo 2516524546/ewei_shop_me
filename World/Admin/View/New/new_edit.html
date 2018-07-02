@@ -52,12 +52,12 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            新闻管理
+            {:L('New_new_list_news_manager')}
             <small><i class="icon-double-angle-right"></i>
                 <eq name="new['news_for']" value="2">
-                    编辑群新闻
+                    {:L('New_new_group_edit')}
                     <else/>
-                    编辑新闻
+                    {:L('New_new_module_edit')}
                 </eq>
             </small>
 
@@ -72,20 +72,20 @@
 
                 <eq name="new['news_for']" value="2">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">群ID</label>
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> {:L('New_new_list_group_id')}</label>
                         <div class="col-sm-9">
                             <input type="text"  onkeyup="value=value.replace(/[^\d]/g,'') " ng-pattern="/[^a-zA-Z]/" name="news_crowdid" value="{$new['news_crowdid']}" placeholder="" style="width:300px;"/></div>
                     </div>
                     <else/>
                 </eq>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">标题</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('New_new_list_title')}</label>
                     <div class="col-sm-9">
                         <input type="text" name="news_title" value="{$new['news_title']}" placeholder="" style="width:300px;"/></div>
                 </div>
                 <input type="hidden" name="news_for" value="<?php echo $new['news_for'];?>"/>
                 <div class="form-group" id="user-profile-3">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">图片</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('New_new_list_picture')}</label>
                     <div class="col-sm-9">
                         <div class="col-xs-12 col-sm-4">
                             <input type="file" id='upload_picture' accept=".png,.gif,.jpeg,.jpg"/>
@@ -120,11 +120,11 @@
                                     $("#img").html('<img style="width:200px;height:200px;" src="./Uploads/' + data.msg + '"/>');
                                     $("input[name='news_img']").val(data.msg)
                                 }else {
-                                    alert(data.msg);
+                                    showMessage(data.msg,2)
                                 }
                             },
                             error: function () {
-                                alert("上传失败！");
+                                showMessage("{:L('newworld_ajax_upload_fail')}",2)
                             }
                         });
                     });
@@ -141,7 +141,7 @@
                     </div>
                 </div>-->
                 <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
-                    <label class="col-sm-3 control-label no-padding-right" for="admin">新闻来源</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="admin">{:L('New_new_list_news_source')}</label>
                     <div class="col-sm-9">
                         <div class="radio1">
                             <label>
@@ -150,7 +150,7 @@
                                     <else/>
                                     <input name="news_type" type="radio" value="0" class='ace' />
                                 </eq>
-                                <span class="lbl">新闻链接</span>
+                                <span class="lbl">{:L('New_new_type_news_link')}</span>
                             </label>
                             <label>
                                 <eq name="new['news_type']" value="1">
@@ -158,7 +158,7 @@
                                     <else/>
                                     <input name="news_type" type="radio" value="1" class='ace' />
                                 </eq>
-                                <span class="lbl">新闻编辑</span>
+                                <span class="lbl">{:L('New_new_type_news_edit')}</span>
                             </label>
                         </div>
                     </div>
@@ -173,13 +173,13 @@
                 <input type="hidden" value="{$new['news_type']}" id="type"/>
                 <input type="hidden" value="{$new['news_id']}" name="news_id"/>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">轮播顺序</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('New_new_list_carousel_sort')}</label>
                     <div class="col-sm-9">
                         <input type="text" name="news_sort" value="{$new['news_sort']}" placeholder="" style="width:300px;"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">创建时间</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('New_new_list_create_time')}</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control date-picker" name="news_createtime" value="{$new['news_createtime']}"
                                placeholder="" style="width: 35%;"  id="id-date-picker-1"  data-date-format="yyyy-mm-dd" />
@@ -187,7 +187,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">结束时间</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('New_new_list_end_time')}</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control date-picker" name="news_endtime" value="{$new['news_endtime']}"
                                placeholder="" style="width: 35%;"  id="id-date-picker-1"  data-date-format="yyyy-mm-dd" />
@@ -222,6 +222,8 @@
 <script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
 <script type="text/javascript">
     $('.date-picker').datepicker({autoclose: true}).next().on(ace.click_event, function () {
         $(this).prev().focus();
@@ -241,13 +243,26 @@
     function showSuccess(data) {
 
         if (data == 1) {
-            alert('修改成功')
+            showMessage("{:L('Crowd_crowd_detail_yes')}",1)
             location.href = "{:U('Admin/New/new_list')}"
         } else {
-            alert(data)
+            showMessage(data,2)
             return false
         }
 
+    }
+
+    function showMessage(msg, status) {
+        layer.msg(msg, {
+                time: 500,
+                icon: status,
+            }, function () {
+                if (status == 1) {
+                    location.reload()
+                }
+
+            }
+        );
     }
     $(function () {
         var options = {

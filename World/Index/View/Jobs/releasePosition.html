@@ -16,263 +16,267 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/releasePosition.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
 
 <body>
-    <!-- logo -->
-    <header class="container">
-        <include file = "./World/Index/View/Public/head.html"/>
-    </header>
-    <hr>
-    <!-- Crumbs nav -->
-    <div class="container crumbs">
-        <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
-        <cite class="Icon"></cite>
-        <a href="{:U('Index/Jobs/jobList')}" class="crumbsa">Job Listings</a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">Post a job</span>
-
-    </div>
-    <!-- Forget the password form -->
-    <form class="layui-form layui-form-pane" action="">
-        <div class="PasswordContainer">
-            <div class="StepContainer">
-                <div class="StepContainerOne">
-                    <div class="InterestTitle">
-                        <div class="InterestImg">
-                            <img src="__PUBLIC__/Web/web/img/common_icon_write.png" alt="">
+    <div class="web">
+        <!-- logo -->
+        <header class="container">
+            <include file = "./World/Index/View/Public/head.html"/>
+        </header>
+        <hr>
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
+            <cite class="Icon"></cite>
+            <a href="{:U('Index/Jobs/jobList')}" class="crumbsa">Job Listings</a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">Post a job</span>
+    
+        </div>
+        <!-- Forget the password form -->
+        <form class="layui-form layui-form-pane section" action="">
+            <div class="PasswordContainer">
+                <div class="StepContainer">
+                    <div class="StepContainerOne">
+                        <div class="InterestTitle">
+                            <div class="InterestImg">
+                                <img src="__PUBLIC__/Web/web/img/common_icon_write.png" alt="">
+                            </div>
+                            <span class="InterestCon">Basic Information</span>
                         </div>
-                        <span class="InterestCon">Basic Information</span>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png">
-                            </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <input type="radio" name="type" value="1" title="Full Time" checked="">
-                            <input type="radio" name="type" value="2" title="Part Time">
-                            <input type="radio" name="type" value="3" title="Practice">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_sy_icon_08.png">
-                            </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <input type="text" name="position" id="position" lay-verify="title" autocomplete="off" placeholder="Enter the position" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_money.png">
-                            </div>
-                        </label>
-                        <div class="layui-inline">
-                            <div class="layui-input-inline">
-                                <input type="text" name="minmoney" id="minmoney" placeholder="￥" autocomplete="off" class="layui-input">
-                            </div>
-                            <div class="layui-form-mid">-</div>
-                            <div class="layui-input-inline">
-                                <input type="text" name="maxmoney" id="maxmoney" placeholder="￥" autocomplete="off" class="layui-input">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="type" value="1" title="Full Time" checked="">
+                                <input type="radio" name="type" value="2" title="Part Time">
+                                <input type="radio" name="type" value="3" title="Practice">
                             </div>
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_sy_icon_07.png" width="24px" height="auto">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_sy_icon_08.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="position" id="position" lay-verify="title" autocomplete="off" placeholder="Enter the position" class="layui-input">
                             </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <input type="text" name="years" id="years" lay-verify="title" autocomplete="off" placeholder="Enter requirements for working seniority" class="layui-input">
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_money.png">
+                                </div>
+                            </label>
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input type="text" name="minmoney" id="minmoney" placeholder="￥" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid">-</div>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="maxmoney" id="maxmoney" placeholder="￥" autocomplete="off" class="layui-input">
+                                </div>
                             </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <input type="text" name="school" id="school" lay-verify="title" autocomplete="off" placeholder="Enter a graduate school" class="layui-input">
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/1.png">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_sy_icon_07.png" width="24px" height="auto">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="years" id="years" lay-verify="title" autocomplete="off" placeholder="Enter requirements for working seniority" class="layui-input">
                             </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <input type="text" name="degree" id="degree" lay-verify="title" autocomplete="off" placeholder="Enter requirements for degree" class="layui-input">
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_major.png">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="school" id="school" lay-verify="title" autocomplete="off" placeholder="Enter a graduate school" class="layui-input">
                             </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <input type="text" name="specialty" id="specialty" lay-verify="title" autocomplete="off" placeholder="Enter the major you require" class="layui-input">
                         </div>
-                    </div>
-                    <!--<p class="h6">Matching circle reordering : </p>
-                    <div class="layui-form-item">
-                        <select name="interest" lay-filter="aihao">
-                            <option value="" selected="">Graduated School</option>
-                            <option value="0">1</option>
-                            <option value="1">2</option>
-                        </select>
-                        <p class="text-center" style="margin: 4px 0;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
-                        </p>
-                    </div>
-                    <div class="layui-form-item">
-                        <select name="interest" lay-filter="aihao">
-                            <option value="" selected="">Years of service</option>
-                            <option value="0">1</option>
-                            <option value="1">2</option>
-                        </select>
-                        <p class="text-center" style="margin: 4px 0;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
-                        </p>
-                    </div>
-                    <div class="layui-form-item">
-                        <select name="interest" lay-filter="aihao">
-                            <option value="" selected="">Bachelor of Science</option>
-                            <option value="0">1</option>
-                            <option value="1">2</option>
-                        </select>
-                        <p class="text-center" style="margin: 4px 0;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
-                        </p>
-                    </div>
-                    <div class="layui-form-item">
-                        <select name="interest" lay-filter="aihao">
-                            <option value="" selected="">Position</option>
-                            <option value="0">1</option>
-                            <option value="1">2</option>
-                        </select>
-                        <p class="text-center" style="margin: 4px 0;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
-                        </p>
-                    </div>
-                    <div class="layui-form-item">
-                        <select name="interest" lay-filter="aihao">
-                            <option value="" selected="">Profession</option>
-                            <option value="0">1</option>
-                            <option value="1">2</option>
-                        </select>
-                        <p class="text-center" style="margin: 4px 0;">
-                            <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
-                        </p>
-                    </div>
-                    <div class="layui-form-item">
-                        <select name="interest" lay-filter="aihao">
-                            <option value="" selected="">position</option>
-                            <option value="0">1</option>
-                            <option value="1">2</option>
-                        </select>
-                    </div>-->
-                    <p class="h6 text-center">Company Information</p>
-                    <div class="layui-form-item layui-form-item">
-                        <label class="layui-form-label">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_company.png">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/1.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="degree" id="degree" lay-verify="title" autocomplete="off" placeholder="Enter requirements for degree" class="layui-input">
                             </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <input type="text" name="company_name" id="company_name" lay-verify="title" autocomplete="off" placeholder="Company name" class="layui-input">
                         </div>
-                    </div>
-                    <div class="layui-form-item layui-form-item">
-                        <label class="layui-form-label">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_choose.png">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_major.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="specialty" id="specialty" lay-verify="title" autocomplete="off" placeholder="Enter the major you require" class="layui-input">
                             </div>
-                        </label>
-                        <div class="layui-input-block" id="layui-input-block">
-                            <select name="company_nature" id="company_nature" lay-verify="required">
-                                <option value="">Select the type of the company</option>
-                                <option value="1">Private</option>
-                                <option value="2">state-owned</option>
+                        </div>
+                        <!--<p class="h6">Matching circle reordering : </p>
+                        <div class="layui-form-item">
+                            <select name="interest" lay-filter="aihao">
+                                <option value="" selected="">Graduated School</option>
+                                <option value="0">1</option>
+                                <option value="1">2</option>
                             </select>
+                            <p class="text-center" style="margin: 4px 0;">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
+                            </p>
                         </div>
-                    </div>
-                    <div class="layui-form-item layui-form-item">
-                        <label class="layui-form-label">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png">
-                            </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <select name="company_type" id="company_type" lay-verify="required">
-                                <option value="">Select the scope of business</option>
-                                <foreach name="companytypelist" item="c" key="k">
-                                <option value="{$c['works_company_type_id']}">{$c['works_company_type_name']}</option>
-                                </foreach>
+                        <div class="layui-form-item">
+                            <select name="interest" lay-filter="aihao">
+                                <option value="" selected="">Years of service</option>
+                                <option value="0">1</option>
+                                <option value="1">2</option>
                             </select>
+                            <p class="text-center" style="margin: 4px 0;">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
+                            </p>
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_groupname.png">
+                        <div class="layui-form-item">
+                            <select name="interest" lay-filter="aihao">
+                                <option value="" selected="">Bachelor of Science</option>
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                            </select>
+                            <p class="text-center" style="margin: 4px 0;">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
+                            </p>
+                        </div>
+                        <div class="layui-form-item">
+                            <select name="interest" lay-filter="aihao">
+                                <option value="" selected="">Position</option>
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                            </select>
+                            <p class="text-center" style="margin: 4px 0;">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
+                            </p>
+                        </div>
+                        <div class="layui-form-item">
+                            <select name="interest" lay-filter="aihao">
+                                <option value="" selected="">Profession</option>
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                            </select>
+                            <p class="text-center" style="margin: 4px 0;">
+                                <img src="__PUBLIC__/Web/web/img/04_jobs/2.png">
+                            </p>
+                        </div>
+                        <div class="layui-form-item">
+                            <select name="interest" lay-filter="aihao">
+                                <option value="" selected="">position</option>
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                            </select>
+                        </div>-->
+                        <p class="h6 text-center">Company Information</p>
+                        <div class="layui-form-item layui-form-item">
+                            <label class="layui-form-label">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_company.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="company_name" id="company_name" lay-verify="title" autocomplete="off" placeholder="Company name" class="layui-input">
                             </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <input type="text" name="company_size" id="company_size" lay-verify="title" autocomplete="off" placeholder="Enter the company size" class="layui-input">
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_email.png">
+                        <div class="layui-form-item layui-form-item">
+                            <label class="layui-form-label">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_choose.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block" id="layui-input-block">
+                                <select name="company_nature" id="company_nature" lay-verify="required">
+                                    <option value="">Select the type of the company</option>
+                                    <option value="1">Private</option>
+                                    <option value="2">state-owned</option>
+                                </select>
                             </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <input type="text" name="company_mail" id="company_mail" lay-verify="title" autocomplete="off" placeholder=" Enter E-Mail" class="layui-input">
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label" style="background: transparent;border: none;">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                        <div class="layui-form-item layui-form-item">
+                            <label class="layui-form-label">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <select name="company_type" id="company_type" lay-verify="required">
+                                    <option value="">Select the scope of business</option>
+                                    <foreach name="companytypelist" item="c" key="k">
+                                    <option value="{$c['works_company_type_id']}">{$c['works_company_type_name']}</option>
+                                    </foreach>
+                                </select>
                             </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <textarea placeholder="Enter the company information" name="company_content" id="company_content" class="layui-textarea"></textarea>
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label" style="background: none;border: none;width: 40%;">
-                            Salary Negotiable
-                        </label>
-                        <div class="layui-input-block">
-                            <input type="radio" name="isnegotiable" value="no" title="no" checked="">
-                            <input type="radio" name="isnegotiable" value="yes" title="yes">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_groupname.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="company_size" id="company_size" lay-verify="title" autocomplete="off" placeholder="Enter the company size" class="layui-input">
+                            </div>
                         </div>
-                    </div>
-                    <div class="FormContainer from-but">
-                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
-                            Submit
-                        </button>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_email.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="company_mail" id="company_mail" lay-verify="title" autocomplete="off" placeholder=" Enter E-Mail" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="background: transparent;border: none;">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <textarea placeholder="Enter the company information" name="company_content" id="company_content" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="background: none;border: none;width: 40%;">
+                                Salary Negotiable
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="isnegotiable" value="no" title="no" checked="">
+                                <input type="radio" name="isnegotiable" value="yes" title="yes">
+                            </div>
+                        </div>
+                        <div class="FormContainer from-but">
+                            <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
+                                Submit
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
-    <!-- foot start 底部信息 -->
-    <footer>
-        <include file = "./World/Index/View/Public/footer.html"/>
-    </footer>
-    <!-- foot end 底部信息 -->
+        </form>
+        <!-- foot start 底部信息 -->
+        <footer class="footer">
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
+        <!-- foot end 底部信息 -->
+
+    </div>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>

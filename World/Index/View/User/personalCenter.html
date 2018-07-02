@@ -283,15 +283,22 @@
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="container1">
+                    <div class="image_box_title">
+                        <span>Please upload the cover</span>
+                        <div class="image_box_close" data-dismiss="modal">x</div>
+                    </div>
                     <div class="imageBox">
                         <!--<div class="tig">请上传图片</div>-->
                         <div class="thumbBox"></div>
-                        <div class="spinner" style="display: none">请上传图片</div>
+                        <!-- <div class="spinner" style="display: none">请上传图片</div> -->
                     </div>
                     <div class="action">
-                        <input type="file" accept="image/jpeg,image/png" id="file" style="width: 75%;">
-                        <input type="button" id="btnZoomIn" value="+">
-                        <input type="button" id="btnZoomOut" value="-">
+                        <div class="file_btn">
+                            Select upload cover
+                            <input type="file" accept="image/jpeg,image/png" id="file" class="input_file">
+                        </div>
+                        <!-- <input type="button" id="btnZoomIn" value="+">
+                        <input type="button" id="btnZoomOut" value="-"> -->
                         <input type="button" id="btnCrop" value="Crop" data-dismiss="modal">
                     </div>
                     <!-- style="display: none;" -->
@@ -672,12 +679,12 @@
                 console.log(Userimg )
                 C_Userimg(Userimg)
             })
-            $('#btnZoomIn').on('click', function(){
-                cropper.zoomIn();
-            })
-            $('#btnZoomOut').on('click', function(){
-                cropper.zoomOut();
-            })
+            // $('#btnZoomIn').on('click', function(){
+            //     cropper.zoomIn();
+            // })
+            // $('#btnZoomOut').on('click', function(){
+            //     cropper.zoomOut();
+            // })
             function C_Userimg(img){
                 // $('.personal_content .personal_title').html(img)
                 $('.personal_content .personal_title').css("background","url("+img+") no-repeat");

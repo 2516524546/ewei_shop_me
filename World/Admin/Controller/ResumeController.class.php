@@ -89,28 +89,34 @@ class ResumeController extends CommonController {
     private function checkData($post)
     {
         if (empty($post['resume_name'])){
-            echo '姓名不能为空';
+            //Resume_resume_username_not_empty
+            echo L('Resume_resume_username_not_empty');
             exit;
         }
         if (empty($post['resume_position'])){
-            echo '职位不能为空';
+            //Resume_resume_position_not_empty
+            echo L('Resume_resume_position_not_empty');
             exit;
         }
         if (empty($post['resume_hightmoney'])){
-            echo '薪资不能为空';
+            //Resume_resume_money_not_empty
+            echo L('Resume_resume_money_not_empty');
             exit;
         }
         if (!is_numeric($post['resume_hightmoney'])){
-            echo '薪资为数字';
+            //Resume_resume_money_must_num
+            echo L('Resume_resume_money_must_num');
             exit;
         }
 
         if (empty($post['resume_workyear'])){
-            echo '工作年限不能为空';
+            //Resume_resume_workyear_not_empty
+            echo L('Resume_resume_workyear_not_empty');
             exit;
         }
         if (!is_numeric($post['resume_workyear'])){
-            echo '工作年限为数字';
+            //Resume_resume_workyear_must_num
+            echo L('Resume_resume_workyear_must_num');
             exit;
         }
 
