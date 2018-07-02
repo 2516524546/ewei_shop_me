@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Donation.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/CreateInterest.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/GroupDetailsRelease.css">
-
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
@@ -20,6 +19,7 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
 
+<!-- <if> -->
 <body>
     <div class="web">
         <!-- logo -->
@@ -29,7 +29,7 @@
         <hr>
         <!-- Crumbs nav -->
         <div class="container crumbs">
-            <a href="{:U('Index/Academic/interest')}" class="crumbsa">Academic</a>
+            <a href="{:U('Index/Academic/academic')}" class="crumbsa">Academic</a>
             <cite class="Icon"></cite>
             <a href="{:U('Index/Academic/academicGroups')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
             <cite class="Icon"></cite>
@@ -49,51 +49,46 @@
                     <div class="shadow_box_details">
                         <div class="details_item">
                             <div class="item_name">user avatar :</div>
-                            <div class="item_img"><img src="__PUBLIC__/Web/web/img/02_interest/user.png" alt=""></div>
+                            <div class="item_img"><img src="__PUBLIC__/Web/web/img/02_interest/user.png" alt="" id="user_icon"></div>
                         </div>
-        
+    
                         <div class="details_item">
                             <div class="item_name">nickname :</div>
-                            <div class="item_con">JJJJ</div>
+                            <div class="item_con" id="user_name">JJJJ</div>
                         </div>
-        
+    
                         <div class="details_item">
                             <div class="item_name">sex :</div>
-                            <div class="item_con">male</div>
+                            <div class="item_con" id="user_sex">male</div>
                         </div>
-        
+    
                         <div class="details_item">
                             <div class="item_name">date of birth :</div>
-                            <div class="item_con">1990-01-01</div>
+                            <div class="item_con" id="user_birth">1990-01-01</div>
                         </div>
-        
-                        <div class="details_item">
-                            <div class="item_name">invitation :</div>
-                            <div class="item_con">1812</div>
-                        </div>
-        
+    
                         <div class="details_item">
                             <div class="item_name">state :</div>
-                            <div class="item_con">America</div>
+                            <div class="item_con" id="user_country">America</div>
                         </div>
-        
+    
                         <div class="details_item">
                             <div class="item_name">city :</div>
-                            <div class="item_con">Washington</div>
+                            <div class="item_con" id="user_city">Washington</div>
                         </div>
-        
+    
                         <div class="details_item">
                             <div class="item_name">e-mail :</div>
-                            <div class="item_con">1812@gmail.com</div>
+                            <div class="item_con" id="user_mail">1812@gmail.com</div>
                         </div>
-        
+    
                         <div class="details_item">
                             <div class="item_name">Signature :</div>
-                            <div class="item_con">The world is so big, I want to see!The world is so big, I want to see!</div>
+                            <div class="item_con" id="user_signature">The world is so big, I want to see!The world is so big, I want to see!</div>
                         </div>
-        
+    
                         <div class="details_button">
-                            <a href="PersonalCenter.html">
+                            <a href="PersonalCenter.html" id="gouser">
                                 homepage
                             </a>
                         </div>
@@ -103,6 +98,7 @@
             <div class="container NumberOfPagesContainer">
                 <div id="NumberOfPages"></div>
             </div>
+
         </div>
         <!-- footer -->
         <footer class="footer">
@@ -131,6 +127,8 @@
             laypage.render({
                 elem: 'NumberOfPages',
                 count: {$listcount},
+                prev:"Previous",
+                next:"Next",
                 layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
                 jump: function(obj) {
                     //console.log(obj)
@@ -142,101 +140,220 @@
         });
     }
 
-     function setmembers(limit1,limit2){
+    function setmembers(limit1,limit2){
 
-$.ajax({
-    type:"post",
-    url:"{:U('Index/Ajax/ajax_members')}",
-    data:{
-        limit1:limit1,
-        limit2:limit2,
-        cid:'{$cid}',
-    },
-    dataType:"json",
-    success: function(data){
-        console.log(data)
-        if (data!=null&&data!="") {
-            if (data.str == 1) {
-                var message = '';
-                var adminmessage = '';
-                var membermessage = '';
+        $.ajax({
+            type:"post",
+            url:"{:U('Index/Ajax/ajax_members')}",
+            data:{
+                limit1:limit1,
+                limit2:limit2,
+                cid:'{$cid}',
+            },
+            dataType:"json",
+            success: function(data){
+                console.log(data)
+                if (data!=null&&data!="") {
+                    if (data.str == 1) {
+                        var message = '';
+                        var adminmessage = '';
+                        var membermessage = '';
 
-                if(data.adminlist != ''){
-                    adminmessage +='<div class="box1"><div class="Membertitle">Administrator</div>'
-                    for (var i = 0; i < data.adminlist.length; i++){
-                        adminmessage += '<div class="MemberContainer"><div class="MemberImgName">'
-                        var imgurl = '__PUBLIC__/Web/web/img/02_interest/user.png';
-                        if (data.adminlist[i].user_icon&&data.adminlist[i].user_icon!=''&&data.adminlist[i].user_icon!=null){
-                            imgurl = './Uploads/'+data.adminlist[i].user_icon;
+                        if(data.adminlist != ''){
+                            adminmessage +='<div class="box1"><div class="Membertitle">Administrator</div>'
+                            for (var i = 0; i < data.adminlist.length; i++){
+                                adminmessage += '<div class="MemberContainer"><div class="MemberImgName">'
+                                var imgurl = '__PUBLIC__/Web/web/img/02_interest/user.png';
+                                if (data.adminlist[i].user_icon&&data.adminlist[i].user_icon!=''&&data.adminlist[i].user_icon!=null){
+                                    imgurl = './Uploads/'+data.adminlist[i].user_icon;
+                                }
+                                adminmessage += '<a href="javascript:void(0)"><div class="ImgName_img"><img src="'+imgurl+'" class="Memberimg"></div>'
+                                adminmessage += '<span>'+data.adminlist[i].user_name+'</span></a>';
+                                adminmessage += '</div><div class="MemberBut">'
+                                if (data.adminlist[i].isfriend==1||data.adminlist[i].crowd_member_uid=={$userid}){
+                                    adminmessage += '<button class="layui-btn layui-btn-normal layui-btn-radius" style="background-color: #bdbdbd" onclick="detailshow('+data.adminlist[i].crowd_member_uid+')">Added</button>'
+                                }else if(data.adminlist[i].crowd_member_uid=={$userid}){
+                                    membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius" style="background-color: #bdbdbd" onclick="detailshow('+data.adminlist[i].crowd_member_uid+')">Is Me</button>'
+                                }else{
+                                    adminmessage += '<button class="layui-btn layui-btn-normal layui-btn-radius" onclick="addfriend('+data.adminlist[i].crowd_member_uid+',this)">Add</button>'
+                                }
+
+                                adminmessage += '</div></div>'
+                            }
+                            adminmessage += '</div>'
                         }
-                        adminmessage += '<a href="javascript:void(0)"><div class="ImgName_img"><img src="'+imgurl+'" class="Memberimg"></div>'
-                        adminmessage += '<span>'+data.adminlist[i].user_name+'</span></a>';
-                        adminmessage += '</div><div class="MemberBut">'
-                        if (data.adminlist[i].isfriend==1){
-                            adminmessage += '<button class="layui-btn layui-btn-normal layui-btn-radius " clicked>Added</button>'
-                        }else{
-                            adminmessage += '<button class="layui-btn layui-btn-normal layui-btn-radius ">Add friend</button>'
-                        }
+                        if(data.memberlist != ''){
+                            membermessage +='<div class="box2"><div class="Membertitle">Member</div>'
+                            for (var i = 0; i < data.memberlist.length; i++){
+                                membermessage += '<div class="MemberContainer"><div class="MemberImgName">'
+                                var imgurl = '__PUBLIC__/Web/web/img/02_interest/user.png';
+                                if (data.memberlist[i].user_icon&&data.memberlist[i].user_icon!=''&&data.memberlist[i].user_icon!=null){
+                                    imgurl = './Uploads/'+data.memberlist[i].user_icon;
+                                }
+                                membermessage += '<a href="javascript:void(0)"><div class="ImgName_img"><img src="'+imgurl+'" class="Memberimg"></div>'
+                                membermessage += '<span>'+data.memberlist[i].user_name+'</span></a>';
+                                membermessage += '</div><div class="MemberBut">'
+                                if (data.memberlist[i].isfriend==1){
+                                    membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius" style="background-color: #bdbdbd" onclick="detailshow('+data.memberlist[i].crowd_member_uid+')">Added</button>'
+                                }else if(data.memberlist[i].crowd_member_uid=={$userid}){
+                                    membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius" style="background-color: #bdbdbd" onclick="detailshow('+data.memberlist[i].crowd_member_uid+')">Is Me</button>'
+                                }else{
+                                    membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius" onclick="addfriend('+data.memberlist[i].crowd_member_uid+',this)">Add</button>'
+                                }
 
-                        adminmessage += '</div></div>'
+                                membermessage += '</div></div>'
+                            }
+                            membermessage += '</div>'
+                        }
+                        message = adminmessage+membermessage;
+
+                        $('#content').html(message);
+
+                    }else{
+                        layer.msg(data.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
                     }
-                    adminmessage += '</div>'
-                }
-                if(data.memberlist != ''){
-                    membermessage +='<div class="box2"><div class="Membertitle">Member</div>'
-                    for (var i = 0; i < data.memberlist.length; i++){
-                        membermessage += '<div class="MemberContainer"><div class="MemberImgName">'
-                        var imgurl = '__PUBLIC__/Web/web/img/02_interest/user.png';
-                        if (data.memberlist[i].user_icon&&data.memberlist[i].user_icon!=''&&data.memberlist[i].user_icon!=null){
-                            imgurl = './Uploads/'+data.memberlist[i].user_icon;
+
+                }else{
+                    layer.msg('请求错误!',{
+                            time:1500,
+                            icon:2,
                         }
-                        membermessage += '<a href="javascript:void(0)"><div class="ImgName_img"><img src="'+imgurl+'" class="Memberimg"></div>'
-                        membermessage += '<span>'+data.memberlist[i].user_name+'</span></a>';
-                        membermessage += '</div><div class="MemberBut">'
-                        if (data.memberlist[i].isfriend==1){
-                            membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius " clicked>Added</button>'
-                        }else{
-                            membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius ">Add friend</button>'
-                        }
-
-                        membermessage += '</div></div>'
-                    }
-                    membermessage += '</div>'
+                    );
                 }
-                message = adminmessage+membermessage;
 
-                $('#content').html(message);
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
 
-            }else{
-                layer.msg(data.msg,{
+                layer.msg('请求失败!',{
                         time:1500,
                         icon:2,
                     }
                 );
             }
 
-        }else{
-            layer.msg('请求错误!',{
-                    time:1500,
-                    icon:2,
-                }
-            );
-        }
+        })
 
-    },
-    error:function(XMLHttpRequest, textStatus, errorThrown){
-
-        layer.msg('请求失败!',{
-                time:1500,
-                icon:2,
-            }
-        );
     }
 
-})
+    function detailshow(uid) {
+        $.ajax({
+            type:"post",
+            url:"{:U('Index/Ajax/ajax_usershow')}",
+            data:{
+                uid:uid,
+            },
+            dataType:"json",
+            success: function(data){
 
-}
+                if (data!=null&&data!="") {
+                    if (data.str == 1) {
 
+                        $("#user_icon").attr("src",'./Uploads/'+data.msg.user_icon);
+
+                        $("#user_name").html(data.msg.user_name);
+
+                        if (data.msg.user_sex == 1){
+                            $("#user_sex").html('male');
+                        }else{
+                            $("#user_sex").html('female');
+                        }
+
+                        $("#user_birth").html(data.msg.user_birth);
+
+                        $("#user_country").html(data.msg.user_country);
+                        $("#user_city").html(data.msg.user_city);
+                        $("#user_mail").html(data.msg.user_mail);
+
+                        $("#user_signature").html(data.msg.user_signature);
+                        $("#gouser").attr("href","{:U('Index/User/personalCenter')}&id="+data.msg.user_id);
+
+                        $(".PasswordContainer_shadow").show()
+
+                    }else{
+                        layer.msg(data.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+
+                }else{
+                    layer.msg('请求错误!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                layer.msg('请求失败!',{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+
+        })
+
+    }
+
+    function addfriend(id,obj) {
+        $.ajax({
+            type:"post",
+            url:"{:U('Index/Ajax/ajax_addfriend')}",
+            data:{
+                id:id,
+            },
+            dataType:"json",
+            success: function(data){
+
+                if (data!=null&&data!="") {
+                    if (data.str == 1) {
+                        layer.msg(data.msg,{
+                                time:1500,
+                                icon:1,
+                            },function () {
+                            $(obj).html('Is Send')
+                            $(obj).css("background-color", "#bdbdbd");
+                            $(obj).removeAttr('onclick');
+                            }
+                        );
+
+                    }else{
+                        layer.msg(data.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+
+                }else{
+                    layer.msg('请求错误!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                layer.msg('请求失败!',{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+
+        })
+
+    }
 
 
 </script>

@@ -119,10 +119,7 @@
                                                 <tr>
                                                     <td>
                                                         <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$question['note_id']}" style="text-decoration: none;">
-                                                            <!--<span class="WithNumber">
-                                                                <span class="WithNumbers">18</span>
-                                                                <img class="WithNumberImg" src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_pic_ups.png">
-                                                            </span>-->
+
                                                             <span class="ImgBox">
                                                                 <img src="<if condition='$question["user_icon"]'>./Uploads/{$question['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
                                                             </span>
@@ -161,10 +158,7 @@
                                                 <tr>
                                                     <td>
                                                         <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$resource['note_id']}" style="text-decoration: none;">
-                                                            <!--<span class="WithNumber">
-                                                                <span class="WithNumbers">18</span>
-                                                                <img class="WithNumberImg" src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_pic_ups.png">
-                                                            </span>-->
+
                                                             <span class="ImgBox">
                                                                 <img src="<if condition='$resource["user_icon"]'>./Uploads/{$resource['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
                                                             </span>
@@ -237,7 +231,7 @@
                     <div class="GroupDetailsContainer">
                         <h4 class="text-center FontColor MoreMembersbox">
                             Community Member
-                            <a href="{:U('Index/Rnterst/moreMembers')}&&cid={$cid}" class="MoreMembersA">
+                            <a href="{:U('Index/Life/moreMembers')}&&cid={$cid}" class="MoreMembersA">
                                 <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_icon_c_more_n.png">
                             </a>
                         </h4>

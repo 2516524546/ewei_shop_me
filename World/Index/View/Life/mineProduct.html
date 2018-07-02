@@ -52,7 +52,7 @@
                                   <li>my collection</li>
                                 </ul>
                                 <div class="layui-tab-content">
-                                  <div class="layui-tab-item layui-show MyRelease">
+                                  <div class="layui-tab-item layui-show MyRelease" id="content">
                                       <div class="item_box">
                                           <div class="item_box_left">
                                               <div class="item_box_product_img">
@@ -382,5 +382,127 @@
         });
     </script>
 
+<script>
+
+    set(1)
+    function set(type) {
+        layui.use(['laypage', 'layer'], function() {
+            var laypage = layui.laypage,
+                layer = layui.layer;
+
+            //完整功能
+            laypage.render({
+                elem: 'NumberOfPages',
+                count: {$comditycount},
+                prev:"Previous",
+                next:"Next",
+                layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+
+                jump: function(obj) {
+                    //console.log(obj)
+                    var order = ''
+                    if (type == 1){
+                        order = 'commodity_updatetime desc'
+                    }else{
+                        order = 'commodity_collect_createtime desc'
+                    }
+
+                    my_market_list(order,obj.curr,obj.limit,type)
+
+                }
+            });
+
+        });
+    }
+
+
+
+    function my_market_list(order,limit1,limit2,type) {
+
+        if (type) {
+
+            $.ajax({
+                type: "post",
+                url: "{:U('Index/Ajax/ajax_my_market_list')}",
+                data: {
+                    order: order,
+                    limit1: limit1,
+                    limit2: limit2,
+                    name: $("#Selectionform").val(),
+
+                },
+                dataType: "json",
+                async: false,
+                success: function (list) {
+                    console.log(list)
+                    if (list != null && list != "") {
+
+                        if (list.str == 1) {
+
+                            var message = '';
+                            for (var i = 0; i < list.msg.length; i++) {
+
+                                message +='<div class="item_box"><div class="item_box_left"><div class="item_box_product_img">'
+                                var imgurl = '__PUBLIC__/Web/web/img/02_interest/user.png'
+                                if (list.msg[i].user_icon) {
+                                    imgurl = './Uploads/' + list.msg[i].commodity_img
+                                }
+                                message +='<img src="'+imgurl+'">'
+                                message +='</div><div class="item_box_product_details"><ul><li><p>Product Name :</p>'
+                                message += '<span>'+list.msg[i].commodity_name+'</span>'
+                                message +='</li><li><p>Price :</p>'
+                                message +='<span>$'+list.msg[i].commodity_price+'</span>'
+                                message +='</li><li><p>Product Description :</p>'
+                                message +='<span>'+list.msg[i].commodity_content+'</span>'
+                                message +='</li><li></li></ul></div></div>'
+                                message +='<div class="item_box_right">'
+                                message +='<a href="javascript:void(0)" data-toggle="modal" data-target="#box3" class="right_icon">'
+                                message +='<img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png">'
+                                message +='</a>'
+                                message +='<a href="javascript:void(0)" data-toggle="modal" data-target="#box2" class="right_icon">'
+                                message +='<img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_close.png">'
+                                message +='</a>'
+                                message +='<a href="javascript:void(0)" data-toggle="modal" data-target="#box1" class="right_icon">'
+                                message +='<img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png">'
+                                message +='</a></div></div>'
+                            }
+
+                            $("#content").html(message)
+
+                        } else {
+                            layer.msg(list.msg, {
+                                    time: 1500,
+                                    icon: 2,
+                                }
+                            );
+
+                        }
+                    } else {
+                        layer.msg('请求错误!', {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    layer.msg('请求失败!', {
+                            time: 1500,
+                            icon: 2,
+                        }
+                    );
+                }
+
+            })
+        }else{
+
+        }
+
+    }
+
+
+</script>
 
 </html>

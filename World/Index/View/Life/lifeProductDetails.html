@@ -138,12 +138,24 @@
         <div class="container">
             <div class="col-md-9">
                 <div class="PostReply_box">
-                    <div class="PostReply_box_title">
-                        <div class="title_pic">
-                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
+                    <div class="PostReply_boxT">
+                        <div class="PostReply_box_title">
+                            <div class="title_pic">
+                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
+                            </div>
+                            <div class="title_content">
+                                    Comment
+                            </div>
                         </div>
-                        <div class="title_content">
-                                Comment
+                        <div class="PostReply_box_titleG">
+                            <div class="titleG_img titleG_Great">
+                                <img src="__PUBLIC__/Web/web/img/05_life/life_secondhandmarket_spxq_icon_collect.png" alt="">
+                            </div>
+                            <div class="titleG_img">
+                                <a href="#">
+                                    <img src="__PUBLIC__/Web/web/img/05_life/life_secondhandmarket_spxq_icon_share.png" alt="">
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="PostReply_box_content" id="commentlist">
@@ -263,4 +275,9 @@
     <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
     <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
+    <script>
+        $(".titleG_Great").on("click",function(){
+            console.log($(this).html(' <img src="__PUBLIC__/Web/web/img/05_life/collected.png" alt="">'))
+        })
+    </script>
 </html>
