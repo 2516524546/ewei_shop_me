@@ -2,104 +2,108 @@
 <html lang="en">
     <head>
         <include file="./World/Index/View/Public/meta.html"/>
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
     </head>
 
-    <div>
-        <!-- logo -->
-        <header class="container">
-            <include file = "./World/Index/View/Public/head.html"/>
-            </header>
-            <hr>
+    <body>
+        <div class="web">
+<!-- logo -->
+<header class="container">
+        <include file = "./World/Index/View/Public/head.html"/>
+        </header>
+        <hr>
 
-        <!-- Crumbs nav -->
-        <div class="container crumbs">
-            <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
-            <cite class="Icon"></cite>
-            <span class="crumbsTitle">Messages</span>
-        </div>
-
-
-
-        <!-- Message content -->
-        <div class="container">
-            <div class="Message_box">
-                <div class="Empty_messages">
-                        Empty messages
-                </div>
-                <div class="Message_details">
-                    <foreach name="messages" item="m">
-                    <if condition="$m['message_type'] == 0">
-                        <div class="Message_details_item">
-                            <a href="{:U('User/MessageDetails',['message_id'=>$m['message_id']])}">
-                                <div class="item_question">
-                                    {$m['message_title']}
-                                </div>
-                                <div class="item_time">
-                                    <div class="item_time_img">
-                                        <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/timer.png" alt="">
-                                    </div>
-                                    <span>{$m['message_sendtime']}</span>
-                                </div>
-                            </a>
-                        </div>
-                    <else />
-
-                        <div class="Message_details_item item_friend">
-                                <div class="details_top">
-                                    <div class="details_top_user">
-                                        <div class="details_top_user_pic">
-                                            <img src="<if condition='$usercontent["user_icon"]'>./Uploads/{$usercontent['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
-                                        </div>
-                                        <div class="details_top_user_name">
-                                            {$m['user_name']}
-                                        </div>
-                                    </div>
-                                    <div class="details_top_btn">
-                                        <if condition="$m['message_isread'] !== '0'">
-                                            <div>
-                                                <if condition="$m['message_isread'] === '1'">
-                                                    Agreed
-                                                    <else/>
-                                                    Refusing
-                                                </if>
-                                            </div>
-                                        <else/>
-                                            <div class="top_btn" onclick="AgreeAddFirend({$m['message_id']},{$m['message_sid']})">
-                                                Agree
-                                            </div>
-                                            <div class="top_btn" onclick="RefuseAddFirend({$m['message_id']})">
-                                                Refuse
-                                            </div>
-                                        </if>
-                                    </div>
-                                </div>
-                                <div class="details_bottom">
-                                    <div class="bottom_hint">
-                                        {$m['message_title']}
-                                    </div>
-                                    <div class="bottom_time">
-                                        <div class="bottom_time_img">
-                                            <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/timer.png" alt="">
-                                        </div>
-                                        <span>{$m['message_sendtime']}</span>
-                                    </div>
-                                </div>
-                            </div>
-                    </if>
-                    </foreach>
-                </div>
-                <div class="container" id="NumberOfPagesContainer">
-                    <!-- <div id="NumberOfPages"></div> -->
-                       {$page}
-            </div>
-
-        </div>
+    <!-- Crumbs nav -->
+    <div class="container crumbs">
+        <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+        <cite class="Icon"></cite>
+        <span class="crumbsTitle">Messages</span>
     </div>
-        <!-- foot start 底部信息 -->
-        <footer>
-            <include file = "./World/Index/View/Public/footer.html"/>
-        </footer>
-            <!-- foot end 底部信息 -->
+
+
+
+    <!-- Message content -->
+    <div class="container section">
+        <div class="Message_box">
+            <div class="Empty_messages">
+                    Empty messages
+            </div>
+            <div class="Message_details">
+                <foreach name="messages" item="m">
+                <if condition="$m['message_type'] == 0">
+                    <div class="Message_details_item">
+                        <a href="{:U('User/MessageDetails',['message_id'=>$m['message_id']])}">
+                            <div class="item_question">
+                                {$m['message_title']}
+                            </div>
+                            <div class="item_time">
+                                <div class="item_time_img">
+                                    <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/timer.png" alt="">
+                                </div>
+                                <span>{$m['message_sendtime']}</span>
+                            </div>
+                        </a>
+                    </div>
+                <else />
+
+                    <div class="Message_details_item item_friend">
+                            <div class="details_top">
+                                <div class="details_top_user">
+                                    <div class="details_top_user_pic">
+                                        <img src="<if condition='$usercontent["user_icon"]'>./Uploads/{$usercontent['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
+                                    </div>
+                                    <div class="details_top_user_name">
+                                        {$m['user_name']}
+                                    </div>
+                                </div>
+                                <div class="details_top_btn">
+                                    <if condition="$m['message_isread'] !== '0'">
+                                        <div>
+                                            <if condition="$m['message_isread'] === '1'">
+                                                Agreed
+                                                <else/>
+                                                Refusing
+                                            </if>
+                                        </div>
+                                    <else/>
+                                        <div class="top_btn" onclick="AgreeAddFirend({$m['message_id']},{$m['message_sid']})">
+                                            Agree
+                                        </div>
+                                        <div class="top_btn" onclick="RefuseAddFirend({$m['message_id']})">
+                                            Refuse
+                                        </div>
+                                    </if>
+                                </div>
+            </div>
+            <div class="details_bottom">
+                <div class="bottom_hint">
+                    {$m['message_title']}
+                </div>
+                <div class="bottom_time">
+                    <div class="bottom_time_img">
+                        <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/timer.png" alt="">
+                    </div>
+                    <span>{$m['message_sendtime']}</span>
+                </div>
+            </div>
+        </div>
+</if>
+</foreach>
+</div>
+    <div class="container" id="NumberOfPagesContainer">
+        <!-- <div id="NumberOfPages"></div> -->
+            {$page}
+    </div>
+
+    </div>
+</div>
+    <!-- foot start 底部信息 -->
+    <footer class="footer">
+        <include file = "./World/Index/View/Public/footer.html"/>
+    </footer>
+        <!-- foot end 底部信息 -->
+        </div>
+        
     </body>
 
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>

@@ -16,42 +16,46 @@
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/feedback.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
     </head>
 
     <body>
-        <!-- logo -->
-        <header class="container">
-            <include file = "./World/Index/View/Public/head.html"/>
-            </header>
-            <hr>
-
-         <!-- Crumbs nav -->
-    <div class="container crumbs">
-            <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
-            <cite class="Icon"></cite>
-            <span class="crumbsTitle">Feedback</span>
-        </div>
-
-
-        <!-- feedback content -->
-        <div class="container">
-            <div class="feedback_box">
-                <div class="feedback_title">
-                    <p>Please provide some of your valuable suggestions to help us improve our website or solve 
-                            your problems in the use of our website.</p>
-                </div>
-                <form action="#"  autocomplete="off">
-                        <textarea name="" id="content" required lay-verify="required" placeholder="Enter the content" class="layui-textarea"></textarea>
-                        <button class="feedback_btn" style="cursor: pointer;" lay-submit="demo1" lay-filter="demo1">submit</button>
-                </form>
+        <div class="web">
+            <!-- logo -->
+            <header class="container">
+                <include file = "./World/Index/View/Public/head.html"/>
+                </header>
+                <hr>
+    
+             <!-- Crumbs nav -->
+        <div class="container crumbs">
+                <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+                <cite class="Icon"></cite>
+                <span class="crumbsTitle">Feedback</span>
             </div>
+    
+    
+            <!-- feedback content -->
+            <div class="container section">
+                <div class="feedback_box">
+                    <div class="feedback_title">
+                        <p>Please provide some of your valuable suggestions to help us improve our website or solve 
+                                your problems in the use of our website.</p>
+                    </div>
+                    <form action="#"  autocomplete="off">
+                            <textarea name="" id="content" required lay-verify="required" placeholder="Enter the content" class="layui-textarea"></textarea>
+                            <button class="feedback_btn" style="cursor: pointer;" lay-submit="demo1" lay-filter="demo1">submit</button>
+                    </form>
+                </div>
+    
+            </div>
+    
+            <!-- footer -->
+            <footer class="footer">
+                <include file = "./World/Index/View/Public/footer.html"/>
+            </footer>
 
         </div>
-
-        <!-- footer -->
-        <footer>
-            <include file = "./World/Index/View/Public/footer.html"/>
-        </footer>
 
 
     </body>

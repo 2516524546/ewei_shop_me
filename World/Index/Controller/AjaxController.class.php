@@ -656,8 +656,8 @@ public function ajax_donationpay()
             ->setInvoiceNumber($donationone['donation_orderid']);
 
         $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl('http://manyun.newworld.com/index.php?m=Index&c=Ajax&a=paypalexec&success=true')
-            ->setCancelUrl('http://manyun.newworld.com/index.php?m=Index&c=Ajax&a=paypalcancel&success=false&orderid='.$donationone['donation_orderid']);
+        $redirectUrls->setReturnUrl('http://'.$_SERVER['SERVER_NAME'].'/index.php?m=Index&c=Ajax&a=paypalexec&success=true')
+            ->setCancelUrl('http://'.$_SERVER['SERVER_NAME'].'/index.php?m=Index&c=Ajax&a=paypalcancel&success=false&orderid='.$donationone['donation_orderid']);
 
         $payment = new Payment();
         $payment->setIntent('sale')
@@ -689,8 +689,6 @@ public function ajax_donationpay()
             $donationmodel = new DonationModel();
             $usermodel = new UserModel();
             $uwhere['user_id'] = $this->userid;
-
-
             $donationmodel->startTrans();
 
             try {
@@ -2391,7 +2389,7 @@ public function ajax_donationpay()
 
                     $info = $upload->upload($_FILES);
 
-                    if (!$info || count($_FILES) != count($info)) {
+                    if (!$info || count($_FILES['img']['name']) != count($info)) {
                         // 上传错误提示错误信息
                         die(json_encode(array('str' => 0, 'msg' => $upload->getError())));
                     } else {
@@ -2502,6 +2500,140 @@ public function ajax_donationpay()
                     }catch (Exception $e){
                         $notemodel->rollback();
                         die(json_encode(array('str' => 2, 'msg' => '发布失败')));
+                    }
+
+
+                }
+            }
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
+    //修改post
+    public function ajax_updatapost(){
+
+
+        if (IS_POST){
+
+
+            if (!isset($_POST['name']) || $this->post('name') == ''){
+
+                die(json_encode(array('str' => 3, 'msg' => '请输入标题')));
+            } else if(!isset($_POST['content']) || $this->post('content') == ''){
+
+                die(json_encode(array('str' => 4, 'msg' => '请输入内容')));
+            } else {
+
+                if ($_FILES) {
+
+                    $upload = new \Think\Upload();// 实例化上传类
+                    $type = explode('/', $_FILES['img']['type'][0]);
+                    if ($type[0] == 'video') {
+                        $upload->maxSize = 204800000;// 设置附件上传大小
+                    } else {
+                        $upload->maxSize = 3072000;// 设置附件上传大小
+                    }
+
+                    $upload->exts = array('jpg', 'gif', 'png', 'jpeg', 'mp4', 'avi');// 设置附件上传类型
+                    $upload->rootPath = './Uploads/'; // 设置附件上传根目录
+
+                    $info = $upload->upload($_FILES);
+
+                    if (!$info || count($_FILES['img']['name']) != count($info)) {
+                        // 上传错误提示错误信息
+                        die(json_encode(array('str' => 0, 'msg' => $upload->getError())));
+                    } else {
+
+                        $notemodel = new NoteModel();
+                        $notevimodel = new NoteVIModel();
+
+                        $notemodel->startTrans();
+                        try{
+                            $notedata = array(
+                                'note_name' => $this->post('name'),
+                                'note_content' => $this->post('content'),
+                            );
+                            if ($this->post('posttype')==2){
+                                $notedata['note_reward'] = $this->post('reward');
+                            }
+                            if ($this->post('posttype')==3){
+                                $notedata['note_reward'] = $this->post('reward');
+                                if (isset($_POST['resourcefile'])&& $this->post('resourcefile')!='') {
+                                    $notedata['note_url'] = $this->post('resourcefile');
+                                }
+                            }
+
+                            $noteid = $notemodel->updataone('note_id = '.$this->post('nid'),$notedata);
+
+
+                                if ($type[0] != 'video') {
+                                    $notevimodel->where('note_vi_nid = '.$this->post('nid').' and note_vi_type = 2')->delete();
+                                    if (isset($_POST['delid'])&& $this->post('delid')!='') {
+                                        $notevimodel->where('note_vi_id in (' . $this->post('delid') . ')')->delete();
+                                    }
+                                }else{
+                                    $notevimodel->where('note_vi_nid = '.$this->post('nid'))->delete();
+                                }
+
+
+                                foreach ($info as $i){
+                                    $url = $i['savepath'].$i['savename'];
+
+                                    $vidata = array(
+                                        'note_vi_nid' => $this->post('nid'),
+                                        'note_vi_url' =>$url,
+                                    );
+                                    $vitype = explode('/', $i['type']);
+                                    if ($vitype[0]== 'video'){
+                                        $vidata['note_vi_type']=2;
+                                    }else{
+                                        $vidata['note_vi_type']=1;
+                                    }
+
+                                    $notevimodel->add($vidata);
+
+                                }
+
+                                $notemodel->commit();
+                                die(json_encode(array('str' => 1, 'msg' => '修改成功')));
+                        }catch (Exception $e){
+                            $notemodel->rollback();
+                            die(json_encode(array('str' => 2, 'msg' => '修改失败')));
+                        }
+
+                    }
+                }else{
+                    $notemodel = new NoteModel();
+                    $notevimodel = new NoteVIModel();
+                    $notemodel->startTrans();
+                    try{
+                        $notedata = array(
+                            'note_name' => $this->post('name'),
+                            'note_content' => $this->post('content'),
+                        );
+                        if ($this->post('posttype')==2){
+                            $notedata['note_reward'] = $this->post('reward');
+                        }
+                        if ($this->post('posttype')==3){
+                            $notedata['note_reward'] = $this->post('reward');
+                            if (isset($_POST['resourcefile'])&& $this->post('resourcefile')!='') {
+                                $notedata['note_url'] = $this->post('resourcefile');
+                            }
+                        }
+                        if (isset($_POST['delid'])&& $this->post('delid')!='') {
+                            $notevimodel->where('note_vi_id in (' . $this->post('delid') . ')')->delete();
+                        }
+
+                        $noteid = $notemodel->updataone('note_id = '.$this->post('nid'),$notedata);
+
+
+                        $notemodel->commit();
+                        die(json_encode(array('str' => 1, 'msg' => '修改成功')));
+
+                    }catch (Exception $e){
+                        $notemodel->rollback();
+                        die(json_encode(array('str' => 2, 'msg' => '修改失败')));
                     }
 
 

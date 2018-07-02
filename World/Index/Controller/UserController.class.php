@@ -4,6 +4,7 @@ use Index\Model\ConcernsModel;
 use Index\Model\FirendsModel;
 use Index\Model\FriendsModel;
 use Index\Model\NoteModel;
+use Index\Model\NoteVIModel;
 use Index\Model\ResumeModel;
 use Index\Model\UserCountryModel;
 use Index\Model\UserModel;
@@ -130,9 +131,6 @@ class UserController extends CommonController {
         }
 
         $this->assign(array(
-            'userid' => $this->userid,
-            'usercontent' =>$this->usercontent,
-            'havemessage' => $this->havemessage,
             'goindex' => $goindex,
             'resumeone' => $resumeone,
         ));
@@ -140,7 +138,6 @@ class UserController extends CommonController {
     }
 
     public function myPosts(){
-
 
         $notemodel = new NoteModel();
 
@@ -163,13 +160,29 @@ class UserController extends CommonController {
         $this->display();
     }
 
-    public function myMessage(){
+    public function editPost(){
 
+        if (!isset($_GET['nid'])||$_GET['nid']==''){
+
+            Header("Location:".U('Index/User/myPosts'));
+            exit();
+        }
+
+        $notemodel = new NoteModel();
+        $noteone = $notemodel->findone('note_id = '.$_GET['nid']);
+        $notevimodel = new NoteVIModel();
+        $notevilist = $notevimodel->findlist('note_vi_nid = '.$_GET['nid'],'note_vi_sort desc');
         $this->assign(array(
-            'userid' => $this->userid,
-            'usercontent' =>$this->usercontent,
-            'havemessage' => $this->havemessage,
+            'nid' => $_GET['nid'],
+            'noteone' => $noteone,
+            'notevilist' => $notevilist,
         ));
+        $this->display();
+
+    }
+
+
+    public function myMessage(){
 
 
         $groups = D('ConcernsGroup')->where('concerns_group_uid='.$this->userid )->select();
@@ -268,12 +281,6 @@ class UserController extends CommonController {
             $this->assign('page',$show);
         }
 
-        $this->assign(array(
-            'userid' => $this->userid,
-            'usercontent' =>$this->usercontent,
-            'havemessage' => $this->havemessage,
-
-        ));
         $this->assign('title','My Group');
         $css = addCss('MyGroup');
         $this->assign('CSS',$css);
@@ -282,23 +289,12 @@ class UserController extends CommonController {
 
     public function feedback(){
 
-        $this->assign(array(
-            'userid' => $this->userid,
-            'usercontent' =>$this->usercontent,
-            'havemessage' => $this->havemessage,
 
-        ));
         $this->display();
     }
 
     public function virtualCurrencyRecharge(){
 
-        $this->assign(array(
-            'userid' => $this->userid,
-            'usercontent' =>$this->usercontent,
-            'havemessage' => $this->havemessage,
-
-        ));
         $css = addCss('VCR');
         $this->assign('title','Virtual Currency Recharge');
         $this->assign('CSS',$css);
@@ -310,12 +306,6 @@ class UserController extends CommonController {
      * @return mixed
      */
     public function FollowList(){
-        $this->assign(array(
-            'userid' => $this->userid,
-            'usercontent' =>$this->usercontent,
-            'havemessage' => $this->havemessage,
-
-        ));
         $css = addCss('FollowList');
         $this->assign('title','Follow List');
         $this->assign('CSS',$css);
@@ -343,7 +333,7 @@ class UserController extends CommonController {
          $myResumes = D('Resume')->alias('r')->field('r.*,u.user_name,u.user_icon,u.user_signature')->join('u_user u ON u.user_id = r.resume_uid','LEFT')->where('resume_uid='.$this->userid)->limit($Page->firstRow.','.$Page->listRows)->select();
          $this->assign('myResumes',$myResumes);
          $this->assign('page',$show);
-        $this->display();
+         $this->display();
     }
 
      //我的简历
@@ -374,12 +364,7 @@ class UserController extends CommonController {
      * @return mixed
      */
     public function DeliveryRecord(){
-        $this->assign(array(
-            'userid' => $this->userid,
-            'usercontent' =>$this->usercontent,
-            'havemessage' => $this->havemessage,
 
-        ));
         $css = addCss('DeliveryRecord');
         $this->assign('title','Resume Details');
         $this->assign('CSS',$css);
@@ -391,12 +376,7 @@ class UserController extends CommonController {
      * @return mixed
      */
     public function ResumeTemplateList(){
-        $this->assign(array(
-            'userid' => $this->userid,
-            'usercontent' =>$this->usercontent,
-            'havemessage' => $this->havemessage,
 
-        ));
         $css = addCss('ResumeTemplateList');
         $this->assign('title','Resume Template List');
         $this->assign('CSS',$css);

@@ -15,68 +15,72 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/HelpCenter.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
 
 <body>
-    <!-- logo -->
-    <header class="container">
-        <include file = "./World/Index/View/Public/head.html"/>
-    </header>
-    <hr>
-    <!-- Crumbs nav -->
-    <div class="container crumbs">
-        <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">Help</span>
-    </div>
-    
-    <!-- Hlep content -->
-    <div class="container">
-        <div class="HlepContent_box">
-            <div class="layui-tab">
-                <ul class="layui-tab-title">
-                    <li class="layui-this">what is NewWorld?</li>
-                    <li>What do I do to NewWorld?</li>
-                </ul>
-                
-                <div class="layui-tab-content">
-                    <div class="layui-tab-item layui-show">
-                        <div class="talk">
-                            <span class="talk_name">Q :</span>
-                            <span class="talk_content"> College will be the most important years in your life?</span>
-                        </div>
-                        <div class="talk">
-                                <span class="talk_name">A :</span>
-                                <span class="talk_content"> College will be the most important years in your life College will be the most 
-                                        important years College will be the most important years College will be the most
-                                        important years College will be the most important years</span>
-                            </div>
-                    </div>
-                    <div class="layui-tab-item">
-                        <div class="talk">
-                            <span class="talk_name">Q :</span>
-                            <span class="talk_content"> College will be the most important years in your life?</span>
-                        </div>
-                        <div class="talk">
-                                <span class="talk_name">A :</span>
-                                <span class="talk_content"> College will be the most important years in your life College will be the most 
-                                        important years College will be the most important years College will be the most
-                                        important years College will be the most important years</span>
+    <div class="web">
+        <!-- logo -->
+        <header class="container">
+            <include file = "./World/Index/View/Public/head.html"/>
+        </header>
+        <hr>
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">Help</span>
+        </div>
+        
+        <!-- Hlep content -->
+        <div class="container section">
+            <div class="HlepContent_box">
+                <div class="layui-tab">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this">what is NewWorld?</li>
+                        <li>What do I do to NewWorld?</li>
+                    </ul>
+                    
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show">
+                            <div class="talk">
+                                <span class="talk_name">Q :</span>
+                                <span class="talk_content"> College will be the most important years in your life?</span>
                             </div>
                             <div class="talk">
-                                    <span class="talk_name">Q :</span>
-                                    <span class="talk_content"> College will be the most important years in your life?</span>
+                                    <span class="talk_name">A :</span>
+                                    <span class="talk_content"> College will be the most important years in your life College will be the most 
+                                            important years College will be the most important years College will be the most
+                                            important years College will be the most important years</span>
                                 </div>
                         </div>
+                        <div class="layui-tab-item">
+                            <div class="talk">
+                                <span class="talk_name">Q :</span>
+                                <span class="talk_content"> College will be the most important years in your life?</span>
+                            </div>
+                            <div class="talk">
+                                    <span class="talk_name">A :</span>
+                                    <span class="talk_content"> College will be the most important years in your life College will be the most 
+                                            important years College will be the most important years College will be the most
+                                            important years College will be the most important years</span>
+                                </div>
+                                <div class="talk">
+                                        <span class="talk_name">Q :</span>
+                                        <span class="talk_content"> College will be the most important years in your life?</span>
+                                    </div>
+                            </div>
+                    </div>
                 </div>
             </div>
         </div>
+        
+        <!-- footer -->
+        <footer class="footer">
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
+
     </div>
-    
-    <!-- footer -->
-    <footer>
-        <include file = "./World/Index/View/Public/footer.html"/>
-    </footer>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
