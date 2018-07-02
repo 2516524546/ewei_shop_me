@@ -25,7 +25,7 @@ class Page{
 
 	// 分页显示定制
     private $config  = array(
-        'header' => '<span class="rows_Total">Total Page :%TOTAL_ROW% </span>',
+        'header' => '<span class="rows" style="margin-right:5px;">Total Page :%TOTAL_ROW% </span>',
         'prev'   => 'Previous',
         'next'   => 'Next',
         'first'  => '1...',
@@ -124,13 +124,13 @@ class Page{
             if($page > 0 && $page != $this->nowPage){
 
                 if($page <= $this->totalPages){
-                    $link_page .= '<a class="num" href="' . $this->url($page) . '">' . $page . '</a>';
+                    $link_page .= '<a class="num" style="font-size:16px;margin-right:5px;" href="' . $this->url($page) . '">' . $page . '</a>';
                 }else{
                     break;
                 }
             }else{
                 if($page > 0 && $this->totalPages != 1){
-                    $link_page .= '<span class="current">' . $page . '</span>';
+                    $link_page .= '<span class="current" style="font-size:16px;margin-right:5px;">' . $page . '</span>';
                 }
             }
         }

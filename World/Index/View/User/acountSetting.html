@@ -14,161 +14,165 @@
             <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
             <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
             <link rel="stylesheet" href="__PUBLIC__/Web/web/css/AcountSetting.css">
+            <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
         </head>
         <body>
-        <!-- logo -->
-        <header class="container">
-            <include file = "./World/Index/View/Public/head.html"/>
-            </header>
-            <hr>
-
-        <!-- Crumbs nav -->
-        <div class="container crumbs">
-            <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
-            <cite class="Icon"></cite>
-            <span class="crumbsTitle">Profile</span>
-        </div>
-
-        <!-- AcountSetting content -->
-            <div class="container">
-                    <div class="Resumetails_content">
-                            <div class="Resume_details">
-                                <form action="" class="layui-form layui-form-pane">
-                                    <div class="form_box">
-                                        <div class="form_title">
-                                            <h3>Profile</h3>
-                                        </div>
-                                        <div class="form_details">
-                
-                                            <div class="form_details_item">
-                                                <div class="form_details_left form_details_item_border">
-                                                    <div class="form_details_item_img">
-                                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png" alt="">
-                                                    </div>
+            <div class="web">
+                <!-- logo -->
+                <header class="container">
+                    <include file = "./World/Index/View/Public/head.html"/>
+                    </header>
+                    <hr>
+        
+                <!-- Crumbs nav -->
+                <div class="container crumbs">
+                    <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+                    <cite class="Icon"></cite>
+                    <span class="crumbsTitle">Profile</span>
+                </div>
+        
+                <!-- AcountSetting content -->
+                    <div class="container section">
+                            <div class="Resumetails_content">
+                                    <div class="Resume_details">
+                                        <form action="" class="layui-form layui-form-pane">
+                                            <div class="form_box">
+                                                <div class="form_title">
+                                                    <h3>Profile</h3>
                                                 </div>
-                                                <div class="layui-input-block">
-                                                    <div class="img" >
-                                                        <img src="<if condition='$usercontent["user_icon"]'>./Uploads/{$usercontent['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" id="pic">
-                                                    </div>
-                                                    <input id="upload" class="but" name="file" accept="image/*" type="file">
-                                                </div>
-                                            </div>
-                
-                                            <div class="form_details_item">
-                                                    <div class="form_details_left form_details_item_border">
+                                                <div class="form_details">
+                        
+                                                    <div class="form_details_item">
+                                                        <div class="form_details_left form_details_item_border">
                                                             <div class="form_details_item_img">
-                                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_05.png" alt="">
+                                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png" alt="">
                                                             </div>
                                                         </div>
-                                                    <div class="layui-input-block">
-                                                        <input type="text" name="title" id="name" required  lay-verify="required" placeholder="Enter a nickname" autocomplete="off" <if condition='$usercontent["user_name"]'>value="{$usercontent['user_name']}"</if> class="layui-input">
+                                                        <div class="layui-input-block">
+                                                            <div class="img" >
+                                                                <img src="<if condition='$usercontent["user_icon"]'>./Uploads/{$usercontent['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" id="pic">
+                                                            </div>
+                                                            <input id="upload" class="but" name="file" accept="image/*" type="file">
+                                                        </div>
                                                     </div>
-                                            </div>
-                
-                                             <div class="form_details_item">
-                                                <div class="form_details_left form_details_item_border">
-                                                    <div class="form_details_item_img">
-                                                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_06.png" alt="">
+                        
+                                                    <div class="form_details_item">
+                                                            <div class="form_details_left form_details_item_border">
+                                                                    <div class="form_details_item_img">
+                                                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_05.png" alt="">
+                                                                    </div>
+                                                                </div>
+                                                            <div class="layui-input-block">
+                                                                <input type="text" name="title" id="name" required  lay-verify="required" placeholder="Enter a nickname" autocomplete="off" <if condition='$usercontent["user_name"]'>value="{$usercontent['user_name']}"</if> class="layui-input">
+                                                            </div>
+                                                    </div>
+                        
+                                                     <div class="form_details_item">
+                                                        <div class="form_details_left form_details_item_border">
+                                                            <div class="form_details_item_img">
+                                                                <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_06.png" alt="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="layui-input-block">
+                                                            <input type="radio" name="Sex" value="1" title="Male" <if condition="!$usercontent['user_sex']||$usercontent['user_sex']==1">checked</if>>
+                                                            <input type="radio" name="Sex" value="2" title="Female" <if condition="$usercontent['user_sex']==2">checked</if>>
+                                                        </div>
+                                                    </div>
+        
+                                                    
+                                                    <div class="form_details_item">
+                                                            <div class="form_details_left form_details_item_border">
+                                                                    <div class="form_details_item_img">
+                                                                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_05.png" alt="">
+                                                                    </div>
+                                                                </div>
+                                                            <div class="layui-input-block">
+                                                                <input type="text" name="title" id="birth" required  lay-verify="required" placeholder="Enter the date of birth  xx/xx/xxxx" autocomplete="off" <if condition='$usercontent["user_birth"]'>value="{$usercontent['user_birth']}"</if> class="layui-input Wtime">
+                                                            </div>
+                                                    </div>
+                        
+        
+                                                    <div class="form_details_item">
+                                                        <p class="details_item_tips">Virtual currency :</p>
+                                                        <span>{$usercontent['user_havecoin']}</span>
+                                                    </div>
+        
+                                                    <div class="form_details_item">
+                                                            <p class="details_item_tips"> Post :</p>
+                                                            <span>{$usercontent['user_notes']}</span>
+                                                    </div>
+        
+                                                    <div class="form_details_item">
+                                                        <div class="form_details_left form_details_item_border">
+                                                                <div class="form_details_item_img">
+                                                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_05.png" alt="">
+                                                                </div>
+                                                            </div>
+                                                        <div class="layui-input-block">
+                                                                <span>{$usercontent['user_mail']}</span>
+                                                        </div>
+                                                    </div>
+                        
+                                                    <div class="form_details_item">
+                                                            <div class="form_details_left form_details_item_border">
+                                                                    <div class="form_details_item_img">
+                                                                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_09.png" alt="">
+                                                                    </div>
+                                                                </div>
+                                                            <div class="layui-input-block">
+                                                                    <select name="country" id="country" lay-verify="required">
+                                                                        <option value="">Choose a country</option>
+                                                                        <foreach name="countrylist" item="c" key="k">
+                                                                            <option value="{$c['user_country_name']}" <if condition='$c["user_country_name"] == $usercontent["user_country"]'>selected</if>>{$c['user_country_name']}</option>
+                                                                        </foreach>
+                                                                          </select>
+                                                            </div>
+                                                    </div>
+                        
+                                                    <div class="form_details_item">
+                                                            <div class="form_details_left form_details_item_border">
+                                                                    <div class="form_details_item_img">
+                                                                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_10.png" alt="">
+                                                                    </div>
+                                                                </div>
+                                                            <div class="layui-input-block">
+                                                                <input type="text" name="title" id="city" required  lay-verify="required" placeholder="Enter the city" autocomplete="off" <if condition='$usercontent["user_city"]'>value="{$usercontent['user_city']}"</if> class="layui-input">
+                                                            </div>
+                                                    </div>
+                        
+                                                    <div class="form_details_item">
+                                                            <div class="form_details_left form_details_item_border">
+                                                                    <div class="form_details_item_img">
+                                                                        <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/degree.png" alt="">
+                                                                    </div>
+                                                                </div>
+                                                            <div class="layui-input-block">
+                                                                    <textarea name="" id="signature" required lay-verify="required" placeholder="Enter the signature" class="layui-textarea"><if condition='$usercontent["user_signature"]'>{$usercontent['user_signature']}</if></textarea>
+                                                            </div>
+                                                    </div>
+                        
+                                                    <div class="form_details_item">
+                                                        <p class="details_item_tips">Registration time :</p>
+                                                        <span><if condition='$usercontent["user_logintime"]'>{$usercontent['user_logintime']}<else />00-00-0000  00:00:00</if></span>
+                                                    </div>
+                                                   
+                        
+                                                    <div class="form_details_item item_btn" style="cursor: pointer;" lay-submit="demo1" lay-filter="demo1">
+                                                            <button>Submit</button>
                                                     </div>
                                                 </div>
-                                                <div class="layui-input-block">
-                                                    <input type="radio" name="Sex" value="1" title="Male" <if condition="!$usercontent['user_sex']||$usercontent['user_sex']==1">checked</if>>
-                                                    <input type="radio" name="Sex" value="2" title="Female" <if condition="$usercontent['user_sex']==2">checked</if>>
-                                                </div>
                                             </div>
-
-                                            
-                                            <div class="form_details_item">
-                                                    <div class="form_details_left form_details_item_border">
-                                                            <div class="form_details_item_img">
-                                                                <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_05.png" alt="">
-                                                            </div>
-                                                        </div>
-                                                    <div class="layui-input-block">
-                                                        <input type="text" name="title" id="birth" required  lay-verify="required" placeholder="Enter the date of birth  xx/xx/xxxx" autocomplete="off" <if condition='$usercontent["user_birth"]'>value="{$usercontent['user_birth']}"</if> class="layui-input Wtime">
-                                                    </div>
-                                            </div>
-                
-
-                                            <div class="form_details_item">
-                                                <p class="details_item_tips">Virtual currency :</p>
-                                                <span>{$usercontent['user_havecoin']}</span>
-                                            </div>
-
-                                            <div class="form_details_item">
-                                                    <p class="details_item_tips"> Post :</p>
-                                                    <span>{$usercontent['user_notes']}</span>
-                                            </div>
-
-                                            <div class="form_details_item">
-                                                <div class="form_details_left form_details_item_border">
-                                                        <div class="form_details_item_img">
-                                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_05.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                <div class="layui-input-block">
-                                                        <span>{$usercontent['user_mail']}</span>
-                                                </div>
-                                            </div>
-                
-                                            <div class="form_details_item">
-                                                    <div class="form_details_left form_details_item_border">
-                                                            <div class="form_details_item_img">
-                                                                <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_09.png" alt="">
-                                                            </div>
-                                                        </div>
-                                                    <div class="layui-input-block">
-                                                            <select name="country" id="country" lay-verify="required">
-                                                                <option value="">Choose a country</option>
-                                                                <foreach name="countrylist" item="c" key="k">
-                                                                    <option value="{$c['user_country_name']}" <if condition='$c["user_country_name"] == $usercontent["user_country"]'>selected</if>>{$c['user_country_name']}</option>
-                                                                </foreach>
-                                                                  </select>
-                                                    </div>
-                                            </div>
-                
-                                            <div class="form_details_item">
-                                                    <div class="form_details_left form_details_item_border">
-                                                            <div class="form_details_item_img">
-                                                                <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_10.png" alt="">
-                                                            </div>
-                                                        </div>
-                                                    <div class="layui-input-block">
-                                                        <input type="text" name="title" id="city" required  lay-verify="required" placeholder="Enter the city" autocomplete="off" <if condition='$usercontent["user_city"]'>value="{$usercontent['user_city']}"</if> class="layui-input">
-                                                    </div>
-                                            </div>
-                
-                                            <div class="form_details_item">
-                                                    <div class="form_details_left form_details_item_border">
-                                                            <div class="form_details_item_img">
-                                                                <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/degree.png" alt="">
-                                                            </div>
-                                                        </div>
-                                                    <div class="layui-input-block">
-                                                            <textarea name="" id="signature" required lay-verify="required" placeholder="Enter the signature" class="layui-textarea"><if condition='$usercontent["user_signature"]'>{$usercontent['user_signature']}</if></textarea>
-                                                    </div>
-                                            </div>
-                
-                                            <div class="form_details_item">
-                                                <p class="details_item_tips">Registration time :</p>
-                                                <span><if condition='$usercontent["user_logintime"]'>{$usercontent['user_logintime']}<else />00-00-0000  00:00:00</if></span>
-                                            </div>
-                                           
-                
-                                            <div class="form_details_item item_btn" style="cursor: pointer;" lay-submit="demo1" lay-filter="demo1">
-                                                    <button>Submit</button>
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
-                                </form>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+        
+                <!-- footer -->
+                <footer class="footer">
+                    <include file = "./World/Index/View/Public/footer.html"/>
+                </footer>
 
-        <!-- footer -->
-        <footer>
-            <include file = "./World/Index/View/Public/footer.html"/>
-        </footer>
+            </div>
 
 
 

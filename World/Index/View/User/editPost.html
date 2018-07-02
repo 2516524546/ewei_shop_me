@@ -19,151 +19,157 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/EditResource.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/changeimg.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/loading.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
 
 <body>
-    <!-- logo -->
-    <header class="container">
-        <include file = "./World/Index/View/Public/head.html"/>
-        </header>
-        <hr>
-   <!-- Crumbs nav -->
-   <div class="container crumbs">
-        <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
-        <cite class="Icon"></cite>
-        <a href="{:U('Index/User/myPosts')}" class="crumbsa">My posts</a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">Edit</span>
-    </div>
-    <!-- Forget the password form -->
-    <form class="layui-form layui-form-pane" id="formdata">
-        <div class="PasswordContainer">
-            <div class="StepContainer">
-                <div class="StepContainerOne">
-                    <div class="InterestTitle">
-                        <h3 class="text-center Interesth3">
-                            basic information
-                        </h3>
-                    </div>
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <span class="TitlesIcon"></span>
-                        </label>
-                        <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" value="{$noteone['note_name']}" id="name" placeholder="Enter the title" class="layui-input">
+    <div class="web">
+        <!-- logo -->
+        <header class="container">
+            <include file = "./World/Index/View/Public/head.html"/>
+            </header>
+            <hr>
+       <!-- Crumbs nav -->
+       <div class="container crumbs">
+            <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+            <cite class="Icon"></cite>
+            <a href="{:U('Index/User/myPosts')}" class="crumbsa">My posts</a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">Edit</span>
+        </div>
+        <!-- Forget the password form -->
+        <form class="layui-form layui-form-pane section" id="formdata">
+            <div class="PasswordContainer">
+                <div class="StepContainer">
+                    <div class="StepContainerOne">
+                        <div class="InterestTitle">
+                            <h3 class="text-center Interesth3">
+                                basic information
+                            </h3>
                         </div>
-                    </div>
-                    <if condition='$noteone["note_type"] != 1'>
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <span class="NumberIcon"></span>
-                        </label>
-                        <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" lay-verify="required" value="{$noteone['note_reward']}" autocomplete="off" id="reward" class="layui-input">
-                        </div>
-                    </div>
-                    </if>
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <span class="ContentsIcon"></span>
-                        </label>
-                        <div class="layui-input-block input-spacing inputW">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" value="{$noteone['note_content']}" id="content" placeholder="Enter the resource description" class="layui-input">
-                        </div>
-                    </div>
-                    <if condition='$noteone["note_type"] == 3'>
-                    <div class="FormContainer-one" pane>
-                        <label class="HeadPortraitbox-one">
-                            <span class="filesIcon">Upload resources</span>
-                        </label>
-                        <div class="picDiv-one">
-                            <div class="addImages">
-                                    <div class="files_name"><span>{$noteone['note_url']}</span></div>
-                                    <button type="button" class="layui-btn layui-btn-normal" id="testList">Browse</button> 
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <span class="TitlesIcon"></span>
+                            </label>
+                            <div class="layui-input-block input-spacing inputW">
+                                <input type="text" name="number" lay-verify="required" autocomplete="off" value="{$noteone['note_name']}" id="name" placeholder="Enter the title" class="layui-input">
                             </div>
                         </div>
-                        <div class="msg" style="display: none;"></div>
-                    </div>
-                    </if>
-                    <div class="FormContainer" pane>
-                        <label class="HeadPortraitbox">
-                            <span class="HeadPortraitIcon"></span>
-                        </label>
-                        <div class="picDiv">
-                            <div id="video" class="w50" style="display: none;"></div>
-                            <div id="result">
-
-                                <foreach name="notevilist" item="notevi" key="notevikey">
-                                    <if condition='$notevi["note_vi_type"] == 1'>
-                                <div class="img-div" id="img-div" data-isnew="true">
-
-                                    <div>
-                                        <img src="./Uploads/{$notevi['note_vi_url']}">
-                                    </div>
-                                    <div class="coverss" onclick="del({$notevi['note_vi_id']},this)">
-                                        <img src="__PUBLIC__/Web/web/img/false.png">
-                                    </div>
+                        <if condition='$noteone["note_type"] != 1'>
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <span class="NumberIcon"></span>
+                            </label>
+                            <div class="layui-input-block input-spacing inputW">
+                                <input type="text" name="number" lay-verify="required" value="{$noteone['note_reward']}" autocomplete="off" id="reward" class="layui-input">
+                            </div>
+                        </div>
+                        </if>
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <span class="ContentsIcon"></span>
+                            </label>
+                            <div class="layui-input-block input-spacing inputW">
+                                <input type="text" name="number" lay-verify="required" autocomplete="off" value="{$noteone['note_content']}" id="content" placeholder="Enter the resource description" class="layui-input">
+                            </div>
+                        </div>
+                        <if condition='$noteone["note_type"] == 3'>
+                        <div class="FormContainer-one" pane>
+                            <label class="HeadPortraitbox-one">
+                                <span class="filesIcon">Upload resources</span>
+                            </label>
+                            <div class="picDiv-one">
+                                <div class="addImages">
+                                        <div class="files_name"><span>{$noteone['note_url']}</span></div>
+                                        <button type="button" class="layui-btn layui-btn-normal" id="testList">Browse</button> 
                                 </div>
-                                        <else />
-
-                                    <div class="img-div" data-isnew="true">
-                                        <video width="100%" height="100%">
-                                            <source src="./Uploads/{$notevi['note_vi_url']}" type="video/mp4"></source>
-                                        </video>
-                                        <div class="Play_video" onclick="bofang('./Uploads/{$notevi["note_vi_url"]}')">
-                                            <img src="./Public/Web/web/img/video_paly.png">
+                            </div>
+                            <div class="msg" style="display: none;"></div>
+                        </div>
+                        </if>
+                        <div class="FormContainer" pane>
+                            <label class="HeadPortraitbox">
+                                <span class="HeadPortraitIcon"></span>
+                            </label>
+                            <div class="picDiv">
+                                <div id="video" class="w50" style="display: none;"></div>
+                                <div id="result">
+    
+                                    <foreach name="notevilist" item="notevi" key="notevikey">
+                                        <if condition='$notevi["note_vi_type"] == 1'>
+                                    <div class="img-div" id="img-div" data-isnew="true">
+    
+                                        <div>
+                                            <img src="./Uploads/{$notevi['note_vi_url']}">
                                         </div>
-                                        <div class="covers" onclick="del({$notevi['note_vi_id']},this)" id="viurl">
-                                            <img src="__PUBLIC__/Web/web/img/false.png" alt="">
+                                        <div class="coverss" onclick="del({$notevi['note_vi_id']},this)">
+                                            <img src="__PUBLIC__/Web/web/img/false.png">
                                         </div>
                                     </div>
-                                    </if>
-
-                                </foreach>
-
-                                <div class="add_btn" data-isNew="false">
-                                    <input type="file" id="file_input" multiple onchange="xmTanUploadImg(this)" />
-                                    <span>+</span>
-                                </div>
-
-
-                                <div class="shadow_video">
-                                    </div>
-                                        <div class="video_box">
-                                            <div class="video_shut">x</div>
-                                            <div class="video_area">
+                                            <else />
+    
+                                        <div class="img-div" data-isnew="true">
                                             <video width="100%" height="100%">
-                                                    <!--<source src="../web/img/video.mp4" type="video/mp4"></source>-->
-                                                </video>
-                                            <!-- <video width="100%" height="100%">
-                                                    <source src="../web/img/video.mp4" type="video/mp4"></source>
-                                                </video> -->
+                                                <source src="./Uploads/{$notevi['note_vi_url']}" type="video/mp4"></source>
+                                            </video>
+                                            <div class="Play_video" onclick="bofang('./Uploads/{$notevi["note_vi_url"]}')">
+                                                <img src="./Public/Web/web/img/video_paly.png">
+                                            </div>
+                                            <div class="covers" onclick="del({$notevi['note_vi_id']},this)" id="viurl">
+                                                <img src="__PUBLIC__/Web/web/img/false.png" alt="">
                                             </div>
                                         </div>
+                                        </if>
+    
+                                    </foreach>
+    
+                                    <div class="add_btn" data-isNew="false">
+                                        <input type="file" id="file_input" multiple onchange="xmTanUploadImg(this)" />
+                                        <span>+</span>
+                                    </div>
+    
+    
+                                    <div class="shadow_video">
+                                        </div>
+        
+        
+                                        <div class="shadow_video">
+                                            </div>
+                                                <div class="video_box">
+                                                    <div class="video_shut">x</div>
+                                                    <div class="video_area">
+                                                    <video width="100%" height="100%">
+                                                            <!--<source src="../web/img/video.mp4" type="video/mp4"></source>-->
+                                                        </video>
+                                                    <!-- <video width="100%" height="100%">
+                                                            <source src="../web/img/video.mp4" type="video/mp4"></source>
+                                                        </video> -->
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="msg" style="display: none;"></div>
                         </div>
-                        <div class="msg" style="display: none;"></div>
+                        <div class="FormContainer from-but">
+                            <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
+                                Submit
+                            </button>
+                        </div>
                     </div>
-                    <div class="FormContainer from-but">
-                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
-                            Submit
-                        </button>
-                    </div>
-                </div>
+                </form>
+        <div class="loading_box">
+            <div class="loading_gif">
+                <img src="__PUBLIC__/Web/web/img/timg3.gif" alt="">
             </div>
         </div>
-    </form>
-    <div class="loading_box">
-        <div class="loading_gif">
-            <img src="__PUBLIC__/Web/web/img/timg3.gif" alt="">
-        </div>
+        <!-- foot start 底部信息 -->
+        <footer class="footer">
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
+        <!-- foot end 底部信息 -->
     </div>
-    <!-- foot start 底部信息 -->
-    <footer class="container-fluid FooterBg">
-        <include file = "./World/Index/View/Public/footer.html"/>
-    </footer>
-    <!-- foot end 底部信息 -->
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>

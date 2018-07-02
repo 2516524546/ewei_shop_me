@@ -68,6 +68,7 @@
 }
 .MyFollowing_box .MyFollowing_list .MyFollowing_content .MyFollowing_img img{
     width: 100%;
+    height: 100%;
 }
 .MyFollowing_box .MyFollowing_list .MyFollowing_content .MyFollowing_details .content_name{
     font-size: 10px;

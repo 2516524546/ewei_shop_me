@@ -46,6 +46,7 @@
 .PasswordContainer .box2 .MemberContainer .MemberImgName a .ImgName_img{
   width: 52px;
   height: 52px;
+  border-radius: 50%;
   overflow: hidden;
   margin-right: 15px;
 }

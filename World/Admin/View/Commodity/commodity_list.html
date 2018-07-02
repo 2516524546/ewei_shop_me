@@ -5,9 +5,8 @@
 		<meta name="description" content="{:L('newworld_admin')}" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- basic styles -->
-		<link href="__PUBLIC__/Admin//admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="__PUBLIC__/Admin/admin/css/bootstrap.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome.min.css" />
-	    <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
 		<!--[if IE 7]>
 		  <link rel="stylesheet" href="__PUBLIC__/Admin//admin/css/font-awesome-ie7.min.css" />
 		<![endif]-->
@@ -39,7 +38,6 @@
 		<!-- ace settings handler -->
 
 		<script src="__PUBLIC__/Admin//admin/js/ace-extra.min.js"></script>
-	    <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
 		<!--[if lt IE 9]>
@@ -237,6 +235,8 @@
 <script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
 <script language="javascript">
 	function CheckAll(event){
 		var checked = event.checked;
@@ -262,11 +262,13 @@
 	function commodityDel(id) {
         layer.msg("{:L('Note_crowd_list_if')}", {
             time: 0 //不自动关闭
+			,
+			offset:'40%'
             ,btn: ["{:L('Note_crowd_list_ok')}", "{:L('Note_crowd_list_no')}"]
             ,yes: function(index){
                 layer.close(index);
                 $.ajax({
-                    url: '  index.php?m=Admin&c=Commodity&a=commodity_del',
+                    url: 'index.php?m=Admin&c=Commodity&a=commodity_del',
                     data: 'id=' + id,
                     type: 'post',
                     success: function (msg) {

@@ -184,7 +184,7 @@
     padding: 0 15px;
     height: 28px;
     line-height: 28px;
-    margin: 0 -1px 5px 0;
+    margin: 0 -1px 5px 0!important;
     background-color: #fff;
     color: #333;
     font-size: 12px;
@@ -200,7 +200,7 @@
     padding: 0 15px;
     height: 28px;
     line-height: 28px;
-    margin: 0 -1px 5px 0;
+    margin: 0 -1px 5px 0!important;
     color: #333;
     font-size: 12px;
     text-decoration: none;
@@ -209,7 +209,7 @@
     color: #fff;
 }
 
-.rows_Total{
+.rows{
     display: inline-block;
     vertical-align: middle;
     padding: 0 15px;
