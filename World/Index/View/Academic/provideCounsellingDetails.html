@@ -24,245 +24,247 @@
     </head>
 
     <body>
-        <!-- logo -->
-        <header class="container">
-            <include file = "./World/Index/View/Public/head.html"/>
-        </header>
-        <hr>
-     <!-- Crumbs nav -->
-    <div class="container crumbs">
-        <a href="{:U('Index/Academic/academic')}" class="crumbsa">Academic</a>
-        <cite class="Icon"></cite>
-        <a href="{:U('Index/Academic/academicGroups')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">Provide counseling details</span>
-    </div>
-
-    <!-- Product details -->
-    <div class="Product_box container">
-        <div class="row justify-content-between">
-            <div class="col-md-9">
-                <div class="product_title">
-                    <div class="product_img">
-                        <img src="./Uploads/{$issueone['tutorship_issue_picture']}" alt="">
-                    </div>
-                    <h2>{$issueone['tutorship_issue_name']}</h2>
-                    <div class="Product_time">
-                        {$issueone['tutorship_issue_createtime']}
-                    </div>
-                    <div class="counseling_title">
-                        <div class="counseling_name">
-                            <span class="counseling_name_title">Contact :</span>
-                            <span>{$issueone['tutorship_issue_contact']}</span>
-                        </div>
-                        <div class="counseling_name">
-                                <span class="counseling_name_title">Counseling Price :</span>
-                                <span>$ {$issueone['tutorship_issue_price']}</span>
-                            </div>
-                    </div>
-                </div>
-                <div class="product_content">
-                  <ul class="products_title">
-                    <li>
-                        <span class="products_title_name">Counseling Time :</span>
-                        <span class="products_title_content">{$issueone['tutorship_issue_time']}</span>
-                    </li>
-                    <li>
-                        <span class="products_title_name">Counseling Content :</span>
-                        <span class="products_title_content">{$issueone['tutorship_issue_content']}</span>
-                    </li>
-                    <li>
-                        <span class="products_title_name">Remarks :</span>
-                        <span class="products_title_content">{$issueone['tutorship_issue_explain']}</span>
-                    </li>
-                  </ul>
-                </div>
+        <div class="web">
+            <!-- logo -->
+            <header class="container">
+                <include file = "./World/Index/View/Public/head.html"/>
+            </header>
+            <hr>
+             <!-- Crumbs nav -->
+            <div class="container crumbs">
+                <a href="{:U('Index/Academic/academic')}" class="crumbsa">Academic</a>
+                <cite class="Icon"></cite>
+                <a href="{:U('Index/Academic/academicGroups')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
+                <cite class="Icon"></cite>
+                <span class="crumbsTitle">Provide counseling details</span>
             </div>
-            <!-- Product details right -->
-            <div class="col-md-3 product_right">
-               <div class="product_right_title">
-                   Personal Information
-               </div>
-               <div class="right_details">
-                   <ul>
-                       <li>
-                           <p>Avatar :</p>
-                           <span class="right_details_userimg"><img src="<if condition='$issueuser["user_icon"]'>./Uploads/{$issueuser['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>"></span>
-                       </li>
-                       <li>
-                           <p>Nickname :</p>
-                           <span>{$issueuser['user_name']}</span>
-                       </li>
-                       <li>
-                           <p>sex :</p>
-                           <span><if condition='$issueuser["user_sex"] == 1'>male<else />female</if></span>
-                       </li>
-                       <li>
-                           <p>Viewing Count :</p>
-                           <span>{$issueuser['user_havecoin']}</span>
-                       </li>
-                       <li>
-                            <p>Posts  :</p>
-                            <span>{$issueuser['user_notes']}</span>
-                        </li>
-
-                   </ul>
-               </div>
-               <!-- Seller_Info -->
-               <div class="Seller_Info_title">
-                    Seller Info
-               </div>
-
-               <div class="right_details">
-                <ul>
-                    <li>
-                        <p>Contact  :</p>
-                        <span>{$issueone['tutorship_issue_contact']}</span>
-                    </li>
-                    <li>
-                        <p>Counseling prices :</p>
-                        <span>${$issueone['tutorship_issue_price']}</span>
-                    </li>
-                    <li>
-                        <p>May be counseling time :</p>
-                        <span> {$issueone['tutorship_issue_time']}</span>
-                    </li>
-                    
-                </ul>
-            </div>
-            <div class="right_btn">
-                <a href="{:U('Index/User/personalCenter')}&id={$issueuser['user_id']}" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
-                    Homepage
-                    </a>
-            </div>
-            <!-- <div class="right_btn">
-                <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
-                    Private Letter
-                    </a>
-            </div> -->
-            </div>
-        </div>
-    </div>
-
-    <!-- PostReply -->
-        <div class="container">
-            <div class="col-md-9">
-                <div class="PostReply_box">
-                    <div class="PostReply_box_title">
-                        <div class="title_pic">
-                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
-                        </div>
-                        <div class="title_content">
-                            Comment
-                        </div>
-                    </div>
-                    <div class="PostReply_box_content" id="commentlist">
-                        <!--<foreach name="commentlist" item="comment" key="commentkey">
-                            <div class="PostReply_box_content_item">
-                                <div class="item_pic">
-                                    <img src="<if condition='$comment["user_icon"]'>./Uploads/{$comment['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
+            <div class="section">
+                <!-- Product details -->
+                <div class="Product_box container">
+                    <div class="row justify-content-between">
+                        <div class="col-md-9">
+                            <div class="product_title">
+                                <div class="product_img">
+                                    <img src="./Uploads/{$issueone['tutorship_issue_picture']}" alt="">
                                 </div>
-                                <div class="item_con">
-                                    <div class="item_con_title">
-                                        <div class="item_user_name">
-                                            <span class="User_name">{$comment['user_name']}</span>
-                                            <div class="item_Top">
-                                                <img src="__PUBLIC__/Web/web/img/Top.png" alt="">
-                                            </div>
+                                <h2>{$issueone['tutorship_issue_name']}</h2>
+                                <div class="Product_time">
+                                    {$issueone['tutorship_issue_createtime']}
+                                </div>
+                                <div class="counseling_title">
+                                    <div class="counseling_name">
+                                        <span class="counseling_name_title">Contact :</span>
+                                        <span>{$issueone['tutorship_issue_contact']}</span>
+                                    </div>
+                                    <div class="counseling_name">
+                                            <span class="counseling_name_title">Counseling Price :</span>
+                                            <span>$ {$issueone['tutorship_issue_price']}</span>
                                         </div>
-                                        <div class="item_user_det">
-                                            <div class="det_time">
-                                                <div class="det_time_img">
-                                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                                </div>
-                                                <div class="det_timed">
-                                                    {$comment['note_comment_createtime']}
-                                                </div>
+                                </div>
+                            </div>
+                            <div class="product_content">
+                              <ul class="products_title">
+                                <li>
+                                    <span class="products_title_name">Counseling Time :</span>
+                                    <span class="products_title_content">{$issueone['tutorship_issue_time']}</span>
+                                </li>
+                                <li>
+                                    <span class="products_title_name">Counseling Content :</span>
+                                    <span class="products_title_content">{$issueone['tutorship_issue_content']}</span>
+                                </li>
+                                <li>
+                                    <span class="products_title_name">Remarks :</span>
+                                    <span class="products_title_content">{$issueone['tutorship_issue_explain']}</span>
+                                </li>
+                              </ul>
+                            </div>
+                        </div>
+                        <!-- Product details right -->
+                        <div class="col-md-3 product_right">
+                           <div class="product_right_title">
+                               Personal Information
+                           </div>
+                           <div class="right_details">
+                               <ul>
+                                   <li>
+                                       <p>Avatar :</p>
+                                       <span class="right_details_userimg"><img src="<if condition='$issueuser["user_icon"]'>./Uploads/{$issueuser['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>"></span>
+                                   </li>
+                                   <li>
+                                       <p>Nickname :</p>
+                                       <span>{$issueuser['user_name']}</span>
+                                   </li>
+                                   <li>
+                                       <p>sex :</p>
+                                       <span><if condition='$issueuser["user_sex"] == 1'>male<else />female</if></span>
+                                   </li>
+                                   <li>
+                                       <p>Viewing Count :</p>
+                                       <span>{$issueuser['user_havecoin']}</span>
+                                   </li>
+                                   <li>
+                                        <p>Posts  :</p>
+                                        <span>{$issueuser['user_notes']}</span>
+                                    </li>
+            
+                               </ul>
+                           </div>
+                           <!-- Seller_Info -->
+                           <div class="Seller_Info_title">
+                                Seller Info
+                           </div>
+            
+                           <div class="right_details">
+                            <ul>
+                                <li>
+                                    <p>Contact  :</p>
+                                    <span>{$issueone['tutorship_issue_contact']}</span>
+                                </li>
+                                <li>
+                                    <p>Counseling prices :</p>
+                                    <span>${$issueone['tutorship_issue_price']}</span>
+                                </li>
+                                <li>
+                                    <p>May be counseling time :</p>
+                                    <span> {$issueone['tutorship_issue_time']}</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="right_btn">
+                            <a href="{:U('Index/User/personalCenter')}&id={$issueuser['user_id']}" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
+                                Homepage
+                                </a>
+                        </div>
+                        <!-- <div class="right_btn">
+                            <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
+                                Private Letter
+                                </a>
+                        </div> -->
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- PostReply -->
+                    <div class="container">
+                        <div class="col-md-9">
+                            <div class="PostReply_box">
+                                <div class="PostReply_box_title">
+                                    <div class="title_pic">
+                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
+                                    </div>
+                                    <div class="title_content">
+                                        Comment
+                                    </div>
+                                </div>
+                                <div class="PostReply_box_content" id="commentlist">
+                                    <!--<foreach name="commentlist" item="comment" key="commentkey">
+                                        <div class="PostReply_box_content_item">
+                                            <div class="item_pic">
+                                                <img src="<if condition='$comment["user_icon"]'>./Uploads/{$comment['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
                                             </div>
-                                            <div class="det_zan">
-                                                <if condition='$comment["note_comment_isreply"]!=1'>
-                                                <div class="det_reply" onclick="reply({$comment['note_comment_id']},this)">Reply</div>
-                                                </if>
-                                                <div class="line"></div>
-                                                <div class="det_zan_box">
-                                                    <if condition='$comment["iszan"] == 0'>
-                                                    <div class="zan_box_img" onclick="zan({$comment['note_comment_id']},this)">
-                                                        <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png" alt="">
-                                                    </div>
-                                                        <else />
-                                                        <div class="zan_box_img" onclick="unzan({$comment['note_comment_id']},this)">
-                                                            <img src='__PUBLIC__/Web/web/img/greated.png'>
+                                            <div class="item_con">
+                                                <div class="item_con_title">
+                                                    <div class="item_user_name">
+                                                        <span class="User_name">{$comment['user_name']}</span>
+                                                        <div class="item_Top">
+                                                            <img src="__PUBLIC__/Web/web/img/Top.png" alt="">
                                                         </div>
+                                                    </div>
+                                                    <div class="item_user_det">
+                                                        <div class="det_time">
+                                                            <div class="det_time_img">
+                                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
+                                                            </div>
+                                                            <div class="det_timed">
+                                                                {$comment['note_comment_createtime']}
+                                                            </div>
+                                                        </div>
+                                                        <div class="det_zan">
+                                                            <if condition='$comment["note_comment_isreply"]!=1'>
+                                                            <div class="det_reply" onclick="reply({$comment['note_comment_id']},this)">Reply</div>
+                                                            </if>
+                                                            <div class="line"></div>
+                                                            <div class="det_zan_box">
+                                                                <if condition='$comment["iszan"] == 0'>
+                                                                <div class="zan_box_img" onclick="zan({$comment['note_comment_id']},this)">
+                                                                    <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png" alt="">
+                                                                </div>
+                                                                    <else />
+                                                                    <div class="zan_box_img" onclick="unzan({$comment['note_comment_id']},this)">
+                                                                        <img src='__PUBLIC__/Web/web/img/greated.png'>
+                                                                    </div>
+                                                                </if>
+                                                                <div class="zan_box_num">
+                                                                    {$comment['note_comment_zans']}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                                <div class="item_con_det">
+                                                    {$comment['note_comment_content']}
+                                                </div>
+            
+                                                <div class="item_con_reply">
+                                                    <div class="reply_person">
+                                                    <if condition='$comment["note_comment_isreply"]==1'>
+                                                        {$noteuser['user_name']} 回复 {$comment['user_name']} ： <span class="reply_c">{$comment['note_comment_reply']}</span>
                                                     </if>
-                                                    <div class="zan_box_num">
-                                                        {$comment['note_comment_zans']}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="item_con_det">
-                                        {$comment['note_comment_content']}
-                                    </div>
-
-                                    <div class="item_con_reply">
-                                        <div class="reply_person">
-                                        <if condition='$comment["note_comment_isreply"]==1'>
-                                            {$noteuser['user_name']} 回复 {$comment['user_name']} ： <span class="reply_c">{$comment['note_comment_reply']}</span>
-                                        </if>
-                                        </div>
-                                    </div>
+                                    </foreach>-->
                                 </div>
                             </div>
-                        </foreach>-->
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
-
-    <!-- NumberOfPagesContainer -->
-    <div class="container NumberOfPagesContainer">
-        <div id="NumberOfPages"></div>
-    </div>
-
-    <!-- form -->
-
-    <div class="container">
-        <div class="col-md-9">
-        <form class="layui-form" onsubmit="return false">
-            <p style="color: #999; margin-bottom: 10px;">
-                    Tips: How do you think of this article? Post a comment to help others understanding this article.
-            </p>
-            <div class="ReturnBox">
-                <div class="layui-form-text">
-                    <span class="ReturnBoxicon">
-                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_pj.png">
-                        &nbsp;
-                        Comment
-                    </span>
-                    <div class="RepllyBox">
-                        <!-- <div class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</div> -->
-                    </div>
-                    <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea" id="content"></textarea>
-                    <div class="bottom_btn">
-                        <div class="refresh_btn">
-                            <img src="__PUBLIC__/Web/web/img/refresh.png" alt="">
                         </div>
-                        <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut" onclick="createcomment()">Post</button>
+                        </div>
+            
+                <!-- NumberOfPagesContainer -->
+                <div class="container NumberOfPagesContainer">
+                    <div id="NumberOfPages"></div>
+                </div>
+            
+                <!-- form -->
+            
+                <div class="container">
+                    <div class="col-md-9">
+                    <form class="layui-form" onsubmit="return false">
+                        <p style="color: #999; margin-bottom: 10px;">
+                                Tips: How do you think of this article? Post a comment to help others understanding this article.
+                        </p>
+                        <div class="ReturnBox">
+                            <div class="layui-form-text">
+                                <span class="ReturnBoxicon">
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_pj.png">
+                                    &nbsp;
+                                    Comment
+                                </span>
+                                <div class="RepllyBox">
+                                    <!-- <div class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</div> -->
+                                </div>
+                                <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea" id="content"></textarea>
+                                <div class="bottom_btn">
+                                    <div class="refresh_btn">
+                                        <img src="__PUBLIC__/Web/web/img/refresh.png" alt="">
+                                    </div>
+                                    <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut" onclick="createcomment()">Post</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                     </div>
                 </div>
             </div>
-        </form>
+           
+        
+            <!-- footer -->
+            <footer class="footer">
+                <include file = "./World/Index/View/Public/footer.html"/>
+            </footer>
         </div>
-    </div>
-   
-
-    <!-- footer -->
-    <footer>
-        <include file = "./World/Index/View/Public/footer.html"/>
-    </footer>
     </body>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

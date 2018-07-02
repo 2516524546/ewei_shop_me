@@ -19,189 +19,192 @@
     </head>
 
     <body>
-         <!-- logo -->
-		<header class="container">
-            <include file = "./World/Index/View/Public/head.html"/>
-        </header>
-        <hr>
-     <!-- Crumbs nav -->
-    <div class="container crumbs">
-        <a href="{:U('Index/Academic/academic')}" class="crumbsa">Academic</a>
-        <cite class="Icon"></cite>
-        <a href="{:U('Index/Academic/academicGroups')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">Counseling Details</span>
-    </div>
-
-    <!-- Product details -->
-    <div class="Product_box container">
-        <div class="row justify-content-between">
-            <div class="col-md-9">
-                <div class="product_title">
-                    <h2>{$needone['tutorship_need_name']}</h2>
-                    <div class="Product_time">
-                        {$needone['tutorship_need_createtime']}
-                    </div>
-                    <div class="counseling_title">
-                        <div class="counseling_name">
-                            <span class="counseling_name_title">Contact :</span>
-                            <span>{$needone['tutorship_need_contact']}</span>
-                        </div>
-                        <div class="counseling_name">
-                                <span class="counseling_name_title">Username :</span>
-                                <span>{$needuser['user_name']}</span>
-                            </div>
-                    </div>
-                </div>
-                <div class="product_content">
-                  <ul class="products_title">
-                    <li>
-                        <span class="products_title_name">Time :</span>
-                        <span class="products_title_content">{$needone['tutorship_need_time']}</span>
-                    </li>
-                    <li>
-                        <span class="products_title_name">Requirements :</span>
-                        <span class="products_title_content">{$needone['tutorship_need_demand']} </span>
-                    </li>
-                    <li>
-                        <span class="products_title_name">Content :</span>
-                        <span class="products_title_content">{$needone['tutorship_need_content']}</span>
-    
-                    </li>
-                    <li>
-                        <span class="products_title_name">Remarks :</span>
-                        <span class="products_title_content">{$needone['tutorship_need_explain']}</span>
-
-                    </li>
-                  </ul>
-                </div>
-            </div>
-            <!-- Product details right -->
-            <div class="col-md-3 product_right">
-               <div class="product_right_title">
-                   Personal Information
+        <div class="web">
+            <!-- logo -->
+           <header class="container">
+               <include file = "./World/Index/View/Public/head.html"/>
+           </header>
+           <hr>
+        <!-- Crumbs nav -->
+       <div class="container crumbs">
+           <a href="{:U('Index/Academic/academic')}" class="crumbsa">Academic</a>
+           <cite class="Icon"></cite>
+           <a href="{:U('Index/Academic/academicGroups')}&cid={$cid}" class="crumbsa">{$crowdone['crowd_name']}</a>
+           <cite class="Icon"></cite>
+           <span class="crumbsTitle">Counseling Details</span>
+       </div>
+   
+       <!-- Product details -->
+       <div class="Product_box container">
+           <div class="row justify-content-between">
+               <div class="col-md-9">
+                   <div class="product_title">
+                       <h2>{$needone['tutorship_need_name']}</h2>
+                       <div class="Product_time">
+                           {$needone['tutorship_need_createtime']}
+                       </div>
+                       <div class="counseling_title">
+                           <div class="counseling_name">
+                               <span class="counseling_name_title">Contact :</span>
+                               <span>{$needone['tutorship_need_contact']}</span>
+                           </div>
+                           <div class="counseling_name">
+                                   <span class="counseling_name_title">Username :</span>
+                                   <span>{$needuser['user_name']}</span>
+                               </div>
+                       </div>
+                   </div>
+                   <div class="product_content">
+                     <ul class="products_title">
+                       <li>
+                           <span class="products_title_name">Time :</span>
+                           <span class="products_title_content">{$needone['tutorship_need_time']}</span>
+                       </li>
+                       <li>
+                           <span class="products_title_name">Requirements :</span>
+                           <span class="products_title_content">{$needone['tutorship_need_demand']} </span>
+                       </li>
+                       <li>
+                           <span class="products_title_name">Content :</span>
+                           <span class="products_title_content">{$needone['tutorship_need_content']}</span>
+       
+                       </li>
+                       <li>
+                           <span class="products_title_name">Remarks :</span>
+                           <span class="products_title_content">{$needone['tutorship_need_explain']}</span>
+   
+                       </li>
+                     </ul>
+                   </div>
                </div>
-               <div class="right_details">
+               <!-- Product details right -->
+               <div class="col-md-3 product_right">
+                  <div class="product_right_title">
+                      Personal Information
+                  </div>
+                  <div class="right_details">
+                      <ul>
+                          <li>
+                              <p>Avatar :</p>
+                              <span class="right_details_userimg"><img src="<if condition='$needuser["user_icon"]'>./Uploads/{$needuser['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>"></span>
+                          </li>
+                          <li>
+                              <p>Nickname :</p>
+                              <span>{$needuser['user_name']}</span>
+                          </li>
+                          <li>
+                              <p>sex :</p>
+                              <span><if condition='$needuser["user_sex"] == 1'>male<else />female</if></span>
+                          </li>
+                          <li>
+                              <p>Viewing Count :</p>
+                              <span>{$needuser['user_havecoin']}</span>
+                          </li>
+                          <li>
+                               <p>Posts  :</p>
+                               <span>{$needuser['user_notes']}</span>
+                           </li>
+   
+                      </ul>
+                  </div>
+                  <!-- Seller_Info -->
+                  <div class="Seller_Info_title">
+                       Counseling Information
+                  </div>
+   
+                  <div class="right_details">
                    <ul>
                        <li>
-                           <p>Avatar :</p>
-                           <span class="right_details_userimg"><img src="<if condition='$needuser["user_icon"]'>./Uploads/{$needuser['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>"></span>
+                           <p>Contact  :</p>
+                           <span>{$needone['tutorship_need_contact']}</span>
                        </li>
                        <li>
-                           <p>Nickname :</p>
-                           <span>{$needuser['user_name']}</span>
+                           <p>Requirements  :</p>
+                           <span>{$needone['tutorship_need_demand']}</span>
                        </li>
                        <li>
-                           <p>sex :</p>
-                           <span><if condition='$needuser["user_sex"] == 1'>male<else />female</if></span>
+                           <p>Time :</p>
+                           <span> {$needone['tutorship_need_time']}</span>
                        </li>
-                       <li>
-                           <p>Viewing Count :</p>
-                           <span>{$needuser['user_havecoin']}</span>
-                       </li>
-                       <li>
-                            <p>Posts  :</p>
-                            <span>{$needuser['user_notes']}</span>
-                        </li>
-
+                       
                    </ul>
                </div>
-               <!-- Seller_Info -->
-               <div class="Seller_Info_title">
-                    Counseling Information
+               <div class="right_btn">
+                   <a href="{:U('Index/User/personalCenter')}&id={$needuser['user_id']}" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
+                       Homepage
+                       </a>
                </div>
-
-               <div class="right_details">
-                <ul>
-                    <li>
-                        <p>Contact  :</p>
-                        <span>{$needone['tutorship_need_contact']}</span>
-                    </li>
-                    <li>
-                        <p>Requirements  :</p>
-                        <span>{$needone['tutorship_need_demand']}</span>
-                    </li>
-                    <li>
-                        <p>Time :</p>
-                        <span> {$needone['tutorship_need_time']}</span>
-                    </li>
-                    
-                </ul>
-            </div>
-            <div class="right_btn">
-                <a href="{:U('Index/User/personalCenter')}&id={$needuser['user_id']}" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
-                    Homepage
-                    </a>
-            </div>
-            <!-- <div class="right_btn">
-                <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
-                    Private Letter
-                    </a>
-            </div> -->
-            </div>
-        </div>
-    </div>
-
-    <!-- PostReply -->
-    <div class="container">
-        <div class="col-md-9">
-            <div class="PostReply_box">
-                <div class="PostReply_box_title">
-                    <div class="title_pic">
-                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
-                    </div>
-                    <div class="title_content">
-                        Comment
-                    </div>
-                </div>
-
-            <div class="PostReply_box_content" id="commentlist">
-            </div>
-            </div>
-
-        </div>
-    </div>
+               <!-- <div class="right_btn">
+                   <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
+                       Private Letter
+                       </a>
+               </div> -->
+               </div>
+           </div>
+       </div>
    
-    <!-- NumberOfPagesContainer -->
-    <div class="container NumberOfPagesContainer">
-        <div id="NumberOfPages"></div>
-    </div>
-
-    <!-- form -->
-    <div class="container">
-        <div class="col-md-9">
-        <form class="layui-form" onsubmit="return false">
-            <p style="color: #999; margin-bottom: 10px;">
-                Tips: think this article how? Evaluation helps other readers understand this article.
-            </p>
-            <div class="ReturnBox">
-                <div class="layui-form-text">
-                    <span class="ReturnBoxicon">
-                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_pj.png">
-                        &nbsp;
-                        Comment
-                    </span>
-                    <div class="RepllyBox">
-                        <!-- <div class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</div> -->
-                    </div>
-                    <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea" id="content"></textarea>
-                    <div class="bottom_btn">
-                        <div class="refresh_btn">
-                            <img src="__PUBLIC__/Web/web/img/refresh.png" alt="">
-                        </div>
-                        <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut" onclick="createcomment()">Post</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-        </div>
-    </div>
+       <!-- PostReply -->
+       <div class="container">
+           <div class="col-md-9">
+               <div class="PostReply_box">
+                   <div class="PostReply_box_title">
+                       <div class="title_pic">
+                           <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
+                       </div>
+                       <div class="title_content">
+                           Comment
+                       </div>
+                   </div>
    
+               <div class="PostReply_box_content" id="commentlist">
+               </div>
+               </div>
+   
+           </div>
+       </div>
+      
+       <!-- NumberOfPagesContainer -->
+       <div class="container NumberOfPagesContainer">
+           <div id="NumberOfPages"></div>
+       </div>
+   
+       <!-- form -->
+       <div class="container">
+           <div class="col-md-9">
+           <form class="layui-form" onsubmit="return false">
+               <p style="color: #999; margin-bottom: 10px;">
+                   Tips: think this article how? Evaluation helps other readers understand this article.
+               </p>
+               <div class="ReturnBox">
+                   <div class="layui-form-text">
+                       <span class="ReturnBoxicon">
+                           <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_pj.png">
+                           &nbsp;
+                           Comment
+                       </span>
+                       <div class="RepllyBox">
+                           <!-- <div class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</div> -->
+                       </div>
+                       <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea" id="content"></textarea>
+                       <div class="bottom_btn">
+                           <div class="refresh_btn">
+                               <img src="__PUBLIC__/Web/web/img/refresh.png" alt="">
+                           </div>
+                           <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut" onclick="createcomment()">Post</button>
+                       </div>
+                   </div>
+               </div>
+           </form>
+           </div>
+       </div>
+      
+   
+       <!-- footer -->
+       <footer class="footer">
+           <include file = "./World/Index/View/Public/footer.html"/>
+       </footer>
 
-    <!-- footer -->
-    <footer>
-        <include file = "./World/Index/View/Public/footer.html"/>
-    </footer>
+        </div>
     </body>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
