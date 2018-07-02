@@ -5,161 +5,164 @@
     <include file="./World/Index/View/Public/meta.html"/>
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/CreateInterest.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/releasePosition.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
 
 <body>
-    <!-- logo -->
-    <header class="container">
-        <include file = "./World/Index/View/Public/head.html"/>
-    </header>
-    <hr>
-    <!-- Crumbs nav -->
-    <div class="container crumbs">
-        <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
-        <cite class="Icon"></cite>
-        <a href="{:U('Jobs/projectsProfessionals')}" class="crumbsa">Item List</a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">{$title}</span>
-    </div>
-    <form class="layui-form layui-form-pane" id="MyPro" onsubmit="return false;" enctype="multipart/form-data" action="" method="post">
-        <div class="PasswordContainer">
-            <div class="StepContainer">
-                <div class="StepContainerOne">
-                    <div class="InterestTitle">
-                        <div class="InterestImg">
-                            <img src="__PUBLIC__/Web/web/img/common_icon_write.png" alt="">
-                        </div>
-                        <span class="InterestCon">Basic Information</span>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label label-spacing">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_city.png">
+    <div class="web">
+        <!-- logo -->
+        <header class="container">
+            <include file = "./World/Index/View/Public/head.html"/>
+        </header>
+        <hr>
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
+            <cite class="Icon"></cite>
+            <a href="{:U('Jobs/projectsProfessionals')}" class="crumbsa">Item List</a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">{$title}</span>
+        </div>
+        <form class="layui-form layui-form-pane section" id="MyPro" onsubmit="return false;" enctype="multipart/form-data" action="" method="post">
+            <div class="PasswordContainer">
+                <div class="StepContainer">
+                    <div class="StepContainerOne">
+                        <div class="InterestTitle">
+                            <div class="InterestImg">
+                                <img src="__PUBLIC__/Web/web/img/common_icon_write.png" alt="">
                             </div>
-                        </label>
-                        <div class="layui-input-block" id="layui-input-block">
-                            <select name="professional_city" lay-verify="required">
-                                <foreach name="city" item="c">
-                                    <option value="{$c['second_mark_name']}"  <if condition="$professional['professional_city'] == $c['second_mark_name']">selected="selected"</if>>{$c['second_mark_name']}</option>
-                                </foreach>
-                            </select>
+                            <span class="InterestCon">Basic Information</span>
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label label-spacing">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_industry.png">
-                            </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <select name="professional_specialty" lay-verify="required">
-                                <foreach name="specialty" item="c">
-                                    <option value="{$c['second_mark_name']}" <if condition="$professional['professional_specialty'] == $c['second_mark_name']">selected="selected"</if>>{$c['second_mark_name']}</option>
-                                </foreach>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/03_academic/academic_create_icon_04.png">
-                            </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <input type="text" name="professional_specialty"  value="{$professional['professional_specialty']}" lay-verify="title" autocomplete="off" placeholder="Enter your major" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label label-spacing">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
-                            </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <select name="professional_school" lay-verify="required">
-                                <foreach name="school" item="c">
-                                    <option value="{$c['second_mark_name']}" <if condition="$professional['professional_school'] == $c['second_mark_name']">selected="selected"</if>>{$c['second_mark_name']}</option>
-                                </foreach>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_realname.png" width="24px" height="auto">
-                            </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <input type="text" name="professional_uname" value="{$professional['professional_uname']}" lay-verify="title" autocomplete="off" placeholder=" Enter your real name" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_contact.png">
-                            </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <input type="text" name="professional_contact" value="{$professional['professional_contact']}" lay-verify="title" autocomplete="off" placeholder="Enter the contact information" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item layui-form-text">
-                        <label class="layui-form-label" style="background: transparent;border: none;">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
-                            </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <textarea name="professional_content" placeholder="Enter your introduction" class="layui-textarea">  {$professional['professional_content']} </textarea>
-                        </div>
-                    </div>
-                    <div class="layui-form-item layui-form-text">
-                        <label class="layui-form-label" style="background: transparent;border: none;">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
-                            </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <textarea name="professional_trait" placeholder="Enter your speciality" class="layui-textarea">{$professional['professional_trait']}</textarea>
-                        </div>
-                    </div>
-                    <div class="layui-form-item layui-form-text">
-                        <label class="layui-form-label" style="background: transparent;border: none;">
-                            <div class="label_img">
-                                <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
-                            </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <textarea name="professional_explain" placeholder="Enter the remark" class="layui-textarea">{$professional['professional_explain']}</textarea>
-                        </div>
-                    </div>
-                    <div class="FormContainer layui-form-item">
-                        <label class="layui-form-label" style="background: transparent;border: none;">
-                            <div class="label_img" >
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png">
-                            </div>
-                        </label>
-                        <div class="layui-input-block">
-                            <div class="UserHeadImage">
-                                <img id="pic" class="img" src="./Uploads/{$professional['professional_pic']}">
-                                <input id="upload" class="but" name="professional_pic" accept="image/*" type="file">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label label-spacing">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_city.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block" id="layui-input-block">
+                                <select name="professional_city" lay-verify="required">
+                                    <foreach name="city" item="c">
+                                        <option value="{$c['second_mark_name']}"  <if condition="$professional['professional_city'] == $c['second_mark_name']">selected="selected"</if>>{$c['second_mark_name']}</option>
+                                    </foreach>
+                                </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="FormContainer from-but">
-                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="" lay-filter="">
-                            Submit
-                        </button>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label label-spacing">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_industry.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <select name="professional_specialty" lay-verify="required">
+                                    <foreach name="specialty" item="c">
+                                        <option value="{$c['second_mark_name']}" <if condition="$professional['professional_specialty'] == $c['second_mark_name']">selected="selected"</if>>{$c['second_mark_name']}</option>
+                                    </foreach>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/03_academic/academic_create_icon_04.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="professional_specialty"  value="{$professional['professional_specialty']}" lay-verify="title" autocomplete="off" placeholder="Enter your major" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label label-spacing">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_school.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <select name="professional_school" lay-verify="required">
+                                    <foreach name="school" item="c">
+                                        <option value="{$c['second_mark_name']}" <if condition="$professional['professional_school'] == $c['second_mark_name']">selected="selected"</if>>{$c['second_mark_name']}</option>
+                                    </foreach>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_realname.png" width="24px" height="auto">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="professional_uname" value="{$professional['professional_uname']}" lay-verify="title" autocomplete="off" placeholder=" Enter your real name" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_contact.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="professional_contact" value="{$professional['professional_contact']}" lay-verify="title" autocomplete="off" placeholder="Enter the contact information" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label" style="background: transparent;border: none;">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <textarea name="professional_content" placeholder="Enter your introduction" class="layui-textarea">  {$professional['professional_content']} </textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label" style="background: transparent;border: none;">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <textarea name="professional_trait" placeholder="Enter your speciality" class="layui-textarea">{$professional['professional_trait']}</textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label" style="background: transparent;border: none;">
+                                <div class="label_img">
+                                    <img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_write.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <textarea name="professional_explain" placeholder="Enter the remark" class="layui-textarea">{$professional['professional_explain']}</textarea>
+                            </div>
+                        </div>
+                        <div class="FormContainer layui-form-item">
+                            <label class="layui-form-label" style="background: transparent;border: none;">
+                                <div class="label_img" >
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_create_icon_04.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block">
+                                <div class="UserHeadImage">
+                                    <img id="pic" class="img" src="./Uploads/{$professional['professional_pic']}">
+                                    <input id="upload" class="but" name="professional_pic" accept="image/*" type="file">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="FormContainer from-but">
+                            <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="" lay-filter="">
+                                Submit
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
-    <!-- foot start 底部信息 -->
-    <footer>
-        <include file = "./World/Index/View/Public/footer.html"/>
-    </footer>
-    <!-- foot end 底部信息 -->
+        </form>
+        <!-- foot start 底部信息 -->
+        <footer class="footer">
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
+        <!-- foot end 底部信息 -->
+    </div>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>

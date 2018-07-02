@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/GroupDetails.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
     <style>
     a:not([href]):not([tabindex]){
             color: #2e3b47;
@@ -32,296 +33,301 @@
 </head>
 
 <body>
-    <!-- logo -->
-    <header class="container">
-        <include file = "./World/Index/View/Public/head.html"/>
-    </header>
-    <hr>
-    <!-- Crumbs nav -->
-    <div class="container crumbs">
-        <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">{$crowone['crowd_name']}</span>
-
-    </div>
-    <!-- Carousel advertising start 轮播广告 -->
-    <div class="layui-carousel Banner" id="test2">
-        <div carousel-item="">
-            <foreach name="newslist" item="new" key="newkey">
-                <div class="Carousel_img">
-                    <a href="<if condition='$new["news_type"] == 1'>{:U('Index/Jobs/crowdnews',array('nid'=>$new['news_id'],'cid'=>$cid))}<else />{$new['news_url']}</if>">
-                    <img src="./Uploads/{$new['news_img']}">
-                    </a>
-                </div>
-            </foreach>
+    <div class="web">
+        <!-- logo -->
+        <header class="container">
+            <include file = "./World/Index/View/Public/head.html"/>
+        </header>
+        <hr>
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">{$crowone['crowd_name']}</span>
+    
         </div>
-    </div>
-    <!-- Carousel advertising end 轮播广告 -->
-    <!-- Group list 群列表 sataer -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="LatestContentContainer">
-                    <div class="TitleSearch">
-                        <h4 class="h4">Latest Content</h4>
-                        <div class="SelectionContainer">
-                            <input type="text" class="layui-input" id="Selectionform">
-                            <a href="javascript:void(0)" id="SelectionIcon" onclick="seek()">
-                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
-                          </a>
-                        </div>
-                    </div>
-                    <div class="LatestContainer">
-                        <div class="layui-input-block More">
-                            <select class="form-control" name="city" lay-verify="required">
-                                <option value="">Time sorting</option>
-
-                            </select>
-                        </div>
-                        <div class="layui-tab">
-                            <ul class="layui-tab-title">
-                                <li class="layui-this" onclick="settype(1)">Post</li>
-                                <li onclick="settype(2)">Q&A</li>
-                                <li onclick="settype(3)">Resources</li>
-                            </ul>
-                            <div class="layui-tab-content">
-                                <div id="notelist" class="layui-tab-item layui-show">
-                                    <table class="layui-table PostTable" lay-skin="line">
-                                        <tbody id="postcontent">
-                                            <foreach name="notelist" item="note" key="notekey">
-                                            <tr>
-                                                <td>
-                                                    <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
-
-                                                        <span class="ImgBox">
-                                                            <img src="<if condition='$note["user_icon"]'>./Uploads/{$note['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
-                                                        </span>
-                                                    </a>
-                                                </td>
-                                                <td class="NameBox">
-                                                    <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
-                                                       <!-- <span class="TopicNames">{$note['note_name']}</span>-->
-                                                        {$note['note_name']}
-                                                    </a>
-                                                </td>
-                                                <td class="NameIcom">
-                                                    <if condition='$note["note_istop"] == 1'>
-                                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
-                                                    </if>
-                                                    <if condition='$note["note_iswally"] == 1'>
-                                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
-                                                    </if>
-                                                </td>
-                                                <td class="text-right">
-                                                    <p>{$note['note_createtime']}</p>
-                                                    <p>
-                                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$note['note_comments']}
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                            </foreach>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div id="question" class="layui-tab-item">
-                                    <table class="layui-table PostTable" lay-skin="line">
-                                        <tbody id="questioncontent">
-                                        <foreach name="questionlist" item="question" key="questionkey">
-                                            <tr>
-                                                <td>
-                                                    <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$question['note_id']}" style="text-decoration: none;">
-                                                        <!--<span class="WithNumber">
-                                                            <span class="WithNumbers">18</span>
-                                                            <img class="WithNumberImg" src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_pic_ups.png">
-                                                        </span>-->
-                                                        <span class="ImgBox">
-                                                            <img src="<if condition='$question["user_icon"]'>./Uploads/{$question['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
-                                                        </span>
-                                                    </a>
-                                                </td>
-                                                <td class="NameBox">
-                                                    <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$question['note_id']}" style="text-decoration: none;">
-                                                        {$question['note_name']}
-                                                    </a>
-                                                </td>
-                                                <td class="NameIcom">
-                                                    <if condition='$question["note_istop"] == 1'>
-                                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
-                                                    </if>
-                                                    <if condition='$question["note_iswally"] == 1'>
-                                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
-                                                    </if>
-                                                </td>
-                                                <td class="text-right">
-                                                    <p>{$question["note_createtime"]}</p>
-                                                    <p>
-                                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_xs.png">{$question["note_reward"]}
-                                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$question["note_comments"]}
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                        </foreach>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div id="resource" class="layui-tab-item">
-                                    <table class="layui-table PostTable" lay-skin="line">
-                                        <tbody id="resourcecontent">
-                                        <foreach name="resourcelist" item="resource" key="resourcekey">
-                                            <tr>
-                                                <td>
-                                                    <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$resource['note_id']}" style="text-decoration: none;">
-
-                                                        <span class="ImgBox">
-                                                            <img src="<if condition='$resource["user_icon"]'>./Uploads/{$resource['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
-                                                        </span>
-                                                    </a>
-                                                </td>
-                                                <td class="NameBox">
-                                                    <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$resource['note_id']}" style="text-decoration: none;">
-                                                        {$resource["note_name"]}
-                                                    </a>
-                                                </td>
-                                                <td class="NameIcom">
-                                                    <if condition='$resource["note_istop"] == 1'>
-                                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
-                                                    </if>
-                                                    <if condition='$resource["note_iswally"] == 1'>
-                                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
-                                                    </if>
-                                                </td>
-                                                <td class="text-right">
-                                                    <p>{$resource["note_createtime"]}</p>
-                                                    <p>
-                                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_download.png">{$resource["note_reward"]}
-                                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$resource["note_comments"]}
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                        </foreach>
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <if condition='$join_in == 1'>
-                <div class="ReleaseButContainer">
-                    <a href="javascript:void(0)" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" onclick="release()" id="GroupBtn">
-                        Post
-                    </a>
-                </div>
-                </if>
-                <div class="GroupDetailsContainer">
-                    <h4 class="text-center FontColor">Community Details</h4>
-                    <div class="p"><b>Community icon  : </b>&nbsp;&nbsp;<div class="Group_icon"><img src="Uploads/{$crowone['crowd_icon']}"></div></div>
-                    <div class="p"><b style="width: 77%;">Community Name  :</b><div class="P_content">{$crowone['crowd_name']}</div></div>
-                    <div class="p"><b>Creator  : </b><div class="P_content">{$crowone['user_name']}</div></div>
-                    <div class="p_B">
-                        <b>Introduction  :</b>
-                        <div class="textp">{$crowone['crowd_intro']}</div>
-                    </div>
-
-                    <if condition="$crowone['crowd_scool']">
-                    <div class="p_B">
-                        <b>Graduated School  :</b>
-                        <div class="textp"> {$crowone['crowd_scool']}</div>
-                    </div>
-                    </if>
-                    <if condition="$crowone['crowd_scooltime']">
-                    <div class="p"><b>Graduation Time  : </b><div class="P_content" style="width: 50%">{$crowone['crowd_scooltime']}</div></div>
-                    </if>
-                    <if condition="$crowone['crowd_profession']">
-                    <div class="p"><b>Occupation Post  : </b><div class="P_content"  style="width: 50%">{$crowone['crowd_profession']}</div></div>
-                    </if>
-                    <if condition="$crowone['crowd_company']">
-                    <div class="p_B">
-                        <b>In-service Company  :</b>
-                        <div class="textp" > {$crowone['crowd_company']}</div>
-                    </div>
-                    </if>
-                    <if condition="$crowone['crowd_help']">
-                    <div class="p_B">
-                        <b>Can provide help  :</b>
-                        <div class="textp"> {$crowone['crowd_help']}</div>
-                    </div>
-                    </if>
-                <p><img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">&nbsp;&nbsp;<b>{$crowone['crowd_peoplenum']}</b></p>
-                
-                <p class="text-center Followtbut">
-                    <if condition='$join_in != 1'>
-                        <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" id="GroupBtn" onclick="follow()">
-                            To join the Community
+        <!-- Carousel advertising start 轮播广告 -->
+        <div class="layui-carousel Banner" id="test2">
+            <div carousel-item="">
+                <foreach name="newslist" item="new" key="newkey">
+                    <div class="Carousel_img">
+                        <a href="<if condition='$new["news_type"] == 1'>{:U('Index/Jobs/crowdnews',array('nid'=>$new['news_id'],'cid'=>$cid))}<else />{$new['news_url']}</if>">
+                        <img src="./Uploads/{$new['news_img']}">
                         </a>
-                        <else />
-                        <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" style="background:#bdbdbd;" id="GroupBtn">
-                            Have joined the Community
-                        </a>
-
-                    </if>
-                </p>
-            </div>
-
-                </p>
-                <div class="GroupDetailsContainer">
-                    <h4 class="text-center FontColor MoreMembersbox">
-                        Community Member
-                        <a href="{:U('Index/Rnterst/moreMembers')}&&cid={$cid}" class="MoreMembersA">
-                            <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_icon_c_more_n.png">
-                        </a>
-                    </h4>
-                    <p class="p"><b>Administrator  : </b></p>
-                    <div class="p_box">
-                    <foreach name="adminlist" item="admin" key="adminkey">
-
-                        <div class="p_img">
-                            <img src="<if condition='$admin["user_icon"]'>Uploads/{$admin['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" class="userimgs">
-                        </div>
-
-                    </foreach>
                     </div>
-                    <p class="p"><b>Members  : </b></p>
-                    <div class="p_box">
-                    <foreach name="memberlist" item="member" key="memberkey">
-
-                        <div class="p_img">
-                            <img src="<if condition='$member["user_icon"]'>Uploads/{$member['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" class="userimgs">
-                        </div>
-
-                    </foreach>
-                    </div>
-                </div>
-                <div class="BannerContainer">
-                    <h4 class="text-center FontColor">Advertising</h4>
-                    <div class="Container1">
-                        <foreach name="advertisinglist" item="advertising" key="advertisingkey">
-
-                            <div class="Container1">
-                                <a href="{$advertising['advertising_url']}" style="text-decoration: none;display: block;">
-                                    <img src="./Uploads/{$advertising['advertising_img']}" class="img">
-                                    <p class="text-center Font">{$advertising['advertising_title']}</p>
-                                </a>
-                            </div>
-                        </foreach>
-                    </div>
-                </div>
+                </foreach>
             </div>
         </div>
-    </div>
-    <!-- Group list 群列表 end -->
-    <div class="shadowGroup">
+        <!-- Carousel advertising end 轮播广告 -->
+        <div class="section">
+            <!-- Group list 群列表 sataer -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="LatestContentContainer">
+                            <div class="TitleSearch">
+                                <h4 class="h4">Latest Content</h4>
+                                <div class="SelectionContainer">
+                                    <input type="text" class="layui-input" id="Selectionform">
+                                    <a href="javascript:void(0)" id="SelectionIcon" onclick="seek()">
+                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
+                                  </a>
+                                </div>
+                            </div>
+                            <div class="LatestContainer">
+                                <div class="layui-input-block More">
+                                    <select class="form-control" name="city" lay-verify="required">
+                                        <option value="">Time sorting</option>
         
+                                    </select>
+                                </div>
+                                <div class="layui-tab">
+                                    <ul class="layui-tab-title">
+                                        <li class="layui-this" onclick="settype(1)">Post</li>
+                                        <li onclick="settype(2)">Q&A</li>
+                                        <li onclick="settype(3)">Resources</li>
+                                    </ul>
+                                    <div class="layui-tab-content">
+                                        <div id="notelist" class="layui-tab-item layui-show">
+                                            <table class="layui-table PostTable" lay-skin="line">
+                                                <tbody id="postcontent">
+                                                    <foreach name="notelist" item="note" key="notekey">
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
+        
+                                                                <span class="ImgBox">
+                                                                    <img src="<if condition='$note["user_icon"]'>./Uploads/{$note['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
+                                                                </span>
+                                                            </a>
+                                                        </td>
+                                                        <td class="NameBox">
+                                                            <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
+                                                               <!-- <span class="TopicNames">{$note['note_name']}</span>-->
+                                                                {$note['note_name']}
+                                                            </a>
+                                                        </td>
+                                                        <td class="NameIcom">
+                                                            <if condition='$note["note_istop"] == 1'>
+                                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
+                                                            </if>
+                                                            <if condition='$note["note_iswally"] == 1'>
+                                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
+                                                            </if>
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <p>{$note['note_createtime']}</p>
+                                                            <p>
+                                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$note['note_comments']}
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    </foreach>
+        
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div id="question" class="layui-tab-item">
+                                            <table class="layui-table PostTable" lay-skin="line">
+                                                <tbody id="questioncontent">
+                                                <foreach name="questionlist" item="question" key="questionkey">
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$question['note_id']}" style="text-decoration: none;">
+                                                                <!--<span class="WithNumber">
+                                                                    <span class="WithNumbers">18</span>
+                                                                    <img class="WithNumberImg" src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_pic_ups.png">
+                                                                </span>-->
+                                                                <span class="ImgBox">
+                                                                    <img src="<if condition='$question["user_icon"]'>./Uploads/{$question['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
+                                                                </span>
+                                                            </a>
+                                                        </td>
+                                                        <td class="NameBox">
+                                                            <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$question['note_id']}" style="text-decoration: none;">
+                                                                {$question['note_name']}
+                                                            </a>
+                                                        </td>
+                                                        <td class="NameIcom">
+                                                            <if condition='$question["note_istop"] == 1'>
+                                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
+                                                            </if>
+                                                            <if condition='$question["note_iswally"] == 1'>
+                                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
+                                                            </if>
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <p>{$question["note_createtime"]}</p>
+                                                            <p>
+                                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_xs.png">{$question["note_reward"]}
+                                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$question["note_comments"]}
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </foreach>
+        
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div id="resource" class="layui-tab-item">
+                                            <table class="layui-table PostTable" lay-skin="line">
+                                                <tbody id="resourcecontent">
+                                                <foreach name="resourcelist" item="resource" key="resourcekey">
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$resource['note_id']}" style="text-decoration: none;">
+        
+                                                                <span class="ImgBox">
+                                                                    <img src="<if condition='$resource["user_icon"]'>./Uploads/{$resource['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
+                                                                </span>
+                                                            </a>
+                                                        </td>
+                                                        <td class="NameBox">
+                                                            <a href="{:U('Index/Jobs/postDetails')}&cid={$cid}&nid={$resource['note_id']}" style="text-decoration: none;">
+                                                                {$resource["note_name"]}
+                                                            </a>
+                                                        </td>
+                                                        <td class="NameIcom">
+                                                            <if condition='$resource["note_istop"] == 1'>
+                                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
+                                                            </if>
+                                                            <if condition='$resource["note_iswally"] == 1'>
+                                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
+                                                            </if>
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <p>{$resource["note_createtime"]}</p>
+                                                            <p>
+                                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_download.png">{$resource["note_reward"]}
+                                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$resource["note_comments"]}
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </foreach>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <if condition='$join_in == 1'>
+                        <div class="ReleaseButContainer">
+                            <a href="javascript:void(0)" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" onclick="release()" id="GroupBtn">
+                                Post
+                            </a>
+                        </div>
+                        </if>
+                        <div class="GroupDetailsContainer">
+                            <h4 class="text-center FontColor">Community Details</h4>
+                            <div class="p"><b>Community icon  : </b>&nbsp;&nbsp;<div class="Group_icon"><img src="Uploads/{$crowone['crowd_icon']}"></div></div>
+                            <div class="p"><b style="width: 77%;">Community Name  :</b><div class="P_content">{$crowone['crowd_name']}</div></div>
+                            <div class="p"><b>Creator  : </b><div class="P_content">{$crowone['user_name']}</div></div>
+                            <div class="p_B">
+                                <b>Introduction  :</b>
+                                <div class="textp">{$crowone['crowd_intro']}</div>
+                            </div>
+        
+                            <if condition="$crowone['crowd_scool']">
+                            <div class="p_B">
+                                <b>Graduated School  :</b>
+                                <div class="textp"> {$crowone['crowd_scool']}</div>
+                            </div>
+                            </if>
+                            <if condition="$crowone['crowd_scooltime']">
+                            <div class="p"><b>Graduation Time  : </b><div class="P_content" style="width: 50%">{$crowone['crowd_scooltime']}</div></div>
+                            </if>
+                            <if condition="$crowone['crowd_profession']">
+                            <div class="p"><b>Occupation Post  : </b><div class="P_content"  style="width: 50%">{$crowone['crowd_profession']}</div></div>
+                            </if>
+                            <if condition="$crowone['crowd_company']">
+                            <div class="p_B">
+                                <b>In-service Company  :</b>
+                                <div class="textp" > {$crowone['crowd_company']}</div>
+                            </div>
+                            </if>
+                            <if condition="$crowone['crowd_help']">
+                            <div class="p_B">
+                                <b>Can provide help  :</b>
+                                <div class="textp"> {$crowone['crowd_help']}</div>
+                            </div>
+                            </if>
+                        <p><img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_gl_icon_renshu.png">&nbsp;&nbsp;<b>{$crowone['crowd_peoplenum']}</b></p>
+                        
+                        <p class="text-center Followtbut">
+                            <if condition='$join_in != 1'>
+                                <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" id="GroupBtn" onclick="follow()">
+                                    To join the Community
+                                </a>
+                                <else />
+                                <a class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal join_btn" style="background:#bdbdbd;" id="GroupBtn">
+                                    Have joined the Community
+                                </a>
+        
+                            </if>
+                        </p>
+                    </div>
+        
+                        </p>
+                        <div class="GroupDetailsContainer">
+                            <h4 class="text-center FontColor MoreMembersbox">
+                                Community Member
+                                <a href="{:U('Index/Rnterst/moreMembers')}&&cid={$cid}" class="MoreMembersA">
+                                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_icon_c_more_n.png">
+                                </a>
+                            </h4>
+                            <p class="p"><b>Administrator  : </b></p>
+                            <div class="p_box">
+                            <foreach name="adminlist" item="admin" key="adminkey">
+        
+                                <div class="p_img">
+                                    <img src="<if condition='$admin["user_icon"]'>Uploads/{$admin['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" class="userimgs">
+                                </div>
+        
+                            </foreach>
+                            </div>
+                            <p class="p"><b>Members  : </b></p>
+                            <div class="p_box">
+                            <foreach name="memberlist" item="member" key="memberkey">
+        
+                                <div class="p_img">
+                                    <img src="<if condition='$member["user_icon"]'>Uploads/{$member['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" class="userimgs">
+                                </div>
+        
+                            </foreach>
+                            </div>
+                        </div>
+                        <div class="BannerContainer">
+                            <h4 class="text-center FontColor">Advertising</h4>
+                            <div class="Container1">
+                                <foreach name="advertisinglist" item="advertising" key="advertisingkey">
+        
+                                    <div class="Container1">
+                                        <a href="{$advertising['advertising_url']}" style="text-decoration: none;display: block;">
+                                            <img src="./Uploads/{$advertising['advertising_img']}" class="img">
+                                            <p class="text-center Font">{$advertising['advertising_title']}</p>
+                                        </a>
+                                    </div>
+                                </foreach>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Group list 群列表 end -->
+            <div class="shadowGroup">
+                
+            </div>
+        </div>
+        <!-- footer -->
+        <footer class="footer">
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
+
     </div>
-    <!-- footer -->
-    <footer>
-        <include file = "./World/Index/View/Public/footer.html"/>
-    </footer>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
