@@ -280,7 +280,37 @@ class FileController extends Controller {
         }
 
     }
-	
+
+    //上传简历
+    public function uploadResume(){
+        if($_REQUEST['sessionid']){//判断用户是否登录
+            $upload = new \Think\Upload();// 实例化上传类
+            $upload->maxSize   =     1024*1024*20;// 设置附件上传大小
+            $upload->exts      =     array('docx',"pdf");// 设置附件上传类型
+            $upload->saveName = time().'_'.mt_rand(10000,99999);;
+            $upload->rootPath  =     './Uploads/'; // 设置附件上传根目录
+
+            if(!is_dir($upload->rootPath)) {
+                mkdir($upload->rootPath, 0777, true);
+            }
+            $info   =   $upload->uploadOne($_FILES['download']);
+
+            if(!$info) {// 上传错误提示错误信息
+                //echo $upload->getError();exit;
+                die(json_encode(array('status' => 0, 'msg' => $upload->getError())));
+            }else{// 上传成功 获取上传文件信息
+                $file_name= $upload->rootPath.$info['savepath'].$info['savename'];
+
+                //echo $file_name;exit;
+                die(json_encode(array('status' => 1, 'msg' => $file_name)));
+            }
+        }else{
+            //echo 1;exit;
+            die(json_encode(array('status' => 0, 'msg' => '用户未登录')));
+        }
+        }
+
+
 
 	/**
 	 * 上传教师图片
