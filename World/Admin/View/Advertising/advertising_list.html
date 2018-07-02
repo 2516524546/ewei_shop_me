@@ -196,6 +196,10 @@
                                 <if condition="$type eq 1">
                                     <li role="presentation" id="module" class="current"
                                         onclick="jumpwithtwo(<?php echo $type;?>,1)"><?php echo $modules[0]['module_name'];?></li>
+                                    <li role="presentation" id="honor"
+                                        onclick="jumpwithtwo(<?php echo $type;?>,3)">honor</li>
+                                    <li role="presentation" id="advice"
+                                        onclick="jumpwithtwo(<?php echo $type;?>,4)">advice</li>
                                     <elseif condition="$type eq 2"/>
                                     <li role="presentation" id="module" class="current"
                                         onclick="jumpwithtwo(<?php echo $type;?>,1)"><?php echo $modules[1]['module_name'];?></li>
@@ -328,6 +332,10 @@
                 $("#module").addClass('current').siblings().removeClass('current');
             } else if (flag == 2) {
                 $("#qun").addClass('current').siblings().removeClass('current');
+            }else if (flag == 3) {
+                $("#honor").addClass('current').siblings().removeClass('current');
+            }else if (flag == 4) {
+                $("#advice").addClass('current').siblings().removeClass('current');
             }
         }
     })
