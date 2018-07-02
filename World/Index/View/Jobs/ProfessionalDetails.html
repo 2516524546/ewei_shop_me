@@ -3,278 +3,285 @@
 
 <head>
     <include file="./World/Index/View/Public/meta.html"/>
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
 
 <body>
-<!-- logo -->
-<header class="container">
-    <include file="./World/Index/View/Public/head.html"/>
-</header>
-<hr>
-<!-- Crumbs nav -->
-<div class="container crumbs">
-    <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
-    <cite class="Icon"></cite>
-    <a href="{:U('Jobs/projectsProfessionals')}" class="crumbsa">Item List</a>
-    <cite class="Icon"></cite>
-    <span class="crumbsTitle">{$title}</span>
-</div>
-<!-- Product details -->
-<div class="Product_box container">
-    <div class="row justify-content-between">
-        <div class="col-md-9">
-            <div class="product_title">
-                <div class="product_img">
-                    <img src="/Uploads/{$professional['professional_pic']}" alt="">
-                </div>
-                <div class="Product_time">
-                    {$professional['professional_createtime']}
-                </div>
-                <div class="counseling_title">
-                    <div class="counseling_name">
-                        <span class="counseling_name_title">Contact :</span>
-                        <span>{$professional['professional_contact']}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="product_content">
-                <ul class="products_title">
-                    <li>
-                        <span class="products_title_name">Remarks :</span>
-                        <span class="products_title_content">{$professional['professional_explain']} </span>
-                    </li>
-                </ul>
-            </div>
+    <div class="web">
+
+        <!-- logo -->
+        <header class="container">
+            <include file="./World/Index/View/Public/head.html"/>
+        </header>
+        <hr>
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Jobs/work')}" class="crumbsa">Jobs</a>
+            <cite class="Icon"></cite>
+            <a href="{:U('Jobs/projectsProfessionals')}" class="crumbsa">Item List</a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">{$title}</span>
         </div>
-        <!-- Product details right -->
-        <div class="col-md-3 product_right" style="max-height: 630px;">
-            <div class="product_right_title">
-                Personal Information
-            </div>
-            <div class="right_details">
-                <ul>
-                    <li>
-                        <p>Avatar :</p>
-                        <span class="right_details_userimg"><img
-                                src="<if condition='$professional[user_icon]'>./Uploads/{$professional['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>"></span>
-                    </li>
-                    <li>
-                        <p>Nickname :</p>
-                        <span>{$professional['user_name']}</span>
-                    </li>
-                    <li>
-                        <p>sex :</p>
-                        <span><if condition='$professional[user_sex] != 2'>male<else/>gynecic</if></span>
-                    </li>
-                    <li>
-                        <p>Views :</p>
-                        <span>0</span>
-                    </li>
-                    <li>
-                        <p>Posts :</p>
-                        <span>{$professional['user_notes']}</span>
-                    </li>
-                    <li>
-                        <p>Contact :</p>
-                        <span>{$professional['user_mail']}</span>
-                    </li>
-                </ul>
-            </div>
-            <!-- Seller_Info -->
-            <div class="Seller_Info_title">
-                Seller Info
-            </div>
+        <div class="section">
 
-            <div class="right_details">
-                <ul>
-                    <li>
-                        <p>Address :</p>
-                        <span>11@gmail.com</span>
-                    </li>
-
-                </ul>
-            </div>
-            <div class="right_btn">
-                <a href="{:U('Index/User/personalCenter',['id'=>$professional['professional_uid']])}"
-                   class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
-                    Homepage
-                </a>
-            </div>
-            <!-- <div class="right_btn">
-                <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
-                    Private Letter
-                </a>
-            </div> -->
-        </div>
-    </div>
-</div>
-
-<!-- PostReply -->
-    <!--<div class="container StickSonDetailsContainer">
-        <div class="PostReply">
-            <P>
-                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
-                &nbsp;&nbsp;
-                <b>Comment</b>
-            </P>
-                <foreach name="commentlist" item="comment" key="commentkey">
-                    <div class="box">
-                        <p class="GuestBookUserImg">
-                            <img src="<if condition='$comment["user_icon"]'>./Uploads/{$comment['user_icon']}
-                            <else/>
-                            __PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" class="imgs img-circle">
-                        </p>
-                        <div class="GuestBookContainer">
-                            <div class="GuestBookUserTitleContainer">
-                                <p class="GuestBookUserName">{$comment['user_name']}</p>
-                                <p class="TimeFabulousContainer">
-                                    <span class="GuestBookUserTime">
-                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                        {$comment['professional_comment_createtime']}
-                                    </span>
-                                    <span class="GuestBookUserFabulous">
-                                Reply&nbsp;&nbsp;|&nbsp;&nbsp;
-                                <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png">
-                                {$comment['professional_comment_zans']}
-                            </span>
-                                </p>
+            <!-- Product details -->
+            <div class="Product_box container">
+                <div class="row justify-content-between">
+                    <div class="col-md-9">
+                        <div class="product_title">
+                            <div class="product_img">
+                                <img src="/Uploads/{$professional['professional_pic']}" alt="">
+                            </div>
+                            <div class="Product_time">
+                                {$professional['professional_createtime']}
+                            </div>
+                            <div class="counseling_title">
+                                <div class="counseling_name">
+                                    <span class="counseling_name_title">Contact :</span>
+                                    <span>{$professional['professional_contact']}</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="GuestBookUserMessage">
-                            {$comment['professional_comment_content']}
+                        <div class="product_content">
+                            <ul class="products_title">
+                                <li>
+                                    <span class="products_title_name">Remarks :</span>
+                                    <span class="products_title_content">{$professional['professional_explain']} </span>
+                                </li>
+                            </ul>
                         </div>
-                        &lt;!&ndash;<div class="ReplyContainer">
-                            @Tom 回复 Jack ： xxxxxxxxxxxx
-                        </div>&ndash;&gt;
                     </div>
-                </foreach>
-        </div>
-
-    </div>-->
-<div class="container">
-    <!--<div class="row">-->
-        <!---->
-    <!--</div>-->
-    <div class="col-md-9">
-        <div class="PostReply_box">
-            <div class="PostReply_box_title">
-                <div class="title_pic">
-                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
-                </div>
-                <div class="title_content">
-                    Comment
+                    <!-- Product details right -->
+                    <div class="col-md-3 product_right" style="max-height: 630px;">
+                        <div class="product_right_title">
+                            Personal Information
+                        </div>
+                        <div class="right_details">
+                            <ul>
+                                <li>
+                                    <p>Avatar :</p>
+                                    <span class="right_details_userimg"><img
+                                            src="<if condition='$professional[user_icon]'>./Uploads/{$professional['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>"></span>
+                                </li>
+                                <li>
+                                    <p>Nickname :</p>
+                                    <span>{$professional['user_name']}</span>
+                                </li>
+                                <li>
+                                    <p>sex :</p>
+                                    <span><if condition='$professional[user_sex] != 2'>male<else/>gynecic</if></span>
+                                </li>
+                                <li>
+                                    <p>Views :</p>
+                                    <span>0</span>
+                                </li>
+                                <li>
+                                    <p>Posts :</p>
+                                    <span>{$professional['user_notes']}</span>
+                                </li>
+                                <li>
+                                    <p>Contact :</p>
+                                    <span>{$professional['user_mail']}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Seller_Info -->
+                        <div class="Seller_Info_title">
+                            Seller Info
+                        </div>
+            
+                        <div class="right_details">
+                            <ul>
+                                <li>
+                                    <p>Address :</p>
+                                    <span>11@gmail.com</span>
+                                </li>
+            
+                            </ul>
+                        </div>
+                        <div class="right_btn">
+                            <a href="{:U('Index/User/personalCenter',['id'=>$professional['professional_uid']])}"
+                               class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
+                                Homepage
+                            </a>
+                        </div>
+                        <!-- <div class="right_btn">
+                            <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
+                                Private Letter
+                            </a>
+                        </div> -->
+                    </div>
                 </div>
             </div>
-            <div class="PostReply_box_content" id="commentlist">
-                <foreach name="commentlist" item="comment" key="commentkey">
-                    <div class="PostReply_box_content_item">
-                        <div class="item_pic">
-                            <img src="<if condition='$comment["user_icon"]'>./Uploads/{$comment['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
-                        </div>
-                        <div class="item_con">
-                            <div class="item_con_title">
-                                <div class="item_user_name">
-                                    <span class="User_name">{$comment['user_name']}</span>
-                                    <div class="item_Top">
-                                        <img src="__PUBLIC__/Web/web/img/Top.png" alt="">
+            
+            <!-- PostReply -->
+                <!--<div class="container StickSonDetailsContainer">
+                    <div class="PostReply">
+                        <P>
+                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
+                            &nbsp;&nbsp;
+                            <b>Comment</b>
+                        </P>
+                            <foreach name="commentlist" item="comment" key="commentkey">
+                                <div class="box">
+                                    <p class="GuestBookUserImg">
+                                        <img src="<if condition='$comment["user_icon"]'>./Uploads/{$comment['user_icon']}
+                                        <else/>
+                                        __PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" class="imgs img-circle">
+                                    </p>
+                                    <div class="GuestBookContainer">
+                                        <div class="GuestBookUserTitleContainer">
+                                            <p class="GuestBookUserName">{$comment['user_name']}</p>
+                                            <p class="TimeFabulousContainer">
+                                                <span class="GuestBookUserTime">
+                                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
+                                                    {$comment['professional_comment_createtime']}
+                                                </span>
+                                                <span class="GuestBookUserFabulous">
+                                            Reply&nbsp;&nbsp;|&nbsp;&nbsp;
+                                            <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png">
+                                            {$comment['professional_comment_zans']}
+                                        </span>
+                                            </p>
+                                        </div>
                                     </div>
+                                    <div class="GuestBookUserMessage">
+                                        {$comment['professional_comment_content']}
+                                    </div>
+                                    &lt;!&ndash;<div class="ReplyContainer">
+                                        @Tom 回复 Jack ： xxxxxxxxxxxx
+                                    </div>&ndash;&gt;
                                 </div>
-                                <div class="item_user_det">
-                                    <div class="det_time">
-                                        <div class="det_time_img">
-                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                        </div>
-                                        <div class="det_timed">
-                                            {$comment['professional_comment_createtime']}
-                                        </div>
+                            </foreach>
+                    </div>
+            
+                </div>-->
+            <div class="container">
+                <!--<div class="row">-->
+                    <!---->
+                <!--</div>-->
+                <div class="col-md-9">
+                    <div class="PostReply_box">
+                        <div class="PostReply_box_title">
+                            <div class="title_pic">
+                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
+                            </div>
+                            <div class="title_content">
+                                Comment
+                            </div>
+                        </div>
+                        <div class="PostReply_box_content" id="commentlist">
+                            <foreach name="commentlist" item="comment" key="commentkey">
+                                <div class="PostReply_box_content_item">
+                                    <div class="item_pic">
+                                        <img src="<if condition='$comment["user_icon"]'>./Uploads/{$comment['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
                                     </div>
-                                    <div class="det_zan">
-                                        <if condition="$professional['professional_uid'] == $userid && empty($comment['professional_comment_reply'])">
-                                            <div class="det_reply" onclick="reply(this,{$comment['professional_comment_id']})">Reply</div>
-                                        </if>
-                                        <div class="line"></div>
-                                        <div class="det_zan_box">
-                                            <?php $professional_comment_zaner = explode(',',$comment['professional_comment_zaner']);?>
-                                            <if condition='!in_array($userid,$professional_comment_zaner)'>
-                                                <div class="zan_box_img" onclick="zan({$comment['professional_comment_id']},1)">
-                                                    <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png" alt="">
+                                    <div class="item_con">
+                                        <div class="item_con_title">
+                                            <div class="item_user_name">
+                                                <span class="User_name">{$comment['user_name']}</span>
+                                                <div class="item_Top">
+                                                    <img src="__PUBLIC__/Web/web/img/Top.png" alt="">
                                                 </div>
-                                                <else />
-                                                <div class="zan_box_img" onclick="zan({$comment['professional_comment_id']},0)">
-                                                    <img src='__PUBLIC__/Web/web/img/greated.png'>
+                                            </div>
+                                            <div class="item_user_det">
+                                                <div class="det_time">
+                                                    <div class="det_time_img">
+                                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
+                                                    </div>
+                                                    <div class="det_timed">
+                                                        {$comment['professional_comment_createtime']}
+                                                    </div>
                                                 </div>
-                                            </if>
-                                            <div class="zan_box_num">
-                                                {$comment['professional_comment_zans']}
+                                                <div class="det_zan">
+                                                    <if condition="$professional['professional_uid'] == $userid && empty($comment['professional_comment_reply'])">
+                                                        <div class="det_reply" onclick="reply(this,{$comment['professional_comment_id']})">Reply</div>
+                                                    </if>
+                                                    <div class="line"></div>
+                                                    <div class="det_zan_box">
+                                                        <?php $professional_comment_zaner = explode(',',$comment['professional_comment_zaner']);?>
+                                                        <if condition='!in_array($userid,$professional_comment_zaner)'>
+                                                            <div class="zan_box_img" onclick="zan({$comment['professional_comment_id']},1)">
+                                                                <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png" alt="">
+                                                            </div>
+                                                            <else />
+                                                            <div class="zan_box_img" onclick="zan({$comment['professional_comment_id']},0)">
+                                                                <img src='__PUBLIC__/Web/web/img/greated.png'>
+                                                            </div>
+                                                        </if>
+                                                        <div class="zan_box_num">
+                                                            {$comment['professional_comment_zans']}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+            
+                                        <div class="item_con_det">
+                                            {$comment['professional_comment_content']}
+                                        </div>
+            
+                                        <div class="item_con_reply">
+                                            <div class="reply_person">
+                                                <if condition='$comment["professional_comment_reply"]'>
+                                                    {$professional['user_name']} 回复 {$comment['user_name']} ： <span class="reply_c">{$comment['professional_comment_reply']}</span>
+                                                </if>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="item_con_det">
-                                {$comment['professional_comment_content']}
-                            </div>
-
-                            <div class="item_con_reply">
-                                <div class="reply_person">
-                                    <if condition='$comment["professional_comment_reply"]'>
-                                        {$professional['user_name']} 回复 {$comment['user_name']} ： <span class="reply_c">{$comment['professional_comment_reply']}</span>
-                                    </if>
+                            </foreach>
+                        </div>
+                    </div>
+                    <!-- NumberOfPagesContainer -->
+                    <div class="container NumberOfPagesContainer">
+                        {$page}
+                    </div>
+                    <form class="layui-form" onsubmit="return false">
+                        <p style="color: #999; margin-bottom: 10px;">
+                            Tips: How do you think of this article? Post a comment to help others understanding this article.
+                        </p>
+                        <div class="ReturnBox">
+                            <div class="layui-form-item layui-form-text">
+                                        <span class="ReturnBoxicon">
+                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_pj.png">
+                                            &nbsp;
+                                            Comment
+                                        </span>
+                                <!-- <span class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</span> -->
+                                <div class="RepllyBox">
+                                    <!-- <div class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</div> -->
+                                </div>
+                                <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea" id="content"></textarea>
+                                <div class="bottom_btn">
+                                    <div class="refresh_btn">
+                                        <img src="__PUBLIC__/Web/web/img/refresh.png" alt="">
+                                    </div>
+                                    <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut" onclick="createcomment()">Post</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </foreach>
-            </div>
-        </div>
-        <!-- NumberOfPagesContainer -->
-        <div class="container NumberOfPagesContainer">
-            {$page}
-        </div>
-        <form class="layui-form" onsubmit="return false">
-            <p style="color: #999; margin-bottom: 10px;">
-                Tips: How do you think of this article? Post a comment to help others understanding this article.
-            </p>
-            <div class="ReturnBox">
-                <div class="layui-form-item layui-form-text">
-                            <span class="ReturnBoxicon">
-                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_pj.png">
-                                &nbsp;
-                                Comment
-                            </span>
-                    <!-- <span class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</span> -->
-                    <div class="RepllyBox">
-                        <!-- <div class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</div> -->
-                    </div>
-                    <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea" id="content"></textarea>
-                    <div class="bottom_btn">
-                        <div class="refresh_btn">
-                            <img src="__PUBLIC__/Web/web/img/refresh.png" alt="">
-                        </div>
-                        <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut" onclick="createcomment()">Post</button>
-                    </div>
+                    </form>
                 </div>
+            
+            
+            
             </div>
-        </form>
+            
+            
+            
+            
+            <!-- form -->
+            <div class="container">
+            
+            </div>
+        </div>
+        <!-- foot start 底部信息 -->
+        <footer class="footer">
+            <include file="./World/Index/View/Public/footer.html"/>
+        </footer>
+        <!-- foot end 底部信息 -->
     </div>
-
-
-
-</div>
-
-
-
-
-<!-- form -->
-<div class="container">
-
-</div>
-<!-- foot start 底部信息 -->
-<footer>
-    <include file="./World/Index/View/Public/footer.html"/>
-</footer>
-<!-- foot end 底部信息 -->
 <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
 <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
