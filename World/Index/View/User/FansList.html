@@ -2,87 +2,92 @@
 <html lang="en">
 <head>
     <include file="./World/Index/View/Public/meta.html"/>
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/FansList.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
 
 <body>
-<!-- logo -->
-<header class="container">
-    <include file="./World/Index/View/Public/head.html"/>
-</header>
-<hr>
-
-<!-- Crumbs nav -->
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 crumbs">
-            <a href="{:U(Index/index)}" class="crumbsa">Homepage</a>
-            <cite class="Icon"></cite>
-            <span class="crumbsTitle">{$title}</span>
-        </div>
-        <div class="col-md-6">
-            <div class="SelectionContainer">
-                <input type="text" class="layui-input" id="Selectionform">
-                <a href="javascript:void();" id="SelectionIcon">
-                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="FansList_content">
-        <div class="FansList_list">
-            <div class="FansList_item">
-                <div class="item_user">
-                    <div class="item_img">
-                        <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
-                    </div>
-                    <div class="item_user_details">
-                        <div class="item_user_name">
-                            Kendall J.
-                        </div>
-                        <div class="item_user_num">
-                            Signature :
-                            <span>xxxxxxxxxxxxxxxxxxxxxxxx</span>
-                        </div>
-                    </div>
+    <div class="web">
+        <!-- logo -->
+        <header class="container">
+            <include file="./World/Index/View/Public/head.html"/>
+        </header>
+        <hr>
+        
+        <!-- Crumbs nav -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 crumbs">
+                    <a href="{:U(Index/index)}" class="crumbsa">Homepage</a>
+                    <cite class="Icon"></cite>
+                    <span class="crumbsTitle">{$title}</span>
                 </div>
-                <div class="item_add" data-Ison="true">
-                    Follow
-                </div>
-            </div>
-
-            <div class="FansList_item">
-                <div class="item_user">
-                    <div class="item_img">
-                        <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
+                <div class="col-md-6">
+                    <div class="SelectionContainer">
+                        <input type="text" class="layui-input" id="Selectionform">
+                        <a href="javascript:void();" id="SelectionIcon">
+                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
+                        </a>
                     </div>
-                    <div class="item_user_details">
-                        <div class="item_user_name">
-                            Kendall J.
-                        </div>
-                        <div class="item_user_num">
-                            Signature :
-                            <span>xxxxxxxxxxxxxxxxxxxxxxxx</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="item_add" data-Ison="false">
-                    UnFollow
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container" id="NumberOfPagesContainer">
-        <div id="NumberOfPages"></div>
-    </div>
-</div>
-
+        
+        <div class="container section">
+            <div class="FansList_content">
+                <div class="FansList_list">
+                    <div class="FansList_item">
+                        <div class="item_user">
+                            <div class="item_img">
+                                <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
+                            </div>
+                            <div class="item_user_details">
+                                <div class="item_user_name">
+                                    Kendall J.
+                                </div>
+                                <div class="item_user_num">
+                                    Signature :
+                                    <span>xxxxxxxxxxxxxxxxxxxxxxxx</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item_add" data-Ison="true">
+                            Follow
+                        </div>
+                    </div>
+        
+                    <div class="FansList_item">
+                        <div class="item_user">
+                            <div class="item_img">
+                                <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
+                            </div>
+                            <div class="item_user_details">
+                                <div class="item_user_name">
+                                    Kendall J.
+                                </div>
+                                <div class="item_user_num">
+                                    Signature :
+                                    <span>xxxxxxxxxxxxxxxxxxxxxxxx</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item_add" data-Ison="false">
+                            UnFollow
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container" id="NumberOfPagesContainer">
+                <div id="NumberOfPages"></div>
+            </div>
+        </div>
+        
         <!-- footer -->
-        <footer>
-            <include file = "./World/Index/View/Public/footer.html"/>
+        <footer class="footer">
+        <include file = "./World/Index/View/Public/footer.html"/>
         </footer>
+
+    </div>
 
 </body>
 <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>

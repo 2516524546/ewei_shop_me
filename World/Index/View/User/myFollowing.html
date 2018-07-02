@@ -14,162 +14,166 @@
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/MyFollowing.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
     </head>
 
     <body>
-         <!-- logo -->
-        <header class="container">
-            <include file = "./World/Index/View/Public/head.html"/>
-            </header>
-            <hr>
+        <div class="web">
+            <!-- logo -->
+           <header class="container">
+               <include file = "./World/Index/View/Public/head.html"/>
+               </header>
+               <hr>
+   
+           <!-- Crumbs nav -->
+           <div class="container crumbs">
+               <a href="index.html" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+               <cite class="Icon"></cite>
+               <span class="crumbsTitle">My following</span>
+           </div>
+   
+           <!-- MyFollowing content -->
+           <div class="container section">
+               <div class="MyFollowing_box">
+                   <div class="MyFollowing_title">
+                           My community
+                   </div>
+                   <div class="MyFollowing_list">
+                       <foreach name="groups" item="g">
+                       <div class="MyFollowing_item Group_My_item">
+                           <div class="Group_name">
+                               {$g['concerns_group_name']}
+                           </div>
+                           <div class="Group_btn">
+                               <div class="GroupBtn" data-id="{$g['concerns_group_id']}"   data-toggle="modal" data-target="#box2">
+                                   ChangeName 
+                               </div>
+                               <div class="GroupBtn" data-id="{$g['concerns_group_id']}"   data-toggle="modal" data-target="#box1">
+                                   Delete 
+                               </div>
+                           </div>
+                       </div>
+                       </foreach>
+   
+                       <!-- 删除 -->
+                       <div id="box1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                           <div class="modal-dialog modal-sm" role="document">
+                               <div class="modal-content">
+                                   <div class="modal-header">
+                                           <span class="modal-title">
+                                                   Reminder
+                                               </span>
+                                       <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: -226px;top: 16px;">
+                                           <span aria-hidden="true">&times;</span>
+                                       </a>
+                                   </div>
+                                   <div class="modal-body">
+                                       <p class="text-center">Do you delete the occupation?</p>
+                                   </div>
+                                   <div class="modal-footer">
+                                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                       <button type="button" class="btn btn-primary" data-dismiss="modal">confirm</button>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!-- 修改 -->
+                       <div id="box2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                           <div class="modal-dialog modal-sm" role="document">
+                               <div class="modal-content">
+                                   <div class="modal-header">
+                                           <span class="modal-title">
+                                                   Reminder
+                                               </span>
+                                       <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                                                   <span aria-hidden="true">&times;</span>
+                                       </a>
+                                   </div>
+                                   <div class="modal-body">
+                                       <span>name :</span>
+                                       <input type="text" placeholder="Please enter your name" class="box2_input">
+                                   </div>
+                                   <div class="modal-footer">
+                                       <button type="button" class="btn btn-change-default" data-dismiss="modal">Close</button>
+                                       <button type="button" class="btn btn-change-primary " data-dismiss="modal">confirm</button>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+   
+                   <div class="MyFollowing_title">
+                           My Following
+                   </div>
+                   <div class="MyFollowing_list">
+                       <foreach name="myFollows" item="f">
+                       <div class="MyFollowing_item Following_item">
+                           <a href="{:U('User/personalCenter/',['id'=>$f['concerns_cuid']])}">
+                               <div class="MyFollowing_content">
+                                   <div class="MyFollowing_img">
+                                       <img src="<if condition='$f["user_icon"]'>./Uploads/{$f['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
+                                   </div>
+                                   <div class="MyFollowing_details">
+                                       <div class="content_name  Follow_name">
+                                           <if condition="$f['concerns_name']">{$f['concerns_name']}<else/>{$f['user_name']}</if>
+                                       </div>
+                                       <div class="content_name">
+                                           signature ： {$f['user_signature']}
+                                       </div>
+                                   </div>
+                               </div>
+                           </a>
+                               <div class="Group_btn">
+                                   <div class="GroupBtn" data-id="{$f['concerns_id']}"  data-toggle="modal" data-target="#box3">
+                                       ChangeName 
+                                   </div>
+                                   <div class="GroupBtn Friend_Follow" data-Id="{$f['concerns_cuid']}" data-Ison="false">
+                                       Followed
+                                   </div>
+                               </div>
+                       </div>
+                       </foreach>
+   
+                       <!-- 修改 -->
+                       <div id="box3" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                           <div class="modal-dialog modal-sm" role="document">
+                               <div class="modal-content">
+                                   <div class="modal-header">
+                                           <span class="modal-title">
+                                                   Reminder
+                                               </span>
+                                       <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                                                   <span aria-hidden="true">&times;
+                                       </a>
+                                   </div>
+                                   <div class="modal-body">
+                                       <span>name :</span>
+                                       <input type="text" placeholder="Please enter your name" class="box3_input">
+                                   </div>
+                                   <div class="modal-footer">
+                                       <button type="button" class="btn btn-change-default" data-dismiss="modal">Close</button>
+                                       <button type="button" class="btn btn-Follow-primary " data-dismiss="modal">confirm</button>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+   
+   
+               </div>
+   
+               <div class="container" id="NumberOfPagesContainer">
+                   {$page}
+           </div>
+   </div>
+   
+           <!-- foot start 底部信息 -->
+           <footer class="footer">
+               <include file = "./World/Index/View/Public/footer.html"/>
+           </footer>
+               <!-- foot end 底部信息 -->
 
-        <!-- Crumbs nav -->
-        <div class="container crumbs">
-            <a href="index.html" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
-            <cite class="Icon"></cite>
-            <span class="crumbsTitle">My following</span>
         </div>
-
-        <!-- MyFollowing content -->
-        <div class="container">
-            <div class="MyFollowing_box">
-                <div class="MyFollowing_title">
-                        My community
-                </div>
-                <div class="MyFollowing_list">
-                    <foreach name="groups" item="g">
-                    <div class="MyFollowing_item Group_My_item">
-                        <div class="Group_name">
-                            {$g['concerns_group_name']}
-                        </div>
-                        <div class="Group_btn">
-                            <div class="GroupBtn" data-id="{$g['concerns_group_id']}"   data-toggle="modal" data-target="#box2">
-                                ChangeName 
-                            </div>
-                            <div class="GroupBtn" data-id="{$g['concerns_group_id']}"   data-toggle="modal" data-target="#box1">
-                                Delete 
-                            </div>
-                        </div>
-                    </div>
-                    </foreach>
-
-                    <!-- 删除 -->
-                    <div id="box1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                        <div class="modal-dialog modal-sm" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                        <span class="modal-title">
-                                                Reminder
-                                            </span>
-                                    <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: -226px;top: 16px;">
-                                        <span aria-hidden="true">&times;</span>
-                                    </a>
-                                </div>
-                                <div class="modal-body">
-                                    <p class="text-center">Do you delete the occupation?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">confirm</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 修改 -->
-                    <div id="box2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                        <div class="modal-dialog modal-sm" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                        <span class="modal-title">
-                                                Reminder
-                                            </span>
-                                    <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
-                                                <span aria-hidden="true">&times;</span>
-                                    </a>
-                                </div>
-                                <div class="modal-body">
-                                    <span>name :</span>
-                                    <input type="text" placeholder="Please enter your name" class="box2_input">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-change-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-change-primary " data-dismiss="modal">confirm</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="MyFollowing_title">
-                        My Following
-                </div>
-                <div class="MyFollowing_list">
-                    <foreach name="myFollows" item="f">
-                    <div class="MyFollowing_item Following_item">
-                        <a href="{:U('User/personalCenter/',['id'=>$f['concerns_cuid']])}">
-                            <div class="MyFollowing_content">
-                                <div class="MyFollowing_img">
-                                    <img src="<if condition='$f["user_icon"]'>./Uploads/{$f['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
-                                </div>
-                                <div class="MyFollowing_details">
-                                    <div class="content_name  Follow_name">
-                                        <if condition="$f['concerns_name']">{$f['concerns_name']}<else/>{$f['user_name']}</if>
-                                    </div>
-                                    <div class="content_name">
-                                        signature ： {$f['user_signature']}
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                            <div class="Group_btn">
-                                <div class="GroupBtn" data-id="{$f['concerns_id']}"  data-toggle="modal" data-target="#box3">
-                                    ChangeName 
-                                </div>
-                                <div class="GroupBtn Friend_Follow" data-Id="{$f['concerns_cuid']}" data-Ison="false">
-                                    Followed
-                                </div>
-                            </div>
-                    </div>
-                    </foreach>
-
-                    <!-- 修改 -->
-                    <div id="box3" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                        <div class="modal-dialog modal-sm" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                        <span class="modal-title">
-                                                Reminder
-                                            </span>
-                                    <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
-                                                <span aria-hidden="true">&times;
-                                    </a>
-                                </div>
-                                <div class="modal-body">
-                                    <span>name :</span>
-                                    <input type="text" placeholder="Please enter your name" class="box3_input">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-change-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-Follow-primary " data-dismiss="modal">confirm</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div class="container" id="NumberOfPagesContainer">
-                {$page}
-        </div>
-</div>
-
-        <!-- foot start 底部信息 -->
-        <footer>
-            <include file = "./World/Index/View/Public/footer.html"/>
-        </footer>
-            <!-- foot end 底部信息 -->
 
     </body>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>

@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <include file="./World/Index/View/Public/meta.html"/>
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
         <style>
             .btn-DropOut-primary,.btn-Dissolve-primary{
                 color: #fff;
@@ -11,121 +12,168 @@
         </style>
     </head>
     <body>
-        <!-- logo -->
-        <header class="container">
-            <include file = "./World/Index/View/Public/head.html"/>
-            </header>
-            <hr>
+        <div class="web">
+ <!-- logo -->
+ <header class="container">
+        <include file = "./World/Index/View/Public/head.html"/>
+        </header>
+        <hr>
 
-        <!-- Crumbs nav -->
-        <div class="container">
-            <div class="row" style="margin-top: 15px;">
-                <div class="col-md-6 crumbs">
-                        <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
-                        <cite class="Icon"></cite>
-                        <span class="crumbsTitle">My Community</span>
-                    </div>
-                    <div class="col-md-6">
-                        <form method="get" action="{:U('Index/User/myGroup')}" id="Selectionform">
-                            <div class="SelectionContainer">
-                                <input type="text" name="k" value="{$_GET['k']}" class="layui-input" id="Selectionform">
-                                <input type="hidden" name="type" value="{$_GET['type']}" class="layui-input">
-                                <input type="hidden" name="c" value="{$Think.CONTROLLER_NAME}" class="layui-input">
-                                <input type="hidden" name="m" value="{$Think.MODULE_NAME}" class="layui-input">
-                                <input type="hidden" name="a" value="{$Think.ACTION_NAME}" class="layui-input">
-                                <a href="javascript:$('#Selectionform').submit()" id="SelectionIcon">
-                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
-                                </a>
-                            </div>
-                        </form>
-                    </div>
-            </div>
+    <!-- Crumbs nav -->
+    <div class="container">
+        <div class="row" style="margin-top: 15px;">
+            <div class="col-md-6 crumbs">
+                    <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+                    <cite class="Icon"></cite>
+                    <span class="crumbsTitle">My Community</span>
+                </div>
+                <div class="col-md-6">
+                    <form method="get" action="{:U('Index/User/myGroup')}" id="Selectionform">
+                        <div class="SelectionContainer">
+                            <input type="text" name="k" value="{$_GET['k']}" class="layui-input" id="Selectionform">
+                            <input type="hidden" name="type" value="{$_GET['type']}" class="layui-input">
+                            <input type="hidden" name="c" value="{$Think.CONTROLLER_NAME}" class="layui-input">
+                            <input type="hidden" name="m" value="{$Think.MODULE_NAME}" class="layui-input">
+                            <input type="hidden" name="a" value="{$Think.ACTION_NAME}" class="layui-input">
+                            <a href="javascript:$('#Selectionform').submit()" id="SelectionIcon">
+                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
+                            </a>
+                        </div>
+                    </form>
+                </div>
         </div>
+    </div>
 
 
-        <!-- MyGroup content -->
-        <div class="container">
-            <div class="myGroup_box">
-                    <div class="layui-tab">
-                            <ul class="layui-tab-title">
-                                <li <if condition="empty($_GET['type'])">class="layui-this"</if>> <a href="{:U('Index/User/myGroup',['type'=>0])}" <if condition="empty($_GET['type'])">style="color: #fff;text-decoration:none"<else/>style="text-decoration:none"</if>> I Created</a></li>
-                              <li <if condition="!empty($_GET['type'])">class="layui-this"</if>> <a href="{:U('Index/User/myGroup',['type'=>1])}" <if condition="!empty($_GET['type'])">style="color: #fff;text-decoration:none"<else/>style="text-decoration:none"</if>>I Joined</a></li>
-                            </ul>
-                            <div class="layui-tab-content">
-                              <if condition="empty($_GET['type'])">
-                              <div class="layui-tab-item layui-show Created_item">
-                                  <foreach name="groups" item="g">
-                                  <div class="MyGroup_list">
-                                      <div class="MyGroup_item">
-                                        <div class="MyGroup_left">
-                                            <div class="myGroup_left_img">
-                                                <img src="<if condition='$g["crowd_icon"]'>./Uploads/{$g["crowd_icon"]}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
+    <!-- MyGroup content -->
+    <div class="container section">
+        <div class="myGroup_box">
+                <div class="layui-tab">
+                        <ul class="layui-tab-title">
+                            <li <if condition="empty($_GET['type'])">class="layui-this"</if>> <a href="{:U('Index/User/myGroup',['type'=>0])}" <if condition="empty($_GET['type'])">style="color: #fff;text-decoration:none"<else/>style="text-decoration:none"</if>> I Created</a></li>
+                          <li <if condition="!empty($_GET['type'])">class="layui-this"</if>> <a href="{:U('Index/User/myGroup',['type'=>1])}" <if condition="!empty($_GET['type'])">style="color: #fff;text-decoration:none"<else/>style="text-decoration:none"</if>>I Joined</a></li>
+                        </ul>
+                        <div class="layui-tab-content">
+                          <if condition="empty($_GET['type'])">
+                          <div class="layui-tab-item layui-show Created_item">
+                              <foreach name="groups" item="g">
+                              <div class="MyGroup_list">
+                                  <div class="MyGroup_item">
+                                    <div class="MyGroup_left">
+                                        <div class="myGroup_left_img">
+                                            <img src="<if condition='$g["crowd_icon"]'>./Uploads/{$g["crowd_icon"]}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
+                                        </div>
+                                        <div class="MyGroup_left_details">
+                                            <div class="MyGroup_left_details_name">
+                                                    Community Name: {$g["crowd_name"]}
                                             </div>
-                                            <div class="MyGroup_left_details">
-                                                <div class="MyGroup_left_details_name">
-                                                        Community Name: {$g["crowd_name"]}
+                                            <div class="MyGroup_left_details_person">
+                                                <div class="person_img">
+                                                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_04.png" alt="">
                                                 </div>
-                                                <div class="MyGroup_left_details_person">
-                                                    <div class="person_img">
-                                                        <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_04.png" alt="">
-                                                    </div>
-                                                    <div class="person_num">
-                                                        {$g["total"]}
-                                                    </div>
+                                                <div class="person_num">
+                                                    {$g["total"]}
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="MyGroup_right">
-                                            <div class="right_btn btn_Dis" data-id="{$g['crowd_id']}" data-target="#box2" data-toggle="modal">
-                                                    Dissolve
-                                            </div>
+                                    </div>
+                                    <div class="MyGroup_right">
+                                        <div class="right_btn btn_Dis" data-id="{$g['crowd_id']}" data-target="#box2" data-toggle="modal">
+                                                Dissolve
                                         </div>
-                                      </div>
+                                    </div>
                                   </div>
-                                  </foreach>
+        </div>
+        </foreach>
+    </div>
+    <else/>
+    <div class="layui-tab-item  layui-show Joined_item">
+        <div class="MyGroup_list">
+            <foreach name="groups" item="g">
+                <div class="MyGroup_item">
+                    <div class="MyGroup_left">
+                        <div class="myGroup_left_img">
+                            <img src="<if condition='$g["crowd_icon"]'>./Uploads/{$g["crowd_icon"]}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
+                        </div>
+                        <div class="MyGroup_left_details">
+                            <div class="MyGroup_left_details_name">
+                                Community Name: {$g["crowd_name"]}
+                            </div>
+                            <div class="MyGroup_left_details_person">
+                                <div class="person_img">
+                                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_04.png" alt="">
                                 </div>
-                                <else/>
-                              <div class="layui-tab-item  layui-show Joined_item">
-                                   <div class="MyGroup_list">
-                                       <foreach name="groups" item="g">
-                                           <div class="MyGroup_item">
-                                               <div class="MyGroup_left">
-                                                   <div class="myGroup_left_img">
-                                                       <img src="<if condition='$g["crowd_icon"]'>./Uploads/{$g["crowd_icon"]}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
-                                                   </div>
-                                                   <div class="MyGroup_left_details">
-                                                       <div class="MyGroup_left_details_name">
-                                                           Community Name: {$g["crowd_name"]}
-                                                       </div>
-                                                       <div class="MyGroup_left_details_person">
-                                                           <div class="person_img">
-                                                               <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_04.png" alt="">
-                                                           </div>
-                                                           <div class="person_num">
-                                                               {$g["total"]}
-                                                           </div>
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                               <div class="MyGroup_right">
-                                                   <div class="right_btn" data-id="{$g['crowd_id']}"  data-target="#box3" data-toggle="modal">
-                                                       Quit
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </foreach>
-                                  </div>
-                              </div>
-                            </if>
+                                <div class="person_num">
+                                    {$g["total"]}
+                                </div>
                             </div>
-                          </div>
-            </div>
-            <div class="container" id="NumberOfPagesContainer">
-                {$page}
+                        </div>
+                    </div>
+                    <div class="MyGroup_right">
+                        <div class="right_btn" data-id="{$g['crowd_id']}"  data-target="#box3" data-toggle="modal">
+                            Quit
+                        </div>
+                    </div>
+                </div>
+            </foreach>
         </div>
+    </div>
+        </if>
+        </div>
+        </div>
+    </div>
+    <div class="container" id="NumberOfPagesContainer">
+        {$page}
+    </div>
 
-        <!-- Create Drop out -->
-        <div id="box1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <!-- Create Drop out -->
+    <div id="box1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title">
+                        Tips
+                    </span>
+                    <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">Are you sure to quit the Community?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-DropOut-primary" data-dismiss="modal">confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dissolve -->
+    <div id="box2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title">
+                        Tips
+                    </span>
+                    <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">Are you sure about dissolving the Community?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-Dissolve-primary" data-dismiss="modal">confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join Drop out -->
+    <div id="box3" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -147,57 +195,13 @@
             </div>
         </div>
 
-        <!-- Dissolve -->
-        <div id="box2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <span class="modal-title">
-                            Tips
-                        </span>
-                        <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
-                            <span aria-hidden="true">&times;</span>
-                        </a>
-                    </div>
-                    <div class="modal-body">
-                        <p class="text-center">Are you sure about dissolving the Community?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-Dissolve-primary" data-dismiss="modal">confirm</button>
-                    </div>
-                </div>
-            </div>
+    </div>
+    <!-- footer -->
+    <footer class="footer">
+        <include file = "./World/Index/View/Public/footer.html"/>
+    </footer>
         </div>
-
-        <!-- Join Drop out -->
-        <div id="box3" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                <div class="modal-dialog modal-sm" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <span class="modal-title">
-                                Tips
-                            </span>
-                            <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
-                                <span aria-hidden="true">&times;</span>
-                            </a>
-                        </div>
-                        <div class="modal-body">
-                            <p class="text-center">Are you sure to quit the Community?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-DropOut-primary" data-dismiss="modal">confirm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <!-- footer -->
-        <footer>
-            <include file = "./World/Index/View/Public/footer.html"/>
-        </footer>
+       
 
     </body>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>

@@ -14,96 +14,100 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/mineResume.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
 
 
 <body>
-    <!-- logo -->
-    <header class="container">
-        <include file = "./World/Index/View/Public/head.html"/>
-    </header>
-    <hr>
-    <!-- Crumbs nav -->
-    <div class="container crumbs">
-        <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">My resume</span>
-    </div>
-
-
-    <!-- mineResume content -->
-    <div class="container">
-        <div class="mineResume_content">
-            <if condition="!$myResumes">
-            <div class="mineResume_title">
-                <a href="{:U('Index/User/createResume')}">
-                    <div class="title_img">
-                        <img src="__PUBLIC__/Web/web/img/common_icon_write.png" alt="">
-                    </div>
-                    <div class="title_name">
-                        Create your resure
-                    </div>
-                </a>
-            </div>
-            </if>
-            <div class="mineResume_table">
-                <if condition="$myResumes">
-                <table>
-                    <tr>
-                        <th>Resume name</th>
-                        <th>Last Modified time</th>
-                        <th>Operation</th>
-                    </tr>
-                        <foreach name="myResumes" item="r">
-                            <tr class="mineResume_table_tr">
-                                <td>{$r['resume_name']}</td>
-                                <td>{$r['resume_updatetime']}</td>
-                                <td class="btn_choose">
-                                    <span class="minResume_btn btn_Edit"><a href="{:U('Index/User/resumeDetails',['resume_id'=>$r['resume_id']])}">Edit</a></span>
-                                    <span class="line"></span>
-                                    <span class="minResume_btn btn_Delete" data-resume_id="{$r['resume_id']}" data-toggle="modal" data-target="#box1">Delete</span>
-                                </td>
-                            </tr>
-                        </foreach>
-                </table>
-                <else/>
-                    <div>You have no resume!</div>
+    <div class="web">
+        <!-- logo -->
+        <header class="container">
+            <include file = "./World/Index/View/Public/head.html"/>
+        </header>
+        <hr>
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">My resume</span>
+        </div>
+    
+    
+        <!-- mineResume content -->
+        <div class="container section">
+            <div class="mineResume_content">
+                <if condition="!$myResumes">
+                <div class="mineResume_title">
+                    <a href="{:U('Index/User/createResume')}">
+                        <div class="title_img">
+                            <img src="__PUBLIC__/Web/web/img/common_icon_write.png" alt="">
+                        </div>
+                        <div class="title_name">
+                            Create your resure
+                        </div>
+                    </a>
+                </div>
                 </if>
-            </div>
-
-            <div class="container" id="NumberOfPagesContainer">{$page}</div>
-
-            <!-- 关闭 -->
-            <div id="box1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <span class="modal-title">
-                                    Reminder
-                                </span>
-                                <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
-                                    <span aria-hidden="true">&times;</span>
-                                </a>
-                            </div>
-                            <div class="modal-body">
-                                <p class="text-center">Are you Delete the Resume?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">confirm</button>
+                <div class="mineResume_table">
+                    <if condition="$myResumes">
+                    <table>
+                        <tr>
+                            <th>Resume name</th>
+                            <th>Last Modified time</th>
+                            <th>Operation</th>
+                        </tr>
+                            <foreach name="myResumes" item="r">
+                                <tr class="mineResume_table_tr">
+                                    <td>{$r['resume_name']}</td>
+                                    <td>{$r['resume_updatetime']}</td>
+                                    <td class="btn_choose">
+                                        <span class="minResume_btn btn_Edit"><a href="{:U('Index/User/resumeDetails',['resume_id'=>$r['resume_id']])}">Edit</a></span>
+                                        <span class="line"></span>
+                                        <span class="minResume_btn btn_Delete" data-resume_id="{$r['resume_id']}" data-toggle="modal" data-target="#box1">Delete</span>
+                                    </td>
+                                </tr>
+                            </foreach>
+                    </table>
+                    <else/>
+                        <div>You have no resume!</div>
+                    </if>
+                </div>
+    
+                <div class="container" id="NumberOfPagesContainer">{$page}</div>
+    
+                <!-- 关闭 -->
+                <div id="box1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                        <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <span class="modal-title">
+                                        Reminder
+                                    </span>
+                                    <a class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 10px;top: 16px;">
+                                        <span aria-hidden="true">&times;</span>
+                                    </a>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="text-center">Are you Delete the Resume?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">confirm</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+            </div>
+    
         </div>
+    
+    
+        <!-- footer -->
+        <footer class="footer">
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
 
     </div>
-
-
-    <!-- footer -->
-    <footer>
-        <include file = "./World/Index/View/Public/footer.html"/>
-    </footer>
 
 
 </body>
