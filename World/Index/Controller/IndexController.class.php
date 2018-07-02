@@ -25,11 +25,14 @@ class IndexController extends CommonController {
 	 */
     public function index(){
 
+
         $usermodel = new UserModel();
         $donationmodel = new DonationModel();
         $proposaltypemodel = new ProposalTypeModel();
         $field = "user_havecoin,user_outcoin,user_outmoney,user_name,user_icon";
+
         $wealth = $usermodel->honorlist('','user_havecoin desc',0,5,$field);
+
         $donate = $usermodel->honorlist('','user_outcoin desc',0,5,$field);
         $expenditure = $usermodel->honorlist('','user_outmoney desc',0,5,$field);
         $expenditure = $this->array_set_float2($expenditure,'user_outmoney','/',100);

@@ -42,7 +42,7 @@ class AdvertisingController extends CommonController
         if ($res){
             echo 1;
         }else{
-            echo "删除失败";
+            echo L('newworld_ajax_operation_fail');
         }
     }
 
@@ -68,32 +68,39 @@ class AdvertisingController extends CommonController
     //提交数据验证
     public function verifyData($post){
         if (empty($post['advertising_crowdid'])&&$post['advertising_for']==2){
-            echo "群id不能为空";
+            //Advertising_advertising_group_id_not_empty
+            echo L('Advertising_advertising_group_id_not_empty');
             exit;
         }
         if (empty($post['advertising_title'])){
-            echo "新闻标题不能空";
+            //Advertising_advertising_title_not_empty
+            echo L('Advertising_advertising_title_not_empty');
             exit;
         }
         if (empty($post['advertising_img'])){
-            echo "图片不能空";
+            //Advertising_advertising_picture_not_empty
+            echo L('Advertising_advertising_picture_not_empty');
             exit;
         }
         if (empty($post['advertising_mid'])||$post['advertising_mid']==0){
-            echo "请选择所属分类";
+            //Advertising_advertising_select_category
+            echo L('Advertising_advertising_select_category');
             exit;
         }
 
         if (empty($post['advertising_url'])){
-            echo "链接不能为空";
+            //Advertising_advertising_link_not_empty
+            echo L('Advertising_advertising_link_not_empty');
             exit;
         }
         if (empty($post['advertising_starttime'])){
-            echo "创建时间不能为空";
+            //Advertising_advertising_createtime_not_empty
+            echo L('Advertising_advertising_createtime_not_empty');
             exit;
         }
         if (empty($post['advertising_finishtime'])){
-            echo "结束时间不能为空";
+            //Advertising_advertising_endtime_not_empty
+            echo L('Advertising_advertising_endtime_not_empty');
             exit;
         }
         //模块广告
@@ -102,7 +109,8 @@ class AdvertisingController extends CommonController
             $now = date("Y-m-d H:i:s", time());
             $count=M("s_advertising")->where("advertising_for = 1 and advertising_mid=".$post['advertising_mid']." and advertising_finishtime > '".$now."'")->count();
             if ($count>=2){
-                echo "该模块广告数最多为2";
+                //Advertising_module_number_max_two
+                echo L('Advertising_module_number_max_two');
                 exit;
             }
         }elseif ($post['advertising_for']==2){ //群广告
@@ -110,7 +118,8 @@ class AdvertisingController extends CommonController
             $now = date("Y-m-d H:i:s", time());
             $count=M("s_advertising")->where("advertising_for = 2 and advertising_crowdid=".$post['advertising_crowdid']." and advertising_finishtime > '".$now."'")->count();
             if ($count>=1){
-                echo "该群广告数最多为1";
+                //Advertising_group_number_max_one
+                echo L('Advertising_group_number_max_one');
                 exit;
             }
         }
@@ -126,7 +135,7 @@ class AdvertisingController extends CommonController
             if ($res){
                 echo 1;
             }else{
-                echo "修改失败";
+                echo L('newworld_ajax_operation_fail');
             }
         }else{
             //查询数据
@@ -138,20 +147,24 @@ class AdvertisingController extends CommonController
     }
     public function verifyData2($post){
         if (empty($post['advertising_crowdid'])&&$post['advertising_for']==2){
-            echo "群id不能为空";
+            //Advertising_advertising_group_id_not_empty
+            echo L('Advertising_advertising_group_id_not_empty');
             exit;
         }
         if (empty($post['advertising_title'])){
-            echo "新闻标题不能空";
+            //Advertising_advertising_title_not_empty
+            echo L('Advertising_advertising_title_not_empty');
             exit;
         }
         if (empty($post['advertising_img'])){
-            echo "图片不能空";
+            //Advertising_advertising_picture_not_empty
+            echo L('Advertising_advertising_picture_not_empty');
             exit;
         }
 
         if (empty($post['advertising_url'])){
-            echo "链接不能为空";
+            //Advertising_advertising_link_not_empty
+            echo L('Advertising_advertising_link_not_empty');
             exit;
         }
 

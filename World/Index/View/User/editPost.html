@@ -7,18 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=0 user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/register.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Donation.css">
-    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/CreateInterest.css">
-    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/GroupDetailsRelease.css">
-    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
+
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/CreateInterest.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/GroupDetailsRelease.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/EditResource.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/changeimg.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/loading.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
 
@@ -31,20 +31,20 @@
             <hr>
        <!-- Crumbs nav -->
        <div class="container crumbs">
-            <a href="index.html" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+            <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
             <cite class="Icon"></cite>
-            <a href="MyPosts.html" class="crumbsa">My posts</a>
+            <a href="{:U('Index/User/myPosts')}" class="crumbsa">My posts</a>
             <cite class="Icon"></cite>
-            <span class="crumbsTitle">Edit resources</span>
+            <span class="crumbsTitle">Edit</span>
         </div>
         <!-- Forget the password form -->
-        <form class="layui-form layui-form-pane section" action="">
+        <form class="layui-form layui-form-pane section" id="formdata">
             <div class="PasswordContainer">
                 <div class="StepContainer">
                     <div class="StepContainerOne">
                         <div class="InterestTitle">
                             <h3 class="text-center Interesth3">
-                                Post basic information
+                                basic information
                             </h3>
                         </div>
                         <div class="FormContainer" pane>
@@ -52,37 +52,41 @@
                                 <span class="TitlesIcon"></span>
                             </label>
                             <div class="layui-input-block input-spacing inputW">
-                                <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the title" class="layui-input">
+                                <input type="text" name="number" lay-verify="required" autocomplete="off" value="{$noteone['note_name']}" id="name" placeholder="Enter the title" class="layui-input">
                             </div>
                         </div>
+                        <if condition='$noteone["note_type"] != 1'>
                         <div class="FormContainer" pane>
                             <label class="layui-form-label label-spacing">
                                 <span class="NumberIcon"></span>
                             </label>
                             <div class="layui-input-block input-spacing inputW">
-                                <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter numbers of virtual currency to download" class="layui-input">
+                                <input type="text" name="number" lay-verify="required" value="{$noteone['note_reward']}" autocomplete="off" id="reward" class="layui-input">
                             </div>
                         </div>
+                        </if>
                         <div class="FormContainer" pane>
                             <label class="layui-form-label label-spacing">
                                 <span class="ContentsIcon"></span>
                             </label>
                             <div class="layui-input-block input-spacing inputW">
-                                <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the resource description" class="layui-input">
+                                <input type="text" name="number" lay-verify="required" autocomplete="off" value="{$noteone['note_content']}" id="content" placeholder="Enter the resource description" class="layui-input">
                             </div>
                         </div>
+                        <if condition='$noteone["note_type"] == 3'>
                         <div class="FormContainer-one" pane>
                             <label class="HeadPortraitbox-one">
                                 <span class="filesIcon">Upload resources</span>
                             </label>
                             <div class="picDiv-one">
                                 <div class="addImages">
-                                        <div class="files_name"><span>Choose to upload the resume file</span></div>
+                                        <div class="files_name"><span>{$noteone['note_url']}</span></div>
                                         <button type="button" class="layui-btn layui-btn-normal" id="testList">Browse</button> 
                                 </div>
                             </div>
                             <div class="msg" style="display: none;"></div>
                         </div>
+                        </if>
                         <div class="FormContainer" pane>
                             <label class="HeadPortraitbox">
                                 <span class="HeadPortraitIcon"></span>
@@ -90,35 +94,35 @@
                             <div class="picDiv">
                                 <div id="video" class="w50" style="display: none;"></div>
                                 <div id="result">
-                                       <!-- <div class="img-div" id="img-div" data-isnew="true">
-                                            <img src="data:,">
-                                            <div class="Play_video">
-                                                <img src="__PUBLIC__/Web/web/img/video_paly.png">
-                                            </div>
-                                            <div class="covers">
-                                                <img src="__PUBLIC__/Web/web/img/false.png">
-                                            </div>
-                                        </div>-->
+    
+                                    <foreach name="notevilist" item="notevi" key="notevikey">
+                                        <if condition='$notevi["note_vi_type"] == 1'>
                                     <div class="img-div" id="img-div" data-isnew="true">
     
                                         <div>
-                                            <img src="__PUBLIC__/Web/web/img/false.png">
+                                            <img src="./Uploads/{$notevi['note_vi_url']}">
                                         </div>
-                                        <div class="coverss">
+                                        <div class="coverss" onclick="del({$notevi['note_vi_id']},this)">
                                             <img src="__PUBLIC__/Web/web/img/false.png">
                                         </div>
                                     </div>
-                                    <div class="img-div" data-isnew="true">
-                                        <video width="100%" height="100%">
-                                            <source src="__PUBLIC__/Web/web/img/video.mp4" type="video/mp4"></source>
-                                        </video>
-                                         <div class="Play_video" onclick="bofang('__PUBLIC__/Web/web/img/video.mp4')">
-                                            <img src="./Public/Web/web/img/video_paly.png">
+                                            <else />
+    
+                                        <div class="img-div" data-isnew="true">
+                                            <video width="100%" height="100%">
+                                                <source src="./Uploads/{$notevi['note_vi_url']}" type="video/mp4"></source>
+                                            </video>
+                                            <div class="Play_video" onclick="bofang('./Uploads/{$notevi["note_vi_url"]}')">
+                                                <img src="./Public/Web/web/img/video_paly.png">
+                                            </div>
+                                            <div class="covers" onclick="del({$notevi['note_vi_id']},this)" id="viurl">
+                                                <img src="__PUBLIC__/Web/web/img/false.png" alt="">
+                                            </div>
                                         </div>
-                                        <div class="covers" onclick="del(1,this)">
-                                            <img src="__PUBLIC__/Web/web/img/false.png" alt="">
-                                        </div>
-                                    </div>
+                                        </if>
+    
+                                    </foreach>
+    
                                     <div class="add_btn" data-isNew="false">
                                         <input type="file" id="file_input" multiple onchange="xmTanUploadImg(this)" />
                                         <span>+</span>
@@ -127,37 +131,44 @@
     
                                     <div class="shadow_video">
                                         </div>
-                                            <div class="video_box">
-                                                <div class="video_shut">x</div>
-                                                <div class="video_area">
-                                                <video width="100%" height="100%">
-                                                        <!--<source src="../web/img/video.mp4" type="video/mp4"></source>-->
-                                                    </video>
-                                                <!-- <video width="100%" height="100%">
-                                                        <source src="../web/img/video.mp4" type="video/mp4"></source>
-                                                    </video> -->
-                                                </div>
+        
+        
+                                        <div class="shadow_video">
                                             </div>
+                                                <div class="video_box">
+                                                    <div class="video_shut">x</div>
+                                                    <div class="video_area">
+                                                    <video width="100%" height="100%">
+                                                            <!--<source src="../web/img/video.mp4" type="video/mp4"></source>-->
+                                                        </video>
+                                                    <!-- <video width="100%" height="100%">
+                                                            <source src="../web/img/video.mp4" type="video/mp4"></source>
+                                                        </video> -->
+                                                    </div>
+                                                </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="msg" style="display: none;"></div>
                         </div>
                         <div class="FormContainer from-but">
-                            <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="" lay-filter="">
+                            <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
                                 Submit
                             </button>
                         </div>
                     </div>
-                </div>
-            </form>
-            <!-- foot start 底部信息 -->
-            <footer class="footer">
-                <include file = "./World/Index/View/Public/footer.html"/>
-            </footer>
-            <!-- foot end 底部信息 -->
+                </form>
+        <div class="loading_box">
+            <div class="loading_gif">
+                <img src="__PUBLIC__/Web/web/img/timg3.gif" alt="">
             </div>
-
+        </div>
+        <!-- foot start 底部信息 -->
+        <footer class="footer">
+            <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
+        <!-- foot end 底部信息 -->
     </div>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -167,6 +178,7 @@
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
     <script src="__PUBLIC__/Web/web/js/changeimg.js"></script>
     <script>
+        var resourcefile = ''
     var $ = layui.jquery,upload = layui.upload;
     var demoListView = $('.FormContainer-one .picDiv-one .addImages .files_name'),
     uploadListIns = upload.render({
@@ -188,6 +200,7 @@
                     var tr = $(['<span>'+file.name+'</span>'].join(''));
                     demoListView.eq(0)[0].childNodes[0].remove();
                     demoListView.append(tr);
+                    resourcefile = file
                 }) 
             }
     })
@@ -211,15 +224,165 @@
 
     }
 
-
+    var videourl = $("#viurl")
     $(".video_box .video_shut").click(function(){
         $(".video_box").hide();
         $(".shadow_video").hide();
-        //console.log($(".video_box .video_area video"))
-        console.log($(".video_box .video_area video"))
-        // $(".video_box .video_area video")[0].pause()
-        // $(".video_box .video_area .Videos").pause();
     })
+
+    var form = layui.form;
+    form.on('submit(demo1)', function(data){
+
+        $(".loading_box").css("display","block")
+        var file_files = document.getElementById('file_input').files;
+        var file_obj = document.getElementById('formdata');
+        var fd = new FormData();
+
+        for (var i = 0; i < file_files.length; i++) {
+            console.log(file_files[i])
+            fd.append('img[]', file_files[i])
+        }
+
+        fd.append('name', $("#name").val())
+        fd.append('content', $("#content").val())
+        if("undefined" != typeof(reward)){
+            fd.append('reward', $("#reward").val())
+        }
+
+        fd.append('nid', '{$nid}')
+        fd.append('posttype', '{$noteone["note_type"]}')
+        fd.append('delid', delnum)
+        if (resourcefile==''){
+
+            $.ajax({
+                url: "{:U('Index/Ajax/ajax_updatapost')}",
+                type: "POST",
+                async: true,
+                cache: false,
+                processData: false,// 告诉jQuery不要去处理发送的数据
+                contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                data: fd,
+                dataType: "json",
+                success: function (data) {
+                    console.log(data)
+                    if (data.str == 1){
+                        layer.msg(data.msg,{
+                                time:1500,
+                                icon:1,
+                            },function () {
+                                location.reload();
+                            }
+                        );
+
+                    }else{
+                        layer.msg(data.msg,{
+                                time:1500,
+                                icon:2,
+                            },function(){
+                                $(".loading_box").css("display","none")
+                            }
+                        );
+
+                    }
+                },
+                error: function (err) {
+
+                    layer.msg('请求失败!', {
+                            time: 1500,
+                            icon: 2,
+                        },function(){
+                            $(".loading_box").css("display","none")
+                        }
+                    );
+                }
+            });
+        }else {
+
+            var fd1 = new FormData();
+            fd1.append('img', resourcefile);
+            $.ajax({
+                url: "{:U('Index/Ajax/ajax_uploadfile')}",
+                type: "POST",
+                async: true,
+                cache: false,
+                processData: false,// 告诉jQuery不要去处理发送的数据
+                contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                data: fd1,
+                dataType: "json",
+                success: function (data) {
+
+                    var file_files = document.getElementById('file_input').files;
+                    var file_obj = document.getElementById('formdata');
+                    var fd = new FormData();
+                    for (var i = 0; i < file_files.length; i++) {
+                        console.log(file_files[i])
+                        fd.append('img[]', file_files[i])
+                    }
+                    fd.append('name', $("#name").val())
+                    fd.append('content', $("#content").val())
+                    fd.append('reward', $("#reward").val())
+                    fd.append('resourcefile', data.msg)
+                    fd.append('nid', '{$nid}')
+                    fd.append('posttype','{$noteone["note_type"]}')
+                    $.ajax({
+                        url: "{:U('Index/Ajax/ajax_updatapost')}",
+                        type: "POST",
+                        async: true,
+                        cache: false,
+                        processData: false,// 告诉jQuery不要去处理发送的数据
+                        contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                        data: fd,
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data)
+                            if (data.str == 1){
+                                layer.msg(data.msg,{
+                                        time:1500,
+                                        icon:1,
+                                    },function () {
+
+                                        location.reload();
+                                    }
+                                );
+
+                            }else{
+                                layer.msg(data.msg,{
+                                        time:1500,
+                                        icon:2,
+                                    },function(){
+                                        $(".loading_box").css("display","none")
+                                    }
+                                );
+
+                            }
+                        },
+                        error: function (err) {
+
+                            layer.msg('请求失败!', {
+                                    time: 1500,
+                                    icon: 2,
+                                },function(){
+                                    $(".loading_box").css("display","none")
+                                }
+                            );
+                        }
+                    });
+                },
+                error: function (err) {
+
+                    layer.msg('请求失败!', {
+                            time: 1500,
+                            icon: 2,
+                        },function(){
+                            $(".loading_box").css("display","none")
+                        }
+                    );
+                }
+            });
+        }
+        return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+    });
+
     </script>
 </body>
 

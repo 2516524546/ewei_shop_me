@@ -73,9 +73,9 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            广告管理
+            {:L('Advertising_advertising_list_manager')}
             <small><i class="icon-double-angle-right"></i>
-                侧栏广告列表
+                {:L('Advertising_advertising_list')}
             </small>
 
         </h1>
@@ -184,10 +184,10 @@
                         <div class="btn-group dropdown" style='margin-top:10px;'>
                             <div style=' width:50%; height:40px; '>
                                 <a href="#" target="rightFrame"><span
-                                        style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>新增</span></a>
+                                        style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>{:L('Advertising_advertising_list_add')}</span></a>
                                 <div class="dropdown-content">
-                                    <p><a href="{:U('Admin/Advertising/advertising_add?type=1')}" target="rightFrame">新增广告</a></p>
-                                    <p><a href="{:U('Admin/Advertising/advertising_add?type=2')}" target="rightFrame">新增群广告</a></p>
+                                    <p><a href="{:U('Admin/Advertising/advertising_add?type=1')}" target="rightFrame">{:L('Advertising_add_module_advertising')}</a></p>
+                                    <p><a href="{:U('Admin/Advertising/advertising_add?type=2')}" target="rightFrame">{:L('Advertising_add_group_advertising')}</a></p>
                                 </div>
                             </div>
                         </div>
@@ -199,19 +199,19 @@
                                     <elseif condition="$type eq 2"/>
                                     <li role="presentation" id="module" class="current"
                                         onclick="jumpwithtwo(<?php echo $type;?>,1)"><?php echo $modules[1]['module_name'];?></li>
-                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">群</li>
+                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">{:L('Advertising_advertising_list_tag_group')}</li>
                                     <elseif condition="$type eq 3"/>
                                     <li role="presentation" id="module" class="current"
                                         onclick="jumpwithtwo(<?php echo $type;?>,1)"><?php echo $modules[2]['module_name'];?></li>
-                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">群</li>
+                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">{:L('Advertising_advertising_list_tag_group')}</li>
                                     <elseif condition="$type eq 4"/>
                                     <li role="presentation" id="module" class="current"
                                         onclick="jumpwithtwo(<?php echo $type;?>,1)"><?php echo $modules[3]['module_name'];?></li>
-                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">群</li>
+                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">{:L('Advertising_advertising_list_tag_group')}</li>
                                     <else/>
                                     <li role="presentation" id="module" class="current"
                                         onclick="jumpwithtwo(<?php echo $type;?>,1)"><?php echo $modules[4]['module_name'];?></li>
-                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">群</li>
+                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">{:L('Advertising_advertising_list_tag_group')}</li>
                                 </if>
 
                             </ul>
@@ -228,15 +228,15 @@
                             <thead>
                             <tr style=' font-size: 13px;'>
                                 <!--<th><input type='checkbox' name='' value=''></th> -->
-                                <th>序号</th>
+                                <th>{:L('Advertising_advertising_list_number')}</th>
                                 <eq name="flag" value="2">
-                                    <th>群ID</th>
+                                    <th>{:L('Advertising_advertising_list_group_id')}</th>
                                 </eq>
-                                <th>标题</th>
-                                <th>图片</th>
-                                <th>链接</th>
-                                <th>创建时间</th>
-                                <th>结束时间</th>
+                                <th>{:L('Advertising_advertising_list_title')}</th>
+                                <th>{:L('Advertising_advertising_list_picture')}</th>
+                                <th>{:L('Advertising_advertising_list_link')}</th>
+                                <th>{:L('Advertising_advertising_list_create_time')}</th>
+                                <th>{:L('Advertising_advertising_list_end_time')}</th>
                                 <th>{:L('User_user_list_operation')}</th>
                             </tr>
                             </thead>
@@ -304,6 +304,8 @@
 <script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
 <script language="javascript">
     $(function () {
         var type = $("input[name='type']").val();
@@ -371,26 +373,41 @@
     }
 
     function delete_professional(id) {
-        var statu = confirm("确定执行删除操作吗?");
-        if (!statu) {
-            return false;
-        }
+        layer.msg("{:L('Note_crowd_list_if')}", {
+            time: 0 //不自动关闭
+            , btn: ["{:L('Note_crowd_list_ok')}", "{:L('Note_crowd_list_no')}"]
+            , yes: function (index) {
+                layer.close(index);
+                $.ajax({
+                    url: "index.php?m=Admin&c=Advertising&a=advertising_del",
+                    data: 'id=' + id,
+                    type: 'post',
+                    success: function (msg) {
+                        if (msg == 1) {
+                            showMessage("{:L('newworld_ajax_operation_success')}",1)
+                            //location.href="{:U('Admin/jinxiao/fenxiao_did')}";
+                        } else {
+                            showMessage(msg,2)
+                        }
 
-        $.ajax({
-            url: "index.php?m=Admin&c=Advertising&a=advertising_del",
-            data: 'id=' + id,
-            type: 'post',
-            success: function (msg) {
-                if (msg == 1) {
-                    alert('删除成功');
-                    window.location.reload();
-                } else {
-                    alert(msg);
-                    return false;
+                    }
+                })
+            }
+        });
+    }
+
+
+    function showMessage(msg, status) {
+        layer.msg(msg, {
+                time: 500,
+                icon: status,
+            }, function () {
+                if (status == 1) {
+                    location.reload()
                 }
 
             }
-        })
+        );
     }
     function delete_item(id) {
         var statu = confirm("确定执行删除操作吗?");

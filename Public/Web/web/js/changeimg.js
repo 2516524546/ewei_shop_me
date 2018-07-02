@@ -40,8 +40,12 @@
 					// 	}
 					// 	console.log(values)
 
+
 				var fl = obj.files.length;
 				for(var i = 0; i < fl; i++) {
+                    if("undefined" != typeof(videourl)){
+                        videourl.parents(".img-div").remove();
+                    }
 					var file = obj.files[i];
 					//            判断图片
 					if(/image\/\w+/.test(file.type)) {
