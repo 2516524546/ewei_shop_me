@@ -461,6 +461,12 @@ return array(
     'Resume_resume_list_isnegotiable' => '是否接受面议',
     'Resume_resume_list_reject' => '否',
     'Resume_resume_list_accept' => '是',
+    'Resume_resume_username_not_empty' => '姓名不能为空',
+    'Resume_resume_position_not_empty' => '职位不能为空',
+    'Resume_resume_money_not_empty' => '薪资不能为空',
+    'Resume_resume_money_must_num' => '薪资为数字',
+    'Resume_resume_workyear_not_empty' => '工作年限不能为空',
+    'Resume_resume_workyear_must_num' => '工作年限为数字',
     /*
 	 * Resume end
 	 *******************************************************************/
@@ -502,9 +508,6 @@ return array(
     'Work_work_not_empty_company_name' => '公司名称不能为空',
     'Work_work_not_empty_company_size' => '公司规模不能为空',
     'Work_work_not_empty_email' => '邮箱不能为空',
-
-
-
 
 
     /*
@@ -581,6 +584,38 @@ return array(
     'New_new_list_news_manager' => '新闻管理',
     'New_new_list' => '新闻轮播列表',
     'New_new_list_tip' => '请输入时携带http://或https://,如http://www.baidu.com',
+    'New_new_list_add' => '新增',
+    'New_new_module_edit' => '编辑新闻',
+    'New_new_group_edit' => '编辑群新闻',
+    'New_new_add_module_news' => '新增新闻',
+    'New_new_add_group_news' => '新增群新闻',
+    'New_new_list_tag_group' => '群',
+    'New_new_list_number' => '序号',
+    'New_new_list_group_id' => '群ID',
+    'New_new_list_title' => '标题',
+    'New_new_list_picture' => '图片',
+    'New_new_list_carousel_sort' => '轮播顺序',
+    'New_new_list_news_source' => '新闻来源',
+    'New_new_list_create_time' => '创建时间',
+    'New_new_list_end_time' => '结束时间',
+    'New_new_list_status' => '状态',
+    'New_new_type_news_edit' => '新闻编辑',
+    'New_new_type_news_link' => '新闻链接',
+    'New_new_list_status_unpublished' => '未发布',
+    'New_new_list_status_published' => '已发布',
+    'New_new_list_status_over' => '已结束',
+    'New_new_list_publish' => '发布',
+    'New_new_add_category' => '所属分类',
+    'New_new_select_category' => '请选择分类',
+    'New_new_title_not_empty' => '新闻标题不能空',
+    'New_new_picture_not_empty' => '图片不能空',
+    'New_new_select_category' => '请选择所属分类',
+    'New_new_link_not_empty' => '新闻链接不能为空',
+    'New_new_edit_not_empty' => '新闻编辑内容不能为空',
+    'New_new_carousel_sort_not_empty_or_zero' => '轮播顺序不能为空或者不能为0',
+    'New_new_createtime_not_empty' => '创建时间不能为空',
+    'New_new_endtime_not_empty' => '结束时间不能为空',
+
     //new_list_end
 
 
@@ -592,8 +627,32 @@ return array(
     /******************************************************************
      * Advertising start
      */
-
-
+    'Advertising_advertising_list_manager' => '广告管理',
+    'Advertising_advertising_list' => '侧栏广告列表',
+    'Advertising_advertising_group_edit' => '编辑群广告',
+    'Advertising_advertising_module_edit' => '编辑广告',
+    'Advertising_advertising_list_add' => '新增',
+    'Advertising_add_module_advertising' => '新增广告',
+    'Advertising_add_group_advertising' => '新增群广告',
+    'Advertising_advertising_list_tag_group' => '群',
+    'Advertising_advertising_list_number' => '序号',
+    'Advertising_advertising_list_group_id' => '群ID',
+    'Advertising_advertising_list_title' => '标题',
+    'Advertising_advertising_list_picture' => '图片',
+    'Advertising_advertising_list_link' => '链接',
+    'Advertising_advertising_list_create_time' => '创建时间',
+    'Advertising_advertising_list_end_time' => '结束时间',
+    'Advertising_advertising_add_select_category' => '请选择分类',
+    'Advertising_advertising_add_category' => '所属分类',
+    'Advertising_advertising_group_id_not_empty' => '群ID不能为空',
+    'Advertising_advertising_title_not_empty' => '新闻标题不能空',
+    'Advertising_advertising_picture_not_empty' => '图片不能空',
+    'Advertising_advertising_select_category' => '请选择所属分类',
+    'Advertising_advertising_link_not_empty' => '链接不能为空',
+    'Advertising_advertising_createtime_not_empty' => '创建时间不能为空',
+    'Advertising_advertising_endtime_not_empty' => '结束时间不能为空',
+    'Advertising_module_number_max_two' => '该模块广告数最多为2',
+    'Advertising_group_number_max_one' => '该群广告数最多为1',
     /*
 	 * Advertising end
 	 *******************************************************************/

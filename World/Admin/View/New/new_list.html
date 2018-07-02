@@ -184,10 +184,10 @@
                         <div class="btn-group dropdown" style='margin-top:10px;'>
                             <div style=' width:50%; height:40px; '>
                                 <a href="#" target="rightFrame"><span
-                                        style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>新增</span></a>
+                                        style=' width:100px; height:34px; background:#2679b5; color:#fff; margin-right:10px; display:inline-block; line-height:34px;text-align:center; borde-radius:4px;'>{:L('New_new_list_add')}</span></a>
                                 <div class="dropdown-content">
-                                    <p><a href="{:U('Admin/New/new_add?type=1')}" target="rightFrame">新增新闻</a></p>
-                                    <p><a href="{:U('Admin/New/new_add?type=2')}" target="rightFrame">新增群新闻</a></p>
+                                    <p><a href="{:U('Admin/New/new_add?type=1')}" target="rightFrame">{:L('New_new_add_module_news')}</a></p>
+                                    <p><a href="{:U('Admin/New/new_add?type=2')}" target="rightFrame">{:L('New_new_add_group_news')}</a></p>
                                 </div>
                             </div>
                         </div>
@@ -199,17 +199,17 @@
                                     <elseif condition="$type eq 2"/>
                                     <li role="presentation" id="module" class="current"
                                         onclick="jumpwithtwo(<?php echo $type;?>,1)"><?php echo $modules[1]['module_name'];?></li>
-                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">群</li>
+                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">{:L('New_new_list_tag_group')}</li>
                                     <elseif condition="$type eq 3"/>
                                     <li role="presentation" id="module" class="current"
                                         onclick="jumpwithtwo(<?php echo $type;?>,1)"><?php echo $modules[2]['module_name'];?></li>
-                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">群</li>
+                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">{:L('New_new_list_tag_group')}</li>
                                     <elseif condition="$type eq 4"/>
                                     <li role="presentation" id="module" class="current"
                                         onclick="jumpwithtwo(<?php echo $type;?>,1)"><?php echo $modules[3]['module_name'];?></li>
-                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">群</li>
+                                    <li role="presentation" id="qun" onclick="jumpwithtwo(<?php echo $type;?>,2)">{:L('New_new_list_tag_group')}</li>
                                     <else/>
-                                    <li role="presentation" id="qun" class="current" onclick="jumpwithtwo(<?php echo $type;?>,2)">群</li>
+                                    <li role="presentation" id="qun" class="current" onclick="jumpwithtwo(<?php echo $type;?>,2)">{:L('New_new_list_tag_group')}</li>
                                 </if>
 
                             </ul>
@@ -226,17 +226,17 @@
                             <thead>
                             <tr style=' font-size: 13px;'>
                                 <!--<th><input type='checkbox' name='' value=''></th> -->
-                                <th>序号</th>
+                                <th>{:L('New_new_list_number')}</th>
                                 <eq name="flag" value="2">
-                                    <th>群ID</th>
-                                </eq>
-                                <th>标题</th>
-                                <th>图片</th>
-                                <th>轮播顺序</th>
-                                <th>新闻来源</th>
-                                <th>创建时间</th>
-                                <th>结束时间</th>
-                                <th>状态</th>
+                                <th>{:L('New_new_list_group_id')}</th>
+                            </eq>
+                                <th>{:L('New_new_list_title')}</th>
+                                <th>{:L('New_new_list_picture')}</th>
+                                <th>{:L('New_new_list_carousel_sort')}</th>
+                                <th>{:L('New_new_list_news_source')}</th>
+                                <th>{:L('New_new_list_create_time')}</th>
+                                <th>{:L('New_new_list_end_time')}</th>
+                                <th>{:L('New_new_list_status')}</th>
                                 <th>{:L('User_user_list_operation')}</th>
                             </tr>
                             </thead>
@@ -257,21 +257,22 @@
                                          style="width:50px;height:50px;"/>
                                 </td>
                                 <td><?php echo $v['news_sort'];?></td>
-                                <td><?php echo $v['news_type']==0?'新闻链接':'新闻编辑';?></td>
+                                <td><?php echo $v['news_type']==0?L('New_new_type_news_link'):L('New_new_type_news_edit');?></td>
                                 <td><?php echo $v['news_createtime']?></td>
                                 <td><?php echo $v['news_endtime']?></td>
                                 <td>
-                                    <if condition="$v['news_static'] eq 0"> 未发布
+                                    <if condition="$v['news_static'] eq 0">
+                                        <?php echo L('New_new_list_status_unpublished');?>
                                         <elseif condition="$v['news_static'] eq 1"/>
-                                        已发布
+                                        <?php echo L('New_new_list_status_published');?>
                                         <else/>
-                                        已结束
+                                        <?php echo L('New_new_list_status_over');?>
                                     </if>
                                 </td>
                                 <td>
                                     <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
                                         <eq name="v.news_static" value="0">
-                                            <a onClick="changestatus(<?php echo $v['news_id']?>,<?php echo $v['news_static']?>)"  class="btn btn-xs btn-success" style="margin-top: 5px;">发布</a>
+                                            <a onClick="changestatus(<?php echo $v['news_id']?>,<?php echo $v['news_static']?>)"  class="btn btn-xs btn-success" style="margin-top: 5px;"><?php echo L('New_new_list_publish');?></a>
                                             <else/>
                                         </eq>
                                         <a href="index.php?m=Admin&c=New&a=new_edit&id=<?php echo $v['news_id']?>"
@@ -317,6 +318,8 @@
 <script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
 <script language="javascript">
     $(function () {
         var type = $("input[name='type']").val();
@@ -372,38 +375,54 @@
             type: 'post',
             success: function (msg) {
                 if (msg == 1) {
-                    alert('操作成功')
+                    showMessage("{:L('newworld_ajax_operation_success')}",1);
                     //location.href="{:U('Admin/jinxiao/fenxiao_did')}";
-                    window.location.reload();
                 } else {
-                    alert(msg)
+                    showMessage(msg,2);
                 }
 
             }
         })
+
+
+
+    }
+
+    function showMessage(msg, status) {
+        layer.msg(msg, {
+                time: 500,
+                icon: status,
+            }, function () {
+                if (status == 1) {
+                    location.reload()
+                }
+
+            }
+        );
     }
 
     function delete_professional(id) {
-        var statu = confirm("确定执行删除操作吗?");
-        if (!statu) {
-            return false;
-        }
+        layer.msg("{:L('Note_crowd_list_if')}", {
+            time: 0 //不自动关闭
+            , btn: ["{:L('Note_crowd_list_ok')}", "{:L('Note_crowd_list_no')}"]
+            , yes: function (index) {
+                layer.close(index);
+                $.ajax({
+                    url: "index.php?m=Admin&c=New&a=new_del",
+                    data: 'id=' + id,
+                    type: 'post',
+                    success: function (msg) {
+                        if (msg == 1) {
+                            showMessage("{:L('newworld_ajax_operation_success')}",1)
+                            //location.href="{:U('Admin/jinxiao/fenxiao_did')}";
+                        } else {
+                            showMessage(msg,2)
+                        }
 
-        $.ajax({
-            url: "index.php?m=Admin&c=New&a=new_del",
-            data: 'id=' + id,
-            type: 'post',
-            success: function (msg) {
-                if (msg == 1) {
-                    alert('删除成功');
-                    window.location.reload();
-                } else {
-                    alert(msg);
-                    return false;
-                }
-
+                    }
+                })
             }
-        })
+        });
     }
     function delete_item(id) {
         var statu = confirm("确定执行删除操作吗?");

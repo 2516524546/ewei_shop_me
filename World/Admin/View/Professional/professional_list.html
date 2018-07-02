@@ -275,6 +275,20 @@ function delete_professional(id){
         }
     });
 
+    function showMessage(msg, status) {
+        layer.msg(msg, {
+                time: 500,
+                icon: status,
+            }, function () {
+                if (status == 1) {
+                    location.reload()
+                }
+
+            }
+        );
+    }
+
+
 }
     function delete_item(id){
         var statu = confirm("确定执行删除操作吗?");

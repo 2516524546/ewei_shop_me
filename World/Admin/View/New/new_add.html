@@ -52,12 +52,12 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            新闻管理
+            {:L('New_new_list_news_manager')}
             <small><i class="icon-double-angle-right"></i>
                 <eq name="type" value="2">
-                    新增群新闻
+                    {:L('New_new_add_group_news')}
                     <else/>
-                    新增新闻
+                    {:L('New_new_add_module_news')}
                 </eq>
             </small>
 
@@ -72,20 +72,20 @@
 
                 <eq name="type" value="2">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">群ID</label>
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('New_new_list_group_id')}</label>
                         <div class="col-sm-9">
                             <input type="text" onkeyup="value=value.replace(/[^\d]/g,'') " ng-pattern="/[^a-zA-Z]/" name="news_crowdid" value="" placeholder="" style="width:300px;"/></div>
                     </div>
                     <else/>
                 </eq>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">标题</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('New_new_list_title')}</label>
                     <div class="col-sm-9">
                         <input type="text" name="news_title" value="" placeholder="" style="width:300px;"/></div>
                 </div>
                 <input type="hidden" name="news_for" value="<?php echo $type;?>"/>
                 <div class="form-group" id="user-profile-3">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">图片</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('New_new_list_picture')}</label>
                     <div class="col-sm-9">
                         <div class="col-xs-12 col-sm-4">
                             <input type="file" id='upload_picture' accept=".png,.gif,.jpeg,.jpg"/>
@@ -119,20 +119,20 @@
                                     $("#img").html('<img style="width:200px;height:200px;" src="./Uploads/' + data.msg + '"/>');
                                     $("input[name='news_img']").val(data.msg)
                                 }else {
-                                    alert(data.msg);
+                                    showMessage(data.msg,2);
                                 }
                             },
                             error: function () {
-                                alert("上传失败！");
+                                showMessage("{:L('newworld_ajax_upload_fail')}",2);
                             }
                         });
                     });
                 </script>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">所属分类</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('New_new_add_category')}</label>
                     <div class="col-sm-9">
                         <select name="news_mid">
-                            <option value="0">请选择分类</option>
+                            <option value="0">{:L('New_new_select_category')}</option>
                             <volist  name="modules" id="vo">
                                 <option value="{$vo.module_id}">{$vo.module_name}</option>
                             </volist>
@@ -140,16 +140,16 @@
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
-                    <label class="col-sm-3 control-label no-padding-right" for="admin">新闻来源</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="admin">{:L('New_new_list_news_source')}</label>
                     <div class="col-sm-9">
                         <div class="radio1">
                             <label>
                                 <input name="news_type" type="radio" value="0" class='ace' checked/>
-                                <span class="lbl">新闻链接</span>
+                                <span class="lbl">{:L('New_new_type_news_link')}</span>
                             </label>
                             <label>
                                 <input name="news_type" type="radio" value="1" class='ace' />
-                                <span class="lbl">新闻编辑</span>
+                                <span class="lbl">{:L('New_new_type_news_edit')}</span>
                             </label>
                         </div>
                     </div>
@@ -162,13 +162,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">轮播顺序</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('New_new_list_carousel_sort')}</label>
                     <div class="col-sm-9">
                         <input type="text" name="news_sort" value="" placeholder="" onkeyup="value=value.replace(/[^\d]/g,'') " style="width:300px;"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">创建时间</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('New_new_list_create_time')}</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control date-picker" name="news_createtime" value="<?php echo $user['user_birth']?>"
                                placeholder="" style="width: 35%;"  id="id-date-picker-1"  data-date-format="yyyy-mm-dd" />
@@ -176,7 +176,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">结束时间</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('New_new_list_end_time')}</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control date-picker" name="news_endtime" value="<?php echo $user['user_birth']?>"
                                placeholder="" style="width: 35%;"  id="id-date-picker-1"  data-date-format="yyyy-mm-dd" />
@@ -211,6 +211,8 @@
 <script src="__PUBLIC__/Admin/admin/js/date-time/bootstrap-timepicker.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
 <script type="text/javascript">
     $('.date-picker').datepicker({autoclose: true}).next().on(ace.click_event, function () {
         $(this).prev().focus();
@@ -230,13 +232,26 @@
     function showSuccess(data) {
 
         if (data == 1) {
-            alert('添加成功')
+            showMessage("{:L('newworld_ajax_add_success')}",1);
             location.href = "{:U('Admin/New/new_list')}"
         } else {
-            alert(data)
+            showMessage(data,2);
             return false
         }
 
+    }
+
+    function showMessage(msg, status) {
+        layer.msg(msg, {
+                time: 500,
+                icon: status,
+            }, function () {
+                if (status == 1) {
+                    location.reload()
+                }
+
+            }
+        );
     }
     $(function () {
         var options = {
