@@ -17,6 +17,11 @@ class DonationController extends CommonController {
         $show = $Page->show();// 分页显示输出 ->limit($Page->firstRow.','.$Page->listRows)
         //$field = "u_donation.*,";
         $list = M("u_donation")->join($join)->where("donation_static=1")->limit($Page->firstRow.','.$Page->listRows)->order("donation_id DESC")->select();
+
+        foreach ($list as $k=>$v){
+             $list[$k]['donation_money']= $v['donation_money']/100;
+        }
+
         $this->assign('list',$list);
         $this->assign('page',$show);
         $this->display("donation_list");
