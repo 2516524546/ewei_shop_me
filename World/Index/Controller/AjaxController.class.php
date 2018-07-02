@@ -3951,5 +3951,34 @@ public function ajax_donationpay()
         }
     }
 
+    public function ajax_my_market_list(){
+
+        if (IS_POST){
+
+            $comoditymodel = new CommodityModel();
+
+            $where = 'commodity_status != 0 and commodity_uid = '.$this->userid;
+            if (isset($_POST['name'])&&$this->post('name')!=''){
+                $where .= ' and commodity_name like "%'.$this->post('name').'%"';
+            }
+            $limit1 = ($this->post('limit1')-1)*$this->post('limit2');
+
+
+            $comoditylist = $comoditymodel->joinonelist($where,'u_user u on l_commodity.commodity_uid = u.user_id',$this->post('order'),$limit1,$this->post('limit2'));
+
+            if ($comoditylist) {
+                die(json_encode(array('str' => 1, 'msg' => $comoditylist)));
+            } else {
+
+                die(json_encode(array('str' => 2, 'msg' => '你还未发布商品')));
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+
+
+    }
+
 
 }
