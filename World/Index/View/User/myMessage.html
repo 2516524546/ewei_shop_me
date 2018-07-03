@@ -3,6 +3,11 @@
     <head>
         <include file="./World/Index/View/Public/meta.html"/>
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
+        <style>
+        .crumbs {
+                margin: auto 0;
+            }
+        </style>
     </head>
 
     <body>
@@ -13,14 +18,25 @@
         </header>
         <hr>
 
-    <!-- Crumbs nav -->
-    <div class="container crumbs">
-        <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">Messages</span>
+
+ <!-- Crumbs nav -->
+ <div class="container">
+        <div class="row">
+            <div class="col-md-6 crumbs">
+                    <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+                    <cite class="Icon"></cite>
+                    <span class="crumbsTitle">Messages</span>
+                </div>
+                <div class="col-md-6">
+                    <div class="SelectionContainer">
+                        <input type="text" class="layui-input" id="Selectionform">
+                        <span id="SelectionIcon">
+                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
+                        </span>
+                    </div>
+                </div>
+        </div>
     </div>
-
-
 
     <!-- Message content -->
     <div class="container section">
@@ -43,6 +59,7 @@
                                 <span>{$m['message_sendtime']}</span>
                             </div>
                         </a>
+                        <div class="dot"></div>
                     </div>
                 <else />
 
