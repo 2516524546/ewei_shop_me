@@ -240,7 +240,7 @@
         var fd = new FormData();
 
         for (var i = 0; i < file_files.length; i++) {
-            console.log(file_files[i])
+            //console.log(file_files[i])
             fd.append('img[]', file_files[i])
         }
 
@@ -265,7 +265,7 @@
                 data: fd,
                 dataType: "json",
                 success: function (data) {
-                    console.log(data)
+                    //console.log(data)
                     if (data.str == 1){
                         layer.msg(data.msg,{
                                 time:1500,
@@ -316,7 +316,7 @@
                     var file_obj = document.getElementById('formdata');
                     var fd = new FormData();
                     for (var i = 0; i < file_files.length; i++) {
-                        console.log(file_files[i])
+                        //console.log(file_files[i])
                         fd.append('img[]', file_files[i])
                     }
                     fd.append('name', $("#name").val())
@@ -335,7 +335,7 @@
                         data: fd,
                         dataType: "json",
                         success: function (data) {
-                            console.log(data)
+                            //console.log(data)
                             if (data.str == 1){
                                 layer.msg(data.msg,{
                                         time:1500,

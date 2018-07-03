@@ -624,7 +624,7 @@ layui.use('laydate', function(){
             var second = ''
             var ishavesecond = 1;
             $("select[name='2second']").each(function(j,item){
-                console.log(item.value)
+                //console.log(item.value)
                 if (ishavesecond == 1) {
 
                     if (item.value==''){
@@ -675,7 +675,7 @@ layui.use('laydate', function(){
                     data: fd,
                     dataType: "json",
                     success: function (data) {
-                        console.log(data)
+                        //console.log(data)
                         if (data.str == 1) {
                             $.ajax({
                                 type: "post",
