@@ -104,6 +104,14 @@ class LifeController extends CommonController {
             exit();
         }
 
+        $comoditymodel = new CommodityModel();
+
+        $comditycount = $comoditymodel->findone('commodity_uid = '.$this->userid.' and commodity_status != 0','count(*) num')['num'];
+
+        $this->assign(array(
+            'comditycount' => $comditycount,
+        ));
+
         $this->display();
     }
 
@@ -468,6 +476,51 @@ class LifeController extends CommonController {
 
         ));
 
+
+        $this->display();
+    }
+
+
+    /*
+    更多成员
+     */
+    public function moreMembers(){
+
+        if (!isset($_GET['cid'])){
+            Header("Location:".U('Index/Life/life'));
+            exit();
+        }
+        if (!$this->userid){
+            session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
+            Header("Location:".U('Index/Login/login'));
+            exit();
+        }
+        $crowdmodel = new CrowdModel();
+        $crowdmembermodel = new CrowdMemberModel();
+
+        $crowdone = $crowdmodel->findone('crowd_id = '.$_GET['cid']);
+
+        $list = $crowdmembermodel->findlistlimit('crowd_member_cid = '.$_GET['cid'],'u_user u on u_crowd_member.crowd_member_uid = u.user_id',0,10,'INNER','crowd_member_status desc,crowd_member_logintime desc','u_crowd_member.*,u.user_icon,u.user_name');
+        $listcount =$crowdmembermodel->findonejoin('crowd_member_cid = '.$_GET['cid'],'u_user u on u_crowd_member.crowd_member_uid = u.user_id','INNER','crowd_member_status desc,crowd_member_logintime desc','count(*) num')['num'];
+
+        $adminlist = array();
+        $memberlist = array();
+        foreach ($list as $l){
+            if ($l['crowd_member_status']!=0){
+                $adminlist[]=$l;
+            }else if ($l['crowd_member_status']==0){
+                $memberlist[]=$l;
+            }
+        }
+
+        $this->assign(array(
+            'crowdone'=>$crowdone,
+            'cid' => $_GET['cid'],
+            'adminlist' => $adminlist,
+            'memberlist' => $memberlist,
+            'listcount' => $listcount,
+
+        ));
 
         $this->display();
     }

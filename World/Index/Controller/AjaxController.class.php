@@ -10,6 +10,7 @@ use Index\Model\DonationModel;
 use Index\Model\FirstMarkModel;
 use Index\Model\FourthMarkModel;
 use Index\Model\FriendsModel;
+use Index\Model\MessageModel;
 use Index\Model\NoteCommentModel;
 use Index\Model\NoteModel;
 use Index\Model\NoteVIModel;
@@ -3866,6 +3867,116 @@ public function ajax_donationpay()
         }else{
             die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
         }
+
+    }
+
+    //更多成员添加好友
+    public function ajax_addfriend(){
+        if (IS_POST){
+
+            if (!isset($_POST['id'])||$this->post('id')==''){
+
+                die(json_encode(array('str' => 3, 'msg' => '不存在这个用户')));
+            }else {
+
+                $messagemodel = new MessageModel();
+
+                $messageone = $messagemodel->findone('message_uid = '.$this->post('id').' and message_sid = '.$this->userid.' and message_type = 1');
+                if ($messageone){
+
+                    $data=array(
+                        'message_sendtime' => date("Y-m-d H:i:s", time()),
+                        'message_delivertime' => date("Y-m-d H:i:s", time()),
+                        'message_isread' => 0,
+
+                    );
+                    $res = $messagemodel->updataone('message_uid = '.$this->post('id').' and message_sid = '.$this->userid.' and message_type = 1',$data);
+                    if ($res) {
+
+                        die(json_encode(array('str' => 1, 'msg' => '已发送添加信息')));
+                    } else {
+
+                        die(json_encode(array('str' => 2, 'msg' => '发送失败')));
+                    }
+                }else{
+                    $data=array(
+                        'message_title' => 'User:'.$this->usercontent['user_name'].' applies to be your friend',
+                        'message_content' => 'User:'.$this->usercontent['user_name'].' applies to be your friend',
+                        'message_sendtime' => date("Y-m-d H:i:s", time()),
+                        'message_delivertime' => date("Y-m-d H:i:s", time()),
+                        'message_uid' => $this->post('id'),
+                        'message_sid' => $this->userid,
+                        'message_isread' => 0,
+                        'message_type' => 1,
+
+                    );
+
+                    $res = $messagemodel->add($data);
+                    if ($res) {
+
+                        die(json_encode(array('str' => 1, 'msg' => '已发送添加信息')));
+                    } else {
+
+                        die(json_encode(array('str' => 2, 'msg' => '发送失败')));
+                    }
+                }
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
+    public function ajax_usershow(){
+        if (IS_POST){
+
+            if (!isset($_POST['uid'])||$this->post('uid')==''){
+
+                die(json_encode(array('str' => 3, 'msg' => '不存在这个用户')));
+            }else {
+
+                $usermodel = new UserModel();
+                $userone = $usermodel->findone('user_id = '.$this->post('uid'));
+
+                if ($userone) {
+
+                    die(json_encode(array('str' => 1, 'msg' => $userone)));
+                } else {
+
+                    die(json_encode(array('str' => 2, 'msg' => '获取信息失败')));
+                }
+            }
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
+    public function ajax_my_market_list(){
+
+        if (IS_POST){
+
+            $comoditymodel = new CommodityModel();
+
+            $where = 'commodity_status != 0 and commodity_uid = '.$this->userid;
+            if (isset($_POST['name'])&&$this->post('name')!=''){
+                $where .= ' and commodity_name like "%'.$this->post('name').'%"';
+            }
+            $limit1 = ($this->post('limit1')-1)*$this->post('limit2');
+
+
+            $comoditylist = $comoditymodel->joinonelist($where,'u_user u on l_commodity.commodity_uid = u.user_id',$this->post('order'),$limit1,$this->post('limit2'));
+
+            if ($comoditylist) {
+                die(json_encode(array('str' => 1, 'msg' => $comoditylist)));
+            } else {
+
+                die(json_encode(array('str' => 2, 'msg' => '你还未发布商品')));
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+
 
     }
 

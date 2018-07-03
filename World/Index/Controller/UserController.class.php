@@ -190,10 +190,10 @@ class UserController extends CommonController {
 
 
         $count      = D('Message')->alias('m')->where(['m.message_uid'=>$this->userid])->count();
-        $Page       = new \Think\Page($count,2);
+        $Page       = new \Think\Page($count,10);
         $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
         $show       = $Page->show();
-        $messages = D('Message')->alias('m')->field('m.*,u.user_name,u.user_icon')->join('u_user u ON u.user_id = m.message_sid','LEFT')->where(['m.message_uid'=>$this->userid])->limit($Page->firstRow.','.$Page->listRows)->select();
+        $messages = D('Message')->alias('m')->field('m.*,u.user_name,u.user_icon')->join('u_user u ON u.user_id = m.message_sid','LEFT')->where(['m.message_uid'=>$this->userid])->order('message_delivertime desc')->limit($Page->firstRow.','.$Page->listRows)->select();
         $this->assign('messages',$messages);
         $this->assign('page',$show);
 
