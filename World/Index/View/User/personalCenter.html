@@ -285,7 +285,7 @@
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="container1">
-                                <div class="image_box_title">
+                                <div class="image_box_title" style="">
                                     <span>Please upload the cover</span>
                                     <div class="image_box_close" data-dismiss="modal">x</div>
                                 </div>
@@ -697,7 +697,9 @@
                 $('.personal_content .personal_title').css("background-size","100% 100%")
             }
             $(".title_back_img").on("click",function(){
-                console.log($(".personal_content .personal_title"))
+                var Pic = $(".personal_content .personal_title").css("backgroundImage");
+                console.log($(".imageBox").css("backgroundImage",Pic))
+                // $("imageBox").css("backgroundImage",Pic)
             })
             //$('.personal_content .personal_title .P_title_pic').children('img').remove()
         });

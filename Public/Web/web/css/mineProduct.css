@@ -99,6 +99,7 @@
 }
 .item_box .item_box_left .item_box_product_img img{
     width: 100%;
+    height: 100%;
 }
 .item_box .item_box_left .item_box_product_details ul li{
     font-size: 14px;
@@ -135,6 +136,7 @@
 }
 .item_box .item_box_right .right_pic img{
     width: 100%;
+    height: 100%;
 }
 
 .item_box .item_box_right .right_icon{
