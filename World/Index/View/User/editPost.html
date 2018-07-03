@@ -129,8 +129,8 @@
                                     </div>
     
     
-                                    <div class="shadow_video">
-                                        </div>
+                                    <!-- <div class="shadow_video">
+                                        </div> -->
         
         
                                         <div class="shadow_video">
@@ -228,6 +228,7 @@
     $(".video_box .video_shut").click(function(){
         $(".video_box").hide();
         $(".shadow_video").hide();
+        $(".video_box .video_area video").pause();
     })
 
     var form = layui.form;
