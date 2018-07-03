@@ -111,7 +111,7 @@
 						}
 						// reader.readAsDataURL(file)
 					} else if(/video\/\w+/.test(file.type)) {
-						console.log(file)
+						// console.log(file)
 						var video = $('#video').find('video');
 //						限制上传的图片数
                         var a = $(".img-div").length;
@@ -120,7 +120,7 @@
 							if(file) {
 
 								videoURL = windowURL.createObjectURL(file);
-								console.log(videoURL)
+								// console.log(videoURL)
 
 								$('#video').html('<video src="' + videoURL + '" controls="controls"></video>');
 
@@ -163,7 +163,7 @@
                         ndiv.appendChild(Cdiv);
 						//console.log([result])
 						$(".img-div").remove();
-						console.log(values)
+						// console.log(values)
 						result.prepend(ndiv);
 						if(values.length>=2){
 							// console.log(values.length-1)
@@ -198,11 +198,11 @@
 var num;
 $("#result").on("click",".img-div .covers",function(){
 	num = $(this).parent().index()
-	console.log(num)
+	// console.log(num)
 	var _this = $(this);
 	values.splice(num,1);
 	_this.parents(".img-div").remove();
-	console.log(values)
+	// console.log(values)
 })
 
 // $("#result .img-div .covers").on("click",function(e){
