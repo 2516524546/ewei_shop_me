@@ -30,6 +30,16 @@
     padding: 8px 0;
     border-bottom: 1px solid #e6e6e6;
     font-size: 10px;
+    position: relative;
+}
+.Message_box .Message_details .Message_details_item .dot{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ff0000;
+    overflow: hidden;
+    position: absolute;
+    left: -2%;
 }
 .Message_box .Message_details .Message_details_item a{
     display: flex;

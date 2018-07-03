@@ -87,12 +87,14 @@
     justify-content: flex-start;
 }
 .personal_content .personal_title .P_title_lifeMaxim .liftMaxim_title{
-    width: 34%;
+    width: 63%;
+    text-align: right;
     display: inline-block;
     vertical-align: top;
+    margin-right: 5px;
 }
 .personal_content .personal_title .P_title_lifeMaxim .liftMaxim_content{
-    width: 50%;
+    width: 60%;
     text-align: left;
     /* display: inline-block; */
     overflow: hidden;

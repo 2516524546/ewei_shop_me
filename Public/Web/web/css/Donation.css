@@ -67,7 +67,7 @@
 .FooterBg {
   background-color: #0e4d3d;
   padding-top: 18px;
-  margin-top: 58px;
+  /* margin-top: 58px; */
 }
 .FooterBg .FooterContainer {
   width: 88%;
@@ -146,7 +146,7 @@
   width:65%;
 }
 
-.section{
+/* .section{
   margin-top: 100px;
-}
+} */
 
