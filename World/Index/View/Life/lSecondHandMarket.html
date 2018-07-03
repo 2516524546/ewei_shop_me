@@ -253,86 +253,18 @@ var universityli = 0;
 
 
     function updata_market_list(mid,order,limit1,limit2,type) {
-
         $.ajax({
             type:"post",
             url:"{:U('Index/Ajax/ajax_market_list')}",
             data:{
-                staticli:staticli.value,
-                moneyli:moneyli.value,
-                stateli:stateli.value,
-                cityli:cityli.value,
-                universityli:universityli.value,
-                minmonry:$("#minmonry").val(),
-                maxmonry:$("#maxmonry").val(),
-                order:order,
-                limit1:limit1,
-                limit2:limit2,
-                name:$("#Selectionform").val(),
 
             },
-            dataType:"json",
             async:false,
+            dataType:"json",
             success: function(list){
                 console.log(list)
-                if(list!=null&&list!=""){
+                alert(list.msg)
 
-                    if (list.str == 1){
-
-                        var message = '';
-                        for (var i = 0; i < list.msg.length; i++) {
-
-                            message +='<div class="col-md-12">';
-                            var url="{:U('Index/Life/lifeProductDetails')}&cid="+list.msg[i].commodity_id;
-                            message += '<a href="'+url+'">';
-                            message += '<div class="S_Market_detail_all"><div class="fl"><div class="pro_img">';
-                            message += '<img src="./Uploads/'+list.msg[i].commodity_img+'" alt="" class="img-circle userimg" />';
-                            message += '</div><div class="pro_detail"><div class="pro_Name">Product Name:&nbsp;<span>'+list.msg[i].commodity_name+'</span></div>';
-                            message += '<div class="pro_Price">Price:<p><small>$</small>'+list.msg[i].commodity_price+'</p></div>';
-                            message += '<div class="pro_Description">Product Description:<p>'+list.msg[i].commodity_content+'</p></div></div></div>';
-                            message += '<div class="fr pro_right"><div class="pro_right_img">';
-                            message += '<img src="./Uploads/'+list.msg[i].user_icon+'" alt="" class="img-circle userimg" /></div>'
-                            message += '<div class="pro_right_name">'+list.msg[i].user_name+'</div>';
-                            message += '</div></div></a></div>'
-
-                        }
-
-                        if (type==1){
-                            page = 1;
-                            c = 1;
-                            count = list.count;
-                            $("#marketlist").html(message);
-
-                        }else{
-                            c=1;
-                            var crowdlisthtml = $("#crowdlist").html()+message
-                            $("#marketlist").html(crowdlisthtml);
-                        }
-                    }else if (list.str == 2){
-                        page = 1;
-                        c = 1;
-                        count = 0;
-                        $("#marketlist").html('');
-                        layer.msg(list.msg,{
-                                time:1500,
-                                icon:2,
-                            }
-                        );
-                    }else{
-                        layer.msg(list.msg,{
-                                time:1500,
-                                icon:2,
-                            }
-                        );
-
-                    }
-                }else{
-                    layer.msg('请求错误!',{
-                            time:1500,
-                            icon:2,
-                        }
-                    );
-                }
 
             },
             error:function(XMLHttpRequest, textStatus, errorThrown){
@@ -345,7 +277,6 @@ var universityli = 0;
             }
 
         })
-        
     }
 
     function editpic(a) {
