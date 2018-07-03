@@ -66,14 +66,14 @@
                         </div>
                         <div class="P_title_FaA">
                             <div class="FaA_item">
-                                <a href="{:U('User/FollowList')}">
+                                <a href="{:U('User/followList')}&uid={$userone['user_id']}">
                                     <div class="FaA_num">{$userone['user_concerns']}</div>
                                     <div class="FaA_name">following</div>
                                 </a>
                             </div>
                             <div class="FaA_line"></div>
                             <div class="FaA_item">
-                                <a href="{:U('User/FansList')}">
+                                <a href="{:U('User/fansList')}&uid={$userone['user_id']}">
                                     <div class="FaA_num">{$userone['user_fans']}</div>
                                     <div class="FaA_name">Fans</div>
                                 </a>
@@ -672,18 +672,58 @@
     //          this.files = [];
             })
             $('#btnCrop').on('click', function(){
-                var img = cropper.getDataURL();
-                var Cdiv = document.createElement("div");
-                Cdiv.className = "cropped_img";
-                Cspan = '<img src="'+img+'">'
-                Cdiv.innerHTML = Cspan
-                $('.cropped').prepend(Cdiv);
-                $('#file').val("");
-                $('.imageBox').removeAttr("style");
-                // var Userimg = $('.cropped_img').children('img')[0];
-                var Userimg =img
-                // console.log(Userimg )
-                C_Userimg(Userimg)
+                var file_obj = document.getElementById('file').files[0];
+                var fd = new FormData();
+                fd.append('img', file_obj);
+                fd.append('uid','{$userone["user_id"]}')
+
+                $.ajax({
+                    url: "{:U('Index/Ajax/ajax_updatefengmian')}",
+                    type: "POST",
+                    async: false,
+                    cache: false,
+                    processData: false,// 告诉jQuery不要去处理发送的数据
+                    contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                    data: fd,
+                    dataType:"json",
+                    success: function(data) {
+
+                        if (data.str==1){
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:1,
+                                }
+                            );
+                            var img = cropper.getDataURL();
+                            var Cdiv = document.createElement("div");
+                            Cdiv.className = "cropped_img";
+                            Cspan = '<img src="' + img + '">'
+                            Cdiv.innerHTML = Cspan
+                            $('.cropped').prepend(Cdiv);
+                            $('#file').val("");
+                            $('.imageBox').removeAttr("style");
+                            // var Userimg = $('.cropped_img').children('img')[0];
+                            var Userimg = img
+                            // console.log(Userimg )
+                            C_Userimg(Userimg)
+                        }else{
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+                        }
+
+                    },
+                    error: function(err) {
+
+                        layer.msg('请求失败!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+                });
             })
             // $('#btnZoomIn').on('click', function(){
             //     cropper.zoomIn();
@@ -691,6 +731,9 @@
             // $('#btnZoomOut').on('click', function(){
             //     cropper.zoomOut();
             // })
+            if ("{$userone['user_cover']}"!=''){
+                C_Userimg('./Uploads/{$userone["user_cover"]}')
+            }
             function C_Userimg(img){
                 // $('.personal_content .personal_title').html(img)
                 $('.personal_content .personal_title').css("background","url("+img+") no-repeat");
