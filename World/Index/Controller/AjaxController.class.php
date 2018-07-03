@@ -1916,7 +1916,6 @@ public function ajax_donationpay()
     public function ajax_market_list(){
 
         if (IS_POST) {
-
             $commoditymodel = new CommodityModel();
 
             $where = 'commodity_status = 1';

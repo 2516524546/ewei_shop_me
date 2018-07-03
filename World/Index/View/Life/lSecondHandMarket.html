@@ -25,11 +25,12 @@
 
         <!-- Crumbs nav -->
     <div class="container crumbs">
-        <a href="{:U('Index/Life/life')}" class="crumbsa">Academic</a>
+        <a href="{:U('Index/Life/life')}" class="crumbsa">Life</a>
         <cite class="Icon"></cite>
         <span class="crumbsTitle">Second-Hand Market</span>
     </div>
-    
+
+
         <!-- search -->
         <div class="container Second_Market_detail">
             <div class="row justify-content-between">
@@ -252,7 +253,6 @@ var universityli = 0;
 
 
     function updata_market_list(mid,order,limit1,limit2,type) {
-
         $.ajax({
             type:"post",
             url:"{:U('Index/Ajax/ajax_market_list')}",
@@ -268,12 +268,10 @@ var universityli = 0;
                 limit1:limit1,
                 limit2:limit2,
                 name:$("#Selectionform").val(),
-
             },
-            dataType:"json",
             async:false,
+            dataType:"json",
             success: function(list){
-                console.log(list)
                 if(list!=null&&list!=""){
 
                     if (list.str == 1){
@@ -323,7 +321,6 @@ var universityli = 0;
                                 icon:2,
                             }
                         );
-
                     }
                 }else{
                     layer.msg('请求错误!',{
@@ -344,7 +341,6 @@ var universityli = 0;
             }
 
         })
-        
     }
 
     function editpic(a) {
