@@ -1914,8 +1914,8 @@ public function ajax_donationpay()
 
     //商品列表
     public function ajax_market_list(){
+
         if (IS_POST) {
-            die(json_encode(array('str' => 2,'msg'=>'暂无商品')));
             $commoditymodel = new CommodityModel();
 
             $where = 'commodity_status = 1';
