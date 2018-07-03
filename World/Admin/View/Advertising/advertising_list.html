@@ -268,9 +268,11 @@
                                         <a href="index.php?m=Admin&c=Advertising&a=advertising_edit&id=<?php echo $v['advertising_id']?>"
                                            class="btn btn-xs btn-success"
                                            style="margin-top:5px;"><?php echo L('User_user_list_edit');?></a>
-                                        <a onclick="delete_professional(<?php echo $v['advertising_id'];?>)"
-                                           class="btn btn-xs btn-success"
-                                           style="margin-top: 5px;"><?php echo L('User_user_list_del');?></a>
+                                        <lt name="flag" value="3">
+                                            <a onclick="delete_professional(<?php echo $v['advertising_id'];?>)"
+                                               class="btn btn-xs btn-success"
+                                               style="margin-top: 5px;"><?php echo L('User_user_list_del');?></a>
+                                        </lt>
                                     </div>
                                 </td>
                             </tr>
