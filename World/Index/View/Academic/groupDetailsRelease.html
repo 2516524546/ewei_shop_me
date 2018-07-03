@@ -245,9 +245,9 @@
             var form = layui.form;
             var selectedValue =1
             form.on('select',function(data){
-                console.log(data.value);
+                //console.log(data.value);
                 selectedValue = data.value;
-                console.log(selectedValue)
+                //console.log(selectedValue)
                 if(selectedValue==1){
                     $(".Post_box").css("display","block");
                     $(".QaA_box").css("display","none");
@@ -479,7 +479,7 @@
                         var file_obj = document.getElementById('formdata');
                         var fd = new FormData();
                         for (var i = 0; i < values.length; i++){
-                            console.log(values[i])
+                            //console.log(values[i])
                             fd.append('img['+i+']',values[i])
                         }
                         fd.append('name',$("#name").val())
@@ -496,7 +496,7 @@
                             data: fd,
                             dataType: "json",
                             success: function (data) {
-                                console.log(data)
+                                //console.log(data)
                                 if (data.str == 1){
                                     layer.msg('创建成功',{
                                             time:1500,
@@ -534,7 +534,7 @@
                         var file_obj = document.getElementById('formdata');
                         var fd = new FormData();
                         for (var i = 0; i < file_files.length; i++){
-                            console.log(file_files[i])
+                            //console.log(file_files[i])
                             fd.append('img['+i+']',file_files[i])
                         }
                         fd.append('name',$("#name").val())
@@ -588,7 +588,7 @@
                         var file_obj = document.getElementById('formdata');
                         var fd = new FormData();
                         for (var i = 0; i < file_files.length; i++) {
-                            console.log(file_files[i])
+                            //console.log(file_files[i])
                             fd.append('img[]', file_files[i])
                         }
                         fd.append('name', $("#name").val())
@@ -607,7 +607,7 @@
                                 data: fd,
                                 dataType: "json",
                                 success: function (data) {
-                                    console.log(data)
+                                    //console.log(data)
                                     if (data.str == 1){
                                         layer.msg('创建成功',{
                                                 time:1500,
@@ -658,7 +658,7 @@
                                     var file_obj = document.getElementById('formdata');
                                     var fd = new FormData();
                                     for (var i = 0; i < file_files.length; i++) {
-                                        console.log(file_files[i])
+                                        //console.log(file_files[i])
                                         fd.append('img[]', file_files[i])
                                     }
                                     fd.append('name', $("#name").val())
@@ -677,7 +677,7 @@
                                         data: fd,
                                         dataType: "json",
                                         success: function (data) {
-                                            console.log(data)
+                                            //console.log(data)
                                             if (data.str == 1){
                                                 layer.msg('创建成功',{
                                                         time:1500,

@@ -10,7 +10,7 @@ layui.use(['laypage', 'layer'], function() {
         next:"Next",
         layout: ['count', 'prev', 'page', 'next', 'skip'],
         jump: function(obj) {
-            console.log(obj)
+            // console.log(obj)
         }
     });
 

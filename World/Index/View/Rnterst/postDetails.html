@@ -255,7 +255,7 @@
             dataType: "json",
             async: false,
             success: function (list) {
-                console.log(list)
+                //console.log(list)
                 if (list.str == 1){
 
                     $(obj).html("<img src='__PUBLIC__/Web/web/img/greated.png'>")
@@ -383,7 +383,7 @@
             },
             dataType:"json",
             success: function(data){
-                console.log(data);
+                //console.log(data);
                 if (data!=null&&data!="") {
                     if (data.str == 1) {
                         var message = '';
@@ -618,7 +618,7 @@
                         dataType: "json",
                         async: false,
                         success: function (list) {
-                            console.log(list)
+                            //console.log(list)
                             if (list.str == 1) {
                                 var link = document.createElement('a');
                                 link.href = url;
@@ -684,7 +684,7 @@
             dataType: "json",
             async: false,
             success: function (list) {
-                console.log(list)
+                //console.log(list)
                 if (list.str == 1){
 
                     layer.msg(list.msg,{

@@ -1,20 +1,59 @@
 .PasswordContainer {
-  margin-top: 84px;
+  margin-top: 60px;
 }
 .PasswordContainer .PostSharingbtext {
-  margin: 12px 0 34px;
+  padding: 0 46px;
 }
 .PasswordContainer .PostSharingbvideo .PostSharingbimg {
   padding: 18px 0;
 }
 .PasswordContainer .PostSharingbut {
-  margin-top: 22px;
+  padding: 0 46px;
 }
 .PostSharingfooter {
   margin: 40px 0 0;
 }
-
+.PasswordContainer .PostSharingbvideo{
+  padding: 0 46px;
+}
 .imgs{
   width: 100%;
   height: 300px;
+}
+
+.PasswordContainer{
+  width: 46%;
+  padding: 30px 0 20px;
+}
+
+.PasswordContainer .PostSharingbtext{
+  padding: 0 46px;
+}
+.PasswordContainer .PostSharingbtext p{
+  line-height: 20px;
+}
+.PasswordContainer .PostSharingbvideo .PostSharingbvideo_link{
+  word-wrap:break-word;
+  display: block;
+  text-decoration: none;
+}
+
+.PasswordContainer .PostSharingbvideo .PostSharingbvideo_V{
+  position: relative;
+  width: 50%;
+}
+.PasswordContainer .PostSharingbvideo .PostSharingbvideo_V .PostSharingbvideo_V_img{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 40%;
+  left: 46%;
+  cursor: pointer;
+}
+.PasswordContainer .PostSharingbvideo .PostSharingbvideo_V .PostSharingbvideo_V_img img{
+  width: 100%;
+  height: 100%;
+}
+html,body{
+  height: auto;
 }

@@ -40,7 +40,7 @@ function getObjectURL(file) {
 function upimg() {
     var pic = $('#upload')[0].files[0];
     var file = new FormData();
-    console.log(file)
+    // console.log(file)
     file.append('image', pic);
     $.ajax({
         url: "/uploadImg",
@@ -50,7 +50,7 @@ function upimg() {
         contentType: false,
         processData: false,
         success: function(data) {
-            console.log(data);
+            // console.log(data);
             var res = data;
             $("#resimg").append("<img src='/" + res + "'>")
         }
@@ -60,7 +60,7 @@ function upimg() {
 function upimgs() {
     var pic = $('#upload2')[0].files[0];
     var file = new FormData();
-    console.log(file)
+    // console.log(file)
     file.append('image', pic);
     $.ajax({
         url: "/uploadImg",
@@ -70,7 +70,7 @@ function upimgs() {
         contentType: false,
         processData: false,
         success: function(data) {
-            console.log(data);
+            // console.log(data);
             var res = data;
             $("#resimgs").append("<img src='/" + res + "'>")
         }

@@ -129,8 +129,8 @@
                                     </div>
     
     
-                                    <div class="shadow_video">
-                                        </div>
+                                    <!-- <div class="shadow_video">
+                                        </div> -->
         
         
                                         <div class="shadow_video">
@@ -228,6 +228,7 @@
     $(".video_box .video_shut").click(function(){
         $(".video_box").hide();
         $(".shadow_video").hide();
+        $(".video_box .video_area video").pause();
     })
 
     var form = layui.form;
@@ -239,7 +240,7 @@
         var fd = new FormData();
 
         for (var i = 0; i < file_files.length; i++) {
-            console.log(file_files[i])
+            //console.log(file_files[i])
             fd.append('img[]', file_files[i])
         }
 
@@ -264,7 +265,7 @@
                 data: fd,
                 dataType: "json",
                 success: function (data) {
-                    console.log(data)
+                    //console.log(data)
                     if (data.str == 1){
                         layer.msg(data.msg,{
                                 time:1500,
@@ -315,7 +316,7 @@
                     var file_obj = document.getElementById('formdata');
                     var fd = new FormData();
                     for (var i = 0; i < file_files.length; i++) {
-                        console.log(file_files[i])
+                        //console.log(file_files[i])
                         fd.append('img[]', file_files[i])
                     }
                     fd.append('name', $("#name").val())
@@ -334,7 +335,7 @@
                         data: fd,
                         dataType: "json",
                         success: function (data) {
-                            console.log(data)
+                            //console.log(data)
                             if (data.str == 1){
                                 layer.msg(data.msg,{
                                         time:1500,

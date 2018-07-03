@@ -48,11 +48,16 @@ class IndexController extends CommonController {
         $advertisingmodel = new AdvertisingModel();
         $advertisinglist = $advertisingmodel->findlist('advertising_for = 1 and advertising_mid = '.$this->modeleid.' and advertising_finishtime > "'.$now.'"');
 
+        $honorone  = $advertisingmodel->findone('advertising_id = 1000000001');
+        $adviceone  = $advertisingmodel->findone('advertising_id = 1000000002');
+
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
 
         $this->assign(array(
             'newslist' => $newslist,
             'advertisinglist' => $advertisinglist,
+            'honorone' => $honorone,
+            'adviceone' => $adviceone,
             'userid' => $this->userid,
             'usercontent' => $this->usercontent,
             'havemessage' => $this->havemessage,

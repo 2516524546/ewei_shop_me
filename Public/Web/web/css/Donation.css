@@ -120,7 +120,7 @@
   left: 22px;
 }
 .PasswordContainer #layui-input-block {
-  margin-left: 65px;
+  /* margin-left: 65px; */
 }
 .PasswordContainer #layui-form-label {
   width: 66px;
@@ -144,5 +144,9 @@
 .PasswordContainer .RefreshCode .RefreshFont{
   font-size: 12px;
   width:65%;
+}
+
+.section{
+  margin-top: 100px;
 }
 

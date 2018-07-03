@@ -7,12 +7,12 @@ $(".file").change(function() {
     var picDiv = $(this).parents(".picDiv");
     //得到所有的图片文件
     var fileList = docObj.files;
-    console.log(fileList)
+    // console.log(fileList)
     //循环遍历
     for (var i = 0; i < fileList.length; i++) {
         //动态添加html元素
         var picHtml = "<div class='imageDiv' > <img id='img" + fileList[i].name + "' /> <div class='cover'><i class='delbtn'>delete</i></div></div>";
-        console.log(picHtml);
+        // console.log(picHtml);
         $(".imageDiv").remove();
         picDiv.prepend(picHtml);
         //获取图片imgi的对象
@@ -26,7 +26,7 @@ $(".file").change(function() {
             if (userAgent.indexOf('MSIE') == -1) {
                 //IE以外浏览器
                 imgObjPreview.src = window.URL.createObjectURL(docObj.files[i]); //获取上传图片文件的物理路径;
-                console.log(imgObjPreview.src);
+                // console.log(imgObjPreview.src);
                 // var msgHtml = '<input type="file" id="fileInput" multiple/>';
             } else {
                 //IE浏览器
@@ -43,7 +43,7 @@ $(".file").change(function() {
     /*删除功能*/
     $(".delbtn").click(function() {
         var _this = $(this);
-        console.log($(this))
+        // console.log($(this))
         _this.parents(".imageDiv").remove();
     });
 });
