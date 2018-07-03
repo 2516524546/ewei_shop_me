@@ -14,8 +14,8 @@ use Think\Upload;
 
 class UserController extends CommonController {
 
-    protected $_checkAction = ['FollowList','personalCenter','acountSetting','resumeDetails','myPosts','myMessage','myFollowing','addressBook'
-                                    ,'myGroup','feedback','virtualCurrencyRecharge','FansList','DeliveryRecord','ResumeTemplateList'
+    protected $_checkAction = ['followList','personalCenter','acountSetting','resumeDetails','myPosts','myMessage','myFollowing','addressBook'
+                                    ,'myGroup','feedback','virtualCurrencyRecharge','fansList','DeliveryRecord','ResumeTemplateList'
                                     ,'FollowFriend','RefuseAddFirend','AgreeAddFirend','AddFriend','ChangeConcernsName','AddGroup','SetGroup','ChangeConcernsGroupName','SetFriendAlias','DeleteFriend','mineResume','createResume','DeleteResume','DeliveryResume','ClearMessages','MessageDetails','DissolveGroup','QuitGroup'];//需要做登录验证的action
 
     public function _initialize()
@@ -194,6 +194,7 @@ class UserController extends CommonController {
         $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
         $show       = $Page->show();
         $messages = D('Message')->alias('m')->field('m.*,u.user_name,u.user_icon')->join('u_user u ON u.user_id = m.message_sid','LEFT')->where(['m.message_uid'=>$this->userid])->order('message_delivertime desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+
         $this->assign('messages',$messages);
         $this->assign('page',$show);
 
@@ -306,10 +307,29 @@ class UserController extends CommonController {
      * @return mixed
      */
     public function FollowList(){
-        $css = addCss('FollowList');
+        $css = addCss('followList');
         $this->assign('title','Follow List');
         $this->assign('CSS',$css);
         $this->display();
+    }
+
+    //粉丝列表
+    public function fansList(){
+
+        if (!isset($_GET['uid'])||$_GET['uid']==''){
+            Header("Location:".U('Index/Index/index'));
+            exit();
+        }
+
+        $concernsmodel = new ConcernsModel();
+        $concernscount = $concernsmodel->findone('concerns_status = 1 and concerns_cuid = '.$_GET['uid'],'count(*) num')['num'];
+
+        $this->assign(array(
+            'uid'=>$_GET['uid'],
+            'concernscount' => $concernscount,
+        ));
+        $this->display();
+
     }
 
     //帮助
@@ -689,4 +709,6 @@ class UserController extends CommonController {
             die(json_encode(['status'=>0,'msg'=>'Quit Group failed!']));
         }
     }
+
+
 }

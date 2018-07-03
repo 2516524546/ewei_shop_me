@@ -119,7 +119,10 @@ class ResumeController extends CommonController {
             echo L('Resume_resume_workyear_must_num');
             exit;
         }
-
+       if (empty($post['resume_fileurl'])){
+           echo L('Resume_resume_not_empty');
+           exit;
+       }
         //resume_position
         //resume_hightmoney
         //resume_workyear

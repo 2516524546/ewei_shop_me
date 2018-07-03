@@ -467,6 +467,9 @@ return array(
     'Resume_resume_money_must_num' => '薪资为数字',
     'Resume_resume_workyear_not_empty' => '工作年限不能为空',
     'Resume_resume_workyear_must_num' => '工作年限为数字',
+    'Resume_resume_upload' => '上传简历',
+    'Resume_resume_not_empty' => '上传的简历不能为空',
+
     /*
 	 * Resume end
 	 *******************************************************************/

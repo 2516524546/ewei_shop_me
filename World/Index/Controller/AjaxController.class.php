@@ -3980,5 +3980,47 @@ public function ajax_donationpay()
 
     }
 
+    //上传封面
+    public function ajax_updatefengmian(){
+
+        if (IS_POST) {
+
+            $file = $_FILES['img'];
+            if(!$_FILES){
+                die(json_encode(array('str' => 0,'msg'=>'请选择一张图片')));
+            }
+
+            $upload = new \Think\Upload();// 实例化上传类
+            $upload->maxSize = 3072000 ;// 设置附件上传大小
+            $upload->exts = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+            $upload->rootPath = './Uploads/'; // 设置附件上传根目录
+// 上传单个文件
+            $info = $upload->uploadOne($file);
+            if(!$info) {// 上传错误提示错误信息
+                die(json_encode(array('str' => 0,'msg'=>$upload->getError())));
+            }else{// 上传成功 获取上传文件信息
+
+                $usermodel = new UserModel();
+                $userdata = array(
+                    'user_cover' => $info['savepath'].$info['savename'],
+                );
+
+                $res = $usermodel->updataone('user_id = '.$this->post('uid'),$userdata);
+                if ($res){
+                    die(json_encode(array('str' => 1,'msg'=>'封面修改成功')));
+                }else{
+                    die(json_encode(array('str' => 2,'msg'=>'封面修改失败')));
+                }
+
+
+            }
+
+        } else {
+
+            die(json_encode(array('str' => 0)));
+        }
+
+    }
+
 
 }

@@ -35,8 +35,8 @@
         
         <div class="container section">
             <div class="FansList_content">
-                <div class="FansList_list">
-                    <div class="FansList_item">
+                <div class="FansList_list" id="content">
+                    <!--<div class="FansList_item">
                         <div class="item_user">
                             <div class="item_img">
                                 <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
@@ -54,9 +54,9 @@
                         <div class="item_add" data-Ison="true">
                             Follow
                         </div>
-                    </div>
+                    </div>-->
         
-                    <div class="FansList_item">
+                    <!--<div class="FansList_item">
                         <div class="item_user">
                             <div class="item_img">
                                 <img src="__PUBLIC__/Web/web/img/01_shouye/UserPic.png" alt="">
@@ -74,7 +74,7 @@
                         <div class="item_add" data-Ison="false">
                             UnFollow
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
             <div class="container" id="NumberOfPagesContainer">
@@ -97,6 +97,83 @@
 <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
 <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 <script>
+
+    set({$concernscount})
+    function set(num) {
+        layui.use(['laypage', 'layer'], function() {
+            var laypage = layui.laypage,
+                layer = layui.layer;
+            //完整功能
+            laypage.render({
+                elem: 'NumberOfPages',
+                count: num,
+                prev:"Previous",
+                next:"Next",
+                layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+                jump: function(obj) {
+
+                    /*setintegral(type,obj.curr,obj.limit)*/
+
+                }
+            });
+
+        });
+    }
+
+
+    function upfanslist() {
+
+        $.ajax({
+            type:"post",
+            url:"{:U('Index/Ajax/ajax_fanslist')}",
+            data:{
+                uid:'{$uid}',
+                limit1:limit1,
+                limit2:limit2,
+                name:
+
+            },
+            dataType:"json",
+            success: function(data){
+                if (data!=null&&data!="") {
+                    if (data.str == 1) {
+                        var message = '';
+                        for (var i = 0; i < data.msg.length; i++) {
+
+                        }
+
+                        $('#content').html(message);
+
+                    }else{
+                        layer.msg(data.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+
+                }else{
+                    layer.msg('请求错误!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                layer.msg('请求失败!',{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+
+        })
+
+    }
+
 
 </script>
 </html>

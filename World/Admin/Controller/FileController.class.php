@@ -299,7 +299,7 @@ class FileController extends Controller {
                 //echo $upload->getError();exit;
                 die(json_encode(array('status' => 0, 'msg' => $upload->getError())));
             }else{// 上传成功 获取上传文件信息
-                $file_name= $upload->rootPath.$info['savepath'].$info['savename'];
+                $file_name=$info['savepath'].$info['savename'];
 
                 //echo $file_name;exit;
                 die(json_encode(array('status' => 1, 'msg' => $file_name)));

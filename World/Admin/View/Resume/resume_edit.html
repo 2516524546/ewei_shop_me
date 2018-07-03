@@ -132,77 +132,7 @@
                  </div>-->
                 <script type="text/javascript" src="__PUBLIC__/Tools/uploadify/jquery.uploadify.min.js"></script>
                 <link rel="stylesheet" type="text/css" href="__PUBLIC__/Tools/uploadify/uploadify.css">
-                <script type="text/javascript">
-                    //上传图片
-                    /* 初始化上传插件 */
-                    var userid = "100001";
-                    $("#upload_picture").change(function (e) {
-                        var formData = new FormData();
-                        formData.append("download", document.getElementById("upload_picture").files[0]);
-                        $.ajax({
-                            url: "{:U('Admin/File/uploadBanner2',array('sessionid'=>'" + userid + "'))}",
-                            type: "POST",
-                            data: formData,
-                            contentType: false,
-                            processData: false,
-                            dataType: 'json',
-                            success: function (data) {
-                                console.log(data)
-                                if (data.status == 1) {
-                                    $("#img").html('<img style="width:200px;height:200px;" src="./Uploads/' + data.msg + '"/>');
-                                    $("input[name='commodity_img']").val(data.msg)
-                                } else {
-                                    showMessage(data.msg, 2);
-                                }
-                            },
-                            error: function () {
-                                showMessage("{:L('newworld_ajax_upload_fail')}", 2);
-                            }
-                        });
-                    });
 
-                    var userid = "100001";
-                    $("#upload_resume").change(function (e) {
-                        var formData = new FormData();
-                        formData.append("download", document.getElementById("upload_resume").files[0]);
-                        $.ajax({
-                            url: "{:U('Admin/File/uploadResume',array('sessionid'=>'" + userid + "'))}",
-                            type: "POST",
-                            data: formData,
-                            contentType: false,
-                            processData: false,
-                            dataType: 'json',
-                            success: function (data) {
-                                console.log(data)
-                                if (data.status == 1) {
-                                    alert("success")
-                                    //showMessage("{:L('newworld_ajax_upload_success')}", 1);
-                                    $("input[name='resume_fileurl']").val(data.msg)
-                                } else {
-                                    alert("fail")
-                                    //showMessage(data.msg, 2);
-                                }
-                            },
-                            error: function () {
-                                //showMessage("{:L('newworld_ajax_upload_fail')}", 2);
-                                alert("{:L('newworld_ajax_upload_fail')}")
-                            }
-                        });
-                    });
-
-                    function showMessage(msg, status) {
-                        layer.msg(msg, {
-                                time: 500,
-                                icon: status,
-                            }, function () {
-                                if (status == 1) {
-                                    location.reload()
-                                }
-
-                            }
-                        );
-                    }
-                </script>
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_money')}</label>
                     <div class="col-sm-9">
@@ -239,7 +169,7 @@
                 </div>
 
                 <div class="form-group" id="user-profile-3" >
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">上传简历</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_upload')}</label>
                     <div class="col-sm-9">
                         <div class="col-xs-12 col-sm-4">
                             <input type="file" id='upload_resume' accept=".docx,.pdf"/>
@@ -249,6 +179,7 @@
                     </div>
 
                 </div>
+
 
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">{:L('Resume_resume_list_status')}</label>
@@ -355,6 +286,48 @@
 
 <script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.tan.js"></script>
 <script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
+<script type="text/javascript">
+    //上传简历
+    var userid = "100001";
+    $("#upload_resume").change(function (e) {
+        var formData = new FormData();
+        formData.append("download", document.getElementById("upload_resume").files[0]);
+        $.ajax({
+            url: "{:U('Admin/File/uploadResume',array('sessionid'=>'" + userid + "'))}",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+                if (data.status == 1) {
+                    showMessage("{:L('newworld_ajax_upload_success')}", 1);
+                    $("input[name='resume_fileurl']").val(data.msg)
+                } else {
+                    showMessage(data.msg, 2);
+                }
+            },
+            error: function () {
+                //showMessage("{:L('newworld_ajax_upload_fail')}", 2);
+                alert("{:L('newworld_ajax_upload_fail')}")
+            }
+        });
+    });
+
+    function showMessage(msg, status) {
+        layer.msg(msg, {
+                time: 500,
+                icon: status,
+            }, function () {
+                if (status == 1) {
+                    location.reload()
+                }
+
+            }
+        );
+    }
+</script>
 
 <script>
     function showStart() {
