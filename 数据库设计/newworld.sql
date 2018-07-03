@@ -228,3 +228,21 @@ ADD COLUMN `note_downloads`  int(10) NOT NULL DEFAULT 0 COMMENT '下载量' AFTE
 lyx
 2018.06.29 end
 */
+
+
+/*
+lyx
+2018.07.03 start
+*/
+
+ALTER TABLE `s_resume_module`
+ADD COLUMN `resume_module_downs`  int(10) NOT NULL DEFAULT 0 COMMENT '下载次数' AFTER `resume_module_url`;
+
+
+/*
+lyx
+2018.07.03 end
+*/
+
+
+
