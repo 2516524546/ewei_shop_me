@@ -25,7 +25,7 @@ function getObjectURL(file) {
 }
 //上传头像到服务器
 function upimg() {
-    console.log(344)
+    // console.log(344)
     var pic = $('#upload')[0].files[0];
     var file = new FormData();
     file.append('image', pic);
@@ -37,7 +37,7 @@ function upimg() {
         contentType: false,
         processData: false,
         success: function(data) {
-            console.log(data);
+            // console.log(data);
             var res = data;
             $("#resimg").append("<img src='/" + res + "'>")
         }
