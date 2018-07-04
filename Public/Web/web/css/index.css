@@ -212,6 +212,7 @@
   transition: all 0.4s ease-out;
   box-shadow: 0px 35px 77px -17px rgba(0, 0, 0, 0.44);
   overflow: hidden;
+  height: 335px;
 }
 .tile img {
   height: auto;
@@ -222,9 +223,11 @@
   position: absolute;
   height: calc(40%); */
   width: 100%;
+  height: 100%;
 }
 .tile .text img{
   width: 100%;
+  height: 100%;
 }
 .tile:hover {
   box-shadow: 0px 35px 77px -17px rgba(0, 0, 0, 0.64);
