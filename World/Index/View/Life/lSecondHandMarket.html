@@ -256,6 +256,7 @@ var universityli = 0;
         $.ajax({
             type:"post",
             url:"{:U('Index/Ajax/ajax_market_list')}",
+            dataType:"json",
             data:{
                 staticli:staticli.value,
                 moneyli:moneyli.value,
@@ -270,7 +271,6 @@ var universityli = 0;
                 name:$("#Selectionform").val(),
             },
             async:false,
-            dataType:"json",
             success: function(list){
                 if(list!=null&&list!=""){
 
