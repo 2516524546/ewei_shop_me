@@ -28,6 +28,13 @@ return array(
      * Conf start
      */
 
+    'admin_list_if' => '此操作不可逆,确认继续吗?',
+    'admin_list_yes' => '确定',
+    'admin_list_no' => '取消',
+    'admin_list_delok' => '删除成功',
+    'admin_list_delerror' => '删除失败',
+
+
 
     /*
 	 * Conf end
