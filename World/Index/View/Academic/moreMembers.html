@@ -173,7 +173,7 @@
                                 if (data.adminlist[i].isfriend==1||data.adminlist[i].crowd_member_uid=={$userid}){
                                     adminmessage += '<button class="layui-btn layui-btn-normal layui-btn-radius" style="background-color: #bdbdbd" onclick="detailshow('+data.adminlist[i].crowd_member_uid+')">Added</button>'
                                 }else if(data.adminlist[i].crowd_member_uid=={$userid}){
-                                    membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius" style="background-color: #bdbdbd" onclick="detailshow('+data.adminlist[i].crowd_member_uid+')">Is Me</button>'
+                                    adminmessage += '<button class="layui-btn layui-btn-normal layui-btn-radius" style="background-color: #bdbdbd" onclick="detailshow('+data.adminlist[i].crowd_member_uid+')">Me</button>'
                                 }else{
                                     adminmessage += '<button class="layui-btn layui-btn-normal layui-btn-radius" onclick="addfriend('+data.adminlist[i].crowd_member_uid+',this)">Add</button>'
                                 }
@@ -196,7 +196,7 @@
                                 if (data.memberlist[i].isfriend==1){
                                     membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius" style="background-color: #bdbdbd" onclick="detailshow('+data.memberlist[i].crowd_member_uid+')">Added</button>'
                                 }else if(data.memberlist[i].crowd_member_uid=={$userid}){
-                                    membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius" style="background-color: #bdbdbd" onclick="detailshow('+data.memberlist[i].crowd_member_uid+')">Is Me</button>'
+                                    membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius" style="background-color: #bdbdbd" onclick="detailshow('+data.memberlist[i].crowd_member_uid+')">Me</button>'
                                 }else{
                                     membermessage += '<button class="layui-btn layui-btn-normal layui-btn-radius" onclick="addfriend('+data.memberlist[i].crowd_member_uid+',this)">Add</button>'
                                 }
