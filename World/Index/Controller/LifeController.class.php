@@ -77,7 +77,7 @@ class LifeController extends CommonController {
         $university = $secondmodel->findlist('second_mark_fid = 12','second_mark_sort');
 
         $commoditymodel = new CommodityModel();
-        $commoditylist = $commoditymodel->joinonelist('commodity_status = 1','u_user u on l_commodity.commodity_uid = u.user_id','commodity_updatetime desc',0,10);
+        $commoditylist = $commoditymodel->joinonelist('commodity_status = 1','u_user u on l_commodity.commodity_uid = u.user_id','commodity_updatetime desc',0,10,'LEFT');
 
         $crowdcount = $commoditymodel->findone('commodity_status = 1','count(*) num')['num'];
 

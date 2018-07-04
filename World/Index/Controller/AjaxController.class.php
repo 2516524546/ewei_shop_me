@@ -1967,7 +1967,7 @@ public function ajax_donationpay()
                 $where .= ' and commodity_name like "%'.$this->post('name').'%"';
             }
 
-            $commoditylist = $commoditymodel->joinonelist($where,'u_user u on l_commodity.commodity_uid = u.user_id','commodity_updatetime desc',0,10);
+            $commoditylist = $commoditymodel->joinonelist($where,'u_user u on l_commodity.commodity_uid = u.user_id','commodity_updatetime desc',0,10,'LEFT');
 
             $crowdcount = $commoditymodel->findone($where,'count(*) num')['num'];
 
