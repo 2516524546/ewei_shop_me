@@ -1954,7 +1954,10 @@ public function ajax_donationpay()
                 }
 
             }
-            $where .= " and commodity_secondmark like '%".$listr."%'";
+            if ($listr!=''){
+                $where .= " and commodity_secondmark like '%".$listr."%'";
+            }
+
             if (isset($_POST['minmonry']) && $this->post('minmonry') != ''){
                 $where .= ' and commodity_price > '.$this->post('minmonry');
             }
@@ -1967,7 +1970,7 @@ public function ajax_donationpay()
                 $where .= ' and commodity_name like "%'.$this->post('name').'%"';
             }
 
-            $commoditylist = $commoditymodel->joinonelist($where,'u_user u on l_commodity.commodity_uid = u.user_id','commodity_updatetime desc',0,10,'LEFT');
+            $commoditylist = $commoditymodel->joinonelist($where,'u_user u on l_commodity.commodity_uid = u.user_id','commodity_updatetime desc',$_POST['limit1'],$_POST['limit2'],'LEFT');
 
             $crowdcount = $commoditymodel->findone($where,'count(*) num')['num'];
 
@@ -1976,8 +1979,12 @@ public function ajax_donationpay()
 
                     die(json_encode(array('str' => 1,'msg'=>$commoditylist,'count'=>$crowdcount)));
                 } else {
+                     if ($_POST['searchType']==1){
+                         die(json_encode(array('str' => 2,'msg'=>'暂无商品')));
+                     }elseif ($_POST['searchType']==2){
+                         die(json_encode(array('str' => 3,'msg'=>'数据到底了')));
+                     }
 
-                    die(json_encode(array('str' => 2,'msg'=>'暂无商品')));
                 }
 
         } else {

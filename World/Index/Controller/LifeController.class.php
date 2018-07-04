@@ -151,9 +151,11 @@ class LifeController extends CommonController {
     public function lifeProductDetails(){
 
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-
-        
-
+        $this->userid;
+          $id=$_GET['cid'];
+        $commoditymodel = new CommodityModel();
+        $commodity=$commoditymodel->findoneJoin("commodity_id=$id",'u_user u on l_commodity.commodity_uid = u.user_id','LEFT');
+        $this->assign("commodity",$commodity);
         $this->display();
     }
 
@@ -185,6 +187,29 @@ class LifeController extends CommonController {
 
         ));
         $this->display();
+
+    }
+
+    //收藏商品
+    function collect_goods(){
+          //var_dump($_POST['id']);
+        $cid=$_POST['id'];
+        $uid=$this->userid;
+        $have=M("l_commodity_collect")->where("commodity_collect_uid={$uid} and commodity_collect_cid={$cid}")->find();
+        if ($have){
+            die(json_encode(array('str' => 2, 'msg' => '你已经收藏过了')));
+        }else{
+            //添加数据
+            $post['commodity_collect_cid']=$_POST['id'];
+            $post['commodity_collect_uid']=$uid;
+            $post['commodity_collect_createtime']=date("Y-m-d H:i:s", time());
+            $res=M("l_commodity_collect")->add($post);
+            if ($res){
+                die(json_encode(array('str' => 1, 'msg' => '收藏成功')));
+            }else{
+                die(json_encode(array('str' => 2, 'msg' => '收藏失败')));
+            }
+        }
 
     }
 

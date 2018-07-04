@@ -258,7 +258,7 @@ class JobsController extends CommonController {
             }
         }
         $count      = D('Professional')->alias('p')->join('u_user u ON u.user_id = p.professional_uid','LEFT')->where($where)->count();
-        var_dump($count);
+        // var_dump($count);
         $Page       = new \Think\Page($count,8);
         $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
         $professionals_show       = $Page->show();
