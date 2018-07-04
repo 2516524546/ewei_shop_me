@@ -125,7 +125,7 @@ class CommodityController extends CommonController{
                 echo L('newworld_ajax_operation_fail');exit;
             }
         }else{
-            $cate=M('s_second_mark')->select();
+            $cate=M('s_second_mark')->where("second_mark_fid=8")->select();
             $this->assign('cate',$cate);
             $this->display();
         }
@@ -191,7 +191,7 @@ class CommodityController extends CommonController{
         }else{
             $id=$_GET['id'];
             $commodity=M('l_commodity')->where("commodity_id={$id}")->find();
-            $cate=M('s_second_mark')->select();
+            $cate=M('s_second_mark')->where("second_mark_fid=8")->select();
             $this->assign('cate',$cate);
             $this->assign("commodity",$commodity);
             $this->display();

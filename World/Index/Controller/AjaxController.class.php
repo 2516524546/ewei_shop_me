@@ -67,7 +67,6 @@ class AjaxController extends CommonController
                 $where['user_mail'] = $this->post('username');
                 $userone = $usermodel->findone($where);
                 if (!$userone) {
-
                     die(json_encode(array('str' => 5, 'msg' => '用户不存在')));
                 } else {
 
@@ -1916,6 +1915,7 @@ public function ajax_donationpay()
     public function ajax_market_list(){
 
         if (IS_POST) {
+
             $commoditymodel = new CommodityModel();
 
             $where = 'commodity_status = 1';

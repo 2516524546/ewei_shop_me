@@ -64,6 +64,7 @@ class LifeController extends CommonController {
     //商品列表
     public function lSecondHandMarket(){
 
+
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
 
         $firstmodel = new FirstMarkModel();
