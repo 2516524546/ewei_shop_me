@@ -284,6 +284,25 @@
 <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
 <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 <script>
-
+//打开创建组
+        $('.FollowList_content .FollowList_content_left .FollowList_btn').on('click',function(){
+            $('.FollowList_Create').css('display','flex');
+            $(this).css('display','none')
+        })
+        //关闭创建组
+        $('.FollowList_Create .Create_Btn_Cancel').on("click",function(){
+            $('.FollowList_Create').css('display','none');
+            $('.FollowList_content .FollowList_content_left .FollowList_btn').css('display','block')
+        })
+        //创建组
+        $('.FollowList_Create .Create_Btn_Create').on("click",function(){
+            var Create_name = $('.FollowList_Create .FollowList_Create_input').val();
+            if(Create_name!=""){
+                var C_content = '<div class="FollowList_content_left_item"><div class="item_title"><div class="item_title_img"><img src="../web/img/06_gerenzhongxin/grzx_sz_icon_07.png" alt=""></div></div><span>community 6 </span>:<div class="item_num">12</div></div>';
+                $('.FollowList_content_left_list').append(C_content);
+            }else{
+                alert("Please enter group name")
+            }
+        })
 </script>
 </html>
