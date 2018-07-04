@@ -249,7 +249,7 @@ layui.use('laydate', function(){
                                     time:1500,
                                     icon:1,
                                 },function () {
-                                location.reload();
+                                    window.location.href="{:U('Index/User/personalCenter')}&id={$userid}";
                                 }
                             );
 
