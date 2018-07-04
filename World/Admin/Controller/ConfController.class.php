@@ -131,6 +131,24 @@ class ConfController extends CommonController {
                 
                 echo $str;exit;
 	}
+
+	public function ajax_conf_del(){
+        if (IS_POST) {
+
+            $aid = $_POST['aid'];
+            $res = M("Piano_admin")->where('aid = '.$aid)->delete();
+            if ($res){
+                die(json_encode(array('str' => 1, 'msg' => L('admin_list_delok'))));
+            }else{
+                die(json_encode(array('str' => 2, 'msg' => L('admin_list_delerror'))));
+            }
+
+        } else {
+
+            die(json_encode(array('str' => 0, 'msg' => L('newworld_ajax_havenoing'))));
+        }
+    }
+
 	//添加，修改账号管理员
 	public function admin_add(){
 		if(IS_POST){
