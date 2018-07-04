@@ -289,7 +289,11 @@ var universityli = 0;
                             message += '<div class="pro_Description">Product Description:<p>'+list.msg[i].commodity_content+'</p></div></div></div>';
                             message += '<div class="fr pro_right"><div class="pro_right_img">';
                             message += '<img src="./Uploads/'+list.msg[i].user_icon+'" alt="" class="img-circle userimg" /></div>'
-                            message += '<div class="pro_right_name">'+list.msg[i].user_name+'</div>';
+                            if (list.msg[i].user_name) {
+                                message += '<div class="pro_right_name">' + list.msg[i].user_name + '</div>';
+                            }else{
+                                message += '<div class="pro_right_name">admin</div>';
+                            }
                             message += '</div></div></a></div>'
 
                         }
