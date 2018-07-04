@@ -97,18 +97,22 @@
                                                     </a>
                                                 </td>
                                                 <td class="NameIcom">
+                                                    <a href="{:U('Index/Academic/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
                                                     <if condition='$note["note_istop"] == 1'>
                                                         <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
                                                     </if>
                                                     <if condition='$note["note_iswally"] == 1'>
                                                         <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
                                                     </if>
+                                                    </a>
                                                 </td>
                                                 <td class="text-right">
+                                                <a href="{:U('Index/Academic/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
                                                     <p>{$note['note_createtime']}</p>
                                                     <p>
                                                         <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$note['note_comments']}
                                                     </p>
+                                                </a>
                                                 </td>
                                             </tr>
                                         </foreach>
@@ -874,17 +878,21 @@
                             message += '<a href="'+url+'" style="text-decoration: none;">';
                             message += list.msg[i].tutorship_issue_name
                             message += '</a></td><td class="NameIcom">'
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
                             if(list.msg[i].tutorship_issue_istop==1){
                                 message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">'
                             }
                             if(list.msg[i].tutorship_issue_iswally==1){
                                 message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">'
                             }
+                            message += '</a>'
                             message += '</td><td class="text-right">'
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
                             message += '<p>'+list.msg[i].tutorship_issue_createtime+'</p>'
                             message += '<p>'
 
                             message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">'+list.msg[i].tutorship_issue_comments+'</p>'
+                            message += '</a>'
                             message += '</td></tr>'
 
                         }
@@ -980,17 +988,21 @@
                             message += '<a href="'+url+'" style="text-decoration: none;">';
                             message += list.msg[i].tutorship_need_name
                             message += '</a></td><td class="NameIcom">'
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
                             if(list.msg[i].tutorship_need_istop==1){
                                 message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">'
                             }
                             if(list.msg[i].tutorship_need_iswally==1){
                                 message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">'
                             }
+                            message += '</a>'
                             message += '</td><td class="text-right">'
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
                             message += '<p>'+list.msg[i].tutorship_need_createtime+'</p>'
                             message += '<p>'
 
                             message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">'+list.msg[i].tutorship_need_comments+'</p>'
+                            message += '</a>'  
                             message += '</td></tr>'
 
                         }
