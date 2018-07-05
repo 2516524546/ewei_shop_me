@@ -183,6 +183,17 @@ class LifeController extends CommonController {
              die(json_encode(array('str' => 2, 'msg' => '删除失败')));
          }
     }
+    //更新我发布的商品
+    function good_update(){
+        $cid=$_POST['commodity_id'];
+        $res=M('l_commodity')->where("commodity_id={$cid}")->save($_POST);
+        if ($res){
+            die(json_encode(array('str' => 1, 'msg' => '更新成功')));
+        }else{
+            die(json_encode(array('str' => 2, 'msg' => '更新失败')));
+        }
+    }
+
 
 //分页加载评论列表
     public function ajax_commentList()

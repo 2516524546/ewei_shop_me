@@ -255,7 +255,7 @@
                                         <p>product name ：</p>
                                     </label>
                                     <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter product name" class="layui-input" v-bind:value="commodity['commodity_name']">
+                                        <input type="text" id="name" name="title" lay-verify="title" autocomplete="off" placeholder="Enter product name" class="layui-input" v-bind:value="commodity['commodity_name']">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
@@ -263,7 +263,7 @@
                                         <p>product price ：</p>
                                     </label>
                                     <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter product price" class="layui-input" v-bind:value="commodity['commodity_price']">
+                                        <input type="text" id="price" name="title" lay-verify="title" autocomplete="off" placeholder="Enter product price" class="layui-input" v-bind:value="commodity['commodity_price']">
                                     </div>
                                 </div>
                               <!--  <div class="layui-form-item">
@@ -279,7 +279,7 @@
                                         <p>contacts ：</p>
                                     </label>
                                     <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter contacts" class="layui-input" v-bind:value="commodity['commodity_uname']">
+                                        <input type="text" id="uname" name="title" lay-verify="title" autocomplete="off" placeholder="Enter contacts" class="layui-input" v-bind:value="commodity['commodity_uname']">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
@@ -287,9 +287,10 @@
                                         <p>contact number  ：</p>
                                     </label>
                                     <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter contact number " class="layui-input" v-bind:value="commodity['commodity_contact']">
+                                        <input type="text" id="number" name="title" lay-verify="title" autocomplete="off" placeholder="Enter contact number " class="layui-input" v-bind:value="commodity['commodity_contact']">
                                     </div>
                                 </div>
+                                <input type="hidden" id="cid" v-bind:value="commodity['commodity_id']">
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" style="margin-left: -22px;">
                                         <p>type ：</p>
@@ -307,7 +308,7 @@
                                                 <p>description ：</p>
                                             </label>
                                         <div class="layui-input-block" style="">
-                                            <textarea placeholder="Enter the description of the product" class="layui-textarea">{{commodity['commodity_content']}}</textarea>
+                                            <textarea placeholder="Enter the description of the product" class="layui-textarea" id="description">{{commodity['commodity_content']}}</textarea>
                                         </div>
                                     </div>
                                <div class="layui-form-item">
@@ -324,13 +325,13 @@
                                                 <p>Remarks ：</p>
                                             </label>
                                         <div class="layui-input-block" style="">
-                                            <textarea placeholder="Input remarks" class="layui-textarea">{{commodity['commodity_explain']}}</textarea>
+                                            <textarea placeholder="Input remarks" id="remark" class="layui-textarea">{{commodity['commodity_explain']}}</textarea>
                                         </div>
                                     </div>
                                 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" id="save">Save</button>
+                                <button type="button" class="btn btn-primary save" onclick="asd()">Save</button>
                             </div>
                         </div>
                     </div>
@@ -382,9 +383,7 @@
                 // $(".save").click(function () {
                 //     console.log('dddd')
                 // });
-                $("#save").on("click",function(){
-                    alert(1)
-                })
+
 
                 $(".item_box").on('click',"#edit", function(event) {
                     id=$(this).attr("data-id");
@@ -445,6 +444,66 @@
                 }
 
             })
+        }
+        function asd() {
+            cid=$("#cid").val();
+            name2=$("#name").val();
+            price=$("#price").val();
+            uname=$("#uname").val();
+            number=$("#number").val();
+            description=$("#description").val();
+            remark=$("#remark").val();
+
+            $.ajax({
+                type:"post",
+                url:"{:U('Index/Life/good_update')}",
+                data:{
+                    commodity_id:cid,
+                    commodity_name:name2,
+                    commodity_price:price,
+                    commodity_uname:uname,
+                    commodity_contact:number,
+                    commodity_content:description,
+                    commodity_explain:remark
+                },
+                dataType:"json",
+                success: function(data){
+                    if (data!=null&&data!="") {
+                        if(data.str == 1){
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:1,
+                                }
+                            );
+                        }else {
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+                        }
+
+                    }else{
+                        layer.msg('请求错误!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                    layer.msg('请求失败!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            })
+
+            console.log(cid+","+name2+","+price+","+uname+","+number+","+description+","+remark+",")
         }
 
         //删除商品
