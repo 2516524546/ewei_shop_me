@@ -165,7 +165,7 @@
                                 <td><?php echo $v['resume_university'];?></td>
                                 <td><?php echo $v['resume_degree'];?></td>
                                 <td><?php echo $v['resume_specialty'];?></td>
-                                <td><a href="<?php echo './Uploads/'.$v['resume_fileurl'];?>"><?php echo $v['resume_fileurl'];?></a></td>
+                                <td><a  href="#" onClick="downloadCustom('<?php echo $v["resume_fileurl"]?>')"><?php echo $v['resume_fileurl'];?></a></td>
                                 <td><?php  if($v['resume_status']==0){
 									  echo L('Resume_resume_list_status_improving');
 									} elseif($v['resume_status']==1){
@@ -221,6 +221,8 @@
 <script src="__PUBLIC__/Admin/admin/js/date-time/moment.min.js"></script>
 <script src="__PUBLIC__/Admin/admin/js/date-time/daterangepicker.min.js"></script>
 <script language="javascript">
+
+
     <!--
     function linkok(url) {
         question = confirm("你确认要删除吗？");
@@ -244,6 +246,7 @@
 <script type="text/javascript" language="javascript" src="__PUBLIC__/Admin/admin/js/jquery.form.js"></script>
 
 <script>
+
     function showStart() {
         return true;
     }
@@ -270,6 +273,25 @@
 </script>
 
 <script language="javascript">
+    function downloadCustom(url) {
+        var link = document.createElement('a');
+        link.href = "./Uploads/"+url;
+
+        if (link.download !== undefined) {
+            //Set HTML5 download attribute. This will prevent file from opening if supported.
+            var fileName = url.substring(url.lastIndexOf('/') + 1, url.length);
+            link.download = fileName;
+        }
+
+        //Dispatching click event.
+        if (document.createEvent) {
+            var e = document.createEvent('MouseEvents');
+            e.initEvent('click', true, true);
+            link.dispatchEvent(e);
+            return true;
+        }
+        //window.location.href=url;
+    }
     function batchDelete(id) {
         layer.msg("{:L('Note_crowd_list_if')}", {
             time: 0 //不自动关闭

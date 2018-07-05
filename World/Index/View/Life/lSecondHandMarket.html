@@ -127,7 +127,7 @@
                 <div class="col-md-4">
                         <div class="SelectionContainer">
                             <input type="text" class="layui-input" id="Selectionform">
-                            <a href="#" id="SelectionIcon" onclick="updata_market_list(5,'commodity_updatetime desc',0,10,1)">
+                            <a href="#" id="SelectionIcon" onclick="search_goods()">
                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
                             </a>
                         </div>
@@ -181,7 +181,12 @@
                                                     <img src="<if condition='$c["user_icon"]'>./Uploads/{$c['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="" class="img-circle userimg" />
                                             </div>
                                             <div class="pro_right_name">
-                                                {$c['user_name']}
+                                                <if condition='$c["user_name"]'>
+                                                    {$c['user_name']}
+                                                    <else />
+                                                    admin
+                                                </if>
+
                                             </div>
                                         </div>                                        
                             </div>
@@ -251,11 +256,17 @@ var universityli = 0;
         })();
     });
 
+//搜索商品
+    function search_goods() {
+        page=1;
+        updata_market_list(5,'commodity_updatetime desc',0,10,1,1);
+    }
 
-    function updata_market_list(mid,order,limit1,limit2,type) {
+    function updata_market_list(mid,order,limit1,limit2,type,searchType) {
         $.ajax({
             type:"post",
             url:"{:U('Index/Ajax/ajax_market_list')}",
+            dataType:"json",
             data:{
                 staticli:staticli.value,
                 moneyli:moneyli.value,
@@ -267,10 +278,10 @@ var universityli = 0;
                 order:order,
                 limit1:limit1,
                 limit2:limit2,
+                searchType:searchType,
                 name:$("#Selectionform").val(),
             },
             async:false,
-            dataType:"json",
             success: function(list){
                 if(list!=null&&list!=""){
 
@@ -288,8 +299,16 @@ var universityli = 0;
                             message += '<div class="pro_Price">Price:<p><small>$</small>'+list.msg[i].commodity_price+'</p></div>';
                             message += '<div class="pro_Description">Product Description:<p>'+list.msg[i].commodity_content+'</p></div></div></div>';
                             message += '<div class="fr pro_right"><div class="pro_right_img">';
-                            message += '<img src="./Uploads/'+list.msg[i].user_icon+'" alt="" class="img-circle userimg" /></div>'
-                            message += '<div class="pro_right_name">'+list.msg[i].user_name+'</div>';
+                            var imgurl = '__PUBLIC__/Web/web/img/01_shouye/UserPic.png';
+                            if (list.msg[i].user_icon){
+                                imgurl = './Uploads/'+list.msg[i].user_icon
+                            }
+                            message += '<img src="'+imgurl+'" alt="" class="img-circle userimg" /></div>'
+                            if (list.msg[i].user_name) {
+                                message += '<div class="pro_right_name">' + list.msg[i].user_name + '</div>';
+                            }else{
+                                message += '<div class="pro_right_name">admin</div>';
+                            }
                             message += '</div></div></a></div>'
 
                         }
@@ -302,7 +321,7 @@ var universityli = 0;
 
                         }else{
                             c=1;
-                            var crowdlisthtml = $("#crowdlist").html()+message
+                            var crowdlisthtml = $("#marketlist").html()+message
                             $("#marketlist").html(crowdlisthtml);
                         }
                     }else if (list.str == 2){
@@ -346,6 +365,27 @@ var universityli = 0;
     function editpic(a) {
         pic = a
     }
+
+$(window).scroll(function () {
+    var scrollTop = $(document).scrollTop();
+    var scrollHeight = $(document).height();
+    var windowHeight = $(this).height();
+    var gocheng =parseInt(scrollTop)+parseInt(windowHeight);
+
+    if (gocheng>(scrollHeight-200)) {
+
+        if (c==a){
+            var limit1 = page*10;
+            c = 2;
+            if (limit1<count){
+                updata_market_list(5,'commodity_updatetime desc',limit1,10,2,2)
+                //updata_interest_list(5,'commodity_updatetime desc',limit1,10,2);
+                page += 1;
+            }
+        }
+    }
+})
+
 
 
 

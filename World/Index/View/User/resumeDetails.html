@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Donation.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/CreateAcademic.css">
-        <link rel="stylesheet" href="../js/lib/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
@@ -219,8 +219,10 @@
          <div class="ResumeDetails_shadow">
              <div class="shadow_box">
                  <h2>Tips</h2>
-                 <div class="shadow_quit">x</div>
-                 <span>Automatic delivery successful</span>
+                 <!-- <div class="shadow_quit">x</div> -->
+                 <span>Automatic resume delivery is successful !</span>
+                 <p>Good Luckly ！</p>
+                 <div class="shadow_quit">submit</div>
              </div>
              
          </div>
@@ -308,7 +310,7 @@
                                                 icon: 1,
                                             }, function () {
 
-                                                location.reload();
+                                            window.location.href="{:U('Index/User/mineResume')}";
                                             }
                                         );
 
@@ -382,7 +384,7 @@
                                                             icon: 1,
                                                         }, function () {
 
-                                                            location.reload();
+                                                        window.location.href="{:U('Index/User/mineResume')}";
                                                         }
                                                     );
 
@@ -439,55 +441,6 @@
                 });
             });
 
-            function loginout() {
-
-                $.ajax({
-                    type:"post",
-                    url:"{:U('Index/Ajax/ajax_loginout')}",
-                    data:{
-
-                    },
-                    dataType:"json",
-                    async:false,
-                    success: function(data){
-                        if (data!=null&&data!="") {
-                            if (data.str == 1) {
-                                layer.msg(data.msg,{
-                                        time:1500,
-                                        icon:1,
-                                    },function () {
-                                        location.reload();
-                                    }
-                                );
-                            }else{
-                                layer.msg(data.msg,{
-                                        time:1500,
-                                        icon:2,
-                                    }
-                                );
-                            }
-
-                        }else{
-                            layer.msg('请求错误!',{
-                                    time:1500,
-                                    icon:2,
-                                }
-                            );
-                        }
-
-                    },
-                    error:function(XMLHttpRequest, textStatus, errorThrown){
-
-                        layer.msg('请求失败!',{
-                                time:1500,
-                                icon:2,
-                            }
-                        );
-                    }
-
-                })
-
-            }
 
         </script>
         <script>
@@ -497,6 +450,9 @@
             $(".ResumeDetails_shadow .shadow_box .shadow_quit").on("click",function(){
                 $(".ResumeDetails_shadow").css("display","none")
             })
+            // $(document).on("click",function(e){
+            //     $(".ResumeDetails_shadow").css("display","none");
+            // })
         </script>
 
 

@@ -271,7 +271,9 @@
                                 time:1500,
                                 icon:1,
                             },function () {
-                                location.reload();
+                                $(".loading_box").css("display","none")
+                                window.history.go(-1);
+
                             }
                         );
 
@@ -341,8 +343,8 @@
                                         time:1500,
                                         icon:1,
                                     },function () {
-
-                                        location.reload();
+                                        $(".loading_box").css("display","none")
+                                        window.history.go(-1);
                                     }
                                 );
 

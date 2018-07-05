@@ -93,6 +93,12 @@
                                 <img width="100px" height="100px" src="<?php echo './Uploads/'.$advertising['advertising_img']?>"/>
                             </div>
                         </div>
+                        <if condition='$advertising["advertising_id"] == 1000000001'>
+                            <p style="color: red">*图片的最适比例是8：5</p>
+                        </if>
+                        <if condition='$advertising["advertising_id"] == 1000000002'>
+                            <p style="color: red">*图片的最适比例是9：4</p>
+                        </if>
                         <input type='hidden' name='advertising_img' value="{$advertising['advertising_img']}">
 
                     </div>

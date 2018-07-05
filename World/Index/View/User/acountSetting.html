@@ -192,8 +192,13 @@ layui.use('laydate', function(){
         laydate.render({
             elem: '.Wtime', //指定元素
             lang:'en',
+            max: minDate(),
         });
         });
+        function minDate(){
+            var now = new Date();
+            return now.getFullYear()+"-" + (now.getMonth()+1) + "-" + now.getDate();
+        }
     var imgurl = "{$usercontent['user_icon']}"
     layui.use('form', function(){
         var form = layui.form;
@@ -249,7 +254,7 @@ layui.use('laydate', function(){
                                     time:1500,
                                     icon:1,
                                 },function () {
-                                location.reload();
+                                    window.location.href="{:U('Index/User/personalCenter')}&id={$userid}";
                                 }
                             );
 

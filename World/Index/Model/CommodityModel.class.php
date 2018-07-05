@@ -13,6 +13,10 @@ class CommodityModel extends Model{
 
         return $this->where($where)->field($field)->find();
     }
+    public function findoneJoin($where,$join1,$jointype1){
+
+        return $this->join($join1,$jointype1)->where($where)->find();
+    }
 
     public function updataone($where, $data)
     {
@@ -33,6 +37,8 @@ class CommodityModel extends Model{
 
         return $this->join($join1,$jointype1)->field($field)->where($where)->order($order)->limit($limit1,$limit2)->select();
     }
+
+
 
 
 
