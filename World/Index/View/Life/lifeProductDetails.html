@@ -1,143 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Product details</title>
-        <meta name="viewport" content="width=device-width, initial-scale=0 user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/register.css">
-        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Donation.css">
-        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/lifeProductDetails.css">
-        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/StickSonDetails.css">
-        <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
-        <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
-        <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
-        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
-        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
-        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
-        <style>
-        .layui-laypage .layui-laypage-curr{
+<head>
+    <meta charset="UTF-8">
+    <title>Product details</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=0 user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/register.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Donation.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/lifeProductDetails.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/StickSonDetails.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    <style>
+        .layui-laypage .layui-laypage-curr {
             width: 1%;
         }
-        </style>
-    </head>
+    </style>
+</head>
 
-    <body>
-        <div class="web">
+<body>
+<div class="web">
 
-            <!-- logo -->
-            <header class="container">
-                <include file = "./World/Index/View/Public/head.html"/>
-                </header>
-                <hr>
-            <!-- Crumbs nav -->
-            <div class="container crumbs">
-                <a href="{:U('Index/Life/life')}" class="crumbsa">Life</a>
-                <cite class="Icon"></cite>
-                <a href="{:U('Index/Life/lSecondHandMarket')}" class="crumbsa">Second-Hand Market</a>
-                <cite class="Icon"></cite>
-                <span class="crumbsTitle">Product Details</span>
-            </div>
-    
-            <!-- Product details -->
-            <div class="Product_box container">
-                <div class="row justify-content-between">
-                    <div class="col-md-9">
-                        <div class="product_title">
-                            <div class="product_img">
-                                <img src="<?php echo './Uploads/'.$commodity['commodity_img'];?>" alt="">
-                            </div>
-                            <h2>Product Name</h2>
-                            <div class="Product_time">
-                               {$commodity['commodity_name']}
-                            </div>
-                        </div>
-                        <div class="product_content">
-                        <ul class="products_title">
-                            <li>
-                                <span class="products_title_name">Prices :</span>
-                                <span class="products_title_content"><small>$</small>{$commodity['commodity_price']}</span>
-                            </li>
-                            <li style="display: none;">
-                                <span class="products_title_name">Trading address :</span>
-                                <span class="products_title_content">{$commodity['commodity_address']}</span>
-                            </li>
-                            <li>
-                                <span class="products_title_name">Contact people :</span>
-                                <span class="products_title_content">{$commodity['commodity_uname']}</span>
-                            </li>
-                            <li>
-                                <span class="products_title_name">Contact Information :</span>
-                                <span class="products_title_content">{$commodity['commodity_content']}</span>
-                            </li>
-                            <li>
-                                <span class="products_title_name">Type :</span>
-                                <span class="products_title_content">{$commodity['commodity_category']}</span>
-                            </li>
-                            <li>
-                                <span class="products_title_name">Introduction :</span>
-                                <span class="products_title_content">{$commodity['commodity_content']}</span>
-                            </li>
-                            <li>
-                                <span class="products_title_name">Remarks :</span>
-                                <span class="products_title_content">{$commodity['commodity_explain']}</span>
-                            </li>
-                        </ul>
-                        </div>
+    <!-- logo -->
+    <header class="container">
+        <include file="./World/Index/View/Public/head.html"/>
+    </header>
+    <hr>
+    <!-- Crumbs nav -->
+    <div class="container crumbs">
+        <a href="{:U('Index/Life/life')}" class="crumbsa">Life</a>
+        <cite class="Icon"></cite>
+        <a href="{:U('Index/Life/lSecondHandMarket')}" class="crumbsa">Second-Hand Market</a>
+        <cite class="Icon"></cite>
+        <span class="crumbsTitle">Product Details</span>
+    </div>
+
+    <!-- Product details -->
+    <div class="Product_box container">
+        <div class="row justify-content-between">
+            <div class="col-md-9">
+                <div class="product_title">
+                    <div class="product_img">
+                        <img src="<?php echo './Uploads/'.$commodity['commodity_img'];?>" alt="">
                     </div>
-                    <!-- Product details right -->
-                    <div class="col-md-3 product_right" style="  max-height: 470px;">
-                    <div class="product_right_title">
-                        Personal Information
-                    </div>
-                    <div class="right_details">
-                        <ul>
-                            <li>
-                                <p>Avatar :</p>
-                                <span class="right_details_userimg"><img src="<?php echo './Uploads/'.$commodity['user_icon'];?>"></span>
-                            </li>
-                            <li>
-                                <p>Nickname :</p>
-                                <span>{$commodity['user_name']}</span>
-                            </li>
-                            <li>
-                                <p>sex :</p>
-                                <span><?php echo $commodity['user_sex']==1?'male':'female';?></span>
-                            </li>
-                            <li>
-                                <p>Posts :</p>
-                                <span>{$commodity['user_notes']}</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- Seller_Info -->
-                    <div class="Seller_Info_title">
-                            Seller Info
-                    </div>
-    
-                    <div class="right_details">
-                        <ul>
-                            <li>
-                                <p>Contact :</p>
-                                <span>{$commodity['user_mail']}</span>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                    <div class="right_btn">
-                        <a href="PersonalCenter.html" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
-                            Homepage
-                            </a>
-                    </div>
-                    <!-- <div class="right_btn">
-                        <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
-                            Private Letter
-                            </a>
-                    </div> -->
+                    <h2>Product Name</h2>
+                    <div class="Product_time">
+                        {$commodity['commodity_name']}
                     </div>
                 </div>
+                <div class="product_content">
+                    <ul class="products_title">
+                        <li>
+                            <span class="products_title_name">Prices :</span>
+                            <span class="products_title_content"><small>$</small>{$commodity['commodity_price']}</span>
+                        </li>
+                        <li style="display: none;">
+                            <span class="products_title_name">Trading address :</span>
+                            <span class="products_title_content">{$commodity['commodity_address']}</span>
+                        </li>
+                        <li>
+                            <span class="products_title_name">Contact people :</span>
+                            <span class="products_title_content">{$commodity['commodity_uname']}</span>
+                        </li>
+                        <li>
+                            <span class="products_title_name">Contact Information :</span>
+                            <span class="products_title_content">{$commodity['commodity_content']}</span>
+                        </li>
+                        <li>
+                            <span class="products_title_name">Type :</span>
+                            <span class="products_title_content">{$commodity['commodity_category']}</span>
+                        </li>
+                        <li>
+                            <span class="products_title_name">Introduction :</span>
+                            <span class="products_title_content">{$commodity['commodity_content']}</span>
+                        </li>
+                        <li>
+                            <span class="products_title_name">Remarks :</span>
+                            <span class="products_title_content">{$commodity['commodity_explain']}</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
+            <!-- Product details right -->
+            <div class="col-md-3 product_right" style="  max-height: 470px;">
+                <div class="product_right_title">
+                    Personal Information
+                </div>
+                <div class="right_details">
+                    <ul>
+                        <li>
+                            <p>Avatar :</p>
+                            <span class="right_details_userimg"><img
+                                    src="<?php echo './Uploads/'.$commodity['user_icon'];?>"></span>
+                        </li>
+                        <li>
+                            <p>Nickname :</p>
+                            <span>{$commodity['user_name']}</span>
+                        </li>
+                        <li>
+                            <p>sex :</p>
+                            <span><?php echo $commodity['user_sex']==1?'male':'female';?></span>
+                        </li>
+                        <li>
+                            <p>Posts :</p>
+                            <span>{$commodity['user_notes']}</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Seller_Info -->
+                <div class="Seller_Info_title">
+                    Seller Info
+                </div>
+
+                <div class="right_details">
+                    <ul>
+                        <li>
+                            <p>Contact :</p>
+                            <span>{$commodity['user_mail']}</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="right_btn">
+                    <a href="PersonalCenter.html" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal"
+                       id="GroupBtn">
+                        Homepage
+                    </a>
+                </div>
+                <!-- <div class="right_btn">
+                    <a href="#" class="layui-btn layui-btn-radius layui-btn-lg layui-btn-normal" id="GroupBtn">
+                        Private Letter
+                        </a>
+                </div> -->
+            </div>
+        </div>
+    </div>
     <div class="section">
         <!-- PostReply -->
         <div class="container">
@@ -149,80 +153,89 @@
                                 <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">
                             </div>
                             <div class="title_content">
-                                    Comment
+                                Comment
                             </div>
                         </div>
                         <div class="PostReply_box_titleG">
-                            <div class="titleG_img titleG_Great" onclick="collect(<?php echo $commodity['commodity_id'];?>)">
-                                <img src="__PUBLIC__/Web/web/img/05_life/life_secondhandmarket_spxq_icon_collect.png" alt="">
+                            <div class="titleG_img titleG_Great"
+                                 onclick="collect(<?php echo $commodity['commodity_id'];?>)">
+                                <img src="__PUBLIC__/Web/web/img/05_life/life_secondhandmarket_spxq_icon_collect.png"
+                                     alt="" title="collect">
                             </div>
                             <div class="titleG_img">
                                 <a href="#">
-                                    <img src="__PUBLIC__/Web/web/img/05_life/life_secondhandmarket_spxq_icon_share.png" alt="">
+                                    <img src="__PUBLIC__/Web/web/img/05_life/life_secondhandmarket_spxq_icon_share.png"
+                                         alt="">
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="PostReply_box_content" id="commentlist">
-                    <!--<foreach name="commentlist" item="comment" key="commentkey">
-                        <div class="PostReply_box_content_item">
-                            <div class="item_pic">
-                                <img src="<if condition='$comment["user_icon"]'>./Uploads/{$comment['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>">
-                            </div>
-                            <div class="item_con">
-                                <div class="item_con_title">
-                                    <div class="item_user_name">
-                                        <span class="User_name">{$comment['user_name']}</span>
-                                        <div class="item_Top">
-                                            <img src="__PUBLIC__/Web/web/img/Top.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="item_user_det">
-                                        <div class="det_time">
-                                            <div class="det_time_img">
-                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
-                                            </div>
-                                            <div class="det_timed">
-                                                {$comment['note_comment_createtime']}
+                        <div v-for="comment in commentList">
+                            <div class="PostReply_box_content_item">
+                                <div class="item_pic">
+                                    <img v-bind:src="comment['user_icon']"/>
+                                </div>
+                                <div class="item_con">
+                                    <div class="item_con_title">
+                                        <div class="item_user_name">
+                                            <span class="User_name">{{comment['user_name']}}</span>
+                                            <div class="item_Top">
+                                                <img src="__PUBLIC__/Web/web/img/Top.png" alt="">
                                             </div>
                                         </div>
-                                        <div class="det_zan">
-                                            <if condition='$comment["note_comment_isreply"]!=1'>
-                                            <div class="det_reply" onclick="reply({$comment['note_comment_id']},this)">Reply</div>
-                                            </if>
-                                            <div class="line"></div>
-                                            <div class="det_zan_box">
-                                                <if condition='$comment["iszan"] == 0'>
-                                                <div class="zan_box_img" onclick="zan({$comment['note_comment_id']},this)">
-                                                    <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png" alt="">
+                                        <div class="item_user_det">
+                                            <div class="det_time">
+                                                <div class="det_time_img">
+                                                    <img src="__PUBLIC__/Web/web/img/02_interest/interest_xq_icon_time.png">
                                                 </div>
-                                                    <else />
-                                                    <div class="zan_box_img" onclick="unzan({$comment['note_comment_id']},this)">
-                                                        <img src='__PUBLIC__/Web/web/img/greated.png'>
+                                                <div class="det_timed">
+                                                    {{comment['commodity_comment_createtime']}}
+                                                </div>
+                                            </div>
+                                            <div class="det_zan">
+                                                <if condition='$comment["note_comment_isreply"]!=1'>
+                                                    <div class="det_reply"
+                                                         onclick="reply({$comment['note_comment_id']},this)">Reply
                                                     </div>
                                                 </if>
-                                                <div class="zan_box_num">
-                                                    {$comment['note_comment_zans']}
+                                                <div class="line"></div>
+                                                <div class="det_zan_box">
+                                                    <if condition='$comment["iszan"] == 0'>
+                                                        <div class="zan_box_img"
+                                                             onclick="zan({$comment['note_comment_id']},this)">
+                                                            <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png"
+                                                                 alt="">
+                                                        </div>
+                                                        <else/>
+                                                        <div class="zan_box_img"
+                                                             onclick="unzan({$comment['note_comment_id']},this)">
+                                                            <img src='__PUBLIC__/Web/web/img/greated.png'>
+                                                        </div>
+                                                    </if>
+                                                    <div class="zan_box_num">
+                                                        {{comment['commodity_comment_zans']}}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-            
-                                <div class="item_con_det">
-                                    {$comment['note_comment_content']}
-                                </div>
-            
-                                <div class="item_con_reply">
-                                    <div class="reply_person">
-                                    <if condition='$comment["note_comment_isreply"]==1'>
-                                        {$noteuser['user_name']} 回复 {$comment['user_name']} ： <span class="reply_c">{$comment['note_comment_reply']}</span>
-                                    </if> 
+
+                                    <div class="item_con_det">
+                                        {{comment['commodity_comment_content']}}
+                                    </div>
+
+                                    <div class="item_con_reply">
+                                        <div class="reply_person">
+                                            <if condition='$comment["note_comment_isreply"]==1'>
+                                                {$noteuser['user_name']} 回复 {$comment['user_name']} ： <span
+                                                    class="reply_c">{$comment['commodity_comment_reply']}</span>
+                                            </if>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </foreach>-->
                     </div>
                 </div>
                 <!-- NumberOfPagesContainer -->
@@ -231,95 +244,219 @@
                 </div>
             </div>
         </div>
-    
-<!-- </div> -->
-   
 
-<!-- form -->
-<div class="container">
-    <div class="col-md-9">
-            <form class="layui-form" onsubmit="return false">
-                <p style="color: #999; margin-bottom: 10px;">
-                        Tips: How do you think of this article? Post a comment to help others understanding this article.
-                </p>
-                <div class="ReturnBox">
-                    <div class="layui-form-text">
+        <!-- </div> -->
+
+
+        <!-- form -->
+        <div class="container">
+            <div class="col-md-9">
+                <form class="layui-form" onsubmit="return false">
+                    <p style="color: #999; margin-bottom: 10px;">
+                        Tips: How do you think of this article? Post a comment to help others understanding this
+                        article.
+                    </p>
+                    <div class="ReturnBox">
+                        <div class="layui-form-text">
                         <span class="ReturnBoxicon">
                             <img src="/Public/Web/web/img/02_interest/interest_xq_icon_pj.png">
                             &nbsp;
                             Comment
                         </span>
-                        <div class="RepllyBox">
-                            <!-- <div class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</div> -->
-                        </div>
-                        <textarea placeholder="Please enter the comment content" class="layui-textarea Returntextarea" id="content"></textarea>
-                        <div class="bottom_btn">
-                            <div class="refresh_btn">
-                                <img src="/Public/Web/web/img/refresh.png" alt="">
+                            <div class="RepllyBox">
+                                <!-- <div class="ReplyUser">reply @ <span class="ReplyUser_name">Jack</span> ：</div> -->
                             </div>
-                            <button type="submit" class="layui-btn layui-btn-normal layui-btn-radius Returnbut" onclick="createcomment()">Post</button>
+                            <textarea placeholder="Please enter the comment content"
+                                      class="layui-textarea Returntextarea" id="content"></textarea>
+                            <div class="bottom_btn">
+                                <div class="refresh_btn">
+                                    <img src="/Public/Web/web/img/refresh.png" alt="">
+                                </div>
+                                <button type="button" class="layui-btn layui-btn-normal layui-btn-radius Returnbut">Post
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
 
     </div>
-       
-    
-        <!-- footer -->
-        <footer class="footer">
-            <include file = "./World/Index/View/Public/footer.html"/>
-        </footer>
-        </div>
-    </body>
-    <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
-    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
-    <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
-    <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
-    <script type="text/javascript">
-        function collect(id) {
-            var aa = "{$userid}";
-            if(aa){
-                $.ajax({
-                    type:"post",
-                    url:"{:U('Index/Life/collect_goods')}",
-                    dataType:"json",
-                    data:{
-                        id:id,
-                    },
-                    async:false,
-                    success: function(data){
+
+
+    <!-- footer -->
+    <footer class="footer">
+        <include file="./World/Index/View/Public/footer.html"/>
+    </footer>
+</div>
+</body>
+<script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+<script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
+<script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
+<script type="text/javascript">
+    $("button").click(function(){
+        content=$("#content").val();
+        $.ajax({
+            type:"post",
+            url:"{:U('Index/Life/post_good_comment')}",
+            data:{
+                content:content,
+                cid:{$cid},
+            },
+            dataType:"json",
+            success: function(data){
+                if (data!=null&&data!="") {
+                    if (data.str==1){
+                        $("#content").val("")
+                    }
+                    layer.msg(data.msg,{
+                            time:1500,
+                            icon:data.str,
+                        }
+                    );
+
+                }else{
+                    layer.msg('请求错误!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                layer.msg('请求失败!',{
+                        time:1500,
+                        icon:2,
+                    }
+                );
+            }
+
+        })
+    });
+    function collect(id) {
+        var aa = "{$userid}";
+        if (aa) {
+            $.ajax({
+                type: "post",
+                url: "{:U('Index/Life/collect_goods')}",
+                dataType: "json",
+                data: {
+                    id: id,
+                },
+                async: false,
+                success: function (data) {
+                    layer.msg(data.msg, {
+                            time: 1500,
+                            icon: data.str,
+                        }
+                    );
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    layer.msg('请求失败!', {
+                            time: 1500,
+                            icon: 2,
+                        }
+                    );
+                }
+
+            })
+        } else {
+            layer.msg("请先登录", {
+                    time: 1500,
+                }, function () {
+                    //window.location.href="{:U('Index/Login/login')}&mm=Index&cc=Index&&aa=donation&&url=1";
+                    window.location.href = "{:U('Index/Login/login')}";
+                }
+            );
+        }
+    }
+</script>
+<script>
+    var vm=new Vue({
+        el: '#commentlist',
+        data: {
+            commentList: []
+        }
+    })
+    $(function () {
+        layui.use(['laypage', 'layer'], function() {
+            var laypage = layui.laypage,
+                layer = layui.layer;
+
+            //完整功能
+            laypage.render({
+                elem: 'NumberOfPages',
+                count: {$commentCount},
+                limit:10,
+                prev:"Previous",
+                next:"Next",
+                layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+
+                jump: function(obj) {
+                    //console.log(obj)
+                    ajaxCommentList(obj.curr,obj.limit)
+
+                }
+            });
+
+        });
+    })
+
+
+    function ajaxCommentList(limit1,limit2) {
+        $.ajax({
+            type:"post",
+            url:"{:U('Index/Life/ajax_commentList')}",
+            data:{
+                limit1:(limit1-1)*2,
+                limit2:limit2,
+                cid:{$cid},
+            },
+            dataType:"json",
+            success: function(data){
+                if (data!=null&&data!="") {
+                    if(data.str == 1){
+                        vm.commentList=data.msg;
+                        for (var i = 0; i < data.msg.length; i++) {
+                            vm.commentList[i]['user_icon']= './Uploads/'+vm.commentList[i]['user_icon'];
+                        }
+                    }else {
                         layer.msg(data.msg,{
-                                time:1500,
-                                icon:data.str,
-                            }
-                        );
-
-                    },
-                    error:function(XMLHttpRequest, textStatus, errorThrown){
-
-                        layer.msg('请求失败!',{
                                 time:1500,
                                 icon:2,
                             }
                         );
                     }
 
-                })
-            }else{
-                layer.msg("请先登录",{
+                }else{
+                    layer.msg('请求错误!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                layer.msg('请求失败!',{
                         time:1500,
-                    },function(){
-                        //window.location.href="{:U('Index/Login/login')}&mm=Index&cc=Index&&aa=donation&&url=1";
-                        window.location.href="{:U('Index/Login/login')}";
+                        icon:2,
                     }
                 );
             }
-        }
-    </script>
+
+        })
+    }
+
+
+</script>
 
 </html>
