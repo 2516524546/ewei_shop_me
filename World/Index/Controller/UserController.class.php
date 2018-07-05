@@ -16,7 +16,7 @@ class UserController extends CommonController {
 
     protected $_checkAction = ['followList','personalCenter','acountSetting','resumeDetails','myPosts','myMessage','myFollowing','addressBook'
                                     ,'myGroup','feedback','virtualCurrencyRecharge','fansList','DeliveryRecord','ResumeTemplateList'
-                                    ,'FollowFriend','RefuseAddFirend','AgreeAddFirend','AddFriend','ChangeConcernsName','AddGroup','SetGroup','ChangeConcernsGroupName','SetFriendAlias','DeleteFriend','mineResume','createResume','DeleteResume','DeliveryResume','ClearMessages','MessageDetails','DissolveGroup','QuitGroup'];//需要做登录验证的action
+                                    ,'FollowFriend','RefuseAddFirend','AgreeAddFirend','AddFriend','myFans','ChangeConcernsName','AddGroup','SetGroup','ChangeConcernsGroupName','SetFriendAlias','DeleteFriend','mineResume','createResume','DeleteResume','DeliveryResume','ClearMessages','MessageDetails','DissolveGroup','QuitGroup'];//需要做登录验证的action
 
     public function _initialize()
     {
@@ -183,17 +183,16 @@ class UserController extends CommonController {
 
 
     public function myMessage(){
-
-
-        $groups = D('ConcernsGroup')->where('concerns_group_uid='.$this->userid )->select();
-        $this->assign('groups',$groups);
-
-
-        $count      = D('Message')->alias('m')->where(['m.message_uid'=>$this->userid])->count();
+        $where = 'm.message_uid='.$this->userid;
+        $k = I('get.k','','trim');
+        if($k){
+            $where .= ' AND m.message_title LIKE "%'.$k.'%"';
+        }
+        $count      = D('Message')->alias('m')->where($where)->count();
         $Page       = new \Think\Page($count,10);
         $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
         $show       = $Page->show();
-        $messages = D('Message')->alias('m')->field('m.*,u.user_name,u.user_icon')->join('u_user u ON u.user_id = m.message_sid','LEFT')->where(['m.message_uid'=>$this->userid])->order('message_delivertime desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $messages = D('Message')->alias('m')->field('m.*,u.user_name,u.user_icon')->join('u_user u ON u.user_id = m.message_sid','LEFT')->where($where)->order('message_delivertime desc')->limit($Page->firstRow.','.$Page->listRows)->select();
 
         $this->assign('messages',$messages);
         $this->assign('page',$show);
@@ -208,7 +207,6 @@ class UserController extends CommonController {
         //My group
         $groups = D('ConcernsGroup')->where('concerns_group_uid='.$this->userid )->select();
         $this->assign('groups',$groups);
-
 
         $count      = D('Concerns')->where('concerns_uid='.$this->userid .' AND concerns_status=1')->count();
         $Page       = new \Think\Page($count,2);
@@ -306,8 +304,25 @@ class UserController extends CommonController {
      * 我的关注列表
      * @return mixed
      */
-    public function FollowList(){
-        $css = addCss('followList');
+    public function followList(){
+        $groups = D('ConcernsGroup')->alias('cg')->field('cg.*,count(c.concerns_id) total')->join('u_concerns c ON c.concerns_gid = cg.concerns_group_id AND c.concerns_status=1','LEFT')->where('cg.concerns_group_uid='.$this->userid )->group('cg.concerns_group_id')->select();
+        $this->assign('groups',$groups);
+        $this->assign('groups_num',count($groups));
+
+        $count      = D('Concerns')->where('concerns_uid='.$this->userid .' AND concerns_status=1')->count();
+        $this->assign('count',$count);
+        $Page       = new \Think\Page($count,2);
+        $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        $show       = $Page->show();
+        $myFollows = D('Concerns')->alias('c')->field('c.*,u.user_name,u.user_icon,u.user_signature,cg.concerns_group_name')->join('u_user u ON u.user_id = c.concerns_cuid','LEFT')->join('u_concerns_group cg ON c.concerns_gid = cg.concerns_group_id','LEFT')->where('c.concerns_uid='.$this->userid .' AND c.concerns_status=1')->group('c.concerns_id')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('myFollows',$myFollows);
+        $this->assign('page',$show);
+
+        //查找当前用户的好友分组
+        $concerns_groups = D('ConcernsGroup')->where('concerns_group_uid='.$this->userid)->select();
+        $this->assign('concerns_groups',$concerns_groups);
+
+        $css = addCss(['FollowList','common']);
         $this->assign('title','Follow List');
         $this->assign('CSS',$css);
         $this->display();
@@ -384,6 +399,13 @@ class UserController extends CommonController {
      * @return mixed
      */
     public function DeliveryRecord(){
+        $count      = D('ResumeDelivery')->alias('rd')->join('u_resume r ON r.resume_id = rd.resume_id','LEFT')->where('rd.user_id='.$this->userid)->count();
+        $Page       = new \Think\Page($count,10);
+        $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        $show       = $Page->show();
+        $myDelivery = D('ResumeDelivery')->alias('rd')->field('rd.*,r.resume_name,j.works_position,u.user_mail')->join('u_resume r ON r.resume_id = rd.resume_id','LEFT')->join('j_works j ON j.works_id = rd.works_id','LEFT')->join('u_user u ON u.user_id = rd.user_id','LEFT')->where('rd.user_id='.$this->userid)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('myDelivery',$myDelivery);
+        $this->assign('page',$show);
 
         $css = addCss('DeliveryRecord');
         $this->assign('title','Resume Details');
@@ -396,11 +418,43 @@ class UserController extends CommonController {
      * @return mixed
      */
     public function ResumeTemplateList(){
+        $templates = D('ResumeModule')->
+        $count      = D('ResumeModule')->count();
+        $Page       = new \Think\Page($count,9);
+        $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        $show       = $Page->show();
+        $templates = D('ResumeModule')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('templates',$templates);
+        $this->assign('page',$show);
+
 
         $css = addCss('ResumeTemplateList');
         $this->assign('title','Resume Template List');
         $this->assign('CSS',$css);
         $this->display();
+    }
+
+
+    public function myFans(){
+        $where = 'c.concerns_status = 1 and c.concerns_cuid = '.$this->userid;
+        $k = I('get.k','','trim');
+        if($k){
+            $where .= ' AND u.user_name LIKE "%'.$k.'%"';
+        }
+
+        $count      = D('Concerns')->alias('c')->join('u_user u ON u.user_id = c.concerns_uid','LEFT')->where($where)->count();
+        $Page       = new \Think\Page($count,10);
+        $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        $show       = $Page->show();
+        $myFans = D('Concerns')->alias('c')->field('c.*,u.user_name,u.user_icon,u.user_signature,c1.concerns_status as concernsStatus')->join('u_user u ON u.user_id = c.concerns_uid','LEFT')->join('u_concerns c1 ON c1.concerns_uid = c.concerns_cuid AND c1.concerns_cuid=c.concerns_uid','LEFT')->where($where)->group('c.concerns_id')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('myFans',$myFans);
+        $this->assign('page',$show);
+
+        $css = addCss(['FansList','common']);
+        $this->assign('title','My Fans');
+        $this->assign('CSS',$css);
+        $this->display();
+
     }
 
     /**
@@ -472,15 +526,32 @@ class UserController extends CommonController {
 
         $concern = D('Concerns')->where('concerns_uid = '.$this->userid.' and concerns_cuid = '.$id)->getField('concerns_status');
 
+        $Model = new Model();
+        $Model->startTrans();
         if(is_null($concern)){
             $is_handle = D('Concerns')->add(['concerns_uid'=>$this->userid,'concerns_cuid'=>$id,'concerns_gid'=>0,'concerns_time'=>date('Y-m-d H:i:s',time())]);
         }else{
             $concern = abs($concern - 1);
             $is_handle = D('Concerns')->updataone('concerns_cuid='.$id.' AND concerns_uid='.$this->userid,['concerns_status'=>$concern]);
         }
-        if($is_handle){
+
+        if($concern){
+            //更新用户的关注数
+            $is_handle1 = D('User')->execute('UPDATE `u_user` SET `user_concerns`=`user_concerns`+1 WHERE user_id='.$this->userid);
+            //更新被关注用户的粉丝数
+            $is_handle2 = D('User')->execute('UPDATE `u_user` SET `user_fans`=`user_fans`+1 WHERE user_id='.$id);
+        }else{
+            //更新用户的关注数
+            $is_handle1 = D('User')->execute('UPDATE `u_user` SET `user_concerns`=`user_concerns`-1 WHERE user_id='.$this->userid);
+            //更新被关注用户的粉丝数
+            $is_handle2 = D('User')->execute('UPDATE `u_user` SET `user_fans`=`user_fans`-1 WHERE user_id='.$id);
+        }
+
+        if($is_handle && $is_handle1 && $is_handle2){
+            $Model->commit();
             die(json_encode(['status'=>1,'msg'=>'Submit success!']));
         }else{
+            $Model->rollback();
             die(json_encode(['status'=>0,'msg'=>'Submit failed!']));
         }
     }

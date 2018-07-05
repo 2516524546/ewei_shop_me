@@ -21,7 +21,7 @@ use Think\Controller;
 class JobsController extends CommonController {
     public $modeleid = 4;
 
-    protected $_checkAction = ['MyProject','releasePosition','releaseMyPosition','ReleaseProfessional','DeleteWork','DeleteItem','EditItem','PostProfessionalComment','EditWork','ProfessionalCommentZan'];//需要做登录验证的action
+    protected $_checkAction = ['MyProject','releasePosition','releaseMyPosition','ReleaseProfessional','DeleteWork','DeleteItem','EditItem','PostProfessionalComment','EditWork','ProfessionalCommentZan','postDeliveryRecord'];//需要做登录验证的action
 
     public function _initialize()
     {
@@ -243,16 +243,16 @@ class JobsController extends CommonController {
         $where = '1';
 
         if($type === 1){
-            $professional_industry = I('get.professional_industry','','trim');
+            $professional_industry = I('get.professionals_industry','','trim');
             if($professional_industry){
                 $where .= ' AND p.professional_city="'.$professional_industry.'"';
             }
-            $professional_city = I('get.professional_city','','trim');
+            $professional_city = I('get.professionals_city','','trim');
             if($professional_city){
                 $where .= ' AND p.professional_city="'.$professional_city.'"';
             }
 
-            $professional_specialty = I('get.professional_specialty','','trim');
+            $professional_specialty = I('get.professionals_specialty','','trim');
             if($professional_specialty){
                 $where .= ' AND p.professional_specialty="'.$professional_specialty.'"';
             }
@@ -343,7 +343,17 @@ class JobsController extends CommonController {
     我发布的工作
     */
     public function postDeliveryRecord(){
+        $id = I('get.works_id',0,'intval');
+        $myWorks = D('Works')->findone('works_id = '.$id);
+        $this->assign('myWorks' , $myWorks);
 
+        $count      = D('ResumeDelivery')->alias('rd')->join('j_works j ON j.works_id = rd.works_id')->where('j.works_id='.$id)->count();
+        $Page       = new \Think\Page($count,10);
+        $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        $show       = $Page->show();
+        $myDelivery = D('ResumeDelivery')->alias('rd')->field('rd.*,r.*')->join('j_works j ON j.works_id = rd.works_id')->join('u_resume r ON r.resume_id = rd.resume_id','LEFT')->where('j.works_id='.$id)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('myDelivery',$myDelivery);
+        $this->assign('page',$show);
 
         $this->display();
     }

@@ -35,33 +35,21 @@
                     <td>Status</td>
                 </tr>
                 </thead>
-                <tr class="tr_item">
-                    <td>Resume 1</td>
-                    <td>Apple company</td>
-                    <td>01/5/2018</td>
-                    <td>xxxxxxxxxxxx@xxx.com</td>
-                    <td>Has been delivered</td>
-                </tr>
-                <tr class="tr_item">
-                    <td>Resume 1</td>
-                    <td>Apple company</td>
-                    <td>01/5/2018</td>
-                    <td>xxxxxxxxxxxx@xxx.com</td>
-                    <td>To be delivered</td>
-                </tr>
-                <tr class="tr_item">
-                    <td>Resume 1</td>
-                    <td>Apple company</td>
-                    <td>01/5/2018</td>
-                    <td>xxxxxxxxxxxx@xxx.com</td>
-                    <td>Has been delivered</td>
-                </tr>
+                <foreach name="myDelivery" item="m">
+                    <tr class="tr_item">
+                        <td>{$m['resume_name']}</td>
+                        <td>{$m['works_position']}</td>
+                        <td>{$m['delivery_createtime']}</td>
+                        <td>{$m['user_mail']}</td>
+                        <td><if condition="$m['delivery_status'] == 0">Has been delivered<elseif condition="$m['delivery_status'] == 1"/>Have agreed<else/>Have rejected</if></td>
+                    </tr>
+                </foreach>
             </table>
     
         </div>
     
         <div class="container" id="NumberOfPagesContainer">
-            <div id="NumberOfPages"></div>
+            {$page}
         </div>
         </div>
     

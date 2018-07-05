@@ -21,149 +21,26 @@
         </div>
         <div class="container section">
             <div class="ResumeTemplateList_content">
-        
-                <div class="ResumeTemplateList_item">
-                    <div class="ResumeTemplateList_item_title">
-                        Tom's resume template
+                <foreach name="templates" item="t">
+                    <div class="ResumeTemplateList_item">
+                        <div class="ResumeTemplateList_item_title">
+                            {$t['resume_module_name']}
+                        </div>
+                        <div class="ResumeTemplateList_item_time">
+                            <span class="timer_title">Time:</span>
+                            <span>{$t['resume_module_createtime']}</span>
+                        </div>
+                        <div class="ResumeTemplateList_item_btn">
+                            <a href="/Uploads/{$t['resume_module_url']}">
+                                Download
+                            </a>
+                        </div>
                     </div>
-                    <div class="ResumeTemplateList_item_time">
-                        <span class="timer_title">Time:</span>
-                        <span>2018-1-27</span>
-                    </div>
-                    <div class="ResumeTemplateList_item_btn">
-                        <a href="#">
-                            Download
-                        </a>
-                    </div>
-                </div>
-        
-                <div class="ResumeTemplateList_item">
-                    <div class="ResumeTemplateList_item_title">
-                        Tom's resume template
-                    </div>
-                    <div class="ResumeTemplateList_item_time">
-                        <span class="timer_title">Time:</span>
-                        <span>2018-1-27</span>
-                    </div>
-                    <div class="ResumeTemplateList_item_btn">
-                        <a href="#">
-                            Download
-                        </a>
-                    </div>
-                </div>
-        
-                <div class="ResumeTemplateList_item">
-                    <div class="ResumeTemplateList_item_title">
-                        Tom's resume template
-                    </div>
-                    <div class="ResumeTemplateList_item_time">
-                        <span class="timer_title">Time:</span>
-                        <span>2018-1-27</span>
-                    </div>
-                    <div class="ResumeTemplateList_item_btn">
-                        <a href="#">
-                            Download
-                        </a>
-                    </div>
-                </div>
-        
-                <div class="ResumeTemplateList_item">
-                    <div class="ResumeTemplateList_item_title">
-                        Tom's resume template
-                    </div>
-                    <div class="ResumeTemplateList_item_time">
-                        <span class="timer_title">Time:</span>
-                        <span>2018-1-27</span>
-                    </div>
-                    <div class="ResumeTemplateList_item_btn">
-                        <a href="#">
-                            Download
-                        </a>
-                    </div>
-                </div>
-        
-                <div class="ResumeTemplateList_item">
-                    <div class="ResumeTemplateList_item_title">
-                        Tom's resume template
-                    </div>
-                    <div class="ResumeTemplateList_item_time">
-                        <span class="timer_title">Time:</span>
-                        <span>2018-1-27</span>
-                    </div>
-                    <div class="ResumeTemplateList_item_btn">
-                        <a href="#">
-                            Download
-                        </a>
-                    </div>
-                </div>
-        
-                <div class="ResumeTemplateList_item">
-                    <div class="ResumeTemplateList_item_title">
-                        Tom's resume template
-                    </div>
-                    <div class="ResumeTemplateList_item_time">
-                        <span class="timer_title">Time:</span>
-                        <span>2018-1-27</span>
-                    </div>
-                    <div class="ResumeTemplateList_item_btn">
-                        <a href="#">
-                            Download
-                        </a>
-                    </div>
-                </div>
-        
-                <div class="ResumeTemplateList_item">
-                    <div class="ResumeTemplateList_item_title">
-                        Tom's resume template
-                    </div>
-                    <div class="ResumeTemplateList_item_time">
-                        <span class="timer_title">Time:</span>
-                        <span>2018-1-27</span>
-                    </div>
-                    <div class="ResumeTemplateList_item_btn">
-                        <a href="#">
-                            Download
-                        </a>
-                    </div>
-                </div>
-        
-                <div class="ResumeTemplateList_item">
-                    <div class="ResumeTemplateList_item_title">
-                        Tom's resume template
-                    </div>
-                    <div class="ResumeTemplateList_item_time">
-                        <span class="timer_title">Time:</span>
-                        <span>2018-1-27</span>
-                    </div>
-                    <div class="ResumeTemplateList_item_btn">
-                        <a href="#">
-                            Download
-                        </a>
-                    </div>
-                </div>
-        
-                <div class="ResumeTemplateList_item">
-                    <div class="ResumeTemplateList_item_title">
-                        Tom's resume template
-                    </div>
-                    <div class="ResumeTemplateList_item_time">
-                        <span class="timer_title">Time:</span>
-                        <span>2018-1-27</span>
-                    </div>
-                    <div class="ResumeTemplateList_item_btn">
-                        <a href="#">
-                            Download
-                        </a>
-                    </div>
-                </div>
-        
+                </foreach>
             </div>
         
             <div class="container" id="NumberOfPagesContainer">
-                <div id="NumberOfPages"></div>
-        
-        
-        
+                {$page}
             </div>
         </div>
         <!-- footer -->
