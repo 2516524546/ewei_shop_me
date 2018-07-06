@@ -305,16 +305,16 @@ class UserController extends CommonController {
      * @return mixed
      */
     public function followList(){
-        $groups = D('ConcernsGroup')->alias('cg')->field('cg.*,count(c.concerns_id) total')->join('u_concerns c ON c.concerns_gid = cg.concerns_group_id AND c.concerns_status=1','LEFT')->where('cg.concerns_group_uid='.$this->userid )->group('cg.concerns_group_id')->select();
+        $groups = D('ConcernsGroup')->alias('cg')->field('cg.*,count(c.concerns_id) total')->join('u_concerns c ON c.concerns_gid = cg.concerns_group_id AND c.concerns_status=1','LEFT')->where('cg.concerns_group_uid='.$_GET['uid'] )->group('cg.concerns_group_id')->select();
         $this->assign('groups',$groups);
         $this->assign('groups_num',count($groups));
 
-        $count      = D('Concerns')->where('concerns_uid='.$this->userid .' AND concerns_status=1')->count();
+        $count      = D('Concerns')->where('concerns_uid='.$_GET['uid'] .' AND concerns_status=1')->count();
         $this->assign('count',$count);
         $Page       = new \Think\Page($count,2);
         $Page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
         $show       = $Page->show();
-        $myFollows = D('Concerns')->alias('c')->field('c.*,u.user_name,u.user_icon,u.user_signature,cg.concerns_group_name')->join('u_user u ON u.user_id = c.concerns_cuid','LEFT')->join('u_concerns_group cg ON c.concerns_gid = cg.concerns_group_id','LEFT')->where('c.concerns_uid='.$this->userid .' AND c.concerns_status=1')->group('c.concerns_id')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $myFollows = D('Concerns')->alias('c')->field('c.*,u.user_name,u.user_icon,u.user_signature,cg.concerns_group_name')->join('u_user u ON u.user_id = c.concerns_cuid','LEFT')->join('u_concerns_group cg ON c.concerns_gid = cg.concerns_group_id','LEFT')->where('c.concerns_uid='.$_GET['uid'] .' AND c.concerns_status=1')->group('c.concerns_id')->limit($Page->firstRow.','.$Page->listRows)->select();
         $this->assign('myFollows',$myFollows);
         $this->assign('page',$show);
 

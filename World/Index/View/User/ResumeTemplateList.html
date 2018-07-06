@@ -31,7 +31,7 @@
                             <span>{$t['resume_module_createtime']}</span>
                         </div>
                         <div class="ResumeTemplateList_item_btn">
-                            <a href="/Uploads/{$t['resume_module_url']}">
+                            <a href="javascript:void(0)" onclick="downloadFile('./Uploads/{$t["resume_module_url"]}')">
                                 Download
                             </a>
                         </div>
@@ -58,6 +58,25 @@
 <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
 <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 <script>
+
+    function downloadFile(url) {
+        var link = document.createElement('a');
+        link.href = url;
+
+        if (link.download !== undefined) {
+            //Set HTML5 download attribute. This will prevent file from opening if supported.
+            var fileName = url.substring(url.lastIndexOf('/') + 1, url.length);
+            link.download = fileName;
+        }
+
+        //Dispatching click event.
+        if (document.createEvent) {
+            var e = document.createEvent('MouseEvents');
+            e.initEvent('click', true, true);
+            link.dispatchEvent(e);
+            return true;
+        }
+    }
 
 </script>
 </html>
