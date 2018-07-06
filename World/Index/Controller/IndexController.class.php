@@ -25,7 +25,6 @@ class IndexController extends CommonController {
 	 */
     public function index(){
 
-
         $usermodel = new UserModel();
         $donationmodel = new DonationModel();
         $proposaltypemodel = new ProposalTypeModel();
