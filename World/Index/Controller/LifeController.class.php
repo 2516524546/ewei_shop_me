@@ -16,6 +16,8 @@ use Index\Model\ResourceModel;
 use Index\Model\SecondMarkModel;
 use Index\Model\UserModel;
 use Think\Controller;
+use Think\Exception;
+
 class LifeController extends CommonController {
     public $modeleid = 5;
 
@@ -208,19 +210,67 @@ class LifeController extends CommonController {
             die(json_encode(array('str' => 2, 'msg' => '商品评论暂无数据')));
         }
     }
+    //点赞
+    function comment_zan(){
+        $id=$_POST['cid'];
+        $uid=$this->userid;
+        //判断是否点赞过
+        $comment=M('l_commodity_comment')->where("commodity_comment_id={$id}")->find();
+        $uidlist = explode(',',$comment['commodity_comment_zaner']);
+        if (in_array($uid,$uidlist)){
+            //取消点赞
+             //从数组中移除该元素
+            foreach($uidlist as $k=>$v) {
+                if($uid == $v)
+                {
+                    unset($uidlist[$k]);
+                    break;
+                }
+            }
+            $zaner=implode(",", $uidlist);
+            $post['commodity_comment_zans']=$comment['commodity_comment_zans']-1;
+            $post['commodity_comment_zaner']=$zaner;
+            $res=M('l_commodity_comment')->where("commodity_comment_id={$id}")->save($post);
+            if ($res){
+                die(json_encode(array('str' => 3, 'msg' => '取消点赞成功')));
+            }else{
+                die(json_encode(array('str' => 2, 'msg' => '取消点赞失败')));
+            }
+        }else{
+             //点赞
+             $post['commodity_comment_zans']=$comment['commodity_comment_zans']+1;
+             if (!empty($comment['commodity_comment_zaner'])){
+                 $post['commodity_comment_zaner']=$comment['commodity_comment_zaner'].",".$uid;
+             }else{
+                 $post['commodity_comment_zaner']=$uid;
+             }
+
+             $res=M('l_commodity_comment')->where("commodity_comment_id={$id}")->save($post);
+             if ($res){
+                 die(json_encode(array('str' => 1, 'msg' => '点赞成功')));
+             }else{
+                 die(json_encode(array('str' => 2, 'msg' => '点赞失败')));
+             }
+            //
+        }
+    }
     //发表商品评论
     public function post_good_comment(){
-        $post['commodity_comment_cid']=$_POST['cid'];
-        $post['commodity_comment_uid']=$this->userid;
-       $post['commodity_comment_content']=$_POST['content'];
-        $post['commodity_comment_createtime']=date("Y-m-d H:i:s",time());
-        $res=M('l_commodity_comment')->add($post);
-        if ($res){
-            die(json_encode(array('str' => 1, 'msg' => '发表成功')));
-        }else{
-            die(json_encode(array('str' => 2, 'msg' => '发表失败')));
+        try{
+            $post['commodity_comment_cid']=$_POST['cid'];
+            $post['commodity_comment_uid']=$this->userid;
+            $post['commodity_comment_content']=$_POST['content'];
+            $post['commodity_comment_zans']=0;
+            $post['commodity_comment_createtime']=date("Y-m-d H:i:s",time());
+            $res=M('l_commodity_comment')->add($post);
+            if ($res){
+                die(json_encode(array('str' => 1, 'msg' => '发表成功')));
+            }else{
+                die(json_encode(array('str' => 2, 'msg' => '发表失败')));
+            }
+        }catch (Exception $e){
+            die(json_encode(array('str' => 2, 'msg' => $e->getMessage())));
         }
-
     }
 
 
@@ -254,6 +304,20 @@ class LifeController extends CommonController {
 
         ));
         $this->display();
+
+    }
+
+    //发送回复
+    function comment_reply(){
+        $rid=$_POST['rid'];
+        $post['commodity_comment_reply']=$_POST['content'];
+        $res=M('l_commodity_comment')->where("commodity_comment_id={$rid}")->save($post);
+        if ($res){
+            die(json_encode(array('str' => 1, 'msg' => '回复成功')));
+        }else{
+            die(json_encode(array('str' => 2, 'msg' => '回复失败')));
+        }
+
 
     }
 
