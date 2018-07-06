@@ -19,6 +19,40 @@ use Think\Exception;
 class CrowdController extends CommonController {
 
 
+
+    public function haveExcel($filename,$exts){
+        import("Org.Util.PHPExcel");
+        //不同类型的文件导入不同的类
+        if ($exts == 'xls') {
+            import("Org.Util.PHPExcel.Reader.Excel5");
+            $PHPReader = new \PHPExcel_Reader_Excel5();
+        } else if ($exts == 'xlsx') {
+            import("Org.Util.PHPExcel.Reader.Excel2007");
+            $PHPReader = new \PHPExcel_Reader_Excel2007();
+        }
+        import("Org.Util.PHPExcel.Reader.Excel2007");
+        $PHPReader = new \PHPExcel_Reader_Excel2007();
+        //载入文件
+        $PHPExcel = $PHPReader->load($filename);
+        //获取表中的第一个工作表，如果要获取第二个，把0改为1，依次类推
+        $currentSheet = $PHPExcel->getSheet(0);
+        //获取总列数
+        $allColumn = $currentSheet->getHighestColumn();
+        //获取总行数
+        $allRow = $currentSheet->getHighestRow();
+        //循环获取表中的数据，$currentRow表示当前行，从哪行开始读取数据，索引值从0开始
+        for ($currentRow = 1; $currentRow <= $allRow; $currentRow++) {
+            //从哪列开始，A表示第一列
+            for ($currentColumn = 'A'; $currentColumn <= $allColumn; $currentColumn++) {
+                //数据坐标
+                $address = $currentColumn . $currentRow;
+                //读取到的数据，保存到数组$arr中
+                $data[$currentRow][$currentColumn] = $currentSheet->getCell($address)->getValue();
+            }
+        }
+    }
+
+
     public function crowd_list(){
 
         $crowdmodel = new CrowdModel();

@@ -32,11 +32,11 @@
         </div>
         <div class="layui-tab layui-tab-brief section" lay-filter="docDemoTabBrief">
             <ul class="layui-tab-title container" style="border: none;padding-left: 4%;">
-                <li class="layui-this">Project</li>
-                <li>Specialist</li>
+                <li <if condition="empty($_GET['type'])">class="layui-this"</if>>Project</li>
+                <li <if condition="!empty($_GET['type'])">class="layui-this"</if>>Specialist</li>
             </ul>
             <div class="layui-tab-content">
-                <div class="layui-tab-item layui-show">
+                <div class="layui-tab-item <if condition='empty($_GET[type])'>layui-show</if>">
                     <div class="container">
                         <div class="butbox">
                             <a href="{:U('Index/Jobs/releaseProject')}" class="layui-btn layui-btn-normal layui-btn-radius fontcss">Publish project</a>
@@ -126,7 +126,7 @@
                         {$page}
                     </div>
                 </div>
-                <div class="layui-tab-item">
+                <div class="layui-tab-item <if condition='!empty($_GET[type])'>layui-show</if>">
                     <div class="container">
                         <div class="butbox">
                             <if condition="$userid">
@@ -138,7 +138,7 @@
                                 <input name="c" type="hidden" value="{$Think.CONTROLLER_NAME}"/>
                                 <input name="m" type="hidden" value="{$Think.MODULE_NAME}"/>
                                 <input name="a" type="hidden" value="{$Think.ACTION_NAME}"/>
-                                <input name="type" type="hidden" value="0"/>
+                                <input name="type" type="hidden" value="1"/>
                             <div class="SelectionTypeContainer">
                                 <label class="layui-form-label">
                                     <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_city.png"></span>
@@ -158,7 +158,7 @@
                                 </label>
                                 <div class="fromboxxiala">
                                     <select name="professionals_specialties" lay-verify="required">
-                                        <option value="0">Choose a city</option>
+                                        <option value="0">Choose a specialties</option>
                                         <foreach name="specialties" item="c">
                                             <option value="{$c['second_mark_name']}">{$c['second_mark_name']}</option>
                                         </foreach>
@@ -171,7 +171,7 @@
                                 </label>
                                 <div class="fromboxxiala">
                                     <select name="professionals_industry" lay-verify="required">
-                                        <option value="0">Choose a city</option>
+                                        <option value="0">Choose a industry</option>
                                         <foreach name="industry" item="c">
                                             <option value="{$c['second_mark_name']}">{$c['second_mark_name']}</option>
                                         </foreach>
@@ -224,7 +224,7 @@
                         </div>
                     </div>
                     <div class="container" id="NumberOfPagesContainer">
-                        {$page}
+                        {$professionals_page}
                     </div>
                 </div>
             </div>

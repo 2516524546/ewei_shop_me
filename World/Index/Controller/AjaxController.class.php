@@ -1746,10 +1746,10 @@ public function ajax_donationpay()
 
                     if ($res) {
 
-                        die(json_encode(array('str' => 1,'msg'=>'修改成功')));
+                        die(json_encode(array('str' => 1,'msg'=>'保存成功')));
                     } else {
 
-                        die(json_encode(array('str' => 2,'msg'=>'修改失败，请保证您的信息有变化')));
+                        die(json_encode(array('str' => 2,'msg'=>'保存失败，请保证您的信息有变化')));
                     }
 
                 }else{
@@ -1776,10 +1776,10 @@ public function ajax_donationpay()
                     $res = $resumemodel->add($data);
                     if ($res) {
 
-                        die(json_encode(array('str' => 1,'msg'=>'修改成功')));
+                        die(json_encode(array('str' => 1,'msg'=>'保存成功')));
                     } else {
 
-                        die(json_encode(array('str' => 2,'msg'=>'修改失败，请保证您的信息有变化')));
+                        die(json_encode(array('str' => 2,'msg'=>'保存失败，请保证您的信息有变化')));
                     }
 
                 }

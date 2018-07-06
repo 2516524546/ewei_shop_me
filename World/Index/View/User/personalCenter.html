@@ -66,14 +66,14 @@
                         </div>
                         <div class="P_title_FaA">
                             <div class="FaA_item">
-                                <a href="{:U('User/followList')}&uid={$userone['user_id']}">
+                                <a href="{:U('User/followList',['uid'=>$userone['user_id']])}">
                                     <div class="FaA_num">{$userone['user_concerns']}</div>
                                     <div class="FaA_name">following</div>
                                 </a>
                             </div>
                             <div class="FaA_line"></div>
                             <div class="FaA_item">
-                                <a href="{:U('User/fansList')}&uid={$userone['user_id']}">
+                                <a href="{:U('User/myFans',['uid'=>$userone['user_id']])}">
                                     <div class="FaA_num">{$userone['user_fans']}</div>
                                     <div class="FaA_name">Fans</div>
                                 </a>
@@ -549,6 +549,7 @@
                     alert(data.msg);
                 }else{
                     alert(data.msg);
+                    location.reload()
                     if ($(".personal_content .personal_title .P_title_friend .Friend_Follow").attr("data-ison") === "true") {
                         $(".personal_content .personal_title .P_title_friend .Friend_Follow").text("Followed");
                     } else {

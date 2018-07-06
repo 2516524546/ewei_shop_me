@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Donation.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/CreateAcademic.css">
-        <link rel="stylesheet" href="../js/lib/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
@@ -248,8 +248,7 @@
                                                 time: 1500,
                                                 icon: 1,
                                             }, function () {
-
-                                                location.reload();
+                                                window.location.href = '{:U("Index/User/mineResume")}';
                                             }
                                         );
 

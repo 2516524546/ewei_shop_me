@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
     <include file="./World/Index/View/Public/meta.html"/>
-    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
 </head>
-
 <body>
     <div class="web">
         <!-- logo -->
@@ -12,124 +10,43 @@
             <include file="./World/Index/View/Public/head.html"/>
         </header>
         <hr>
-        
+
         <!-- Crumbs nav -->
         <div class="container crumbs">
             <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
             <cite class="Icon"></cite>
             <span class="crumbsTitle">{$title}</span>
         </div>
-        
+
         <div class="FollowList_content section">
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-md-3 FollowList_content_left">
                         <div class="FollowList_content_left_title">
                             <p class="title_name">My followng :</p>
-                            <span>30</span>
+                            <span>{$groups_num}</span>
                         </div>
                         <div class="FollowList_content_left_list">
+                            <foreach name="groups" item="g">
                             <div class="FollowList_content_left_item">
                                 <div class="item_title">
                                     <div class="item_title_img">
-                                        <img src="../web/img/06_gerenzhongxin/grzx_sz_icon_07.png" alt="">
+                                        <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/grzx_sz_icon_07.png" alt="">
                                     </div>
                                 </div>
-                                <span>community 1 </span>:
+                                <span>{$g['concerns_group_name']}</span>:
                                 <div class="item_num">
-                                    12
+                                    {$g['total']}
                                 </div>
                             </div>
-        
-                            <div class="FollowList_content_left_item">
-                                <div class="item_title">
-                                    <div class="item_title_img">
-                                        <img src="../web/img/06_gerenzhongxin/grzx_sz_icon_07.png" alt="">
-                                    </div>
-                                </div>
-                                <span>community 2 </span>:
-                                <div class="item_num">
-                                    12
-                                </div>
-                            </div>
-        
-                            <div class="FollowList_content_left_item">
-                                <div class="item_title">
-                                    <div class="item_title_img">
-                                        <img src="../web/img/06_gerenzhongxin/grzx_sz_icon_07.png" alt="">
-                                    </div>
-                                </div>
-                                <span>community 3 </span>:
-                                <div class="item_num">
-                                    12
-                                </div>
-                            </div>
-        
-                            <div class="FollowList_content_left_item">
-                                <div class="item_title">
-                                    <div class="item_title_img">
-                                        <img src="../web/img/06_gerenzhongxin/grzx_sz_icon_07.png" alt="">
-                                    </div>
-                                </div>
-                                <span>community 4 </span>:
-                                <div class="item_num">
-                                    12
-                                </div>
-                            </div>
-        
-                            <div class="FollowList_content_left_item">
-                                <div class="item_title">
-                                    <div class="item_title_img">
-                                        <img src="../web/img/06_gerenzhongxin/grzx_sz_icon_07.png" alt="">
-                                    </div>
-                                </div>
-                                <span>community 5 </span>:
-                                <div class="item_num">
-                                    12
-                                </div>
-                            </div>
-        
-                            <div class="FollowList_content_left_item">
-                                <div class="item_title">
-                                    <div class="item_title_img">
-                                        <img src="../web/img/06_gerenzhongxin/grzx_sz_icon_07.png" alt="">
-                                    </div>
-                                </div>
-                                <span>community 6 </span>:
-                                <div class="item_num">
-                                    12
-                                </div>
-                            </div>
-        
-                            <!-- <div class="FollowList_content_left_item">
-                                <div class="item_title">
-                                    <div class="item_title_img">
-                                        <img src="../web/img/06_gerenzhongxin/grzx_sz_icon_07.png" alt="">
-                                    </div>
-                                    <span>Unclassified :</span>
-                                </div>
-                                <div class="item_num">
-                                    12
-                                </div>
-                            </div> -->
-        
+                            </foreach>
                         </div>
-        
-                        <div class="Following_tip">
-                            <div class="tip_title">
-                                <div class="tip_title_img">
-                                    <img src="../web/img/06_gerenzhongxin/grzx_sz_icon_07.png" alt="">
-                                </div>
-                            </div>
-                            <span>Unclassified </span>:
-                            <div class="item_num">
-                                12
-                            </div>
-                        </div>
-        
+
+                        <if condition='$isme == 1'>
                         <div class="FollowList_btn">
-                            Create a community
+                            Create a group
                         </div>
+                        </if>
                         <div class="FollowList_Create">
                             <input type="text" class="FollowList_Create_input">
                             <div class="FollowList_Create_Btn Create_Btn_Create">
@@ -140,74 +57,46 @@
                             </div>
                         </div>
                     </div>
-        
-        
+
+
                     <div class="col-md-9">
                         <div class="FollowList_content_right">
                             <div class="FollowList_content_right_title">
                                 <p class="title_name">My followng :</p>
-                                <span>380</span>
+                                <span>{$count}</span>
                             </div>
                             <div class="right_list">
+                                <foreach name="myFollows" item="f">
                                 <div class="right_list_item">
                                     <div class="right_list_item_left">
                                         <div class="left_img">
-                                            <img src="../web/img/02_interest/user.png" alt="">
+                                            <img src="<if condition='$f["user_icon"]'>./Uploads/{$f['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
                                         </div>
                                     </div>
                                     <div class="right_list_item_right">
                                         <div class="item_right_name">
-                                            Jessi J
+                                            <if condition="$f['concerns_name']">{$f['concerns_name']}<else/>{$f['user_name']}</if>
                                         </div>
                                         <div class="right_item_state">
                                             <div class="state_icon">
-                                                <img src="../web/img/02_interest/interest_sy_icon_03.png" alt="">
+                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_sy_icon_03.png" alt="">
                                             </div>
                                             <span>following</span>
                                         </div>
                                         <div class="right_item_Signature">
-                                            Signature: The world is so big I want to see
+                                            Signature: {$f['user_signature']}
                                         </div>
                                         <div class="right_item_btn">
                                             <div class="right_btn right_btn_Group" data-toggle="modal" data-target="#box1">
-                                                <span>community 1</span>
+                                                <span>{$f['concerns_group_name']}</span>
                                             </div>
-                                            <div class="right_btn right_Btn_Follow">
+                                            <div class="right_btn right_Btn_Follow" data-id="{$f['concerns_cuid']}">
                                                 Unfollow
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-        
-                                <div class="right_list_item">
-                                    <div class="right_list_item_left">
-                                        <div class="left_img">
-                                            <img src="../web/img/02_interest/user.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="right_list_item_right">
-                                        <div class="item_right_name">
-                                            Jessi J
-                                        </div>
-                                        <div class="right_item_state">
-                                            <div class="state_icon">
-                                                <img src="../web/img/02_interest/interest_sy_icon_03.png" alt="">
-                                            </div>
-                                            <span>following</span>
-                                        </div>
-                                        <div class="right_item_Signature">
-                                            Signature: The world is so big I want to see
-                                        </div>
-                                        <div class="right_item_btn">
-                                            <div class="right_btn right_btn_Group" data-toggle="modal" data-target="#box1">
-                                                <span>community 1</span>
-                                            </div>
-                                            <div class="right_btn right_Btn_Follow">
-                                                Unfollow
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </foreach>
                             </div>
                         </div>
                     </div>
@@ -229,22 +118,17 @@
                                     <div class="modal-body-title">Select the following community :</div>
                                     <div class="modal-body-list">
                                         <div class="modal-body-item-box">
-                                            <div class="modal-body-item">
-                                                <input type="checkbox" value="1" name="GroupName">
-                                                community 1
-                                            </div>
-                                            <div class="modal-body-item">
-                                                <input type="checkbox" value="2" name="GroupName">
-                                                community 2
-                                            </div>
-                                            <div class="modal-body-item">
-                                                <input type="checkbox" value="3" name="GroupName">
-                                                community 3
-                                            </div>
+                                            <if condition="!empty($concerns_groups)">
+                                                <foreach name="concerns_groups" item="g">
+                                                    <div class="modal-body-item">
+                                                        <input type="radio" value="{$g['concerns_group_id']}" <if condition="$concernsone && $concernsone['concerns_gid'] === $g['concerns_group_id']">checked="checked"</if> name="GroupName">{$g['concerns_group_name']}
+                                                    </div>
+                                                </foreach>>
+                                            </if>
                                         </div>
                                         <div class="modal-body-addGroup">
                                             <div class="modal-body-addIcon">+</div>
-                                            <span>Create a community</span>
+                                            <span>Create a group</span>
                                         </div>
                                         <div class="modal-body-addName">
                                             <input type="text" class="addName_input">
@@ -261,13 +145,13 @@
                         </div>
                     </div>
                     <div class="container" id="NumberOfPagesContainer">
-                        <div id="NumberOfPages"></div>
+                        {$page}
                     </div>
                 </div>
             </div>
         </div>
-        
-        
+
+
         <!-- foot start 底部信息 -->
         <footer class="footer">
             <include file = "./World/Index/View/Public/footer.html"/>
@@ -284,25 +168,120 @@
 <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
 <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 <script>
-//打开创建组
-        $('.FollowList_content .FollowList_content_left .FollowList_btn').on('click',function(){
-            $('.FollowList_Create').css('display','flex');
-            $(this).css('display','none')
-        })
-        //关闭创建组
-        $('.FollowList_Create .Create_Btn_Cancel').on("click",function(){
-            $('.FollowList_Create').css('display','none');
-            $('.FollowList_content .FollowList_content_left .FollowList_btn').css('display','block')
-        })
-        //创建组
-        $('.FollowList_Create .Create_Btn_Create').on("click",function(){
-            var Create_name = $('.FollowList_Create .FollowList_Create_input').val();
-            if(Create_name!=""){
-                var C_content = '<div class="FollowList_content_left_item"><div class="item_title"><div class="item_title_img"><img src="../web/img/06_gerenzhongxin/grzx_sz_icon_07.png" alt=""></div></div><span>community 6 </span>:<div class="item_num">12</div></div>';
-                $('.FollowList_content_left_list').append(C_content);
-            }else{
-                alert("Please enter group name")
-            }
-        })
+    //打开创建组
+    $('.FollowList_content .FollowList_content_left .FollowList_btn').on('click',function(){
+        $('.FollowList_Create').css('display','flex');
+        $(this).css('display','none')
+    })
+    //关闭创建组
+    $('.FollowList_Create .Create_Btn_Cancel').on("click",function(){
+        $('.FollowList_Create').css('display','none');
+        $('.FollowList_content .FollowList_content_left .FollowList_btn').css('display','block')
+    })
+    //创建组
+    $('.FollowList_Create .Create_Btn_Create').on("click",function(){
+        var Create_name = $('.FollowList_Create .FollowList_Create_input').val();
+        if(Create_name!=""){
+            $.post(
+                '{:U("User/AddGroup")}',
+                {group_name:Create_name},
+                function(data){
+                    if(data.status == 0){
+                        layer.msg(data.msg, {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }else{
+                        layer.msg(data.msg, {
+                                time: 1500,
+                                icon: 1,
+                            },function(){
+                                var C_content = "<div class='FollowList_content_left_item'><div class='item_title'><div class='item_title_img'><img src='.__PUBLIC__/Web/web/img/06_gerenzhongxin/grzx_sz_icon_07.png'></div></div><span>"+Create_name+" </span>:<div class='item_num'>0</div></div>";
+                                $('.FollowList_content_left_list').append(C_content);
+                            }
+                        );
+                    }
+                },'json'
+            )
+        }else{
+            layer.msg("Please enter group name", {
+                    time: 1500,
+                    icon: 2,
+                }
+            );
+        }
+    })
+</script>
+<script>
+    //创建分组
+    $('.modal-body-list .modal-body-addGroup').on('click',function(){
+        $(this).css('display','none');
+        $('.modal-body-list .modal-body-addName').css("display","block");
+    })
+    $(".modal-body-list .modal-body-addName .addName_Cancel").on("click",function(){
+        $('.modal-body-list .modal-body-addName').css("display","none");
+        $('.modal-body-list .modal-body-addGroup').css("display","flex");
+        $(".modal-body-list .modal-body-addName .addName_input").val("")
+    })
+    //添加分组
+    $(".modal-body-list .modal-body-addName .addName_Create").on("click",function(){
+        var input_val = $(".modal-body-list .modal-body-addName .addName_input").val();
+        if(input_val!=""){
+            $.post(
+                '{:U("User/AddGroup")}',
+                {group_name:input_val},
+                function(data){
+                    if(data.status == 0){
+                        layer.msg(data.msg, {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }else{
+                        layer.msg(data.msg, {
+                                time: 1500,
+                                icon: 1,
+                            },function(){
+                                window.location.reload();
+                            }
+                        );
+                    }
+                },'json'
+            )
+        }else{
+            layer.msg("Please enter group name", {
+                    time: 1500,
+                    icon: 2,
+                }
+            );
+        }
+    })
+
+    $('.right_Btn_Follow').on('click',function(){
+        var id = $(this).data('id');
+
+        $.post(
+            '{:U("User/FollowFriend")}',
+            {id:id},
+            function(data){
+                if(data.status == 0){
+                    layer.msg(data.msg, {
+                            time: 1500,
+                            icon: 2,
+                        }
+                    );
+                }else{
+                    layer.msg(data.msg, {
+                            time: 1500,
+                            icon: 1,
+                        },function(){
+                            window.location.reload();
+                        }
+                    );
+                }
+            },'json'
+        );
+    })
 </script>
 </html>

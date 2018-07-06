@@ -28,12 +28,17 @@
                     <span class="crumbsTitle">Messages</span>
                 </div>
                 <div class="col-md-6">
-                    <div class="SelectionContainer">
-                        <input type="text" class="layui-input" id="Selectionform">
-                        <span id="SelectionIcon">
-                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
-                        </span>
-                    </div>
+                    <form method="get" id="Selection">
+                        <div class="SelectionContainer">
+                            <input name="c" type="hidden" value="{$Think.CONTROLLER_NAME}"/>
+                            <input name="m" type="hidden" value="{$Think.MODULE_NAME}"/>
+                            <input name="a" type="hidden" value="{$Think.ACTION_NAME}"/>
+                            <input type="text" name="k" value="{$_GET['k']}" class="layui-input" id="Selectionform">
+                            <a href="javascript:$('#Selection').submit();" id="SelectionIcon">
+                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
+                            </a>
+                        </div>
+                    </form>
                 </div>
         </div>
     </div>
@@ -59,7 +64,7 @@
                                 <span>{$m['message_sendtime']}</span>
                             </div>
                         </a>
-                        <div class="dot"></div>
+                        <if condition="$m['message_isread'] == 0"><div class="dot"></div></if>
                     </div>
                 <else />
 
@@ -142,7 +147,8 @@
                         if(data.status == 0){
                             alert(data.msg);
                         }else{
-                            $(".Message_box .Message_details").children().remove()
+                            location.reload()
+
                         }
                     },'json'
                 );

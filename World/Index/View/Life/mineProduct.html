@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/mineProduct.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
+        <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
     </head>
     <body>
         <div class="web">
@@ -53,7 +54,7 @@
                                 </ul>
                                 <div class="layui-tab-content">
                                   <div class="layui-tab-item layui-show MyRelease" id="content">
-                                      <div class="item_box">
+                                 <!--     <div class="item_box">
                                           <div class="item_box_left">
                                               <div class="item_box_product_img">
                                                     <img src="__PUBLIC__/Web/web/img/02_interest/user.png">
@@ -139,7 +140,7 @@
                                                   </a>
                                           </div>
                                           
-                                  </div>
+                                  </div>-->
                                       </div>
                                   
                                   <div class="layui-tab-item">
@@ -209,7 +210,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">confirm</button>
+                                <button type="button" class="btn btn-primary confirm" data-dismiss="modal">confirm</button>
                             </div>
                         </div>
                     </div>
@@ -254,7 +255,7 @@
                                         <p>product name ：</p>
                                     </label>
                                     <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter product name" class="layui-input">
+                                        <input type="text" id="name" name="title" lay-verify="title" autocomplete="off" placeholder="Enter product name" class="layui-input" v-bind:value="commodity['commodity_name']">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
@@ -262,23 +263,23 @@
                                         <p>product price ：</p>
                                     </label>
                                     <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter product price" class="layui-input">
+                                        <input type="text" id="price" name="title" lay-verify="title" autocomplete="off" placeholder="Enter product price" class="layui-input" v-bind:value="commodity['commodity_price']">
                                     </div>
                                 </div>
-                                <div class="layui-form-item">
+                              <!--  <div class="layui-form-item">
                                     <label class="layui-form-label" style="margin-left: -22px;">
                                         <p>Trading address ：</p>
                                     </label>
                                     <div class="layui-input-block" style="margin-left: 64px;">
                                         <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter the Trading address" class="layui-input">
                                     </div>
-                                </div>
+                                </div>-->
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" style="margin-left: -22px;">
                                         <p>contacts ：</p>
                                     </label>
                                     <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter contacts" class="layui-input">
+                                        <input type="text" id="uname" name="title" lay-verify="title" autocomplete="off" placeholder="Enter contacts" class="layui-input" v-bind:value="commodity['commodity_uname']">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
@@ -286,15 +287,16 @@
                                         <p>contact number  ：</p>
                                     </label>
                                     <div class="layui-input-block" style="margin-left: 64px;">
-                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Enter contact number " class="layui-input">
+                                        <input type="text" id="number" name="title" lay-verify="title" autocomplete="off" placeholder="Enter contact number " class="layui-input" v-bind:value="commodity['commodity_contact']">
                                     </div>
                                 </div>
+                                <input type="hidden" id="cid" v-bind:value="commodity['commodity_id']">
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" style="margin-left: -22px;">
                                         <p>type ：</p>
                                     </label>
                                     <select class="form-control">
-                                        <option>default</option>
+                                        <option>{{commodity['commodity_category']}}</option>
                                         <option>2</option>
                                         <option>3</option>
                                         <option>4</option>
@@ -306,7 +308,7 @@
                                                 <p>description ：</p>
                                             </label>
                                         <div class="layui-input-block" style="">
-                                            <textarea placeholder="Enter the description of the product" class="layui-textarea"></textarea>
+                                            <textarea placeholder="Enter the description of the product" class="layui-textarea" id="description">{{commodity['commodity_content']}}</textarea>
                                         </div>
                                     </div>
                                <div class="layui-form-item">
@@ -323,13 +325,13 @@
                                                 <p>Remarks ：</p>
                                             </label>
                                         <div class="layui-input-block" style="">
-                                            <textarea placeholder="Input remarks" class="layui-textarea"></textarea>
+                                            <textarea placeholder="Input remarks" id="remark" class="layui-textarea">{{commodity['commodity_explain']}}</textarea>
                                         </div>
                                     </div>
                                 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Save</button>
+                                <button type="button" class="btn btn-primary save" onclick="asd()">Save</button>
                             </div>
                         </div>
                     </div>
@@ -367,12 +369,27 @@
         $(function(){
             (function(){
                 var num;
+                var cid;
                 $(".MyRelease").on('click',".item_box", function(event) {
                     num = $(this).index();
+                    cid=$(this).attr("data-cid");
                 });
-                $(".btn-primary").on('click', function(event) {
-                        $(".MyRelease .item_box").eq(num).remove();
+                $(".confirm").on('click', function(event) {
+                    //删除商品
+                    ajax_del_good(cid,num);
+                        //$(".MyRelease .item_box").eq(num).remove();
                 });
+
+                // $(".save").click(function () {
+                //     console.log('dddd')
+                // });
+
+
+                $(".item_box").on('click',"#edit", function(event) {
+                    id=$(this).attr("data-id");
+                    good_detail(id);
+                });
+
                 $('.btn-completion-primary').on('click',function(){
                     console.log($(".MyRelease .item_box .item_box_right").eq(num))
                     $(".MyRelease .item_box .item_box_right").eq(num).html("<img src='__PUBLIC__/Web/web/img/05_life/life_mproduct_icon_finished.png'>")
@@ -380,6 +397,161 @@
             })();
             
         });
+        var vm=new Vue({
+            el: '#box3',
+            data: {
+                commodity:null,
+            }
+        })
+//商品详情
+        function good_detail(id) {
+            $.ajax({
+                type:"get",
+                url:"{:U('Index/Life/good_detail')}",
+                data:{
+                    id:id,
+                },
+                dataType:"json",
+                success: function(data){
+                    if (data!=null&&data!="") {
+                        if(data.str == 1){
+                           console.log(data.msg)
+                            vm.commodity=data.msg;
+                        }else {
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+                        }
+
+                    }else{
+                        layer.msg('请求错误!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                    layer.msg('请求失败!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            })
+        }
+        function asd() {
+            cid=$("#cid").val();
+            name2=$("#name").val();
+            price=$("#price").val();
+            uname=$("#uname").val();
+            number=$("#number").val();
+            description=$("#description").val();
+            remark=$("#remark").val();
+
+            $.ajax({
+                type:"post",
+                url:"{:U('Index/Life/good_update')}",
+                data:{
+                    commodity_id:cid,
+                    commodity_name:name2,
+                    commodity_price:price,
+                    commodity_uname:uname,
+                    commodity_contact:number,
+                    commodity_content:description,
+                    commodity_explain:remark
+                },
+                dataType:"json",
+                success: function(data){
+                    if (data!=null&&data!="") {
+                        if(data.str == 1){
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:1,
+                                }
+                            );
+                        }else {
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+                        }
+
+                    }else{
+                        layer.msg('请求错误!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                    layer.msg('请求失败!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            })
+
+            console.log(cid+","+name2+","+price+","+uname+","+number+","+description+","+remark+",")
+        }
+
+        //删除商品
+        function ajax_del_good(cid,num) {
+            $.ajax({
+                type:"post",
+                url:"{:U('Index/Life/ajax_del_good')}",
+                data:{
+                    cid:cid,
+                },
+                dataType:"json",
+                success: function(data){
+                    if (data!=null&&data!="") {
+                        if(data.str == 1){
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:1,
+                                }
+                            );
+                            $(".MyRelease .item_box").eq(num).remove();
+                        }else {
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+                        }
+
+                    }else{
+                        layer.msg('请求错误!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                    layer.msg('请求失败!',{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+
+            })
+        }
     </script>
 
 <script>
@@ -442,7 +614,8 @@
                             var message = '';
                             for (var i = 0; i < list.msg.length; i++) {
 
-                                message +='<div class="item_box"><div class="item_box_left"><div class="item_box_product_img">'
+                                message +='<div class="item_box" data-cid="' +list.msg[i].commodity_id
+                                    +'"><div class="item_box_left"><div class="item_box_product_img">'
                                 var imgurl = '__PUBLIC__/Web/web/img/02_interest/user.png'
                                 if (list.msg[i].user_icon) {
                                     imgurl = './Uploads/' + list.msg[i].commodity_img
@@ -456,7 +629,8 @@
                                 message +='<span>'+list.msg[i].commodity_content+'</span>'
                                 message +='</li><li></li></ul></div></div>'
                                 message +='<div class="item_box_right">'
-                                message +='<a href="javascript:void(0)" data-toggle="modal" data-target="#box3" class="right_icon">'
+                                message +='<a href="javascript:void(0)" data-toggle="modal" data-target="#box3" data-id="' +list.msg[i].commodity_id+
+                                    '" id="edit" class="right_icon">'
                                 message +='<img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png">'
                                 message +='</a>'
                                 message +='<a href="javascript:void(0)" data-toggle="modal" data-target="#box2" class="right_icon">'

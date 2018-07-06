@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="./World/Index/View/Public/meta.html"/>
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/FansList.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
+</head>
+
+<body>
+    <div class="web">
+        <!-- logo -->
+        <header class="container">
+            <include file="./World/Index/View/Public/head.html"/>
+        </header>
+        <hr>
+        
+        <!-- Crumbs nav -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 crumbs">
+                    <a href="{:U(Index/index)}" class="crumbsa">Homepage</a>
+                    <cite class="Icon"></cite>
+                    <span class="crumbsTitle">{$title}</span>
+                </div>
+                <div class="col-md-6">
+                    <form method="get" id="Selection">
+                        <div class="SelectionContainer">
+                            <input name="c" type="hidden" value="{$Think.CONTROLLER_NAME}"/>
+                            <input name="m" type="hidden" value="{$Think.MODULE_NAME}"/>
+                            <input name="a" type="hidden" value="{$Think.ACTION_NAME}"/>
+                            <input type="text" name="k" class="layui-input" id="Selectionform">
+                            <a href="javascript:$('#Selection').submit();" id="SelectionIcon">
+                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container section">
+            <div class="FansList_content">
+                <div class="FansList_list" id="content">
+                    <foreach name="myFans" item="m">
+                    <div class="FansList_item">
+                        <div class="item_user">
+                            <div class="item_img">
+                                <img src="<if condition='$m["user_icon"]'>./Uploads/{$m['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
+                            </div>
+                            <div class="item_user_details">
+                                <div class="item_user_name">
+                                    <if condition='$m["user_icon"]'>{$m["concerns_name"]}<else/>{$m["user_name"]}</if>
+                                </div>
+                                <div class="item_user_num">
+                                    Signature :
+                                    <span>{$m["user_signature"]}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item_add UnFollow" data-id="{$m['concerns_uid']}" data-Ison="true">
+                            <if condition="$m['concernsstatus']">UnFollow<else/>Follow</if>
+                        </div>
+                    </div>
+                    </foreach>
+                </div>
+            </div>
+            <div class="container" id="NumberOfPagesContainer">
+                {$page}
+            </div>
+        </div>
+        
+        <!-- footer -->
+        <footer class="footer">
+        <include file = "./World/Index/View/Public/footer.html"/>
+        </footer>
+
+    </div>
+
+</body>
+<script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+<script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
+<script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
+<script>
+    $('.UnFollow').on('click',function(){
+        var id = $(this).data('id');
+        $.post(
+            '{:U("User/FollowFriend")}',
+            {id:id},
+            function(data){
+                if(data.status == 0){
+                    alert(data.msg);
+                }else{
+                    alert(data.msg);
+                    //window.location.reload();
+                }
+            },'json'
+        );
+    })
+</script>
+</html>
