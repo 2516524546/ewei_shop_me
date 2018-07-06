@@ -229,6 +229,7 @@
     margin-top: 50px;
     border-radius: 4px;
     box-shadow: 2px 2px 14px #cecece;
+    width: 160px;
   }
   .BannerContainer .FontColor {
     color: #45c5b8;
@@ -245,12 +246,12 @@
     width: 100%;
   }
   .BannerContainer .Container1 .img {
-    width: 130px;
-    height: 104px;
+    width: 160px;
+    height: 128px;
   }
   .BannerContainer .Container2 .img {
-    width: 130px;
-    height: 104px;
+    width: 160px;
+    height: 128px;
   }
   .BannerContainer .Container2 .Font {
     padding: 4px 6px;
