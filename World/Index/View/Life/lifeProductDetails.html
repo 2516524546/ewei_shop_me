@@ -22,6 +22,9 @@
         .layui-laypage .layui-laypage-curr {
             width: 1%;
         }
+        .active{
+            display: block;
+        }
     </style>
 </head>
 
@@ -171,7 +174,7 @@
                         </div>
                     </div>
                     <div class="PostReply_box_content" id="commentlist">
-                        <div v-for="comment in commentList">
+                        <div v-for="(comment,index) in commentList">
                             <div class="PostReply_box_content_item">
                                 <div class="item_pic">
                                     <img v-bind:src="comment['user_icon']"/>
@@ -194,16 +197,21 @@
                                                 </div>
                                             </div>
                                             <div class="det_zan">
-                                                <if condition='$comment["note_comment_isreply"]!=1'>
+
                                                     <div class="det_reply"
-                                                         onclick="reply({$comment['note_comment_id']},this)">Reply
+                                                         v-show="comment.commodity_replybtn_isshow"
+                                                         :data-id="comment.commodity_comment_id"
+                                                         @click="reply($event)">Reply
                                                     </div>
-                                                </if>
+
                                                 <div class="line"></div>
+
                                                 <div class="det_zan_box">
                                                     <if condition='$comment["iszan"] == 0'>
                                                         <div class="zan_box_img"
-                                                             onclick="zan({$comment['note_comment_id']},this)">
+                                                             :data-index="index"
+                                                             :data-id="comment.commodity_comment_id"
+                                                            @click="dianzan($event)">
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/vinterest_xq_icon_dianzan.png"
                                                                  alt="">
                                                         </div>
@@ -227,10 +235,10 @@
 
                                     <div class="item_con_reply">
                                         <div class="reply_person">
-                                            <if condition='$comment["note_comment_isreply"]==1'>
-                                                {$noteuser['user_name']} 回复 {$comment['user_name']} ： <span
-                                                    class="reply_c">{$comment['commodity_comment_reply']}</span>
-                                            </if>
+                                            <div v-show="comment.commodity_comment_isreply">
+                                                {$commodity['user_name']}回复 {{comment['user_name']}} ： <span
+                                                    class="reply_c"> {{comment['commodity_comment_reply']}} </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -297,46 +305,196 @@
 <script src="__PUBLIC__/Web/web/js/StickSonDetails.js"></script>
 <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 <script type="text/javascript">
-    $("button").click(function(){
-        content=$("#content").val();
-        $.ajax({
-            type:"post",
-            url:"{:U('Index/Life/post_good_comment')}",
-            data:{
-                content:content,
-                cid:{$cid},
-            },
-            dataType:"json",
-            success: function(data){
-                if (data!=null&&data!="") {
-                    if (data.str==1){
-                        $("#content").val("")
-                    }
-                    layer.msg(data.msg,{
-                            time:1500,
-                            icon:data.str,
-                        }
-                    );
+    var replyid = 1
+    var rid;
+    function reply(event) {
+        rid=event.currentTarget.getAttribute("data-id")
+        var name = $(event.currentTarget).parent().parent().parent().children(".item_user_name").children(".User_name").text();
+        var Cspan = "<span class='ReplyUser'>reply @ <span class='ReplyUser_name'>"+name+"</span> ：</span>"
+        $(".ReplyUser").remove()
+        $(".RepllyBox").append(Cspan);
+        $(".ReturnBox .Returntextarea").focus()
+        replyid = 2
+    }
 
-                }else{
-                    layer.msg('请求错误!',{
+    $(".ReturnBox .refresh_btn").on("click",function(){
+        $('.ReturnBox .ReplyUser').remove();
+        $(".ReturnBox .Returntextarea").val("")
+         replyid = 1
+    })
+    function dianzan(event) {
+        cid=event.currentTarget.getAttribute("data-id")
+        index=event.currentTarget.getAttribute("data-index")
+        zans=vm.commentList[index]['commodity_comment_zans']
+        var aa = "{$userid}";
+        if (aa) {
+            $.ajax({
+                type:"post",
+                url:"{:U('Index/Life/comment_zan')}",
+                dataType:"json",
+                data:{
+                    cid:cid,
+                },
+                async:false,
+                success: function(data){
+                    if (data!=null&&data!="") {
+                        if (data.str==1){
+                            vm.commentList[index]['commodity_comment_zans']=parseInt(zans)+1
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:1,
+                                }
+                            );
+                        }
+                        else if (data.str==3){
+                            vm.commentList[index]['commodity_comment_zans']=parseInt(zans)-1
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:1,
+                                }
+                            );
+                        }
+                        else {
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+                        }
+
+
+
+                    }else{
+                        layer.msg('请求错误!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                    layer.msg('请求失败!',{
                             time:1500,
                             icon:2,
                         }
                     );
                 }
 
-            },
-            error:function(XMLHttpRequest, textStatus, errorThrown){
+            });
+        }else {
+            layer.msg("请先登录", {
+                    time: 1500,
+                }, function () {
+                    //window.location.href="{:U('Index/Login/login')}&mm=Index&cc=Index&&aa=donation&&url=1";
+                    window.location.href = "{:U('Index/Login/login')}";
+                }
+            );
+        }
+    }
 
-                layer.msg('请求失败!',{
-                        time:1500,
-                        icon:2,
+
+
+    $("button").click(function(){
+        var aa = "{$userid}";
+        if (aa) {
+            if(replyid ==1){
+                //发送评论
+                content=$("#content").val();
+                $.ajax({
+                    type:"post",
+                    url:"{:U('Index/Life/post_good_comment')}",
+                    dataType:"json",
+                    data:{
+                        content:content,
+                        cid:{$cid},
+                    },
+                    success: function(data){
+                        if (data!=null&&data!="") {
+                            if (data.str==1){
+                                $("#content").val("")
+                                location.reload()
+                            }
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:data.str,
+                                }
+                            );
+
+                        }else{
+                            layer.msg('请求错误!',{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+                        }
+
+                    },
+                    error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                        layer.msg('请求失败!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
                     }
-                );
+
+                });
+            }else {
+                //发送回复
+                content=$("#content").val();
+                $.ajax({
+                    type:"post",
+                    url:"{:U('Index/Life/comment_reply')}",
+                    dataType:"json",
+                    data:{
+                        rid:rid,
+                        content:content
+                    },
+                    success: function(data){
+                        if (data!=null&&data!="") {
+                            if (data.str==1){
+                                location.reload()
+                                $("#content").val("")
+                            }
+                            layer.msg(data.msg,{
+                                    time:1500,
+                                    icon:data.str,
+                                }
+                            );
+                        }else{
+                            layer.msg('请求错误!',{
+                                    time:1500,
+                                    icon:2,
+                                }
+                            );
+                        }
+
+                    },
+                    error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                        layer.msg('请求失败!',{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+
+                });
+
+
             }
 
-        })
+        }else {
+            layer.msg("请先登录", {
+                    time: 1500,
+                }, function () {
+                    //window.location.href="{:U('Index/Login/login')}&mm=Index&cc=Index&&aa=donation&&url=1";
+                    window.location.href = "{:U('Index/Login/login')}";
+                }
+            );
+        }
     });
     function collect(id) {
         var aa = "{$userid}";
@@ -426,7 +584,20 @@
                         vm.commentList=data.msg;
                         for (var i = 0; i < data.msg.length; i++) {
                             vm.commentList[i]['user_icon']= './Uploads/'+vm.commentList[i]['user_icon'];
-                        }
+                            if(data.msg[i].commodity_comment_reply){
+                                vm.commentList[i]['commodity_comment_isreply']= true;
+                            }else {
+                                vm.commentList[i]['commodity_comment_isreply']= false;
+                            }
+                             userid = "{$userid}"
+                             uid="{$commodity['commodity_uid']}"
+                            if(userid==uid&&!data.msg[i].commodity_comment_reply){
+                                vm.commentList[i]['commodity_replybtn_isshow']= true;
+                            }else {
+                                vm.commentList[i]['commodity_replybtn_isshow']= false;
+                            }
+
+                    }
                     }else {
                         layer.msg(data.msg,{
                                 time:1500,
