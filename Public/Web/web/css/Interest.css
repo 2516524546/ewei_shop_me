@@ -248,7 +248,7 @@
 
 .tooltip_box {
   position: absolute;
-  top: 67%;
+  top: 88px;
   /* left: 100px; */
   right: -10%;
   width: 350px;
@@ -260,6 +260,8 @@
   box-shadow: 2px 2px 14px #cecece;
   padding: 15px;
   display: none;
+  background:#fff;
+  z-index:1000;
 }
 .tooltip_box:before {
   position: absolute;
