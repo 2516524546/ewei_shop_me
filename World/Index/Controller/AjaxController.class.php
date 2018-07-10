@@ -1885,7 +1885,7 @@ public function ajax_donationpay()
                 );
 
 
-                if (!isset($_POST['explain']) || $this->post('explain') == '') {
+                if (isset($_POST['explain']) && $this->post('explain') != '') {
 
                     $data['commodity_explain'] = $this->post('explain');
                 }
