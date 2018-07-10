@@ -27,7 +27,7 @@ class LifeController extends CommonController {
         session('returnurl', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
 
         $commoditymodel = new CommodityModel();
-        $commoditylist = $commoditymodel->joinonelist('commodity_status = 1','u_user u on l_commodity.commodity_uid = u.user_id','commodity_updatetime desc',0,2);
+        $commoditylist = $commoditymodel->joinonelist('commodity_status = 1','u_user u on l_commodity.commodity_uid = u.user_id','commodity_updatetime desc',0,2,'LEFT');
         $firstmodel = new FirstMarkModel();
         $secondmodel = new SecondMarkModel();
         $crodmodel = new CrowdModel();
@@ -197,13 +197,16 @@ class LifeController extends CommonController {
     }
 
 
-//分页加载评论列表
+    //分页加载评论列表
     public function ajax_commentList()
     {
         $cid=$_POST['cid'];
         $limit1=$_POST['limit1'];
         $limit2=$_POST['limit2'];
-        $commentlist=M('l_commodity_comment')->where("commodity_comment_cid=$cid")->join('u_user u on commodity_comment_uid = u.user_id','LEFT')->limit($limit1,$limit2)->select();
+        $commentlist=M('l_commodity_comment')->where("commodity_comment_cid=$cid")->join('u_user u on commodity_comment_uid = u.user_id','LEFT')->order('commodity_comment_replytime desc,commodity_comment_createtime desc')->limit($limit1,$limit2)->field('*,IF (u.user_id in (commodity_comment_zaner),"1","0") iszan')->select();
+
+
+
         if ($commentlist) {
             die(json_encode(array('str' => 1, 'msg' => $commentlist)));
         } else {
