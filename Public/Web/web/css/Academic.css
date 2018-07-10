@@ -154,6 +154,7 @@
 .SearchContainer .Help {
   margin-top: 12px;
   margin-right: 6px;
+  position: relative;
 }
 .GroupList {
   margin-top: 68px;
@@ -254,7 +255,7 @@
 
 .tooltip_box {
   position: absolute;
-  top: 88px;
+  top: 50px;
   /* left: 100px; */
   right: -10%;
   width: 350px;
