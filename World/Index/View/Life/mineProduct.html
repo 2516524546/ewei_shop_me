@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-grid.min.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
+
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/mineProduct.css">
@@ -37,7 +38,7 @@
                             <div class="col-md-6">
                                     <div class="SelectionContainer">
                                             <input type="text" class="layui-input" id="Selectionform">
-                                            <a href="#" id="SelectionIcon">
+                                            <a href="javascript:void(0)" id="SelectionIcon" onclick="havenum()">
                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png">
                                             </a>
                                         </div>
@@ -49,8 +50,8 @@
                 <div class="container">
                         <div class="layui-tab">
                                 <ul class="layui-tab-title">
-                                  <li class="layui-this">my release</li>
-                                  <li>my collection</li>
+                                  <li class="layui-this" onclick="settype(1)">my release</li>
+                                  <li onclick="settype(2)">my collection</li>
                                 </ul>
                                 <div class="layui-tab-content">
                                   <div class="layui-tab-item layui-show MyRelease" id="content">
@@ -142,53 +143,7 @@
                                           
                                   </div>-->
                                       </div>
-                                  
-                                  <div class="layui-tab-item">
-                                    <div class="item_box">
-                                        <div class="item_box_left">
-                                                <a href="../web/lifeProductDetails.html">
-                                            <div class="item_box_product_img">
-                                                  <img src="__PUBLIC__/Web/web/img/02_interest/user.png">
-                                            </div>
-                                            <div class="item_box_product_details">
-                                                <ul>
-                                                    <li>
-                                                        <p>Product Name :</p>
-                                                        <span>green food</span>
-                                                    </li>
-                                                    <li>
-                                                          <p>Price :</p>
-                                                          <span>$10</span>
-                                                      </li>
-                                                      <li>
-                                                              <p>Product Description :</p>
-                                                              <span>First, I want to tell you how proud we are. Getting into Columbia is a real testament of what 
-                                                                      a great well-rounded student you are. Your academic, artistic, and social skills have truly bl
-                                                                      ossomed in the last few years. Whether it is getting the highest grade in Calculus, completi
-                                                                      ng your elegant fashion design。
-                                                                  </span>
-                                                          </li>
-                                                          <li>
-                                                                  <p>Salary :</p>
-                                                                  <span>$ 1000 ~ $ 2000</span>
-                                                              </li>
-                                                </ul>
-                                            </div>
-                                        </a>
-                                        </div>
-                                        <div class="item_box_right">
-                                            <a href="../web/lifeProductDetails.html">
-                                                  <div class="right_pic">
-                                                      <img src="__PUBLIC__/Web/web/img/02_interest/user.png" alt="">
-                                                  </div>
-                                                  <div class="right_name">
-                                                    Kendall J.
-                                                </div>
-                                            </a>
-                                          </div>
-                                         
-                                    </div>
-                                  </div>
+
                                 </div>
                                 </div>
                               </div>
@@ -232,7 +187,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-completion-primary" data-dismiss="modal">confirm</button>
+                                <button type="button" class="btn btn-completion-primary" data-dismiss="modal" onclick="complete()">confirm</button>
                             </div>
                         </div>
                     </div>
@@ -336,7 +291,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container" id="NumberOfPagesContainer">
+                <div class="container NumberOfPagesContainer">
                     <div id="NumberOfPages"></div>
                 </div>
 
@@ -354,12 +309,30 @@
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+    <!--<script src="__PUBLIC__/Web/web/js/ListOfDonations.js"></script>-->
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 
     <script>
+        var scount = '{$comditycount}'
+        var type = 1
+        var order = 'commodity_updatetime desc'
+        var completeid = 0;
+        var num;
+        var cid;
 
-        set(1)
-        function set(type) {
+        function settype(num) {
+            type = num;
+            if (num == 1){
+                order = 'commodity_updatetime desc'
+            }else{
+                order = 'commodity_collect_createtime desc'
+            }
+            $("#Selectionform").val('')
+            havenum()
+        }
+        set(scount)
+
+        function set(num) {
             layui.use(['laypage', 'layer'], function() {
                 var laypage = layui.laypage,
                     layer = layui.layer;
@@ -367,21 +340,14 @@
                 //完整功能
                 laypage.render({
                     elem: 'NumberOfPages',
-                    count: {$comditycount},
+                    count: num,
                     prev:"Previous",
                     next:"Next",
                     layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
 
                     jump: function(obj) {
-                        //console.log(obj)
-                        var order = ''
-                        if (type == 1){
-                            order = 'commodity_updatetime desc'
-                        }else{
-                            order = 'commodity_collect_createtime desc'
-                        }
 
-                        my_market_list(order,obj.curr,obj.limit,type)
+                        my_market_list(order,obj.curr,obj.limit)
 
                     }
                 });
@@ -389,12 +355,8 @@
             });
         }
 
-
-
-        function my_market_list(order,limit1,limit2,type) {
-
-            if (type) {
-
+        function my_market_list(order,limit1,limit2) {
+            if (type ==1) {
                 $.ajax({
                     type: "post",
                     url: "{:U('Index/Ajax/ajax_my_market_list')}",
@@ -408,7 +370,7 @@
                     dataType: "json",
                     async: false,
                     success: function (list) {
-                        console.log(list)
+                        //console.log(list)
                         if (list != null && list != "") {
 
                             if (list.str == 1) {
@@ -416,35 +378,41 @@
                                 var message = '';
                                 for (var i = 0; i < list.msg.length; i++) {
 
-                                    message +='<div class="item_box" data-cid="' +list.msg[i].commodity_id
-                                        +'"><div class="item_box_left"><div class="item_box_product_img">'
+                                    message += '<div class="item_box" data-cid="' + list.msg[i].commodity_id
+                                        + '"><div class="item_box_left"><div class="item_box_product_img">'
                                     var imgurl = '__PUBLIC__/Web/web/img/02_interest/user.png'
                                     if (list.msg[i].user_icon) {
                                         imgurl = './Uploads/' + list.msg[i].commodity_img
                                     }
-                                    message +='<img src="'+imgurl+'">'
-                                    message +='</div><div class="item_box_product_details"><ul><li><p>Product Name :</p>'
-                                    message += '<span>'+list.msg[i].commodity_name+'</span>'
-                                    message +='</li><li><p>Price :</p>'
-                                    message +='<span>$'+list.msg[i].commodity_price+'</span>'
-                                    message +='</li><li><p>Product Description :</p>'
-                                    message +='<span>'+list.msg[i].commodity_content+'</span>'
-                                    message +='</li><li></li></ul></div></div>'
-                                    message +='<div class="item_box_right">'
-                                    message +='<a href="javascript:void(0)" data-toggle="modal" data-target="#box3" data-id="' +list.msg[i].commodity_id+
-                                        '" id="edit" class="right_icon">'
-                                    message +='<img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png">'
-                                    message +='</a>'
-                                    message +='<a href="javascript:void(0)" data-toggle="modal" data-target="#box2" class="right_icon">'
-                                    message +='<img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_close.png">'
-                                    message +='</a>'
-                                    message +='<a href="javascript:void(0)" data-toggle="modal" data-target="#box1" class="right_icon">'
-                                    message +='<img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png">'
-                                    message +='</a></div></div>'
+                                    message += '<img src="' + imgurl + '">'
+                                    message += '</div><div class="item_box_product_details"><ul><li><p>Product Name :</p>'
+                                    message += '<span>' + list.msg[i].commodity_name + '</span>'
+                                    message += '</li><li><p>Price :</p>'
+                                    message += '<span>$' + list.msg[i].commodity_price + '</span>'
+                                    message += '</li><li><p>Product Description :</p>'
+                                    message += '<span>' + list.msg[i].commodity_content + '</span>'
+                                    message += '</li><li></li></ul></div></div>'
+                                    message += '<div class="item_box_right">'
+                                    if (list.msg[i].commodity_status == 1) {
+                                        message += '<a href="javascript:void(0)" data-toggle="modal" data-target="#box3" data-id="' + list.msg[i].commodity_id +
+                                            '" id="edit" class="right_icon">'
+                                        message += '<img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_pj.png">'
+                                        message += '</a>'
+                                        message += '<a href="javascript:void(0)" data-toggle="modal" data-target="#box2" class="right_icon" onclick="setcomplete(' + list.msg[i].commodity_id + ')">'
+                                        message += '<img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_close.png">'
+                                        message += '</a>'
+                                        message += '<a href="javascript:void(0)" data-toggle="modal" data-target="#box1" class="right_icon">'
+                                        message += '<img src="__PUBLIC__/Web/web/img/04_jobs/jobs_zwlb_m_icon_del.png">'
+                                        message += '</a>'
+                                    }else{
+                                        message += '<img src="__PUBLIC__/Web/web/img/05_life/life_mproduct_icon_finished.png">'
+                                    }
+                                    message += '</div></div>'
+
                                 }
 
                                 $("#content").html(message)
-
+                                startone()
                             } else {
                                 layer.msg(list.msg, {
                                         time: 1500,
@@ -473,28 +441,185 @@
 
                 })
             }else{
+                $.ajax({
+                    type: "post",
+                    url: "{:U('Index/Ajax/ajax_my_collect_list')}",
+                    data: {
+                        order: order,
+                        limit1: limit1,
+                        limit2: limit2,
+                        name: $("#Selectionform").val(),
 
+                    },
+                    dataType: "json",
+                    async: false,
+                    success: function (list) {
+                        console.log(list)
+                        if (list != null && list != "") {
+
+                            if (list.str == 1) {
+
+                                var message = '';
+                                for (var i = 0; i < list.msg.length; i++) {
+
+                                    message += '<div class="item_box"><div class="item_box_left">'
+                                    var aurl = "{:U('Index/Life/lifeProductDetails')}&cid="+list.msg[i].commodity_id;
+                                    message += '<a href="'+aurl+'">'
+                                    message +='<div class="item_box_product_img">'
+                                    message +='<img src="./Uploads/'+list.msg[i].commodity_img+'">'
+                                    message +='</div><div class="item_box_product_details"><ul><li><p>Product Name :</p>'
+                                    message +='<span>'+list.msg[i].commodity_name+'</span>'
+                                    message +='</li><li><p>Price :</p>'
+                                    message +='<span>$'+list.msg[i].commodity_price+'</span>'
+                                    message +='</li><li><p>Product Description :</p>'
+                                    message +='<span>'+list.msg[i].commodity_content+'</span>'
+                                    message +='</li></ul></div></a></div>'
+                                    message +='<div class="item_box_right">'
+                                    message +='<a href="'+aurl+'">'
+                                    message +='<div class="right_pic">'
+                                    message +='<img src="./Uploads/'+list.msg[i].user_icon+'">'
+                                    message +='</div>'
+                                    message +='<div class="right_name">'+list.msg[i].user_name+'</div>'
+                                    message +='</a></div></div>'
+
+                                }
+
+                                $("#content").html(message)
+                                startone()
+                            } else {
+                                layer.msg(list.msg, {
+                                        time: 1500,
+                                        icon: 2,
+                                    }
+                                );
+
+                            }
+                        } else {
+                            layer.msg('请求错误!', {
+                                    time: 1500,
+                                    icon: 2,
+                                }
+                            );
+                        }
+
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        layer.msg('请求失败!', {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }
+
+                })
             }
 
         }
 
+        function havenum() {
+            if (type ==1) {
+                $.ajax({
+                    type: "post",
+                    url: "{:U('Index/Ajax/ajax_my_market_count')}",
+                    data: {
+                        order: order,
+                        name: $("#Selectionform").val(),
 
-    </script>
-    <script>
+
+                    },
+                    dataType: "json",
+                    async: false,
+                    success: function (list) {
+                        //console.log(list)
+                        set(list.count)
+
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                        layer.msg('请求失败!', {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }
+
+                })
+            }else{
+                $.ajax({
+                    type: "post",
+                    url: "{:U('Index/Ajax/ajax_my_collect_count')}",
+                    data: {
+
+                        name: $("#Selectionform").val(),
+
+
+                    },
+                    dataType: "json",
+                    async: false,
+                    success: function (list) {
+                        set(list.count)
+
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                        layer.msg('请求失败!', {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }
+
+                })
+            }
+        }
+
+        function setcomplete(id) {
+            completeid = id
+        }
+        
+        function complete() {
+            $.ajax({
+                type: "post",
+                url: "{:U('Index/Ajax/ajax_product_complete')}",
+                data: {
+                    completeid: completeid,
+                },
+                dataType: "json",
+                async: false,
+                success: function (list) {
+                    layer.msg(list.msg, {
+                            time: 1500,
+                            icon: 1,
+                        },function () {
+                            $(".MyRelease .item_box .item_box_right").eq(num).html("<img src='__PUBLIC__/Web/web/img/05_life/life_mproduct_icon_finished.png'>")
+                        }
+                    );
+
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    layer.msg('请求失败!', {
+                            time: 1500,
+                            icon: 2,
+                        }
+                    );
+                }
+
+            })
+        }
+
         //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
         layui.use('element', function(){
         var element = layui.element;
         
         //…
         });
-    </script>    
-    <script src="__PUBLIC__/Web/web/js/ListOfDonations.js"></script>
-    <!-- 点击关闭删除 -->
-    <script>
-        $(function(){
+
+        startone()
+        function startone(){
             (function(){
-                var num;
-                var cid;
+
                 $(".MyRelease").on('click',".item_box", function(event) {
                     num = $(this).index();
                     cid=$(this).attr("data-cid");
@@ -511,18 +636,19 @@
 
 
                 $(".item_box").on('click',"#edit", function(event) {
+
                     id=$(this).attr("data-id");
                     good_detail(id);
 
                 });
 
-                $('.btn-completion-primary').on('click',function(){
-                    console.log($(".MyRelease .item_box .item_box_right").eq(num))
+                /*$('.btn-completion-primary').on('click',function(){
+                    //console.log($(".MyRelease .item_box .item_box_right").eq(num))
                     $(".MyRelease .item_box .item_box_right").eq(num).html("<img src='__PUBLIC__/Web/web/img/05_life/life_mproduct_icon_finished.png'>")
-                })
+                })*/
             })();
             
-        });
+        }
         var vm=new Vue({
             el: '#box3',
             data: {
@@ -571,6 +697,7 @@
 
             })
         }
+        //更新商品
         function asd() {
             cid=$("#cid").val();
             name2=$("#name").val();
@@ -599,6 +726,8 @@
                             layer.msg(data.msg,{
                                     time:1500,
                                     icon:1,
+                                },function () {
+                                    location.reload()
                                 }
                             );
                         }else {

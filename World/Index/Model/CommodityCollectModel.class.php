@@ -5,17 +5,13 @@ namespace Index\Model;
 use Think\Db;
 use Think\Model;
 
-class CommodityModel extends Model{
+class CommodityCollectModel extends Model{
 
-    protected  $trueTableName = 'l_commodity';
+    protected  $trueTableName = 'l_commodity_collect';
 
     public function findone($where,$field=false){
 
         return $this->where($where)->field($field)->find();
-    }
-    public function findoneJoin($where,$join1,$jointype1){
-
-        return $this->join($join1,$jointype1)->where($where)->find();
     }
 
     public function updataone($where, $data)
@@ -38,14 +34,15 @@ class CommodityModel extends Model{
         return $this->join($join1,$jointype1)->field($field)->where($where)->order($order)->limit($limit1,$limit2)->select();
     }
 
-    public function joinonenum($where,$join1,$order,$jointype1='INNER',$field=false){
+    public function jointwolist($where,$join1,$join2,$order,$limit1,$limit2,$jointype1='INNER',$jointype2='INNER',$field=false){
 
-        return $this->join($join1,$jointype1)->field($field)->where($where)->order($order)->limit($limit1,$limit2)->find();
+        return $this->join($join1,$jointype1)->join($join2,$jointype2)->field($field)->where($where)->order($order)->limit($limit1,$limit2)->select();
     }
 
+    public function jointwonum($where,$join1,$join2,$order,$jointype1='INNER',$jointype2='INNER',$field=false){
 
-
-
+        return $this->join($join1,$jointype1)->join($join2,$jointype2)->field($field)->where($where)->order($order)->find();
+    }
 
 
 }

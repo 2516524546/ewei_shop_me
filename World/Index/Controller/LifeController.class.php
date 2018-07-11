@@ -83,6 +83,11 @@ class LifeController extends CommonController {
 
         $crowdcount = $commoditymodel->findone('commodity_status = 1','count(*) num')['num'];
 
+        $haveimg = 1;
+
+        if ($_GET['haveimg'] == 2){
+            $haveimg = $_GET['haveimg'];
+        }
 
         $this->assign(array(
             'static' => $static,
@@ -92,6 +97,7 @@ class LifeController extends CommonController {
             'university' => $university,
             'commoditylist' => $commoditylist,
             'crowdcount' => $crowdcount,
+            'haveimg' => $haveimg,
 
         ));
 
@@ -169,9 +175,20 @@ class LifeController extends CommonController {
         $commodity=$commoditymodel->findoneJoin("commodity_id=$id",'u_user u on l_commodity.commodity_uid = u.user_id','LEFT');
         $id=$commodity['commodity_id'];
         $commentCount=M('l_commodity_comment')->where("commodity_comment_cid=$id")->count();
+        $iscollect = 0;
+        $have=M("l_commodity_collect")->where("commodity_collect_uid={$this->userid} and commodity_collect_cid={$commodity['commodity_id']}")->find();
+        if ($have){
+            $iscollect = 1;
+        }
+
+
         $this->assign("commentCount",$commentCount);
         $this->assign("commodity",$commodity);
         $this->assign("cid",$id);
+
+        $this->assign(array(
+            'iscollect' => $iscollect,
+        ));
         $this->display();
     }
 
@@ -331,7 +348,13 @@ class LifeController extends CommonController {
         $uid=$this->userid;
         $have=M("l_commodity_collect")->where("commodity_collect_uid={$uid} and commodity_collect_cid={$cid}")->find();
         if ($have){
-            die(json_encode(array('str' => 2, 'msg' => '你已经收藏过了')));
+            $res = M("l_commodity_collect")->where("commodity_collect_uid={$uid} and commodity_collect_cid={$cid}")->delete();
+            if ($res){
+                die(json_encode(array('str' => 3, 'msg' => '已取消收藏')));
+            }else{
+                die(json_encode(array('str' => 4, 'msg' => '取消收藏失败')));
+            }
+
         }else{
             //添加数据
             $post['commodity_collect_cid']=$_POST['id'];

@@ -113,11 +113,11 @@
                                     <div class="layui-form-item-one">
                                             <div class="layui-input-block-one">
                                                 <div class="radio_box to">
-                                                    <input type="radio" name="pic" value="With pictures" onclick="editpic(1)" title="With pictures" checked class="pic_input"><span class="pic_input_span">With pictures</span>
+                                                    <input type="radio" name="pic" value="With pictures" onclick="editpic(1)" title="With pictures" <if condition='$haveimg == 1'>checked</if> class="pic_input"><span class="pic_input_span">With pictures</span>
 
                                                 </div>
                                                 <div class="radio_box">
-                                                    <input type="radio" name="pic" value="Without pictures" onclick="editpic(0)" title="Without pictures" class="pic_input"><span class="pic_input_span">Without pictures</span>
+                                                    <input type="radio" name="pic" value="Without pictures" onclick="editpic(2)" title="Without pictures" <if condition='$haveimg == 2'>checked</if> class="pic_input"><span class="pic_input_span">Without pictures</span>
                                                 </div>
                                             </div>
                                           </div>
@@ -159,7 +159,9 @@
                         <div class="S_Market_detail_all">
                                     <div class="fl">
                                             <div class="pro_img">
+                                                <if condition='$haveimg == 1'>
                                                     <img src="./Uploads/{$c['commodity_img']}" alt="" class="img-circle userimg" />
+                                                </if>
                                             </div>
                                             <div class="pro_detail">
                                                 <div class="pro_Name">
@@ -178,7 +180,9 @@
                                         </div>
                                         <div class="fr pro_right">
                                             <div class="pro_right_img">
+                                                <if condition='$haveimg == 1'>
                                                     <img src="<if condition='$c["user_icon"]'>./Uploads/{$c['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="" class="img-circle userimg" />
+                                                </if>
                                             </div>
                                             <div class="pro_right_name">
                                                 <if condition='$c["user_name"]'>
@@ -225,6 +229,7 @@ var moneyli = 0;
 var stateli = 0;
 var cityli = 0;
 var universityli = 0;
+var haveimg = {$haveimg}
 
     $(function(){
         (function(){
@@ -294,7 +299,9 @@ var universityli = 0;
                             var url="{:U('Index/Life/lifeProductDetails')}&cid="+list.msg[i].commodity_id;
                             message += '<a href="'+url+'">';
                             message += '<div class="S_Market_detail_all"><div class="fl"><div class="pro_img">';
-                            message += '<img src="./Uploads/'+list.msg[i].commodity_img+'" alt="" class="img-circle userimg" />';
+                            if (haveimg == 1) {
+                                message += '<img src="./Uploads/' + list.msg[i].commodity_img + '" alt="" class="img-circle userimg" />';
+                            }
                             message += '</div><div class="pro_detail"><div class="pro_Name">Product Name:&nbsp;<span>'+list.msg[i].commodity_name+'</span></div>';
                             message += '<div class="pro_Price">Price:<p><small>$</small>'+list.msg[i].commodity_price+'</p></div>';
                             message += '<div class="pro_Description">Product Description:<p>'+list.msg[i].commodity_content+'</p></div></div></div>';
@@ -303,7 +310,10 @@ var universityli = 0;
                             if (list.msg[i].user_icon){
                                 imgurl = './Uploads/'+list.msg[i].user_icon
                             }
-                            message += '<img src="'+imgurl+'" alt="" class="img-circle userimg" /></div>'
+                            if (haveimg == 1) {
+                                message += '<img src="' + imgurl + '" alt="" class="img-circle userimg" />'
+                            }
+                            message += '</div>'
                             if (list.msg[i].user_name) {
                                 message += '<div class="pro_right_name">' + list.msg[i].user_name + '</div>';
                             }else{
@@ -363,7 +373,7 @@ var universityli = 0;
     }
 
     function editpic(a) {
-        pic = a
+        window.location.href = "{:U('Index/Life/lSecondHandMarket')}&haveimg="+a;
     }
 
 $(window).scroll(function () {
