@@ -190,14 +190,14 @@
 .GroupList .UserBox .UserFollow {
   margin-top: 10px;
   margin-left: 60px;
-  color: #cccccc;
-  width: 18px;
-  height: 18px;
-  overflow: hidden;
+  color: #808080;
+  display: flex;
+  align-items: center;
 }
 .GroupList .UserBox .UserFollow img{
   width: 18px;
   height: 18px;
+  overflow: hidden;
 }
 .GroupList .UserBox .UserName {
   margin-top: 10px;
@@ -303,8 +303,8 @@
   text-align: center;
 }
 .layui-form-label span img{
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
 }
 
 

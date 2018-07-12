@@ -105,6 +105,7 @@
   top: 25%;
   left: 25%;
   background:#fff;
+  margin-top: -6.5%;
 }
 
 .PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_title{
@@ -131,7 +132,7 @@
   line-height: 35px;
 }
 .PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_details .details_item .item_name{
-  width: 15%;
+  width: 16%;
   text-align: right;
   margin-right: 15px;
 }
@@ -145,11 +146,13 @@
 .PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_details .details_item .item_img{
   width: 50px;
   height: 50px;
+  overflow: hidden;
   border-radius: 50%;
 }
 
 .PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_details .details_item .item_img img{
   width: 100%;
+  height: 100%;
 }
 
 .PasswordContainer_shadow .PasswordContainer_shadow_box .shadow_box_details .details_button{
