@@ -162,8 +162,7 @@
                         <div class="PostReply_box_titleG">
                             <div class="titleG_img titleG_Great"
                                  onclick="collect(<?php echo $commodity['commodity_id'];?>)">
-                                <img src="__PUBLIC__/Web/web/img/05_life/life_secondhandmarket_spxq_icon_collect.png"
-                                     alt="" title="collect">
+                                <img src="<if condition='$iscollect == 0'>__PUBLIC__/Web/web/img/05_life/life_secondhandmarket_spxq_icon_collect.png<else />__PUBLIC__/Web/web/img/05_life/collected.png</if>" alt="" title="collect" id="collectimg">
                             </div>
                             <div class="titleG_img">
                                 <a href="#">
@@ -506,11 +505,28 @@
                 },
                 async: false,
                 success: function (data) {
-                    layer.msg(data.msg, {
-                            time: 1500,
-                            icon: data.str,
-                        }
-                    );
+                    if (data.str==1) {
+                        $("#collectimg").attr('src', '__PUBLIC__/Web/web/img/05_life/collected.png');
+                        layer.msg(data.msg, {
+                                time: 1500,
+                                icon: 1,
+                            }
+                        );
+                    }else if(data.str==3){
+                        $("#collectimg").attr('src', '__PUBLIC__/Web/web/img/05_life/life_secondhandmarket_spxq_icon_collect.png');
+                        layer.msg(data.msg, {
+                                time: 1500,
+                                icon: 1,
+                            }
+                        );
+                    }else{
+                        layer.msg(data.msg, {
+                                time: 1500,
+                                icon: 2,
+                            }
+                        );
+                    }
+
 
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {

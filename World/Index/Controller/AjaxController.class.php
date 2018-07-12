@@ -2,6 +2,7 @@
 
 namespace Index\Controller;
 
+use Index\Model\CommodityCollectModel;
 use Index\Model\CommodityModel;
 use Index\Model\CrowdConditionModel;
 use Index\Model\CrowdMemberModel;
@@ -1392,8 +1393,6 @@ public function ajax_donationpay()
         }
     }
 
-
-
     //获取群列表
     public function ajax_crowd_list(){
 
@@ -1918,7 +1917,7 @@ public function ajax_donationpay()
 
             $commoditymodel = new CommodityModel();
 
-            $where = 'commodity_status = 1';
+            $where = 'commodity_status != 0';
             if (isset($_POST['staticli']) && $this->post('staticli') != 0){
                 $where .= ' and commodity_category = '.$this->post('staticli');
             }
@@ -3957,13 +3956,14 @@ public function ajax_donationpay()
         }
     }
 
+    //我的商品列表
     public function ajax_my_market_list(){
 
         if (IS_POST){
 
             $comoditymodel = new CommodityModel();
 
-            $where = 'commodity_status != 0 and commodity_uid = '.$this->userid;
+            $where = 'commodity_status != 0 and commodity_status != 3 and commodity_uid = '.$this->userid;
             if (isset($_POST['name'])&&$this->post('name')!=''){
                 $where .= ' and commodity_name like "%'.$this->post('name').'%"';
             }
@@ -3982,8 +3982,76 @@ public function ajax_donationpay()
         }else{
             die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
         }
+    }
+
+    //获取我的商品数
+    public function ajax_my_market_count(){
+        if (IS_POST){
+
+            $comoditymodel = new CommodityModel();
+
+            $where = 'commodity_status != 0 and commodity_status != 3 and commodity_uid = '.$this->userid;
+            if (isset($_POST['name'])&&$this->post('name')!=''){
+                $where .= ' and commodity_name like "%'.$this->post('name').'%"';
+            }
+
+            $comoditycount = $comoditymodel->joinonenum($where,'u_user u on l_commodity.commodity_uid = u.user_id',$this->post('order'),'INNER','count(*) num')['num'];
+
+            die(json_encode(array('str' => 1, 'count' => $comoditycount)));
 
 
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
+    //我的收藏列表
+    public function ajax_my_collect_list(){
+
+        if (IS_POST){
+
+            $collectmodel = new CommodityCollectModel();
+
+            $where = 'commodity_status != 0 and commodity_status != 3 and commodity_collect_uid = '.$this->userid;
+            if (isset($_POST['name'])&&$this->post('name')!=''){
+                $where .= ' and commodity_name like "%'.$this->post('name').'%"';
+            }
+            $limit1 = ($this->post('limit1')-1)*$this->post('limit2');
+
+            $collectlist = $collectmodel->jointwolist($where,'l_commodity l on l_commodity_collect.commodity_collect_cid = l.commodity_id','u_user u on l.commodity_uid = u.user_id',$this->post('order'),$limit1,$this->post('limit2'));
+
+            if ($collectlist) {
+                die(json_encode(array('str' => 1, 'msg' => $collectlist)));
+            } else {
+
+                die(json_encode(array('str' => 2, 'msg' => '你还未发布商品')));
+            }
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
+    }
+
+    //获取收藏数
+    public function ajax_my_collect_count(){
+        if (IS_POST){
+
+            $collectmodel = new CommodityCollectModel();
+
+            $where = 'commodity_status != 0 and commodity_status != 3 and commodity_collect_uid = '.$this->userid;
+            if (isset($_POST['name'])&&$this->post('name')!=''){
+                $where .= ' and commodity_name like "%'.$this->post('name').'%"';
+            }
+
+            $collectcount = $collectmodel->jointwonum($where,'l_commodity l on l_commodity_collect.commodity_collect_cid = l.commodity_id','u_user u on l.commodity_uid = u.user_id',$this->post('order'),'INNER','INNER','count(*) num')['num'];
+
+
+            die(json_encode(array('str' => 1, 'count' => $collectcount)));
+
+
+        }else{
+            die(json_encode(array('str' => 0,'msg'=>'存在非法字符')));
+        }
     }
 
     //上传封面
@@ -4026,6 +4094,29 @@ public function ajax_donationpay()
             die(json_encode(array('str' => 0)));
         }
 
+    }
+
+    //商品完成
+    public function ajax_product_complete(){
+        if (IS_POST) {
+
+            $completeid = $this->post('completeid');
+
+            $commoditymodel = new CommodityModel();
+            $data = array(
+                'commodity_status' => 2,
+            );
+            $res = $commoditymodel->updataone('commodity_id = '.$completeid,$data);
+            if ($res){
+                die(json_encode(array('str' => 1,'msg' => '设置成功')));
+            }else{
+                die(json_encode(array('str' => 2,'msg' => '设置失败')));
+            }
+
+        } else {
+
+            die(json_encode(array('str' => 0)));
+        }
     }
 
 
