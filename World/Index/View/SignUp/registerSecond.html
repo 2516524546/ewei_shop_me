@@ -11,138 +11,164 @@
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/register.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/registerSecond.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/registerThird.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/CreateInterest.css">
+        <link rel="stylesheet" href="__PUBLIC__/Web/web/css/releasePosition.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
     </head>
 
     <body>
-         <!-- logo -->
-            <header class="container"></header>
-            <hr>
-            <!-- Crumbs nav -->
-            <div class="container crumbs">
-                <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
-                <cite class="Icon"></cite>
-                <span class="crumbsTitle">Sign up</span>
-            </div>
+        <div class="web">
+            <!-- logo -->
+               <header class="container"></header>
+               <hr>
+               <!-- Crumbs nav -->
+               <div class="container crumbs">
+                   <a href="{:U('Index/Index/index')}" class="crumbsa crumbsaImg"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+                   <cite class="Icon"></cite>
+                   <span class="crumbsTitle">Sign up</span>
+               </div>
+   
+           <!-- Forget the password form -->
+           <form class="layui-form layui-form-pane section" action="registerThird.html" >
+               <div class="PasswordContainer">
+                   <div class="StepContainer">
+                       <div class="StepContainerOne">
+                           <h4 class="text-center"><big class="dot_num">2</big>Mobile authentication registration</h4>
+                           <div class="FormContainer" pane>
+                               <label class="layui-form-label label-spacing">
+                                   <div class="label_img"> 
+                                       <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_04.png">
+                                   </div>
+                                   <!-- <span class="mailbox-icon1"></span> -->
+                               </label>
+                               <div class="layui-input-block input-spacing">
+                                   <input type="text" name="nickname" id="name" lay-verify="required" autocomplete="off" <if condition='$register_name'>value="{$register_name}"</if> placeholder="Enter a nickname" class="layui-input" >
+                               </div>
+                           </div>
+                           <div class="FormContainer" pane>
+                               <label class="layui-form-label label-spacing">
+                                   <div class="label_img"> 
+                                       <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_05.png">
+                                   </div>
+                                   <!-- <span class="mailbox-icon2"></span> -->
+                               </label>
+                               <div class="layui-input-block input-spacing">
+                                   <input type="text" name="number" id="birth" lay-verify="required" autocomplete="off" <if condition='$register_birth'>value="{$register_birth}"</if> placeholder="Date of birth(xx/xx/xxxx)" class="layui-input Wtime">
+                               </div>
+                           </div>
+                           <div class="FormContainer" pane>
+                               <label class="layui-form-label label-spacing">
+                                   <div class="label_img"> 
+                                       <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_06.png">
+                                   </div>
+                                   <!-- <span class="mailbox-icon3"></span> -->
+                               </label>
+                               <div class="layui-input-block input-spacing">
+                                       <div class="layui-input-block">
+                                           <input type="radio" name="sex" value="1" title="male" <if condition='!$register_sex || $register_sex == 1'>checked</if> >
+                                           <input type="radio" name="sex" value="2" title="female" <if condition='$register_sex == 2'>checked</if>>
+                                       </div>
+                               </div>
+                           </div>
+                           <div class="FormContainer" pane>
+                               <label class="layui-form-label label-spacing">
+                                   <div class="label_img"> 
+                                       <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_08.png">
+                                   </div>
+                                   <span class="mailbox-icon4"></span>
+                               </label>
+                               <div class="layui-input-block input-spacing">
+                                   <div class="layui-input-block">
+                                   <select name="tag" id="tag" lay-verify="required">
+                                       <option value="<if condition='$register_tag'>{$register_tag}</if>"><if condition='$register_tag'>{$register_tag}<else />User label</if></option>
+                                       <foreach name="taglist" item="t" key="k">
+                                           <option value="{$t['user_tag_name']}">{$t['user_tag_name']}</option>
+                                       </foreach>
+                                   </select>
+                                   </div>
+                               </div>
+                           </div>
+   
+                           <div class="FormContainer" pane>
+                               <label class="layui-form-label label-spacing">
+                                   <div class="label_img"> 
+                                       <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_09.png">
+                                   </div>
+                                   <!-- <span class="mailbox-icon5"></span> -->
+                               </label>
+                               <div class="layui-input-block input-spacing">
+                                   <div class="layui-input-block">
+                                   <select name="country" id="country" lay-verify="required">
+                                       <option value="<if condition='$register_country'>{$register_country}</if>"><if condition='$register_country'>{$register_country}<else />Choose a country</if></option>
+                                       <foreach name="countrylist" item="c" key="k">
+                                           <option value="{$c['user_country_name']}">{$c['user_country_name']}</option>
+                                       </foreach>
+                                   </select>
+                                   </div>
+                               </div>
+                           </div>
+   
+                           <div class="FormContainer" pane>
+                               <label class="layui-form-label label-spacing">
+                                   <div class="label_img"> 
+                                       <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_10.png">
+                                   </div>
+                                   <!-- <span class="mailbox-icon6"></span> -->
+                               </label>
+                               <div class="layui-input-block input-spacing">
+                                   <input type="text" name="number" id="city" autocomplete="off" lay-verify="required" <if condition='$register_city'>value="{$register_city}"</if> placeholder="Enter the city" class="layui-input">
+                               </div>
+                           </div>
+   
+                           <div class="FormContainer" pane>
+                               <label class="layui-form-label label-spacing">
+                                   <div class="label_img"> 
+                                       <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_12.png">
+                                   </div>
+                                   <!-- <span class="mailbox-icon7"></span> -->
+                               </label>
+                               <div class="layui-input-block input-spacing">
+                                       <!-- <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the signature" class="layui-input"> -->
+                                       <textarea name="" id="signature" placeholder="Enter the signature" lay-verify="required" class="layui-textarea"><if condition='$register_signature'>{$register_signature}</if></textarea>
+                               </div>
+                           </div>
+   
+                           <div class="btn_box">
+                                   <div class="btn_box_item">
+                                       <a href="{:U('Index/SignUp/register')}">Previous</a>
+                                   </div>
+                                   <div class="btn_box_item">
+                                       <button style=" cursor: pointer;" lay-submit="demo1" lay-filter="demo1">
+                                           Complete
+                                       </button>
+                                   </div>
+                               </div>
+                       </div>
+                   </div>
+                   <div class="orContainer">
+                       <div class="orContainer_con">
+                           or
+                       </div>
+                       <div class="Facebook">
+                           <div class="Facebook_img">
+                               <img src="__PUBLIC__/Web/web/img/facebook.png" alt="">
+                           </div>
+                           <p>Facebook</p>
+                       </div>
+                   </div>
+               </div>
+   
+               
+           </form>
+       
+   
+           <!-- footer -->
+           <footer class="footer">
+               <p>&copy; 2018 NewWorld. All rights reserved.</p>
+           </footer>
 
-        <!-- Forget the password form -->
-    <form class="layui-form layui-form-pane" action="registerThird.html" >
-            <div class="PasswordContainer">
-                <div class="StepContainer">
-                    <div class="StepContainerOne">
-                        <h4 class="text-center"><big class="dot_num">2</big>Mobile authentication registration</h4>
-                        <div class="FormContainer" pane>
-                            <label class="layui-form-label label-spacing">
-                                <span class="mailbox-icon1"></span>
-                            </label>
-                            <div class="layui-input-block input-spacing">
-                                <input type="text" name="nickname" id="name" lay-verify="required" autocomplete="off" <if condition='$register_name'>value="{$register_name}"</if> placeholder="Enter a nickname" class="layui-input" >
-                            </div>
-                        </div>
-                        <div class="FormContainer" pane>
-                            <label class="layui-form-label label-spacing">
-                                <span class="mailbox-icon2"></span>
-                            </label>
-                            <div class="layui-input-block input-spacing">
-                                <input type="text" name="number" id="birth" lay-verify="required" autocomplete="off" <if condition='$register_birth'>value="{$register_birth}"</if> placeholder="Date of birth(xx/xx/xxxx)" class="layui-input Wtime">
-                            </div>
-                        </div>
-                        <div class="FormContainer" pane>
-                            <label class="layui-form-label label-spacing">
-                                <span class="mailbox-icon3"></span>
-                            </label>
-                            <div class="layui-input-block input-spacing">
-                                    <div class="layui-input-block">
-                                        <input type="radio" name="sex" value="1" title="male" <if condition='!$register_sex || $register_sex == 1'>checked</if> >
-                                        <input type="radio" name="sex" value="2" title="female" <if condition='$register_sex == 2'>checked</if>>
-                                    </div>
-                            </div>
-                        </div>
-                        <div class="FormContainer" pane>
-                            <label class="layui-form-label label-spacing">
-                                <span class="mailbox-icon4"></span>
-                            </label>
-                            <div class="layui-input-block input-spacing">
-                                <div class="layui-input-block">
-                                <select name="tag" id="tag" lay-verify="required">
-                                    <option value="<if condition='$register_tag'>{$register_tag}</if>"><if condition='$register_tag'>{$register_tag}<else />User label</if></option>
-                                    <foreach name="taglist" item="t" key="k">
-                                        <option value="{$t['user_tag_name']}">{$t['user_tag_name']}</option>
-                                    </foreach>
-                                </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="FormContainer" pane>
-                            <label class="layui-form-label label-spacing">
-                                <span class="mailbox-icon5"></span>
-                            </label>
-                            <div class="layui-input-block input-spacing">
-                                <div class="layui-input-block">
-                                <select name="country" id="country" lay-verify="required">
-                                    <option value="<if condition='$register_country'>{$register_country}</if>"><if condition='$register_country'>{$register_country}<else />Choose a country</if></option>
-                                    <foreach name="countrylist" item="c" key="k">
-                                        <option value="{$c['user_country_name']}">{$c['user_country_name']}</option>
-                                    </foreach>
-                                </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="FormContainer" pane>
-                            <label class="layui-form-label label-spacing">
-                                <span class="mailbox-icon6"></span>
-                            </label>
-                            <div class="layui-input-block input-spacing">
-                                <input type="text" name="number" id="city" autocomplete="off" lay-verify="required" <if condition='$register_city'>value="{$register_city}"</if> placeholder="Enter the city" class="layui-input">
-                            </div>
-                        </div>
-
-                        <div class="FormContainer" pane>
-                            <label class="layui-form-label label-spacing">
-                                <span class="mailbox-icon7"></span>
-                            </label>
-                            <div class="layui-input-block input-spacing">
-                                    <!-- <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter the signature" class="layui-input"> -->
-                                    <textarea name="" id="signature" placeholder="Enter the signature" lay-verify="required" class="layui-textarea"><if condition='$register_signature'>{$register_signature}</if></textarea>
-                            </div>
-                        </div>
-
-                        <div class="btn_box">
-                                <div class="btn_box_item">
-                                    <a href="{:U('Index/SignUp/register')}">Previous</a>
-                                </div>
-                                <div class="btn_box_item">
-                                    <button style=" cursor: pointer;" lay-submit="demo1" lay-filter="demo1">
-                                        Complete
-                                    </button>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                <div class="orContainer">
-                    <div class="orContainer_con">
-                        or
-                    </div>
-                    <div class="Facebook">
-                        <div class="Facebook_img">
-                            <img src="__PUBLIC__/Web/web/img/facebook.png" alt="">
-                        </div>
-                        <p>Facebook</p>
-                    </div>
-                </div>
-            </div>
-
-            
-        </form>
-    
-
-        <!-- footer -->
-        <footer>
-            <p>&copy; 2018 NewWorld. All rights reserved.</p>
-        </footer>
+        </div>
 
     </body>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>

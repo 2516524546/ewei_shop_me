@@ -17,50 +17,54 @@
 </head>
 
 <body>
-    <!-- logo -->
-    <header class="container"></header>
-    <hr>
-    <!-- Crumbs nav -->
-    <div class="container crumbs">
-        <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">Sign up</span>
-    </div>
-    <!-- Forget the password form -->
-    <form class="layui-form layui-form-pane" action="{:U('Index/Index/index')}">
-                <div class="container">
-                <h4 class="text-center"><big class="dot_num">3</big>Select the group you are interested in</h4>
-                <div class="Group_list">
-                    <foreach name="grouptaglist" item="g" key="k">
-                    <div class="Group_item">
-                        <input type="hidden" value="{$g['u_user_grouptag_id']}" />
-                        <div class="item_circle">
-                            <div class="item_pic">
-                                <img src="./Uploads/{$g['u_user_grouptag_img']}" alt="">
+    <div class="web">
+        <!-- logo -->
+        <header class="container"></header>
+        <hr>
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Index/index')}" class="crumbsa crumbsaImg"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">Sign up</span>
+        </div>
+        <!-- Forget the password form -->
+        <form class="layui-form layui-form-pane section" action="{:U('Index/Index/index')}">
+                    <div class="container">
+                    <h4 class="text-center"><big class="dot_num">3</big>Select the group you are interested in</h4>
+                    <div class="Group_list">
+                        <foreach name="grouptaglist" item="g" key="k">
+                        <div class="Group_item">
+                            <input type="hidden" value="{$g['u_user_grouptag_id']}" />
+                            <div class="item_circle">
+                                <div class="item_pic">
+                                    <img src="./Uploads/{$g['u_user_grouptag_img']}" alt="">
+                                </div>
+    
                             </div>
-
+                            <p>{$g['u_user_grouptag_name']}</p>
                         </div>
-                        <p>{$g['u_user_grouptag_name']}</p>
+                        </foreach>
+                        
                     </div>
-                    </foreach>
-                    
-                </div>
-                <div class="btn_box">
-                    <div class="btn_box_item">
-                        <a href="{:U('Index/SignUp/registerSecond')}">Previous</a>
+                    <div class="btn_box">
+                        <div class="btn_box_item">
+                            <a href="{:U('Index/SignUp/registerSecond')}">Previous</a>
+                        </div>
+                        <div class="btn_box_item">
+                            <button style=" cursor: pointer;" lay-submit="demo1" lay-filter="demo1">
+                                Complete 
+                            </button>
+                        </div>
                     </div>
-                    <div class="btn_box_item">
-                        <button style=" cursor: pointer;" lay-submit="demo1" lay-filter="demo1">
-                            Complete 
-                        </button>
                     </div>
-                </div>
-    </form>
+        </form>
+    
+        <!-- footer -->
+        <footer class="footer">
+                <p>&copy; 2018 NewWorld. All rights reserved.</p>
+        </footer>
 
-    <!-- footer -->
-    <footer>
-        	<p>&copy; 2018 NewWorld. All rights reserved.</p>
-    </footer>
+    </div>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>

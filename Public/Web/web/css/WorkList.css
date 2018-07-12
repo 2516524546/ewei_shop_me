@@ -162,6 +162,9 @@
     position: absolute;
     right: 32px;
   }
+  .ContributionContainer .UserBox .lintpheight .picon img{
+    width: 18px;
+  }
   .ContributionContainer .UserBox .UserLink {
     text-decoration: none;
   }
@@ -239,7 +242,10 @@
     /* display: block; */
 }
 
-
+.ContributionContainer .UserBox .lintpheight img{
+  width: 18px;
+  height: 18px;
+}
 .btn-Close-primary {
   color: #fff;
   background-color: #007bff;
@@ -262,4 +268,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.ContributionContainer .UserBox .lintpheight_box .lintpheight_icon_box a img{
+    width: 22px;
+    height: 22px;
 }

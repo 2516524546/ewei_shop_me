@@ -98,6 +98,8 @@
 }
 .recordbox2 .recordimg {
   margin-right: 8px;
+  width: 24px;
+  height: 24px;
 }
 .recordbox2 .recordcont {
   border-bottom: solid 1px #ccc;

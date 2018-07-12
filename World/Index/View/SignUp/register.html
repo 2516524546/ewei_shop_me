@@ -10,85 +10,117 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/js/lib/layui/dist/css/layui.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/register.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/CreateInterest.css">
+    <link rel="stylesheet" href="__PUBLIC__/Web/web/css/releasePosition.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
+    <style>
+    .PasswordContainer .FormContainer .input-spacing {
+            margin-left: 0;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .PasswordContainer .FormContainer .input-float {
+            float: left; 
+            width: 50%;
+             margin: 0;
+        }
+        .sendCode{
+            width: 50%;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- logo -->
-    <header class="container"></header>
-    <hr>
-
-    <!-- Crumbs nav -->
-    <div class="container crumbs">
-        <a href="{:U('Index/Index/index')}" class="crumbsa"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
-        <cite class="Icon"></cite>
-        <span class="crumbsTitle">Sign up</span>
-    </div>
+    <div class="web">
+        <!-- logo -->
+        <header class="container"></header>
+        <hr>
     
-    <!-- Forget the password form -->
-    <form class="layui-form layui-form-pane" action="" >
-        <div class="PasswordContainer">
-            <div class="StepContainer">
-                <div class="StepContainerOne">
-                    <h4 class="text-center">Mobile authentication registration</h4>
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <span class="mailbox-icon1"></span>
-                        </label>
-                        <div class="layui-input-block input-spacing">
-                            <input type="email" name="email" lay-verify="required" autocomplete="off" <if condition='$register_mail'>value="{$register_mail}"</if> placeholder="Enter the email" class="layui-input input-float" id="mail">
-                            <input class="layui-btn layui-btn-normal sendCode" style="min-width: 143px;" type="button" name="CodeButton" value="Verification Code" onclick="sendemail()">
-                        </div>
-                    </div>
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <span class="mailbox-icon2"></span>
-                        </label>
-                        <div class="layui-input-block input-spacing">
-                            <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter confirmation code" class="layui-input" id="code">
-                        </div>
-                    </div>
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <span class="mailbox-icon3"></span>
-                        </label>
-                        <div class="layui-input-block input-spacing">
-                            <input type="password" name="password" lay-verify="required" autocomplete="off" <if condition='$register_password'>value="{$register_password}"</if> placeholder="Enter password" class="layui-input" id="passwordone">
-                        </div>
-                    </div>
-                    <div class="FormContainer" pane>
-                        <label class="layui-form-label label-spacing">
-                            <span class="mailbox-icon4"></span>
-                        </label>
-                        <div class="layui-input-block input-spacing">
-                            <input type="password" name="password" lay-verify="required" autocomplete="off" <if condition='$register_password'>value="{$register_password}"</if> placeholder="Enter the password again" class="layui-input" id="passwordtwo">
-                        </div>
-                    </div>
-                    <div class="FormContainer from-but">
-                        <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
-                            Next
-                        </button>
-                    </div>
-                </div>
-                <div class="orContainer">
-                    <div class="orContainer_con">
-                        or
-                    </div>
-                    <div class="Facebook">
-                        <div class="Facebook_img">
-                            <img src="__PUBLIC__/Web/web/img/facebook.png" alt="">
-                        </div>
-                        <p>Facebook</p>
-                    </div>
-                </div>
-            </div>                                                  
+        <!-- Crumbs nav -->
+        <div class="container crumbs">
+            <a href="{:U('Index/Index/index')}" class="crumbsa crumbsaImg"><img src="__PUBLIC__/Web/web/img/common_dh_icon_home.png" alt=""></a>
+            <cite class="Icon"></cite>
+            <span class="crumbsTitle">Sign up</span>
         </div>
-    </form>
-    <!-- footer -->
-    <footer>
-        <p style="text-align: center;">&copy; 2018 NewWorld. All rights reserved.</p>
-    </footer>
+        
+        <!-- Forget the password form -->
+        <form class="layui-form layui-form-pane section" action="" >
+            <div class="PasswordContainer">
+                <div class="StepContainer">
+                    <div class="StepContainerOne">
+                        <h4 class="text-center"><big class="dot_num">1</big>Mobile authentication registration</h4>
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <div class="label_img"> 
+                                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_01.png">
+                                </div>
+                                    <!-- <span class="mailbox-icon1"></span> -->
+                                </label>
+                            <div class="layui-input-block input-spacing">
+                                <input type="email" name="email" lay-verify="required" autocomplete="off" <if condition='$register_mail'>value="{$register_mail}"</if> placeholder="Enter the email" class="layui-input input-float" id="mail">
+                                <input class="layui-btn layui-btn-normal sendCode" type="button" name="CodeButton" value="Verification Code" onclick="sendemail()">
+                            </div>
+                        </div>
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <div class="label_img"> 
+                                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_02.png">
+                                </div>
+                                <!-- <span class="mailbox-icon2"></span> -->
+                            </label>
+                            <div class="layui-input-block input-spacing">
+                                <input type="text" name="number" lay-verify="required" autocomplete="off" placeholder="Enter confirmation code" class="layui-input" id="code">
+                            </div>
+                        </div>
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <div class="label_img"> 
+                                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_03.png">
+                                </div>
+                                <!-- <span class="mailbox-icon3"></span> -->
+                            </label>
+                            <div class="layui-input-block input-spacing">
+                                <input type="password" name="password" lay-verify="required" autocomplete="off" <if condition='$register_password'>value="{$register_password}"</if> placeholder="Enter password" class="layui-input" id="passwordone">
+                            </div>
+                        </div>
+                        <div class="FormContainer" pane>
+                            <label class="layui-form-label label-spacing">
+                                <!-- <span class="mailbox-icon4"></span> -->
+                                <div class="label_img"> 
+                                    <img src="__PUBLIC__/Web/web/img/01_shouye/home_register_icon_03.png">
+                                </div>
+                            </label>
+                            <div class="layui-input-block input-spacing">
+                                <input type="password" name="password" lay-verify="required" autocomplete="off" <if condition='$register_password'>value="{$register_password}"</if> placeholder="Enter the password again" class="layui-input" id="passwordtwo">
+                            </div>
+                        </div>
+                        <div class="FormContainer from-but">
+                            <button class="layui-btn layui-btn-normal layui-btn-radius Submit-but" lay-submit="demo1" lay-filter="demo1">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                    <div class="orContainer">
+                        <div class="orContainer_con">
+                            or
+                        </div>
+                        <div class="Facebook">
+                            <div class="Facebook_img">
+                                <img src="__PUBLIC__/Web/web/img/facebook.png" alt="">
+                            </div>
+                            <p>Facebook</p>
+                        </div>
+                    </div>
+                </div>                                                  
+            </div>
+        </form>
+        <!-- footer -->
+        <footer class="footer">
+            <p style="text-align: center;">&copy; 2018 NewWorld. All rights reserved.</p>
+        </footer>
+
+    </div>
     <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
