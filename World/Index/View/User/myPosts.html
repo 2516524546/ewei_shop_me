@@ -130,7 +130,7 @@
                         var message = '';
                         for (var i = 0; i < data.msg.length; i++) {
 
-                            message +='<div class="box_item">'
+                            message +='<div class="box_item" onclick="gourl('+data.msg[i].crowd_mid+','+data.msg[i].crowd_id+','+data.msg[i].note_id+')">'
                             message +='<div class="box_top">'
                             message +='<div class="box_left">'
                             message +='<div class="box_left_img">'
@@ -165,7 +165,7 @@
                             message +='</div>'
                             message +='<div class="box_right">'
                             var gourl = "{:U('Index/User/editPost')}&nid="+data.msg[i].note_id
-                            message +='<a href="'+gourl+'">'
+                            message +='<a href="javascript:void(0)" onclick="gourl1('+data.msg[i].note_id+')">'
                             message +='<div class="right_btn">'
                             message +='Edit'
                             message +='</div>'
@@ -215,6 +215,32 @@
             }
 
         })
+
+    }
+
+    var isgo = 1;
+    function gourl(mid,cid,nid) {
+        if(isgo == 1){
+            var url = '';
+            if (mid==2){
+                url = '{:U("Index/Rnterst/postDetails")}&cid='+cid+'&nid='+nid;
+            }else if (mid==3){
+                url = '{:U("Index/Academic/postDetails")}&cid='+cid+'&nid='+nid;
+            }else if (mid==4){
+                url = '{:U("Index/Jobs/postDetails")}&cid='+cid+'&nid='+nid;
+            }else if (mid==5){
+                url = '{:U("Index/Life/postDetails")}&cid='+cid+'&nid='+nid;
+            }
+            window.location.href=url;
+        }else{
+            isgo = 1;
+        }
+
+    }
+
+    function gourl1(nid,e) {
+        isgo = 2;
+        window.location.href="{:U('Index/User/editPost')}&nid="+nid;
 
     }
 
