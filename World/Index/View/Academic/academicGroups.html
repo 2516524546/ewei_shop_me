@@ -99,7 +99,7 @@
                                                         </a>
                                                     </td>
                                                     <td class="NameIcom">
-                                                        <a href="{:U('Index/Academic/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
+                                                            <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;" class="NameIcomA">
                                                         <if condition='$note["note_istop"] == 1'>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
                                                         </if>
@@ -144,19 +144,23 @@
                                                         </a>
                                                     </td>
                                                     <td class="NameIcom">
+                                                    <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;" class="NameIcomA">
                                                         <if condition='$question["note_istop"] == 1'>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
                                                         </if>
                                                         <if condition='$question["note_iswally"] == 1'>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
                                                         </if>
+                                                    </a>
                                                     </td>
                                                     <td class="text-right">
+                                                        <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
                                                         <p>{$question["note_createtime"]}</p>
                                                         <p>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_xs.png">{$question["note_reward"]}
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$question["note_comments"]}
                                                         </p>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             </foreach>
@@ -186,19 +190,23 @@
                                                         </a>
                                                     </td>
                                                     <td class="NameIcom">
+                                                    <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;" class="NameIcomA">
                                                         <if condition='$resource["note_istop"] == 1'>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
                                                         </if>
                                                         <if condition='$resource["note_iswally"] == 1'>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
                                                         </if>
+                                                    </a>
                                                     </td>
                                                     <td class="text-right">
+                                                    <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
                                                         <p>{$resource["note_createtime"]}</p>
                                                         <p>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_download.png">{$resource["note_reward"]}
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$resource["note_comments"]}
                                                         </p>
+                                                    </a>
                                                     </td>
                                                 </tr>
                                             </foreach>
@@ -225,18 +233,22 @@
                                                     </a>
                                                 </td>
                                                 <td class="NameIcom">
+                                                    <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;" class="NameIcomA">
                                                     <if condition='$issue["tutorship_issue_istop"] == 1'>
                                                         <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
                                                     </if>
                                                     <if condition='$issue["tutorship_issue_iswally"] == 1'>
                                                         <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
                                                     </if>
+                                                    </a>
                                                 </td>
                                                 <td class="text-right">
+                                                <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
                                                     <p>{$issue["tutorship_issue_createtime"]}</p>
                                                     <p>
                                                         <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$issue["tutorship_issue_comments"]}
                                                     </p>
+                                                </a>
                                                 </td>
                                             </tr>
                                             </foreach>
@@ -262,18 +274,22 @@
                                                     </a>
                                                 </td>
                                                 <td class="NameIcom">
+                                                    <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;" class="NameIcomA">
                                                     <if condition='$need["tutorship_need_istop"] == 1'>
                                                         <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
                                                     </if>
                                                     <if condition='$need["tutorship_need_iswally"] == 1'>
                                                         <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
                                                     </if>
+                                                </a>
                                                 </td>
                                                 <td class="text-right">
+                                                    <a href="{:U('Index/Rnterst/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
                                                     <p>{$need["tutorship_need_createtime"]}</p>
                                                     <p>
                                                         <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$need["tutorship_need_comments"]}
                                                     </p>
+                                                    </a>
                                                 </td>
                                             </tr>
                                             </foreach>
@@ -882,7 +898,7 @@
                             message += '<a href="'+url+'" style="text-decoration: none;">';
                             message += list.msg[i].tutorship_issue_name
                             message += '</a></td><td class="NameIcom">'
-                            message += '<a href="'+url+'" style="text-decoration: none;">';
+                            message += '<a href="'+url+'" style="text-decoration: none;" class="NameIcomA">';
                             if(list.msg[i].tutorship_issue_istop==1){
                                 message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">'
                             }

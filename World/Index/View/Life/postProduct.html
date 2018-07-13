@@ -17,6 +17,15 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+        input[type="number"]{
+            -moz-appearance: textfield;
+        }
+    </style>
 </head>
 
 <body>
@@ -86,7 +95,7 @@
                                      </div>
                                  </label>
                                  <div class="layui-input-block input-spacing">
-                                     <input type="text" name="number" id="price" lay-verify="required" autocomplete="off" placeholder="Enter the product price" class="layui-input">
+                                     <input type="number" name="number" id="price" lay-verify="required" autocomplete="off" placeholder="Enter the product price" class="layui-input">
                                  </div>
                          </div>
                          <div class="FormContainer" pane>

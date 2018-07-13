@@ -74,6 +74,10 @@ header .Return-icon {
   color: #bcbcbc;
   text-decoration: none;
 }
+.LoginContainer .LinkContainer p a img{
+  width: 30px;
+  height: 30px;
+}
 .LoginContainer .LinkContainer p a:hover {
   color: #1E9FFF;
 }

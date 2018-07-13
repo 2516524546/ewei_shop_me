@@ -108,6 +108,14 @@
 .layui-table td{
   cursor: pointer;
 }
+.layui-table img{
+  width: 25px;
+  height: 25px;
+}
+.NameIcomA img{
+  width: 35px;
+  height: 35px;
+}
 .LatestContentContainer .LatestContainer .PostTable .NameBox a{
   display: block;
   width: 100%;
@@ -122,6 +130,7 @@
 .LatestContentContainer .LatestContainer .PostTable .NameIcom a{
   display: block;
   height: 50px;
+  line-height: 50px;
 }
 .ReleaseButContainer {
   float: right;
@@ -140,6 +149,10 @@
   box-shadow: 2px 2px 14px #cecece;
   margin-top: 60px;
   padding: 20px;
+}
+.GroupDetailsContainer p img{
+  width: 18px;
+  height: 18px;
 }
 .GroupDetailsContainer .p {
   line-height: 46px;

@@ -4,6 +4,16 @@
 <head>
     <include file="./World/Index/View/Public/meta.html"/>
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
+    <style>
+    .ContributionContainer .UserBox .lintpheight img {
+            width: 24px;
+            height: 24px;
+        }
+        .layui-form-label img{
+            width: 24px;
+            height: 24px;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,9 +36,9 @@
                 <div class="col-md-12 UserBox_list">
     
                     <foreach name="items" item="i">
-                    <div class="UserBox" style="padding-bottom: 40px;">
+                    <div class="UserBox">
                         <p style="float: left;margin-right: 14px;">
-                            <img src="<if condition='$i[user_icon]'>./Uploads/{$i['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" style="width: 84px;height: 84px;margin-bottom: 54px;border-radius: 40%;">
+                            <img src="<if condition='$i[user_icon]'>./Uploads/{$i['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" style="width: 84px;height: 84px;margin-bottom: 54px;border-radius: 50%;">
                         </p>
                         <p class="lintpheight">
                             Name : {$i['item_name']}

@@ -408,9 +408,25 @@ footer{
 footer {
   color: #999;
 }
-
+footer P{
+  text-align: center;
+}
 .layui-form-pane .layui-input {
   border-radius: 0 2px 2px 0;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.web{
+  position: relative;
+  min-height: 100%;
+}
+.section{
+  padding-bottom: 100px;
+}
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

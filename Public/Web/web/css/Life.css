@@ -207,12 +207,18 @@
   .GroupList .UserBox .UserFollow {
     margin-top: 10px;
     margin-left: 60px;
-    color: #cccccc;
+    color: #808080;
+    display: flex;
+    align-items: center;
+  }
+  .GroupList .UserBox .UserFollow img{
+    width: 18px;
+    height: 18px;
   }
   .GroupList .UserBox .UserName {
     margin-top: 10px;
     margin-left: 60px;
-    color: #cccccc;
+    color: #808080;
   }
   .GroupList .UserBox .UserName .UserTime {
     margin-left: 32px;
@@ -386,4 +392,9 @@
     width: 80px;
     font-weight: 400;
     text-align: center;
+}
+
+.layui-form-label img{
+  width: 24px;
+  height: 24px;
 }

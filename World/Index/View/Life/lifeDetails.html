@@ -93,7 +93,7 @@
                                                         </a>
                                                     </td>
                                                     <td class="NameIcom">
-                                                    <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
+                                                    <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;" class="NameIcomA">
                                                         <if condition='$note["note_istop"] == 1'>
                                                         <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
                                                         </if>
@@ -135,19 +135,23 @@
                                                         </a>
                                                     </td>
                                                     <td class="NameIcom">
-                                                        <if condition='$question["note_istop"] == 1'>
-                                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
-                                                        </if>
-                                                        <if condition='$question["note_iswally"] == 1'>
-                                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
-                                                        </if>
+                                                        <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;" class="NameIcomA">
+                                                            <if condition='$question["note_istop"] == 1'>
+                                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
+                                                            </if>
+                                                            <if condition='$question["note_iswally"] == 1'>
+                                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
+                                                            </if>
+                                                        </a>
                                                     </td>
                                                     <td class="text-right">
-                                                        <p>{$question["note_createtime"]}</p>
-                                                        <p>
-                                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_xs.png">{$question["note_reward"]}
-                                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$question["note_comments"]}
-                                                        </p>
+                                                        <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
+                                                            <p>{$question["note_createtime"]}</p>
+                                                            <p>
+                                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_xs.png">{$question["note_reward"]}
+                                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$question["note_comments"]}
+                                                            </p>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             </foreach>
@@ -174,19 +178,23 @@
                                                         </a>
                                                     </td>
                                                     <td class="NameIcom">
-                                                        <if condition='$resource["note_istop"] == 1'>
-                                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
-                                                        </if>
-                                                        <if condition='$resource["note_iswally"] == 1'>
-                                                        <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
-                                                        </if>
+                                                        <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;" class="NameIcomA">
+                                                            <if condition='$resource["note_istop"] == 1'>
+                                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
+                                                            </if>
+                                                            <if condition='$resource["note_iswally"] == 1'>
+                                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
+                                                            </if>
+                                                        </a>
                                                     </td>
                                                     <td class="text-right">
+                                                        <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
                                                         <p>{$resource["note_createtime"]}</p>
-                                                        <p>
-                                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_download.png">{$resource["note_reward"]}
-                                                            <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$resource["note_comments"]}
-                                                        </p>
+                                                            <p>
+                                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_download.png">{$resource["note_reward"]}
+                                                                <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$resource["note_comments"]}
+                                                            </p>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             </foreach>
@@ -521,7 +529,7 @@
                             message += '<a href="'+url+'" style="text-decoration: none;">';
                             message += list.msg[i].note_name
                             message += '</a></td><td class="NameIcom">'
-
+                            message += '<a href="'+url+'" style="text-decoration: none;" class="NameIcomA">';
                             if(list.msg[i].note_istop==1){
                                 message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">'
                             }
@@ -532,6 +540,7 @@
                             message += '</td><td class="text-right">'
                             message += '<p>'+list.msg[i].note_createtime+'</p>'
                             message += '<p>'
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
                             if (seltype == 2){
                                 message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_xs.png">'+list.msg[i].note_reward
                             }

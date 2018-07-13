@@ -1,0 +1,43 @@
+.LoginContainer {
+    margin: 42px auto;
+    padding: 40px 6%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-right: 5px;
+    width: 46%;
+    background-color: #ffffff;
+}
+.LoginContainer .FormContainer .layui-form-label {
+    width: 20%;
+    padding: 8px;
+}
+.LoginContainer .FormContainer .input-spacing {
+    margin-left: 0;
+}
+.LoginContainer .FormContainer .input-spacing {
+    margin-left: 0;
+    display: flex;
+}
+.LoginContainer .from-but {
+    margin: 38px auto;
+    width: 66%;
+    text-align: center;
+}
+
+
+.label_img{
+    width: 23px;
+    height: 20px;
+    margin:0 auto;
+    overflow: hidden;
+}
+
+.label_img img{
+    width: 100%;
+    height: 100%;
+}
+
+button:focus {
+    outline: none;
+}
