@@ -17,6 +17,15 @@
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/ResumeDetails.css">
         <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
+        <style>
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+            }
+            input[type="number"]{
+                -moz-appearance: textfield;
+            }
+        </style>
     </head>
 
     <body>
@@ -122,11 +131,11 @@
                                              </div>
                                          <div class="layui-input-block">
                                                  <div class="layui-input-inline">
-                                                     <input type="text" name="price_min" id="lowmoney" placeholder="$" autocomplete="off" <if condition='$resumeone["resume_lowmoney"]'>value="{$resumeone['resume_lowmoney']}"</if> class="layui-input">
+                                                     <input type="number" name="price_min" id="lowmoney" placeholder="$" autocomplete="off" <if condition='$resumeone["resume_lowmoney"]'>value="{$resumeone['resume_lowmoney']}"</if> class="layui-input minNum">
                                                  </div>
                                                      <div class="layui-form-mid">~</div>
                                                  <div class="layui-input-inline">
-                                                     <input type="text" name="price_max" id="hightmoney" placeholder="$" autocomplete="off" <if condition='$resumeone["resume_hightmoney"]'>value="{$resumeone['resume_hightmoney']}"</if> class="layui-input">
+                                                     <input type="number" name="price_max" min="0" id="hightmoney" placeholder="$" autocomplete="off" <if condition='$resumeone["resume_hightmoney"]'>value="{$resumeone['resume_hightmoney']}"</if> class="layui-input maxNum">
                                                  </div>
                                          </div>
                                  </div>
@@ -138,7 +147,7 @@
                                                  </div>
                                              </div>
                                          <div class="layui-input-block">
-                                             <input type="text" name="title" id="workyear" required  lay-verify="required" placeholder="Enter the number of years of service" autocomplete="off" <if condition='$resumeone["resume_workyear"]'>value="{$resumeone['resume_workyear']}"</if> class="layui-input">
+                                             <input type="text" name="title" id="workyear" required  lay-verify="required" placeholder="Enter the number of years of service" autocomplete="off" <if condition='$resumeone["resume_workyear"]'>value="{$resumeone['resume_workyear']}"</if> class="layui-input Wtime">
                                          </div>
                                  </div>
      
@@ -240,6 +249,53 @@
         <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
         <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
         <script>
+            $(".minNum").on("blur",function(){
+                var UBlur = parseInt($(this).val());
+                var maxNumBlur = parseInt($(".maxNum").val());
+                if(UBlur>maxNumBlur && $(".maxNum").val()!="" ){
+                    layer.msg("The minimum cannot be greater than the maximum", {
+                                    time: 1500,
+                                    icon: 2,
+                                }
+                            );
+                            $(this).focus()
+                }else{
+                    UBlur >= 0 ? $(this).val() : $(this).val("0");
+                }
+            })
+            $(".maxNum").on("blur",function(){
+                var UBlur = parseInt($(this).val());
+                var minNumBlur = parseInt($(".minNum").val());
+                // UBlur >= 0 ? $(this).val() : $(this).val("0");
+                if(UBlur<=minNumBlur && $(".minNum").val()!=""){
+                    layer.msg("The maximum cannot be greater than the minimum", {
+                                    time: 1500,
+                                    icon: 2,
+                                }
+                            );
+                            $(this).focus()
+                }else{
+                    UBlur >= 0 ? $(this).val() : $(this).val("0");
+                }
+            })
+            layui.use('laydate', function(){
+            var laydate = layui.laydate;
+            
+            //执行一个laydate实例
+            laydate.render({
+                elem: '.Wtime', //指定元素
+                lang:'en',
+                max: maxDate(),
+            });
+            });
+            function maxDate(){
+                var now = new Date();
+                return now.getFullYear()+"-" + (now.getMonth()+1) + "-" + now.getDate();
+            }
+
+
+
+
             var fileone
             if ('{$resumeone["resume_fileurl"]}'){
                 fileone = 1

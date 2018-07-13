@@ -18,6 +18,18 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
+    <style>
+        .modal-backdrop2{
+            position: fixed;
+            background: rgba(0,0,0,.5);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+            display:none;
+        }
+    </style>
 </head>
 
 <body>
@@ -42,7 +54,8 @@
                 <div class="personal_content">
                     <!-- personal Center title -->
                     <div class="personal_title">
-                        <div class="title_back_img" data-toggle="modal" data-target="#box2">
+                            <!-- data-toggle="modal" data-target="#box2" -->
+                        <div class="title_back_img">
                             <if condition='$isme == 1'>
                             <img src="__PUBLIC__/Web/web/img/06_gerenzhongxin/paint.png" alt="">
                             </if>
@@ -279,7 +292,7 @@
                     </div>
                 </div>
             </div>
-            
+            <div class="modal-backdrop2"></div>
             <!-- Upload the picture -->
             <div id="box2" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                     <div class="modal-dialog modal-sm" role="document">
@@ -301,7 +314,7 @@
                                     </div>
                                     <!-- <input type="button" id="btnZoomIn" value="+">
                                     <input type="button" id="btnZoomOut" value="-"> -->
-                                    <input type="button" id="btnCrop" value="confirm" data-dismiss="modal">
+                                    <input type="button" id="btnCrop" value="confirm">
                                 </div>
                                 <!-- style="display: none;" -->
                                 <div class="cropped" style="display: none;">
@@ -370,14 +383,17 @@
                                                         </a>
                                                     </td>
                                                     <td class="NameIcom">
+                                                            <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;" class="NameIcomA">
                                                         <if condition='$all["note_istop"] == 1'>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
                                                         </if>
                                                         <if condition='$all["note_iswally"] == 1'>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
                                                         </if>
+                                                    </a>
                                                     </td>
                                                     <td class="text-right">
+                                                    <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
                                                         <p>{$all['note_createtime']}</p>
                                                         <p>
                                                             <if condition='$all["note_type"] == 2'>
@@ -388,6 +404,7 @@
                                                             </if>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$all['note_comments']}
                                                         </p>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 </foreach>
@@ -414,18 +431,22 @@
                                                             </a>
                                                         </td>
                                                         <td class="NameIcom">
+                                                        <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;" class="NameIcomA">
                                                             <if condition='$post["note_istop"] == 1'>
                                                                 <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
                                                             </if>
                                                             <if condition='$post["note_iswally"] == 1'>
                                                                 <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
                                                             </if>
+                                                        </a>
                                                         </td>
                                                         <td class="text-right">
+                                                        <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
                                                             <p>{$post['note_createtime']}</p>
                                                             <p>
                                                                 <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$post['note_comments']}
                                                             </p>
+                                                        </a>
                                                         </td>
                                                     </tr>
                                                 </foreach>
@@ -451,19 +472,23 @@
                                                         </a>
                                                     </td>
                                                     <td class="NameIcom">
+                                                        <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;" class="NameIcomA">
                                                         <if condition='$question["note_istop"] == 1'>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
                                                         </if>
                                                         <if condition='$question["note_iswally"] == 1'>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
                                                         </if>
+                                                        </a>
                                                     </td>
                                                     <td class="text-right">
+                                                        <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
                                                         <p>{$question['note_createtime']}</p>
                                                         <p>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_xs.png">{$question['note_reward']}
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$question['note_comments']}
                                                         </p>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 </foreach>
@@ -489,19 +514,23 @@
                                                         </a>
                                                     </td>
                                                     <td class="NameIcom">
+                                                        <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;" class="NameIcomA">
                                                         <if condition='$resource["note_istop"] == 1'>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">
                                                         </if>
                                                         <if condition='$resource["note_iswally"] == 1'>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">
                                                         </if>
+                                                        </a>
                                                     </td>
                                                     <td class="text-right">
+                                                            <a href="{:U('Index/Life/postDetails')}&cid={$cid}&nid={$note['note_id']}" style="text-decoration: none;">
                                                         <p>{$resource['note_createtime']}</p>
                                                         <p>
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_download.png">{$resource['note_reward']}
                                                             <img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">{$resource['note_comments']}
                                                         </p>
+                                                    </a>
                                                     </td>
                                                 </tr>
                                                 </foreach>
@@ -525,13 +554,15 @@
             </footer>
 
     </div>
-<script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
-<script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
-<script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/jquery/dist/jquery.min.js"></script>
+    <!-- <script src="__PUBLIC__/Web/web/js/bootstrap.js"></script> -->
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
+    <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
 
 <script>
+    
     //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
     layui.use('element', function () {
         var element = layui.element;
@@ -646,92 +677,99 @@
             },'json'
         )
     })
+
+    $(".image_box_close").on("click",function(){
+        $("#box2").removeClass("show")
+        $("#box2").css("display","none");
+        $(".modal-backdrop2").css("display","none")
+    })
 </script>
-<script src="__PUBLIC__/Web/web/js/jquery-1.11.1.min.js"></script>
-<script src="__PUBLIC__/Web/web/js/cropbox.js"></script>
 <script>
-//     $(".bg_img").change(function(e){
-//         console.log($(this))
-//     })    
-// </script>
-    <script type="text/javascript">
-        $(window).load(function() {
-            var options =
-            {
-                thumbBox: '.thumbBox',
-                spinner: '.spinner',
-                imgSrc: ''
-            }
-            var cropper = $('.imageBox').cropbox(options);
-            $('#file').on('change', function(){
+        $('#file').on('change', function(){
+                // var file_objN = document.getElementById('file').files[0].name;
+                $(".cropped").html("<img id=imghead>");
+                var img = document.getElementById('imghead');
                 var reader = new FileReader();
-                reader.onload = function(e) {
-                    options.imgSrc = e.target.result;
-                    cropper = $('.imageBox').cropbox(options);
-                }
-                reader.readAsDataURL(this.files[0]);
-    //          this.files = [];
+                reader.onload = function (e) {
+                //当reader加载时，把图片的内容赋值给
+                    $(".imageBox").css("backgroundImage","url("+e.target.result+")")
+
+                    // var Psrc = $("#imghead").attr("src");
+                };
+                    reader.readAsDataURL(this.files[0]);
+                    $('.imageBox').css("background-size","100% 100%")
+                    // console.log(Psrc)
             })
-            $('#btnCrop').on('click', function(){
+    $('#btnCrop').on('click', function(){
+                // var img = cropper.getDataURL();
                 var file_obj = document.getElementById('file').files[0];
                 var fd = new FormData();
                 fd.append('img', file_obj);
                 fd.append('uid','{$userone["user_id"]}')
-
-                $.ajax({
-                    url: "{:U('Index/Ajax/ajax_updatefengmian')}",
-                    type: "POST",
-                    async: false,
-                    cache: false,
-                    processData: false,// 告诉jQuery不要去处理发送的数据
-                    contentType: false,// 告诉jQuery不要去设置Content-Type请求头
-                    data: fd,
-                    dataType:"json",
-                    success: function(data) {
-
-                        if (data.str==1){
-                            layer.msg(data.msg,{
-                                    time:1500,
-                                    icon:1,
-                                }
-                            );
-                            var img = cropper.getDataURL();
-                            var Cdiv = document.createElement("div");
-                            Cdiv.className = "cropped_img";
-                            Cspan = '<img src="' + img + '">'
-                            Cdiv.innerHTML = Cspan
-                            $('.cropped').prepend(Cdiv);
-                            $('#file').val("");
-                            $('.imageBox').removeAttr("style");
-                            // var Userimg = $('.cropped_img').children('img')[0];
-                            var Userimg = img
-                            // console.log(Userimg )
-                            C_Userimg(Userimg)
-                        }else{
-                            layer.msg(data.msg,{
+                console.log(typeof file_obj)
+                if(file_obj==undefined){
+                    
+                }else{
+                    $.ajax({
+                        url: "{:U('Index/Ajax/ajax_updatefengmian')}",
+                        type: "POST",
+                        async: false,
+                        cache: false,
+                        processData: false,// 告诉jQuery不要去处理发送的数据
+                        contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                        data: fd,
+                        dataType:"json",
+                        success: function(data) {
+    
+                            if (data.str==1){
+                                layer.msg(data.msg,{
+                                        time:1500,
+                                        icon:1,
+                                    }
+                                );
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                var img = e.target.result;
+    
+                                // var img = cropper.getDataURL();
+                                var Cdiv = document.createElement("div");
+                                Cdiv.className = "cropped_img";
+                                Cspan = '<img src="' + img + '">'
+                                Cdiv.innerHTML = Cspan
+                                $('.cropped').prepend(Cdiv);
+                                $('#file').val("");
+                                $('.imageBox').removeAttr("style");
+                                // var Userimg = $('.cropped_img').children('img')[0];
+                                var Userimg = img
+                                // console.log(Userimg )
+                                C_Userimg(Userimg)
+                                $("#box2").removeClass("show")
+                                $("#box2").css("display","none");
+                                $(".modal-backdrop2").css("display","none")
+                                };
+                                    reader.readAsDataURL(file_obj);
+                            }else{
+                                layer.msg(data.msg,{
+                                        time:1500,
+                                        icon:2,
+                                    }
+                                );
+                                
+                            }
+    
+                        },
+                        error: function(err) {
+    
+                            layer.msg('请求失败!',{
                                     time:1500,
                                     icon:2,
                                 }
                             );
                         }
-
-                    },
-                    error: function(err) {
-
-                        layer.msg('请求失败!',{
-                                time:1500,
-                                icon:2,
-                            }
-                        );
-                    }
-                });
+                    });
+                    
+                }
             })
-            // $('#btnZoomIn').on('click', function(){
-            //     cropper.zoomIn();
-            // })
-            // $('#btnZoomOut').on('click', function(){
-            //     cropper.zoomOut();
-            // })
             if ("{$userone['user_cover']}"!=''){
                 C_Userimg('./Uploads/{$userone["user_cover"]}')
             }
@@ -741,13 +779,122 @@
                 $('.personal_content .personal_title').css("background-size","100% 100%")
             }
             $(".title_back_img").on("click",function(){
+                $("#box2").addClass("show")
+                $("#box2").css({"display" : "block","padding-right" : "17px"});
+                $(".modal-backdrop2").css("display","block")
                 var Pic = $(".personal_content .personal_title").css("backgroundImage");
-                //console.log($(".imageBox").css("backgroundImage",Pic))
+                $(".imageBox").css("backgroundImage",Pic)
+                $('.imageBox').css("background-size","100% 100%")
                 // $("imageBox").css("backgroundImage",Pic)
             })
-            //$('.personal_content .personal_title .P_title_pic').children('img').remove()
-        });
-    </script>
+</script>
+
+
+// <script src="__PUBLIC__/Web/web/js/jquery-1.11.1.min.js"></script>
+// <script src="__PUBLIC__/Web/web/js/cropbox.js"></script>
+// <script>
+// //     $(".bg_img").change(function(e){
+// //         console.log($(this))
+// //     })    
+// // </script>
+//     <script type="text/javascript">
+//         $(window).load(function() {
+//             // var faceurl = '<?php echo $face;?>';
+//             var options =
+//             {
+//                 thumbBox: '.thumbBox',
+//                 spinner: '.spinner',
+//                 imgSrc: ''
+//             }
+//             var cropper = $('.imageBox').cropbox(options);
+//             $('#file').on('change', function(){
+//                 var reader = new FileReader();
+//                 reader.onload = function(e) {
+//                     options.imgSrc = e.target.result;
+//                     cropper = $('.imageBox').cropbox(options);
+//                 }
+//                 reader.readAsDataURL(this.files[0]);
+//                 this.files = [];
+//             })
+//             $('#btnCrop').on('click', function(){
+//                 var img = cropper.getDataURL();
+//                 var file_obj = document.getElementById('file').files[0];
+//                 var fd = new FormData();
+//                 fd.append('img', file_obj);
+//                 fd.append('uid','{$userone["user_id"]}')
+
+//                 $.ajax({
+//                     url: "{:U('Index/Ajax/ajax_updatefengmian')}",
+//                     type: "POST",
+//                     async: false,
+//                     cache: false,
+//                     processData: false,// 告诉jQuery不要去处理发送的数据
+//                     contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+//                     data: fd,
+//                     dataType:"json",
+//                     success: function(data) {
+
+//                         if (data.str==1){
+//                             layer.msg(data.msg,{
+//                                     time:1500,
+//                                     icon:1,
+//                                 }
+//                             );
+//                             var img = cropper.getDataURL();
+//                             var Cdiv = document.createElement("div");
+//                             Cdiv.className = "cropped_img";
+//                             Cspan = '<img src="' + img + '">'
+//                             Cdiv.innerHTML = Cspan
+//                             $('.cropped').prepend(Cdiv);
+//                             $('#file').val("");
+//                             $('.imageBox').removeAttr("style");
+//                             // var Userimg = $('.cropped_img').children('img')[0];
+//                             var Userimg = img
+//                             // console.log(Userimg )
+//                             C_Userimg(Userimg)
+//                         }else{
+//                             layer.msg(data.msg,{
+//                                     time:1500,
+//                                     icon:2,
+//                                 }
+//                             );
+                            
+//                         }
+
+//                     },
+//                     error: function(err) {
+
+//                         layer.msg('请求失败!',{
+//                                 time:1500,
+//                                 icon:2,
+//                             }
+//                         );
+//                     }
+//                 });
+//             })
+//             // $('#btnZoomIn').on('click', function(){
+//             //     cropper.zoomIn();
+//             // })
+//             // $('#btnZoomOut').on('click', function(){
+//             //     cropper.zoomOut();
+//             // })
+//             var img = cropper.getDataURL();
+            // if ("{$userone['user_cover']}"!=''){
+            //     C_Userimg('./Uploads/{$userone["user_cover"]}')
+            // }
+            // function C_Userimg(img){
+            //     // $('.personal_content .personal_title').html(img)
+            //     $('.personal_content .personal_title').css("background","url("+img+") no-repeat");
+            //     $('.personal_content .personal_title').css("background-size","100% 100%")
+            // }
+            // $(".title_back_img").on("click",function(){
+            //     var Pic = $(".personal_content .personal_title").css("backgroundImage");
+            //     $(".imageBox").css("backgroundImage",Pic)
+            //     // $("imageBox").css("backgroundImage",Pic)
+            // })
+            // $('.personal_content .personal_title .P_title_pic').children('img').remove()
+        // });
+//     </script>
 <script>
 
 
@@ -878,13 +1025,16 @@
                             message += '<a href="'+url+'" style="text-decoration: none;">';
                             message += list.msg[i].note_name
                             message += '</a></td><td class="NameIcom">'
+                            message += '<a href="'+url+'" style="text-decoration: none;" class="NameIcomA">';
                             if(list.msg[i].note_istop==1){
                                 message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_top.png">'
                             }
                             if(list.msg[i].note_iswally==1){
                                 message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_jing.png">'
                             }
+                            message += '</a>'
                             message += '</td><td class="text-right">'
+                            message += '<a href="'+url+'" style="text-decoration: none;">';
                             message += '<p>'+list.msg[i].note_createtime+'</p>'
                             message += '<p>'
                             if (list.msg[i].note_type == 2){
@@ -894,6 +1044,7 @@
                                 message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_download.png">'+list.msg[i].note_reward
                             }
                             message += '<img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_icon_pl.png">'+list.msg[i].note_comments+'</p>'
+                            message += '</a>'
                             message += '</td></tr>'
 
                         }

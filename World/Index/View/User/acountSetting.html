@@ -192,10 +192,10 @@ layui.use('laydate', function(){
         laydate.render({
             elem: '.Wtime', //指定元素
             lang:'en',
-            max: minDate(),
+            max: maxDate(),
         });
         });
-        function minDate(){
+        function maxDate(){
             var now = new Date();
             return now.getFullYear()+"-" + (now.getMonth()+1) + "-" + now.getDate();
         }

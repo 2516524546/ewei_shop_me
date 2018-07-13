@@ -38,6 +38,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-grow: 1;
+}
+.MyPosts_content .box_item .box_top .box_left a{
+    text-decoration: none;
 }
 .MyPosts_content .box_item .box_top .box_left .box_left_img{
     width: 80px;
