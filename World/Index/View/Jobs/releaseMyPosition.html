@@ -16,6 +16,15 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/WorkList.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/releaseMyPosition.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+        input[type="number"]{
+            -moz-appearance: textfield;
+        }
+    </style>
 </head>
 
 <body>
@@ -186,11 +195,11 @@
                                                 </div>
                                             </label>
                                             <div class="layui-input-inline" style="width: 100px;">
-                                                <input type="text" name="works_minmoney" placeholder="￥" autocomplete="off" class="layui-input">
+                                                <input type="number" name="works_minmoney" placeholder="￥" autocomplete="off" class="layui-input">
                                             </div>
                                             <div class="layui-form-mid">-</div>
                                             <div class="layui-input-inline" style="width: 100px;">
-                                                <input type="text" name="works_maxmoney" placeholder="￥" autocomplete="off" class="layui-input">
+                                                <input type="number" name="works_maxmoney" placeholder="￥" autocomplete="off" class="layui-input">
                                             </div>
                                         </div>
                                     </div>
@@ -201,7 +210,7 @@
                                             </div>
                                         </label>
                                         <div class="layui-input-block" style="margin-left: 64px;">
-                                            <input type="text" name="works_years" lay-verify="title" autocomplete="off" placeholder="Enter the number of years of service" class="layui-input">
+                                            <input type="text" name="works_years" lay-verify="title" autocomplete="off" placeholder="Enter the number of years of service" class="layui-input Wtime">
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
@@ -346,6 +355,21 @@
     <script src="__PUBLIC__/Web/web/js/ListOfDonations.js"></script>
     <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
     <script>
+        layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        
+        //执行一个laydate实例
+        laydate.render({
+            elem: '.Wtime', //指定元素
+            lang:'en',
+            max: maxDate(),
+        });
+        });
+        function maxDate(){
+            var now = new Date();
+            return now.getFullYear()+"-" + (now.getMonth()+1) + "-" + now.getDate();
+        }
+
         $(function(){
             (function(){
                 var num;

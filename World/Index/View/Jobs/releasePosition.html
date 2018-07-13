@@ -17,6 +17,15 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/Crumbsnav.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+        input[type="number"]{
+            -moz-appearance: textfield;
+        }
+    </style>
 </head>
 
 <body>
@@ -76,11 +85,11 @@
                             </label>
                             <div class="layui-inline">
                                 <div class="layui-input-inline">
-                                    <input type="text" name="minmoney" id="minmoney" placeholder="￥" autocomplete="off" class="layui-input">
+                                    <input type="number" name="minmoney" id="minmoney" placeholder="￥" autocomplete="off" class="layui-input">
                                 </div>
                                 <div class="layui-form-mid">-</div>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="maxmoney" id="maxmoney" placeholder="￥" autocomplete="off" class="layui-input">
+                                    <input type="number" name="maxmoney" id="maxmoney" placeholder="￥" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                         </div>
@@ -91,7 +100,7 @@
                                 </div>
                             </label>
                             <div class="layui-input-block">
-                                <input type="text" name="years" id="years" lay-verify="title" autocomplete="off" placeholder="Enter requirements for working seniority" class="layui-input">
+                                <input type="text" name="years" id="years" lay-verify="title" autocomplete="off" placeholder="Enter requirements for working seniority" class="layui-input Wtime">
                             </div>
                         </div>
                         <div class="layui-form-item">
@@ -239,7 +248,7 @@
                                 </div>
                             </label>
                             <div class="layui-input-block">
-                                <input type="text" name="company_mail" id="company_mail" lay-verify="title" autocomplete="off" placeholder=" Enter E-Mail" class="layui-input">
+                                <input type="email" name="company_mail" id="company_mail" lay-verify="title" autocomplete="off" placeholder=" Enter E-Mail" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
@@ -286,7 +295,20 @@
 </body>
 
 <script>
-
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        
+        //执行一个laydate实例
+        laydate.render({
+            elem: '.Wtime', //指定元素
+            lang:'en',
+            max: maxDate(),
+        });
+        });
+        function maxDate(){
+            var now = new Date();
+            return now.getFullYear()+"-" + (now.getMonth()+1) + "-" + now.getDate();
+        }
     layui.use('form', function(){
         var form = layui.form;
 
