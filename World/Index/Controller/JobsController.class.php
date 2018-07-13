@@ -893,7 +893,7 @@ class JobsController extends CommonController {
                     $upload->maxSize   =     3145728 ;
                     $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');
                     $upload->rootPath  =      './Uploads/';
-                    
+
                     $info   =   $upload->uploadOne($_FILES['file']);
                     if(!$info) {
                         die(json_encode(['status'=>0,'msg'=>$upload->getError()]));

@@ -173,13 +173,18 @@ class LifeController extends CommonController {
           $id=$_GET['cid'];
         $commoditymodel = new CommodityModel();
         $commodity=$commoditymodel->findoneJoin("commodity_id=$id",'u_user u on l_commodity.commodity_uid = u.user_id','LEFT');
+
         $id=$commodity['commodity_id'];
         $commentCount=M('l_commodity_comment')->where("commodity_comment_cid=$id")->count();
         $iscollect = 0;
-        $have=M("l_commodity_collect")->where("commodity_collect_uid={$this->userid} and commodity_collect_cid={$commodity['commodity_id']}")->find();
-        if ($have){
-            $iscollect = 1;
+        if ($this->userid) {
+            $have = M("l_commodity_collect")->where("commodity_collect_uid=" . $this->userid . " and commodity_collect_cid={$commodity['commodity_id']}")->find();
+
+            if ($have) {
+                $iscollect = 1;
+            }
         }
+
 
 
         $this->assign("commentCount",$commentCount);
