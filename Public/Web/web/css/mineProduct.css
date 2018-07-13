@@ -127,6 +127,11 @@
     text-align: center;
     width: 17%;
 }
+.item_box .item_box_right img{
+    width: 27px;
+    height: 24px;
+    overflow: hidden;
+}
 .item_box .item_box_right a img{
     width: 24px;
     height: 24px;

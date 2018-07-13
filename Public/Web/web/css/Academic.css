@@ -16,6 +16,26 @@
   background-size: 260px;
   margin-top: 20px;
 }
+.logreg .Login .LoginI img{
+  width: 100%;
+  height: 100%;
+}
+.logreg .SignUp .SignUpI img{
+  width: 100%;
+  height: 100%;
+}
+.logreg .Login .LoginI{
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+}
+.logreg .SignUp .SignUpI{
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+}
 /* 右上角登录与注册框右浮动 */
 .logreg {
   float: right;

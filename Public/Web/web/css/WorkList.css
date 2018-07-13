@@ -277,3 +277,8 @@
 a:hover{
   text-decoration: none;
 }
+
+.ContributionContainer .UserBox .lintpheight_box img{
+  width: 24px;
+  height: 24px;
+}

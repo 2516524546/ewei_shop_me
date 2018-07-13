@@ -2,6 +2,26 @@
     text-decoration: none;
     display: inline-block;
   }
+  .logreg .Login .LoginI img{
+    width: 100%;
+    height: 100%;
+  }
+  .logreg .SignUp .SignUpI img{
+    width: 100%;
+    height: 100%;
+  }
+  .logreg .Login .LoginI{
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+  }
+  .logreg .SignUp .SignUpI{
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+  }
   /* 头部信息的边距 */
   .headerBox {
     margin: 12px 0 0;
