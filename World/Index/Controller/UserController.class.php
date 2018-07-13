@@ -257,6 +257,7 @@ class UserController extends CommonController {
             }else{
                 $groups = [];
             }
+
             $this->assign('groups',$groups);
             $this->assign('page',$show);
         }else{

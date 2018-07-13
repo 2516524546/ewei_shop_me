@@ -477,6 +477,23 @@ return array(
     'Resume_resume_upload' => '上传简历',
     'Resume_resume_not_empty' => '上传的简历不能为空',
 
+    'Resume_resume_module' => '简历模版',
+    'Resume_resume_module_id' => 'id',
+    'Resume_resume_module_name' => '名称',
+    'Resume_resume_module_url' => '文件路径',
+    'resume_module_createtime' => '上传时间',
+    'resume_module_add' => '添加',
+    'resume_module_edit' => '修改',
+    'resume_module_add_file' => '模版文件',
+    'resume_module_addok' => '添加成功',
+    'resume_module_addno' => '添加失败',
+    'resume_module_add_isfile' => '请选择一个文件上传',
+    'resume_module_add_isname' => '请输入名称',
+    'resume_module_delok' => '删除成功',
+    'resume_module_delno' => '删除失败',
+    'resume_module_editok' => '修改成功',
+    'resume_module_editno' => '修改失败，请确保信息有更改过',
+
     /*
 	 * Resume end
 	 *******************************************************************/

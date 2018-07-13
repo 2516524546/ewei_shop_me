@@ -57,7 +57,7 @@
                           <if condition="empty($_GET['type'])">
                           <div class="layui-tab-item layui-show Created_item">
                               <foreach name="groups" item="g">
-                              <div class="MyGroup_list">
+                              <div class="MyGroup_list" onclick="gocrowd({$g['crowd_mid']},{$g['crowd_id']})" style="cursor: pointer">
                                   <div class="MyGroup_item">
                                     <div class="MyGroup_left">
                                         <div class="myGroup_left_img">
@@ -90,7 +90,7 @@
     <div class="layui-tab-item  layui-show Joined_item">
         <div class="MyGroup_list">
             <foreach name="groups" item="g">
-                <div class="MyGroup_item">
+                <div class="MyGroup_item" onclick="gocrowd({$g['crowd_mid']},{$g['crowd_id']})" style="cursor: pointer">
                     <div class="MyGroup_left">
                         <div class="myGroup_left_img">
                             <img src="<if condition='$g["crowd_icon"]'>./Uploads/{$g["crowd_icon"]}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
@@ -220,6 +220,20 @@
     </script>
     <script>
 
+        function gocrowd(mid,cid) {
+            var url = '';
+            if (mid==2){
+                url = '{:U("Index/Rnterst/groupDetails")}&cid='+cid;
+            }else if (mid==3){
+                url = '{:U("Index/Academic/academicGroups")}&cid='+cid;
+            }else if (mid==4){
+                url = '{:U("Index/Jobs/groupDetails")}&cid='+cid;
+            }else if (mid==5){
+                url = '{:U("Index/Life/lifeDetails")}&cid='+cid;
+            }
+            window.location.href=url;
+        }
+        
         // I Create it
         $(function(){
             (function(){

@@ -28,7 +28,7 @@ class IndexController extends CommonController {
         $usermodel = new UserModel();
         $donationmodel = new DonationModel();
         $proposaltypemodel = new ProposalTypeModel();
-        $field = "user_havecoin,user_outcoin,user_outmoney,user_name,user_icon";
+        $field = "user_id,user_havecoin,user_outcoin,user_outmoney,user_name,user_icon";
 
         $wealth = $usermodel->honorlist('','user_havecoin desc',0,5,$field);
 
