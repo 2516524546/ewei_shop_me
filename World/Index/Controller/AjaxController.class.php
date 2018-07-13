@@ -518,7 +518,7 @@ class AjaxController extends CommonController
             } else {
 
                 $usermodel = new UserModel();
-                $field = "user_havecoin,user_outcoin,user_outmoney,user_name,user_icon";
+                $field = "user_id,user_havecoin,user_outcoin,user_outmoney,user_name,user_icon";
 
                 $limit1 = ($this->post('limit1')-1)*$this->post('limit2');
                 if ($this->post('type')==1){

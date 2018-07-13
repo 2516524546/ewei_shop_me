@@ -87,7 +87,7 @@
                                         <table class="layui-table">
                                             <tbody>
                                             <foreach name="wealth" item="w" key="k">
-                                                <tr>
+                                                <tr onclick="gohome({$w['user_id']})" style="cursor: pointer">
                                                     <td>
                                                         <span>
                                                             <switch name="k" >
@@ -119,7 +119,7 @@
                                         <table class="layui-table">
                                             <tbody>
                                             <foreach name="donate" item="d" key="k">
-                                                <tr>
+                                                <tr onclick="gohome({$d['user_id']})" style="cursor: pointer">
                                                     <td>
                                                         <span>
                                                             <switch name="k" >
@@ -149,7 +149,7 @@
                                         <table class="layui-table">
                                             <tbody>
                                             <foreach name="expenditure" item="e" key="k">
-                                                <tr>
+                                                <tr onclick="gohome({$e['user_id']})" style="cursor: pointer">
                                                     <td>
                                                         <span>
                                                             <switch name="k" >
@@ -457,6 +457,10 @@
             }
 
         })
+    }
+    
+    function gohome(id) {
+        window.location.href="{:U('Index/User/personalCenter')}&id="+id;
     }
 
 

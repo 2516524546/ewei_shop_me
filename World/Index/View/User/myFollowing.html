@@ -108,7 +108,7 @@
                    <div class="MyFollowing_list">
                        <foreach name="myFollows" item="f">
                        <div class="MyFollowing_item Following_item">
-                           <a href="{:U('User/personalCenter/',['id'=>$f['concerns_cuid']])}">
+                           <a href="javascript:void(0)" onclick="gohome('{$f["concerns_cuid"]}')">
                                <div class="MyFollowing_content">
                                    <div class="MyFollowing_img">
                                        <img src="<if condition='$f["user_icon"]'>./Uploads/{$f['user_icon']}<else />__PUBLIC__/Web/web/img/01_shouye/UserPic.png</if>" alt="">
@@ -204,6 +204,10 @@
                 },'json'
             );
         })
+        
+        function gohome(id) {
+            window.location.href="{:U('Index/User/personalCenter')}&id="+id
+        }
 
         $(function(){
             (function(){
