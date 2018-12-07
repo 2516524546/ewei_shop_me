@@ -1,0 +1,169 @@
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.xml.transform.Source;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.surfaceviewdemo.Demo1.MyThread;
+import com.example.surfaceviewdemo.Demo1.MyView;
+
+import android.app.Activity;
+import android.app.ActionBar;
+import android.app.Fragment;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.support.v4.widget.SimpleCursorAdapter.ViewBinder;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.os.Build;
+
+public class MainActivity extends Activity {
+
+	Button down, up;
+
+	public static RequestQueue mQueue;
+	public String result;
+
+	private SurfaceHolder holder;
+	private Paint paint;
+	int WIDTH = 320;
+	private int cx = 5;
+
+	Timer timer = new Timer();
+	TimerTask task = null;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.huanjing);
+
+		final SurfaceView surface = (SurfaceView) findViewById(R.id.show_sur);
+		holder = surface.getHolder();
+		paint = new Paint();
+		paint.setColor(Color.GREEN);
+		paint.setStrokeWidth(3);
+		down = (Button) findViewById(R.id.down);
+		up = (Button) findViewById(R.id.up);
+		System.out.println(Down());
+		OnClickListener listener = (new OnClickListener() {
+
+			@Override
+			public void onClick(final View arg0) {
+				// TODO Auto-generated method stub
+				// drawBack(holder);
+				cx = 5;
+				if (task != null) {
+					task.cancel();
+				}
+
+				task = new TimerTask() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						Canvas canvas = holder.lockCanvas(new Rect(cx, 0,
+								cx + 50, 500));
+						
+						canvas.drawLine(cx, cx, cx + 50, cx + 50, paint);
+						
+						cx += 50;
+						if (cx > WIDTH) {
+							task.cancel();
+							task = null;
+						}
+						holder.unlockCanvasAndPost(canvas);
+					}
+				};
+
+				timer.schedule(task, 0, 2000);
+			}
+
+		});
+		up.setOnClickListener(listener);
+
+		holder.addCallback(new Callback() {
+
+			@Override
+			public void surfaceDestroyed(SurfaceHolder arg0) {
+				// TODO Auto-generated method stub
+				timer.cancel();
+			}
+
+			@Override
+			public void surfaceCreated(SurfaceHolder arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2,
+					int arg3) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+	}
+
+	private String Down() {
+		mQueue = Volley.newRequestQueue(this);
+		JSONObject json = new JSONObject();
+
+		try {
+			json.put("", "");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+				"http://192.168.1.232:8080/transportservice/type/jason/action/GetAllSense.do",
+				json, new Response.Listener<JSONObject>() {
+					@Override
+					public void onResponse(JSONObject response) {
+						try {
+							JSONObject json1 = new JSONObject(response
+									.getString("serverinfo"));
+							result = json1.getString("pm2.5");
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+
+					}
+				}, new Response.ErrorListener() {
+					@Override
+					public void onErrorResponse(VolleyError error) {
+						Log.e("TAG", error.getMessage(), error);
+					}
+				});
+		mQueue.add(jsonObjectRequest);
+		return result;
+	}
+
+}

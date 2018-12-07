@@ -110,11 +110,11 @@
 }
 .layui-table img{
   width: 25px;
-  height: 25px;
+  /* height: 25px; */
 }
 .NameIcomA img{
   width: 35px;
-  height: 35px;
+  /* height: 35px; */
 }
 .LatestContentContainer .LatestContainer .PostTable .NameBox a{
   display: block;

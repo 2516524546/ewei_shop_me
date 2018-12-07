@@ -308,9 +308,14 @@
                                     <!-- <div class="spinner" style="display: none">请上传图片</div> -->
                                 </div>
                                 <div class="action">
-                                    <div class="file_btn">
-                                        Select upload cover
-                                        <input type="file" accept="image/jpeg,image/png" id="file" class="input_file">
+                                    <div class="file_tip">
+                                        <div class="file_btn">
+                                            Select upload cover
+                                            <input type="file" accept="image/jpeg,image/png" id="file" class="input_file">
+                                        </div>
+                                        <span class="file_name">
+                                            Please upload no more than 3M images
+                                        </sapn>
                                     </div>
                                     <!-- <input type="button" id="btnZoomIn" value="+">
                                     <input type="button" id="btnZoomOut" value="-"> -->
@@ -720,7 +725,6 @@
                         data: fd,
                         dataType:"json",
                         success: function(data) {
-    
                             if (data.str==1){
                                 layer.msg(data.msg,{
                                         time:1500,

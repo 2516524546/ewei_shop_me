@@ -1,0 +1,183 @@
+Button  pm,co,temp,light,hum;
+	public static RequestQueue mQueue;
+	int max =15;
+	public int a = 0;
+	public int[] mPM = new int[max];
+
+
+	public String result;
+	
+	private SurfaceView surface;
+	private SurfaceHolder holder;
+	int WIDTH = 320;
+	private int cx = 5;
+	private int cy = 500;
+	int i = cy;
+
+	Timer timer = new Timer();
+	TimerTask task = null;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.huanjing);
+
+		surface = (SurfaceView) findViewById(R.id.show_sur);
+
+		holder = surface.getHolder();
+
+		pm = (Button) findViewById(R.id.pm);
+
+		myTheard th =new myTheard();
+		th.start();
+		
+		
+
+		pm.setOnClickListener(this);
+
+		
+
+	}
+
+	private void hua(int [] a,double bei) {
+
+		Canvas canvas = null;
+		synchronized (holder) {
+			canvas=holder.lockCanvas();
+			canvas.drawColor(Color.WHITE);
+			Paint paint = new Paint();
+			paint.setColor(Color.BLUE);
+			paint.setStrokeWidth(3);
+			Paint paint1 = new Paint();
+			paint1.setColor(Color.RED);
+			paint1.setStrokeWidth(8);
+			double point_pre=a[0]/bei;
+			int div_x=this.surface.getWidth()/max;
+			int div_h=this.surface.getHeight();
+			for(int i = 1;i<a.length;i++){
+				canvas.drawLine((i-1)*div_x, (int)(div_h-point_pre),i*div_x, (int)(div_h-a[i]/bei), paint);
+				canvas.drawText(""+a[i], i*div_x, (int)(div_h-a[i]/bei)-10, paint1);
+				point_pre=a[i]/bei;
+			}
+			
+			
+		}
+		
+		holder.unlockCanvasAndPost(canvas);
+
+	}
+
+	public void Down() {
+		mQueue = Volley.newRequestQueue(this);
+		JSONObject json = new JSONObject();
+
+		try {
+			json.put("", "");
+		} catch (JSONException e) {
+
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+		}
+		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+				"http://192.168.1.232:8080/transportservice/type/jason/action/GetAllSense.do",
+				json, new Response.Listener<JSONObject>() {
+
+					@Override
+					public void onResponse
+
+					(JSONObject response) {
+						try {
+
+							JSONObject json1 = new JSONObject(response
+									.getString("serverinfo"));
+							if (a < max) {
+								mPM[a] = Integer.parseInt(json1
+										.getString("pm2.5"));
+
+								a++;
+							} else {
+								for (int y = 0; y < max - 1; y++) {
+									mPM[y] = mPM[y + 1];
+
+								mPM[mPM.length - 1] = Integer.parseInt(json1
+										.getString("pm2.5"));
+
+							}
+
+						} catch (JSONException e) {
+
+							// TODO Auto-generated catch block
+
+							e.printStackTrace();
+
+						}
+
+					}
+				},
+
+				new Response.ErrorListener() {
+					@Override
+					public void onErrorResponse(VolleyError error) {
+
+						Log.e("TAG", error.getMessage(), error);
+
+					}
+				});
+		mQueue.add(jsonObjectRequest);
+
+	}
+
+	class myTheard extends Thread {
+		
+
+		
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			super.run();
+			int q = 0;
+			while (q < 16) {
+
+				try {
+					
+					Down();
+					q++;
+					sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	@Override
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
+
+		
+		switch(arg0.getId()){
+		case R.id.pm:
+			
+			if (task != null) {
+				task.cancel();
+			}
+			task = new TimerTask() {
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					// Down();
+					hua(mPM,1);
+					Down();
+				}
+			};
+			timer.schedule(task, 0, 3000);
+			break;
+		
+			
+		}
+		
+	}

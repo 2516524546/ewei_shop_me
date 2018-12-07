@@ -10,15 +10,17 @@ class TestController extends CommonController {
         $fb = new Facebook([
             'app_id' => '213750755890819', // Replace {app-id} with your app id
             'app_secret' => '76c3fe7dac901b5f4199159d3e65f4bd',
-            'default_graph_version' => 'v2.2',
+            'default_graph_version' => 'v2.8',
         ]);
 
         $helper = $fb->getRedirectLoginHelper();
 
         $permissions = ['email']; // Optional permissions
-        $loginUrl = $helper->getLoginUrl('http://newworld.bofanchina.com/index.php?m=Index&c=Test&a=login_callback', $permissions);
-
-        echo '<a href="' . htmlspecialchars($loginUrl) . '">Login with Facebook!</a>';
+        $url = htmlspecialchars('newworld.bofanchina.com/index.php?m=Index&c=Test&a=login_callback');
+        $loginUrl = $helper->getLoginUrl($url, $permissions);
+        var_dump(htmlspecialchars($loginUrl));
+        $nurl = 'https://www.facebook.com/v2.8/dialog/oauth?client_id=213750755890819&state=d14512e36b08d1dc894387f71458b45a&response_type=code&sdk=php-sdk-5.6.3&redirect_uri=https://newworld.bofanchina.com/index.php?m=Index&c=Test&a=login_callback&scope=email';
+        echo '<a href="' . htmlspecialchars($nurl) . '">Login with Facebook!</a>';
     }
 
 
@@ -26,13 +28,16 @@ class TestController extends CommonController {
         $fb = new Facebook([
             'app_id' => '213750755890819', // Replace {app-id} with your app id
             'app_secret' => '76c3fe7dac901b5f4199159d3e65f4bd',
-            'default_graph_version' => 'v2.2',
+            'default_graph_version' => 'v2.8',
         ]);
 
-        $helper = $fb->getRedirectLoginHelper();
+        $helper = $fb->getJavaScriptHelper();
 
         try {
+            var_dump($helper);
+            echo 'https://graph.facebook.com/oauth/access_token?client_id=213750755890819&redirect_uri=newworld.bofanchina.com&client_secret=76c3fe7dac901b5f4199159d3e65f4bd&code=AQDbpnMKUoo399z5WsQAxmu4EfTVe3rAzxyXPeLh94nnyAR868-Xu_enicSa22WRULKLMzYa0LV1VeQrjsupUgkLfodDqcayttHADTH58ugyKSzgxIq9HqfMQeZQTqHnbJYDCNxhU_f9AANwbiEuXCjAWkAMD8ohKLCCVXqPj0dmS5Z1b4Il_-6XM8RyZ3AnYDckviH8TfUFjNhstltJKagcVjDPoTAn-w9biYL3wwN_YUm5iu8UzRRWk13NF0wconpd7I4pphKN3oDm5-JsbhRrTtKPkBS0KQM7wEVPRQ4QLkwnpuPaYMIfiHPcawCIgOdrhpOMrMrTfKgNP-sBAKIS';
             $accessToken = $helper->getAccessToken();
+
         } catch(FacebookResponseException $e) {
             // When Graph returns an error
             echo 'Graph returned an error: ' . $e->getMessage();
@@ -89,6 +94,12 @@ class TestController extends CommonController {
         }
 
         $_SESSION['fb_access_token'] = (string) $accessToken;
+    }
+
+    public function testht(){
+
+
+        $this->display();
     }
 
 

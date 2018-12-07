@@ -27,7 +27,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 72%;
     text-decoration: none;
 }
 .MyFollowing_box .MyFollowing_list .MyFollowing_item .Group_btn{

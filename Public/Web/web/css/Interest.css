@@ -144,9 +144,14 @@
 }
 .SearchContainer .SelectionTypeContainer {
   clear: both;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 .SearchContainer .SelectionTypeContainer .layui-input-block {
-  margin-left: 80px;
+  margin-left: 0;
+  margin-bottom: 0;
+  width: 100%;
 }
 .SearchContainer #Selectionform {
   width: 46%;
@@ -317,14 +322,14 @@
 .layui-form-label {
   float: left;
   display: block;
-  padding: 9px 15px;
+  padding: 0;
   width: 80px;
   font-weight: 400;
   text-align: center;
 }
 .layui-form-label span img{
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  /* height: 24px; */
 }
 
 

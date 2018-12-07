@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/iconfont.css">
     <style>
-        .layui-table tr td span img{
-            width: 24px;
-            height: 24px;
+        .rtable tr td span img{
+            width: 16px;
+            height: 17px;
         }
         .ProposalContainer .TitleContainer img{
             width: 16px;
@@ -94,7 +94,7 @@
                             <div class="layui-tab-content">
                                 <div class="layui-tab-item layui-show">
                                     <div class="layui-form">
-                                        <table class="layui-table">
+                                        <table class="layui-table rtable">
                                             <tbody>
                                             <foreach name="wealth" item="w" key="k">
                                                 <tr onclick="gohome({$w['user_id']})" style="cursor: pointer">
@@ -126,7 +126,7 @@
                                 </div>
                                 <div class="layui-tab-item">
                                     <div class="layui-form">
-                                        <table class="layui-table">
+                                        <table class="layui-table rtable">
                                             <tbody>
                                             <foreach name="donate" item="d" key="k">
                                                 <tr onclick="gohome({$d['user_id']})" style="cursor: pointer">
@@ -156,7 +156,7 @@
                                 </div>
                                 <div class="layui-tab-item">
                                     <div class="layui-form">
-                                        <table class="layui-table">
+                                        <table class="layui-table rtable">
                                             <tbody>
                                             <foreach name="expenditure" item="e" key="k">
                                                 <tr onclick="gohome({$e['user_id']})" style="cursor: pointer">

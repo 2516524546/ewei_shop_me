@@ -223,7 +223,7 @@
                                 $("#second"+data.firstid).html(message)
                             }else{
 
-                                var message = '<div id="second'+data.firstid+'" class="SelectionTypeContainer" style="margin-bottom: 10px;"><div class="layui-input-block" ><select name="third" lay-verify="required" lay-filter="secondselect"><option value="">choose</option>';
+                                var message = '<div id="second'+data.firstid+'" class="SelectionTypeContainer" style="margin-bottom: 10px;float:right;width:81%;"><div class="layui-input-block" ><select name="third" lay-verify="required" lay-filter="secondselect"><option value="">choose</option>';
                                 for (var i = 0; i < data.msg.length; i++) {
 
                                     message +='<option value="'+data.msg[i]['third_mark_id']+'">';
@@ -289,7 +289,7 @@
                                 $("#third" + data.secondid).html(message)
                             } else {
 
-                                var message = '<div id="third' + data.secondid + '" class="SelectionTypeContainer" style="margin-bottom: 10px;"><div class="layui-input-block" ><select name="four" lay-verify="required" lay-filter="thirdselect"><option value="">choose</option>';
+                                var message = '<div id="third' + data.secondid + '" class="SelectionTypeContainer" style="margin-bottom: 10px;float:right;width:81%;"><div class="layui-input-block" ><select name="four" lay-verify="required" lay-filter="thirdselect"><option value="">choose</option>';
                                 for (var i = 0; i < data.msg.length; i++) {
 
                                     message += '<option value="' + data.msg[i]['fourth_mark_id'] + '">';

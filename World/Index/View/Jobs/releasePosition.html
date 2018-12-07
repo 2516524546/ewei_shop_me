@@ -25,6 +25,15 @@
         input[type="number"]{
             -moz-appearance: textfield;
         }
+        .layui-form-item:nth-child(4) .layui-form-label .label_img img{
+            width: auto;
+        }
+        .layui-form-item:nth-child(8) .layui-form-label .label_img img{
+            height: auto;
+        }
+        .layui-form-item:nth-child(12) .layui-form-label .label_img img{
+            width: auto;
+        }
     </style>
 </head>
 
@@ -248,7 +257,7 @@
                                 </div>
                             </label>
                             <div class="layui-input-block">
-                                <input type="email" name="company_mail" id="company_mail" lay-verify="title" autocomplete="off" placeholder=" Enter E-Mail" class="layui-input">
+                                <input type="email" name="company_mail" id="company_mail" lay-verify="required|email" autocomplete="off" placeholder=" Enter E-Mail" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
@@ -302,6 +311,7 @@
         laydate.render({
             elem: '.Wtime', //指定元素
             lang:'en',
+            type: 'year',
             max: maxDate(),
         });
         });

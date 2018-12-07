@@ -6,6 +6,8 @@ use Index\Model\FourthMarkModel;
 use Index\Model\SecondMarkModel;
 use Index\Model\ThirdMarkModel;
 use Think\Controller;
+use Think\Exception;
+
 class MarkController extends CommonController {
 
     //第一层标签列表
@@ -452,6 +454,289 @@ class MarkController extends CommonController {
             die(json_encode(array('str' => 0, 'msg' => L('newworld_ajax_havenoing'))));
         }
 
+    }
+
+    //第二标识导入
+    public function haveExcel(){
+
+        if (IS_POST) {
+
+            $fid = $_POST['fid'];
+            $file = $_FILES['daofile'];
+
+            $upload = new \Think\Upload();// 实例化上传类
+            $upload->maxSize = 3072000 ;// 设置附件上传大小
+            $upload->exts = array('xls', 'xlsx');// 设置附件上传类型
+            $upload->rootPath = './Uploads/'; // 设置附件上传根目录
+// 上传单个文件
+            $info = $upload->uploadOne($file);
+            if(!$info) {// 上传错误提示错误信息
+                die(json_encode(array('str' => 0,'msg'=>$upload->getError())));
+            }else {// 上传成功 获取上传文件信息
+                //return $info;
+                //die(json_encode(array('str' => 1,'msg'=>$info)));
+                $exts = $info['ext'];
+                $filename = './Uploads/' . $info['savepath'] . $info['savename'];
+
+                import("Org.Util.PHPExcel");
+                //不同类型的文件导入不同的类
+                if ($exts == 'xls') {
+                    import("Org.Util.PHPExcel.Reader.Excel5");
+                    $PHPReader = new \PHPExcel_Reader_Excel5();
+                } else if ($exts == 'xlsx') {
+                    import("Org.Util.PHPExcel.Reader.Excel2007");
+                    $PHPReader = new \PHPExcel_Reader_Excel2007();
+                }
+                import("Org.Util.PHPExcel.Reader.Excel2007");
+                $PHPReader = new \PHPExcel_Reader_Excel2007();
+                //载入文件
+                $PHPExcel = $PHPReader->load($filename);
+                //获取表中的第一个工作表，如果要获取第二个，把0改为1，依次类推
+                $currentSheet = $PHPExcel->getSheet(0);
+                //获取总列数
+                $allColumn = $currentSheet->getHighestColumn();
+                //获取总行数
+                $allRow = $currentSheet->getHighestRow();
+                //循环获取表中的数据，$currentRow表示当前行，从哪行开始读取数据，索引值从0开始
+                for ($currentRow = 1; $currentRow <= $allRow; $currentRow++) {
+                    //从哪列开始，A表示第一列
+                    for ($currentColumn = 'A'; $currentColumn <= $allColumn; $currentColumn++) {
+                        //数据坐标
+                        $address = $currentColumn . $currentRow;
+                        //读取到的数据，保存到数组$arr中
+                        $data[$currentRow][$currentColumn] = $currentSheet->getCell($address)->getValue();
+                    }
+                }
+            }
+
+            $secondmarkmodel = new SecondMarkModel();
+            $secondone = $secondmarkmodel->findone('second_mark_isextend = 1 and second_mark_fid = '.$fid);
+            $isextend = 0;
+            if ($secondone){
+                $isextend = 1;
+            }
+            $secondmarkmodel->startTrans();
+            try {
+                foreach ($data as $e) {
+                    $data = array(
+                        'second_mark_fid' => $fid,
+                        'second_mark_name' => $e['A'],
+                        'second_mark_isextend' => $isextend,
+                        'second_mark_createtime' => date("Y-m-d H:i:s", time()),
+                    );
+
+                    $secondmarkmodel->add($data);
+                }
+                $secondmarkmodel->commit();
+                die(json_encode(array('str' => 1,'msg'=>L('Mark_second_list_dao_succress'))));
+            }catch (Exception $e){
+                $secondmarkmodel->rollback();
+                die(json_encode(array('str' => 0,'msg'=>L('Mark_second_list_dao_fail'))));
+            }
+
+
+
+        } else {
+
+            die(json_encode(array('str' => 0)));
+        }
+
+
+
+    }
+
+    //第三标识导入
+    public function haveExcelthree(){
+
+        if (IS_POST) {
+
+            $sid = $_POST['sid'];
+            $file = $_FILES['daofile'];
+
+            $upload = new \Think\Upload();// 实例化上传类
+            $upload->maxSize = 3072000 ;// 设置附件上传大小
+            $upload->exts = array('xls', 'xlsx');// 设置附件上传类型
+            $upload->rootPath = './Uploads/'; // 设置附件上传根目录
+// 上传单个文件
+            $info = $upload->uploadOne($file);
+            if(!$info) {// 上传错误提示错误信息
+                die(json_encode(array('str' => 0,'msg'=>$upload->getError())));
+            }else {// 上传成功 获取上传文件信息
+                //return $info;
+                //die(json_encode(array('str' => 1,'msg'=>$info)));
+                $exts = $info['ext'];
+                $filename = './Uploads/' . $info['savepath'] . $info['savename'];
+
+                import("Org.Util.PHPExcel");
+                //不同类型的文件导入不同的类
+                if ($exts == 'xls') {
+                    import("Org.Util.PHPExcel.Reader.Excel5");
+                    $PHPReader = new \PHPExcel_Reader_Excel5();
+                } else if ($exts == 'xlsx') {
+                    import("Org.Util.PHPExcel.Reader.Excel2007");
+                    $PHPReader = new \PHPExcel_Reader_Excel2007();
+                }
+                import("Org.Util.PHPExcel.Reader.Excel2007");
+                $PHPReader = new \PHPExcel_Reader_Excel2007();
+                //载入文件
+                $PHPExcel = $PHPReader->load($filename);
+                //获取表中的第一个工作表，如果要获取第二个，把0改为1，依次类推
+                $currentSheet = $PHPExcel->getSheet(0);
+                //获取总列数
+                $allColumn = $currentSheet->getHighestColumn();
+                //获取总行数
+                $allRow = $currentSheet->getHighestRow();
+                //循环获取表中的数据，$currentRow表示当前行，从哪行开始读取数据，索引值从0开始
+                for ($currentRow = 1; $currentRow <= $allRow; $currentRow++) {
+                    //从哪列开始，A表示第一列
+                    for ($currentColumn = 'A'; $currentColumn <= $allColumn; $currentColumn++) {
+                        //数据坐标
+                        $address = $currentColumn . $currentRow;
+                        //读取到的数据，保存到数组$arr中
+                        $data[$currentRow][$currentColumn] = $currentSheet->getCell($address)->getValue();
+                    }
+                }
+            }
+
+            $thirdmarkmodel = new ThirdMarkModel();
+            $thirdone = $thirdmarkmodel->findone('third_mark_isextend = 1 and third_mark_sid = '.$sid);
+            $isextend = 0;
+            if ($thirdone){
+                $isextend = 1;
+            }
+            $thirdmarkmodel->startTrans();
+            try {
+                foreach ($data as $e) {
+                    $data = array(
+                        'third_mark_sid' => $sid,
+                        'third_mark_name' => $e['A'],
+                        'third_mark_isextend' => $isextend,
+                        'third_mark_createtime' => date("Y-m-d H:i:s", time()),
+                    );
+
+                    $thirdmarkmodel->add($data);
+                }
+                $thirdmarkmodel->commit();
+                die(json_encode(array('str' => 1,'msg'=>L('Mark_second_list_dao_succress'))));
+            }catch (Exception $e){
+                $thirdmarkmodel->rollback();
+                die(json_encode(array('str' => 0,'msg'=>L('Mark_second_list_dao_fail'))));
+            }
+
+
+        } else {
+
+            die(json_encode(array('str' => 0)));
+        }
+
+
+
+    }
+
+    //第四标识导入
+    public function haveExcelfour(){
+
+        if (IS_POST) {
+
+            $tid = $_POST['tid'];
+            $file = $_FILES['daofile'];
+
+            $upload = new \Think\Upload();// 实例化上传类
+            $upload->maxSize = 3072000 ;// 设置附件上传大小
+            $upload->exts = array('xls', 'xlsx');// 设置附件上传类型
+            $upload->rootPath = './Uploads/'; // 设置附件上传根目录
+// 上传单个文件
+            $info = $upload->uploadOne($file);
+            if(!$info) {// 上传错误提示错误信息
+                die(json_encode(array('str' => 0,'msg'=>$upload->getError())));
+            }else {// 上传成功 获取上传文件信息
+                //return $info;
+                //die(json_encode(array('str' => 1,'msg'=>$info)));
+                $exts = $info['ext'];
+                $filename = './Uploads/' . $info['savepath'] . $info['savename'];
+
+                import("Org.Util.PHPExcel");
+                //不同类型的文件导入不同的类
+                if ($exts == 'xls') {
+                    import("Org.Util.PHPExcel.Reader.Excel5");
+                    $PHPReader = new \PHPExcel_Reader_Excel5();
+                } else if ($exts == 'xlsx') {
+                    import("Org.Util.PHPExcel.Reader.Excel2007");
+                    $PHPReader = new \PHPExcel_Reader_Excel2007();
+                }
+                import("Org.Util.PHPExcel.Reader.Excel2007");
+                $PHPReader = new \PHPExcel_Reader_Excel2007();
+                //载入文件
+                $PHPExcel = $PHPReader->load($filename);
+                //获取表中的第一个工作表，如果要获取第二个，把0改为1，依次类推
+                $currentSheet = $PHPExcel->getSheet(0);
+                //获取总列数
+                $allColumn = $currentSheet->getHighestColumn();
+                //获取总行数
+                $allRow = $currentSheet->getHighestRow();
+                //循环获取表中的数据，$currentRow表示当前行，从哪行开始读取数据，索引值从0开始
+                for ($currentRow = 1; $currentRow <= $allRow; $currentRow++) {
+                    //从哪列开始，A表示第一列
+                    for ($currentColumn = 'A'; $currentColumn <= $allColumn; $currentColumn++) {
+                        //数据坐标
+                        $address = $currentColumn . $currentRow;
+                        //读取到的数据，保存到数组$arr中
+                        $data[$currentRow][$currentColumn] = $currentSheet->getCell($address)->getValue();
+                    }
+                }
+            }
+
+            $fourthmarkmodel = new FourthMarkModel();
+            $fourthone = $fourthmarkmodel->findone('fourth_mark_isextend = 1 and fourth_mark_tid = '.$tid);
+            $isextend = 0;
+            if ($fourthone){
+                $isextend = 1;
+            }
+            $fourthmarkmodel->startTrans();
+            try {
+                foreach ($data as $e) {
+                    $data = array(
+                        'fourth_mark_tid' => $tid,
+                        'fourth_mark_name' => $e['A'],
+                        'fourth_mark_isextend' => $isextend,
+                        'fourth_mark_createtime' => date("Y-m-d H:i:s", time()),
+                    );
+
+                    $fourthmarkmodel->add($data);
+                }
+                $fourthmarkmodel->commit();
+                die(json_encode(array('str' => 1,'msg'=>L('Mark_second_list_dao_succress'))));
+            }catch (Exception $e){
+                $fourthmarkmodel->rollback();
+                die(json_encode(array('str' => 0,'msg'=>L('Mark_second_list_dao_fail'))));
+            }
+
+
+
+        } else {
+
+            die(json_encode(array('str' => 0)));
+        }
+    }
+
+
+    public function second_delsum(){
+        if (IS_POST) {
+
+            $fid = $_POST['fid'];
+            $secondmarkmodel = new SecondMarkModel();
+            $res = $secondmarkmodel->where('second_mark_fid = '.$fid)->delete();
+            if ($res){
+                die(json_encode(array('str' => 1,'msg'=>'删除成功')));
+            }else{
+                die(json_encode(array('str' => 2,'msg'=>'删除失败')));
+            }
+
+
+        } else {
+
+            die(json_encode(array('str' => 0)));
+        }
     }
 	
 }

@@ -118,7 +118,9 @@ class CommodityController extends CommonController{
     public function commodity_add(){
         if (IS_POST){
             $this->verifyData($_POST);
-            $res=M('l_commodity')->add($_POST);
+            $data = $_POST;
+            $data['commodity_uid'] = 0;
+            $res=M('l_commodity')->add($data);
             if($res){
                 echo 1;exit;
             }else{

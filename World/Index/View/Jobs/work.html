@@ -16,6 +16,11 @@
     .layui-btn+.layui-btn{
         margin-left: 0;
     }
+    /* .layui-form-label span img{
+        width: auto;
+        height: 32px;
+    } */
+
     </style>
 </head>
 
@@ -61,17 +66,17 @@
     <form class="layui-form" action="" id="ff">
         <div class="container SearchContainer">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-6">
 
 
                     <div class="SelectionTypeContainer">
-                        <label class="layui-form-label">
-                            <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png"></span>
-                        </label>
-                        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="width: 100%;">
+                            <label class="layui-form-label" style="width: 53px;">
+                                <span><img src="__PUBLIC__/Web/web/img/04_jobs/jobs_create_icon_type.png"></span>
+                            </label>
                             <ul class="layui-tab-title" style="border: none;">
-                                <li class="layui-this" onclick="refrom(1)">Ordinary Community</li>
-                                <li onclick="refrom(2)">Social network Community</li>
+                                <li class="layui-this" onclick="refrom(1)" style="width: 45%;">Ordinary Community</li>
+                                <li onclick="refrom(2)" style="width: 45%;">Social network Community</li>
                             </ul>
                             <div class="layui-tab-content">
                                 <div class="layui-tab-item layui-show">
@@ -148,7 +153,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <div class="SelectionContainer">
                         <input type="text" class="layui-input" id="Selectionform">
                         <a href="javascript:void(0)" id="SelectionIcon" onclick="updata_work_list(4,'crowd_creattime desc',0,10,1)"><img src="__PUBLIC__/Web/web/img/02_interest/interest_qxx_search_icon.png"></a>
@@ -308,7 +313,7 @@
                                 $("#1second"+data.firstid).html(message)
                             }else{
 
-                                var message = '<div id="1second'+data.firstid+'" class="SelectionTypeContainer" style="margin-bottom: 10px;"><div class="layui-input-block" ><select name="1third" lay-verify="required" lay-filter="1secondselect"><option value="">choose</option>';
+                                var message = '<div id="1second'+data.firstid+'" class="SelectionTypeContainer" style="margin-bottom: 10px;float:right;width: 88%;"><div class="layui-input-block" ><select name="1third" lay-verify="required" lay-filter="1secondselect"><option value="">choose</option>';
                                 for (var i = 0; i < data.msg.length; i++) {
 
                                     message +='<option value="'+data.msg[i]['third_mark_id']+'">';
@@ -373,7 +378,7 @@
                                 $("#2second"+data.firstid).html(message)
                             }else{
 
-                                var message = '<div id="2second'+data.firstid+'" class="SelectionTypeContainer" style="margin-bottom: 10px;"><div class="layui-input-block" ><select name="2third" lay-verify="required" lay-filter="2secondselect"><option value="">choose</option>';
+                                var message = '<div id="2second'+data.firstid+'" class="SelectionTypeContainer" style="margin-bottom: 10px;float:right;width: 88%;"><div class="layui-input-block" ><select name="2third" lay-verify="required" lay-filter="2secondselect"><option value="">choose</option>';
                                 for (var i = 0; i < data.msg.length; i++) {
 
                                     message +='<option value="'+data.msg[i]['third_mark_id']+'">';
@@ -439,7 +444,7 @@
                                 $("#1third" + data.secondid).html(message)
                             } else {
 
-                                var message = '<div id="1third' + data.secondid + '" class="SelectionTypeContainer" style="margin-bottom: 10px;"><div class="layui-input-block" ><select name="1four" lay-verify="required" lay-filter="1thirdselect"><option value="">choose</option>';
+                                var message = '<div id="1third' + data.secondid + '" class="SelectionTypeContainer" style="margin-bottom: 10px;float:right;width: 88%;"><div class="layui-input-block" ><select name="1four" lay-verify="required" lay-filter="1thirdselect"><option value="">choose</option>';
                                 for (var i = 0; i < data.msg.length; i++) {
 
                                     message += '<option value="' + data.msg[i]['fourth_mark_id'] + '">';
@@ -499,7 +504,7 @@
                                 $("#2third" + data.secondid).html(message)
                             } else {
 
-                                var message = '<div id="2third' + data.secondid + '" class="SelectionTypeContainer" style="margin-bottom: 10px;"><div class="layui-input-block" ><select name="2four" lay-verify="required" lay-filter="2thirdselect"><option value="">choose</option>';
+                                var message = '<div id="2third' + data.secondid + '" class="SelectionTypeContainer" style="margin-bottom: 10px;float:right;width: 88%;"><div class="layui-input-block" ><select name="2four" lay-verify="required" lay-filter="2thirdselect"><option value="">choose</option>';
                                 for (var i = 0; i < data.msg.length; i++) {
 
                                     message += '<option value="' + data.msg[i]['fourth_mark_id'] + '">';

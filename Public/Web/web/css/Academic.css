@@ -150,9 +150,14 @@
 }
 .SearchContainer .SelectionTypeContainer {
   clear: both;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 .SearchContainer .SelectionTypeContainer .layui-input-block {
-  margin-left: 80px;
+  width: 100%;
+  margin-left: 0;
+  /* margin-bottom: 10px; */
 }
 .SearchContainer #Selectionform {
   margin: 0 auto;
@@ -324,13 +329,19 @@
 .layui-form-label {
   float: left;
   display: block;
-  padding: 9px 15px;
+  padding: 0;
   width: 80px;
   font-weight: 400;
   text-align: center;
+  margin-bottom: 0;
 }
 
 .layui-form-label span img{
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  /* height: 32px; */
+}
+
+
+.SearchContainer .SelectionTypeContainer .layui-form-label:first-child{
+  width: 65px;
 }

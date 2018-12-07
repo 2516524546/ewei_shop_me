@@ -14,7 +14,7 @@
     /* width: 25%; */
     border-radius: 24px;
     text-align: center;
-    padding: 12px 31px;
+    /* padding: 12px 31px; */
     margin-right: 22px;
 }
 .Resumetails_content .Resumetails_title .title_item:hover{
@@ -25,7 +25,9 @@
 
 }
 .Resumetails_content .Resumetails_title .title_item a{
+    display: block;
     text-decoration: none;
+    padding: 12px 31px;
 }
 
 .Resumetails_content .Resume_details{
@@ -68,8 +70,8 @@
     width: 210px;
 }
 .Resumetails_content .Resume_details .form_box .form_details .form_details_item .form_details_left .form_details_item_img{
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     overflow: hidden;
 }
 .Resumetails_content .Resume_details .form_box .form_details .form_details_item .form_details_left .form_details_item_img img{
