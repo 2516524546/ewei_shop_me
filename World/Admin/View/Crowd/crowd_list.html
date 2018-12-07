@@ -125,13 +125,13 @@
 							<thead>
 								<tr style=' font-size: 13px;'>
 								    <!-- <th><input type='checkbox' name='' value=''></th> -->
-									<th>{:L('Crowd_crowd_list_crowdid')}</th>
-									<th>{:L('Crowd_crowd_list_crowdname')}</th>
-									<th>{:L('Crowd_crowd_list_crowdicon')}</th>
-									<th>{:L('Crowd_crowd_list_peoplename')}</th>
-									<th>{:L('Crowd_crowd_list_peopleicon')}</th>
+									<th style="width: 5%">{:L('Crowd_crowd_list_crowdid')}</th>
+									<th style="width: 10%">{:L('Crowd_crowd_list_crowdname')}</th>
+									<th style="width: 10%">{:L('Crowd_crowd_list_crowdicon')}</th>
+									<th style="width: 10%">{:L('Crowd_crowd_list_peoplename')}</th>
+									<th style="width: 10%">{:L('Crowd_crowd_list_peopleicon')}</th>
 									<th>{:L('Crowd_crowd_list_peoplephone')}</th>
-									<th>{:L('Crowd_crowd_list_crowdtype')}</th>
+									<th style="width: 10%">{:L('Crowd_crowd_list_crowdtype')}</th>
 									<th>{:L('Crowd_crowd_list_crowdcontent')}</th>
 									<th>{:L('Crowd_crowd_list_crowdcreatetime')}</th>
 									<th>{:L('Crowd_crowd_list_operation')}</th>
@@ -154,10 +154,10 @@
 									<td>{$crowd['crowd_creattime']}</td>
 									<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/crowd_detail')}&cid={$crowd['crowd_id']}">{:L('Crowd_crowd_list_edit')}</a>
-												<a class="btn btn-xs btn-success" onclick="del({$crowd['crowd_id']})">{:L('Crowd_crowd_list_del')}</a>
-												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/message_list')}&cid={$crowd['crowd_id']}">{:L('Crowd_crowd_list_message')}</a>
-												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/member_list')}&cid={$crowd['crowd_id']}">{:L('Crowd_crowd_list_member')}</a>
+												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/crowd_detail')}&cid={$crowd['crowd_id']}" style="margin-bottom: 5px;">{:L('Crowd_crowd_list_edit')}</a>
+												<a class="btn btn-xs btn-success" onclick="del({$crowd['crowd_id']})" style="margin-bottom: 5px;">{:L('Crowd_crowd_list_del')}</a>
+												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/message_list')}&cid={$crowd['crowd_id']}" style="margin-bottom: 5px;">{:L('Crowd_crowd_list_message')}</a>
+												<a class="btn btn-xs btn-success" href="{:U('Admin/Crowd/member_list')}&cid={$crowd['crowd_id']}" style="margin-bottom: 5px;">{:L('Crowd_crowd_list_member')}</a>
 											</div>
 									</td>
 								</tr>

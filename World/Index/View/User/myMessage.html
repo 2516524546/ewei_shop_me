@@ -51,7 +51,7 @@
             </div>
             <div class="Message_details">
                 <foreach name="messages" item="m">
-                <if condition="$m['message_type'] == 0">
+                <if condition="$m['message_type'] !=1">
                     <div class="Message_details_item">
                         <a href="{:U('User/MessageDetails',['message_id'=>$m['message_id']])}">
                             <div class="item_question">

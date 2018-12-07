@@ -129,6 +129,8 @@
 
 							<div class='anniu'>
 								<ul style="border: 0px">
+
+									<li role="presentation" data-toggle="modal" data-target="#dao-auth" class="current" style="margin-right: 10px">{:L('Mark_second_list_dao')}</li>
 									<li role="presentation" data-toggle="modal" data-target="#add-auth" class="current" >{:L('Mark_second_list_add')}</li>
 
 									<if condition='$thirdlist[0]["third_mark_isextend"] != 1'>
@@ -198,6 +200,34 @@
 	</div>
 	<!-- /.row -->
 </div>
+
+	<div class="modal fade bs-example-modal-lg" id="dao-auth" role="dialog" aria-labelledby="myModalLabel"
+		 aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span
+							aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">{:L('Mark_second_list_dao')}</h4>
+				</div>
+				<div class="modal-body" style="overflow: hidden">
+
+					<div class="content" >
+						<div class="form-group" style="margin-bottom: 20px;overflow: hidden;">
+							<label class="col-sm-3 control-label">{:L('Mark_second_list_daofile')}:</label>
+							<div class="col-sm-8">
+								<input type="file" id="daofile" value="" class="">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<a class="btn btn-primary" onclick="dao()">{:L('Mark_second_list_dao')}</a>
+					<a class="btn btn-default" data-dismiss="modal">{:L('Mark_mark_list_cancel')}</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
 		<div class="modal fade bs-example-modal-lg" id="add-auth" role="dialog" aria-labelledby="myModalLabel"
 			 aria-hidden="true">
@@ -471,6 +501,62 @@ $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, functi
                 })
             }
         });
+
+    }
+
+
+    function dao() {
+        var file_obj = document.getElementById('daofile').files[0];
+        var fd = new FormData();
+        fd.append('daofile', file_obj);
+        fd.append('sid',"{$secondone['second_mark_id']}")
+
+        if (file_obj){
+            $.ajax({
+                url: "{:U('Admin/Mark/haveExcelthree')}",
+                type: "POST",
+                async: false,
+                cache: false,
+                processData: false,// 告诉jQuery不要去处理发送的数据
+                contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                data: fd,
+                dataType:"json",
+                success: function(data){
+                    console.log(data)
+                    if (data.str == 1){
+                        layer.msg(data.msg,{
+                                time:1500,
+                                icon:1,
+                            },function () {
+                                location.reload();
+                            }
+                        );
+
+                    }else{
+                        layer.msg(data.msg,{
+                                time:1500,
+                                icon:2,
+                            }
+                        );
+                    }
+
+                },
+                error: function(err) {
+
+                    layer.msg("{:L('Mark_mark_list_error')}",{
+                            time:1500,
+                            icon:2,
+                        }
+                    );
+                }
+            });
+        }else{
+            layer.msg("{:L('resume_module_add_isfile')}",{
+                    time:1500,
+                    icon:2,
+                }
+            );
+        }
 
     }
 	

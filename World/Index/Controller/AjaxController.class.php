@@ -518,7 +518,7 @@ class AjaxController extends CommonController
             } else {
 
                 $usermodel = new UserModel();
-                $field = "user_havecoin,user_outcoin,user_outmoney,user_name,user_icon";
+                $field = "user_id,user_havecoin,user_outcoin,user_outmoney,user_name,user_icon";
 
                 $limit1 = ($this->post('limit1')-1)*$this->post('limit2');
                 if ($this->post('type')==1){
@@ -2535,6 +2535,8 @@ public function ajax_donationpay()
 
                     $upload = new \Think\Upload();// 实例化上传类
                     $type = explode('/', $_FILES['img']['type'][0]);
+
+
                     if ($type[0] == 'video') {
                         $upload->maxSize = 204800000;// 设置附件上传大小
                     } else {
@@ -3300,6 +3302,10 @@ public function ajax_donationpay()
                     die(json_encode(array('str' => 10, 'msg' => '请选择一张个人照片')));
                 }
 
+                if ($file['size']>3072000){
+                    die(json_encode(array('str' => 0,'msg'=>'图片请上传小于3M的')));
+                }
+
                 $upload = new \Think\Upload();// 实例化上传类
                 $upload->maxSize = 3072000 ;// 设置附件上传大小
                 $upload->exts = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
@@ -3976,7 +3982,7 @@ public function ajax_donationpay()
                 die(json_encode(array('str' => 1, 'msg' => $comoditylist)));
             } else {
 
-                die(json_encode(array('str' => 2, 'msg' => '你还未发布商品')));
+                die(json_encode(array('str' => 2, 'msg' => '没有发布商品')));
             }
 
         }else{
@@ -4024,7 +4030,7 @@ public function ajax_donationpay()
                 die(json_encode(array('str' => 1, 'msg' => $collectlist)));
             } else {
 
-                die(json_encode(array('str' => 2, 'msg' => '你还未发布商品')));
+                die(json_encode(array('str' => 2, 'msg' => '你还未收藏商品')));
             }
 
         }else{
@@ -4062,6 +4068,10 @@ public function ajax_donationpay()
             $file = $_FILES['img'];
             if(!$_FILES){
                 die(json_encode(array('str' => 0,'msg'=>'请选择一张图片')));
+            }
+
+            if ($file['size']>3072000){
+                die(json_encode(array('str' => 0,'msg'=>'图片请上传小于3M的')));
             }
 
             $upload = new \Think\Upload();// 实例化上传类

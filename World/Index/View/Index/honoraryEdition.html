@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/success_index.css">
     <link rel="stylesheet" href="__PUBLIC__/Web/web/css/common.css">
     <style>
-        .layui-table tr td span img{
-            width: 24px;
-            height: 24px;
+        .Htable tr td span img{
+            width: 19px;
+            height: 18px;
         }
     </style>
 </head>
@@ -46,7 +46,7 @@
                     </ul>
                     <div class="layui-tab-content ListContainer">
                         <div class="layui-tab-item layui-show">
-                            <table class="layui-table" id="LayuiTableBorder" lay-skin="line">
+                            <table class="layui-table Htable" id="LayuiTableBorder" lay-skin="line">
                                 <tbody id="content">
         
         
@@ -204,7 +204,7 @@
                     if (data.str == 1) {
                         var message = '';
                         for (var i = 0; i < data.msg.length; i++) {
-                            message +='<tr><td><span>';
+                            message +='<tr onclick="gohome('+data.msg[i].user_id+')" style="cursor: pointer"><td><span>';
                             if(limit1==1){
                                 if (i == 0){
                                     message += '<img src="__PUBLIC__/Web/web/img/01_shouye/home_sy_hl_icon_01.png">';
@@ -263,6 +263,10 @@
 
         })
 
+    }
+
+    function gohome(id) {
+        window.location.href="{:U('Index/User/personalCenter')}&id="+id;
     }
 
 

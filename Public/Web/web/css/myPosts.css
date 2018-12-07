@@ -28,6 +28,7 @@
     box-shadow: 0 2px 18px 2px #c0c0c0;
     padding: 32px 15px;
     margin-bottom: 30px;
+    cursor: pointer;
 }
 .MyPosts_content .box_item .box_top{
     display: flex;
@@ -74,6 +75,18 @@
 }
 .MyPosts_content .box_item .box_top .box_left .box_left_details .left_details_title .details_title_state .Stick{
     margin-right: 7px;
+    width: 31px;
+    height: 31px;
+}
+.MyPosts_content .box_item .box_top .box_left .box_left_details .left_details_title .details_title_state .Stick img{
+    height: 100%;
+}
+.MyPosts_content .box_item .box_top .box_left .box_left_details .left_details_title .details_title_state .hot{
+    width: 31px;
+    height: 31px;
+}
+.MyPosts_content .box_item .box_top .box_left .box_left_details .left_details_title .details_title_state .hot img{
+    height: 100%;
 }
 .MyPosts_content .box_item .box_top .box_right{
     display: flex;

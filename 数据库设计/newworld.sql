@@ -1,8 +1,12 @@
 ﻿
 /*
 lyx
-2018.06.10
+2018.06.2018050860137124
 */
+
+   
+
+
 ALTER TABLE `u_note_comment`
 ADD COLUMN `note_comment_isreply`  smallint(3) NOT NULL DEFAULT 0 COMMENT '是否回复，0为否，1为是' AFTER `note_comment_zaner`;
 
@@ -21,7 +25,7 @@ ADD COLUMN `firends_mark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_c
 ALTER TABLE `newworld`.`u_message`
 ADD COLUMN `message_type` tinyint UNSIGNED NOT NULL  COMMENT '信息类型 0：系统提示 1：好友申请' AFTER `message_isread`;
 
-ALTER TABLE `newworld`.`u_message` 
+ALTER TABLE `newworld`.`u_message`
 MODIFY COLUMN `message_sendtime` datetime(0) NOT NULL COMMENT '信息发送时间' AFTER `message_content`,
 MODIFY COLUMN `message_delivertime` datetime(0) NOT NULL COMMENT '信息送达时间' AFTER `message_sendtime`;
 
@@ -64,7 +68,7 @@ lyx
 2018.06.15 end
 */
 
-ALTER TABLE `newworld`.`u_concerns` 
+ALTER TABLE `newworld`.`u_concerns`
 ADD COLUMN `concerns_status` tinyint(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '0：取消关注 1 关注' AFTER `concerns_cuid`;
 
 /*
@@ -243,6 +247,3 @@ ADD COLUMN `resume_module_downs`  int(10) NOT NULL DEFAULT 0 COMMENT '下载次�
 lyx
 2018.07.03 end
 */
-
-
-

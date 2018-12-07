@@ -5,8 +5,8 @@
     padding-right: 10%; 
 }
 .login_success .success_index{
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 24px;
     overflow: hidden;
     margin-right: 17px;
 }
@@ -19,7 +19,7 @@
 }
 .login_success .success_setting{
     position: relative;
-    width: 25px;
+    width: 26px;
     height: 25px;
     margin-right: 17px;
 }
@@ -80,6 +80,42 @@
 .login_success .success_setting .setting_usage ul li .usage_img img{
     width: 100%;
 }
+.login_success .success_setting .setting_usage ul li:first-child .usage_img{
+    width: 18px;
+    height: 19px;
+}
+.login_success .success_setting .setting_usage ul li:nth-child(2) .usage_img{
+    width: 22px;
+    height: 18px;
+}
+.login_success .success_setting .setting_usage ul li:nth-child(3) .usage_img{
+    width: 19px;
+    height: 19px;
+}
+.login_success .success_setting .setting_usage ul li:nth-child(4) .usage_img{
+    width: 20px;
+    height: 19px;
+}
+.login_success .success_setting .setting_usage ul li:nth-child(5) .usage_img{
+    width: 21px;
+    height: 18px;
+}
+.login_success .success_setting .setting_usage ul li:nth-child(6) .usage_img{
+    width: 19px;
+    height: 20px;
+}
+.login_success .success_setting .setting_usage ul li:nth-child(7) .usage_img{
+    width: 22px;
+    height: 18px;
+}
+.login_success .success_setting .setting_usage ul li:nth-child(8) .usage_img{
+    width: 17px;
+    height: 20px;
+}
+.login_success .success_setting .setting_usage ul li:nth-child(9) .usage_img{
+    width: 21px;
+    height: 22px;
+}
 .login_success .success_user a{
     display: block;
     width: 40px;
@@ -111,13 +147,12 @@
     text-decoration: none;
 }
 .login_success .success_money .money_img{
-    width: 20px;
-    height: 16px;
+    width: 19px;
+    /* height: 13px; */
     margin-right: 5px;
 }
 .login_success .success_money .money_img img{
     width: 100%;
-    height: 100%;
 }
 .login_success .success_money .money_num{
     color: #46c4b8;
@@ -141,3 +176,24 @@
     text-align: center;
     margin-top: 30px;
 }
+
+.logreg .Login .LoginI img{
+    width: 100%;
+    height: 100%;
+  }
+  .logreg .SignUp .SignUpI img{
+    width: 100%;
+    height: 100%;
+  }
+  .logreg .Login .LoginI{
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+  }
+  .logreg .SignUp .SignUpI{
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+  }

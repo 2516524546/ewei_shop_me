@@ -75,6 +75,20 @@
 </body>
 
 <script type="text/javascript">
+$.ajax({
+			type:"post",
+			url:"http://interface.xyjia.org/shareLessonComment",
+			async:true,
+			data: {
+			  	lid:"4",
+			  	page:"1"
+			  },
+		  dataType:"json",
+		  success: function(data){
+	  	console.log(data)
+	  },
+		});
+
 
 
     layui.use('form', function(){

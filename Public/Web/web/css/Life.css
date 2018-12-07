@@ -22,10 +22,6 @@
     height: 24px;
     margin: 0 auto;
   }
-  /* 头部信息的边距 */
-  .headerBox {
-    margin: 12px 0 0;
-  }
   /* logo的大小与位置 */
   .logo {
     width: 260px;
@@ -159,9 +155,13 @@
   /* 搜索的样式 */
   .SearchContainer .SelectionTypeContainer {
     clear: both;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
   }
   .SearchContainer .SelectionTypeContainer .layui-input-block {
-    margin-left: 80px;
+    width: 100%;
+    margin-left: 0;
   }
   .SearchContainer #Selectionform {
     width: 46%;
@@ -408,13 +408,19 @@
   .layui-form-label {
     float: left;
     display: block;
-    padding: 9px 15px;
+    padding: 0;
     width: 80px;
     font-weight: 400;
     text-align: center;
 }
-
+label{
+  margin: 0;
+}
 .layui-form-label img{
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  /* height: 24px; */
+}
+
+.headerBox {
+  margin-top: 12px;
 }

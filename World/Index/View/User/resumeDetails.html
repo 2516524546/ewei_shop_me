@@ -147,7 +147,7 @@
                                                  </div>
                                              </div>
                                          <div class="layui-input-block">
-                                             <input type="text" name="title" id="workyear" required  lay-verify="required" placeholder="Enter the number of years of service" autocomplete="off" <if condition='$resumeone["resume_workyear"]'>value="{$resumeone['resume_workyear']}"</if> class="layui-input Wtime">
+                                             <input type="text" name="title" id="workyear" required  lay-verify="required" placeholder="Enter the number of years of service" autocomplete="off" <if condition='$resumeone["resume_workyear"]'>value="{$resumeone['resume_workyear']}"</if> class="layui-input">
                                          </div>
                                  </div>
      
@@ -249,6 +249,8 @@
         <script src="__PUBLIC__/Web/js/lib/layui/dist/layui.all.js"></script>
         <script src="__PUBLIC__/Web/web/js/loginQuit.js"></script>
         <script>
+            var a = 1
+            var c = 1
             $(".minNum").on("blur",function(){
                 var UBlur = parseInt($(this).val());
                 var maxNumBlur = parseInt($(".maxNum").val());
@@ -285,6 +287,7 @@
             laydate.render({
                 elem: '.Wtime', //指定元素
                 lang:'en',
+                type: 'year',
                 max: maxDate(),
             });
             });
@@ -333,168 +336,176 @@
 
                     var fd = new FormData();
                     fd.append('img', fileone);
+                    if (a==c) {
+                        c = 2
+                        if (fileone == 1) {
 
-                    if (fileone == 1){
+                            $.ajax({
+                                type: "post",
+                                url: "{:U('Index/Ajax/ajax_resumedetails')}",
+                                data: {
+                                    name: $("#name").val(),
+                                    position: $("#position").val(),
+                                    tid: $("input[name='JobTime']:checked").val(),
+                                    lowmoney: $("#lowmoney").val(),
+                                    hightmoney: $("#hightmoney").val(),
+                                    workyear: $("#workyear").val(),
+                                    university: $("#university").val(),
+                                    degree: $("#degree").val(),
+                                    specialty: $("#specialty").val(),
+                                    fileurl: '{$resumeone["resume_fileurl"]}',
+                                    isnegotiable: $("input[name='isnegotiable']:checked").val(),
+                                    resume_id: "{$resumeone['resume_id']}",
 
-                        $.ajax({
-                            type: "post",
-                            url: "{:U('Index/Ajax/ajax_resumedetails')}",
-                            data: {
-                                name: $("#name").val(),
-                                position: $("#position").val(),
-                                tid: $("input[name='JobTime']:checked").val(),
-                                lowmoney: $("#lowmoney").val(),
-                                hightmoney: $("#hightmoney").val(),
-                                workyear: $("#workyear").val(),
-                                university: $("#university").val(),
-                                degree: $("#degree").val(),
-                                specialty: $("#specialty").val(),
-                                fileurl: '{$resumeone["resume_fileurl"]}',
-                                isnegotiable: $("input[name='isnegotiable']:checked").val(),
-                                resume_id: "{$resumeone['resume_id']}",
+                                },
+                                dataType: "json",
+                                async: false,
+                                success: function (resume) {
 
-                            },
-                            dataType: "json",
-                            async: false,
-                            success: function (resume) {
-
-                                if (resume != null && resume != "") {
-                                    if (resume.str == 1) {
-
-                                        layer.msg(resume.msg, {
-                                                time: 1500,
-                                                icon: 1,
-                                            }, function () {
-
-                                            window.location.href="{:U('Index/User/mineResume')}";
-                                            }
-                                        );
-
-                                    } else {
-                                        layer.msg(resume.msg, {
-                                                time: 1500,
-                                                icon: 2,
-                                            }
-                                        );
-                                    }
-
-                                } else {
-                                    layer.msg('请求错误!', {
-                                            time: 1500,
-                                            icon: 2,
-                                        }
-                                    );
-                                }
-
-                            },
-                            error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                                layer.msg('请求失败!', {
-                                        time: 1500,
-                                        icon: 2,
-                                    }
-                                );
-                            }
-
-                        })
-
-                    }else {
-                        $.ajax({
-                            url: "{:U('Index/Ajax/ajax_uploadfile')}",
-                            type: "POST",
-                            async: false,
-                            cache: false,
-                            processData: false,// 告诉jQuery不要去处理发送的数据
-                            contentType: false,// 告诉jQuery不要去设置Content-Type请求头
-                            data: fd,
-                            dataType: "json",
-                            success: function (data) {
-                                //console.log(data)
-                                if (data.str == 1) {
-                                    $.ajax({
-                                        type: "post",
-                                        url: "{:U('Index/Ajax/ajax_resumedetails')}",
-                                        data: {
-                                            name: $("#name").val(),
-                                            position: $("#position").val(),
-                                            tid: $("input[name='JobTime']:checked").val(),
-                                            lowmoney: $("#lowmoney").val(),
-                                            hightmoney: $("#hightmoney").val(),
-                                            workyear: $("#workyear").val(),
-                                            university: $("#university").val(),
-                                            degree: $("#degree").val(),
-                                            specialty: $("#specialty").val(),
-                                            fileurl: data.msg,
-                                            isnegotiable: $("input[name='isnegotiable']:checked").val(),
-                                            resume_id: "{$resumeone['resume_id']}",
-
-                                        },
-                                        dataType: "json",
-                                        async: false,
-                                        success: function (resume) {
-                                            if (resume != null && resume != "") {
-                                                if (resume.str == 1) {
-
-                                                    layer.msg(resume.msg, {
-                                                            time: 1500,
-                                                            icon: 1,
-                                                        }, function () {
-
-                                                        window.location.href="{:U('Index/User/mineResume')}";
-                                                        }
-                                                    );
+                                    if (resume != null && resume != "") {
+                                        if (resume.str == 1) {
+                                            window.location.href = "{:U('Index/User/mineResume')}";
+                                            layer.msg(resume.msg, {
+                                                    time: 1500,
+                                                    icon: 1,
+                                                }, function () {
 
 
-                                                } else {
-                                                    layer.msg(resume.msg, {
-                                                            time: 1500,
-                                                            icon: 2,
-                                                        }
-                                                    );
                                                 }
+                                            );
 
-                                            } else {
-                                                layer.msg('请求错误!', {
-                                                        time: 1500,
-                                                        icon: 2,
-                                                    }
-                                                );
-                                            }
-
-                                        },
-                                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                                            layer.msg('请求失败!', {
+                                        } else {
+                                            c = 1
+                                            layer.msg(resume.msg, {
                                                     time: 1500,
                                                     icon: 2,
                                                 }
                                             );
                                         }
 
-                                    })
+                                    } else {
+                                        c = 1
+                                        layer.msg('请求错误!', {
+                                                time: 1500,
+                                                icon: 2,
+                                            }
+                                        );
+                                    }
 
-                                } else {
-                                    layer.msg('文件上传失败!', {
+                                },
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    c = 1
+                                    layer.msg('请求失败!', {
                                             time: 1500,
                                             icon: 2,
                                         }
                                     );
                                 }
 
-                            },
-                            error: function (err) {
+                            })
 
-                                layer.msg('请求失败!', {
-                                        time: 1500,
-                                        icon: 2,
+                        } else {
+                            $.ajax({
+                                url: "{:U('Index/Ajax/ajax_uploadfile')}",
+                                type: "POST",
+                                async: false,
+                                cache: false,
+                                processData: false,// 告诉jQuery不要去处理发送的数据
+                                contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+                                data: fd,
+                                dataType: "json",
+                                success: function (data) {
+                                    //console.log(data)
+                                    if (data.str == 1) {
+                                        $.ajax({
+                                            type: "post",
+                                            url: "{:U('Index/Ajax/ajax_resumedetails')}",
+                                            data: {
+                                                name: $("#name").val(),
+                                                position: $("#position").val(),
+                                                tid: $("input[name='JobTime']:checked").val(),
+                                                lowmoney: $("#lowmoney").val(),
+                                                hightmoney: $("#hightmoney").val(),
+                                                workyear: $("#workyear").val(),
+                                                university: $("#university").val(),
+                                                degree: $("#degree").val(),
+                                                specialty: $("#specialty").val(),
+                                                fileurl: data.msg,
+                                                isnegotiable: $("input[name='isnegotiable']:checked").val(),
+                                                resume_id: "{$resumeone['resume_id']}",
+
+                                            },
+                                            dataType: "json",
+                                            async: false,
+                                            success: function (resume) {
+                                                if (resume != null && resume != "") {
+                                                    if (resume.str == 1) {
+
+                                                        layer.msg(resume.msg, {
+                                                                time: 1500,
+                                                                icon: 1,
+                                                            }, function () {
+
+                                                                window.location.href = "{:U('Index/User/mineResume')}";
+                                                            }
+                                                        );
+
+
+                                                    } else {
+                                                        c = 1
+                                                        layer.msg(resume.msg, {
+                                                                time: 1500,
+                                                                icon: 2,
+                                                            }
+                                                        );
+                                                    }
+
+                                                } else {
+                                                    c = 1
+                                                    layer.msg('请求错误!', {
+                                                            time: 1500,
+                                                            icon: 2,
+                                                        }
+                                                    );
+                                                }
+
+                                            },
+                                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                c = 1
+                                                layer.msg('请求失败!', {
+                                                        time: 1500,
+                                                        icon: 2,
+                                                    }
+                                                );
+                                            }
+
+                                        })
+
+                                    } else {
+                                        c = 1
+                                        layer.msg('文件上传失败!', {
+                                                time: 1500,
+                                                icon: 2,
+                                            }
+                                        );
                                     }
-                                );
-                            }
-                        });
+
+                                },
+                                error: function (err) {
+                                    c = 1
+                                    layer.msg('请求失败!', {
+                                            time: 1500,
+                                            icon: 2,
+                                        }
+                                    );
+                                }
+                            });
+                        }
                     }
 
                     return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
                 });
+
             });
 
 
